@@ -1,64 +1,88 @@
 /**
- * Cloudflare traits - re-exports shared traits and adds Cloudflare-specific ones.
+ * Cloudflare SDK trait surface — hand-written.
+ *
+ * Re-exports the generic protocol traits from core (so generated operations
+ * import everything from one place) and adds the Cloudflare-specific traits
+ * tied to the v4 response envelope.
+ *
+ * Generic traits (Body / Header / Query / Label / Http / ResponseCode /
+ * HttpBody / FormDataFile / KeyDictionary / UnionCases / error matchers)
+ * live in `@distilled.cloud/core/trait` because any REST protocol reuses
+ * them. Anything tied to Cloudflare's response envelope lives here.
  */
-export * from "@distilled.cloud/core/traits";
+import { makeAnnotation } from "@distilled.cloud/core/trait";
 
-import { makeAnnotation, getAnnotation } from "@distilled.cloud/core/traits";
-import * as AST from "effect/SchemaAST";
+export {
+  Body,
+  Header,
+  Query,
+  Label,
+  Http,
+  ResponseCode,
+  HttpBody,
+  FormDataFile,
+  KeyDictionary,
+  UnionCases,
+  applyErrorMatchers,
+  getErrorMatchers,
+  type HttpTrait,
+  type ErrorMatcher,
+  bodySymbol,
+  headerSymbol,
+  querySymbol,
+  labelSymbol,
+  httpSymbol,
+  responseCodeSymbol,
+  httpBodySymbol,
+  formDataFileSymbol,
+  keyDictionarySymbol,
+  unionCasesSymbol,
+  errorMatchersSymbol,
+} from "@distilled.cloud/core/trait";
 
 // =============================================================================
-// Cloudflare-specific Traits
+// Cloudflare v4 envelope traits
 // =============================================================================
 
-/** Symbol for error matchers (code + message pattern matching) */
-export const errorMatchersSymbol = Symbol.for(
-  "@distilled.cloud/cf/error-matchers",
+export const envelopePayloadRootSymbol = Symbol.for(
+  "@distilled.cloud/cloudflare/envelope-payload-root",
 );
 
-export interface ErrorMatcher {
-  code?: number;
-  status?: number;
-  message?: string | { includes?: string; matches?: string };
-}
+/**
+ * Marks a response schema whose ENTIRE value is the envelope's `result`
+ * payload (used when `result` is an array or scalar — e.g. worker script
+ * search returns a bare array). The protocol returns `result` directly
+ * instead of wrapping it in `{ result: ... }`, matching how distilled types
+ * these responses.
+ */
+export const EnvelopePayloadRoot = () =>
+  makeAnnotation(envelopePayloadRootSymbol, true);
+
+export const resultInfoSymbol = Symbol.for(
+  "@distilled.cloud/cloudflare/result-info",
+);
 
 /**
- * Apply error matchers to a class's AST annotations, returning the class so it
- * can be used directly in an `extends` clause:
- *
- * ```ts
- * export class Foo extends T.applyErrorMatchers(
- *   Schema.TaggedErrorClass<Foo>()("Foo", { ... }),
- *   [{ code: 1234 }],
- * ) {}
- * ```
- *
- * Mutating the base class's annotations propagates to the subclass — Effect's
- * Class API reuses the same AST reference — so matchers stay readable via
- * `getErrorMatchers(Foo.ast)`. Returning the class (instead of running as a
- * void top-level statement) keeps the module free of bare side-effect
- * statements, so the bundler can tree-shake unused error classes out of Worker
- * bundles.
- *
- * `.pipe()` is deliberately not used: piping a class returns a schema (not a
- * class), which can't appear in an `extends` clause.
+ * Marks the output member that receives the envelope's top-level
+ * `result_info` block (camelCased). Only honored by
+ * `CloudflarePaginatedProtocol` — pagination-specific by design.
  */
-export const applyErrorMatchers = <C extends { ast: AST.AST }>(
-  cls: C,
-  matchers: ErrorMatcher[],
-): C => {
-  const annotations = cls.ast.annotations as Record<symbol, unknown>;
-  annotations[errorMatchersSymbol] = matchers;
-  return cls;
-};
+export const ResultInfo = () => makeAnnotation(resultInfoSymbol, true);
 
-export const getErrorMatchers = (ast: AST.AST) =>
-  getAnnotation<ErrorMatcher[]>(ast, errorMatchersSymbol);
+export const envelopePayloadSymbol = Symbol.for(
+  "@distilled.cloud/cloudflare/envelope-payload",
+);
 
-/** Symbol for content type override (e.g., multipart) */
-export const contentTypeSymbol = Symbol.for("@distilled.cloud/cf/content-type");
-
-export const ContentType = (type: string) =>
-  makeAnnotation(contentTypeSymbol, type);
-
-export const getContentType = (ast: AST.AST) =>
-  getAnnotation<string>(ast, contentTypeSymbol);
+/**
+ * Marks the single output member that receives the envelope's `result` value
+ * wholesale, used when `result` is an array or scalar rather than an object.
+ *
+ * When an operation's `result` is an object, the response struct inlines its
+ * fields directly (each mapped from `result.<field>`). When `result` is a list
+ * or scalar there are no fields to inline, so the response struct has one member
+ * tagged with `EnvelopePayload()` and the protocol assigns the whole `result`
+ * to it. This mirrors `com.cloudflare.protocols#envelopePayload` in the Smithy
+ * models.
+ */
+export const EnvelopePayload = () =>
+  makeAnnotation(envelopePayloadSymbol, true);

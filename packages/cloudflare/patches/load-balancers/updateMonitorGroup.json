@@ -1,7 +1,0 @@
-{
-  "errors": {
-    "MonitorGroupNotFound": [{ "code": 1001 }],
-    "MonitorGroupsNotEnabled": [{ "code": 1002, "message": { "includes": "monitor groups not enabled" } }],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,56 +85,63 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidResourcePolicyException extends S.TaggedErrorClass<InvalidResourcePolicyException>()(
+  "InvalidResourcePolicyException",
+  { Message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    Message: S.String,
+    ResourceId: S.String,
+    ResourceType: S.String,
+    QuotaCode: S.optional(S.String),
+    ServiceCode: S.String,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    Message: S.String,
+    QuotaCode: S.optional(S.String),
+    ServiceCode: S.optional(S.String),
+    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type ApplicationName = string;
 export type EnvironmentId = string;
 export type VpcId = string;
 export type ProxyType = string;
 export type ApiGatewayEndpointType = string;
 export type StageName = string;
-export type ClientToken = string;
-export type ResourceArn = string;
-export type AccountId = string;
-export type ApplicationId = string;
-export type ApplicationState = string;
-export type RetryAfterSeconds = number;
-export type EnvironmentName = string;
-export type Description = string;
-export type NetworkFabricType = string;
-export type EnvironmentState = string;
-export type ServiceId = string;
-export type RouteType = string;
-export type RouteActivationState = string;
-export type UriPath = string;
-export type HttpMethod = string;
-export type RouteId = string;
-export type RouteState = string;
-export type ServiceName = string;
-export type ServiceEndpointType = string;
-export type Uri = string;
-export type LambdaArn = string;
-export type ServiceState = string;
-export type ResourcePolicyIdentifier = string;
-export type ApiGatewayId = string;
-export type VpcLinkId = string;
-export type NlbArn = string;
-export type NlbName = string;
-export type ErrorCode = string;
-export type ErrorMessage = string;
-export type ResourceIdentifier = string;
-export type ErrorResourceType = string;
-export type AdditionalDetailsKey = string;
-export type AdditionalDetailsValue = string;
-export type TransitGatewayId = string;
-export type PolicyString = string;
-export type PathResourceToIdKey = string;
-export type PathResourceToIdValue = string;
-export type NextToken = string;
-export type MaxResults = number;
-export type CidrBlock = string;
-export type Ec2TagValue = string;
-
-//# Schemas
 export interface ApiGatewayProxyInput {
   EndpointType?: string;
   StageName?: string;
@@ -150,6 +159,7 @@ export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type ClientToken = string;
 export interface CreateApplicationRequest {
   Name: string;
   EnvironmentIdentifier: string;
@@ -184,6 +194,10 @@ export const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateApplicationRequest",
 }) as any as S.Schema<CreateApplicationRequest>;
+export type ResourceArn = string;
+export type AccountId = string;
+export type ApplicationId = string;
+export type ApplicationState = string;
 export interface CreateApplicationResponse {
   Name?: string;
   Arn?: string;
@@ -220,6 +234,9 @@ export const CreateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateApplicationResponse",
 }) as any as S.Schema<CreateApplicationResponse>;
+export type EnvironmentName = string;
+export type Description = string;
+export type NetworkFabricType = string;
 export interface CreateEnvironmentRequest {
   Name: string;
   Description?: string;
@@ -247,6 +264,7 @@ export const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEnvironmentRequest",
 }) as any as S.Schema<CreateEnvironmentRequest>;
+export type EnvironmentState = string;
 export interface CreateEnvironmentResponse {
   Name?: string;
   Arn?: string;
@@ -277,6 +295,9 @@ export const CreateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEnvironmentResponse",
 }) as any as S.Schema<CreateEnvironmentResponse>;
+export type ServiceId = string;
+export type RouteType = string;
+export type RouteActivationState = string;
 export interface DefaultRouteInput {
   ActivationState?: string;
 }
@@ -285,6 +306,8 @@ export const DefaultRouteInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DefaultRouteInput",
 }) as any as S.Schema<DefaultRouteInput>;
+export type UriPath = string;
+export type HttpMethod = string;
 export type HttpMethods = string[];
 export const HttpMethods = /*@__PURE__*/ S.Array(S.String);
 export interface UriPathRouteInput {
@@ -341,6 +364,8 @@ export const CreateRouteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRouteRequest",
 }) as any as S.Schema<CreateRouteRequest>;
+export type RouteId = string;
+export type RouteState = string;
 export interface CreateRouteResponse {
   RouteId?: string;
   Arn?: string;
@@ -375,6 +400,9 @@ export const CreateRouteResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRouteResponse",
 }) as any as S.Schema<CreateRouteResponse>;
+export type ServiceName = string;
+export type ServiceEndpointType = string;
+export type Uri = string;
 export interface UrlEndpointInput {
   Url: string;
   HealthUrl?: string;
@@ -384,6 +412,7 @@ export const UrlEndpointInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UrlEndpointInput",
 }) as any as S.Schema<UrlEndpointInput>;
+export type LambdaArn = string;
 export interface LambdaEndpointInput {
   Arn: string;
 }
@@ -432,6 +461,7 @@ export const CreateServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateServiceRequest",
 }) as any as S.Schema<CreateServiceRequest>;
+export type ServiceState = string;
 export interface CreateServiceResponse {
   ServiceId?: string;
   Name?: string;
@@ -562,29 +592,30 @@ export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteEnvironmentResponse",
 }) as any as S.Schema<DeleteEnvironmentResponse>;
+export type ResourcePolicyIdentifier = string;
 export interface DeleteResourcePolicyRequest {
   Identifier: string;
 }
-export const DeleteResourcePolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/resourcepolicy/{Identifier}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/resourcepolicy/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteResourcePolicyRequest",
-  }) as any as S.Schema<DeleteResourcePolicyRequest>;
+  ),
+).annotate({
+  identifier: "DeleteResourcePolicyRequest",
+}) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteResourcePolicyResponse",
-  }) as any as S.Schema<DeleteResourcePolicyResponse>;
+export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteResourcePolicyResponse",
+}) as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteRouteRequest {
   EnvironmentIdentifier: string;
   ApplicationIdentifier: string;
@@ -707,6 +738,10 @@ export const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetApplicationRequest",
 }) as any as S.Schema<GetApplicationRequest>;
+export type ApiGatewayId = string;
+export type VpcLinkId = string;
+export type NlbArn = string;
+export type NlbName = string;
 export interface ApiGatewayProxyConfig {
   ProxyUrl?: string;
   ApiGatewayId?: string;
@@ -729,6 +764,12 @@ export const ApiGatewayProxyConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApiGatewayProxyConfig",
 }) as any as S.Schema<ApiGatewayProxyConfig>;
+export type ErrorCode = string;
+export type ErrorMessage = string;
+export type ResourceIdentifier = string;
+export type ErrorResourceType = string;
+export type AdditionalDetailsKey = string;
+export type AdditionalDetailsValue = string;
 export type AdditionalDetails = { [key: string]: string | undefined };
 export const AdditionalDetails = /*@__PURE__*/ S.Record(
   S.String,
@@ -809,6 +850,7 @@ export const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEnvironmentRequest",
 }) as any as S.Schema<GetEnvironmentRequest>;
+export type TransitGatewayId = string;
 export interface GetEnvironmentResponse {
   Name?: string;
   Arn?: string;
@@ -860,6 +902,7 @@ export const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourcePolicyRequest",
 }) as any as S.Schema<GetResourcePolicyRequest>;
+export type PolicyString = string;
 export interface GetResourcePolicyResponse {
   Policy?: string;
 }
@@ -894,6 +937,8 @@ export const GetRouteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRouteRequest",
 }) as any as S.Schema<GetRouteRequest>;
+export type PathResourceToIdKey = string;
+export type PathResourceToIdValue = string;
 export type PathResourceToId = { [key: string]: string | undefined };
 export const PathResourceToId = /*@__PURE__*/ S.Record(
   S.String,
@@ -1032,6 +1077,8 @@ export const GetServiceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetServiceResponse",
 }) as any as S.Schema<GetServiceResponse>;
+export type NextToken = string;
+export type MaxResults = number;
 export interface ListApplicationsRequest {
   EnvironmentIdentifier: string;
   NextToken?: string;
@@ -1227,8 +1274,10 @@ export const ListEnvironmentVpcsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEnvironmentVpcsRequest",
 }) as any as S.Schema<ListEnvironmentVpcsRequest>;
+export type CidrBlock = string;
 export type CidrBlocks = string[];
 export const CidrBlocks = /*@__PURE__*/ S.Array(S.String);
+export type Ec2TagValue = string;
 export interface EnvironmentVpc {
   EnvironmentId?: string;
   VpcId?: string;
@@ -1257,15 +1306,14 @@ export interface ListEnvironmentVpcsResponse {
   EnvironmentVpcList?: EnvironmentVpc[];
   NextToken?: string;
 }
-export const ListEnvironmentVpcsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EnvironmentVpcList: S.optional(EnvironmentVpcs),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListEnvironmentVpcsResponse",
-  }) as any as S.Schema<ListEnvironmentVpcsResponse>;
+export const ListEnvironmentVpcsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EnvironmentVpcList: S.optional(EnvironmentVpcs),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListEnvironmentVpcsResponse",
+}) as any as S.Schema<ListEnvironmentVpcsResponse>;
 export interface ListRoutesRequest {
   EnvironmentIdentifier: string;
   ApplicationIdentifier: string;
@@ -1473,12 +1521,11 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Tags: S.optional(TagMap) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(TagMap) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutResourcePolicyRequest {
   ResourceArn: string;
   Policy: string;
@@ -1609,53 +1656,7 @@ export const UpdateRouteResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateRouteResponse",
 }) as any as S.Schema<UpdateRouteResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.String },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.String },
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    Message: S.String,
-    ResourceId: S.String,
-    ResourceType: S.String,
-    QuotaCode: S.optional(S.String),
-    ServiceCode: S.String,
-  },
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    Message: S.String,
-    QuotaCode: S.optional(S.String),
-    ServiceCode: S.optional(S.String),
-    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.String },
-).pipe(C.withBadRequestError) {}
-export class InvalidResourcePolicyException extends S.TaggedErrorClass<InvalidResourcePolicyException>()(
-  "InvalidResourcePolicyException",
-  { Message: S.String },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type RetryAfterSeconds = number;
 export type CreateApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -1694,8 +1695,11 @@ export const createApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplication",
 }));
+
 export type CreateEnvironmentError =
   | AccessDeniedException
   | ConflictException
@@ -1735,8 +1739,11 @@ export const createEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEnvironment",
 }));
+
 export type CreateRouteError =
   | AccessDeniedException
   | ConflictException
@@ -1833,8 +1840,11 @@ export const createRoute: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRoute",
 }));
+
 export type CreateServiceError =
   | AccessDeniedException
   | ConflictException
@@ -1872,8 +1882,11 @@ export const createService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateService",
 }));
+
 export type DeleteApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -1902,8 +1915,11 @@ export const deleteApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplication",
 }));
+
 export type DeleteEnvironmentError =
   | AccessDeniedException
   | ConflictException
@@ -1932,8 +1948,11 @@ export const deleteEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEnvironment",
 }));
+
 export type DeleteResourcePolicyError =
   | AccessDeniedException
   | InternalServerException
@@ -1959,8 +1978,11 @@ export const deleteResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DeleteRouteError =
   | AccessDeniedException
   | ConflictException
@@ -1988,8 +2010,11 @@ export const deleteRoute: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRoute",
 }));
+
 export type DeleteServiceError =
   | AccessDeniedException
   | ConflictException
@@ -2017,8 +2042,11 @@ export const deleteService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteService",
 }));
+
 export type GetApplicationError =
   | AccessDeniedException
   | InternalServerException
@@ -2044,8 +2072,11 @@ export const getApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplication",
 }));
+
 export type GetEnvironmentError =
   | AccessDeniedException
   | InternalServerException
@@ -2071,8 +2102,11 @@ export const getEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnvironment",
 }));
+
 export type GetResourcePolicyError =
   | AccessDeniedException
   | InternalServerException
@@ -2098,8 +2132,11 @@ export const getResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
 export type GetRouteError =
   | AccessDeniedException
   | InternalServerException
@@ -2125,8 +2162,11 @@ export const getRoute: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRoute",
 }));
+
 export type GetServiceError =
   | AccessDeniedException
   | InternalServerException
@@ -2152,8 +2192,11 @@ export const getService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetService",
 }));
+
 export type ListApplicationsError =
   | AccessDeniedException
   | ConflictException
@@ -2198,6 +2241,8 @@ export const listApplications: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplications",
   pagination: {
     inputToken: "NextToken",
@@ -2206,6 +2251,7 @@ export const listApplications: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListEnvironmentsError =
   | AccessDeniedException
   | InternalServerException
@@ -2247,6 +2293,8 @@ export const listEnvironments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnvironments",
   pagination: {
     inputToken: "NextToken",
@@ -2255,6 +2303,7 @@ export const listEnvironments: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListEnvironmentVpcsError =
   | AccessDeniedException
   | InternalServerException
@@ -2296,6 +2345,8 @@ export const listEnvironmentVpcs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnvironmentVpcs",
   pagination: {
     inputToken: "NextToken",
@@ -2304,6 +2355,7 @@ export const listEnvironmentVpcs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRoutesError =
   | AccessDeniedException
   | ConflictException
@@ -2348,6 +2400,8 @@ export const listRoutes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRoutes",
   pagination: {
     inputToken: "NextToken",
@@ -2356,6 +2410,7 @@ export const listRoutes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListServicesError =
   | AccessDeniedException
   | ConflictException
@@ -2400,6 +2455,8 @@ export const listServices: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServices",
   pagination: {
     inputToken: "NextToken",
@@ -2408,6 +2465,7 @@ export const listServices: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2430,8 +2488,11 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutResourcePolicyError =
   | AccessDeniedException
   | InternalServerException
@@ -2462,8 +2523,11 @@ export const putResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2490,8 +2554,11 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2515,8 +2582,11 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateRouteError =
   | AccessDeniedException
   | InternalServerException
@@ -2542,5 +2612,7 @@ export const updateRoute: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRoute",
 }));

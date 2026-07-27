@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -85,99 +87,61 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String), reason: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  "ResourceAlreadyExistsException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type EnvironmentName = string;
 export type Description = string;
 export type KmsKeyId = string;
 export type TagKey = string;
 export type TagValue = string;
-export type SamlMetadataDocument = string;
-export type Url = string;
-export type Urn = string;
-export type FederationProviderName = string;
-export type FederationAttributeKey = string;
-export type FederationAttributeValue = string;
-export type EmailId = string | redacted.Redacted<string>;
-export type NameString = string;
-export type DataBundleArn = string;
-export type IdType = string;
-export type EnvironmentArn = string;
-export type ErrorMessage2 = string;
-export type EnvironmentId = string;
-export type DatabaseName = string;
-export type S3Path = string;
-export type DbPath = string;
-export type ClientTokenString = string;
-export type ChangesetId = string;
-export type ErrorMessage = string;
-export type ClientToken = string;
-export type KxEnvironmentId = string;
-export type KxClusterName = string;
-export type VolumeName = string;
-export type KxCacheStorageType = string;
-export type KxDataviewName = string;
-export type VersionId = string;
-export type KxVolumeName = string;
-export type KxCacheStorageSize = number;
-export type NodeCount = number;
-export type AutoScalingMetricTarget = number;
-export type CooldownTime = number;
-export type KxClusterDescription = string;
-export type NodeType = string;
-export type ReleaseLabel = string;
-export type VpcIdString = string;
-export type SecurityGroupIdString = string;
-export type SubnetIdString = string;
-export type InitializationScriptFilePath = string;
-export type KxCommandLineArgumentKey = string;
-export type KxCommandLineArgumentValue = string;
-export type S3Bucket = string;
-export type S3Key = string;
-export type S3ObjectVersion = string;
-export type ExecutionRoleArn = string;
-export type KxSavedownStorageSize = number;
-export type AvailabilityZoneId = string;
-export type KxScalingGroupName = string;
-export type MemoryMib = number;
-export type ClusterNodeCount = number;
-export type CpuCount = number;
-export type KxClusterStatusReason = string;
-export type DatabaseArn = string;
-export type KxEnvironmentName = string;
-export type KmsKeyARN = string;
-export type KxHostType = string;
-export type KxUserNameString = string;
-export type RoleArn = string;
-export type KxUserArn = string;
-export type KxNAS1Size = number;
-export type KxVolumeArn = string;
-export type KxVolumeStatusReason = string;
-export type KxClusterNodeIdString = string;
-export type SmsDomainUrl = string;
-export type SignedKxConnectionString = string | redacted.Redacted<string>;
-export type NumBytes = number;
-export type NumChangesets = number;
-export type NumFiles = number;
-export type KxDataviewStatusReason = string;
-export type EnvironmentErrorMessage = string;
-export type TransitGatewayID = string;
-export type ValidCIDRSpace = string;
-export type RuleNumber = number;
-export type Protocol = string;
-export type Port = number;
-export type IcmpTypeOrCode = number;
-export type ValidCIDRBlock = string;
-export type ValidHostname = string;
-export type ValidIPAddress = string;
-export type StringValueLength1to255 = string;
-export type Arn = string;
-export type PaginationToken = string;
-export type ResultLimit = number;
-export type MaxResults = number;
-export type BoxedInteger = number;
-export type FinSpaceTaggableArn = string;
-
-//# Schemas
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -185,6 +149,13 @@ export const TagMap = /*@__PURE__*/ S.Record(
 );
 export type FederationMode = "FEDERATED" | "LOCAL" | (string & {});
 export const FederationMode = /*@__PURE__*/ S.String;
+
+export type SamlMetadataDocument = string;
+export type Url = string;
+export type Urn = string;
+export type FederationProviderName = string;
+export type FederationAttributeKey = string;
+export type FederationAttributeValue = string;
 export type AttributeMap = { [key: string]: string | undefined };
 export const AttributeMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -210,6 +181,8 @@ export const FederationParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FederationParameters",
 }) as any as S.Schema<FederationParameters>;
+export type EmailId = string | redacted.Redacted<string>;
+export type NameString = string;
 export interface SuperuserParameters {
   emailAddress: string | redacted.Redacted<string>;
   firstName: string;
@@ -224,6 +197,7 @@ export const SuperuserParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SuperuserParameters",
 }) as any as S.Schema<SuperuserParameters>;
+export type DataBundleArn = string;
 export type DataBundleArns = string[];
 export const DataBundleArns = /*@__PURE__*/ S.Array(S.String);
 export interface CreateEnvironmentRequest {
@@ -259,6 +233,8 @@ export const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEnvironmentRequest",
 }) as any as S.Schema<CreateEnvironmentRequest>;
+export type IdType = string;
+export type EnvironmentArn = string;
 export interface CreateEnvironmentResponse {
   environmentId?: string;
   environmentArn?: string;
@@ -273,8 +249,13 @@ export const CreateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEnvironmentResponse",
 }) as any as S.Schema<CreateEnvironmentResponse>;
+export type EnvironmentId = string;
+export type DatabaseName = string;
 export type ChangeType = "PUT" | "DELETE" | (string & {});
 export const ChangeType = /*@__PURE__*/ S.String;
+
+export type S3Path = string;
+export type DbPath = string;
 export interface ChangeRequest {
   changeType: ChangeType;
   s3Path?: string;
@@ -289,6 +270,7 @@ export const ChangeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChangeRequest" }) as any as S.Schema<ChangeRequest>;
 export type ChangeRequests = ChangeRequest[];
 export const ChangeRequests = /*@__PURE__*/ S.Array(ChangeRequest);
+export type ClientTokenString = string;
 export interface CreateKxChangesetRequest {
   environmentId: string;
   databaseName: string;
@@ -317,6 +299,7 @@ export const CreateKxChangesetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateKxChangesetRequest",
 }) as any as S.Schema<CreateKxChangesetRequest>;
+export type ChangesetId = string;
 export type ChangesetStatus =
   | "PENDING"
   | "PROCESSING"
@@ -324,6 +307,8 @@ export type ChangesetStatus =
   | "COMPLETED"
   | (string & {});
 export const ChangesetStatus = /*@__PURE__*/ S.String;
+
+export type ErrorMessage = string;
 export type ErrorDetails =
   | "The inputs to this request are invalid."
   | "Service limits have been exceeded."
@@ -335,6 +320,7 @@ export type ErrorDetails =
   | "A user recoverable error has occurred"
   | (string & {});
 export const ErrorDetails = /*@__PURE__*/ S.String;
+
 export interface ErrorInfo {
   errorMessage?: string;
   errorType?: ErrorDetails;
@@ -373,6 +359,9 @@ export const CreateKxChangesetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateKxChangesetResponse",
 }) as any as S.Schema<CreateKxChangesetResponse>;
+export type ClientToken = string;
+export type KxEnvironmentId = string;
+export type KxClusterName = string;
 export type KxClusterType =
   | "HDB"
   | "RDB"
@@ -381,58 +370,63 @@ export type KxClusterType =
   | "TICKERPLANT"
   | (string & {});
 export const KxClusterType = /*@__PURE__*/ S.String;
+
+export type VolumeName = string;
 export type TickerplantLogVolumes = string[];
 export const TickerplantLogVolumes = /*@__PURE__*/ S.Array(S.String);
 export interface TickerplantLogConfiguration {
   tickerplantLogVolumes?: string[];
 }
-export const TickerplantLogConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ tickerplantLogVolumes: S.optional(TickerplantLogVolumes) }),
-  ).annotate({
-    identifier: "TickerplantLogConfiguration",
-  }) as any as S.Schema<TickerplantLogConfiguration>;
+export const TickerplantLogConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tickerplantLogVolumes: S.optional(TickerplantLogVolumes) }),
+).annotate({
+  identifier: "TickerplantLogConfiguration",
+}) as any as S.Schema<TickerplantLogConfiguration>;
+export type KxCacheStorageType = string;
 export type DbPaths = string[];
 export const DbPaths = /*@__PURE__*/ S.Array(S.String);
+export type KxDataviewName = string;
 export interface KxDatabaseCacheConfiguration {
   cacheType: string;
   dbPaths: string[];
   dataviewName?: string;
 }
-export const KxDatabaseCacheConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cacheType: S.String,
-      dbPaths: DbPaths,
-      dataviewName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "KxDatabaseCacheConfiguration",
-  }) as any as S.Schema<KxDatabaseCacheConfiguration>;
+export const KxDatabaseCacheConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cacheType: S.String,
+    dbPaths: DbPaths,
+    dataviewName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "KxDatabaseCacheConfiguration",
+}) as any as S.Schema<KxDatabaseCacheConfiguration>;
 export type KxDatabaseCacheConfigurations = KxDatabaseCacheConfiguration[];
-export const KxDatabaseCacheConfigurations =
-  /*@__PURE__*/ S.Array(KxDatabaseCacheConfiguration);
+export const KxDatabaseCacheConfigurations = /*@__PURE__*/ S.Array(
+  KxDatabaseCacheConfiguration,
+);
+export type VersionId = string;
 export type SegmentConfigurationDbPathList = string[];
 export const SegmentConfigurationDbPathList = /*@__PURE__*/ S.Array(S.String);
+export type KxVolumeName = string;
 export interface KxDataviewSegmentConfiguration {
   dbPaths: string[];
   volumeName: string;
   onDemand?: boolean;
 }
-export const KxDataviewSegmentConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dbPaths: SegmentConfigurationDbPathList,
-      volumeName: S.String,
-      onDemand: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "KxDataviewSegmentConfiguration",
-  }) as any as S.Schema<KxDataviewSegmentConfiguration>;
+export const KxDataviewSegmentConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dbPaths: SegmentConfigurationDbPathList,
+    volumeName: S.String,
+    onDemand: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "KxDataviewSegmentConfiguration",
+}) as any as S.Schema<KxDataviewSegmentConfiguration>;
 export type KxDataviewSegmentConfigurationList =
   KxDataviewSegmentConfiguration[];
-export const KxDataviewSegmentConfigurationList =
-  /*@__PURE__*/ S.Array(KxDataviewSegmentConfiguration);
+export const KxDataviewSegmentConfigurationList = /*@__PURE__*/ S.Array(
+  KxDataviewSegmentConfiguration,
+);
 export interface KxDataviewConfiguration {
   dataviewName?: string;
   dataviewVersionId?: string;
@@ -471,22 +465,26 @@ export type KxDatabaseConfigurations = KxDatabaseConfiguration[];
 export const KxDatabaseConfigurations = /*@__PURE__*/ S.Array(
   KxDatabaseConfiguration,
 );
+export type KxCacheStorageSize = number;
 export interface KxCacheStorageConfiguration {
   type: string;
   size: number;
 }
-export const KxCacheStorageConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ type: S.String, size: S.Number }),
-  ).annotate({
-    identifier: "KxCacheStorageConfiguration",
-  }) as any as S.Schema<KxCacheStorageConfiguration>;
+export const KxCacheStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ type: S.String, size: S.Number }),
+).annotate({
+  identifier: "KxCacheStorageConfiguration",
+}) as any as S.Schema<KxCacheStorageConfiguration>;
 export type KxCacheStorageConfigurations = KxCacheStorageConfiguration[];
 export const KxCacheStorageConfigurations = /*@__PURE__*/ S.Array(
   KxCacheStorageConfiguration,
 );
+export type NodeCount = number;
 export type AutoScalingMetric = "CPU_UTILIZATION_PERCENTAGE" | (string & {});
 export const AutoScalingMetric = /*@__PURE__*/ S.String;
+
+export type AutoScalingMetricTarget = number;
+export type CooldownTime = number;
 export interface AutoScalingConfiguration {
   minNodeCount?: number;
   maxNodeCount?: number;
@@ -507,6 +505,8 @@ export const AutoScalingConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AutoScalingConfiguration",
 }) as any as S.Schema<AutoScalingConfiguration>;
+export type KxClusterDescription = string;
+export type NodeType = string;
 export interface CapacityConfiguration {
   nodeType?: string;
   nodeCount?: number;
@@ -516,12 +516,17 @@ export const CapacityConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CapacityConfiguration",
 }) as any as S.Schema<CapacityConfiguration>;
+export type ReleaseLabel = string;
+export type VpcIdString = string;
+export type SecurityGroupIdString = string;
 export type SecurityGroupIdList = string[];
 export const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
+export type SubnetIdString = string;
 export type SubnetIdList = string[];
 export const SubnetIdList = /*@__PURE__*/ S.Array(S.String);
 export type IPAddressType = "IP_V4" | (string & {});
 export const IPAddressType = /*@__PURE__*/ S.String;
+
 export interface VpcConfiguration {
   vpcId?: string;
   securityGroupIds?: string[];
@@ -538,6 +543,9 @@ export const VpcConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VpcConfiguration",
 }) as any as S.Schema<VpcConfiguration>;
+export type InitializationScriptFilePath = string;
+export type KxCommandLineArgumentKey = string;
+export type KxCommandLineArgumentValue = string;
 export interface KxCommandLineArgument {
   key?: string;
   value?: string;
@@ -551,6 +559,9 @@ export type KxCommandLineArguments = KxCommandLineArgument[];
 export const KxCommandLineArguments = /*@__PURE__*/ S.Array(
   KxCommandLineArgument,
 );
+export type S3Bucket = string;
+export type S3Key = string;
+export type S3ObjectVersion = string;
 export interface CodeConfiguration {
   s3Bucket?: string;
   s3Key?: string;
@@ -565,25 +576,33 @@ export const CodeConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CodeConfiguration",
 }) as any as S.Schema<CodeConfiguration>;
+export type ExecutionRoleArn = string;
 export type KxSavedownStorageType = "SDS01" | (string & {});
 export const KxSavedownStorageType = /*@__PURE__*/ S.String;
+
+export type KxSavedownStorageSize = number;
 export interface KxSavedownStorageConfiguration {
   type?: KxSavedownStorageType;
   size?: number;
   volumeName?: string;
 }
-export const KxSavedownStorageConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.optional(KxSavedownStorageType),
-      size: S.optional(S.Number),
-      volumeName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "KxSavedownStorageConfiguration",
-  }) as any as S.Schema<KxSavedownStorageConfiguration>;
+export const KxSavedownStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(KxSavedownStorageType),
+    size: S.optional(S.Number),
+    volumeName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "KxSavedownStorageConfiguration",
+}) as any as S.Schema<KxSavedownStorageConfiguration>;
 export type KxAzMode = "SINGLE" | "MULTI" | (string & {});
 export const KxAzMode = /*@__PURE__*/ S.String;
+
+export type AvailabilityZoneId = string;
+export type KxScalingGroupName = string;
+export type MemoryMib = number;
+export type ClusterNodeCount = number;
+export type CpuCount = number;
 export interface KxScalingGroupConfiguration {
   scalingGroupName: string;
   memoryLimit?: number;
@@ -591,18 +610,17 @@ export interface KxScalingGroupConfiguration {
   nodeCount: number;
   cpu?: number;
 }
-export const KxScalingGroupConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      scalingGroupName: S.String,
-      memoryLimit: S.optional(S.Number),
-      memoryReservation: S.Number,
-      nodeCount: S.Number,
-      cpu: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "KxScalingGroupConfiguration",
-  }) as any as S.Schema<KxScalingGroupConfiguration>;
+export const KxScalingGroupConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scalingGroupName: S.String,
+    memoryLimit: S.optional(S.Number),
+    memoryReservation: S.Number,
+    nodeCount: S.Number,
+    cpu: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "KxScalingGroupConfiguration",
+}) as any as S.Schema<KxScalingGroupConfiguration>;
 export interface CreateKxClusterRequest {
   clientToken?: string;
   environmentId: string;
@@ -676,8 +694,11 @@ export type KxClusterStatus =
   | "DELETE_FAILED"
   | (string & {});
 export const KxClusterStatus = /*@__PURE__*/ S.String;
+
+export type KxClusterStatusReason = string;
 export type VolumeType = "NAS_1" | (string & {});
 export const VolumeType = /*@__PURE__*/ S.String;
+
 export interface Volume {
   volumeName?: string;
   volumeType?: VolumeType;
@@ -780,6 +801,7 @@ export const CreateKxDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateKxDatabaseRequest",
 }) as any as S.Schema<CreateKxDatabaseRequest>;
+export type DatabaseArn = string;
 export interface CreateKxDatabaseResponse {
   databaseName?: string;
   databaseArn?: string;
@@ -856,6 +878,7 @@ export type KxDataviewStatus =
   | "DELETING"
   | (string & {});
 export const KxDataviewStatus = /*@__PURE__*/ S.String;
+
 export interface CreateKxDataviewResponse {
   dataviewName?: string;
   databaseName?: string;
@@ -894,6 +917,8 @@ export const CreateKxDataviewResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateKxDataviewResponse",
 }) as any as S.Schema<CreateKxDataviewResponse>;
+export type KxEnvironmentName = string;
+export type KmsKeyARN = string;
 export interface CreateKxEnvironmentRequest {
   name: string;
   description?: string;
@@ -937,6 +962,7 @@ export type EnvironmentStatus =
   | "SUSPENDED"
   | (string & {});
 export const EnvironmentStatus = /*@__PURE__*/ S.String;
+
 export interface CreateKxEnvironmentResponse {
   name?: string;
   status?: EnvironmentStatus;
@@ -946,22 +972,22 @@ export interface CreateKxEnvironmentResponse {
   kmsKeyId?: string;
   creationTimestamp?: Date;
 }
-export const CreateKxEnvironmentResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      status: S.optional(EnvironmentStatus),
-      environmentId: S.optional(S.String),
-      description: S.optional(S.String),
-      environmentArn: S.optional(S.String),
-      kmsKeyId: S.optional(S.String),
-      creationTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateKxEnvironmentResponse",
-  }) as any as S.Schema<CreateKxEnvironmentResponse>;
+export const CreateKxEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    status: S.optional(EnvironmentStatus),
+    environmentId: S.optional(S.String),
+    description: S.optional(S.String),
+    environmentArn: S.optional(S.String),
+    kmsKeyId: S.optional(S.String),
+    creationTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }),
+).annotate({
+  identifier: "CreateKxEnvironmentResponse",
+}) as any as S.Schema<CreateKxEnvironmentResponse>;
+export type KxHostType = string;
 export interface CreateKxScalingGroupRequest {
   clientToken: string;
   environmentId: string;
@@ -970,31 +996,30 @@ export interface CreateKxScalingGroupRequest {
   availabilityZoneId: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateKxScalingGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clientToken: S.String.pipe(T.IdempotencyToken()),
-      environmentId: S.String.pipe(T.HttpLabel("environmentId")),
-      scalingGroupName: S.String,
-      hostType: S.String,
-      availabilityZoneId: S.String,
-      tags: S.optional(TagMap),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/kx/environments/{environmentId}/scalingGroups",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateKxScalingGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientToken: S.String.pipe(T.IdempotencyToken()),
+    environmentId: S.String.pipe(T.HttpLabel("environmentId")),
+    scalingGroupName: S.String,
+    hostType: S.String,
+    availabilityZoneId: S.String,
+    tags: S.optional(TagMap),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/kx/environments/{environmentId}/scalingGroups",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateKxScalingGroupRequest",
-  }) as any as S.Schema<CreateKxScalingGroupRequest>;
+  ),
+).annotate({
+  identifier: "CreateKxScalingGroupRequest",
+}) as any as S.Schema<CreateKxScalingGroupRequest>;
 export type KxScalingGroupStatus =
   | "CREATING"
   | "CREATE_FAILED"
@@ -1004,6 +1029,7 @@ export type KxScalingGroupStatus =
   | "DELETE_FAILED"
   | (string & {});
 export const KxScalingGroupStatus = /*@__PURE__*/ S.String;
+
 export interface CreateKxScalingGroupResponse {
   environmentId?: string;
   scalingGroupName?: string;
@@ -1013,24 +1039,25 @@ export interface CreateKxScalingGroupResponse {
   lastModifiedTimestamp?: Date;
   createdTimestamp?: Date;
 }
-export const CreateKxScalingGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      environmentId: S.optional(S.String),
-      scalingGroupName: S.optional(S.String),
-      hostType: S.optional(S.String),
-      availabilityZoneId: S.optional(S.String),
-      status: S.optional(KxScalingGroupStatus),
-      lastModifiedTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      createdTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateKxScalingGroupResponse",
-  }) as any as S.Schema<CreateKxScalingGroupResponse>;
+export const CreateKxScalingGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.optional(S.String),
+    scalingGroupName: S.optional(S.String),
+    hostType: S.optional(S.String),
+    availabilityZoneId: S.optional(S.String),
+    status: S.optional(KxScalingGroupStatus),
+    lastModifiedTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    createdTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }),
+).annotate({
+  identifier: "CreateKxScalingGroupResponse",
+}) as any as S.Schema<CreateKxScalingGroupResponse>;
+export type KxUserNameString = string;
+export type RoleArn = string;
 export interface CreateKxUserRequest {
   environmentId: string;
   userName: string;
@@ -1058,6 +1085,7 @@ export const CreateKxUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateKxUserRequest",
 }) as any as S.Schema<CreateKxUserRequest>;
+export type KxUserArn = string;
 export interface CreateKxUserResponse {
   userName?: string;
   userArn?: string;
@@ -1076,8 +1104,11 @@ export const CreateKxUserResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateKxUserResponse>;
 export type KxVolumeType = "NAS_1" | (string & {});
 export const KxVolumeType = /*@__PURE__*/ S.String;
+
 export type KxNAS1Type = "SSD_1000" | "SSD_250" | "HDD_12" | (string & {});
 export const KxNAS1Type = /*@__PURE__*/ S.String;
+
+export type KxNAS1Size = number;
 export interface KxNAS1Configuration {
   type?: KxNAS1Type;
   size?: number;
@@ -1127,6 +1158,7 @@ export const CreateKxVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateKxVolumeRequest",
 }) as any as S.Schema<CreateKxVolumeRequest>;
+export type KxVolumeArn = string;
 export type KxVolumeStatus =
   | "CREATING"
   | "CREATE_FAILED"
@@ -1139,6 +1171,8 @@ export type KxVolumeStatus =
   | "DELETE_FAILED"
   | (string & {});
 export const KxVolumeStatus = /*@__PURE__*/ S.String;
+
+export type KxVolumeStatusReason = string;
 export interface CreateKxVolumeResponse {
   environmentId?: string;
   volumeName?: string;
@@ -1175,9 +1209,7 @@ export interface DeleteEnvironmentRequest {
   environmentId: string;
 }
 export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.String.pipe(T.HttpLabel("environmentId")),
-  }).pipe(
+  S.Struct({ environmentId: S.String.pipe(T.HttpLabel("environmentId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/environment/{environmentId}" }),
       svc,
@@ -1231,6 +1263,7 @@ export const DeleteKxClusterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteKxClusterResponse",
 }) as any as S.Schema<DeleteKxClusterResponse>;
+export type KxClusterNodeIdString = string;
 export interface DeleteKxClusterNodeRequest {
   environmentId: string;
   clusterName: string;
@@ -1258,10 +1291,11 @@ export const DeleteKxClusterNodeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteKxClusterNodeRequest",
 }) as any as S.Schema<DeleteKxClusterNodeRequest>;
 export interface DeleteKxClusterNodeResponse {}
-export const DeleteKxClusterNodeResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteKxClusterNodeResponse",
-  }) as any as S.Schema<DeleteKxClusterNodeResponse>;
+export const DeleteKxClusterNodeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteKxClusterNodeResponse",
+}) as any as S.Schema<DeleteKxClusterNodeResponse>;
 export interface DeleteKxDatabaseRequest {
   environmentId: string;
   databaseName: string;
@@ -1359,45 +1393,46 @@ export const DeleteKxEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteKxEnvironmentRequest",
 }) as any as S.Schema<DeleteKxEnvironmentRequest>;
 export interface DeleteKxEnvironmentResponse {}
-export const DeleteKxEnvironmentResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteKxEnvironmentResponse",
-  }) as any as S.Schema<DeleteKxEnvironmentResponse>;
+export const DeleteKxEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteKxEnvironmentResponse",
+}) as any as S.Schema<DeleteKxEnvironmentResponse>;
 export interface DeleteKxScalingGroupRequest {
   environmentId: string;
   scalingGroupName: string;
   clientToken?: string;
 }
-export const DeleteKxScalingGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      environmentId: S.String.pipe(T.HttpLabel("environmentId")),
-      scalingGroupName: S.String.pipe(T.HttpLabel("scalingGroupName")),
-      clientToken: S.optional(S.String).pipe(
-        T.HttpQuery("clientToken"),
-        T.IdempotencyToken(),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/kx/environments/{environmentId}/scalingGroups/{scalingGroupName}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteKxScalingGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String.pipe(T.HttpLabel("environmentId")),
+    scalingGroupName: S.String.pipe(T.HttpLabel("scalingGroupName")),
+    clientToken: S.optional(S.String).pipe(
+      T.HttpQuery("clientToken"),
+      T.IdempotencyToken(),
     ),
-  ).annotate({
-    identifier: "DeleteKxScalingGroupRequest",
-  }) as any as S.Schema<DeleteKxScalingGroupRequest>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/kx/environments/{environmentId}/scalingGroups/{scalingGroupName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteKxScalingGroupRequest",
+}) as any as S.Schema<DeleteKxScalingGroupRequest>;
 export interface DeleteKxScalingGroupResponse {}
-export const DeleteKxScalingGroupResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteKxScalingGroupResponse",
-  }) as any as S.Schema<DeleteKxScalingGroupResponse>;
+export const DeleteKxScalingGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteKxScalingGroupResponse",
+}) as any as S.Schema<DeleteKxScalingGroupResponse>;
 export interface DeleteKxUserRequest {
   userName: string;
   environmentId: string;
@@ -1485,6 +1520,7 @@ export const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEnvironmentRequest",
 }) as any as S.Schema<GetEnvironmentRequest>;
+export type SmsDomainUrl = string;
 export interface Environment {
   name?: string;
   environmentId?: string;
@@ -1668,37 +1704,36 @@ export interface GetKxConnectionStringRequest {
   environmentId: string;
   clusterName: string;
 }
-export const GetKxConnectionStringRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      userArn: S.String.pipe(T.HttpQuery("userArn")),
-      environmentId: S.String.pipe(T.HttpLabel("environmentId")),
-      clusterName: S.String.pipe(T.HttpQuery("clusterName")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/kx/environments/{environmentId}/connectionString",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetKxConnectionStringRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userArn: S.String.pipe(T.HttpQuery("userArn")),
+    environmentId: S.String.pipe(T.HttpLabel("environmentId")),
+    clusterName: S.String.pipe(T.HttpQuery("clusterName")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/kx/environments/{environmentId}/connectionString",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetKxConnectionStringRequest",
-  }) as any as S.Schema<GetKxConnectionStringRequest>;
+  ),
+).annotate({
+  identifier: "GetKxConnectionStringRequest",
+}) as any as S.Schema<GetKxConnectionStringRequest>;
+export type SignedKxConnectionString = string | redacted.Redacted<string>;
 export interface GetKxConnectionStringResponse {
   signedConnectionString?: string | redacted.Redacted<string>;
 }
-export const GetKxConnectionStringResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ signedConnectionString: S.optional(SensitiveString) }),
-  ).annotate({
-    identifier: "GetKxConnectionStringResponse",
-  }) as any as S.Schema<GetKxConnectionStringResponse>;
+export const GetKxConnectionStringResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ signedConnectionString: S.optional(SensitiveString) }),
+).annotate({
+  identifier: "GetKxConnectionStringResponse",
+}) as any as S.Schema<GetKxConnectionStringResponse>;
 export interface GetKxDatabaseRequest {
   environmentId: string;
   databaseName: string;
@@ -1723,6 +1758,9 @@ export const GetKxDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetKxDatabaseRequest",
 }) as any as S.Schema<GetKxDatabaseRequest>;
+export type NumBytes = number;
+export type NumChangesets = number;
+export type NumFiles = number;
 export interface GetKxDatabaseResponse {
   databaseName?: string;
   databaseArn?: string;
@@ -1807,6 +1845,7 @@ export type KxDataviewActiveVersionList = KxDataviewActiveVersion[];
 export const KxDataviewActiveVersionList = /*@__PURE__*/ S.Array(
   KxDataviewActiveVersion,
 );
+export type KxDataviewStatusReason = string;
 export interface GetKxDataviewResponse {
   databaseName?: string;
   dataviewName?: string;
@@ -1853,9 +1892,7 @@ export interface GetKxEnvironmentRequest {
   environmentId: string;
 }
 export const GetKxEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.String.pipe(T.HttpLabel("environmentId")),
-  }).pipe(
+  S.Struct({ environmentId: S.String.pipe(T.HttpLabel("environmentId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/kx/environments/{environmentId}" }),
       svc,
@@ -1876,6 +1913,7 @@ export type TgwStatus =
   | "SUCCESSFULLY_UPDATED"
   | (string & {});
 export const TgwStatus = /*@__PURE__*/ S.String;
+
 export type DnsStatus =
   | "NONE"
   | "UPDATE_REQUESTED"
@@ -1884,8 +1922,16 @@ export type DnsStatus =
   | "SUCCESSFULLY_UPDATED"
   | (string & {});
 export const DnsStatus = /*@__PURE__*/ S.String;
+
+export type EnvironmentErrorMessage = string;
+export type TransitGatewayID = string;
+export type ValidCIDRSpace = string;
+export type RuleNumber = number;
+export type Protocol = string;
 export type RuleAction = "allow" | "deny" | (string & {});
 export const RuleAction = /*@__PURE__*/ S.String;
+
+export type Port = number;
 export interface PortRange {
   from: number;
   to: number;
@@ -1893,6 +1939,7 @@ export interface PortRange {
 export const PortRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ from: S.Number, to: S.Number }),
 ).annotate({ identifier: "PortRange" }) as any as S.Schema<PortRange>;
+export type IcmpTypeOrCode = number;
 export interface IcmpTypeCode {
   type: number;
   code: number;
@@ -1900,6 +1947,7 @@ export interface IcmpTypeCode {
 export const IcmpTypeCode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: S.Number, code: S.Number }),
 ).annotate({ identifier: "IcmpTypeCode" }) as any as S.Schema<IcmpTypeCode>;
+export type ValidCIDRBlock = string;
 export interface NetworkACLEntry {
   ruleNumber: number;
   protocol: string;
@@ -1927,16 +1975,17 @@ export interface TransitGatewayConfiguration {
   routableCIDRSpace: string;
   attachmentNetworkAclConfiguration?: NetworkACLEntry[];
 }
-export const TransitGatewayConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      transitGatewayID: S.String,
-      routableCIDRSpace: S.String,
-      attachmentNetworkAclConfiguration: S.optional(NetworkACLConfiguration),
-    }),
-  ).annotate({
-    identifier: "TransitGatewayConfiguration",
-  }) as any as S.Schema<TransitGatewayConfiguration>;
+export const TransitGatewayConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    transitGatewayID: S.String,
+    routableCIDRSpace: S.String,
+    attachmentNetworkAclConfiguration: S.optional(NetworkACLConfiguration),
+  }),
+).annotate({
+  identifier: "TransitGatewayConfiguration",
+}) as any as S.Schema<TransitGatewayConfiguration>;
+export type ValidHostname = string;
+export type ValidIPAddress = string;
 export interface CustomDNSServer {
   customDNSServerName: string;
   customDNSServerIP: string;
@@ -1948,6 +1997,7 @@ export const CustomDNSServer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomDNSServer>;
 export type CustomDNSConfiguration = CustomDNSServer[];
 export const CustomDNSConfiguration = /*@__PURE__*/ S.Array(CustomDNSServer);
+export type StringValueLength1to255 = string;
 export interface GetKxEnvironmentResponse {
   name?: string;
   environmentId?: string;
@@ -2018,6 +2068,7 @@ export const GetKxScalingGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetKxScalingGroupRequest",
 }) as any as S.Schema<GetKxScalingGroupRequest>;
+export type Arn = string;
 export type KxClusterNameList = string[];
 export const KxClusterNameList = /*@__PURE__*/ S.Array(S.String);
 export interface GetKxScalingGroupResponse {
@@ -2168,6 +2219,8 @@ export const GetKxVolumeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetKxVolumeResponse",
 }) as any as S.Schema<GetKxVolumeResponse>;
+export type PaginationToken = string;
+export type ResultLimit = number;
 export interface ListEnvironmentsRequest {
   nextToken?: string;
   maxResults?: number;
@@ -2203,6 +2256,7 @@ export const ListEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEnvironmentsResponse",
 }) as any as S.Schema<ListEnvironmentsResponse>;
+export type MaxResults = number;
 export interface ListKxChangesetsRequest {
   environmentId: string;
   databaseName: string;
@@ -2299,6 +2353,7 @@ export const ListKxClusterNodesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListKxClusterNodesRequest>;
 export type KxNodeStatus = "RUNNING" | "PROVISIONING" | (string & {});
 export const KxNodeStatus = /*@__PURE__*/ S.String;
+
 export interface KxNode {
   nodeId?: string;
   availabilityZoneId?: string;
@@ -2547,6 +2602,7 @@ export const ListKxDataviewsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListKxDataviewsResponse",
 }) as any as S.Schema<ListKxDataviewsResponse>;
+export type BoxedInteger = number;
 export interface ListKxEnvironmentsRequest {
   nextToken?: string;
   maxResults?: number;
@@ -2684,15 +2740,14 @@ export interface ListKxScalingGroupsResponse {
   scalingGroups?: KxScalingGroup[];
   nextToken?: string;
 }
-export const ListKxScalingGroupsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      scalingGroups: S.optional(KxScalingGroupList),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListKxScalingGroupsResponse",
-  }) as any as S.Schema<ListKxScalingGroupsResponse>;
+export const ListKxScalingGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scalingGroups: S.optional(KxScalingGroupList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListKxScalingGroupsResponse",
+}) as any as S.Schema<ListKxScalingGroupsResponse>;
 export interface ListKxUsersRequest {
   environmentId: string;
   nextToken?: string;
@@ -2817,6 +2872,7 @@ export const ListKxVolumesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListKxVolumesResponse",
 }) as any as S.Schema<ListKxVolumesResponse>;
+export type FinSpaceTaggableArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -2837,12 +2893,11 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(TagMap) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagMap) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -2940,15 +2995,15 @@ export type KxClusterCodeDeploymentStrategy =
   | "FORCE"
   | (string & {});
 export const KxClusterCodeDeploymentStrategy = /*@__PURE__*/ S.String;
+
 export interface KxClusterCodeDeploymentConfiguration {
   deploymentStrategy: KxClusterCodeDeploymentStrategy;
 }
-export const KxClusterCodeDeploymentConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ deploymentStrategy: KxClusterCodeDeploymentStrategy }),
-  ).annotate({
-    identifier: "KxClusterCodeDeploymentConfiguration",
-  }) as any as S.Schema<KxClusterCodeDeploymentConfiguration>;
+export const KxClusterCodeDeploymentConfiguration = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ deploymentStrategy: KxClusterCodeDeploymentStrategy }),
+).annotate({
+  identifier: "KxClusterCodeDeploymentConfiguration",
+}) as any as S.Schema<KxClusterCodeDeploymentConfiguration>;
 export interface UpdateKxClusterCodeConfigurationRequest {
   environmentId: string;
   clusterName: string;
@@ -2958,8 +3013,8 @@ export interface UpdateKxClusterCodeConfigurationRequest {
   commandLineArguments?: KxCommandLineArgument[];
   deploymentConfiguration?: KxClusterCodeDeploymentConfiguration;
 }
-export const UpdateKxClusterCodeConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const UpdateKxClusterCodeConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       environmentId: S.String.pipe(T.HttpLabel("environmentId")),
       clusterName: S.String.pipe(T.HttpLabel("clusterName")),
@@ -2981,16 +3036,18 @@ export const UpdateKxClusterCodeConfigurationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "UpdateKxClusterCodeConfigurationRequest",
-  }) as any as S.Schema<UpdateKxClusterCodeConfigurationRequest>;
+).annotate({
+  identifier: "UpdateKxClusterCodeConfigurationRequest",
+}) as any as S.Schema<UpdateKxClusterCodeConfigurationRequest>;
 export interface UpdateKxClusterCodeConfigurationResponse {}
-export const UpdateKxClusterCodeConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateKxClusterCodeConfigurationResponse",
-  }) as any as S.Schema<UpdateKxClusterCodeConfigurationResponse>;
+export const UpdateKxClusterCodeConfigurationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "UpdateKxClusterCodeConfigurationResponse",
+}) as any as S.Schema<UpdateKxClusterCodeConfigurationResponse>;
 export type KxDeploymentStrategy = "NO_RESTART" | "ROLLING" | (string & {});
 export const KxDeploymentStrategy = /*@__PURE__*/ S.String;
+
 export interface KxDeploymentConfiguration {
   deploymentStrategy: KxDeploymentStrategy;
 }
@@ -3006,35 +3063,35 @@ export interface UpdateKxClusterDatabasesRequest {
   databases: KxDatabaseConfiguration[];
   deploymentConfiguration?: KxDeploymentConfiguration;
 }
-export const UpdateKxClusterDatabasesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      environmentId: S.String.pipe(T.HttpLabel("environmentId")),
-      clusterName: S.String.pipe(T.HttpLabel("clusterName")),
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      databases: KxDatabaseConfigurations,
-      deploymentConfiguration: S.optional(KxDeploymentConfiguration),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/kx/environments/{environmentId}/clusters/{clusterName}/configuration/databases",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateKxClusterDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String.pipe(T.HttpLabel("environmentId")),
+    clusterName: S.String.pipe(T.HttpLabel("clusterName")),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    databases: KxDatabaseConfigurations,
+    deploymentConfiguration: S.optional(KxDeploymentConfiguration),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/kx/environments/{environmentId}/clusters/{clusterName}/configuration/databases",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateKxClusterDatabasesRequest",
-  }) as any as S.Schema<UpdateKxClusterDatabasesRequest>;
+  ),
+).annotate({
+  identifier: "UpdateKxClusterDatabasesRequest",
+}) as any as S.Schema<UpdateKxClusterDatabasesRequest>;
 export interface UpdateKxClusterDatabasesResponse {}
-export const UpdateKxClusterDatabasesResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateKxClusterDatabasesResponse",
-  }) as any as S.Schema<UpdateKxClusterDatabasesResponse>;
+export const UpdateKxClusterDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateKxClusterDatabasesResponse",
+}) as any as S.Schema<UpdateKxClusterDatabasesResponse>;
 export interface UpdateKxDatabaseRequest {
   environmentId: string;
   databaseName: string;
@@ -3198,62 +3255,60 @@ export interface UpdateKxEnvironmentResponse {
   updateTimestamp?: Date;
   availabilityZoneIds?: string[];
 }
-export const UpdateKxEnvironmentResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      environmentId: S.optional(S.String),
-      awsAccountId: S.optional(S.String),
-      status: S.optional(EnvironmentStatus),
-      tgwStatus: S.optional(TgwStatus),
-      dnsStatus: S.optional(DnsStatus),
-      errorMessage: S.optional(S.String),
-      description: S.optional(S.String),
-      environmentArn: S.optional(S.String),
-      kmsKeyId: S.optional(S.String),
-      dedicatedServiceAccountId: S.optional(S.String),
-      transitGatewayConfiguration: S.optional(TransitGatewayConfiguration),
-      customDNSConfiguration: S.optional(CustomDNSConfiguration),
-      creationTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      updateTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      availabilityZoneIds: S.optional(AvailabilityZoneIds),
-    }),
-  ).annotate({
-    identifier: "UpdateKxEnvironmentResponse",
-  }) as any as S.Schema<UpdateKxEnvironmentResponse>;
+export const UpdateKxEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    environmentId: S.optional(S.String),
+    awsAccountId: S.optional(S.String),
+    status: S.optional(EnvironmentStatus),
+    tgwStatus: S.optional(TgwStatus),
+    dnsStatus: S.optional(DnsStatus),
+    errorMessage: S.optional(S.String),
+    description: S.optional(S.String),
+    environmentArn: S.optional(S.String),
+    kmsKeyId: S.optional(S.String),
+    dedicatedServiceAccountId: S.optional(S.String),
+    transitGatewayConfiguration: S.optional(TransitGatewayConfiguration),
+    customDNSConfiguration: S.optional(CustomDNSConfiguration),
+    creationTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    updateTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    availabilityZoneIds: S.optional(AvailabilityZoneIds),
+  }),
+).annotate({
+  identifier: "UpdateKxEnvironmentResponse",
+}) as any as S.Schema<UpdateKxEnvironmentResponse>;
 export interface UpdateKxEnvironmentNetworkRequest {
   environmentId: string;
   transitGatewayConfiguration?: TransitGatewayConfiguration;
   customDNSConfiguration?: CustomDNSServer[];
   clientToken?: string;
 }
-export const UpdateKxEnvironmentNetworkRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      environmentId: S.String.pipe(T.HttpLabel("environmentId")),
-      transitGatewayConfiguration: S.optional(TransitGatewayConfiguration),
-      customDNSConfiguration: S.optional(CustomDNSConfiguration),
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/kx/environments/{environmentId}/network",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateKxEnvironmentNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String.pipe(T.HttpLabel("environmentId")),
+    transitGatewayConfiguration: S.optional(TransitGatewayConfiguration),
+    customDNSConfiguration: S.optional(CustomDNSConfiguration),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/kx/environments/{environmentId}/network",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateKxEnvironmentNetworkRequest",
-  }) as any as S.Schema<UpdateKxEnvironmentNetworkRequest>;
+  ),
+).annotate({
+  identifier: "UpdateKxEnvironmentNetworkRequest",
+}) as any as S.Schema<UpdateKxEnvironmentNetworkRequest>;
 export interface UpdateKxEnvironmentNetworkResponse {
   name?: string;
   environmentId?: string;
@@ -3272,33 +3327,32 @@ export interface UpdateKxEnvironmentNetworkResponse {
   updateTimestamp?: Date;
   availabilityZoneIds?: string[];
 }
-export const UpdateKxEnvironmentNetworkResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      environmentId: S.optional(S.String),
-      awsAccountId: S.optional(S.String),
-      status: S.optional(EnvironmentStatus),
-      tgwStatus: S.optional(TgwStatus),
-      dnsStatus: S.optional(DnsStatus),
-      errorMessage: S.optional(S.String),
-      description: S.optional(S.String),
-      environmentArn: S.optional(S.String),
-      kmsKeyId: S.optional(S.String),
-      dedicatedServiceAccountId: S.optional(S.String),
-      transitGatewayConfiguration: S.optional(TransitGatewayConfiguration),
-      customDNSConfiguration: S.optional(CustomDNSConfiguration),
-      creationTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      updateTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      availabilityZoneIds: S.optional(AvailabilityZoneIds),
-    }),
-  ).annotate({
-    identifier: "UpdateKxEnvironmentNetworkResponse",
-  }) as any as S.Schema<UpdateKxEnvironmentNetworkResponse>;
+export const UpdateKxEnvironmentNetworkResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    environmentId: S.optional(S.String),
+    awsAccountId: S.optional(S.String),
+    status: S.optional(EnvironmentStatus),
+    tgwStatus: S.optional(TgwStatus),
+    dnsStatus: S.optional(DnsStatus),
+    errorMessage: S.optional(S.String),
+    description: S.optional(S.String),
+    environmentArn: S.optional(S.String),
+    kmsKeyId: S.optional(S.String),
+    dedicatedServiceAccountId: S.optional(S.String),
+    transitGatewayConfiguration: S.optional(TransitGatewayConfiguration),
+    customDNSConfiguration: S.optional(CustomDNSConfiguration),
+    creationTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    updateTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    availabilityZoneIds: S.optional(AvailabilityZoneIds),
+  }),
+).annotate({
+  identifier: "UpdateKxEnvironmentNetworkResponse",
+}) as any as S.Schema<UpdateKxEnvironmentNetworkResponse>;
 export interface UpdateKxUserRequest {
   environmentId: string;
   userName: string;
@@ -3411,60 +3465,7 @@ export const UpdateKxVolumeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateKxVolumeResponse",
 }) as any as S.Schema<UpdateKxVolumeResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String), reason: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage2 = string;
 export type CreateEnvironmentError =
   | AccessDeniedException
   | InternalServerException
@@ -3492,8 +3493,11 @@ export const createEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEnvironment",
 }));
+
 export type CreateKxChangesetError =
   | AccessDeniedException
   | ConflictException
@@ -3523,8 +3527,11 @@ export const createKxChangeset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKxChangeset",
 }));
+
 export type CreateKxClusterError =
   | AccessDeniedException
   | ConflictException
@@ -3554,8 +3561,11 @@ export const createKxCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKxCluster",
 }));
+
 export type CreateKxDatabaseError =
   | AccessDeniedException
   | ConflictException
@@ -3587,8 +3597,11 @@ export const createKxDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKxDatabase",
 }));
+
 export type CreateKxDataviewError =
   | AccessDeniedException
   | ConflictException
@@ -3620,8 +3633,11 @@ export const createKxDataview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKxDataview",
 }));
+
 export type CreateKxEnvironmentError =
   | AccessDeniedException
   | ConflictException
@@ -3651,8 +3667,11 @@ export const createKxEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKxEnvironment",
 }));
+
 export type CreateKxScalingGroupError =
   | AccessDeniedException
   | ConflictException
@@ -3682,8 +3701,11 @@ export const createKxScalingGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKxScalingGroup",
 }));
+
 export type CreateKxUserError =
   | AccessDeniedException
   | ConflictException
@@ -3715,8 +3737,11 @@ export const createKxUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKxUser",
 }));
+
 export type CreateKxVolumeError =
   | AccessDeniedException
   | ConflictException
@@ -3748,8 +3773,11 @@ export const createKxVolume: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKxVolume",
 }));
+
 export type DeleteEnvironmentError =
   | AccessDeniedException
   | InternalServerException
@@ -3775,8 +3803,11 @@ export const deleteEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEnvironment",
 }));
+
 export type DeleteKxClusterError =
   | AccessDeniedException
   | ConflictException
@@ -3806,8 +3837,11 @@ export const deleteKxCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKxCluster",
 }));
+
 export type DeleteKxClusterNodeError =
   | AccessDeniedException
   | InternalServerException
@@ -3833,8 +3867,11 @@ export const deleteKxClusterNode: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKxClusterNode",
 }));
+
 export type DeleteKxDatabaseError =
   | AccessDeniedException
   | ConflictException
@@ -3862,8 +3899,11 @@ export const deleteKxDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKxDatabase",
 }));
+
 export type DeleteKxDataviewError =
   | AccessDeniedException
   | ConflictException
@@ -3891,8 +3931,11 @@ export const deleteKxDataview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKxDataview",
 }));
+
 export type DeleteKxEnvironmentError =
   | AccessDeniedException
   | ConflictException
@@ -3920,8 +3963,11 @@ export const deleteKxEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKxEnvironment",
 }));
+
 export type DeleteKxScalingGroupError =
   | AccessDeniedException
   | ConflictException
@@ -3951,8 +3997,11 @@ export const deleteKxScalingGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKxScalingGroup",
 }));
+
 export type DeleteKxUserError =
   | AccessDeniedException
   | ConflictException
@@ -3980,8 +4029,11 @@ export const deleteKxUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKxUser",
 }));
+
 export type DeleteKxVolumeError =
   | AccessDeniedException
   | ConflictException
@@ -4011,8 +4063,11 @@ export const deleteKxVolume: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKxVolume",
 }));
+
 export type GetEnvironmentError =
   | AccessDeniedException
   | InternalServerException
@@ -4036,8 +4091,11 @@ export const getEnvironment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnvironment",
 }));
+
 export type GetKxChangesetError =
   | AccessDeniedException
   | InternalServerException
@@ -4063,8 +4121,11 @@ export const getKxChangeset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKxChangeset",
 }));
+
 export type GetKxClusterError =
   | AccessDeniedException
   | ConflictException
@@ -4094,8 +4155,11 @@ export const getKxCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKxCluster",
 }));
+
 export type GetKxConnectionStringError =
   | AccessDeniedException
   | InternalServerException
@@ -4121,8 +4185,11 @@ export const getKxConnectionString: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKxConnectionString",
 }));
+
 export type GetKxDatabaseError =
   | AccessDeniedException
   | InternalServerException
@@ -4148,8 +4215,11 @@ export const getKxDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKxDatabase",
 }));
+
 export type GetKxDataviewError =
   | AccessDeniedException
   | InternalServerException
@@ -4175,8 +4245,11 @@ export const getKxDataview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKxDataview",
 }));
+
 export type GetKxEnvironmentError =
   | AccessDeniedException
   | ConflictException
@@ -4202,8 +4275,11 @@ export const getKxEnvironment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKxEnvironment",
 }));
+
 export type GetKxScalingGroupError =
   | AccessDeniedException
   | ConflictException
@@ -4233,8 +4309,11 @@ export const getKxScalingGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKxScalingGroup",
 }));
+
 export type GetKxUserError =
   | AccessDeniedException
   | InternalServerException
@@ -4260,8 +4339,11 @@ export const getKxUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKxUser",
 }));
+
 export type GetKxVolumeError =
   | AccessDeniedException
   | ConflictException
@@ -4291,8 +4373,11 @@ export const getKxVolume: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKxVolume",
 }));
+
 export type ListEnvironmentsError =
   | AccessDeniedException
   | InternalServerException
@@ -4310,8 +4395,11 @@ export const listEnvironments: API.OperationMethod<
   input: ListEnvironmentsRequest,
   output: ListEnvironmentsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnvironments",
 }));
+
 export type ListKxChangesetsError =
   | AccessDeniedException
   | InternalServerException
@@ -4352,6 +4440,8 @@ export const listKxChangesets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKxChangesets",
   pagination: {
     inputToken: "nextToken",
@@ -4359,6 +4449,7 @@ export const listKxChangesets: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListKxClusterNodesError =
   | AccessDeniedException
   | InternalServerException
@@ -4401,6 +4492,8 @@ export const listKxClusterNodes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKxClusterNodes",
   pagination: {
     inputToken: "nextToken",
@@ -4408,6 +4501,7 @@ export const listKxClusterNodes: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListKxClustersError =
   | AccessDeniedException
   | ConflictException
@@ -4437,8 +4531,11 @@ export const listKxClusters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKxClusters",
 }));
+
 export type ListKxDatabasesError =
   | AccessDeniedException
   | InternalServerException
@@ -4479,6 +4576,8 @@ export const listKxDatabases: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKxDatabases",
   pagination: {
     inputToken: "nextToken",
@@ -4486,6 +4585,7 @@ export const listKxDatabases: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListKxDataviewsError =
   | AccessDeniedException
   | InternalServerException
@@ -4526,6 +4626,8 @@ export const listKxDataviews: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKxDataviews",
   pagination: {
     inputToken: "nextToken",
@@ -4533,6 +4635,7 @@ export const listKxDataviews: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListKxEnvironmentsError =
   | AccessDeniedException
   | InternalServerException
@@ -4565,6 +4668,8 @@ export const listKxEnvironments: API.OperationMethod<
   input: ListKxEnvironmentsRequest,
   output: ListKxEnvironmentsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKxEnvironments",
   pagination: {
     inputToken: "nextToken",
@@ -4573,6 +4678,7 @@ export const listKxEnvironments: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListKxScalingGroupsError =
   | AccessDeniedException
   | ConflictException
@@ -4617,6 +4723,8 @@ export const listKxScalingGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKxScalingGroups",
   pagination: {
     inputToken: "nextToken",
@@ -4624,6 +4732,7 @@ export const listKxScalingGroups: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListKxUsersError =
   | AccessDeniedException
   | InternalServerException
@@ -4649,8 +4758,11 @@ export const listKxUsers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKxUsers",
 }));
+
 export type ListKxVolumesError =
   | AccessDeniedException
   | ConflictException
@@ -4680,8 +4792,11 @@ export const listKxVolumes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKxVolumes",
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | InvalidRequestException
@@ -4703,8 +4818,11 @@ export const listTagsForResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | InvalidRequestException
@@ -4726,8 +4844,11 @@ export const tagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | InvalidRequestException
@@ -4749,8 +4870,11 @@ export const untagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateEnvironmentError =
   | AccessDeniedException
   | InternalServerException
@@ -4776,8 +4900,11 @@ export const updateEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEnvironment",
 }));
+
 export type UpdateKxClusterCodeConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -4808,8 +4935,11 @@ export const updateKxClusterCodeConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKxClusterCodeConfiguration",
 }));
+
 export type UpdateKxClusterDatabasesError =
   | AccessDeniedException
   | ConflictException
@@ -4841,8 +4971,11 @@ export const updateKxClusterDatabases: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKxClusterDatabases",
 }));
+
 export type UpdateKxDatabaseError =
   | AccessDeniedException
   | ConflictException
@@ -4870,8 +5003,11 @@ export const updateKxDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKxDatabase",
 }));
+
 export type UpdateKxDataviewError =
   | AccessDeniedException
   | ConflictException
@@ -4901,8 +5037,11 @@ export const updateKxDataview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKxDataview",
 }));
+
 export type UpdateKxEnvironmentError =
   | AccessDeniedException
   | ConflictException
@@ -4930,8 +5069,11 @@ export const updateKxEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKxEnvironment",
 }));
+
 export type UpdateKxEnvironmentNetworkError =
   | AccessDeniedException
   | ConflictException
@@ -4961,8 +5103,11 @@ export const updateKxEnvironmentNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKxEnvironmentNetwork",
 }));
+
 export type UpdateKxUserError =
   | AccessDeniedException
   | ConflictException
@@ -4992,8 +5137,11 @@ export const updateKxUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKxUser",
 }));
+
 export type UpdateKxVolumeError =
   | AccessDeniedException
   | ConflictException
@@ -5024,5 +5172,7 @@ export const updateKxVolume: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKxVolume",
 }));

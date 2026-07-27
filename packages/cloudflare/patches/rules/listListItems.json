@@ -1,6 +1,98 @@
 {
-  "errors": {
-    "ListNotFound": [{ "code": 10001 }],
-    "Forbidden": [{ "status": 403 }]
-  }
+  "description": "Align rules#ListsItemsList with distilled cloudflare/rules listListItems",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.rules#ListsItemsList",
+      "path": "/shapes/com.cloudflare.rules#ListListItems"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.rules#ListsItemsListRequest",
+      "path": "/shapes/com.cloudflare.rules#ListListItemsRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.rules#ListListItems/input/target",
+      "value": "com.cloudflare.rules#ListListItemsRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.rules#ListsItemsListResponse",
+      "path": "/shapes/com.cloudflare.rules#ListListItemsResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.rules#ListListItems/output/target",
+      "value": "com.cloudflare.rules#ListListItemsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.rules#ListListItems/traits/smithy.api#paginated",
+      "value": {
+        "mode": "cursor",
+        "inputToken": "cursor",
+        "outputToken": "resultInfo.cursors.after",
+        "items": "result"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.rules#ListNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10001
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.rules#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.rules#ListListItems/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.rules#ListNotFound"
+        },
+        {
+          "target": "com.cloudflare.rules#Forbidden"
+        }
+      ]
+    }
+  ]
 }

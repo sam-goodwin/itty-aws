@@ -1,10 +1,10 @@
 /**
  * Coinbase retry configuration.
  *
- * Defines the per-SDK `Retry` Context.Service tag that
- * `packages/coinbase/src/client.ts` wires into `makeAPI`. Callers can
- * install a blanket retry policy at the layer level and have every
- * Coinbase API call below it pick it up:
+ * Defines the per-SDK `Retry` Context.Service tag that generated operations
+ * wire into `API.make({ retry: Retry.Retry })`. Callers can install a
+ * blanket retry policy at the layer level and have every Coinbase API call
+ * below it pick it up:
  *
  * @example
  * ```ts

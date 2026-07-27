@@ -1,6 +1,0 @@
-{
-  "errors": {
-    "LabelNotFound": [{ "code": 70014 }],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

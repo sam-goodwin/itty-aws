@@ -1,6 +1,0 @@
-{
-  "errors": {
-    "OperationNotFound": [{ "code": 10404 }],
-    "UnentitledMitigationAction": [{ "code": 11400 }]
-  }
-}

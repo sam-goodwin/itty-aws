@@ -1,99 +1,62 @@
 {
-  "errors": {
-    "WorkerNotFound": [{ "code": 10007 }]
-  },
-  "request": {
-    "properties": {
-      "bindings[].json": { "type": "unknown" },
-      "bindings[?type=durable_object_namespace].class_name": {
-        "optional": false
-      },
-      "bindings[?type=workflow].class_name": {
-        "optional": false
-      },
-      "bindings[]": {
-        "appendUnion": [
-          {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "name",
-                "required": true,
-                "type": { "kind": "primitive", "value": "string" }
-              },
-              {
-                "name": "type",
-                "required": true,
-                "type": { "kind": "literal", "value": "worker_loader" }
-              }
-            ]
+  "description": "Align workers#BetaWorkersVersionsCreate with distilled cloudflare/workers createBetaWorkerVersion",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#BetaWorkersVersionsCreate",
+      "path": "/shapes/com.cloudflare.workers#CreateBetaWorkerVersion"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#BetaWorkersVersionsCreateRequest",
+      "path": "/shapes/com.cloudflare.workers#CreateBetaWorkerVersionRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workers#CreateBetaWorkerVersion/input/target",
+      "value": "com.cloudflare.workers#CreateBetaWorkerVersionRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#BetaWorkersVersionsCreateResponse",
+      "path": "/shapes/com.cloudflare.workers#CreateBetaWorkerVersionResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workers#CreateBetaWorkerVersion/output/target",
+      "value": "com.cloudflare.workers#CreateBetaWorkerVersionResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#WorkerNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
           },
-          {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "name",
-                "required": true,
-                "type": { "kind": "primitive", "value": "string" }
-              },
-              {
-                "name": "type",
-                "required": true,
-                "type": { "kind": "literal", "value": "artifacts" }
-              },
-              {
-                "name": "namespace",
-                "required": true,
-                "type": { "kind": "primitive", "value": "string" }
-              }
-            ]
+          "message": {
+            "target": "smithy.api#String"
           }
-        ]
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10007
+            }
+          ]
+        }
       }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#CreateBetaWorkerVersion/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.workers#WorkerNotFound"
+        }
+      ]
     }
-  },
-  "response": {
-    "properties": {
-      "bindings[].json": { "type": "unknown" },
-      "bindings[]": {
-        "appendUnion": [
-          {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "name",
-                "required": true,
-                "type": { "kind": "primitive", "value": "string" }
-              },
-              {
-                "name": "type",
-                "required": true,
-                "type": { "kind": "literal", "value": "worker_loader" }
-              }
-            ]
-          },
-          {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "name",
-                "required": true,
-                "type": { "kind": "primitive", "value": "string" }
-              },
-              {
-                "name": "type",
-                "required": true,
-                "type": { "kind": "literal", "value": "artifacts" }
-              },
-              {
-                "name": "namespace",
-                "required": true,
-                "type": { "kind": "primitive", "value": "string" }
-              }
-            ]
-          }
-        ]
-      }
-    }
-  }
+  ]
 }

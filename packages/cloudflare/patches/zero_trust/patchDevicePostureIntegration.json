@@ -1,0 +1,117 @@
+{
+  "description": "Align zero_trust#DevicesPostureIntegrationsEdit with distilled cloudflare/zero-trust patchDevicePostureIntegration",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#DevicesPostureIntegrationsEdit",
+      "path": "/shapes/com.cloudflare.zero_trust#PatchDevicePostureIntegration"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#DevicesPostureIntegrationsEditRequest",
+      "path": "/shapes/com.cloudflare.zero_trust#PatchDevicePostureIntegrationRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zero_trust#PatchDevicePostureIntegration/input/target",
+      "value": "com.cloudflare.zero_trust#PatchDevicePostureIntegrationRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#DevicesPostureIntegrationsEditResponse",
+      "path": "/shapes/com.cloudflare.zero_trust#PatchDevicePostureIntegrationResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zero_trust#PatchDevicePostureIntegration/output/target",
+      "value": "com.cloudflare.zero_trust#PatchDevicePostureIntegrationResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#DevicePostureIntegrationNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 404
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#InvalidPostureIntegrationConfig",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 400,
+              "message": {
+                "includes": "invalid posture integration request"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#PatchDevicePostureIntegration/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.zero_trust#DevicePostureIntegrationNotFound"
+        },
+        {
+          "target": "com.cloudflare.zero_trust#InvalidPostureIntegrationConfig"
+        },
+        {
+          "target": "com.cloudflare.zero_trust#Forbidden"
+        }
+      ]
+    }
+  ]
+}

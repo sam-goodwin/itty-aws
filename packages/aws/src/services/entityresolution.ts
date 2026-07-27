@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,49 +85,57 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ExceedsLimitException extends S.TaggedErrorClass<ExceedsLimitException>()(
+  "ExceedsLimitException",
+  {
+    message: S.optional(S.String),
+    quotaName: S.optional(S.String),
+    quotaValue: S.optional(S.Number),
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type VeniceGlobalArn = string;
 export type StatementId = string;
-export type StatementAction = string;
-export type StatementPrincipal = string;
-export type StatementCondition = string;
-export type PolicyToken = string;
-export type PolicyDocument = string;
-export type ErrorMessage = string;
-export type EntityName = string;
-export type HeaderSafeUniqueId = string;
-export type Description = string;
-export type InputSourceARN = string;
-export type KMSArn = string;
-export type S3Path = string;
-export type AttributeName = string;
-export type ProviderServiceArn = string;
-export type IdMappingRoleArn = string;
-export type TagKey = string;
-export type TagValue = string;
-export type IdMappingWorkflowArn = string;
-export type RoleArn = string;
-export type IdNamespaceArn = string;
-export type OptionalS3Path = string;
-export type CustomerProfilesDomainArn = string;
-export type CustomerProfilesObjectTypeArn = string;
-export type MatchingWorkflowArn = string;
-export type SchemaMappingArn = string;
-export type UniqueId = string;
-export type EntityNameOrIdMappingWorkflowArn = string;
-export type JobId = string;
-export type EntityNameOrIdNamespaceArn = string;
-export type ProviderServiceDisplayName = string;
-export type AwsAccountId = string;
-export type NextToken = string;
-
-//# Schemas
 export type StatementEffect = "Allow" | "Deny" | (string & {});
 export const StatementEffect = /*@__PURE__*/ S.String;
+
+export type StatementAction = string;
 export type StatementActionList = string[];
 export const StatementActionList = /*@__PURE__*/ S.Array(S.String);
+export type StatementPrincipal = string;
 export type StatementPrincipalList = string[];
 export const StatementPrincipalList = /*@__PURE__*/ S.Array(S.String);
+export type StatementCondition = string;
 export interface AddPolicyStatementInput {
   arn: string;
   statementId: string;
@@ -155,6 +165,8 @@ export const AddPolicyStatementInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddPolicyStatementInput",
 }) as any as S.Schema<AddPolicyStatementInput>;
+export type PolicyToken = string;
+export type PolicyDocument = string;
 export interface AddPolicyStatementOutput {
   arn: string;
   token: string;
@@ -165,6 +177,8 @@ export const AddPolicyStatementOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddPolicyStatementOutput",
 }) as any as S.Schema<AddPolicyStatementOutput>;
+export type EntityName = string;
+export type HeaderSafeUniqueId = string;
 export type UniqueIdList = string[];
 export const UniqueIdList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchDeleteUniqueIdInput {
@@ -195,11 +209,13 @@ export const BatchDeleteUniqueIdInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchDeleteUniqueIdInput>;
 export type DeleteUniqueIdStatus = "COMPLETED" | "ACCEPTED" | (string & {});
 export const DeleteUniqueIdStatus = /*@__PURE__*/ S.String;
+
 export type DeleteUniqueIdErrorType =
   | "SERVICE_ERROR"
   | "VALIDATION_ERROR"
   | (string & {});
 export const DeleteUniqueIdErrorType = /*@__PURE__*/ S.String;
+
 export interface DeleteUniqueIdError {
   uniqueId: string;
   errorType: DeleteUniqueIdErrorType;
@@ -240,8 +256,11 @@ export const BatchDeleteUniqueIdOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDeleteUniqueIdOutput",
 }) as any as S.Schema<BatchDeleteUniqueIdOutput>;
+export type Description = string;
+export type InputSourceARN = string;
 export type IdNamespaceType = "SOURCE" | "TARGET" | (string & {});
 export const IdNamespaceType = /*@__PURE__*/ S.String;
+
 export interface IdMappingWorkflowInputSource {
   inputSourceARN: string;
   schemaName?: string;
@@ -260,6 +279,8 @@ export type IdMappingWorkflowInputSourceConfig = IdMappingWorkflowInputSource[];
 export const IdMappingWorkflowInputSourceConfig = /*@__PURE__*/ S.Array(
   IdMappingWorkflowInputSource,
 );
+export type KMSArn = string;
+export type S3Path = string;
 export interface IdMappingWorkflowOutputSource {
   KMSArn?: string;
   outputS3Path: string;
@@ -276,6 +297,8 @@ export const IdMappingWorkflowOutputSourceConfig = /*@__PURE__*/ S.Array(
 );
 export type IdMappingType = "PROVIDER" | "RULE_BASED" | (string & {});
 export const IdMappingType = /*@__PURE__*/ S.String;
+
+export type AttributeName = string;
 export type MatchingKeys = string[];
 export const MatchingKeys = /*@__PURE__*/ S.Array(S.String);
 export interface Rule {
@@ -292,16 +315,19 @@ export type IdMappingWorkflowRuleDefinitionType =
   | "TARGET"
   | (string & {});
 export const IdMappingWorkflowRuleDefinitionType = /*@__PURE__*/ S.String;
+
 export type AttributeMatchingModel =
   | "ONE_TO_ONE"
   | "MANY_TO_MANY"
   | (string & {});
 export const AttributeMatchingModel = /*@__PURE__*/ S.String;
+
 export type RecordMatchingModel =
   | "ONE_SOURCE_TO_ONE_TARGET"
   | "MANY_SOURCE_TO_ONE_TARGET"
   | (string & {});
 export const RecordMatchingModel = /*@__PURE__*/ S.String;
+
 export interface IdMappingRuleBasedProperties {
   rules?: Rule[];
   ruleDefinitionType: IdMappingWorkflowRuleDefinitionType;
@@ -318,6 +344,7 @@ export const IdMappingRuleBasedProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IdMappingRuleBasedProperties",
 }) as any as S.Schema<IdMappingRuleBasedProperties>;
+export type ProviderServiceArn = string;
 export interface IntermediateSourceConfiguration {
   intermediateS3Path: string;
 }
@@ -358,6 +385,7 @@ export const IdMappingTechniques = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IdMappingTechniques>;
 export type IdMappingIncrementalRunType = "ON_DEMAND" | (string & {});
 export const IdMappingIncrementalRunType = /*@__PURE__*/ S.String;
+
 export interface IdMappingIncrementalRunConfig {
   incrementalRunType?: IdMappingIncrementalRunType;
 }
@@ -366,6 +394,9 @@ export const IdMappingIncrementalRunConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IdMappingIncrementalRunConfig",
 }) as any as S.Schema<IdMappingIncrementalRunConfig>;
+export type IdMappingRoleArn = string;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -404,6 +435,7 @@ export const CreateIdMappingWorkflowInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIdMappingWorkflowInput",
 }) as any as S.Schema<CreateIdMappingWorkflowInput>;
+export type IdMappingWorkflowArn = string;
 export interface CreateIdMappingWorkflowOutput {
   workflowName: string;
   workflowArn: string;
@@ -497,6 +529,7 @@ export type IdNamespaceIdMappingWorkflowPropertiesList =
 export const IdNamespaceIdMappingWorkflowPropertiesList = /*@__PURE__*/ S.Array(
   IdNamespaceIdMappingWorkflowProperties,
 );
+export type RoleArn = string;
 export interface CreateIdNamespaceInput {
   idNamespaceName: string;
   description?: string;
@@ -530,6 +563,7 @@ export const CreateIdNamespaceInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIdNamespaceInput",
 }) as any as S.Schema<CreateIdNamespaceInput>;
+export type IdNamespaceArn = string;
 export interface CreateIdNamespaceOutput {
   idNamespaceName: string;
   idNamespaceArn: string;
@@ -574,6 +608,7 @@ export const InputSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InputSource" }) as any as S.Schema<InputSource>;
 export type InputSourceConfig = InputSource[];
 export const InputSourceConfig = /*@__PURE__*/ S.Array(InputSource);
+export type OptionalS3Path = string;
 export interface OutputAttribute {
   name: string;
   hashed?: boolean;
@@ -585,6 +620,8 @@ export const OutputAttribute = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OutputAttribute>;
 export type OutputAttributes = OutputAttribute[];
 export const OutputAttributes = /*@__PURE__*/ S.Array(OutputAttribute);
+export type CustomerProfilesDomainArn = string;
+export type CustomerProfilesObjectTypeArn = string;
 export interface CustomerProfilesIntegrationConfig {
   domainArn: string;
   objectTypeArn: string;
@@ -620,8 +657,10 @@ export type ResolutionType =
   | "PROVIDER"
   | (string & {});
 export const ResolutionType = /*@__PURE__*/ S.String;
+
 export type MatchPurpose = "IDENTIFIER_GENERATION" | "INDEXING" | (string & {});
 export const MatchPurpose = /*@__PURE__*/ S.String;
+
 export interface RuleBasedProperties {
   rules: Rule[];
   attributeMatchingModel: AttributeMatchingModel;
@@ -681,6 +720,7 @@ export const ResolutionTechniques = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResolutionTechniques>;
 export type IncrementalRunType = "IMMEDIATE" | (string & {});
 export const IncrementalRunType = /*@__PURE__*/ S.String;
+
 export interface IncrementalRunConfig {
   incrementalRunType?: IncrementalRunType;
 }
@@ -722,6 +762,7 @@ export const CreateMatchingWorkflowInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMatchingWorkflowInput",
 }) as any as S.Schema<CreateMatchingWorkflowInput>;
+export type MatchingWorkflowArn = string;
 export interface CreateMatchingWorkflowOutput {
   workflowName: string;
   workflowArn: string;
@@ -772,6 +813,7 @@ export type SchemaAttributeType =
   | "MAID"
   | (string & {});
 export const SchemaAttributeType = /*@__PURE__*/ S.String;
+
 export interface SchemaInputAttribute {
   fieldName: string;
   type: SchemaAttributeType;
@@ -820,6 +862,7 @@ export const CreateSchemaMappingInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSchemaMappingInput",
 }) as any as S.Schema<CreateSchemaMappingInput>;
+export type SchemaMappingArn = string;
 export interface CreateSchemaMappingOutput {
   schemaName: string;
   schemaArn: string;
@@ -969,6 +1012,7 @@ export const DeleteSchemaMappingOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteSchemaMappingOutput",
 }) as any as S.Schema<DeleteSchemaMappingOutput>;
+export type UniqueId = string;
 export type RecordAttributeMapString255 = { [key: string]: string | undefined };
 export const RecordAttributeMapString255 = /*@__PURE__*/ S.Record(
   S.String,
@@ -994,6 +1038,7 @@ export type ProcessingType =
   | "EVENTUAL_NO_LOOKUP"
   | (string & {});
 export const ProcessingType = /*@__PURE__*/ S.String;
+
 export interface GenerateMatchIdInput {
   workflowName: string;
   records: Record[];
@@ -1043,6 +1088,7 @@ export const MatchGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MatchGroup" }) as any as S.Schema<MatchGroup>;
 export type MatchGroupsList = MatchGroup[];
 export const MatchGroupsList = /*@__PURE__*/ S.Array(MatchGroup);
+export type ErrorMessage = string;
 export interface FailedRecord {
   inputSourceARN: string;
   uniqueId: string;
@@ -1066,6 +1112,8 @@ export const GenerateMatchIdOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GenerateMatchIdOutput",
 }) as any as S.Schema<GenerateMatchIdOutput>;
+export type EntityNameOrIdMappingWorkflowArn = string;
+export type JobId = string;
 export interface GetIdMappingJobInput {
   workflowName: string;
   jobId: string;
@@ -1097,6 +1145,7 @@ export type JobStatus =
   | "QUEUED"
   | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
+
 export interface IdMappingJobMetrics {
   inputRecords?: number;
   totalRecordsProcessed?: number;
@@ -1161,6 +1210,7 @@ export const IdMappingJobOutputSourceConfig = /*@__PURE__*/ S.Array(
 );
 export type JobType = "BATCH" | "INCREMENTAL" | "DELETE_ONLY" | (string & {});
 export const JobType = /*@__PURE__*/ S.String;
+
 export interface GetIdMappingJobOutput {
   jobId: string;
   status: JobStatus;
@@ -1232,6 +1282,7 @@ export const GetIdMappingWorkflowOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetIdMappingWorkflowOutput",
 }) as any as S.Schema<GetIdMappingWorkflowOutput>;
+export type EntityNameOrIdNamespaceArn = string;
 export interface GetIdNamespaceInput {
   idNamespaceName: string;
 }
@@ -1495,8 +1546,10 @@ export const GetProviderServiceInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetProviderServiceInput",
 }) as any as S.Schema<GetProviderServiceInput>;
+export type ProviderServiceDisplayName = string;
 export type ServiceType = "ASSIGNMENT" | "ID_MAPPING" | (string & {});
 export const ServiceType = /*@__PURE__*/ S.String;
+
 export interface ProviderIdNameSpaceConfiguration {
   description?: string;
   providerTargetConfigurationDefinition?: any;
@@ -1533,6 +1586,7 @@ export type ProviderEndpointConfiguration = {
 export const ProviderEndpointConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ marketplaceConfiguration: ProviderMarketplaceConfiguration }),
 ]);
+export type AwsAccountId = string;
 export type AwsAccountIdList = string[];
 export const AwsAccountIdList = /*@__PURE__*/ S.Array(S.String);
 export type RequiredBucketActionsList = string[];
@@ -1665,6 +1719,7 @@ export const GetSchemaMappingOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSchemaMappingOutput",
 }) as any as S.Schema<GetSchemaMappingOutput>;
+export type NextToken = string;
 export interface ListIdMappingJobsInput {
   workflowName: string;
   nextToken?: string;
@@ -2416,49 +2471,6 @@ export const UpdateSchemaMappingOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateSchemaMappingOutput",
 }) as any as S.Schema<UpdateSchemaMappingOutput>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ExceedsLimitException extends S.TaggedErrorClass<ExceedsLimitException>()(
-  "ExceedsLimitException",
-  {
-    message: S.optional(S.String),
-    quotaName: S.optional(S.String),
-    quotaValue: S.optional(S.Number),
-  },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-
-//# Operations
 export type AddPolicyStatementError =
   | AccessDeniedException
   | ConflictException
@@ -2486,8 +2498,11 @@ export const addPolicyStatement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddPolicyStatement",
 }));
+
 export type BatchDeleteUniqueIdError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2509,8 +2524,11 @@ export const batchDeleteUniqueId: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteUniqueId",
 }));
+
 export type CreateIdMappingWorkflowError =
   | AccessDeniedException
   | ConflictException
@@ -2540,8 +2558,11 @@ export const createIdMappingWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIdMappingWorkflow",
 }));
+
 export type CreateIdNamespaceError =
   | AccessDeniedException
   | ConflictException
@@ -2569,8 +2590,11 @@ export const createIdNamespace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIdNamespace",
 }));
+
 export type CreateMatchingWorkflowError =
   | AccessDeniedException
   | ConflictException
@@ -2600,8 +2624,11 @@ export const createMatchingWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMatchingWorkflow",
 }));
+
 export type CreateSchemaMappingError =
   | AccessDeniedException
   | ConflictException
@@ -2629,8 +2656,11 @@ export const createSchemaMapping: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSchemaMapping",
 }));
+
 export type DeleteIdMappingWorkflowError =
   | AccessDeniedException
   | ConflictException
@@ -2656,8 +2686,11 @@ export const deleteIdMappingWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIdMappingWorkflow",
 }));
+
 export type DeleteIdNamespaceError =
   | AccessDeniedException
   | InternalServerException
@@ -2683,8 +2716,11 @@ export const deleteIdNamespace: API.OperationMethod<
     ValidationException,
     ConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIdNamespace",
 }));
+
 export type DeleteMatchingWorkflowError =
   | AccessDeniedException
   | ConflictException
@@ -2710,8 +2746,11 @@ export const deleteMatchingWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMatchingWorkflow",
 }));
+
 export type DeletePolicyStatementError =
   | AccessDeniedException
   | ConflictException
@@ -2739,8 +2778,11 @@ export const deletePolicyStatement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePolicyStatement",
 }));
+
 export type DeleteSchemaMappingError =
   | AccessDeniedException
   | ConflictException
@@ -2766,8 +2808,11 @@ export const deleteSchemaMapping: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSchemaMapping",
 }));
+
 export type GenerateMatchIdError =
   | AccessDeniedException
   | InternalServerException
@@ -2795,8 +2840,11 @@ export const generateMatchId: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateMatchId",
 }));
+
 export type GetIdMappingJobError =
   | AccessDeniedException
   | InternalServerException
@@ -2822,8 +2870,11 @@ export const getIdMappingJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdMappingJob",
 }));
+
 export type GetIdMappingWorkflowError =
   | AccessDeniedException
   | InternalServerException
@@ -2849,8 +2900,11 @@ export const getIdMappingWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdMappingWorkflow",
 }));
+
 export type GetIdNamespaceError =
   | AccessDeniedException
   | InternalServerException
@@ -2876,8 +2930,11 @@ export const getIdNamespace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdNamespace",
 }));
+
 export type GetMatchIdError =
   | AccessDeniedException
   | InternalServerException
@@ -2905,8 +2962,11 @@ export const getMatchId: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMatchId",
 }));
+
 export type GetMatchingJobError =
   | AccessDeniedException
   | InternalServerException
@@ -2932,8 +2992,11 @@ export const getMatchingJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMatchingJob",
 }));
+
 export type GetMatchingWorkflowError =
   | AccessDeniedException
   | InternalServerException
@@ -2959,8 +3022,11 @@ export const getMatchingWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMatchingWorkflow",
 }));
+
 export type GetPolicyError =
   | AccessDeniedException
   | InternalServerException
@@ -2986,8 +3052,11 @@ export const getPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPolicy",
 }));
+
 export type GetProviderServiceError =
   | AccessDeniedException
   | InternalServerException
@@ -3013,8 +3082,11 @@ export const getProviderService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProviderService",
 }));
+
 export type GetSchemaMappingError =
   | AccessDeniedException
   | InternalServerException
@@ -3040,8 +3112,11 @@ export const getSchemaMapping: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSchemaMapping",
 }));
+
 export type ListIdMappingJobsError =
   | AccessDeniedException
   | InternalServerException
@@ -3082,6 +3157,8 @@ export const listIdMappingJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIdMappingJobs",
   pagination: {
     inputToken: "nextToken",
@@ -3090,6 +3167,7 @@ export const listIdMappingJobs: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListIdMappingWorkflowsError =
   | AccessDeniedException
   | InternalServerException
@@ -3128,6 +3206,8 @@ export const listIdMappingWorkflows: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIdMappingWorkflows",
   pagination: {
     inputToken: "nextToken",
@@ -3136,6 +3216,7 @@ export const listIdMappingWorkflows: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListIdNamespacesError =
   | AccessDeniedException
   | InternalServerException
@@ -3174,6 +3255,8 @@ export const listIdNamespaces: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIdNamespaces",
   pagination: {
     inputToken: "nextToken",
@@ -3182,6 +3265,7 @@ export const listIdNamespaces: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListMatchingJobsError =
   | AccessDeniedException
   | InternalServerException
@@ -3222,6 +3306,8 @@ export const listMatchingJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMatchingJobs",
   pagination: {
     inputToken: "nextToken",
@@ -3230,6 +3316,7 @@ export const listMatchingJobs: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListMatchingWorkflowsError =
   | AccessDeniedException
   | InternalServerException
@@ -3268,6 +3355,8 @@ export const listMatchingWorkflows: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMatchingWorkflows",
   pagination: {
     inputToken: "nextToken",
@@ -3276,6 +3365,7 @@ export const listMatchingWorkflows: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListProviderServicesError =
   | AccessDeniedException
   | InternalServerException
@@ -3314,6 +3404,8 @@ export const listProviderServices: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProviderServices",
   pagination: {
     inputToken: "nextToken",
@@ -3322,6 +3414,7 @@ export const listProviderServices: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSchemaMappingsError =
   | AccessDeniedException
   | InternalServerException
@@ -3360,6 +3453,8 @@ export const listSchemaMappings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSchemaMappings",
   pagination: {
     inputToken: "nextToken",
@@ -3368,6 +3463,7 @@ export const listSchemaMappings: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3389,8 +3485,11 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutPolicyError =
   | AccessDeniedException
   | ConflictException
@@ -3418,8 +3517,11 @@ export const putPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutPolicy",
 }));
+
 export type StartIdMappingJobError =
   | AccessDeniedException
   | ConflictException
@@ -3449,8 +3551,11 @@ export const startIdMappingJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartIdMappingJob",
 }));
+
 export type StartMatchingJobError =
   | AccessDeniedException
   | ConflictException
@@ -3480,8 +3585,11 @@ export const startMatchingJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMatchingJob",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3503,8 +3611,11 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3521,8 +3632,11 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [InternalServerException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateIdMappingWorkflowError =
   | AccessDeniedException
   | InternalServerException
@@ -3550,8 +3664,11 @@ export const updateIdMappingWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIdMappingWorkflow",
 }));
+
 export type UpdateIdNamespaceError =
   | AccessDeniedException
   | InternalServerException
@@ -3577,8 +3694,11 @@ export const updateIdNamespace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIdNamespace",
 }));
+
 export type UpdateMatchingWorkflowError =
   | AccessDeniedException
   | InternalServerException
@@ -3606,8 +3726,11 @@ export const updateMatchingWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMatchingWorkflow",
 }));
+
 export type UpdateSchemaMappingError =
   | AccessDeniedException
   | ConflictException
@@ -3637,5 +3760,7 @@ export const updateSchemaMapping: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSchemaMapping",
 }));

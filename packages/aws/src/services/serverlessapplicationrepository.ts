@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -86,10 +88,36 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type MaxItems = number;
-
-//# Schemas
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
+  "InternalServerErrorException",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
 export type __listOf__string = string[];
 export const __listOf__string = /*@__PURE__*/ S.Array(S.String);
 export interface CreateApplicationRequest {
@@ -219,6 +247,7 @@ export type Capability =
   | "CAPABILITY_RESOURCE_POLICY"
   | (string & {});
 export const Capability = /*@__PURE__*/ S.String;
+
 export type __listOfCapability = Capability[];
 export const __listOfCapability = /*@__PURE__*/ S.Array(Capability);
 export interface Version {
@@ -326,40 +355,39 @@ export interface CreateApplicationVersionRequest {
   TemplateBody?: string;
   TemplateUrl?: string;
 }
-export const CreateApplicationVersionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-      SemanticVersion: S.String.pipe(T.HttpLabel("SemanticVersion")),
-      SourceCodeArchiveUrl: S.optional(S.String),
-      SourceCodeUrl: S.optional(S.String),
-      TemplateBody: S.optional(S.String),
-      TemplateUrl: S.optional(S.String),
-    })
-      .pipe(
-        S.encodeKeys({
-          SourceCodeArchiveUrl: "sourceCodeArchiveUrl",
-          SourceCodeUrl: "sourceCodeUrl",
-          TemplateBody: "templateBody",
-          TemplateUrl: "templateUrl",
+export const CreateApplicationVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+    SemanticVersion: S.String.pipe(T.HttpLabel("SemanticVersion")),
+    SourceCodeArchiveUrl: S.optional(S.String),
+    SourceCodeUrl: S.optional(S.String),
+    TemplateBody: S.optional(S.String),
+    TemplateUrl: S.optional(S.String),
+  })
+    .pipe(
+      S.encodeKeys({
+        SourceCodeArchiveUrl: "sourceCodeArchiveUrl",
+        SourceCodeUrl: "sourceCodeUrl",
+        TemplateBody: "templateBody",
+        TemplateUrl: "templateUrl",
+      }),
+    )
+    .pipe(
+      T.all(
+        T.Http({
+          method: "PUT",
+          uri: "/applications/{ApplicationId}/versions/{SemanticVersion}",
         }),
-      )
-      .pipe(
-        T.all(
-          T.Http({
-            method: "PUT",
-            uri: "/applications/{ApplicationId}/versions/{SemanticVersion}",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
-  ).annotate({
-    identifier: "CreateApplicationVersionRequest",
-  }) as any as S.Schema<CreateApplicationVersionRequest>;
+    ),
+).annotate({
+  identifier: "CreateApplicationVersionRequest",
+}) as any as S.Schema<CreateApplicationVersionRequest>;
 export interface CreateApplicationVersionResponse {
   ApplicationId?: string;
   CreationTime?: string;
@@ -374,34 +402,33 @@ export interface CreateApplicationVersionResponse {
   SourceCodeUrl?: string;
   TemplateUrl?: string;
 }
-export const CreateApplicationVersionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.optional(S.String),
-      CreationTime: S.optional(S.String),
-      ParameterDefinitions: S.optional(__listOfParameterDefinition),
-      RequiredCapabilities: S.optional(__listOfCapability),
-      ResourcesSupported: S.optional(S.Boolean),
-      SemanticVersion: S.optional(S.String),
-      SourceCodeArchiveUrl: S.optional(S.String),
-      SourceCodeUrl: S.optional(S.String),
-      TemplateUrl: S.optional(S.String),
-    }).pipe(
-      S.encodeKeys({
-        ApplicationId: "applicationId",
-        CreationTime: "creationTime",
-        ParameterDefinitions: "parameterDefinitions",
-        RequiredCapabilities: "requiredCapabilities",
-        ResourcesSupported: "resourcesSupported",
-        SemanticVersion: "semanticVersion",
-        SourceCodeArchiveUrl: "sourceCodeArchiveUrl",
-        SourceCodeUrl: "sourceCodeUrl",
-        TemplateUrl: "templateUrl",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateApplicationVersionResponse",
-  }) as any as S.Schema<CreateApplicationVersionResponse>;
+export const CreateApplicationVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.optional(S.String),
+    CreationTime: S.optional(S.String),
+    ParameterDefinitions: S.optional(__listOfParameterDefinition),
+    RequiredCapabilities: S.optional(__listOfCapability),
+    ResourcesSupported: S.optional(S.Boolean),
+    SemanticVersion: S.optional(S.String),
+    SourceCodeArchiveUrl: S.optional(S.String),
+    SourceCodeUrl: S.optional(S.String),
+    TemplateUrl: S.optional(S.String),
+  }).pipe(
+    S.encodeKeys({
+      ApplicationId: "applicationId",
+      CreationTime: "creationTime",
+      ParameterDefinitions: "parameterDefinitions",
+      RequiredCapabilities: "requiredCapabilities",
+      ResourcesSupported: "resourcesSupported",
+      SemanticVersion: "semanticVersion",
+      SourceCodeArchiveUrl: "sourceCodeArchiveUrl",
+      SourceCodeUrl: "sourceCodeUrl",
+      TemplateUrl: "templateUrl",
+    }),
+  ),
+).annotate({
+  identifier: "CreateApplicationVersionResponse",
+}) as any as S.Schema<CreateApplicationVersionResponse>;
 export interface ParameterValue {
   Name?: string;
   Value?: string;
@@ -469,8 +496,8 @@ export interface CreateCloudFormationChangeSetRequest {
   Tags?: Tag[];
   TemplateId?: string;
 }
-export const CreateCloudFormationChangeSetRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateCloudFormationChangeSetRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
       Capabilities: S.optional(__listOf__string),
@@ -515,17 +542,17 @@ export const CreateCloudFormationChangeSetRequest =
           rules,
         ),
       ),
-  ).annotate({
-    identifier: "CreateCloudFormationChangeSetRequest",
-  }) as any as S.Schema<CreateCloudFormationChangeSetRequest>;
+).annotate({
+  identifier: "CreateCloudFormationChangeSetRequest",
+}) as any as S.Schema<CreateCloudFormationChangeSetRequest>;
 export interface CreateCloudFormationChangeSetResponse {
   ApplicationId?: string;
   ChangeSetId?: string;
   SemanticVersion?: string;
   StackId?: string;
 }
-export const CreateCloudFormationChangeSetResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateCloudFormationChangeSetResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ApplicationId: S.optional(S.String),
       ChangeSetId: S.optional(S.String),
@@ -539,38 +566,38 @@ export const CreateCloudFormationChangeSetResponse =
         StackId: "stackId",
       }),
     ),
-  ).annotate({
-    identifier: "CreateCloudFormationChangeSetResponse",
-  }) as any as S.Schema<CreateCloudFormationChangeSetResponse>;
+).annotate({
+  identifier: "CreateCloudFormationChangeSetResponse",
+}) as any as S.Schema<CreateCloudFormationChangeSetResponse>;
 export interface CreateCloudFormationTemplateRequest {
   ApplicationId: string;
   SemanticVersion?: string;
 }
-export const CreateCloudFormationTemplateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-      SemanticVersion: S.optional(S.String),
-    })
-      .pipe(S.encodeKeys({ SemanticVersion: "semanticVersion" }))
-      .pipe(
-        T.all(
-          T.Http({
-            method: "POST",
-            uri: "/applications/{ApplicationId}/templates",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+export const CreateCloudFormationTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+    SemanticVersion: S.optional(S.String),
+  })
+    .pipe(S.encodeKeys({ SemanticVersion: "semanticVersion" }))
+    .pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/applications/{ApplicationId}/templates",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
-  ).annotate({
-    identifier: "CreateCloudFormationTemplateRequest",
-  }) as any as S.Schema<CreateCloudFormationTemplateRequest>;
+    ),
+).annotate({
+  identifier: "CreateCloudFormationTemplateRequest",
+}) as any as S.Schema<CreateCloudFormationTemplateRequest>;
 export type Status = "PREPARING" | "ACTIVE" | "EXPIRED" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
 export interface CreateCloudFormationTemplateResponse {
   ApplicationId?: string;
   CreationTime?: string;
@@ -580,8 +607,8 @@ export interface CreateCloudFormationTemplateResponse {
   TemplateId?: string;
   TemplateUrl?: string;
 }
-export const CreateCloudFormationTemplateResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateCloudFormationTemplateResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ApplicationId: S.optional(S.String),
       CreationTime: S.optional(S.String),
@@ -601,16 +628,14 @@ export const CreateCloudFormationTemplateResponse =
         TemplateUrl: "templateUrl",
       }),
     ),
-  ).annotate({
-    identifier: "CreateCloudFormationTemplateResponse",
-  }) as any as S.Schema<CreateCloudFormationTemplateResponse>;
+).annotate({
+  identifier: "CreateCloudFormationTemplateResponse",
+}) as any as S.Schema<CreateCloudFormationTemplateResponse>;
 export interface DeleteApplicationRequest {
   ApplicationId: string;
 }
 export const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-  }).pipe(
+  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/applications/{ApplicationId}" }),
       svc,
@@ -714,23 +739,20 @@ export const GetApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetApplicationPolicyRequest {
   ApplicationId: string;
 }
-export const GetApplicationPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/applications/{ApplicationId}/policy" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetApplicationPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/applications/{ApplicationId}/policy" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetApplicationPolicyRequest",
-  }) as any as S.Schema<GetApplicationPolicyRequest>;
+  ),
+).annotate({
+  identifier: "GetApplicationPolicyRequest",
+}) as any as S.Schema<GetApplicationPolicyRequest>;
 export interface ApplicationPolicyStatement {
   Actions?: string[];
   PrincipalOrgIDs?: string[];
@@ -755,47 +777,46 @@ export const ApplicationPolicyStatement = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationPolicyStatement",
 }) as any as S.Schema<ApplicationPolicyStatement>;
 export type __listOfApplicationPolicyStatement = ApplicationPolicyStatement[];
-export const __listOfApplicationPolicyStatement =
-  /*@__PURE__*/ S.Array(ApplicationPolicyStatement);
+export const __listOfApplicationPolicyStatement = /*@__PURE__*/ S.Array(
+  ApplicationPolicyStatement,
+);
 export interface GetApplicationPolicyResponse {
   Statements?: (ApplicationPolicyStatement & {
     Actions: __listOf__string;
     Principals: __listOf__string;
   })[];
 }
-export const GetApplicationPolicyResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Statements: S.optional(__listOfApplicationPolicyStatement),
-    }).pipe(S.encodeKeys({ Statements: "statements" })),
-  ).annotate({
-    identifier: "GetApplicationPolicyResponse",
-  }) as any as S.Schema<GetApplicationPolicyResponse>;
+export const GetApplicationPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Statements: S.optional(__listOfApplicationPolicyStatement) }).pipe(
+    S.encodeKeys({ Statements: "statements" }),
+  ),
+).annotate({
+  identifier: "GetApplicationPolicyResponse",
+}) as any as S.Schema<GetApplicationPolicyResponse>;
 export interface GetCloudFormationTemplateRequest {
   ApplicationId: string;
   TemplateId: string;
 }
-export const GetCloudFormationTemplateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-      TemplateId: S.String.pipe(T.HttpLabel("TemplateId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/applications/{ApplicationId}/templates/{TemplateId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetCloudFormationTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+    TemplateId: S.String.pipe(T.HttpLabel("TemplateId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/applications/{ApplicationId}/templates/{TemplateId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetCloudFormationTemplateRequest",
-  }) as any as S.Schema<GetCloudFormationTemplateRequest>;
+  ),
+).annotate({
+  identifier: "GetCloudFormationTemplateRequest",
+}) as any as S.Schema<GetCloudFormationTemplateRequest>;
 export interface GetCloudFormationTemplateResponse {
   ApplicationId?: string;
   CreationTime?: string;
@@ -805,83 +826,80 @@ export interface GetCloudFormationTemplateResponse {
   TemplateId?: string;
   TemplateUrl?: string;
 }
-export const GetCloudFormationTemplateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.optional(S.String),
-      CreationTime: S.optional(S.String),
-      ExpirationTime: S.optional(S.String),
-      SemanticVersion: S.optional(S.String),
-      Status: S.optional(Status),
-      TemplateId: S.optional(S.String),
-      TemplateUrl: S.optional(S.String),
-    }).pipe(
-      S.encodeKeys({
-        ApplicationId: "applicationId",
-        CreationTime: "creationTime",
-        ExpirationTime: "expirationTime",
-        SemanticVersion: "semanticVersion",
-        Status: "status",
-        TemplateId: "templateId",
-        TemplateUrl: "templateUrl",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetCloudFormationTemplateResponse",
-  }) as any as S.Schema<GetCloudFormationTemplateResponse>;
+export const GetCloudFormationTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.optional(S.String),
+    CreationTime: S.optional(S.String),
+    ExpirationTime: S.optional(S.String),
+    SemanticVersion: S.optional(S.String),
+    Status: S.optional(Status),
+    TemplateId: S.optional(S.String),
+    TemplateUrl: S.optional(S.String),
+  }).pipe(
+    S.encodeKeys({
+      ApplicationId: "applicationId",
+      CreationTime: "creationTime",
+      ExpirationTime: "expirationTime",
+      SemanticVersion: "semanticVersion",
+      Status: "status",
+      TemplateId: "templateId",
+      TemplateUrl: "templateUrl",
+    }),
+  ),
+).annotate({
+  identifier: "GetCloudFormationTemplateResponse",
+}) as any as S.Schema<GetCloudFormationTemplateResponse>;
+export type MaxItems = number;
 export interface ListApplicationDependenciesRequest {
   ApplicationId: string;
   MaxItems?: number;
   NextToken?: string;
   SemanticVersion?: string;
 }
-export const ListApplicationDependenciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxItems")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      SemanticVersion: S.optional(S.String).pipe(
-        T.HttpQuery("semanticVersion"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/applications/{ApplicationId}/dependencies",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListApplicationDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxItems")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    SemanticVersion: S.optional(S.String).pipe(T.HttpQuery("semanticVersion")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/applications/{ApplicationId}/dependencies",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListApplicationDependenciesRequest",
-  }) as any as S.Schema<ListApplicationDependenciesRequest>;
+  ),
+).annotate({
+  identifier: "ListApplicationDependenciesRequest",
+}) as any as S.Schema<ListApplicationDependenciesRequest>;
 export interface ApplicationDependencySummary {
   ApplicationId?: string;
   SemanticVersion?: string;
 }
-export const ApplicationDependencySummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.optional(S.String),
-      SemanticVersion: S.optional(S.String),
-    }).pipe(
-      S.encodeKeys({
-        ApplicationId: "applicationId",
-        SemanticVersion: "semanticVersion",
-      }),
-    ),
-  ).annotate({
-    identifier: "ApplicationDependencySummary",
-  }) as any as S.Schema<ApplicationDependencySummary>;
+export const ApplicationDependencySummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.optional(S.String),
+    SemanticVersion: S.optional(S.String),
+  }).pipe(
+    S.encodeKeys({
+      ApplicationId: "applicationId",
+      SemanticVersion: "semanticVersion",
+    }),
+  ),
+).annotate({
+  identifier: "ApplicationDependencySummary",
+}) as any as S.Schema<ApplicationDependencySummary>;
 export type __listOfApplicationDependencySummary =
   ApplicationDependencySummary[];
-export const __listOfApplicationDependencySummary =
-  /*@__PURE__*/ S.Array(ApplicationDependencySummary);
+export const __listOfApplicationDependencySummary = /*@__PURE__*/ S.Array(
+  ApplicationDependencySummary,
+);
 export interface ListApplicationDependenciesResponse {
   Dependencies?: (ApplicationDependencySummary & {
     ApplicationId: string;
@@ -889,17 +907,16 @@ export interface ListApplicationDependenciesResponse {
   })[];
   NextToken?: string;
 }
-export const ListApplicationDependenciesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Dependencies: S.optional(__listOfApplicationDependencySummary),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      S.encodeKeys({ Dependencies: "dependencies", NextToken: "nextToken" }),
-    ),
-  ).annotate({
-    identifier: "ListApplicationDependenciesResponse",
-  }) as any as S.Schema<ListApplicationDependenciesResponse>;
+export const ListApplicationDependenciesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Dependencies: S.optional(__listOfApplicationDependencySummary),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    S.encodeKeys({ Dependencies: "dependencies", NextToken: "nextToken" }),
+  ),
+).annotate({
+  identifier: "ListApplicationDependenciesResponse",
+}) as any as S.Schema<ListApplicationDependenciesResponse>;
 export interface ListApplicationsRequest {
   MaxItems?: number;
   NextToken?: string;
@@ -983,28 +1000,24 @@ export interface ListApplicationVersionsRequest {
   MaxItems?: number;
   NextToken?: string;
 }
-export const ListApplicationVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxItems")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/applications/{ApplicationId}/versions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListApplicationVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxItems")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/applications/{ApplicationId}/versions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListApplicationVersionsRequest",
-  }) as any as S.Schema<ListApplicationVersionsRequest>;
+  ),
+).annotate({
+  identifier: "ListApplicationVersionsRequest",
+}) as any as S.Schema<ListApplicationVersionsRequest>;
 export interface VersionSummary {
   ApplicationId?: string;
   CreationTime?: string;
@@ -1036,56 +1049,50 @@ export interface ListApplicationVersionsResponse {
     SemanticVersion: string;
   })[];
 }
-export const ListApplicationVersionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      Versions: S.optional(__listOfVersionSummary),
-    }).pipe(S.encodeKeys({ NextToken: "nextToken", Versions: "versions" })),
-  ).annotate({
-    identifier: "ListApplicationVersionsResponse",
-  }) as any as S.Schema<ListApplicationVersionsResponse>;
+export const ListApplicationVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    Versions: S.optional(__listOfVersionSummary),
+  }).pipe(S.encodeKeys({ NextToken: "nextToken", Versions: "versions" })),
+).annotate({
+  identifier: "ListApplicationVersionsResponse",
+}) as any as S.Schema<ListApplicationVersionsResponse>;
 export interface PutApplicationPolicyRequest {
   ApplicationId: string;
   Statements?: ApplicationPolicyStatement[];
 }
-export const PutApplicationPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-      Statements: S.optional(__listOfApplicationPolicyStatement),
-    })
-      .pipe(S.encodeKeys({ Statements: "statements" }))
-      .pipe(
-        T.all(
-          T.Http({
-            method: "PUT",
-            uri: "/applications/{ApplicationId}/policy",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+export const PutApplicationPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+    Statements: S.optional(__listOfApplicationPolicyStatement),
+  })
+    .pipe(S.encodeKeys({ Statements: "statements" }))
+    .pipe(
+      T.all(
+        T.Http({ method: "PUT", uri: "/applications/{ApplicationId}/policy" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
-  ).annotate({
-    identifier: "PutApplicationPolicyRequest",
-  }) as any as S.Schema<PutApplicationPolicyRequest>;
+    ),
+).annotate({
+  identifier: "PutApplicationPolicyRequest",
+}) as any as S.Schema<PutApplicationPolicyRequest>;
 export interface PutApplicationPolicyResponse {
   Statements?: (ApplicationPolicyStatement & {
     Actions: __listOf__string;
     Principals: __listOf__string;
   })[];
 }
-export const PutApplicationPolicyResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Statements: S.optional(__listOfApplicationPolicyStatement),
-    }).pipe(S.encodeKeys({ Statements: "statements" })),
-  ).annotate({
-    identifier: "PutApplicationPolicyResponse",
-  }) as any as S.Schema<PutApplicationPolicyResponse>;
+export const PutApplicationPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Statements: S.optional(__listOfApplicationPolicyStatement) }).pipe(
+    S.encodeKeys({ Statements: "statements" }),
+  ),
+).annotate({
+  identifier: "PutApplicationPolicyResponse",
+}) as any as S.Schema<PutApplicationPolicyResponse>;
 export interface UnshareApplicationRequest {
   ApplicationId: string;
   OrganizationId?: string;
@@ -1221,34 +1228,6 @@ export const UpdateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateApplicationResponse",
 }) as any as S.Schema<UpdateApplicationResponse>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
-  "InternalServerErrorException",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CreateApplicationError =
   | BadRequestException
   | ConflictException
@@ -1274,8 +1253,11 @@ export const createApplication: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplication",
 }));
+
 export type CreateApplicationVersionError =
   | BadRequestException
   | ConflictException
@@ -1301,8 +1283,11 @@ export const createApplicationVersion: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplicationVersion",
 }));
+
 export type CreateCloudFormationChangeSetError =
   | BadRequestException
   | ForbiddenException
@@ -1326,8 +1311,11 @@ export const createCloudFormationChangeSet: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCloudFormationChangeSet",
 }));
+
 export type CreateCloudFormationTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -1353,8 +1341,11 @@ export const createCloudFormationTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCloudFormationTemplate",
 }));
+
 export type DeleteApplicationError =
   | BadRequestException
   | ConflictException
@@ -1382,8 +1373,11 @@ export const deleteApplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplication",
 }));
+
 export type GetApplicationError =
   | BadRequestException
   | ForbiddenException
@@ -1409,8 +1403,11 @@ export const getApplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplication",
 }));
+
 export type GetApplicationPolicyError =
   | BadRequestException
   | ForbiddenException
@@ -1436,8 +1433,11 @@ export const getApplicationPolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplicationPolicy",
 }));
+
 export type GetCloudFormationTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -1463,8 +1463,11 @@ export const getCloudFormationTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCloudFormationTemplate",
 }));
+
 export type ListApplicationDependenciesError =
   | BadRequestException
   | ForbiddenException
@@ -1505,6 +1508,8 @@ export const listApplicationDependencies: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplicationDependencies",
   pagination: {
     inputToken: "NextToken",
@@ -1512,6 +1517,7 @@ export const listApplicationDependencies: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListApplicationsError =
   | BadRequestException
   | ForbiddenException
@@ -1550,6 +1556,8 @@ export const listApplications: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplications",
   pagination: {
     inputToken: "NextToken",
@@ -1557,6 +1565,7 @@ export const listApplications: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListApplicationVersionsError =
   | BadRequestException
   | ForbiddenException
@@ -1597,6 +1606,8 @@ export const listApplicationVersions: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplicationVersions",
   pagination: {
     inputToken: "NextToken",
@@ -1604,6 +1615,7 @@ export const listApplicationVersions: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type PutApplicationPolicyError =
   | BadRequestException
   | ForbiddenException
@@ -1632,8 +1644,11 @@ export const putApplicationPolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutApplicationPolicy",
 }));
+
 export type UnshareApplicationError =
   | BadRequestException
   | ForbiddenException
@@ -1661,8 +1676,11 @@ export const unshareApplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnshareApplication",
 }));
+
 export type UpdateApplicationError =
   | BadRequestException
   | ConflictException
@@ -1690,5 +1708,7 @@ export const updateApplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplication",
 }));

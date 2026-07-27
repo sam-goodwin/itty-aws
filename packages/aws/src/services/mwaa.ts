@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -82,56 +84,48 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class RestApiClientException extends S.TaggedErrorClass<RestApiClientException>()(
+  "RestApiClientException",
+  {
+    RestApiStatusCode: S.optional(S.Number),
+    RestApiResponse: S.optional(S.Any),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class RestApiServerException extends S.TaggedErrorClass<RestApiServerException>()(
+  "RestApiServerException",
+  {
+    RestApiStatusCode: S.optional(S.Number),
+    RestApiResponse: S.optional(S.Any),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type EnvironmentName = string;
-export type Token = string | redacted.Redacted<string>;
-export type Hostname = string;
-export type IamRoleArn = string;
-export type S3BucketArn = string;
-export type RelativePath = string;
-export type SubnetId = string;
-export type SecurityGroupId = string;
-export type S3ObjectVersion = string;
-export type ConfigKey = string;
-export type ConfigValue = string | redacted.Redacted<string>;
-export type EnvironmentClass = string;
-export type MaxWorkers = number;
-export type KmsKey = string;
-export type AirflowVersion = string;
-export type LoggingEnabled = boolean;
-export type LoggingLevel = string;
-export type WeeklyMaintenanceWindowStart = string;
-export type TagKey = string;
-export type TagValue = string;
-export type WebserverAccessMode = string;
-export type MinWorkers = number;
-export type Schedulers = number;
-export type EndpointManagement = string;
-export type MinWebservers = number;
-export type MaxWebservers = number;
-export type EnvironmentArn = string;
-export type IamIdentity = string;
-export type AirflowIdentity = string;
-export type EnvironmentStatus = string;
-export type CreatedAt = Date;
-export type WebserverUrl = string;
-export type CloudWatchLogGroupArn = string;
-export type UpdateStatus = string;
-export type UpdateCreatedAt = Date;
-export type ErrorCode = string;
-export type ErrorMessage = string;
-export type UpdateSource = string;
-export type WorkerReplacementStrategy = string;
-export type VpcEndpointServiceName = string;
-export type CeleryExecutorQueue = string;
-export type RestApiPath = string;
-export type RestApiMethod = string;
-export type RestApiRequestBody = unknown;
-export type RestApiResponse = unknown;
-export type NextToken = string;
-export type Unit = string;
-
-//# Schemas
 export interface CreateCliTokenRequest {
   Name: string;
 }
@@ -149,6 +143,8 @@ export const CreateCliTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCliTokenRequest",
 }) as any as S.Schema<CreateCliTokenRequest>;
+export type Token = string | redacted.Redacted<string>;
+export type Hostname = string;
 export interface CreateCliTokenResponse {
   CliToken?: string | redacted.Redacted<string>;
   WebServerHostname?: string;
@@ -161,8 +157,13 @@ export const CreateCliTokenResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCliTokenResponse",
 }) as any as S.Schema<CreateCliTokenResponse>;
+export type IamRoleArn = string;
+export type S3BucketArn = string;
+export type RelativePath = string;
+export type SubnetId = string;
 export type SubnetList = string[];
 export const SubnetList = /*@__PURE__*/ S.Array(S.String);
+export type SecurityGroupId = string;
 export type SecurityGroupList = string[];
 export const SecurityGroupList = /*@__PURE__*/ S.Array(S.String);
 export interface NetworkConfiguration {
@@ -177,6 +178,9 @@ export const NetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NetworkConfiguration",
 }) as any as S.Schema<NetworkConfiguration>;
+export type S3ObjectVersion = string;
+export type ConfigKey = string;
+export type ConfigValue = string | redacted.Redacted<string>;
 export type AirflowConfigurationOptions = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
@@ -184,16 +188,21 @@ export const AirflowConfigurationOptions = /*@__PURE__*/ S.Record(
   S.String,
   SensitiveString.pipe(S.optional),
 );
+export type EnvironmentClass = string;
+export type MaxWorkers = number;
+export type KmsKey = string;
+export type AirflowVersion = string;
+export type LoggingEnabled = boolean;
+export type LoggingLevel = string;
 export interface ModuleLoggingConfigurationInput {
   Enabled: boolean;
   LogLevel: string;
 }
-export const ModuleLoggingConfigurationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Enabled: S.Boolean, LogLevel: S.String }),
-  ).annotate({
-    identifier: "ModuleLoggingConfigurationInput",
-  }) as any as S.Schema<ModuleLoggingConfigurationInput>;
+export const ModuleLoggingConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Enabled: S.Boolean, LogLevel: S.String }),
+).annotate({
+  identifier: "ModuleLoggingConfigurationInput",
+}) as any as S.Schema<ModuleLoggingConfigurationInput>;
 export interface LoggingConfigurationInput {
   DagProcessingLogs?: ModuleLoggingConfigurationInput;
   SchedulerLogs?: ModuleLoggingConfigurationInput;
@@ -212,11 +221,20 @@ export const LoggingConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LoggingConfigurationInput",
 }) as any as S.Schema<LoggingConfigurationInput>;
+export type WeeklyMaintenanceWindowStart = string;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type WebserverAccessMode = string;
+export type MinWorkers = number;
+export type Schedulers = number;
+export type EndpointManagement = string;
+export type MinWebservers = number;
+export type MaxWebservers = number;
 export interface CreateEnvironmentInput {
   Name: string;
   ExecutionRoleArn: string;
@@ -286,6 +304,7 @@ export const CreateEnvironmentInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEnvironmentInput",
 }) as any as S.Schema<CreateEnvironmentInput>;
+export type EnvironmentArn = string;
 export interface CreateEnvironmentOutput {
   Arn?: string;
 }
@@ -311,23 +330,24 @@ export const CreateWebLoginTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWebLoginTokenRequest",
 }) as any as S.Schema<CreateWebLoginTokenRequest>;
+export type IamIdentity = string;
+export type AirflowIdentity = string;
 export interface CreateWebLoginTokenResponse {
   WebToken?: string | redacted.Redacted<string>;
   WebServerHostname?: string;
   IamIdentity?: string;
   AirflowIdentity?: string;
 }
-export const CreateWebLoginTokenResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      WebToken: S.optional(SensitiveString),
-      WebServerHostname: S.optional(S.String),
-      IamIdentity: S.optional(S.String),
-      AirflowIdentity: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateWebLoginTokenResponse",
-  }) as any as S.Schema<CreateWebLoginTokenResponse>;
+export const CreateWebLoginTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WebToken: S.optional(SensitiveString),
+    WebServerHostname: S.optional(S.String),
+    IamIdentity: S.optional(S.String),
+    AirflowIdentity: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateWebLoginTokenResponse",
+}) as any as S.Schema<CreateWebLoginTokenResponse>;
 export interface DeleteEnvironmentInput {
   Name: string;
 }
@@ -368,6 +388,10 @@ export const GetEnvironmentInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEnvironmentInput",
 }) as any as S.Schema<GetEnvironmentInput>;
+export type EnvironmentStatus = string;
+export type CreatedAt = Date;
+export type WebserverUrl = string;
+export type CloudWatchLogGroupArn = string;
 export interface ModuleLoggingConfiguration {
   Enabled?: boolean;
   LogLevel?: string;
@@ -400,6 +424,10 @@ export const LoggingConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LoggingConfiguration",
 }) as any as S.Schema<LoggingConfiguration>;
+export type UpdateStatus = string;
+export type UpdateCreatedAt = Date;
+export type ErrorCode = string;
+export type ErrorMessage = string;
 export interface UpdateError {
   ErrorCode?: string;
   ErrorMessage?: string;
@@ -410,6 +438,8 @@ export const UpdateError = /*@__PURE__*/ S.suspend(() =>
     ErrorMessage: S.optional(S.String),
   }),
 ).annotate({ identifier: "UpdateError" }) as any as S.Schema<UpdateError>;
+export type UpdateSource = string;
+export type WorkerReplacementStrategy = string;
 export interface LastUpdate {
   Status?: string;
   CreatedAt?: Date;
@@ -426,6 +456,8 @@ export const LastUpdate = /*@__PURE__*/ S.suspend(() =>
     WorkerReplacementStrategy: S.optional(S.String),
   }),
 ).annotate({ identifier: "LastUpdate" }) as any as S.Schema<LastUpdate>;
+export type VpcEndpointServiceName = string;
+export type CeleryExecutorQueue = string;
 export interface Environment {
   Name?: string;
   Status?: string;
@@ -510,6 +542,9 @@ export const GetEnvironmentOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEnvironmentOutput",
 }) as any as S.Schema<GetEnvironmentOutput>;
+export type RestApiPath = string;
+export type RestApiMethod = string;
+export type RestApiRequestBody = unknown;
 export interface InvokeRestApiRequest {
   Name: string;
   Path: string;
@@ -537,6 +572,7 @@ export const InvokeRestApiRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InvokeRestApiRequest",
 }) as any as S.Schema<InvokeRestApiRequest>;
+export type RestApiResponse = unknown;
 export interface InvokeRestApiResponse {
   RestApiStatusCode?: number;
   RestApiResponse?: any;
@@ -549,6 +585,7 @@ export const InvokeRestApiResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InvokeRestApiResponse",
 }) as any as S.Schema<InvokeRestApiResponse>;
+export type NextToken = string;
 export interface ListEnvironmentsInput {
   NextToken?: string;
   MaxResults?: number;
@@ -577,10 +614,7 @@ export interface ListEnvironmentsOutput {
   NextToken?: string;
 }
 export const ListEnvironmentsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Environments: EnvironmentList,
-    NextToken: S.optional(S.String),
-  }),
+  S.Struct({ Environments: EnvironmentList, NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListEnvironmentsOutput",
 }) as any as S.Schema<ListEnvironmentsOutput>;
@@ -618,6 +652,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 export type Dimensions = Dimension[];
 export const Dimensions = /*@__PURE__*/ S.Array(Dimension);
+export type Unit = string;
 export interface StatisticSet {
   SampleCount?: number;
   Sum?: number;
@@ -741,12 +776,11 @@ export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateNetworkConfigurationInput {
   SecurityGroupIds: string[];
 }
-export const UpdateNetworkConfigurationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ SecurityGroupIds: SecurityGroupList }),
-  ).annotate({
-    identifier: "UpdateNetworkConfigurationInput",
-  }) as any as S.Schema<UpdateNetworkConfigurationInput>;
+export const UpdateNetworkConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SecurityGroupIds: SecurityGroupList }),
+).annotate({
+  identifier: "UpdateNetworkConfigurationInput",
+}) as any as S.Schema<UpdateNetworkConfigurationInput>;
 export interface UpdateEnvironmentInput {
   Name: string;
   ExecutionRoleArn?: string;
@@ -820,51 +854,6 @@ export const UpdateEnvironmentOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateEnvironmentOutput",
 }) as any as S.Schema<UpdateEnvironmentOutput>;
-
-//# Errors
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class RestApiClientException extends S.TaggedErrorClass<RestApiClientException>()(
-  "RestApiClientException",
-  {
-    RestApiStatusCode: S.optional(S.Number),
-    RestApiResponse: S.optional(S.Any),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class RestApiServerException extends S.TaggedErrorClass<RestApiServerException>()(
-  "RestApiServerException",
-  {
-    RestApiStatusCode: S.optional(S.Number),
-    RestApiResponse: S.optional(S.Any),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CreateCliTokenError = ResourceNotFoundException | CommonErrors;
 /**
  * Creates a CLI token for the Airflow CLI. To learn more, see Creating an Apache Airflow CLI token.
@@ -878,9 +867,12 @@ export const createCliToken: API.OperationMethod<
   input: CreateCliTokenRequest,
   output: CreateCliTokenResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCliToken",
   endpointHostPrefix: "env.",
 }));
+
 export type CreateEnvironmentError =
   | InternalServerException
   | ServiceUnavailableException
@@ -902,9 +894,12 @@ export const createEnvironment: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEnvironment",
   endpointHostPrefix: "api.",
 }));
+
 export type CreateWebLoginTokenError =
   | AccessDeniedException
   | InternalServerException
@@ -928,9 +923,12 @@ export const createWebLoginToken: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWebLoginToken",
   endpointHostPrefix: "env.",
 }));
+
 export type DeleteEnvironmentError =
   | InternalServerException
   | ResourceNotFoundException
@@ -954,9 +952,12 @@ export const deleteEnvironment: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEnvironment",
   endpointHostPrefix: "api.",
 }));
+
 export type GetEnvironmentError =
   | InternalServerException
   | ResourceNotFoundException
@@ -978,9 +979,12 @@ export const getEnvironment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnvironment",
   endpointHostPrefix: "api.",
 }));
+
 export type InvokeRestApiError =
   | AccessDeniedException
   | InternalServerException
@@ -1008,9 +1012,12 @@ export const invokeRestApi: API.OperationMethod<
     RestApiServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InvokeRestApi",
   endpointHostPrefix: "env.",
 }));
+
 export type ListEnvironmentsError =
   | InternalServerException
   | ValidationException
@@ -1042,6 +1049,8 @@ export const listEnvironments: API.OperationMethod<
   input: ListEnvironmentsInput,
   output: ListEnvironmentsOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnvironments",
   endpointHostPrefix: "api.",
   pagination: {
@@ -1051,6 +1060,7 @@ export const listEnvironments: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1072,9 +1082,12 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   endpointHostPrefix: "api.",
 }));
+
 export type PublishMetricsError =
   | InternalServerException
   | ValidationException
@@ -1091,9 +1104,12 @@ export const publishMetrics: API.OperationMethod<
   input: PublishMetricsInput,
   output: PublishMetricsOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PublishMetrics",
   endpointHostPrefix: "ops.",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1115,9 +1131,12 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
   endpointHostPrefix: "api.",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1139,9 +1158,12 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
   endpointHostPrefix: "api.",
 }));
+
 export type UpdateEnvironmentError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1165,6 +1187,8 @@ export const updateEnvironment: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEnvironment",
   endpointHostPrefix: "api.",
 }));

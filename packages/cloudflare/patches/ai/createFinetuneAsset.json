@@ -1,6 +1,78 @@
 {
-  "errors": {
-    "ModelNotSupported": [{ "code": 1000 }],
-    "AccountNotFound": [{ "code": 7003 }]
-  }
+  "description": "Align ai#FinetunesAssetsCreate with distilled cloudflare/ai createFinetuneAsset",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.ai#FinetunesAssetsCreate",
+      "path": "/shapes/com.cloudflare.ai#CreateFinetuneAsset"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.ai#FinetunesAssetsCreateRequest",
+      "path": "/shapes/com.cloudflare.ai#CreateFinetuneAssetRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.ai#CreateFinetuneAsset/input/target",
+      "value": "com.cloudflare.ai#CreateFinetuneAssetRequest"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.ai#ModelNotSupported",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.ai#AccountNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.ai#CreateFinetuneAsset/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.ai#ModelNotSupported"
+        },
+        {
+          "target": "com.cloudflare.ai#AccountNotFound"
+        }
+      ]
+    }
+  ]
 }

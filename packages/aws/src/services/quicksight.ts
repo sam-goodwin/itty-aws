@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -85,328 +87,174 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class ConcurrentUpdatingException extends S.TaggedErrorClass<ConcurrentUpdatingException>()(
+  "ConcurrentUpdatingException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class CustomerManagedKeyUnavailableException extends S.TaggedErrorClass<CustomerManagedKeyUnavailableException>()(
+  "CustomerManagedKeyUnavailableException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class DomainNotWhitelistedException extends S.TaggedErrorClass<DomainNotWhitelistedException>()(
+  "DomainNotWhitelistedException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class IdentityTypeNotSupportedException extends S.TaggedErrorClass<IdentityTypeNotSupportedException>()(
+  "IdentityTypeNotSupportedException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
+  "InternalFailureException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidDataSetParameterValueException extends S.TaggedErrorClass<InvalidDataSetParameterValueException>()(
+  "InvalidDataSetParameterValueException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
+  "InvalidParameterValueException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  {
+    Message: S.optional(S.String),
+    ResourceType: S.optional(
+      S.suspend(() => ExceptionResourceType).annotate({
+        identifier: "ExceptionResourceType",
+      }),
+    ),
+    RequestId: S.optional(S.String),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class PreconditionNotMetException extends S.TaggedErrorClass<PreconditionNotMetException>()(
+  "PreconditionNotMetException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class QuickSightSubscriptionRequired extends S.TaggedErrorClass<QuickSightSubscriptionRequired>()(
+  "QuickSightSubscriptionRequired",
+  {
+    Message: S.optional(S.String),
+    ResourceType: S.optional(
+      S.suspend(() => ExceptionResourceType).annotate({
+        identifier: "ExceptionResourceType",
+      }),
+    ),
+    RequestId: S.optional(S.String),
+  },
+  T.SyntheticError({
+    from: "ResourceNotFoundException",
+    message: { includes: "Directory information" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class QuickSightUserNotFoundException extends S.TaggedErrorClass<QuickSightUserNotFoundException>()(
+  "QuickSightUserNotFoundException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourceExistsException extends S.TaggedErrorClass<ResourceExistsException>()(
+  "ResourceExistsException",
+  {
+    Message: S.optional(S.String),
+    ResourceType: S.optional(
+      S.suspend(() => ExceptionResourceType).annotate({
+        identifier: "ExceptionResourceType",
+      }),
+    ),
+    RequestId: S.optional(S.String),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    Message: S.optional(S.String),
+    ResourceType: S.optional(
+      S.suspend(() => ExceptionResourceType).annotate({
+        identifier: "ExceptionResourceType",
+      }),
+    ),
+    RequestId: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourceUnavailableException extends S.TaggedErrorClass<ResourceUnavailableException>()(
+  "ResourceUnavailableException",
+  {
+    Message: S.optional(S.String),
+    ResourceType: S.optional(
+      S.suspend(() => ExceptionResourceType).annotate({
+        identifier: "ExceptionResourceType",
+      }),
+    ),
+    RequestId: S.optional(S.String),
+  },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class SessionLifetimeInMinutesInvalidException extends S.TaggedErrorClass<SessionLifetimeInMinutesInvalidException>()(
+  "SessionLifetimeInMinutesInvalidException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnsupportedPricingPlanException extends S.TaggedErrorClass<UnsupportedPricingPlanException>()(
+  "UnsupportedPricingPlanException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class UnsupportedUserEditionException extends S.TaggedErrorClass<UnsupportedUserEditionException>()(
+  "UnsupportedUserEditionException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
 export type AwsAccountId = string;
 export type TopicId = string;
 export type AnswerId = string;
 export type Arn = string;
 export type LimitedString = string;
-export type AggFunctionParamKey = string;
-export type AggFunctionParamValue = string;
-export type Expression = string | redacted.Redacted<string>;
-export type ConstantValueString = string;
-export type StatusCode = number;
-export type KbAwsAccountId = string;
-export type KnowledgeBaseId = string;
-export type KnowledgeBaseArn = string;
-export type IngestionId = string;
-export type Namespace = string;
-export type TagKey = string;
-export type TagValue = string;
-export type AccountName = string;
-export type ShortRestrictiveResourceId = string;
-export type ActionConnectorName = string | redacted.Redacted<string>;
-export type Endpoint = string;
-export type ClientId = string;
-export type ClientSecret = string | redacted.Redacted<string>;
-export type ActionUserName = string | redacted.Redacted<string>;
-export type ActionPassword = string | redacted.Redacted<string>;
-export type APIKey = string | redacted.Redacted<string>;
-export type Email = string | redacted.Redacted<string>;
-export type RoleArn = string;
-export type ActionConnectorDescription = string | redacted.Redacted<string>;
-export type Principal = string;
-export type AgentId = string;
-export type AgentName = string;
-export type AgentDescription = string;
-export type IconId = string;
-export type StarterPrompt = string;
-export type WelcomeMessage = string | redacted.Redacted<string>;
-export type ModelProfileId = string;
-export type SubscriptionId = string;
-export type QbsAwsAccountId = string;
-export type StyleDescription = string | redacted.Redacted<string>;
-export type AgentArn = string;
-export type AnalysisName = string;
-export type NonEmptyString = string;
-export type SensitiveString = string | redacted.Redacted<string>;
-export type SensitiveLong = number;
-export type SensitiveDouble = number;
-export type SensitiveTimestamp = Date;
-export type DataSetIdentifier = string;
-export type SheetTitle = string;
-export type SheetDescription = string;
-export type SheetName = string;
-export type SheetControlTitle = string;
-export type ParameterName = string;
-export type PixelLength = string;
-export type HexColor = string;
-export type DateTimeFormat = string;
-export type SheetControlInfoIconText = string;
-export type ControlTitlePlainText = string;
-export type ControlTitleRichText = string;
-export type ColumnName = string;
-export type PercentileValue = number;
-export type TextAreaControlDelimiter = string;
-export type ShortPlainText = string;
-export type ShortRichText = string;
-export type LongPlainText = string;
-export type LongRichText = string;
-export type FieldId = string;
-export type HierarchyId = string;
-export type Prefix = string | redacted.Redacted<string>;
-export type Suffix = string | redacted.Redacted<string>;
-export type DecimalPlaces = number;
-export type NullString = string | redacted.Redacted<string>;
-export type CurrencyCode = string;
-export type PageNumber = number;
-export type TableFieldHeight = number;
-export type TableBorderThickness = number;
-export type CustomLabel = string;
-export type TransposedColumnIndex = number;
-export type UnicodeIcon = string;
-export type VisualCustomActionName = string;
-export type URLOperationTemplate = string;
-export type SensitiveStringObject = string | redacted.Redacted<string>;
-export type SensitiveLongObject = number;
-export type SensitiveDoubleObject = number;
-export type FieldValue = string | redacted.Redacted<string>;
-export type PivotTableRowsLabelText = string;
-export type VisiblePanelRows = number;
-export type VisiblePanelColumns = number;
-export type HexColorWithTransparency = string;
-export type PercentNumber = number;
-export type ElementValue = string;
-export type CategoryValue = string;
-export type PeriodsForward = number;
-export type PeriodsBackward = number;
-export type PredictionInterval = number;
-export type Seasonality = number;
-export type Latitude = number;
-export type Longitude = number;
-export type GeocoderHierarchyCountryString = string;
-export type GeocoderHierarchyStateString = string;
-export type GeocoderHierarchyCountyString = string;
-export type GeocoderHierarchyCityString = string;
-export type GeocoderHierarchyPostCodeString = string;
-export type CoordinateLatitudeDouble = number;
-export type CoordinateLongitudeDouble = number;
-export type GeospatialWidth = number;
-export type Opacity = number;
-export type GeospatialRadius = number;
-export type LayerCustomActionName = string;
-export type BinCountValue = number;
-export type BinWidthValue = number;
-export type BinCountLimit = number;
-export type WordCloudMaximumStringLength = number;
-export type TopBottomRankedComputationResultSize = number;
-export type TopBottomMoversComputationMoverSize = number;
-export type GrowthRatePeriodSize = number;
-export type ForecastComputationCustomSeasonalityValue = number;
-export type NarrativeString = string;
-export type RadarChartStartAngle = number;
-export type SheetTextBoxContent = string;
-export type ImageCustomActionName = string;
-export type GridLayoutElementColumnIndex = number;
-export type GridLayoutElementColumnSpan = number;
-export type GridLayoutElementRowIndex = number;
-export type GridLayoutElementRowSpan = number;
-export type Width = string;
-export type BorderRadius = string;
-export type Padding = string;
-export type UnlimitedPixelLength = string;
-export type Length = string;
-export type BodySectionDynamicDimensionLimit = number;
-export type CalculatedFieldExpression = string | redacted.Redacted<string>;
-export type Name = string;
-export type Description = string;
-export type ErrorMessage = string;
-export type AltText = string;
-export type CustomPermissionsName = string;
-export type DashboardName = string;
-export type VersionDescription = string;
-export type LinkEntityArn = string;
-export type ResourceId = string;
-export type ResourceName = string;
-export type PhysicalTableId = string;
-export type RelationalTableCatalog = string;
-export type RelationalTableSchema = string;
-export type RelationalTableName = string;
-export type ColumnId = string;
-export type CustomSqlName = string;
-export type SqlQuery = string | redacted.Redacted<string>;
-export type PositiveInteger = number;
-export type Delimiter = string;
-export type TablePathElementName = string;
-export type TablePathElementId = string;
-export type LogicalTableId = string;
-export type LogicalTableAlias = string;
-export type TransformOperationAlias = string;
-export type DataSetEntityResourceId = string;
-export type DataSetStringFilterStaticValue = string | redacted.Redacted<string>;
-export type DataSetCalculatedFieldExpression =
-  | string
-  | redacted.Redacted<string>;
-export type TypeCastFormat = string;
-export type ColumnDescriptiveText = string | redacted.Redacted<string>;
-export type DatasetParameterName = string;
-export type StringDatasetParameterDefaultValue = string;
-export type DecimalDatasetParameterDefaultValue = number;
-export type DateTimeDatasetParameterDefaultValue = Date;
-export type IntegerDatasetParameterDefaultValue = number;
-export type OnClause = string;
-export type ColumnGroupName = string;
-export type FieldFolderPath = string;
-export type FieldFolderDescription = string;
-export type SessionTagKey = string;
-export type RowLevelPermissionTagDelimiter = string;
-export type SessionTagValue = string | redacted.Redacted<string>;
-export type DatasetParameterId = string;
-export type JoinOperationOnClause = string | redacted.Redacted<string>;
-export type Separator = string;
-export type CellValue = string;
-export type DestinationTableAlias = string;
-export type SemanticTableAlias = string;
-export type AdditionalNotesText = string | redacted.Redacted<string>;
-export type DataSetDescriptiveText = string | redacted.Redacted<string>;
-export type InlineCustomInstructionText = string | redacted.Redacted<string>;
-export type UploadedDocumentName = string;
-export type Domain = string;
-export type WorkGroup = string;
-export type Host = string;
-export type Port = number;
-export type Database = string;
-export type DataSetName = string;
-export type SiteBaseUrl = string;
-export type Catalog = string;
-export type InstanceId = string;
-export type OptionalPort = number;
-export type ClusterId = string;
-export type DatabaseUser = string;
-export type DatabaseGroup = string;
-export type S3Bucket = string;
-export type S3Key = string;
-export type S3TableBucketArn = string;
-export type MetadataFilesLocation = string;
-export type Warehouse = string;
-export type DatabaseAccessControlRole = string;
-export type TokenProviderUrl = string;
-export type OAuthScope = string;
-export type IdentityProviderResourceUri = string;
-export type CACertificatesBundleS3Uri = string;
-export type Query = string;
-export type SqlEndpointPath = string;
-export type ProjectId = string;
-export type DataSetRegion = string;
-export type XpathFields = string;
-export type ApplicationArn = string;
-export type DbUsername = string;
-export type Password = string;
-export type CopySourceArn = string;
-export type SecretArn = string;
-export type PrivateKey = string | redacted.Redacted<string>;
-export type PrivateKeyPassphrase = string | redacted.Redacted<string>;
-export type OAuthClientId = string | redacted.Redacted<string>;
-export type OAuthClientSecret = string | redacted.Redacted<string>;
-export type OAuthUsername = string | redacted.Redacted<string>;
-export type AccountId = string;
-export type TitleInput = string;
-export type FlowDescriptionInput = string;
-export type SensitiveDocument = unknown;
-export type ActionsListMemberString = string;
-export type PermissionPrincipalString = string;
-export type CreateFlowRequestClientTokenString = string;
-export type FlowId = string;
-export type RestrictiveResourceId = string;
-export type FolderName = string;
-export type GroupName = string;
-export type GroupDescription = string;
-export type GroupMemberName = string;
-export type IAMPolicyAssignmentName = string;
-export type IdentityName = string;
-export type OAuthClientApplicationId = string;
-export type OAuthTokenEndpointUrl = string | redacted.Redacted<string>;
-export type OAuthAuthorizationEndpointUrl = string | redacted.Redacted<string>;
-export type OAuthScopesString = string;
-export type DayOfMonth = string;
-export type PublicSpaceId = string;
-export type SpaceName = string;
-export type SpaceDescription = string | redacted.Redacted<string>;
-export type PublicSpaceArn = string;
-export type TemplateName = string;
-export type AliasName = string;
-export type VersionNumber = number;
-export type ThemeName = string;
-export type Color = string;
-export type CustomInstructionsString = string | redacted.Redacted<string>;
-export type VPCConnectionResourceIdRestricted = string;
-export type SubnetId = string;
-export type SecurityGroupId = string;
-export type IPv4Address = string;
-export type RecoveryWindowInDays = number;
-export type UserName = string;
-export type VPCConnectionResourceIdUnrestricted = string;
-export type ResourceArn = string;
-export type ActionId = string;
-export type SensitiveText = string | redacted.Redacted<string>;
-export type SensitiveS3Uri = string | redacted.Redacted<string>;
-export type S3Uri = string;
-export type PositiveLong = number;
-export type AssetBundleRestrictiveResourceId = string;
-export type AutomateId = string;
-export type SensitiveIOPayload = string | redacted.Redacted<string>;
-export type Title = string;
-export type FlowDescription = string;
-export type StepId = string;
-export type MaxResults = number;
-export type CIDR = string;
-export type IpRestrictionRuleDescription = string;
-export type VpcId = string;
-export type VpcIdRestrictionRuleDescription = string;
-export type VpcEndpointId = string;
-export type VpcEndpointIdRestrictionRuleDescription = string;
-export type KnowledgeBaseName = string;
-export type DataSourceArn = string;
-export type KbTemplate = unknown;
-export type KnowledgeBaseDescription = string;
-export type KbIngestionId = string;
-export type RoleName = string;
-export type MaxContributors = number;
-export type AwsAndAccountId = string;
-export type NetworkInterfaceId = string;
-export type SessionLifetimeInMinutes = number;
-export type EmbeddingUrl = string | redacted.Redacted<string>;
-export type EntryPath = string;
-export type Region = string;
-export type StatusCode2 = number;
-export type EntryPoint = string;
-export type ListAgentsRequestMaxResultsInteger = number;
-export type FlowMaxResults = number;
-export type ListIdentityPropagationMaxResults = number;
-export type IngestionMaxResults = number;
-export type NextToken = string;
-export type SpacesMaxResults = number;
-export type FilterValue = string;
-export type CapacityBytesRangeFilterMinBytesLong = number;
-export type CapacityBytesRangeFilterMaxBytesLong = number;
-export type ListUsersIndexCapacityRequestMaxResultsInteger = number;
-export type LongValue = number;
-export type IntegerValue = number;
-export type QAQueryText = string | redacted.Redacted<string>;
-export type MaxTopicsToConsider = number;
-export type VisualTitle = string;
-export type VisualSubtitle = string;
-export type QAUrl = string;
-export type QuestionId = string;
-export type RoleSessionName = string;
-export type SearchActionConnectorsRequestMaxResultsInteger = number;
-export type AgentsMaxResults = number;
-export type AssetBundleImportBodyBlob =
-  | Uint8Array
-  | redacted.Redacted<Uint8Array>;
-export type UpdateFlowRequestClientTokenString = string;
-
-//# Schemas
 export interface Identifier {
   Identity: string;
 }
@@ -436,6 +284,9 @@ export type AggType =
   | "CUSTOM"
   | (string & {});
 export const AggType = /*@__PURE__*/ S.String;
+
+export type AggFunctionParamKey = string;
+export type AggFunctionParamValue = string;
 export type AggFunctionParamMap = { [key: string]: string | undefined };
 export const AggFunctionParamMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -452,6 +303,7 @@ export type TopicTimeGranularity =
   | "YEAR"
   | (string & {});
 export const TopicTimeGranularity = /*@__PURE__*/ S.String;
+
 export interface AggFunction {
   Aggregation?: AggType;
   AggregationFunctionParameters?: { [key: string]: string | undefined };
@@ -481,6 +333,7 @@ export type ComparisonMethodType =
   | "MOVING_AVERAGE"
   | (string & {});
 export const ComparisonMethodType = /*@__PURE__*/ S.String;
+
 export interface TopicIRComparisonMethod {
   Type?: ComparisonMethodType;
   Period?: TopicTimeGranularity;
@@ -495,6 +348,7 @@ export const TopicIRComparisonMethod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TopicIRComparisonMethod",
 }) as any as S.Schema<TopicIRComparisonMethod>;
+export type Expression = string | redacted.Redacted<string>;
 export type CalculatedFieldReferenceList = Identifier[];
 export const CalculatedFieldReferenceList = /*@__PURE__*/ S.Array(Identifier);
 export type DisplayFormat =
@@ -506,8 +360,10 @@ export type DisplayFormat =
   | "STRING"
   | (string & {});
 export const DisplayFormat = /*@__PURE__*/ S.String;
+
 export type TopicNumericSeparatorSymbol = "COMMA" | "DOT" | (string & {});
 export const TopicNumericSeparatorSymbol = /*@__PURE__*/ S.String;
+
 export type NumberScale =
   | "NONE"
   | "AUTO"
@@ -519,6 +375,7 @@ export type NumberScale =
   | "CRORES"
   | (string & {});
 export const NumberScale = /*@__PURE__*/ S.String;
+
 export interface NegativeFormat {
   Prefix?: string;
   Suffix?: string;
@@ -592,6 +449,7 @@ export type TopicIRMetricList = TopicIRMetric[];
 export const TopicIRMetricList = /*@__PURE__*/ S.Array(TopicIRMetric);
 export type TopicSortDirection = "ASCENDING" | "DESCENDING" | (string & {});
 export const TopicSortDirection = /*@__PURE__*/ S.String;
+
 export interface TopicSortClause {
   Operand?: Identifier;
   SortDirection?: TopicSortDirection;
@@ -636,12 +494,14 @@ export type TopicIRFilterType =
   | "ACCEPT_ALL_FILTER"
   | (string & {});
 export const TopicIRFilterType = /*@__PURE__*/ S.String;
+
 export type FilterClass =
   | "ENFORCED_VALUE_FILTER"
   | "CONDITIONAL_VALUE_FILTER"
   | "NAMED_VALUE_FILTER"
   | (string & {});
 export const FilterClass = /*@__PURE__*/ S.String;
+
 export type TopicIRFilterFunction =
   | "CONTAINS"
   | "EXACT"
@@ -655,8 +515,11 @@ export type TopicIRFilterFunction =
   | "NOW"
   | (string & {});
 export const TopicIRFilterFunction = /*@__PURE__*/ S.String;
+
 export type ConstantType = "SINGULAR" | "RANGE" | "COLLECTIVE" | (string & {});
 export const ConstantType = /*@__PURE__*/ S.String;
+
+export type ConstantValueString = string;
 export interface CollectiveConstantEntry {
   ConstantType?: ConstantType;
   Value?: string;
@@ -697,6 +560,7 @@ export type NullFilterOption =
   | "NULLS_ONLY"
   | (string & {});
 export const NullFilterOption = /*@__PURE__*/ S.String;
+
 export type TimeGranularity =
   | "YEAR"
   | "QUARTER"
@@ -709,6 +573,7 @@ export type TimeGranularity =
   | "MILLISECOND"
   | (string & {});
 export const TimeGranularity = /*@__PURE__*/ S.String;
+
 export interface AggregationPartitionBy {
   FieldName?: string;
   TimeGranularity?: TimeGranularity;
@@ -743,6 +608,7 @@ export type FilterAggMetricsList = FilterAggMetrics[];
 export const FilterAggMetricsList = /*@__PURE__*/ S.Array(FilterAggMetrics);
 export type AnchorType = "TODAY" | (string & {});
 export const AnchorType = /*@__PURE__*/ S.String;
+
 export interface Anchor {
   AnchorType?: AnchorType;
   TimeGranularity?: TimeGranularity;
@@ -833,6 +699,7 @@ export type ContributionAnalysisDirection =
   | "NEUTRAL"
   | (string & {});
 export const ContributionAnalysisDirection = /*@__PURE__*/ S.String;
+
 export type ContributionAnalysisSortType =
   | "ABSOLUTE_DIFFERENCE"
   | "CONTRIBUTION_PERCENTAGE"
@@ -840,6 +707,7 @@ export type ContributionAnalysisSortType =
   | "PERCENTAGE_DIFFERENCE"
   | (string & {});
 export const ContributionAnalysisSortType = /*@__PURE__*/ S.String;
+
 export interface TopicIRContributionAnalysis {
   Factors?: ContributionAnalysisFactor[];
   TimeRanges?: ContributionAnalysisTimeRanges;
@@ -888,6 +756,7 @@ export type VisualRole =
   | "FRAGMENT"
   | (string & {});
 export const VisualRole = /*@__PURE__*/ S.String;
+
 export type TopicVisuals = TopicVisual[];
 export const TopicVisuals = /*@__PURE__*/ S.Array(
   S.suspend((): S.Schema<TopicVisual> => TopicVisual).annotate({
@@ -999,6 +868,7 @@ export type ReviewedAnswerErrorCode =
   | "MISSING_REQUIRED_FIELDS"
   | (string & {});
 export const ReviewedAnswerErrorCode = /*@__PURE__*/ S.String;
+
 export interface InvalidTopicReviewedAnswer {
   AnswerId?: string;
   Error?: ReviewedAnswerErrorCode;
@@ -1015,6 +885,7 @@ export type InvalidTopicReviewedAnswers = InvalidTopicReviewedAnswer[];
 export const InvalidTopicReviewedAnswers = /*@__PURE__*/ S.Array(
   InvalidTopicReviewedAnswer,
 );
+export type StatusCode = number;
 export interface BatchCreateTopicReviewedAnswerResponse {
   TopicId?: string;
   TopicArn?: string;
@@ -1036,18 +907,8 @@ export const BatchCreateTopicReviewedAnswerResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "BatchCreateTopicReviewedAnswerResponse",
 }) as any as S.Schema<BatchCreateTopicReviewedAnswerResponse>;
-export type ExceptionResourceType =
-  | "USER"
-  | "GROUP"
-  | "NAMESPACE"
-  | "ACCOUNT_SETTINGS"
-  | "IAMPOLICY_ASSIGNMENT"
-  | "DATA_SOURCE"
-  | "DATA_SET"
-  | "VPC_CONNECTION"
-  | "INGESTION"
-  | (string & {});
-export const ExceptionResourceType = /*@__PURE__*/ S.String;
+export type KbAwsAccountId = string;
+export type KnowledgeBaseId = string;
 export type BatchDeleteKnowledgeBaseRequestKnowledgeBaseIdsList = string[];
 export const BatchDeleteKnowledgeBaseRequestKnowledgeBaseIdsList =
   /*@__PURE__*/ S.Array(S.String);
@@ -1075,6 +936,7 @@ export const BatchDeleteKnowledgeBaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDeleteKnowledgeBaseRequest",
 }) as any as S.Schema<BatchDeleteKnowledgeBaseRequest>;
+export type KnowledgeBaseArn = string;
 export interface BatchDeleteKnowledgeBaseSuccess {
   KnowledgeBaseId: string;
   KnowledgeBaseArn: string;
@@ -1174,6 +1036,7 @@ export const BatchDeleteTopicReviewedAnswerResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "BatchDeleteTopicReviewedAnswerResponse",
 }) as any as S.Schema<BatchDeleteTopicReviewedAnswerResponse>;
+export type IngestionId = string;
 export interface CancelIngestionRequest {
   AwsAccountId: string;
   DataSetId: string;
@@ -1216,6 +1079,7 @@ export const CancelIngestionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelIngestionResponse",
 }) as any as S.Schema<CancelIngestionResponse>;
+export type Namespace = string;
 export interface AccountCustomization {
   DefaultTheme?: string;
   DefaultEmailCustomizationTemplate?: string;
@@ -1228,6 +1092,8 @@ export const AccountCustomization = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AccountCustomization",
 }) as any as S.Schema<AccountCustomization>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -1291,6 +1157,7 @@ export type Edition =
   | "ENTERPRISE_AND_Q"
   | (string & {});
 export const Edition = /*@__PURE__*/ S.String;
+
 export type AuthenticationMethodOption =
   | "IAM_AND_QUICKSIGHT"
   | "IAM_ONLY"
@@ -1298,6 +1165,8 @@ export type AuthenticationMethodOption =
   | "IAM_IDENTITY_CENTER"
   | (string & {});
 export const AuthenticationMethodOption = /*@__PURE__*/ S.String;
+
+export type AccountName = string;
 export type GroupsList = string[];
 export const GroupsList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateAccountSubscriptionRequest {
@@ -1383,6 +1252,8 @@ export const CreateAccountSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccountSubscriptionResponse",
 }) as any as S.Schema<CreateAccountSubscriptionResponse>;
+export type ShortRestrictiveResourceId = string;
+export type ActionConnectorName = string | redacted.Redacted<string>;
 export type ActionConnectorType =
   | "GENERIC_HTTP"
   | "SERVICENOW_NOW_PLATFORM"
@@ -1413,6 +1284,7 @@ export type ActionConnectorType =
   | "BAMBOO_HR"
   | (string & {});
 export const ActionConnectorType = /*@__PURE__*/ S.String;
+
 export type ConnectionAuthType =
   | "BASIC"
   | "API_KEY"
@@ -1422,10 +1294,15 @@ export type ConnectionAuthType =
   | "OAUTH2_AUTHORIZATION_CODE"
   | (string & {});
 export const ConnectionAuthType = /*@__PURE__*/ S.String;
+
+export type Endpoint = string;
 export type AuthorizationCodeGrantCredentialsSource =
   | "PLAIN_CREDENTIALS"
   | (string & {});
 export const AuthorizationCodeGrantCredentialsSource = /*@__PURE__*/ S.String;
+
+export type ClientId = string;
+export type ClientSecret = string | redacted.Redacted<string>;
 export interface AuthorizationCodeGrantDetails {
   ClientId: string;
   ClientSecret: string | redacted.Redacted<string>;
@@ -1470,6 +1347,7 @@ export const AuthorizationCodeGrantMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthorizationCodeGrantMetadata>;
 export type ClientCredentialsSource = "PLAIN_CREDENTIALS" | (string & {});
 export const ClientCredentialsSource = /*@__PURE__*/ S.String;
+
 export interface ClientCredentialsGrantDetails {
   ClientId: string;
   ClientSecret: string | redacted.Redacted<string>;
@@ -1504,6 +1382,8 @@ export const ClientCredentialsGrantMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ClientCredentialsGrantMetadata",
 }) as any as S.Schema<ClientCredentialsGrantMetadata>;
+export type ActionUserName = string | redacted.Redacted<string>;
+export type ActionPassword = string | redacted.Redacted<string>;
 export interface BasicAuthConnectionMetadata {
   BaseEndpoint: string;
   Username: string | redacted.Redacted<string>;
@@ -1518,6 +1398,8 @@ export const BasicAuthConnectionMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BasicAuthConnectionMetadata",
 }) as any as S.Schema<BasicAuthConnectionMetadata>;
+export type APIKey = string | redacted.Redacted<string>;
+export type Email = string | redacted.Redacted<string>;
 export interface APIKeyConnectionMetadata {
   BaseEndpoint: string;
   ApiKey: string | redacted.Redacted<string>;
@@ -1540,6 +1422,7 @@ export const NoneConnectionMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NoneConnectionMetadata",
 }) as any as S.Schema<NoneConnectionMetadata>;
+export type RoleArn = string;
 export interface IAMConnectionMetadata {
   RoleArn: string;
 }
@@ -1615,6 +1498,8 @@ export const AuthConfig = /*@__PURE__*/ S.suspend(() =>
     AuthenticationMetadata: AuthenticationMetadata,
   }),
 ).annotate({ identifier: "AuthConfig" }) as any as S.Schema<AuthConfig>;
+export type ActionConnectorDescription = string | redacted.Redacted<string>;
+export type Principal = string;
 export type ActionList = string[];
 export const ActionList = /*@__PURE__*/ S.Array(S.String);
 export interface ResourcePermission {
@@ -1676,6 +1561,7 @@ export type ResourceStatus =
   | "DELETED"
   | (string & {});
 export const ResourceStatus = /*@__PURE__*/ S.String;
+
 export interface CreateActionConnectorResponse {
   Arn?: string;
   CreationStatus?: ResourceStatus;
@@ -1700,10 +1586,20 @@ export type CreateAgentRequestActionConnectorsList = string[];
 export const CreateAgentRequestActionConnectorsList = /*@__PURE__*/ S.Array(
   S.String,
 );
+export type AgentId = string;
+export type AgentName = string;
+export type AgentDescription = string;
+export type IconId = string;
+export type StarterPrompt = string;
 export type StarterPromptList = string[];
 export const StarterPromptList = /*@__PURE__*/ S.Array(S.String);
+export type WelcomeMessage = string | redacted.Redacted<string>;
 export type AgentLifecycle = "PREVIEW" | "PUBLISHED" | (string & {});
 export const AgentLifecycle = /*@__PURE__*/ S.String;
+
+export type ModelProfileId = string;
+export type SubscriptionId = string;
+export type QbsAwsAccountId = string;
 export interface CustomPromptProfile {
   ModelProfileId: string;
   SubscriptionId: string;
@@ -1718,6 +1614,7 @@ export const CustomPromptProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CustomPromptProfile",
 }) as any as S.Schema<CustomPromptProfile>;
+export type StyleDescription = string | redacted.Redacted<string>;
 export interface CustomPromptInputParameters {
   ResponseLength?: string | redacted.Redacted<string>;
   OutputStyle?: string | redacted.Redacted<string>;
@@ -1782,6 +1679,7 @@ export const CreateAgentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAgentRequest",
 }) as any as S.Schema<CreateAgentRequest>;
+export type AgentArn = string;
 export type AgentStatus =
   | "ACTIVE"
   | "UPDATING"
@@ -1789,6 +1687,7 @@ export type AgentStatus =
   | "CREATING"
   | (string & {});
 export const AgentStatus = /*@__PURE__*/ S.String;
+
 export interface CreateAgentResponse {
   Arn: string;
   AgentId: string;
@@ -1807,6 +1706,9 @@ export const CreateAgentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAgentResponse",
 }) as any as S.Schema<CreateAgentResponse>;
+export type AnalysisName = string;
+export type NonEmptyString = string;
+export type SensitiveString = string | redacted.Redacted<string>;
 export type SensitiveStringList = (string | redacted.Redacted<string>)[];
 export const SensitiveStringList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface StringParameter {
@@ -1820,6 +1722,7 @@ export const StringParameter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StringParameter>;
 export type StringParameterList = StringParameter[];
 export const StringParameterList = /*@__PURE__*/ S.Array(StringParameter);
+export type SensitiveLong = number;
 export type SensitiveLongList = number[];
 export const SensitiveLongList = /*@__PURE__*/ S.Array(S.Number);
 export interface IntegerParameter {
@@ -1833,6 +1736,7 @@ export const IntegerParameter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IntegerParameter>;
 export type IntegerParameterList = IntegerParameter[];
 export const IntegerParameterList = /*@__PURE__*/ S.Array(IntegerParameter);
+export type SensitiveDouble = number;
 export type SensitiveDoubleList = number[];
 export const SensitiveDoubleList = /*@__PURE__*/ S.Array(S.Number);
 export interface DecimalParameter {
@@ -1846,6 +1750,7 @@ export const DecimalParameter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DecimalParameter>;
 export type DecimalParameterList = DecimalParameter[];
 export const DecimalParameterList = /*@__PURE__*/ S.Array(DecimalParameter);
+export type SensitiveTimestamp = Date;
 export type SensitiveTimestampList = Date[];
 export const SensitiveTimestampList = /*@__PURE__*/ S.Array(
   S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -1903,6 +1808,7 @@ export const AnalysisSourceEntity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AnalysisSourceEntity",
 }) as any as S.Schema<AnalysisSourceEntity>;
+export type DataSetIdentifier = string;
 export interface DataSetIdentifierDeclaration {
   Identifier: string;
   DataSetArn: string;
@@ -1916,8 +1822,14 @@ export type DataSetIdentifierDeclarationList = DataSetIdentifierDeclaration[];
 export const DataSetIdentifierDeclarationList = /*@__PURE__*/ S.Array(
   DataSetIdentifierDeclaration,
 );
+export type SheetTitle = string;
+export type SheetDescription = string;
+export type SheetName = string;
+export type SheetControlTitle = string;
+export type ParameterName = string;
 export type Visibility = "HIDDEN" | "VISIBLE" | (string & {});
 export const Visibility = /*@__PURE__*/ S.String;
+
 export type RelativeFontSize =
   | "EXTRA_SMALL"
   | "SMALL"
@@ -1926,6 +1838,8 @@ export type RelativeFontSize =
   | "EXTRA_LARGE"
   | (string & {});
 export const RelativeFontSize = /*@__PURE__*/ S.String;
+
+export type PixelLength = string;
 export interface FontSize {
   Relative?: RelativeFontSize;
   Absolute?: string;
@@ -1938,8 +1852,11 @@ export const FontSize = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FontSize" }) as any as S.Schema<FontSize>;
 export type FontDecoration = "UNDERLINE" | "NONE" | (string & {});
 export const FontDecoration = /*@__PURE__*/ S.String;
+
+export type HexColor = string;
 export type FontWeightName = "NORMAL" | "BOLD" | (string & {});
 export const FontWeightName = /*@__PURE__*/ S.String;
+
 export interface FontWeight {
   Name?: FontWeightName;
 }
@@ -1948,6 +1865,7 @@ export const FontWeight = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FontWeight" }) as any as S.Schema<FontWeight>;
 export type FontStyle = "NORMAL" | "ITALIC" | (string & {});
 export const FontStyle = /*@__PURE__*/ S.String;
+
 export interface FontConfiguration {
   FontSize?: FontSize;
   FontDecoration?: FontDecoration;
@@ -1980,6 +1898,8 @@ export const LabelOptions = /*@__PURE__*/ S.suspend(() =>
     CustomLabel: S.optional(S.String),
   }),
 ).annotate({ identifier: "LabelOptions" }) as any as S.Schema<LabelOptions>;
+export type DateTimeFormat = string;
+export type SheetControlInfoIconText = string;
 export interface SheetControlInfoIconLabelOptions {
   Visibility?: Visibility;
   InfoIconText?: string;
@@ -2010,6 +1930,8 @@ export const DateTimePickerControlDisplayOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DateTimePickerControlDisplayOptions",
 }) as any as S.Schema<DateTimePickerControlDisplayOptions>;
+export type ControlTitlePlainText = string;
+export type ControlTitleRichText = string;
 export interface ControlTitleFormatText {
   PlainText?: string;
   RichText?: string;
@@ -2074,8 +1996,10 @@ export type SheetControlListType =
   | "SINGLE_SELECT"
   | (string & {});
 export const SheetControlListType = /*@__PURE__*/ S.String;
+
 export type ParameterSelectableValueList = string[];
 export const ParameterSelectableValueList = /*@__PURE__*/ S.Array(S.String);
+export type ColumnName = string;
 export interface ColumnIdentifier {
   DataSetIdentifier: string;
   ColumnName: string;
@@ -2127,6 +2051,7 @@ export type ControlSortDirection =
   | "USER_DEFINED_ORDER"
   | (string & {});
 export const ControlSortDirection = /*@__PURE__*/ S.String;
+
 export interface SelectableValuesSort {
   Direction: ControlSortDirection;
 }
@@ -2137,6 +2062,7 @@ export const SelectableValuesSort = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SelectableValuesSort>;
 export type SortDirection = "ASC" | "DESC" | (string & {});
 export const SortDirection = /*@__PURE__*/ S.String;
+
 export type SimpleNumericalAggregationFunction =
   | "SUM"
   | "AVERAGE"
@@ -2151,6 +2077,8 @@ export type SimpleNumericalAggregationFunction =
   | "MEDIAN"
   | (string & {});
 export const SimpleNumericalAggregationFunction = /*@__PURE__*/ S.String;
+
+export type PercentileValue = number;
 export interface PercentileAggregation {
   PercentileValue?: number;
 }
@@ -2176,6 +2104,7 @@ export type CategoricalAggregationFunction =
   | "DISTINCT_COUNT"
   | (string & {});
 export const CategoricalAggregationFunction = /*@__PURE__*/ S.String;
+
 export type DateAggregationFunction =
   | "COUNT"
   | "DISTINCT_COUNT"
@@ -2183,8 +2112,10 @@ export type DateAggregationFunction =
   | "MAX"
   | (string & {});
 export const DateAggregationFunction = /*@__PURE__*/ S.String;
+
 export type SimpleAttributeAggregationFunction = "UNIQUE_VALUE" | (string & {});
 export const SimpleAttributeAggregationFunction = /*@__PURE__*/ S.String;
+
 export interface AttributeAggregationFunction {
   SimpleAttributeAggregation?: SimpleAttributeAggregationFunction;
   ValueForMultipleValues?: string;
@@ -2285,6 +2216,7 @@ export const DropDownControlDisplayOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DropDownControlDisplayOptions>;
 export type CommitMode = "AUTO" | "MANUAL" | (string & {});
 export const CommitMode = /*@__PURE__*/ S.String;
+
 export interface ParameterDropDownControl {
   ParameterControlId: string;
   Title?: string;
@@ -2353,6 +2285,7 @@ export const ParameterTextFieldControl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ParameterTextFieldControl",
 }) as any as S.Schema<ParameterTextFieldControl>;
+export type TextAreaControlDelimiter = string;
 export interface TextAreaControlDisplayOptions {
   TitleOptions?: LabelOptions;
   PlaceholderOptions?: TextControlPlaceholderOptions;
@@ -2450,6 +2383,7 @@ export type SheetControlDateTimePickerType =
   | "DATE_RANGE"
   | (string & {});
 export const SheetControlDateTimePickerType = /*@__PURE__*/ S.String;
+
 export interface FilterDateTimePickerControl {
   FilterControlId: string;
   Title?: string;
@@ -2574,6 +2508,7 @@ export const FilterTextAreaControl = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FilterTextAreaControl>;
 export type SheetControlSliderType = "SINGLE_POINT" | "RANGE" | (string & {});
 export const SheetControlSliderType = /*@__PURE__*/ S.String;
+
 export interface FilterSliderControl {
   FilterControlId: string;
   Title?: string;
@@ -2673,6 +2608,8 @@ export const FilterControl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FilterControl" }) as any as S.Schema<FilterControl>;
 export type FilterControlList = FilterControl[];
 export const FilterControlList = /*@__PURE__*/ S.Array(FilterControl);
+export type ShortPlainText = string;
+export type ShortRichText = string;
 export interface ShortFormatText {
   PlainText?: string;
   RichText?: string;
@@ -2694,6 +2631,8 @@ export const VisualTitleLabelOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VisualTitleLabelOptions",
 }) as any as S.Schema<VisualTitleLabelOptions>;
+export type LongPlainText = string;
+export type LongRichText = string;
 export interface LongFormatText {
   PlainText?: string;
   RichText?: string;
@@ -2713,10 +2652,16 @@ export const VisualSubtitleLabelOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VisualSubtitleLabelOptions",
 }) as any as S.Schema<VisualSubtitleLabelOptions>;
+export type FieldId = string;
+export type HierarchyId = string;
+export type Prefix = string | redacted.Redacted<string>;
+export type Suffix = string | redacted.Redacted<string>;
 export type NumericSeparatorSymbol = "COMMA" | "DOT" | "SPACE" | (string & {});
 export const NumericSeparatorSymbol = /*@__PURE__*/ S.String;
+
 export type DigitGroupingStyle = "DEFAULT" | "LAKHS" | (string & {});
 export const DigitGroupingStyle = /*@__PURE__*/ S.String;
+
 export interface ThousandSeparatorOptions {
   Symbol?: NumericSeparatorSymbol;
   Visibility?: Visibility;
@@ -2743,6 +2688,7 @@ export const NumericSeparatorConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NumericSeparatorConfiguration",
 }) as any as S.Schema<NumericSeparatorConfiguration>;
+export type DecimalPlaces = number;
 export interface DecimalPlacesConfiguration {
   DecimalPlaces: number;
 }
@@ -2753,6 +2699,7 @@ export const DecimalPlacesConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DecimalPlacesConfiguration>;
 export type NegativeValueDisplayMode = "POSITIVE" | "NEGATIVE" | (string & {});
 export const NegativeValueDisplayMode = /*@__PURE__*/ S.String;
+
 export interface NegativeValueConfiguration {
   DisplayMode: NegativeValueDisplayMode;
 }
@@ -2761,6 +2708,7 @@ export const NegativeValueConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NegativeValueConfiguration",
 }) as any as S.Schema<NegativeValueConfiguration>;
+export type NullString = string | redacted.Redacted<string>;
 export interface NullValueFormatConfiguration {
   NullString: string | redacted.Redacted<string>;
 }
@@ -2791,6 +2739,7 @@ export const NumberDisplayFormatConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NumberDisplayFormatConfiguration",
 }) as any as S.Schema<NumberDisplayFormatConfiguration>;
+export type CurrencyCode = string;
 export interface CurrencyDisplayFormatConfiguration {
   Prefix?: string | redacted.Redacted<string>;
   Suffix?: string | redacted.Redacted<string>;
@@ -3123,6 +3072,7 @@ export const FieldSortOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FieldSortOptions>;
 export type RowSortList = FieldSortOptions[];
 export const RowSortList = /*@__PURE__*/ S.Array(FieldSortOptions);
+export type PageNumber = number;
 export interface PaginationConfiguration {
   PageSize: number;
   PageNumber: number;
@@ -3146,8 +3096,10 @@ export const TableSortConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TableSortConfiguration>;
 export type TableOrientation = "VERTICAL" | "HORIZONTAL" | (string & {});
 export const TableOrientation = /*@__PURE__*/ S.String;
+
 export type TextWrap = "NONE" | "WRAP" | (string & {});
 export const TextWrap = /*@__PURE__*/ S.String;
+
 export type HorizontalTextAlignment =
   | "LEFT"
   | "CENTER"
@@ -3155,6 +3107,7 @@ export type HorizontalTextAlignment =
   | "AUTO"
   | (string & {});
 export const HorizontalTextAlignment = /*@__PURE__*/ S.String;
+
 export type VerticalTextAlignment =
   | "TOP"
   | "MIDDLE"
@@ -3162,8 +3115,12 @@ export type VerticalTextAlignment =
   | "AUTO"
   | (string & {});
 export const VerticalTextAlignment = /*@__PURE__*/ S.String;
+
+export type TableFieldHeight = number;
+export type TableBorderThickness = number;
 export type TableBorderStyle = "NONE" | "SOLID" | (string & {});
 export const TableBorderStyle = /*@__PURE__*/ S.String;
+
 export interface TableBorderOptions {
   Color?: string;
   Thickness?: number;
@@ -3234,6 +3191,7 @@ export const TableCellStyle = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableCellStyle" }) as any as S.Schema<TableCellStyle>;
 export type WidgetStatus = "ENABLED" | "DISABLED" | (string & {});
 export const WidgetStatus = /*@__PURE__*/ S.String;
+
 export type RowAlternateColorList = string[];
 export const RowAlternateColorList = /*@__PURE__*/ S.Array(S.String);
 export interface RowAlternateColorOptions {
@@ -3266,8 +3224,10 @@ export const TableOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableOptions" }) as any as S.Schema<TableOptions>;
 export type TableTotalsPlacement = "START" | "END" | "AUTO" | (string & {});
 export const TableTotalsPlacement = /*@__PURE__*/ S.String;
+
 export type TableTotalsScrollStatus = "PINNED" | "SCROLLED" | (string & {});
 export const TableTotalsScrollStatus = /*@__PURE__*/ S.String;
+
 export type SimpleTotalAggregationFunction =
   | "DEFAULT"
   | "SUM"
@@ -3277,6 +3237,7 @@ export type SimpleTotalAggregationFunction =
   | "NONE"
   | (string & {});
 export const SimpleTotalAggregationFunction = /*@__PURE__*/ S.String;
+
 export interface TotalAggregationFunction {
   SimpleTotalAggregationFunction?: SimpleTotalAggregationFunction;
 }
@@ -3321,12 +3282,14 @@ export const TotalOptions = /*@__PURE__*/ S.suspend(() =>
     TotalAggregationOptions: S.optional(TotalAggregationOptionList),
   }),
 ).annotate({ identifier: "TotalOptions" }) as any as S.Schema<TotalOptions>;
+export type CustomLabel = string;
 export type URLTargetConfiguration =
   | "NEW_TAB"
   | "NEW_WINDOW"
   | "SAME_TAB"
   | (string & {});
 export const URLTargetConfiguration = /*@__PURE__*/ S.String;
+
 export interface TableFieldCustomTextContent {
   Value?: string;
   FontConfiguration: FontConfiguration;
@@ -3341,6 +3304,7 @@ export const TableFieldCustomTextContent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TableFieldCustomTextContent>;
 export type TableFieldIconSetType = "LINK" | (string & {});
 export const TableFieldIconSetType = /*@__PURE__*/ S.String;
+
 export interface TableFieldCustomIconContent {
   Icon?: TableFieldIconSetType;
 }
@@ -3379,6 +3343,7 @@ export type TableCellImageScalingConfiguration =
   | "DO_NOT_SCALE"
   | (string & {});
 export const TableCellImageScalingConfiguration = /*@__PURE__*/ S.String;
+
 export interface TableCellImageSizingConfiguration {
   TableCellImageScalingConfiguration?: TableCellImageScalingConfiguration;
 }
@@ -3443,11 +3408,13 @@ export const TablePinnedFieldOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TablePinnedFieldOptions",
 }) as any as S.Schema<TablePinnedFieldOptions>;
+export type TransposedColumnIndex = number;
 export type TransposedColumnType =
   | "ROW_HEADER_COLUMN"
   | "VALUE_COLUMN"
   | (string & {});
 export const TransposedColumnType = /*@__PURE__*/ S.String;
+
 export interface TransposedTableOption {
   ColumnIndex?: number;
   ColumnWidth?: string;
@@ -3510,10 +3477,13 @@ export const DataBarsOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataBarsOptions>;
 export type SparklineAxisBehavior = "SHARED" | "INDEPENDENT" | (string & {});
 export const SparklineAxisBehavior = /*@__PURE__*/ S.String;
+
 export type SparklineVisualType = "LINE" | "AREA_LINE" | (string & {});
 export const SparklineVisualType = /*@__PURE__*/ S.String;
+
 export type LineInterpolation = "LINEAR" | "SMOOTH" | "STEPPED" | (string & {});
 export const LineInterpolation = /*@__PURE__*/ S.String;
+
 export type LineChartMarkerShape =
   | "CIRCLE"
   | "TRIANGLE"
@@ -3522,6 +3492,7 @@ export type LineChartMarkerShape =
   | "ROUNDED_SQUARE"
   | (string & {});
 export const LineChartMarkerShape = /*@__PURE__*/ S.String;
+
 export interface LineChartMarkerStyleSettings {
   MarkerVisibility?: Visibility;
   MarkerShape?: LineChartMarkerShape;
@@ -3586,10 +3557,13 @@ export type SelectedTooltipType =
   | "SHEET"
   | (string & {});
 export const SelectedTooltipType = /*@__PURE__*/ S.String;
+
 export type TooltipTitleType = "NONE" | "PRIMARY_VALUE" | (string & {});
 export const TooltipTitleType = /*@__PURE__*/ S.String;
+
 export type TooltipTarget = "BOTH" | "BAR" | "LINE" | (string & {});
 export const TooltipTarget = /*@__PURE__*/ S.String;
+
 export interface FieldTooltipItem {
   FieldId: string;
   Label?: string;
@@ -3675,6 +3649,7 @@ export type DashboardCustomizationStatus =
   | "DISABLED"
   | (string & {});
 export const DashboardCustomizationStatus = /*@__PURE__*/ S.String;
+
 export type VisualCustomizationAdditionalFieldsList = ColumnIdentifier[];
 export const VisualCustomizationAdditionalFieldsList =
   /*@__PURE__*/ S.Array(ColumnIdentifier);
@@ -3703,6 +3678,7 @@ export const DashboardCustomizationVisualOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DashboardCustomizationVisualOptions>;
 export type DashboardBehavior = "ENABLED" | "DISABLED" | (string & {});
 export const DashboardBehavior = /*@__PURE__*/ S.String;
+
 export interface VisualMenuOption {
   AvailabilityStatus?: DashboardBehavior;
 }
@@ -3825,6 +3801,7 @@ export type ConditionalFormattingIconSetType =
   | "FOUR_GRAY_ARROW"
   | (string & {});
 export const ConditionalFormattingIconSetType = /*@__PURE__*/ S.String;
+
 export interface ConditionalFormattingIconSet {
   Expression: string | redacted.Redacted<string>;
   IconSetType?: ConditionalFormattingIconSetType;
@@ -3866,6 +3843,8 @@ export type Icon =
   | "X"
   | (string & {});
 export const Icon = /*@__PURE__*/ S.String;
+
+export type UnicodeIcon = string;
 export interface ConditionalFormattingCustomIconOptions {
   Icon?: Icon;
   UnicodeIcon?: string;
@@ -3879,6 +3858,7 @@ export type ConditionalFormattingIconDisplayOption =
   | "ICON_ONLY"
   | (string & {});
 export const ConditionalFormattingIconDisplayOption = /*@__PURE__*/ S.String;
+
 export interface ConditionalFormattingIconDisplayConfiguration {
   IconDisplayOption?: ConditionalFormattingIconDisplayOption;
 }
@@ -3988,15 +3968,18 @@ export const TableConditionalFormatting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TableConditionalFormatting",
 }) as any as S.Schema<TableConditionalFormatting>;
+export type VisualCustomActionName = string;
 export type VisualCustomActionTrigger =
   | "DATA_POINT_CLICK"
   | "DATA_POINT_MENU"
   | (string & {});
 export const VisualCustomActionTrigger = /*@__PURE__*/ S.String;
+
 export type SelectedFieldList = string[];
 export const SelectedFieldList = /*@__PURE__*/ S.Array(S.String);
 export type SelectedFieldOptions = "ALL_FIELDS" | (string & {});
 export const SelectedFieldOptions = /*@__PURE__*/ S.String;
+
 export type CustomActionColumnList = ColumnIdentifier[];
 export const CustomActionColumnList = /*@__PURE__*/ S.Array(ColumnIdentifier);
 export interface FilterOperationSelectedFieldsConfiguration {
@@ -4018,6 +4001,7 @@ export type TargetVisualList = string[];
 export const TargetVisualList = /*@__PURE__*/ S.Array(S.String);
 export type TargetVisualOptions = "ALL_VISUALS" | (string & {});
 export const TargetVisualOptions = /*@__PURE__*/ S.String;
+
 export interface SameSheetTargetVisualConfiguration {
   TargetVisuals?: string[];
   TargetVisualOptions?: TargetVisualOptions;
@@ -4073,6 +4057,7 @@ export const CustomActionNavigationOperation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CustomActionNavigationOperation",
 }) as any as S.Schema<CustomActionNavigationOperation>;
+export type URLOperationTemplate = string;
 export interface CustomActionURLOperation {
   URLTemplate: string;
   URLTarget: URLTargetConfiguration;
@@ -4082,10 +4067,13 @@ export const CustomActionURLOperation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CustomActionURLOperation",
 }) as any as S.Schema<CustomActionURLOperation>;
+export type SensitiveStringObject = string | redacted.Redacted<string>;
 export type StringDefaultValueList = (string | redacted.Redacted<string>)[];
 export const StringDefaultValueList = /*@__PURE__*/ S.Array(SensitiveString);
+export type SensitiveLongObject = number;
 export type IntegerDefaultValueList = number[];
 export const IntegerDefaultValueList = /*@__PURE__*/ S.Array(S.Number);
+export type SensitiveDoubleObject = number;
 export type DecimalDefaultValueList = number[];
 export const DecimalDefaultValueList = /*@__PURE__*/ S.Array(S.Number);
 export type DateTimeDefaultValueList = Date[];
@@ -4122,6 +4110,7 @@ export const CustomValuesConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomValuesConfiguration>;
 export type SelectAllValueOptions = "ALL_VALUES" | (string & {});
 export const SelectAllValueOptions = /*@__PURE__*/ S.String;
+
 export interface DestinationParameterValueConfiguration {
   CustomValuesConfiguration?: CustomValuesConfiguration;
   SelectAllValueOptions?: SelectAllValueOptions;
@@ -4256,6 +4245,7 @@ export const PivotTableFieldWells = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PivotTableFieldWells",
 }) as any as S.Schema<PivotTableFieldWells>;
+export type FieldValue = string | redacted.Redacted<string>;
 export type PivotTableDataPathType =
   | "HIERARCHY_ROWS_LAYOUT_COLUMN"
   | "MULTIPLE_ROW_METRICS_COLUMN"
@@ -4263,6 +4253,7 @@ export type PivotTableDataPathType =
   | "COUNT_METRIC_COLUMN"
   | (string & {});
 export const PivotTableDataPathType = /*@__PURE__*/ S.String;
+
 export interface DataPathType {
   PivotTableDataPathType?: PivotTableDataPathType;
 }
@@ -4327,8 +4318,11 @@ export const PivotTableSortConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PivotTableSortConfiguration>;
 export type PivotTableMetricPlacement = "ROW" | "COLUMN" | (string & {});
 export const PivotTableMetricPlacement = /*@__PURE__*/ S.String;
+
 export type PivotTableRowsLayout = "TABULAR" | "HIERARCHY" | (string & {});
 export const PivotTableRowsLayout = /*@__PURE__*/ S.String;
+
+export type PivotTableRowsLabelText = string;
 export interface PivotTableRowsLabelOptions {
   Visibility?: Visibility;
   CustomLabel?: string;
@@ -4377,6 +4371,7 @@ export const PivotTableOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PivotTableOptions>;
 export type PivotTableSubtotalLevel = "ALL" | "CUSTOM" | "LAST" | (string & {});
 export const PivotTableSubtotalLevel = /*@__PURE__*/ S.String;
+
 export interface PivotTableFieldSubtotalOptions {
   FieldId?: string;
 }
@@ -4396,6 +4391,7 @@ export type StyledCellType =
   | "VALUE"
   | (string & {});
 export const StyledCellType = /*@__PURE__*/ S.String;
+
 export interface TableStyleTarget {
   CellType: StyledCellType;
 }
@@ -4518,6 +4514,7 @@ export type PivotTableFieldCollapseState =
   | "EXPANDED"
   | (string & {});
 export const PivotTableFieldCollapseState = /*@__PURE__*/ S.String;
+
 export interface PivotTableFieldCollapseStateOption {
   Target: PivotTableFieldCollapseStateTarget;
   State?: PivotTableFieldCollapseState;
@@ -4595,6 +4592,7 @@ export type PivotTableConditionalFormattingScopeRole =
   | "GRAND_TOTAL"
   | (string & {});
 export const PivotTableConditionalFormattingScopeRole = /*@__PURE__*/ S.String;
+
 export interface PivotTableConditionalFormattingScope {
   Role?: PivotTableConditionalFormattingScopeRole;
 }
@@ -4705,6 +4703,7 @@ export type FieldSortOptionsList = FieldSortOptions[];
 export const FieldSortOptionsList = /*@__PURE__*/ S.Array(FieldSortOptions);
 export type OtherCategories = "INCLUDE" | "EXCLUDE" | (string & {});
 export const OtherCategories = /*@__PURE__*/ S.String;
+
 export interface ItemsLimitConfiguration {
   ItemsLimit?: number;
   OtherCategories?: OtherCategories;
@@ -4739,12 +4738,14 @@ export const BarChartSortConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BarChartSortConfiguration>;
 export type BarChartOrientation = "HORIZONTAL" | "VERTICAL" | (string & {});
 export const BarChartOrientation = /*@__PURE__*/ S.String;
+
 export type BarsArrangement =
   | "CLUSTERED"
   | "STACKED"
   | "STACKED_PERCENT"
   | (string & {});
 export const BarsArrangement = /*@__PURE__*/ S.String;
+
 export interface DataPathColor {
   Element: DataPathValue;
   Color: string;
@@ -4769,6 +4770,8 @@ export const VisualPalette = /*@__PURE__*/ S.suspend(() =>
     ColorMap: S.optional(DataPathColorList),
   }),
 ).annotate({ identifier: "VisualPalette" }) as any as S.Schema<VisualPalette>;
+export type VisiblePanelRows = number;
+export type VisiblePanelColumns = number;
 export interface PanelTitleOptions {
   Visibility?: Visibility;
   FontConfiguration?: FontConfiguration;
@@ -4785,6 +4788,8 @@ export const PanelTitleOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PanelTitleOptions>;
 export type PanelBorderStyle = "SOLID" | "DASHED" | "DOTTED" | (string & {});
 export const PanelBorderStyle = /*@__PURE__*/ S.String;
+
+export type HexColorWithTransparency = string;
 export interface PanelConfiguration {
   Title?: PanelTitleOptions;
   BorderVisibility?: Visibility;
@@ -4813,8 +4818,10 @@ export const PanelConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PanelConfiguration>;
 export type SmallMultiplesAxisScale = "SHARED" | "INDEPENDENT" | (string & {});
 export const SmallMultiplesAxisScale = /*@__PURE__*/ S.String;
+
 export type SmallMultiplesAxisPlacement = "OUTSIDE" | "INSIDE" | (string & {});
 export const SmallMultiplesAxisPlacement = /*@__PURE__*/ S.String;
+
 export interface SmallMultiplesAxisProperties {
   Scale?: SmallMultiplesAxisScale;
   Placement?: SmallMultiplesAxisPlacement;
@@ -4943,6 +4950,7 @@ export const AxisDataOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AxisDataOptions",
 }) as any as S.Schema<AxisDataOptions>;
+export type PercentNumber = number;
 export interface PercentVisibleRange {
   From?: number;
   To?: number;
@@ -5031,6 +5039,7 @@ export const ChartAxisLabelOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ChartAxisLabelOptions",
 }) as any as S.Schema<ChartAxisLabelOptions>;
+export type ElementValue = string;
 export type DecalPatternType =
   | "SOLID"
   | "DIAGONAL_MEDIUM"
@@ -5056,8 +5065,10 @@ export type DecalPatternType =
   | "DIAMOND_SMALL"
   | (string & {});
 export const DecalPatternType = /*@__PURE__*/ S.String;
+
 export type DecalStyleType = "Manual" | "Auto" | (string & {});
 export const DecalStyleType = /*@__PURE__*/ S.String;
+
 export interface DecalSettings {
   ElementValue?: string;
   DecalVisibility?: Visibility;
@@ -5152,6 +5163,7 @@ export type LegendPosition =
   | "TOP"
   | (string & {});
 export const LegendPosition = /*@__PURE__*/ S.String;
+
 export interface LegendOptions {
   Visibility?: Visibility;
   Title?: LabelOptions;
@@ -5245,17 +5257,20 @@ export type DataLabelPosition =
   | "RIGHT"
   | (string & {});
 export const DataLabelPosition = /*@__PURE__*/ S.String;
+
 export type DataLabelContent =
   | "VALUE"
   | "PERCENT"
   | "VALUE_AND_PERCENT"
   | (string & {});
 export const DataLabelContent = /*@__PURE__*/ S.String;
+
 export type DataLabelOverlap =
   | "DISABLE_OVERLAP"
   | "ENABLE_OVERLAP"
   | (string & {});
 export const DataLabelOverlap = /*@__PURE__*/ S.String;
+
 export interface DataLabelOptions {
   Visibility?: Visibility;
   CategoryLabelVisibility?: Visibility;
@@ -5309,8 +5324,10 @@ export const ReferenceLineDynamicDataConfiguration = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ReferenceLineDynamicDataConfiguration>;
 export type AxisBinding = "PRIMARY_YAXIS" | "SECONDARY_YAXIS" | (string & {});
 export const AxisBinding = /*@__PURE__*/ S.String;
+
 export type ReferenceLineSeriesType = "BAR" | "LINE" | (string & {});
 export const ReferenceLineSeriesType = /*@__PURE__*/ S.String;
+
 export interface ReferenceLineDataConfiguration {
   StaticConfiguration?: ReferenceLineStaticDataConfiguration;
   DynamicConfiguration?: ReferenceLineDynamicDataConfiguration;
@@ -5333,6 +5350,7 @@ export type ReferenceLinePatternType =
   | "DOTTED"
   | (string & {});
 export const ReferenceLinePatternType = /*@__PURE__*/ S.String;
+
 export interface ReferenceLineStyleConfiguration {
   Pattern?: ReferenceLinePatternType;
   Color?: string;
@@ -5350,6 +5368,7 @@ export type ReferenceLineValueLabelRelativePosition =
   | "AFTER_CUSTOM_LABEL"
   | (string & {});
 export const ReferenceLineValueLabelRelativePosition = /*@__PURE__*/ S.String;
+
 export interface ReferenceLineValueLabelConfiguration {
   RelativePosition?: ReferenceLineValueLabelRelativePosition;
   FormatConfiguration?: NumericFormatConfiguration;
@@ -5377,11 +5396,13 @@ export type ReferenceLineLabelHorizontalPosition =
   | "RIGHT"
   | (string & {});
 export const ReferenceLineLabelHorizontalPosition = /*@__PURE__*/ S.String;
+
 export type ReferenceLineLabelVerticalPosition =
   | "ABOVE"
   | "BELOW"
   | (string & {});
 export const ReferenceLineLabelVerticalPosition = /*@__PURE__*/ S.String;
+
 export interface ReferenceLineLabelConfiguration {
   ValueLabelConfiguration?: ReferenceLineValueLabelConfiguration;
   CustomLabelConfiguration?: ReferenceLineCustomLabelConfiguration;
@@ -5494,6 +5515,7 @@ export const NumericEqualityDrillDownFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NumericEqualityDrillDownFilter",
 }) as any as S.Schema<NumericEqualityDrillDownFilter>;
+export type CategoryValue = string;
 export type CategoryValueList = string[];
 export const CategoryValueList = /*@__PURE__*/ S.Array(S.String);
 export interface CategoryDrillDownFilter {
@@ -5666,6 +5688,7 @@ export type ComparisonMethod =
   | "PERCENT"
   | (string & {});
 export const ComparisonMethod = /*@__PURE__*/ S.String;
+
 export interface ComparisonFormatConfiguration {
   NumberDisplayFormatConfiguration?: NumberDisplayFormatConfiguration;
   PercentageDisplayFormatConfiguration?: PercentageDisplayFormatConfiguration;
@@ -5700,8 +5723,10 @@ export type PrimaryValueDisplayType =
   | "ACTUAL"
   | (string & {});
 export const PrimaryValueDisplayType = /*@__PURE__*/ S.String;
+
 export type KPISparklineType = "LINE" | "AREA" | (string & {});
 export const KPISparklineType = /*@__PURE__*/ S.String;
+
 export interface KPISparklineOptions {
   Visibility?: Visibility;
   Type: KPISparklineType;
@@ -5723,6 +5748,7 @@ export type KPIVisualStandardLayoutType =
   | "VERTICAL"
   | (string & {});
 export const KPIVisualStandardLayoutType = /*@__PURE__*/ S.String;
+
 export interface KPIVisualStandardLayout {
   Type: KPIVisualStandardLayoutType;
 }
@@ -5927,6 +5953,7 @@ export type ArcThickness =
   | "WHOLE"
   | (string & {});
 export const ArcThickness = /*@__PURE__*/ S.String;
+
 export interface ArcOptions {
   ArcThickness?: ArcThickness;
 }
@@ -6038,6 +6065,7 @@ export const ArcAxisConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ArcAxisConfiguration>;
 export type ArcThicknessOptions = "SMALL" | "MEDIUM" | "LARGE" | (string & {});
 export const ArcThicknessOptions = /*@__PURE__*/ S.String;
+
 export interface ArcConfiguration {
   ArcAngle?: number;
   ArcThickness?: ArcThicknessOptions;
@@ -6219,6 +6247,10 @@ export const LineChartSortConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LineChartSortConfiguration",
 }) as any as S.Schema<LineChartSortConfiguration>;
+export type PeriodsForward = number;
+export type PeriodsBackward = number;
+export type PredictionInterval = number;
+export type Seasonality = number;
 export interface TimeBasedForecastProperties {
   PeriodsForward?: number;
   PeriodsBackward?: number;
@@ -6295,12 +6327,14 @@ export const ForecastConfigurationList = /*@__PURE__*/ S.Array(
 );
 export type LineChartType = "LINE" | "AREA" | "STACKED_AREA" | (string & {});
 export const LineChartType = /*@__PURE__*/ S.String;
+
 export type MissingDataTreatmentOption =
   | "INTERPOLATE"
   | "SHOW_AS_ZERO"
   | "SHOW_AS_BLANK"
   | (string & {});
 export const MissingDataTreatmentOption = /*@__PURE__*/ S.String;
+
 export interface MissingDataConfiguration {
   TreatmentOption?: MissingDataTreatmentOption;
 }
@@ -6327,6 +6361,7 @@ export const LineSeriesAxisDisplayOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LineSeriesAxisDisplayOptions>;
 export type SingleYAxisOption = "PRIMARY_Y_AXIS" | (string & {});
 export const SingleYAxisOption = /*@__PURE__*/ S.String;
+
 export interface YAxisOptions {
   YAxis: SingleYAxisOption;
 }
@@ -6343,6 +6378,7 @@ export const SingleAxisOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SingleAxisOptions>;
 export type LineChartLineStyle = "SOLID" | "DOTTED" | "DASHED" | (string & {});
 export const LineChartLineStyle = /*@__PURE__*/ S.String;
+
 export interface LineChartLineStyleSettings {
   LineVisibility?: Visibility;
   LineInterpolation?: LineInterpolation;
@@ -6558,6 +6594,7 @@ export type ColorScaleColorList = DataColor[];
 export const ColorScaleColorList = /*@__PURE__*/ S.Array(DataColor);
 export type ColorFillType = "DISCRETE" | "GRADIENT" | (string & {});
 export const ColorFillType = /*@__PURE__*/ S.String;
+
 export interface ColorScale {
   Colors: DataColor[];
   ColorFillType: ColorFillType;
@@ -6734,6 +6771,8 @@ export const GeospatialMapFieldWells = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GeospatialMapFieldWells",
 }) as any as S.Schema<GeospatialMapFieldWells>;
+export type Latitude = number;
+export type Longitude = number;
 export interface GeospatialCoordinateBounds {
   North: number;
   South: number;
@@ -6752,6 +6791,7 @@ export const GeospatialCoordinateBounds = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GeospatialCoordinateBounds>;
 export type MapZoomMode = "AUTO" | "MANUAL" | (string & {});
 export const MapZoomMode = /*@__PURE__*/ S.String;
+
 export interface GeospatialWindowOptions {
   Bounds?: GeospatialCoordinateBounds;
   MapZoomMode?: MapZoomMode;
@@ -6771,6 +6811,7 @@ export type BaseMapStyleType =
   | "IMAGERY"
   | (string & {});
 export const BaseMapStyleType = /*@__PURE__*/ S.String;
+
 export interface GeospatialMapStyleOptions {
   BaseMapStyle?: BaseMapStyleType;
 }
@@ -6785,6 +6826,7 @@ export type GeospatialSelectedPointStyle =
   | "HEATMAP"
   | (string & {});
 export const GeospatialSelectedPointStyle = /*@__PURE__*/ S.String;
+
 export interface SimpleClusterMarker {
   Color?: string;
 }
@@ -6873,6 +6915,11 @@ export const GeospatialMapConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GeospatialMapConfiguration",
 }) as any as S.Schema<GeospatialMapConfiguration>;
+export type GeocoderHierarchyCountryString = string;
+export type GeocoderHierarchyStateString = string;
+export type GeocoderHierarchyCountyString = string;
+export type GeocoderHierarchyCityString = string;
+export type GeocoderHierarchyPostCodeString = string;
 export interface GeocoderHierarchy {
   Country?: string;
   State?: string;
@@ -6891,6 +6938,8 @@ export const GeocoderHierarchy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GeocoderHierarchy",
 }) as any as S.Schema<GeocoderHierarchy>;
+export type CoordinateLatitudeDouble = number;
+export type CoordinateLongitudeDouble = number;
 export interface Coordinate {
   Latitude: number;
   Longitude: number;
@@ -7068,6 +7117,7 @@ export const FilledMapVisual = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FilledMapVisual>;
 export type GeospatialLayerType = "POINT" | "LINE" | "POLYGON" | (string & {});
 export const GeospatialLayerType = /*@__PURE__*/ S.String;
+
 export interface GeospatialStaticFileSource {
   StaticFileId: string;
 }
@@ -7086,6 +7136,7 @@ export const GeospatialDataSourceItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GeospatialDataSourceItem>;
 export type GeospatialColorState = "ENABLED" | "DISABLED" | (string & {});
 export const GeospatialColorState = /*@__PURE__*/ S.String;
+
 export interface GeospatialSolidColor {
   Color: string;
   State?: GeospatialColorState;
@@ -7108,6 +7159,7 @@ export type GeospatialGradientStepColorList = GeospatialGradientStepColor[];
 export const GeospatialGradientStepColorList = /*@__PURE__*/ S.Array(
   GeospatialGradientStepColor,
 );
+export type GeospatialWidth = number;
 export interface GeospatialNullSymbolStyle {
   FillColor?: string;
   StrokeColor?: string;
@@ -7130,6 +7182,7 @@ export const GeospatialNullDataSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GeospatialNullDataSettings",
 }) as any as S.Schema<GeospatialNullDataSettings>;
+export type Opacity = number;
 export interface GeospatialGradientColor {
   StepColors: GeospatialGradientStepColor[];
   NullDataVisibility?: Visibility;
@@ -7198,6 +7251,7 @@ export const GeospatialLineWidth = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GeospatialLineWidth",
 }) as any as S.Schema<GeospatialLineWidth>;
+export type GeospatialRadius = number;
 export interface GeospatialCircleRadius {
   Radius?: number;
 }
@@ -7342,11 +7396,13 @@ export const GeospatialLayerJoinDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GeospatialLayerJoinDefinition",
 }) as any as S.Schema<GeospatialLayerJoinDefinition>;
+export type LayerCustomActionName = string;
 export type LayerCustomActionTrigger =
   | "DATA_POINT_CLICK"
   | "DATA_POINT_MENU"
   | (string & {});
 export const LayerCustomActionTrigger = /*@__PURE__*/ S.String;
+
 export interface LayerCustomActionOperation {
   FilterOperation?: CustomActionFilterOperation;
   NavigationOperation?: CustomActionNavigationOperation;
@@ -7418,6 +7474,7 @@ export const GeospatialMapLayerList =
   /*@__PURE__*/ S.Array(GeospatialLayerItem);
 export type GeospatialMapNavigation = "ENABLED" | "DISABLED" | (string & {});
 export const GeospatialMapNavigation = /*@__PURE__*/ S.String;
+
 export interface GeospatialMapState {
   Bounds?: GeospatialCoordinateBounds;
   MapNavigation?: GeospatialMapNavigation;
@@ -7529,6 +7586,7 @@ export type FunnelChartMeasureDataLabelStyle =
   | "VALUE_AND_PERCENTAGE_BY_PREVIOUS_STAGE"
   | (string & {});
 export const FunnelChartMeasureDataLabelStyle = /*@__PURE__*/ S.String;
+
 export interface FunnelChartDataLabelOptions {
   Visibility?: Visibility;
   CategoryLabelVisibility?: Visibility;
@@ -7936,6 +7994,7 @@ export const BoxPlotSortConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BoxPlotSortConfiguration>;
 export type BoxPlotFillStyle = "SOLID" | "TRANSPARENT" | (string & {});
 export const BoxPlotFillStyle = /*@__PURE__*/ S.String;
+
 export interface BoxPlotStyleOptions {
   FillStyle?: BoxPlotFillStyle;
 }
@@ -8155,6 +8214,8 @@ export const HistogramFieldWells = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HistogramFieldWells>;
 export type HistogramBinType = "BIN_COUNT" | "BIN_WIDTH" | (string & {});
 export const HistogramBinType = /*@__PURE__*/ S.String;
+
+export type BinCountValue = number;
 export interface BinCountOptions {
   Value?: number;
 }
@@ -8163,6 +8224,8 @@ export const BinCountOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BinCountOptions",
 }) as any as S.Schema<BinCountOptions>;
+export type BinWidthValue = number;
+export type BinCountLimit = number;
 export interface BinWidthOptions {
   Value?: number;
   BinCountLimit?: number;
@@ -8281,15 +8344,19 @@ export type WordCloudWordOrientation =
   | "HORIZONTAL_AND_VERTICAL"
   | (string & {});
 export const WordCloudWordOrientation = /*@__PURE__*/ S.String;
+
 export type WordCloudWordScaling = "EMPHASIZE" | "NORMAL" | (string & {});
 export const WordCloudWordScaling = /*@__PURE__*/ S.String;
+
 export type WordCloudCloudLayout = "FLUID" | "NORMAL" | (string & {});
 export const WordCloudCloudLayout = /*@__PURE__*/ S.String;
+
 export type WordCloudWordCasing =
   | "LOWER_CASE"
   | "EXISTING_CASE"
   | (string & {});
 export const WordCloudWordCasing = /*@__PURE__*/ S.String;
+
 export type WordCloudWordPadding =
   | "NONE"
   | "SMALL"
@@ -8297,6 +8364,8 @@ export type WordCloudWordPadding =
   | "LARGE"
   | (string & {});
 export const WordCloudWordPadding = /*@__PURE__*/ S.String;
+
+export type WordCloudMaximumStringLength = number;
 export interface WordCloudOptions {
   WordOrientation?: WordCloudWordOrientation;
   WordScaling?: WordCloudWordScaling;
@@ -8357,8 +8426,10 @@ export const WordCloudVisual = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WordCloudVisual",
 }) as any as S.Schema<WordCloudVisual>;
+export type TopBottomRankedComputationResultSize = number;
 export type TopBottomComputationType = "TOP" | "BOTTOM" | (string & {});
 export const TopBottomComputationType = /*@__PURE__*/ S.String;
+
 export interface TopBottomRankedComputation {
   ComputationId: string;
   Name?: string;
@@ -8379,11 +8450,13 @@ export const TopBottomRankedComputation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TopBottomRankedComputation",
 }) as any as S.Schema<TopBottomRankedComputation>;
+export type TopBottomMoversComputationMoverSize = number;
 export type TopBottomSortOrder =
   | "PERCENT_DIFFERENCE"
   | "ABSOLUTE_DIFFERENCE"
   | (string & {});
 export const TopBottomSortOrder = /*@__PURE__*/ S.String;
+
 export interface TopBottomMoversComputation {
   ComputationId: string;
   Name?: string;
@@ -8427,6 +8500,7 @@ export type MaximumMinimumComputationType =
   | "MINIMUM"
   | (string & {});
 export const MaximumMinimumComputationType = /*@__PURE__*/ S.String;
+
 export interface MaximumMinimumComputation {
   ComputationId: string;
   Name?: string;
@@ -8497,6 +8571,7 @@ export const PeriodToDateComputation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PeriodToDateComputation",
 }) as any as S.Schema<PeriodToDateComputation>;
+export type GrowthRatePeriodSize = number;
 export interface GrowthRateComputation {
   ComputationId: string;
   Name?: string;
@@ -8534,6 +8609,8 @@ export type ForecastComputationSeasonality =
   | "CUSTOM"
   | (string & {});
 export const ForecastComputationSeasonality = /*@__PURE__*/ S.String;
+
+export type ForecastComputationCustomSeasonalityValue = number;
 export interface ForecastComputation {
   ComputationId: string;
   Name?: string;
@@ -8592,6 +8669,7 @@ export const Computation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Computation" }) as any as S.Schema<Computation>;
 export type ComputationList = Computation[];
 export const ComputationList = /*@__PURE__*/ S.Array(Computation);
+export type NarrativeString = string;
 export interface CustomNarrativeOptions {
   Narrative: string;
 }
@@ -8715,6 +8793,7 @@ export type CustomContentType =
   | "OTHER_EMBEDDED_CONTENT"
   | (string & {});
 export const CustomContentType = /*@__PURE__*/ S.String;
+
 export type CustomContentImageScalingConfiguration =
   | "FIT_TO_HEIGHT"
   | "FIT_TO_WIDTH"
@@ -8722,6 +8801,7 @@ export type CustomContentImageScalingConfiguration =
   | "SCALE_TO_VISUAL"
   | (string & {});
 export const CustomContentImageScalingConfiguration = /*@__PURE__*/ S.String;
+
 export interface CustomContentConfiguration {
   ContentUrl?: string;
   ContentType?: CustomContentType;
@@ -8821,6 +8901,7 @@ export const RadarChartSortConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RadarChartSortConfiguration>;
 export type RadarChartShape = "CIRCLE" | "POLYGON" | (string & {});
 export const RadarChartShape = /*@__PURE__*/ S.String;
+
 export interface RadarChartAreaStyleSettings {
   Visibility?: Visibility;
 }
@@ -8837,12 +8918,14 @@ export const RadarChartSeriesSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RadarChartSeriesSettings",
 }) as any as S.Schema<RadarChartSeriesSettings>;
+export type RadarChartStartAngle = number;
 export type RadarChartAxesRangeScale =
   | "AUTO"
   | "INDEPENDENT"
   | "SHARED"
   | (string & {});
 export const RadarChartAxesRangeScale = /*@__PURE__*/ S.String;
+
 export interface RadarChartConfiguration {
   FieldWells?: RadarChartFieldWells;
   SortConfiguration?: RadarChartSortConfiguration;
@@ -8907,6 +8990,7 @@ export const RadarChartVisual = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RadarChartVisual>;
 export type PluginVisualAxisName = "GROUP_BY" | "VALUE" | (string & {});
 export const PluginVisualAxisName = /*@__PURE__*/ S.String;
+
 export type UnaggregatedFieldList = UnaggregatedField[];
 export const UnaggregatedFieldList = /*@__PURE__*/ S.Array(UnaggregatedField);
 export interface PluginVisualFieldWell {
@@ -9071,6 +9155,7 @@ export const Visual = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Visual" }) as any as S.Schema<Visual>;
 export type VisualList = Visual[];
 export const VisualList = /*@__PURE__*/ S.Array(Visual);
+export type SheetTextBoxContent = string;
 export interface TextBoxMenuOption {
   AvailabilityStatus?: DashboardBehavior;
 }
@@ -9126,6 +9211,7 @@ export type SheetImageScalingType =
   | "SCALE_NONE"
   | (string & {});
 export const SheetImageScalingType = /*@__PURE__*/ S.String;
+
 export interface SheetImageScalingConfiguration {
   ScalingType?: SheetImageScalingType;
 }
@@ -9170,8 +9256,10 @@ export const ImageInteractionOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImageInteractionOptions",
 }) as any as S.Schema<ImageInteractionOptions>;
+export type ImageCustomActionName = string;
 export type ImageCustomActionTrigger = "CLICK" | "MENU" | (string & {});
 export const ImageCustomActionTrigger = /*@__PURE__*/ S.String;
+
 export interface ImageCustomActionOperation {
   NavigationOperation?: CustomActionNavigationOperation;
   URLOperation?: CustomActionURLOperation;
@@ -9240,6 +9328,12 @@ export type LayoutElementType =
   | "IMAGE"
   | (string & {});
 export const LayoutElementType = /*@__PURE__*/ S.String;
+
+export type GridLayoutElementColumnIndex = number;
+export type GridLayoutElementColumnSpan = number;
+export type GridLayoutElementRowIndex = number;
+export type GridLayoutElementRowSpan = number;
+export type Width = string;
 export interface GridLayoutElementBorderStyle {
   Visibility?: Visibility;
   Color?: string;
@@ -9271,6 +9365,8 @@ export const LoadingAnimation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LoadingAnimation",
 }) as any as S.Schema<LoadingAnimation>;
+export type BorderRadius = string;
+export type Padding = string;
 export interface GridLayoutElement {
   ElementId: string;
   ElementType: LayoutElementType;
@@ -9307,6 +9403,7 @@ export type GridLayoutElementList = GridLayoutElement[];
 export const GridLayoutElementList = /*@__PURE__*/ S.Array(GridLayoutElement);
 export type ResizeOption = "FIXED" | "RESPONSIVE" | (string & {});
 export const ResizeOption = /*@__PURE__*/ S.String;
+
 export interface GridLayoutScreenCanvasSizeOptions {
   ResizeOption: ResizeOption;
   OptimizedViewPortWidth?: string;
@@ -9341,6 +9438,7 @@ export const GridLayoutConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GridLayoutConfiguration",
 }) as any as S.Schema<GridLayoutConfiguration>;
+export type UnlimitedPixelLength = string;
 export interface SheetElementConfigurationOverrides {
   Visibility?: Visibility;
 }
@@ -9452,6 +9550,7 @@ export const FreeFormLayoutCanvasSizeOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FreeFormLayoutCanvasSizeOptions>;
 export type SheetLayoutGroupMemberType = "ELEMENT" | "GROUP" | (string & {});
 export const SheetLayoutGroupMemberType = /*@__PURE__*/ S.String;
+
 export interface SheetLayoutGroupMember {
   Id: string;
   Type: SheetLayoutGroupMemberType;
@@ -9506,6 +9605,7 @@ export const SectionLayoutConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SectionLayoutConfiguration",
 }) as any as S.Schema<SectionLayoutConfiguration>;
+export type Length = string;
 export interface Spacing {
   Top?: string;
   Bottom?: string;
@@ -9556,6 +9656,7 @@ export const BodySectionContent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BodySectionContent>;
 export type SectionPageBreakStatus = "ENABLED" | "DISABLED" | (string & {});
 export const SectionPageBreakStatus = /*@__PURE__*/ S.String;
+
 export interface SectionAfterPageBreak {
   Status?: SectionPageBreakStatus;
 }
@@ -9572,6 +9673,7 @@ export const SectionPageBreakConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SectionPageBreakConfiguration",
 }) as any as S.Schema<SectionPageBreakConfiguration>;
+export type BodySectionDynamicDimensionLimit = number;
 export type BodySectionDynamicDimensionSortConfigurationList = ColumnSort[];
 export const BodySectionDynamicDimensionSortConfigurationList =
   /*@__PURE__*/ S.Array(ColumnSort);
@@ -9692,8 +9794,10 @@ export type PaperSize =
   | "JIS_B5"
   | (string & {});
 export const PaperSize = /*@__PURE__*/ S.String;
+
 export type PaperOrientation = "PORTRAIT" | "LANDSCAPE" | (string & {});
 export const PaperOrientation = /*@__PURE__*/ S.String;
+
 export interface SectionBasedLayoutPaperCanvasSizeOptions {
   PaperSize?: PaperSize;
   PaperOrientation?: PaperOrientation;
@@ -9779,12 +9883,14 @@ export type SheetControlLayoutList = SheetControlLayout[];
 export const SheetControlLayoutList = /*@__PURE__*/ S.Array(SheetControlLayout);
 export type SheetContentType = "PAGINATED" | "INTERACTIVE" | (string & {});
 export const SheetContentType = /*@__PURE__*/ S.String;
+
 export type VisualHighlightTrigger =
   | "DATA_POINT_CLICK"
   | "DATA_POINT_HOVER"
   | "NONE"
   | (string & {});
 export const VisualHighlightTrigger = /*@__PURE__*/ S.String;
+
 export interface VisualHighlightOperation {
   Trigger: VisualHighlightTrigger;
 }
@@ -9867,6 +9973,7 @@ export type TooltipSheetDefinitionList = TooltipSheetDefinition[];
 export const TooltipSheetDefinitionList = /*@__PURE__*/ S.Array(
   TooltipSheetDefinition,
 );
+export type CalculatedFieldExpression = string | redacted.Redacted<string>;
 export interface CalculatedField {
   DataSetIdentifier: string;
   Name: string;
@@ -9888,6 +9995,7 @@ export type ParameterValueType =
   | "SINGLE_VALUED"
   | (string & {});
 export const ParameterValueType = /*@__PURE__*/ S.String;
+
 export interface DynamicDefaultValue {
   UserNameColumn?: ColumnIdentifier;
   GroupNameColumn?: ColumnIdentifier;
@@ -9916,6 +10024,7 @@ export const StringDefaultValues = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StringDefaultValues>;
 export type ValueWhenUnsetOption = "RECOMMENDED_VALUE" | "NULL" | (string & {});
 export const ValueWhenUnsetOption = /*@__PURE__*/ S.String;
+
 export interface StringValueWhenUnsetConfiguration {
   ValueWhenUnsetOption?: ValueWhenUnsetOption;
   CustomValue?: string | redacted.Redacted<string>;
@@ -10127,16 +10236,19 @@ export type CategoryFilterMatchOperator =
   | "ENDS_WITH"
   | (string & {});
 export const CategoryFilterMatchOperator = /*@__PURE__*/ S.String;
+
 export type CategoryFilterSelectAllOptions =
   | "FILTER_ALL_VALUES"
   | (string & {});
 export const CategoryFilterSelectAllOptions = /*@__PURE__*/ S.String;
+
 export type FilterNullOption =
   | "ALL_VALUES"
   | "NULLS_ONLY"
   | "NON_NULLS_ONLY"
   | (string & {});
 export const FilterNullOption = /*@__PURE__*/ S.String;
+
 export interface FilterListConfiguration {
   MatchOperator: CategoryFilterMatchOperator;
   CategoryValues?: string[];
@@ -10370,6 +10482,7 @@ export const NumericRangeFilterValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NumericRangeFilterValue>;
 export type NumericFilterSelectAllOptions = "FILTER_ALL_VALUES" | (string & {});
 export const NumericFilterSelectAllOptions = /*@__PURE__*/ S.String;
+
 export interface NumericRangeFilter {
   FilterId: string;
   Column: ColumnIdentifier;
@@ -10405,6 +10518,7 @@ export type NumericEqualityMatchOperator =
   | "DOES_NOT_EQUAL"
   | (string & {});
 export const NumericEqualityMatchOperator = /*@__PURE__*/ S.String;
+
 export interface NumericEqualityFilter {
   FilterId: string;
   Column: ColumnIdentifier;
@@ -10517,6 +10631,7 @@ export const TimeRangeFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TimeRangeFilter>;
 export type AnchorOption = "NOW" | (string & {});
 export const AnchorOption = /*@__PURE__*/ S.String;
+
 export interface AnchorDateConfiguration {
   AnchorOption?: AnchorOption;
   ParameterName?: string;
@@ -10537,6 +10652,7 @@ export type RelativeDateType =
   | "NEXT"
   | (string & {});
 export const RelativeDateType = /*@__PURE__*/ S.String;
+
 export interface RelativeDatesFilter {
   FilterId: string;
   Column: ColumnIdentifier;
@@ -10662,6 +10778,7 @@ export type FilterVisualScope =
   | "SELECTED_VISUALS"
   | (string & {});
 export const FilterVisualScope = /*@__PURE__*/ S.String;
+
 export type FilteredVisualsList = string[];
 export const FilteredVisualsList = /*@__PURE__*/ S.Array(S.String);
 export interface SheetVisualScopingConfiguration {
@@ -10719,6 +10836,7 @@ export type CrossDatasetTypes =
   | "SINGLE_DATASET"
   | (string & {});
 export const CrossDatasetTypes = /*@__PURE__*/ S.String;
+
 export interface FilterGroup {
   FilterGroupId: string;
   Filters: Filter[];
@@ -10739,8 +10857,10 @@ export type FilterGroupList = FilterGroup[];
 export const FilterGroupList = /*@__PURE__*/ S.Array(FilterGroup);
 export type ColumnRole = "DIMENSION" | "MEASURE" | (string & {});
 export const ColumnRole = /*@__PURE__*/ S.String;
+
 export type SpecialValue = "EMPTY" | "NULL" | "OTHER" | (string & {});
 export const SpecialValue = /*@__PURE__*/ S.String;
+
 export interface CustomColor {
   FieldValue?: string | redacted.Redacted<string>;
   Color: string;
@@ -10877,8 +10997,10 @@ export type DayOfTheWeek =
   | "SATURDAY"
   | (string & {});
 export const DayOfTheWeek = /*@__PURE__*/ S.String;
+
 export type QBusinessInsightsStatus = "ENABLED" | "DISABLED" | (string & {});
 export const QBusinessInsightsStatus = /*@__PURE__*/ S.String;
+
 export type DataSetArnsList = string[];
 export const DataSetArnsList = /*@__PURE__*/ S.Array(S.String);
 export interface AssetOptions {
@@ -10899,6 +11021,7 @@ export const AssetOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssetOptions" }) as any as S.Schema<AssetOptions>;
 export type QueryExecutionMode = "AUTO" | "MANUAL" | (string & {});
 export const QueryExecutionMode = /*@__PURE__*/ S.String;
+
 export interface QueryExecutionOptions {
   QueryExecutionMode?: QueryExecutionMode;
 }
@@ -10999,6 +11122,7 @@ export const AnalysisDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnalysisDefinition>;
 export type ValidationStrategyMode = "STRICT" | "LENIENT" | (string & {});
 export const ValidationStrategyMode = /*@__PURE__*/ S.String;
+
 export interface ValidationStrategy {
   Mode: ValidationStrategyMode;
 }
@@ -11069,6 +11193,8 @@ export const CreateAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAnalysisResponse",
 }) as any as S.Schema<CreateAnalysisResponse>;
+export type Name = string;
+export type Description = string;
 export interface Palette {
   Foreground?: string;
   Background?: string;
@@ -11249,14 +11375,18 @@ export type BrandStatus =
   | "DELETE_FAILED"
   | (string & {});
 export const BrandStatus = /*@__PURE__*/ S.String;
+
 export type BrandVersionStatus =
   | "CREATE_IN_PROGRESS"
   | "CREATE_SUCCEEDED"
   | "CREATE_FAILED"
   | (string & {});
 export const BrandVersionStatus = /*@__PURE__*/ S.String;
+
+export type ErrorMessage = string;
 export type ErrorList = string[];
 export const ErrorList = /*@__PURE__*/ S.Array(S.String);
+export type AltText = string;
 export interface Image {
   Source?: ImageSource;
   GeneratedImageUrl?: string;
@@ -11333,8 +11463,10 @@ export const CreateBrandResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBrandResponse",
 }) as any as S.Schema<CreateBrandResponse>;
+export type CustomPermissionsName = string;
 export type CapabilityState = "DENY" | (string & {});
 export const CapabilityState = /*@__PURE__*/ S.String;
+
 export interface Capabilities {
   ExportToCsv?: CapabilityState;
   ExportToExcel?: CapabilityState;
@@ -11839,6 +11971,7 @@ export const CreateCustomPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCustomPermissionsResponse",
 }) as any as S.Schema<CreateCustomPermissionsResponse>;
+export type DashboardName = string;
 export interface DashboardSourceTemplate {
   DataSetReferences: DataSetReference[];
   Arn: string;
@@ -11856,6 +11989,7 @@ export const DashboardSourceEntity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DashboardSourceEntity",
 }) as any as S.Schema<DashboardSourceEntity>;
+export type VersionDescription = string;
 export interface AdHocFilteringOption {
   AvailabilityStatus?: DashboardBehavior;
 }
@@ -11874,6 +12008,7 @@ export const ExportToCSVOption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportToCSVOption>;
 export type DashboardUIState = "EXPANDED" | "COLLAPSED" | (string & {});
 export const DashboardUIState = /*@__PURE__*/ S.String;
+
 export interface SheetControlsOption {
   VisibilityState?: DashboardUIState;
 }
@@ -12054,6 +12189,7 @@ export const LinkSharingConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LinkSharingConfiguration",
 }) as any as S.Schema<LinkSharingConfiguration>;
+export type LinkEntityArn = string;
 export type LinkEntityArnList = string[];
 export const LinkEntityArnList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateDashboardRequest {
@@ -12126,6 +12262,13 @@ export const CreateDashboardResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDashboardResponse",
 }) as any as S.Schema<CreateDashboardResponse>;
+export type ResourceId = string;
+export type ResourceName = string;
+export type PhysicalTableId = string;
+export type RelationalTableCatalog = string;
+export type RelationalTableSchema = string;
+export type RelationalTableName = string;
+export type ColumnId = string;
 export type InputColumnDataType =
   | "STRING"
   | "INTEGER"
@@ -12137,8 +12280,10 @@ export type InputColumnDataType =
   | "SEMISTRUCT"
   | (string & {});
 export const InputColumnDataType = /*@__PURE__*/ S.String;
+
 export type ColumnDataSubType = "FLOAT" | "FIXED" | (string & {});
 export const ColumnDataSubType = /*@__PURE__*/ S.String;
+
 export interface InputColumn {
   Name: string;
   Id?: string;
@@ -12173,6 +12318,8 @@ export const RelationalTable = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RelationalTable",
 }) as any as S.Schema<RelationalTable>;
+export type CustomSqlName = string;
+export type SqlQuery = string | redacted.Redacted<string>;
 export interface CustomSql {
   DataSourceArn: string;
   Name: string;
@@ -12196,8 +12343,12 @@ export type FileFormat =
   | "JSON"
   | (string & {});
 export const FileFormat = /*@__PURE__*/ S.String;
+
+export type PositiveInteger = number;
 export type TextQualifier = "DOUBLE_QUOTE" | "SINGLE_QUOTE" | (string & {});
 export const TextQualifier = /*@__PURE__*/ S.String;
+
+export type Delimiter = string;
 export interface UploadSettings {
   Format?: FileFormat;
   StartFromRow?: number;
@@ -12228,6 +12379,8 @@ export const S3Source = /*@__PURE__*/ S.suspend(() =>
     InputColumns: InputColumnList,
   }),
 ).annotate({ identifier: "S3Source" }) as any as S.Schema<S3Source>;
+export type TablePathElementName = string;
+export type TablePathElementId = string;
 export interface TablePathElement {
   Name?: string;
   Id?: string;
@@ -12287,6 +12440,10 @@ export const PhysicalTableMap = /*@__PURE__*/ S.Record(
   S.String,
   PhysicalTable.pipe(S.optional),
 );
+export type LogicalTableId = string;
+export type LogicalTableAlias = string;
+export type TransformOperationAlias = string;
+export type DataSetEntityResourceId = string;
 export interface DataSetColumnIdMapping {
   SourceColumnId: string;
   TargetColumnId: string;
@@ -12337,6 +12494,8 @@ export type DataSetStringComparisonFilterOperator =
   | "ENDS_WITH"
   | (string & {});
 export const DataSetStringComparisonFilterOperator = /*@__PURE__*/ S.String;
+
+export type DataSetStringFilterStaticValue = string | redacted.Redacted<string>;
 export interface DataSetStringFilterValue {
   StaticValue?: string | redacted.Redacted<string>;
 }
@@ -12363,6 +12522,7 @@ export type DataSetStringListFilterOperator =
   | "EXCLUDE"
   | (string & {});
 export const DataSetStringListFilterOperator = /*@__PURE__*/ S.String;
+
 export type DataSetStringFilterStaticValueList = (
   | string
   | redacted.Redacted<string>
@@ -12414,6 +12574,7 @@ export type DataSetNumericComparisonFilterOperator =
   | "LESS_THAN_OR_EQUALS_TO"
   | (string & {});
 export const DataSetNumericComparisonFilterOperator = /*@__PURE__*/ S.String;
+
 export interface DataSetNumericFilterValue {
   StaticValue?: number;
 }
@@ -12474,6 +12635,7 @@ export type DataSetDateComparisonFilterOperator =
   | "AFTER_OR_EQUALS_TO"
   | (string & {});
 export const DataSetDateComparisonFilterOperator = /*@__PURE__*/ S.String;
+
 export interface DataSetDateFilterValue {
   StaticValue?: Date;
 }
@@ -12543,6 +12705,9 @@ export const FilterOperation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FilterOperation",
 }) as any as S.Schema<FilterOperation>;
+export type DataSetCalculatedFieldExpression =
+  | string
+  | redacted.Redacted<string>;
 export interface CalculatedColumn {
   ColumnName: string;
   ColumnId: string;
@@ -12589,6 +12754,8 @@ export type ColumnDataType =
   | "DATETIME"
   | (string & {});
 export const ColumnDataType = /*@__PURE__*/ S.String;
+
+export type TypeCastFormat = string;
 export interface CastColumnTypeOperation {
   ColumnName: string;
   NewColumnType: ColumnDataType;
@@ -12615,6 +12782,8 @@ export type GeoSpatialDataRole =
   | "LATITUDE"
   | (string & {});
 export const GeoSpatialDataRole = /*@__PURE__*/ S.String;
+
+export type ColumnDescriptiveText = string | redacted.Redacted<string>;
 export interface ColumnDescription {
   Text?: string | redacted.Redacted<string>;
 }
@@ -12649,6 +12818,7 @@ export type ColumnTagName =
   | "COLUMN_DESCRIPTION"
   | (string & {});
 export const ColumnTagName = /*@__PURE__*/ S.String;
+
 export type ColumnTagNames = ColumnTagName[];
 export const ColumnTagNames = /*@__PURE__*/ S.Array(ColumnTagName);
 export interface UntagColumnOperation {
@@ -12660,14 +12830,19 @@ export const UntagColumnOperation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagColumnOperation",
 }) as any as S.Schema<UntagColumnOperation>;
+export type DatasetParameterName = string;
+export type StringDatasetParameterDefaultValue = string;
 export type StringDatasetParameterValueList = string[];
 export const StringDatasetParameterValueList = /*@__PURE__*/ S.Array(S.String);
+export type DecimalDatasetParameterDefaultValue = number;
 export type DecimalDatasetParameterValueList = number[];
 export const DecimalDatasetParameterValueList = /*@__PURE__*/ S.Array(S.Number);
+export type DateTimeDatasetParameterDefaultValue = Date;
 export type DateTimeDatasetParameterValueList = Date[];
 export const DateTimeDatasetParameterValueList = /*@__PURE__*/ S.Array(
   S.Date.pipe(T.TimestampFormat("epoch-seconds")),
 );
+export type IntegerDatasetParameterDefaultValue = number;
 export type IntegerDatasetParameterValueList = number[];
 export const IntegerDatasetParameterValueList = /*@__PURE__*/ S.Array(S.Number);
 export interface NewDefaultValues {
@@ -12805,6 +12980,8 @@ export const JoinKeyProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JoinKeyProperties>;
 export type JoinType = "INNER" | "OUTER" | "LEFT" | "RIGHT" | (string & {});
 export const JoinType = /*@__PURE__*/ S.String;
+
+export type OnClause = string;
 export interface JoinInstruction {
   LeftOperand: string;
   RightOperand: string;
@@ -12858,8 +13035,11 @@ export const LogicalTableMap = /*@__PURE__*/ S.Record(
 );
 export type DataSetImportMode = "SPICE" | "DIRECT_QUERY" | (string & {});
 export const DataSetImportMode = /*@__PURE__*/ S.String;
+
+export type ColumnGroupName = string;
 export type GeoSpatialCountryCode = "US" | (string & {});
 export const GeoSpatialCountryCode = /*@__PURE__*/ S.String;
+
 export type ColumnList = string[];
 export const ColumnList = /*@__PURE__*/ S.Array(S.String);
 export interface GeoSpatialColumnGroup {
@@ -12884,6 +13064,8 @@ export const ColumnGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ColumnGroup" }) as any as S.Schema<ColumnGroup>;
 export type ColumnGroupList = ColumnGroup[];
 export const ColumnGroupList = /*@__PURE__*/ S.Array(ColumnGroup);
+export type FieldFolderPath = string;
+export type FieldFolderDescription = string;
 export type FolderColumnList = string[];
 export const FolderColumnList = /*@__PURE__*/ S.Array(S.String);
 export interface FieldFolder {
@@ -12906,13 +13088,16 @@ export type RowLevelPermissionPolicy =
   | "DENY_ACCESS"
   | (string & {});
 export const RowLevelPermissionPolicy = /*@__PURE__*/ S.String;
+
 export type RowLevelPermissionFormatVersion =
   | "VERSION_1"
   | "VERSION_2"
   | (string & {});
 export const RowLevelPermissionFormatVersion = /*@__PURE__*/ S.String;
+
 export type Status = "ENABLED" | "DISABLED" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
 export interface RowLevelPermissionDataSet {
   Namespace?: string;
   Arn: string;
@@ -12931,6 +13116,9 @@ export const RowLevelPermissionDataSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RowLevelPermissionDataSet",
 }) as any as S.Schema<RowLevelPermissionDataSet>;
+export type SessionTagKey = string;
+export type RowLevelPermissionTagDelimiter = string;
+export type SessionTagValue = string | redacted.Redacted<string>;
 export interface RowLevelPermissionTagRule {
   TagKey: string;
   ColumnName: string;
@@ -13009,11 +13197,13 @@ export const DataSetUsageConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataSetUsageConfiguration",
 }) as any as S.Schema<DataSetUsageConfiguration>;
+export type DatasetParameterId = string;
 export type DatasetParameterValueType =
   | "MULTI_VALUED"
   | "SINGLE_VALUED"
   | (string & {});
 export const DatasetParameterValueType = /*@__PURE__*/ S.String;
+
 export interface StringDatasetParameterDefaultValues {
   StaticValues?: string[];
 }
@@ -13153,6 +13343,7 @@ export const PerformanceConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PerformanceConfiguration>;
 export type DataSetUseAs = "RLS_RULES" | (string & {});
 export const DataSetUseAs = /*@__PURE__*/ S.String;
+
 export interface ParentDataSet {
   DataSetArn: string;
   InputColumns: InputColumn[];
@@ -13255,6 +13446,8 @@ export type JoinOperationType =
   | "RIGHT"
   | (string & {});
 export const JoinOperationType = /*@__PURE__*/ S.String;
+
+export type JoinOperationOnClause = string | redacted.Redacted<string>;
 export interface OutputColumnNameOverride {
   SourceColumnName?: string;
   OutputColumnName: string;
@@ -13310,6 +13503,7 @@ export type DataPrepSimpleAggregationFunctionType =
   | "MIN"
   | (string & {});
 export const DataPrepSimpleAggregationFunctionType = /*@__PURE__*/ S.String;
+
 export interface DataPrepSimpleAggregationFunction {
   InputColumnName?: string;
   FunctionType: DataPrepSimpleAggregationFunctionType;
@@ -13322,6 +13516,7 @@ export const DataPrepSimpleAggregationFunction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataPrepSimpleAggregationFunction",
 }) as any as S.Schema<DataPrepSimpleAggregationFunction>;
+export type Separator = string;
 export interface DataPrepListAggregationFunction {
   InputColumnName?: string;
   Separator: string;
@@ -13388,6 +13583,7 @@ export const ValueColumnConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ValueColumnConfiguration",
 }) as any as S.Schema<ValueColumnConfiguration>;
+export type CellValue = string;
 export interface PivotedLabel {
   LabelName: string;
   NewColumnName: string;
@@ -13524,6 +13720,7 @@ export const TransformStepMap = /*@__PURE__*/ S.Record(
   S.String,
   TransformStep.pipe(S.optional),
 );
+export type DestinationTableAlias = string;
 export interface DestinationTableSource {
   TransformOperationId: string;
 }
@@ -13562,6 +13759,7 @@ export const DataPrepConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataPrepConfiguration",
 }) as any as S.Schema<DataPrepConfiguration>;
+export type SemanticTableAlias = string;
 export interface RowLevelPermissionConfiguration {
   TagConfiguration?: RowLevelPermissionTagConfiguration;
   RowLevelPermissionDataSet?: RowLevelPermissionDataSet;
@@ -13576,6 +13774,7 @@ export const RowLevelPermissionConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RowLevelPermissionConfiguration>;
 export type ColumnNameList = string[];
 export const ColumnNameList = /*@__PURE__*/ S.Array(S.String);
+export type AdditionalNotesText = string | redacted.Redacted<string>;
 export interface AdditionalNotes {
   Text?: string | redacted.Redacted<string>;
 }
@@ -13655,6 +13854,7 @@ export const SemanticTableMap = /*@__PURE__*/ S.Record(
   S.String,
   SemanticTable.pipe(S.optional),
 );
+export type DataSetDescriptiveText = string | redacted.Redacted<string>;
 export interface DataSetSemanticDescription {
   Text: string | redacted.Redacted<string>;
 }
@@ -13663,6 +13863,8 @@ export const DataSetSemanticDescription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataSetSemanticDescription",
 }) as any as S.Schema<DataSetSemanticDescription>;
+export type InlineCustomInstructionText = string | redacted.Redacted<string>;
+export type UploadedDocumentName = string;
 export interface UploadedDocumentMetadata {
   Name?: string;
 }
@@ -13841,6 +14043,8 @@ export type DataSourceType =
   | "QBUSINESS"
   | (string & {});
 export const DataSourceType = /*@__PURE__*/ S.String;
+
+export type Domain = string;
 export interface AmazonElasticsearchParameters {
   Domain: string;
 }
@@ -13849,6 +14053,7 @@ export const AmazonElasticsearchParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AmazonElasticsearchParameters",
 }) as any as S.Schema<AmazonElasticsearchParameters>;
+export type WorkGroup = string;
 export interface IdentityCenterConfiguration {
   EnableIdentityPropagation?: boolean;
 }
@@ -13873,6 +14078,9 @@ export const AthenaParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AthenaParameters",
 }) as any as S.Schema<AthenaParameters>;
+export type Host = string;
+export type Port = number;
+export type Database = string;
 export interface AuroraParameters {
   Host: string;
   Port: number;
@@ -13893,6 +14101,7 @@ export const AuroraPostgreSqlParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AuroraPostgreSqlParameters",
 }) as any as S.Schema<AuroraPostgreSqlParameters>;
+export type DataSetName = string;
 export interface AwsIotAnalyticsParameters {
   DataSetName: string;
 }
@@ -13901,6 +14110,7 @@ export const AwsIotAnalyticsParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AwsIotAnalyticsParameters",
 }) as any as S.Schema<AwsIotAnalyticsParameters>;
+export type SiteBaseUrl = string;
 export interface JiraParameters {
   SiteBaseUrl: string;
 }
@@ -13953,6 +14163,7 @@ export const PostgreSqlParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PostgreSqlParameters",
 }) as any as S.Schema<PostgreSqlParameters>;
+export type Catalog = string;
 export interface PrestoParameters {
   Host: string;
   Port: number;
@@ -13963,6 +14174,7 @@ export const PrestoParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PrestoParameters",
 }) as any as S.Schema<PrestoParameters>;
+export type InstanceId = string;
 export interface RdsParameters {
   InstanceId: string;
   Database: string;
@@ -13970,6 +14182,10 @@ export interface RdsParameters {
 export const RdsParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ InstanceId: S.String, Database: S.String }),
 ).annotate({ identifier: "RdsParameters" }) as any as S.Schema<RdsParameters>;
+export type OptionalPort = number;
+export type ClusterId = string;
+export type DatabaseUser = string;
+export type DatabaseGroup = string;
 export type DatabaseGroupList = string[];
 export const DatabaseGroupList = /*@__PURE__*/ S.Array(S.String);
 export interface RedshiftIAMParameters {
@@ -14008,6 +14224,8 @@ export const RedshiftParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RedshiftParameters",
 }) as any as S.Schema<RedshiftParameters>;
+export type S3Bucket = string;
+export type S3Key = string;
 export interface ManifestFileLocation {
   Bucket: string;
   Key: string;
@@ -14027,6 +14245,7 @@ export const S3Parameters = /*@__PURE__*/ S.suspend(() =>
     RoleArn: S.optional(S.String),
   }),
 ).annotate({ identifier: "S3Parameters" }) as any as S.Schema<S3Parameters>;
+export type S3TableBucketArn = string;
 export interface S3TablesParameters {
   TableBucketArn?: string;
 }
@@ -14035,6 +14254,7 @@ export const S3TablesParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3TablesParameters",
 }) as any as S.Schema<S3TablesParameters>;
+export type MetadataFilesLocation = string;
 export interface S3KnowledgeBaseParameters {
   RoleArn?: string;
   BucketUrl: string;
@@ -14057,6 +14277,7 @@ export const ServiceNowParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ServiceNowParameters",
 }) as any as S.Schema<ServiceNowParameters>;
+export type Warehouse = string;
 export type AuthenticationType =
   | "PASSWORD"
   | "KEYPAIR"
@@ -14064,6 +14285,10 @@ export type AuthenticationType =
   | "X509"
   | (string & {});
 export const AuthenticationType = /*@__PURE__*/ S.String;
+
+export type DatabaseAccessControlRole = string;
+export type TokenProviderUrl = string;
+export type OAuthScope = string;
 export interface VpcConnectionProperties {
   VpcConnectionArn: string;
 }
@@ -14072,6 +14297,8 @@ export const VpcConnectionProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VpcConnectionProperties",
 }) as any as S.Schema<VpcConnectionProperties>;
+export type IdentityProviderResourceUri = string;
+export type CACertificatesBundleS3Uri = string;
 export interface OAuthParameters {
   TokenProviderUrl: string;
   OAuthScope?: string;
@@ -14141,6 +14368,7 @@ export const TeradataParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TeradataParameters",
 }) as any as S.Schema<TeradataParameters>;
+export type Query = string;
 export interface TwitterParameters {
   Query: string;
   MaxRows: number;
@@ -14167,6 +14395,7 @@ export const ExasolParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExasolParameters",
 }) as any as S.Schema<ExasolParameters>;
+export type SqlEndpointPath = string;
 export interface DatabricksParameters {
   Host: string;
   Port: number;
@@ -14179,6 +14408,7 @@ export const DatabricksParameters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabricksParameters>;
 export type StarburstProductType = "GALAXY" | "ENTERPRISE" | (string & {});
 export const StarburstProductType = /*@__PURE__*/ S.String;
+
 export interface StarburstParameters {
   Host: string;
   Port: number;
@@ -14211,6 +14441,8 @@ export const TrinoParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TrinoParameters",
 }) as any as S.Schema<TrinoParameters>;
+export type ProjectId = string;
+export type DataSetRegion = string;
 export interface BigQueryParameters {
   ProjectId: string;
   DataSetRegion?: string;
@@ -14251,6 +14483,8 @@ export type WebCrawlerAuthType =
   | "SAML"
   | (string & {});
 export const WebCrawlerAuthType = /*@__PURE__*/ S.String;
+
+export type XpathFields = string;
 export interface WebCrawlerParameters {
   WebCrawlerAuthType: WebCrawlerAuthType;
   UsernameFieldXpath?: string;
@@ -14283,6 +14517,7 @@ export const ConfluenceParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConfluenceParameters",
 }) as any as S.Schema<ConfluenceParameters>;
+export type ApplicationArn = string;
 export interface QBusinessParameters {
   ApplicationArn: string;
 }
@@ -15482,6 +15717,8 @@ export const DataSourceParameters = /*@__PURE__*/ S.Union([
   S.Struct({ ConfluenceParameters: ConfluenceParameters }),
   S.Struct({ QBusinessParameters: QBusinessParameters }),
 ]);
+export type DbUsername = string;
+export type Password = string;
 export type DataSourceParametersList = DataSourceParameters[];
 export const DataSourceParametersList =
   /*@__PURE__*/ S.Array(DataSourceParameters);
@@ -15497,6 +15734,10 @@ export const CredentialPair = /*@__PURE__*/ S.suspend(() =>
     AlternateDataSourceParameters: S.optional(DataSourceParametersList),
   }),
 ).annotate({ identifier: "CredentialPair" }) as any as S.Schema<CredentialPair>;
+export type CopySourceArn = string;
+export type SecretArn = string;
+export type PrivateKey = string | redacted.Redacted<string>;
+export type PrivateKeyPassphrase = string | redacted.Redacted<string>;
 export interface KeyPairCredentials {
   KeyPairUsername: string;
   PrivateKey: string | redacted.Redacted<string>;
@@ -15520,6 +15761,9 @@ export const WebProxyCredentials = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WebProxyCredentials",
 }) as any as S.Schema<WebProxyCredentials>;
+export type OAuthClientId = string | redacted.Redacted<string>;
+export type OAuthClientSecret = string | redacted.Redacted<string>;
+export type OAuthUsername = string | redacted.Redacted<string>;
 export interface OAuthClientCredentials {
   ClientId?: string | redacted.Redacted<string>;
   ClientSecret?: string | redacted.Redacted<string>;
@@ -15617,8 +15861,14 @@ export const CreateDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDataSourceResponse",
 }) as any as S.Schema<CreateDataSourceResponse>;
+export type AccountId = string;
+export type TitleInput = string;
+export type FlowDescriptionInput = string;
+export type SensitiveDocument = unknown;
+export type ActionsListMemberString = string;
 export type ActionsList = string[];
 export const ActionsList = /*@__PURE__*/ S.Array(S.String);
+export type PermissionPrincipalString = string;
 export interface Permission {
   Actions: string[];
   Principal: string;
@@ -15628,6 +15878,7 @@ export const Permission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Permission" }) as any as S.Schema<Permission>;
 export type PermissionsList = Permission[];
 export const PermissionsList = /*@__PURE__*/ S.Array(Permission);
+export type CreateFlowRequestClientTokenString = string;
 export interface CreateFlowRequest {
   AwsAccountId: string;
   Name: string;
@@ -15657,6 +15908,7 @@ export const CreateFlowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFlowRequest",
 }) as any as S.Schema<CreateFlowRequest>;
+export type FlowId = string;
 export interface CreateFlowResponse {
   Arn: string;
   FlowId: string;
@@ -15673,10 +15925,14 @@ export const CreateFlowResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFlowResponse",
 }) as any as S.Schema<CreateFlowResponse>;
+export type RestrictiveResourceId = string;
+export type FolderName = string;
 export type FolderType = "SHARED" | "RESTRICTED" | (string & {});
 export const FolderType = /*@__PURE__*/ S.String;
+
 export type SharingModel = "ACCOUNT" | "NAMESPACE" | (string & {});
 export const SharingModel = /*@__PURE__*/ S.String;
+
 export interface CreateFolderRequest {
   AwsAccountId: string;
   FolderId: string;
@@ -15737,6 +15993,7 @@ export type MemberType =
   | "TOPIC"
   | (string & {});
 export const MemberType = /*@__PURE__*/ S.String;
+
 export interface CreateFolderMembershipRequest {
   AwsAccountId: string;
   FolderId: string;
@@ -15789,6 +16046,8 @@ export const CreateFolderMembershipResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFolderMembershipResponse",
 }) as any as S.Schema<CreateFolderMembershipResponse>;
+export type GroupName = string;
+export type GroupDescription = string;
 export interface CreateGroupRequest {
   GroupName: string;
   Description?: string;
@@ -15845,6 +16104,7 @@ export const CreateGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGroupResponse",
 }) as any as S.Schema<CreateGroupResponse>;
+export type GroupMemberName = string;
 export interface CreateGroupMembershipRequest {
   MemberName: string;
   GroupName: string;
@@ -15894,8 +16154,11 @@ export const CreateGroupMembershipResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGroupMembershipResponse",
 }) as any as S.Schema<CreateGroupMembershipResponse>;
+export type IAMPolicyAssignmentName = string;
 export type AssignmentStatus = "ENABLED" | "DRAFT" | "DISABLED" | (string & {});
 export const AssignmentStatus = /*@__PURE__*/ S.String;
+
+export type IdentityName = string;
 export type IdentityNameList = string[];
 export const IdentityNameList = /*@__PURE__*/ S.Array(S.String);
 export type IdentityMap = { [key: string]: string[] | undefined };
@@ -15962,6 +16225,7 @@ export type IngestionType =
   | "FULL_REFRESH"
   | (string & {});
 export const IngestionType = /*@__PURE__*/ S.String;
+
 export interface CreateIngestionRequest {
   DataSetId: string;
   IngestionId: string;
@@ -15999,6 +16263,7 @@ export type IngestionStatus =
   | "CANCELLED"
   | (string & {});
 export const IngestionStatus = /*@__PURE__*/ S.String;
+
 export interface CreateIngestionResponse {
   Arn?: string;
   IngestionId?: string;
@@ -16019,6 +16284,7 @@ export const CreateIngestionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateIngestionResponse>;
 export type IdentityStore = "QUICKSIGHT" | (string & {});
 export const IdentityStore = /*@__PURE__*/ S.String;
+
 export interface CreateNamespaceRequest {
   AwsAccountId: string;
   Namespace: string;
@@ -16052,6 +16318,7 @@ export type NamespaceStatus =
   | "NON_RETRYABLE_FAILURE"
   | (string & {});
 export const NamespaceStatus = /*@__PURE__*/ S.String;
+
 export interface CreateNamespaceResponse {
   Arn?: string;
   Name?: string;
@@ -16074,8 +16341,13 @@ export const CreateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateNamespaceResponse",
 }) as any as S.Schema<CreateNamespaceResponse>;
+export type OAuthClientApplicationId = string;
 export type OAuthClientAuthenticationType = "TOKEN" | (string & {});
 export const OAuthClientAuthenticationType = /*@__PURE__*/ S.String;
+
+export type OAuthTokenEndpointUrl = string | redacted.Redacted<string>;
+export type OAuthAuthorizationEndpointUrl = string | redacted.Redacted<string>;
+export type OAuthScopesString = string;
 export interface CreateOAuthClientApplicationRequest {
   AwsAccountId: string;
   OAuthClientApplicationId: string;
@@ -16150,6 +16422,7 @@ export type RefreshInterval =
   | "MONTHLY"
   | (string & {});
 export const RefreshInterval = /*@__PURE__*/ S.String;
+
 export type DayOfWeek =
   | "SUNDAY"
   | "MONDAY"
@@ -16160,6 +16433,8 @@ export type DayOfWeek =
   | "SATURDAY"
   | (string & {});
 export const DayOfWeek = /*@__PURE__*/ S.String;
+
+export type DayOfMonth = string;
 export interface ScheduleRefreshOnEntity {
   DayOfWeek?: DayOfWeek;
   DayOfMonth?: string;
@@ -16259,6 +16534,7 @@ export type Role =
   | "READER_PRO"
   | (string & {});
 export const Role = /*@__PURE__*/ S.String;
+
 export interface CreateRoleMembershipRequest {
   MemberName: string;
   AwsAccountId: string;
@@ -16299,6 +16575,9 @@ export const CreateRoleMembershipResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRoleMembershipResponse",
 }) as any as S.Schema<CreateRoleMembershipResponse>;
+export type PublicSpaceId = string;
+export type SpaceName = string;
+export type SpaceDescription = string | redacted.Redacted<string>;
 export interface CreateSpaceRequest {
   AwsAccountId: string;
   SpaceId: string;
@@ -16324,6 +16603,7 @@ export const CreateSpaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSpaceRequest",
 }) as any as S.Schema<CreateSpaceRequest>;
+export type PublicSpaceArn = string;
 export interface CreateSpaceResponse {
   spaceId: string;
   spaceArn?: string;
@@ -16338,6 +16618,7 @@ export const CreateSpaceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSpaceResponse",
 }) as any as S.Schema<CreateSpaceResponse>;
+export type TemplateName = string;
 export interface TemplateSourceAnalysis {
   Arn: string;
   DataSetReferences: DataSetReference[];
@@ -16518,6 +16799,8 @@ export const CreateTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTemplateResponse",
 }) as any as S.Schema<CreateTemplateResponse>;
+export type AliasName = string;
+export type VersionNumber = number;
 export interface CreateTemplateAliasRequest {
   AwsAccountId: string;
   TemplateId: string;
@@ -16572,6 +16855,7 @@ export const CreateTemplateAliasResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTemplateAliasResponse",
 }) as any as S.Schema<CreateTemplateAliasResponse>;
+export type ThemeName = string;
 export type ColorList = string[];
 export const ColorList = /*@__PURE__*/ S.Array(S.String);
 export interface DataColorPalette {
@@ -16626,6 +16910,7 @@ export const UIColorPalette = /*@__PURE__*/ S.suspend(() =>
     MeasureForeground: S.optional(S.String),
   }),
 ).annotate({ identifier: "UIColorPalette" }) as any as S.Schema<UIColorPalette>;
+export type Color = string;
 export interface BorderStyle {
   Color?: string;
   Show?: boolean;
@@ -16707,6 +16992,7 @@ export type FontList = Font[];
 export const FontList = /*@__PURE__*/ S.Array(Font);
 export type TextTransform = "CAPITALIZE" | (string & {});
 export const TextTransform = /*@__PURE__*/ S.String;
+
 export interface VisualTitleFontConfiguration {
   FontConfiguration?: FontConfiguration;
   TextAlignment?: HorizontalTextAlignment;
@@ -16904,6 +17190,7 @@ export type TopicUserExperienceVersion =
   | "NEW_READER_EXPERIENCE"
   | (string & {});
 export const TopicUserExperienceVersion = /*@__PURE__*/ S.String;
+
 export interface DataAggregation {
   DatasetRowDateGranularity?: TopicTimeGranularity;
   DefaultDateColumnName?: string;
@@ -16927,14 +17214,17 @@ export type NamedFilterType =
   | "NULL_FILTER"
   | (string & {});
 export const NamedFilterType = /*@__PURE__*/ S.String;
+
 export type CategoryFilterFunction = "EXACT" | "CONTAINS" | (string & {});
 export const CategoryFilterFunction = /*@__PURE__*/ S.String;
+
 export type CategoryFilterType =
   | "CUSTOM_FILTER"
   | "CUSTOM_FILTER_LIST"
   | "FILTER_LIST"
   | (string & {});
 export const CategoryFilterType = /*@__PURE__*/ S.String;
+
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface CollectiveConstant {
@@ -17002,6 +17292,7 @@ export type NamedFilterAggType =
   | "VARP"
   | (string & {});
 export const NamedFilterAggType = /*@__PURE__*/ S.String;
+
 export interface TopicNumericEqualityFilter {
   Constant?: TopicSingularFilterConstant;
   Aggregation?: NamedFilterAggType;
@@ -17067,6 +17358,7 @@ export type TopicRelativeDateFilterFunction =
   | "NOW"
   | (string & {});
 export const TopicRelativeDateFilterFunction = /*@__PURE__*/ S.String;
+
 export interface TopicRelativeDateFilter {
   TimeGranularity?: TopicTimeGranularity;
   RelativeDateFilterFunction?: TopicRelativeDateFilterFunction;
@@ -17087,6 +17379,7 @@ export type NullFilterType =
   | "NULLS_ONLY"
   | (string & {});
 export const NullFilterType = /*@__PURE__*/ S.String;
+
 export interface TopicNullFilter {
   NullFilterType?: NullFilterType;
   Constant?: TopicSingularFilterConstant;
@@ -17135,6 +17428,7 @@ export type TopicFilters = TopicFilter[];
 export const TopicFilters = /*@__PURE__*/ S.Array(TopicFilter);
 export type ColumnDataRole = "DIMENSION" | "MEASURE" | (string & {});
 export const ColumnDataRole = /*@__PURE__*/ S.String;
+
 export type DefaultAggregation =
   | "SUM"
   | "MAX"
@@ -17149,14 +17443,17 @@ export type DefaultAggregation =
   | "VARP"
   | (string & {});
 export const DefaultAggregation = /*@__PURE__*/ S.String;
+
 export type ColumnOrderingType =
   | "GREATER_IS_BETTER"
   | "LESSER_IS_BETTER"
   | "SPECIFIED"
   | (string & {});
 export const ColumnOrderingType = /*@__PURE__*/ S.String;
+
 export type UndefinedSpecifiedValueType = "LEAST" | "MOST" | (string & {});
 export const UndefinedSpecifiedValueType = /*@__PURE__*/ S.String;
+
 export interface ComparativeOrder {
   UseOrdering?: ColumnOrderingType;
   SpecifedOrder?: string[];
@@ -17211,6 +17508,7 @@ export type AuthorSpecifiedAggregation =
   | "PERCENTILE"
   | (string & {});
 export const AuthorSpecifiedAggregation = /*@__PURE__*/ S.String;
+
 export type AuthorSpecifiedAggregations = AuthorSpecifiedAggregation[];
 export const AuthorSpecifiedAggregations = /*@__PURE__*/ S.Array(
   AuthorSpecifiedAggregation,
@@ -17344,8 +17642,10 @@ export const SemanticEntityType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SemanticEntityType>;
 export type PropertyRole = "PRIMARY" | "ID" | (string & {});
 export const PropertyRole = /*@__PURE__*/ S.String;
+
 export type PropertyUsage = "INHERIT" | "DIMENSION" | "MEASURE" | (string & {});
 export const PropertyUsage = /*@__PURE__*/ S.String;
+
 export type NamedEntityAggType =
   | "SUM"
   | "MIN"
@@ -17362,6 +17662,7 @@ export type NamedEntityAggType =
   | "CUSTOM"
   | (string & {});
 export const NamedEntityAggType = /*@__PURE__*/ S.String;
+
 export type AggregationFunctionParameters = {
   [key: string]: string | undefined;
 };
@@ -17473,6 +17774,7 @@ export const TopicDetails = /*@__PURE__*/ S.suspend(() =>
     ConfigOptions: S.optional(TopicConfigOptions),
   }),
 ).annotate({ identifier: "TopicDetails" }) as any as S.Schema<TopicDetails>;
+export type CustomInstructionsString = string | redacted.Redacted<string>;
 export interface CustomInstructions {
   CustomInstructionsString: string | redacted.Redacted<string>;
 }
@@ -17535,6 +17837,7 @@ export type TopicScheduleType =
   | "MONTHLY"
   | (string & {});
 export const TopicScheduleType = /*@__PURE__*/ S.String;
+
 export interface TopicRefreshSchedule {
   IsEnabled: boolean;
   BasedOnSpiceSchedule: boolean;
@@ -17603,10 +17906,14 @@ export const CreateTopicRefreshScheduleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTopicRefreshScheduleResponse",
 }) as any as S.Schema<CreateTopicRefreshScheduleResponse>;
+export type VPCConnectionResourceIdRestricted = string;
+export type SubnetId = string;
 export type SubnetIdList = string[];
 export const SubnetIdList = /*@__PURE__*/ S.Array(S.String);
+export type SecurityGroupId = string;
 export type SecurityGroupIdList = string[];
 export const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
+export type IPv4Address = string;
 export type DnsResolverList = string[];
 export const DnsResolverList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateVPCConnectionRequest {
@@ -17657,12 +17964,14 @@ export type VPCConnectionResourceStatus =
   | "DELETED"
   | (string & {});
 export const VPCConnectionResourceStatus = /*@__PURE__*/ S.String;
+
 export type VPCConnectionAvailabilityStatus =
   | "AVAILABLE"
   | "UNAVAILABLE"
   | "PARTIALLY_AVAILABLE"
   | (string & {});
 export const VPCConnectionAvailabilityStatus = /*@__PURE__*/ S.String;
+
 export interface CreateVPCConnectionResponse {
   Arn?: string;
   VPCConnectionId?: string;
@@ -17851,6 +18160,7 @@ export const DeleteAgentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteAgentResponse",
 }) as any as S.Schema<DeleteAgentResponse>;
+export type RecoveryWindowInDays = number;
 export interface DeleteAnalysisRequest {
   AwsAccountId: string;
   AnalysisId: string;
@@ -18430,6 +18740,7 @@ export const DeleteIAMPolicyAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIAMPolicyAssignmentResponse>;
 export type ServiceType = "REDSHIFT" | "QBUSINESS" | "ATHENA" | (string & {});
 export const ServiceType = /*@__PURE__*/ S.String;
+
 export interface DeleteIdentityPropagationConfigRequest {
   AwsAccountId: string;
   Service: ServiceType;
@@ -18998,6 +19309,7 @@ export const DeleteTopicRefreshScheduleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteTopicRefreshScheduleResponse",
 }) as any as S.Schema<DeleteTopicRefreshScheduleResponse>;
+export type UserName = string;
 export interface DeleteUserRequest {
   UserName: string;
   AwsAccountId: string;
@@ -19112,6 +19424,7 @@ export const DeleteUserCustomPermissionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteUserCustomPermissionResponse",
 }) as any as S.Schema<DeleteUserCustomPermissionResponse>;
+export type VPCConnectionResourceIdUnrestricted = string;
 export interface DeleteVPCConnectionRequest {
   AwsAccountId: string;
   VPCConnectionId: string;
@@ -19362,6 +19675,7 @@ export const DescribeActionConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeActionConnectorRequest>;
 export type ActionConnectorErrorType = "INTERNAL_FAILURE" | (string & {});
 export const ActionConnectorErrorType = /*@__PURE__*/ S.String;
+
 export interface ActionConnectorError {
   Message?: string;
   Type?: ActionConnectorErrorType;
@@ -19474,6 +19788,7 @@ export const ReadNoneConnectionMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ReadNoneConnectionMetadata",
 }) as any as S.Schema<ReadNoneConnectionMetadata>;
+export type ResourceArn = string;
 export interface ReadIamConnectionMetadata {
   RoleArn: string;
   SourceArn: string;
@@ -19554,6 +19869,7 @@ export const ReadAuthConfig = /*@__PURE__*/ S.suspend(() =>
     AuthenticationMetadata: ReadAuthenticationMetadata,
   }),
 ).annotate({ identifier: "ReadAuthConfig" }) as any as S.Schema<ReadAuthConfig>;
+export type ActionId = string;
 export type ActionIdList = string[];
 export const ActionIdList = /*@__PURE__*/ S.Array(S.String);
 export interface ActionConnector {
@@ -19674,6 +19990,7 @@ export type AgentSpacesList = string[];
 export const AgentSpacesList = /*@__PURE__*/ S.Array(S.String);
 export type AgentActionConnectorsList = string[];
 export const AgentActionConnectorsList = /*@__PURE__*/ S.Array(S.String);
+export type SensitiveText = string | redacted.Redacted<string>;
 export interface CustomPromptInterface {
   ModelProfileId: string;
   SubscriptionId: string;
@@ -19824,6 +20141,7 @@ export type AnalysisErrorType =
   | "COLUMN_REPLACEMENT_MISSING"
   | (string & {});
 export const AnalysisErrorType = /*@__PURE__*/ S.String;
+
 export interface Entity {
   Path?: string;
 }
@@ -20028,6 +20346,8 @@ export type AssetBundleExportJobStatus =
   | "FAILED"
   | (string & {});
 export const AssetBundleExportJobStatus = /*@__PURE__*/ S.String;
+
+export type SensitiveS3Uri = string | redacted.Redacted<string>;
 export interface AssetBundleExportJobError {
   Arn?: string;
   Type?: string;
@@ -20053,6 +20373,7 @@ export type AssetBundleExportFormat =
   | "QUICKSIGHT_JSON"
   | (string & {});
 export const AssetBundleExportFormat = /*@__PURE__*/ S.String;
+
 export interface AssetBundleExportJobResourceIdOverrideConfiguration {
   PrefixForAllResources?: boolean;
 }
@@ -20069,6 +20390,7 @@ export type AssetBundleExportJobVPCConnectionPropertyToOverride =
   | (string & {});
 export const AssetBundleExportJobVPCConnectionPropertyToOverride =
   /*@__PURE__*/ S.String;
+
 export type AssetBundleExportJobVPCConnectionPropertyToOverrideList =
   AssetBundleExportJobVPCConnectionPropertyToOverride[];
 export const AssetBundleExportJobVPCConnectionPropertyToOverrideList =
@@ -20095,6 +20417,7 @@ export type AssetBundleExportJobRefreshSchedulePropertyToOverride =
   | (string & {});
 export const AssetBundleExportJobRefreshSchedulePropertyToOverride =
   /*@__PURE__*/ S.String;
+
 export type AssetBundleExportJobRefreshSchedulePropertyToOverrideList =
   AssetBundleExportJobRefreshSchedulePropertyToOverride[];
 export const AssetBundleExportJobRefreshSchedulePropertyToOverrideList =
@@ -20138,6 +20461,7 @@ export type AssetBundleExportJobDataSourcePropertyToOverride =
   | (string & {});
 export const AssetBundleExportJobDataSourcePropertyToOverride =
   /*@__PURE__*/ S.String;
+
 export type AssetBundleExportJobDataSourcePropertyToOverrideList =
   AssetBundleExportJobDataSourcePropertyToOverride[];
 export const AssetBundleExportJobDataSourcePropertyToOverrideList =
@@ -20165,6 +20489,7 @@ export type AssetBundleExportJobDataSetPropertyToOverride =
   | (string & {});
 export const AssetBundleExportJobDataSetPropertyToOverride =
   /*@__PURE__*/ S.String;
+
 export type AssetBundleExportJobDataSetPropertyToOverrideList =
   AssetBundleExportJobDataSetPropertyToOverride[];
 export const AssetBundleExportJobDataSetPropertyToOverrideList =
@@ -20191,6 +20516,7 @@ export type AssetBundleExportJobThemePropertyToOverride =
   | (string & {});
 export const AssetBundleExportJobThemePropertyToOverride =
   /*@__PURE__*/ S.String;
+
 export type AssetBundleExportJobThemePropertyToOverrideList =
   AssetBundleExportJobThemePropertyToOverride[];
 export const AssetBundleExportJobThemePropertyToOverrideList =
@@ -20217,6 +20543,7 @@ export type AssetBundleExportJobAnalysisPropertyToOverride =
   | (string & {});
 export const AssetBundleExportJobAnalysisPropertyToOverride =
   /*@__PURE__*/ S.String;
+
 export type AssetBundleExportJobAnalysisPropertyToOverrideList =
   AssetBundleExportJobAnalysisPropertyToOverride[];
 export const AssetBundleExportJobAnalysisPropertyToOverrideList =
@@ -20243,6 +20570,7 @@ export type AssetBundleExportJobDashboardPropertyToOverride =
   | (string & {});
 export const AssetBundleExportJobDashboardPropertyToOverride =
   /*@__PURE__*/ S.String;
+
 export type AssetBundleExportJobDashboardPropertyToOverrideList =
   AssetBundleExportJobDashboardPropertyToOverride[];
 export const AssetBundleExportJobDashboardPropertyToOverrideList =
@@ -20270,6 +20598,7 @@ export type AssetBundleExportJobFolderPropertyToOverride =
   | (string & {});
 export const AssetBundleExportJobFolderPropertyToOverride =
   /*@__PURE__*/ S.String;
+
 export type AssetBundleExportJobFolderPropertyToOverrideList =
   AssetBundleExportJobFolderPropertyToOverride[];
 export const AssetBundleExportJobFolderPropertyToOverrideList =
@@ -20355,6 +20684,7 @@ export type IncludeFolderMembers =
   | "NONE"
   | (string & {});
 export const IncludeFolderMembers = /*@__PURE__*/ S.String;
+
 export interface DescribeAssetBundleExportJobResponse {
   JobStatus?: AssetBundleExportJobStatus;
   DownloadUrl?: string | redacted.Redacted<string>;
@@ -20440,6 +20770,7 @@ export type AssetBundleImportJobStatus =
   | "FAILED_ROLLBACK_ERROR"
   | (string & {});
 export const AssetBundleImportJobStatus = /*@__PURE__*/ S.String;
+
 export interface AssetBundleImportJobError {
   Arn?: string;
   Type?: string;
@@ -20458,6 +20789,7 @@ export type AssetBundleImportJobErrorList = AssetBundleImportJobError[];
 export const AssetBundleImportJobErrorList = /*@__PURE__*/ S.Array(
   AssetBundleImportJobError,
 );
+export type S3Uri = string;
 export interface AssetBundleImportSourceDescription {
   Body?: string | redacted.Redacted<string>;
   S3Uri?: string;
@@ -20570,8 +20902,10 @@ export type AssetBundleImportJobDataSourceOverrideParametersList =
   AssetBundleImportJobDataSourceOverrideParameters[];
 export const AssetBundleImportJobDataSourceOverrideParametersList =
   /*@__PURE__*/ S.Array(AssetBundleImportJobDataSourceOverrideParameters);
+export type PositiveLong = number;
 export type LookbackWindowSizeUnit = "HOUR" | "DAY" | "WEEK" | (string & {});
 export const LookbackWindowSizeUnit = /*@__PURE__*/ S.String;
+
 export interface LookbackWindow {
   ColumnName: string;
   Size: number;
@@ -20602,6 +20936,7 @@ export const RefreshConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RefreshConfiguration>;
 export type RefreshFailureAlertStatus = "ENABLED" | "DISABLED" | (string & {});
 export const RefreshFailureAlertStatus = /*@__PURE__*/ S.String;
+
 export interface RefreshFailureEmailAlert {
   AlertStatus?: RefreshFailureAlertStatus;
 }
@@ -20752,6 +21087,8 @@ export type AssetBundleImportFailureAction =
   | "ROLLBACK"
   | (string & {});
 export const AssetBundleImportFailureAction = /*@__PURE__*/ S.String;
+
+export type AssetBundleRestrictiveResourceId = string;
 export type AssetBundleRestrictiveResourceIdList = string[];
 export const AssetBundleRestrictiveResourceIdList = /*@__PURE__*/ S.Array(
   S.String,
@@ -21114,6 +21451,7 @@ export const DescribeAssetBundleImportJobResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeAssetBundleImportJobResponse",
 }) as any as S.Schema<DescribeAssetBundleImportJobResponse>;
+export type AutomateId = string;
 export interface DescribeAutomationJobRequest {
   AwsAccountId: string;
   AutomationGroupId: string;
@@ -21158,6 +21496,8 @@ export type AutomationJobStatus =
   | "STOPPED"
   | (string & {});
 export const AutomationJobStatus = /*@__PURE__*/ S.String;
+
+export type SensitiveIOPayload = string | redacted.Redacted<string>;
 export interface DescribeAutomationJobResponse {
   Arn: string;
   CreatedAt?: Date;
@@ -21384,6 +21724,7 @@ export type DashboardErrorType =
   | "COLUMN_REPLACEMENT_MISSING"
   | (string & {});
 export const DashboardErrorType = /*@__PURE__*/ S.String;
+
 export interface DashboardError {
   Type?: DashboardErrorType;
   Message?: string;
@@ -21618,6 +21959,7 @@ export type SnapshotFileSheetSelectionScope =
   | "SELECTED_VISUALS"
   | (string & {});
 export const SnapshotFileSheetSelectionScope = /*@__PURE__*/ S.String;
+
 export type SnapshotFileSheetSelectionVisualIdList = string[];
 export const SnapshotFileSheetSelectionVisualIdList = /*@__PURE__*/ S.Array(
   S.String,
@@ -21642,6 +21984,7 @@ export const SnapshotFileSheetSelectionList = /*@__PURE__*/ S.Array(
 );
 export type SnapshotFileFormatType = "CSV" | "PDF" | "EXCEL" | (string & {});
 export const SnapshotFileFormatType = /*@__PURE__*/ S.String;
+
 export interface SnapshotFile {
   SheetSelections: SnapshotFileSheetSelection[];
   FormatType: SnapshotFileFormatType;
@@ -21722,6 +22065,7 @@ export type SnapshotJobStatus =
   | "FAILED"
   | (string & {});
 export const SnapshotJobStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeDashboardSnapshotJobResponse {
   AwsAccountId?: string;
   DashboardId?: string;
@@ -21931,6 +22275,7 @@ export const DescribeDashboardsQAConfigurationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeDashboardsQAConfigurationRequest>;
 export type DashboardsQAStatus = "ENABLED" | "DISABLED" | (string & {});
 export const DashboardsQAStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeDashboardsQAConfigurationResponse {
   DashboardsQAStatus?: DashboardsQAStatus;
   RequestId?: string;
@@ -22171,6 +22516,7 @@ export type DataSourceErrorInfoType =
   | "UNKNOWN"
   | (string & {});
 export const DataSourceErrorInfoType = /*@__PURE__*/ S.String;
+
 export interface DataSourceErrorInfo {
   Type?: DataSourceErrorInfoType;
   Message?: string;
@@ -22321,6 +22667,7 @@ export type FlowPublishState =
   | "PENDING_APPROVAL"
   | (string & {});
 export const FlowPublishState = /*@__PURE__*/ S.String;
+
 export interface DescribeFlowRequest {
   AwsAccountId: string;
   FlowId: string;
@@ -22344,6 +22691,9 @@ export const DescribeFlowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeFlowRequest",
 }) as any as S.Schema<DescribeFlowRequest>;
+export type Title = string;
+export type FlowDescription = string;
+export type StepId = string;
 export interface StepAliasMapping {
   StepId: string;
   StepAlias: string;
@@ -22463,6 +22813,7 @@ export const DescribeFolderResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeFolderResponse",
 }) as any as S.Schema<DescribeFolderResponse>;
+export type MaxResults = number;
 export interface DescribeFolderPermissionsRequest {
   AwsAccountId: string;
   FolderId: string;
@@ -22781,6 +23132,7 @@ export type IngestionErrorType =
   | "DUPLICATE_COLUMN_NAMES_FOUND"
   | (string & {});
 export const IngestionErrorType = /*@__PURE__*/ S.String;
+
 export interface ErrorInfo {
   Type?: IngestionErrorType;
   Message?: string;
@@ -22812,6 +23164,7 @@ export const QueueInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueueInfo" }) as any as S.Schema<QueueInfo>;
 export type IngestionRequestSource = "MANUAL" | "SCHEDULED" | (string & {});
 export const IngestionRequestSource = /*@__PURE__*/ S.String;
+
 export type IngestionRequestType =
   | "INITIAL_INGESTION"
   | "EDIT"
@@ -22819,6 +23172,7 @@ export type IngestionRequestType =
   | "FULL_REFRESH"
   | (string & {});
 export const IngestionRequestType = /*@__PURE__*/ S.String;
+
 export interface Ingestion {
   Arn: string;
   IngestionId?: string;
@@ -22878,16 +23232,22 @@ export const DescribeIpRestrictionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeIpRestrictionRequest",
 }) as any as S.Schema<DescribeIpRestrictionRequest>;
+export type CIDR = string;
+export type IpRestrictionRuleDescription = string;
 export type IpRestrictionRuleMap = { [key: string]: string | undefined };
 export const IpRestrictionRuleMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type VpcId = string;
+export type VpcIdRestrictionRuleDescription = string;
 export type VpcIdRestrictionRuleMap = { [key: string]: string | undefined };
 export const VpcIdRestrictionRuleMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type VpcEndpointId = string;
+export type VpcEndpointIdRestrictionRuleDescription = string;
 export type VpcEndpointIdRestrictionRuleMap = {
   [key: string]: string | undefined;
 };
@@ -22958,6 +23318,7 @@ export const KeyRegistration = /*@__PURE__*/ S.Array(
 );
 export type QDataKeyType = "AWS_OWNED" | "CMK" | (string & {});
 export const QDataKeyType = /*@__PURE__*/ S.String;
+
 export interface QDataKey {
   QDataKeyArn?: string;
   QDataKeyType?: QDataKeyType;
@@ -23010,6 +23371,7 @@ export const DescribeKnowledgeBaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeKnowledgeBaseRequest",
 }) as any as S.Schema<DescribeKnowledgeBaseRequest>;
+export type KnowledgeBaseName = string;
 export type DataSetStatus =
   | "CREATING"
   | "UPDATING"
@@ -23018,6 +23380,9 @@ export type DataSetStatus =
   | "DELETING"
   | (string & {});
 export const DataSetStatus = /*@__PURE__*/ S.String;
+
+export type DataSourceArn = string;
+export type KbTemplate = unknown;
 export interface KbTemplateConfiguration {
   template?: any;
 }
@@ -23040,6 +23405,7 @@ export const KnowledgeBaseConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KnowledgeBaseConfiguration>;
 export type ImageExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
 export const ImageExtractionStatus = /*@__PURE__*/ S.String;
+
 export interface ImageExtractionConfiguration {
   imageExtractionStatus: ImageExtractionStatus;
 }
@@ -23050,6 +23416,7 @@ export const ImageExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageExtractionConfiguration>;
 export type AudioExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
 export const AudioExtractionStatus = /*@__PURE__*/ S.String;
+
 export interface AudioExtractionConfiguration {
   audioExtractionStatus: AudioExtractionStatus;
 }
@@ -23060,11 +23427,13 @@ export const AudioExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AudioExtractionConfiguration>;
 export type VideoExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
 export const VideoExtractionStatus = /*@__PURE__*/ S.String;
+
 export type VideoExtractionType =
   | "AUDIO_TRANSCRIPTION_ONLY"
   | "VISUAL_CONTENT_AND_AUDIO_TRANSCRIPTION"
   | (string & {});
 export const VideoExtractionType = /*@__PURE__*/ S.String;
+
 export interface VideoExtractionConfiguration {
   videoExtractionStatus: VideoExtractionStatus;
   videoExtractionType?: VideoExtractionType;
@@ -23091,6 +23460,8 @@ export const MediaExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MediaExtractionConfiguration",
 }) as any as S.Schema<MediaExtractionConfiguration>;
+export type KnowledgeBaseDescription = string;
+export type KbIngestionId = string;
 export type KbIngestionStatus =
   | "QUEUED"
   | "RUNNING"
@@ -23102,6 +23473,7 @@ export type KbIngestionStatus =
   | "TIMEOUT"
   | (string & {});
 export const KbIngestionStatus = /*@__PURE__*/ S.String;
+
 export interface KnowledgeBaseIngestionSummary {
   IngestionId: string;
   IngestionStatus: KbIngestionStatus;
@@ -23249,6 +23621,7 @@ export type NamespaceErrorType =
   | "INTERNAL_SERVICE_ERROR"
   | (string & {});
 export const NamespaceErrorType = /*@__PURE__*/ S.String;
+
 export interface NamespaceError {
   Type?: NamespaceErrorType;
   Message?: string;
@@ -23396,6 +23769,7 @@ export const DescribeQPersonalizationConfigurationRequest =
   }) as any as S.Schema<DescribeQPersonalizationConfigurationRequest>;
 export type PersonalizationMode = "ENABLED" | "DISABLED" | (string & {});
 export const PersonalizationMode = /*@__PURE__*/ S.String;
+
 export interface DescribeQPersonalizationConfigurationResponse {
   PersonalizationMode?: PersonalizationMode;
   RequestId?: string;
@@ -23434,6 +23808,7 @@ export const DescribeQuickSightQSearchConfigurationRequest =
   }) as any as S.Schema<DescribeQuickSightQSearchConfigurationRequest>;
 export type QSearchStatus = "ENABLED" | "DISABLED" | (string & {});
 export const QSearchStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeQuickSightQSearchConfigurationResponse {
   QSearchStatus?: QSearchStatus;
   RequestId?: string;
@@ -23517,6 +23892,7 @@ export const DescribeRoleCustomPermissionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeRoleCustomPermissionRequest",
 }) as any as S.Schema<DescribeRoleCustomPermissionRequest>;
+export type RoleName = string;
 export interface DescribeRoleCustomPermissionResponse {
   CustomPermissionsName?: string;
   RequestId?: string;
@@ -23562,6 +23938,7 @@ export type SelfUpgradeStatus =
   | "ADMIN_APPROVAL"
   | (string & {});
 export const SelfUpgradeStatus = /*@__PURE__*/ S.String;
+
 export interface SelfUpgradeConfiguration {
   SelfUpgradeStatus?: SelfUpgradeStatus;
 }
@@ -23585,6 +23962,7 @@ export const DescribeSelfUpgradeConfigurationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeSelfUpgradeConfigurationResponse",
 }) as any as S.Schema<DescribeSelfUpgradeConfigurationResponse>;
+export type MaxContributors = number;
 export interface DescribeSpaceRequest {
   AwsAccountId: string;
   SpaceId: string;
@@ -23619,6 +23997,7 @@ export type SpaceQuickSightResourceType =
   | "DATA_SET"
   | (string & {});
 export const SpaceQuickSightResourceType = /*@__PURE__*/ S.String;
+
 export type SpaceQuickSightResourceDetails = { resourceArn: string };
 export const SpaceQuickSightResourceDetails = /*@__PURE__*/ S.Union([
   S.Struct({ resourceArn: S.String }),
@@ -23772,6 +24151,7 @@ export type TemplateErrorType =
   | "ACCESS_DENIED"
   | (string & {});
 export const TemplateErrorType = /*@__PURE__*/ S.String;
+
 export interface TemplateError {
   Type?: TemplateErrorType;
   Message?: string;
@@ -23980,6 +24360,7 @@ export const DescribeTemplatePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTemplatePermissionsResponse",
 }) as any as S.Schema<DescribeTemplatePermissionsResponse>;
+export type AwsAndAccountId = string;
 export interface DescribeThemeRequest {
   AwsAccountId: string;
   ThemeId: string;
@@ -24010,6 +24391,7 @@ export const DescribeThemeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeThemeRequest>;
 export type ThemeErrorType = "INTERNAL_FAILURE" | (string & {});
 export const ThemeErrorType = /*@__PURE__*/ S.String;
+
 export interface ThemeError {
   Type?: ThemeErrorType;
   Message?: string;
@@ -24043,6 +24425,7 @@ export const ThemeVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ThemeVersion" }) as any as S.Schema<ThemeVersion>;
 export type ThemeType = "QUICKSIGHT" | "CUSTOM" | "ALL" | (string & {});
 export const ThemeType = /*@__PURE__*/ S.String;
+
 export interface Theme {
   Arn?: string;
   Name?: string;
@@ -24281,6 +24664,7 @@ export type TopicRefreshStatus =
   | "CANCELLED"
   | (string & {});
 export const TopicRefreshStatus = /*@__PURE__*/ S.String;
+
 export interface TopicRefreshDetails {
   RefreshArn?: string;
   RefreshId?: string;
@@ -24393,12 +24777,14 @@ export type UserRole =
   | "READER_PRO"
   | (string & {});
 export const UserRole = /*@__PURE__*/ S.String;
+
 export type IdentityType =
   | "IAM"
   | "QUICKSIGHT"
   | "IAM_IDENTITY_CENTER"
   | (string & {});
 export const IdentityType = /*@__PURE__*/ S.String;
+
 export interface User {
   Arn?: string;
   UserName?: string;
@@ -24478,6 +24864,8 @@ export type NetworkInterfaceStatus =
   | "ATTACHMENT_FAILED_ROLLBACK_FAILED"
   | (string & {});
 export const NetworkInterfaceStatus = /*@__PURE__*/ S.String;
+
+export type NetworkInterfaceId = string;
 export interface NetworkInterface {
   SubnetId?: string;
   AvailabilityZone?: string;
@@ -24544,6 +24932,7 @@ export const DescribeVPCConnectionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeVPCConnectionResponse",
 }) as any as S.Schema<DescribeVPCConnectionResponse>;
+export type SessionLifetimeInMinutes = number;
 export interface SessionTag {
   Key: string;
   Value: string | redacted.Redacted<string>;
@@ -24560,6 +24949,7 @@ export type AnonymousUserDashboardEmbeddingConfigurationEnabledFeature =
   | (string & {});
 export const AnonymousUserDashboardEmbeddingConfigurationEnabledFeature =
   /*@__PURE__*/ S.String;
+
 export type AnonymousUserDashboardEmbeddingConfigurationEnabledFeatures =
   AnonymousUserDashboardEmbeddingConfigurationEnabledFeature[];
 export const AnonymousUserDashboardEmbeddingConfigurationEnabledFeatures =
@@ -24571,6 +24961,7 @@ export type AnonymousUserDashboardEmbeddingConfigurationDisabledFeature =
   | (string & {});
 export const AnonymousUserDashboardEmbeddingConfigurationDisabledFeature =
   /*@__PURE__*/ S.String;
+
 export type AnonymousUserDashboardEmbeddingConfigurationDisabledFeatures =
   AnonymousUserDashboardEmbeddingConfigurationDisabledFeature[];
 export const AnonymousUserDashboardEmbeddingConfigurationDisabledFeatures =
@@ -24710,6 +25101,7 @@ export const GenerateEmbedUrlForAnonymousUserRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GenerateEmbedUrlForAnonymousUserRequest",
 }) as any as S.Schema<GenerateEmbedUrlForAnonymousUserRequest>;
+export type EmbeddingUrl = string | redacted.Redacted<string>;
 export interface GenerateEmbedUrlForAnonymousUserResponse {
   EmbedUrl: string | redacted.Redacted<string>;
   Status: number;
@@ -24835,6 +25227,7 @@ export const RegisteredUserDashboardEmbeddingConfiguration =
   ).annotate({
     identifier: "RegisteredUserDashboardEmbeddingConfiguration",
   }) as any as S.Schema<RegisteredUserDashboardEmbeddingConfiguration>;
+export type EntryPath = string;
 export interface DataQnAConfigurations {
   Enabled: boolean;
 }
@@ -25071,6 +25464,7 @@ export type EmbeddingIdentityType =
   | "ANONYMOUS"
   | (string & {});
 export const EmbeddingIdentityType = /*@__PURE__*/ S.String;
+
 export type AdditionalDashboardIdList = string[];
 export const AdditionalDashboardIdList = /*@__PURE__*/ S.Array(S.String);
 export interface GetDashboardEmbedUrlRequest {
@@ -25250,6 +25644,7 @@ export const UserIdentifier = /*@__PURE__*/ S.Union([
   S.Struct({ Email: SensitiveString }),
   S.Struct({ UserArn: S.String }),
 ]);
+export type Region = string;
 export interface GetIdentityContextRequest {
   AwsAccountId: string;
   UserIdentifier: UserIdentifier;
@@ -25282,6 +25677,7 @@ export const GetIdentityContextRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetIdentityContextRequest",
 }) as any as S.Schema<GetIdentityContextRequest>;
+export type StatusCode2 = number;
 export interface GetIdentityContextResponse {
   Status: number;
   RequestId: string;
@@ -25296,6 +25692,7 @@ export const GetIdentityContextResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetIdentityContextResponse",
 }) as any as S.Schema<GetIdentityContextResponse>;
+export type EntryPoint = string;
 export interface GetSessionEmbedUrlRequest {
   AwsAccountId: string;
   EntryPoint?: string;
@@ -25410,6 +25807,7 @@ export const ListActionConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListActionConnectorsResponse",
 }) as any as S.Schema<ListActionConnectorsResponse>;
+export type ListAgentsRequestMaxResultsInteger = number;
 export interface ListAgentsRequest {
   AwsAccountId: string;
   MaxResults?: number;
@@ -26029,6 +26427,7 @@ export const ListDataSourcesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDataSourcesResponse",
 }) as any as S.Schema<ListDataSourcesResponse>;
+export type FlowMaxResults = number;
 export interface ListFlowsInput {
   AwsAccountId: string;
   NextToken?: string;
@@ -26490,6 +26889,7 @@ export const ListIAMPolicyAssignmentsForUserResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListIAMPolicyAssignmentsForUserResponse",
 }) as any as S.Schema<ListIAMPolicyAssignmentsForUserResponse>;
+export type ListIdentityPropagationMaxResults = number;
 export interface ListIdentityPropagationConfigsRequest {
   AwsAccountId: string;
   MaxResults?: number;
@@ -26552,6 +26952,7 @@ export const ListIdentityPropagationConfigsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListIdentityPropagationConfigsResponse",
 }) as any as S.Schema<ListIdentityPropagationConfigsResponse>;
+export type IngestionMaxResults = number;
 export interface ListIngestionsRequest {
   DataSetId: string;
   NextToken?: string;
@@ -26598,6 +26999,7 @@ export const ListIngestionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListIngestionsResponse",
 }) as any as S.Schema<ListIngestionsResponse>;
+export type NextToken = string;
 export interface ListKnowledgeBasesRequest {
   AwsAccountId: string;
   MaxResults?: number;
@@ -26912,6 +27314,7 @@ export type SelfUpgradeRequestStatus =
   | "VERIFY_FAILED"
   | (string & {});
 export const SelfUpgradeRequestStatus = /*@__PURE__*/ S.String;
+
 export interface SelfUpgradeRequestDetail {
   UpgradeRequestId?: string;
   UserName?: string;
@@ -27017,6 +27420,7 @@ export const ListSpaceResourcesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSpaceResourcesResponse",
 }) as any as S.Schema<ListSpaceResourcesResponse>;
+export type SpacesMaxResults = number;
 export interface ListSpacesRequest {
   AwsAccountId: string;
   NextToken?: string;
@@ -27743,6 +28147,7 @@ export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListUsersResponse",
 }) as any as S.Schema<ListUsersResponse>;
+export type FilterValue = string;
 export interface UserNameOrEmailFilter {
   prefix: string;
 }
@@ -27751,6 +28156,8 @@ export const UserNameOrEmailFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UserNameOrEmailFilter",
 }) as any as S.Schema<UserNameOrEmailFilter>;
+export type CapacityBytesRangeFilterMinBytesLong = number;
+export type CapacityBytesRangeFilterMaxBytesLong = number;
 export interface CapacityBytesRangeFilter {
   minBytes?: number;
   maxBytes?: number;
@@ -27773,8 +28180,11 @@ export const UserIndexCapacityFilters = /*@__PURE__*/ S.Array(
 );
 export type UserIndexCapacitySortBy = "TOTAL_CAPACITY_BYTES" | (string & {});
 export const UserIndexCapacitySortBy = /*@__PURE__*/ S.String;
+
 export type UserIndexCapacitySortOrder = "ASC" | "DESC" | (string & {});
 export const UserIndexCapacitySortOrder = /*@__PURE__*/ S.String;
+
+export type ListUsersIndexCapacityRequestMaxResultsInteger = number;
 export interface ListUsersIndexCapacityRequest {
   awsAccountId: string;
   namespace?: string;
@@ -27809,6 +28219,8 @@ export const ListUsersIndexCapacityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListUsersIndexCapacityRequest",
 }) as any as S.Schema<ListUsersIndexCapacityRequest>;
+export type LongValue = number;
+export type IntegerValue = number;
 export interface UserIndexCapacity {
   userArn?: string;
   userName?: string;
@@ -27930,10 +28342,14 @@ export const ListVPCConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListVPCConnectionsResponse",
 }) as any as S.Schema<ListVPCConnectionsResponse>;
+export type QAQueryText = string | redacted.Redacted<string>;
 export type IncludeQuickSightQIndex = "INCLUDE" | "EXCLUDE" | (string & {});
 export const IncludeQuickSightQIndex = /*@__PURE__*/ S.String;
+
 export type IncludeGeneratedAnswer = "INCLUDE" | "EXCLUDE" | (string & {});
 export const IncludeGeneratedAnswer = /*@__PURE__*/ S.String;
+
+export type MaxTopicsToConsider = number;
 export interface PredictQAResultsRequest {
   AwsAccountId: string;
   QueryText: string | redacted.Redacted<string>;
@@ -27967,6 +28383,10 @@ export type QAResultType =
   | "NO_ANSWER"
   | (string & {});
 export const QAResultType = /*@__PURE__*/ S.String;
+
+export type VisualTitle = string;
+export type VisualSubtitle = string;
+export type QAUrl = string;
 export interface DashboardVisualResult {
   DashboardId?: string;
   DashboardName?: string;
@@ -27997,6 +28417,8 @@ export type GeneratedAnswerStatus =
   | "ANSWER_DOWNGRADE"
   | (string & {});
 export const GeneratedAnswerStatus = /*@__PURE__*/ S.String;
+
+export type QuestionId = string;
 export interface GeneratedAnswerResult {
   QuestionText?: string | redacted.Redacted<string>;
   AnswerStatus?: GeneratedAnswerStatus;
@@ -28089,6 +28511,7 @@ export const PutDataSetRefreshPropertiesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutDataSetRefreshPropertiesResponse",
 }) as any as S.Schema<PutDataSetRefreshPropertiesResponse>;
+export type RoleSessionName = string;
 export interface RegisterUserRequest {
   IdentityType: IdentityType;
   Email: string;
@@ -28197,6 +28620,7 @@ export const RestoreAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RestoreAnalysisResponse",
 }) as any as S.Schema<RestoreAnalysisResponse>;
+export type SearchActionConnectorsRequestMaxResultsInteger = number;
 export type ActionConnectorSearchFilterNameEnum =
   | "ACTION_CONNECTOR_NAME"
   | "ACTION_CONNECTOR_TYPE"
@@ -28207,8 +28631,10 @@ export type ActionConnectorSearchFilterNameEnum =
   | "DIRECT_QUICKSIGHT_VIEWER_OR_OWNER"
   | (string & {});
 export const ActionConnectorSearchFilterNameEnum = /*@__PURE__*/ S.String;
+
 export type FilterOperator = "StringEquals" | "StringLike" | (string & {});
 export const FilterOperator = /*@__PURE__*/ S.String;
+
 export interface ActionConnectorSearchFilter {
   Name: ActionConnectorSearchFilterNameEnum;
   Operator: FilterOperator;
@@ -28278,8 +28704,10 @@ export type AgentOwnershipFilterAttribute =
   | "AGENT_NAME"
   | (string & {});
 export const AgentOwnershipFilterAttribute = /*@__PURE__*/ S.String;
+
 export type ComparisonOperator = "StringEquals" | "StringLike" | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
+
 export interface AgentSearchFilter {
   Name?: AgentOwnershipFilterAttribute;
   Operator?: ComparisonOperator;
@@ -28296,6 +28724,7 @@ export const AgentSearchFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentSearchFilter>;
 export type AgentSearchFilterList = AgentSearchFilter[];
 export const AgentSearchFilterList = /*@__PURE__*/ S.Array(AgentSearchFilter);
+export type AgentsMaxResults = number;
 export interface SearchAgentsRequest {
   AwsAccountId: string;
   Filters: AgentSearchFilter[];
@@ -28347,6 +28776,7 @@ export type AnalysisFilterAttribute =
   | "ANALYSIS_NAME"
   | (string & {});
 export const AnalysisFilterAttribute = /*@__PURE__*/ S.String;
+
 export interface AnalysisSearchFilter {
   Operator?: FilterOperator;
   Name?: AnalysisFilterAttribute;
@@ -28418,6 +28848,7 @@ export type DashboardFilterAttribute =
   | "DASHBOARD_NAME"
   | (string & {});
 export const DashboardFilterAttribute = /*@__PURE__*/ S.String;
+
 export interface DashboardSearchFilter {
   Operator: FilterOperator;
   Name?: DashboardFilterAttribute;
@@ -28489,6 +28920,7 @@ export type DataSetFilterAttribute =
   | "DATASET_NAME"
   | (string & {});
 export const DataSetFilterAttribute = /*@__PURE__*/ S.String;
+
 export interface DataSetSearchFilter {
   Operator: FilterOperator;
   Name: DataSetFilterAttribute;
@@ -28557,6 +28989,7 @@ export type DataSourceFilterAttribute =
   | "DATASOURCE_NAME"
   | (string & {});
 export const DataSourceFilterAttribute = /*@__PURE__*/ S.String;
+
 export interface DataSourceSearchFilter {
   Operator: FilterOperator;
   Name: DataSourceFilterAttribute;
@@ -28651,11 +29084,13 @@ export type FieldName =
   | "DIRECT_QUICKSIGHT_SOLE_OWNER"
   | (string & {});
 export const FieldName = /*@__PURE__*/ S.String;
+
 export type SearchFilterOperator =
   | "StringEquals"
   | "StringLike"
   | (string & {});
 export const SearchFilterOperator = /*@__PURE__*/ S.String;
+
 export interface SearchFlowsFilter {
   Name: FieldName;
   Operator: SearchFilterOperator;
@@ -28726,6 +29161,7 @@ export type FolderFilterAttribute =
   | "FOLDER_NAME"
   | (string & {});
 export const FolderFilterAttribute = /*@__PURE__*/ S.String;
+
 export interface FolderSearchFilter {
   Operator?: FilterOperator;
   Name?: FolderFilterAttribute;
@@ -28788,8 +29224,10 @@ export const SearchFoldersResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchFoldersResponse>;
 export type GroupFilterOperator = "StartsWith" | (string & {});
 export const GroupFilterOperator = /*@__PURE__*/ S.String;
+
 export type GroupFilterAttribute = "GROUP_NAME" | (string & {});
 export const GroupFilterAttribute = /*@__PURE__*/ S.String;
+
 export interface GroupSearchFilter {
   Operator: GroupFilterOperator;
   Name: GroupFilterAttribute;
@@ -28862,6 +29300,7 @@ export type KnowledgeBaseSearchFilterName =
   | "PRIMARY_OWNER"
   | (string & {});
 export const KnowledgeBaseSearchFilterName = /*@__PURE__*/ S.String;
+
 export type KnowledgeBaseSearchOperator =
   | "STRING_EQUALS"
   | "STRING_LIKE"
@@ -28869,6 +29308,7 @@ export type KnowledgeBaseSearchOperator =
   | "LESS_THAN_OR_EQUALS"
   | (string & {});
 export const KnowledgeBaseSearchOperator = /*@__PURE__*/ S.String;
+
 export interface KnowledgeBaseSearchFilter {
   name: KnowledgeBaseSearchFilterName;
   operator: KnowledgeBaseSearchOperator;
@@ -28892,8 +29332,10 @@ export type KnowledgeBaseSortByField =
   | "CREATED_AT"
   | (string & {});
 export const KnowledgeBaseSortByField = /*@__PURE__*/ S.String;
+
 export type SortOrder = "ASC" | "DESC" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
+
 export interface KnowledgeBaseSortBy {
   sortByField: KnowledgeBaseSortByField;
   sortOrder: SortOrder;
@@ -28960,12 +29402,14 @@ export type SpaceQuickSightSearchFilterName =
   | "CREATED_BY"
   | (string & {});
 export const SpaceQuickSightSearchFilterName = /*@__PURE__*/ S.String;
+
 export type SpaceSearchOperator =
   | "STRING_EQUALS"
   | "STRING_LIKE"
   | "NUMBER_RANGE"
   | (string & {});
 export const SpaceSearchOperator = /*@__PURE__*/ S.String;
+
 export interface SpaceQuicksightSearchFilter {
   name: SpaceQuickSightSearchFilterName;
   operator: SpaceSearchOperator;
@@ -29032,6 +29476,7 @@ export const SearchSpacesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchSpacesResponse>;
 export type TopicFilterOperator = "StringEquals" | "StringLike" | (string & {});
 export const TopicFilterOperator = /*@__PURE__*/ S.String;
+
 export type TopicFilterAttribute =
   | "QUICKSIGHT_USER"
   | "QUICKSIGHT_VIEWER_OR_OWNER"
@@ -29042,6 +29487,7 @@ export type TopicFilterAttribute =
   | "TOPIC_NAME"
   | (string & {});
 export const TopicFilterAttribute = /*@__PURE__*/ S.String;
+
 export interface TopicSearchFilter {
   Operator: TopicFilterOperator;
   Name: TopicFilterAttribute;
@@ -29159,6 +29605,9 @@ export const StartAssetBundleExportJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartAssetBundleExportJobResponse",
 }) as any as S.Schema<StartAssetBundleExportJobResponse>;
+export type AssetBundleImportBodyBlob =
+  | Uint8Array
+  | redacted.Redacted<Uint8Array>;
 export interface AssetBundleImportSource {
   Body?: Uint8Array | redacted.Redacted<Uint8Array>;
   S3Uri?: string;
@@ -30597,6 +31046,7 @@ export const UpdateDefaultQBusinessApplicationResponse =
   ).annotate({
     identifier: "UpdateDefaultQBusinessApplicationResponse",
   }) as any as S.Schema<UpdateDefaultQBusinessApplicationResponse>;
+export type UpdateFlowRequestClientTokenString = string;
 export interface UpdateFlowRequest {
   AwsAccountId: string;
   FlowId: string;
@@ -31351,6 +31801,7 @@ export type SelfUpgradeAdminAction =
   | "VERIFY"
   | (string & {});
 export const SelfUpgradeAdminAction = /*@__PURE__*/ S.String;
+
 export interface UpdateSelfUpgradeRequest {
   AwsAccountId: string;
   Namespace: string;
@@ -31599,6 +32050,7 @@ export const UpdateSpaceResourcesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSpaceResourcesResponse>;
 export type PurchaseMode = "MANUAL" | "AUTO_PURCHASE" | (string & {});
 export const PurchaseMode = /*@__PURE__*/ S.String;
+
 export interface UpdateSPICECapacityConfigurationRequest {
   AwsAccountId: string;
   PurchaseMode: PurchaseMode;
@@ -32205,153 +32657,19 @@ export const UpdateVPCConnectionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateVPCConnectionResponse",
 }) as any as S.Schema<UpdateVPCConnectionResponse>;
+export type ExceptionResourceType =
+  | "USER"
+  | "GROUP"
+  | "NAMESPACE"
+  | "ACCOUNT_SETTINGS"
+  | "IAMPOLICY_ASSIGNMENT"
+  | "DATA_SOURCE"
+  | "DATA_SET"
+  | "VPC_CONNECTION"
+  | "INGESTION"
+  | (string & {});
+export const ExceptionResourceType = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
-  "InternalFailureException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    Message: S.optional(S.String),
-    ResourceType: S.optional(ExceptionResourceType),
-    RequestId: S.optional(S.String),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  {
-    Message: S.optional(S.String),
-    ResourceType: S.optional(ExceptionResourceType),
-    RequestId: S.optional(S.String),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class PreconditionNotMetException extends S.TaggedErrorClass<PreconditionNotMetException>()(
-  "PreconditionNotMetException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceExistsException extends S.TaggedErrorClass<ResourceExistsException>()(
-  "ResourceExistsException",
-  {
-    Message: S.optional(S.String),
-    ResourceType: S.optional(ExceptionResourceType),
-    RequestId: S.optional(S.String),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceUnavailableException extends S.TaggedErrorClass<ResourceUnavailableException>()(
-  "ResourceUnavailableException",
-  {
-    Message: S.optional(S.String),
-    ResourceType: S.optional(ExceptionResourceType),
-    RequestId: S.optional(S.String),
-  },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class UnsupportedUserEditionException extends S.TaggedErrorClass<UnsupportedUserEditionException>()(
-  "UnsupportedUserEditionException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class QuickSightSubscriptionRequired extends S.TaggedErrorClass<QuickSightSubscriptionRequired>()(
-  "QuickSightSubscriptionRequired",
-  {
-    Message: S.optional(S.String),
-    ResourceType: S.optional(ExceptionResourceType),
-    RequestId: S.optional(S.String),
-  },
-  T.SyntheticError({
-    from: "ResourceNotFoundException",
-    message: { includes: "Directory information" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidDataSetParameterValueException extends S.TaggedErrorClass<InvalidDataSetParameterValueException>()(
-  "InvalidDataSetParameterValueException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class CustomerManagedKeyUnavailableException extends S.TaggedErrorClass<CustomerManagedKeyUnavailableException>()(
-  "CustomerManagedKeyUnavailableException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConcurrentUpdatingException extends S.TaggedErrorClass<ConcurrentUpdatingException>()(
-  "ConcurrentUpdatingException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class SessionLifetimeInMinutesInvalidException extends S.TaggedErrorClass<SessionLifetimeInMinutesInvalidException>()(
-  "SessionLifetimeInMinutesInvalidException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class UnsupportedPricingPlanException extends S.TaggedErrorClass<UnsupportedPricingPlanException>()(
-  "UnsupportedPricingPlanException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class QuickSightUserNotFoundException extends S.TaggedErrorClass<QuickSightUserNotFoundException>()(
-  "QuickSightUserNotFoundException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class DomainNotWhitelistedException extends S.TaggedErrorClass<DomainNotWhitelistedException>()(
-  "DomainNotWhitelistedException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class IdentityTypeNotSupportedException extends S.TaggedErrorClass<IdentityTypeNotSupportedException>()(
-  "IdentityTypeNotSupportedException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-
-//# Operations
 export type BatchCreateTopicReviewedAnswerError =
   | AccessDeniedException
   | InternalFailureException
@@ -32377,8 +32695,11 @@ export const batchCreateTopicReviewedAnswer: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchCreateTopicReviewedAnswer",
 }));
+
 export type BatchDeleteKnowledgeBaseError =
   | AccessDeniedException
   | InternalFailureException
@@ -32408,8 +32729,11 @@ export const batchDeleteKnowledgeBase: API.OperationMethod<
     PreconditionNotMetException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteKnowledgeBase",
 }));
+
 export type BatchDeleteTopicReviewedAnswerError =
   | AccessDeniedException
   | ConflictException
@@ -32437,8 +32761,11 @@ export const batchDeleteTopicReviewedAnswer: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteTopicReviewedAnswer",
 }));
+
 export type CancelIngestionError =
   | AccessDeniedException
   | InternalFailureException
@@ -32466,8 +32793,11 @@ export const cancelIngestion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelIngestion",
 }));
+
 export type CreateAccountCustomizationError =
   | AccessDeniedException
   | ConflictException
@@ -32522,8 +32852,11 @@ export const createAccountCustomization: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccountCustomization",
 }));
+
 export type CreateAccountSubscriptionError =
   | AccessDeniedException
   | ConflictException
@@ -32583,8 +32916,11 @@ export const createAccountSubscription: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccountSubscription",
 }));
+
 export type CreateActionConnectorError =
   | AccessDeniedException
   | ConflictException
@@ -32614,8 +32950,11 @@ export const createActionConnector: API.OperationMethod<
     ResourceExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateActionConnector",
 }));
+
 export type CreateAgentError =
   | AccessDeniedException
   | ConflictException
@@ -32647,8 +32986,11 @@ export const createAgent: API.OperationMethod<
     ResourceExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAgent",
 }));
+
 export type CreateAnalysisError =
   | ConflictException
   | InternalFailureException
@@ -32682,8 +33024,11 @@ export const createAnalysis: API.OperationMethod<
     UnsupportedUserEditionException,
     QuickSightSubscriptionRequired,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAnalysis",
 }));
+
 export type CreateBrandError =
   | AccessDeniedException
   | ConflictException
@@ -32711,8 +33056,11 @@ export const createBrand: API.OperationMethod<
     LimitExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBrand",
 }));
+
 export type CreateCustomPermissionsError =
   | AccessDeniedException
   | ConflictException
@@ -32748,8 +33096,11 @@ export const createCustomPermissions: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomPermissions",
 }));
+
 export type CreateDashboardError =
   | ConflictException
   | InternalFailureException
@@ -32792,8 +33143,11 @@ export const createDashboard: API.OperationMethod<
     UnsupportedUserEditionException,
     QuickSightSubscriptionRequired,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDashboard",
 }));
+
 export type CreateDataSetError =
   | AccessDeniedException
   | ConflictException
@@ -32832,8 +33186,11 @@ export const createDataSet: API.OperationMethod<
     UnsupportedUserEditionException,
     QuickSightSubscriptionRequired,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataSet",
 }));
+
 export type CreateDataSourceError =
   | AccessDeniedException
   | ConflictException
@@ -32869,8 +33226,11 @@ export const createDataSource: API.OperationMethod<
     ThrottlingException,
     QuickSightSubscriptionRequired,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataSource",
 }));
+
 export type CreateFlowError =
   | AccessDeniedException
   | ConflictException
@@ -32904,8 +33264,11 @@ export const createFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFlow",
 }));
+
 export type CreateFolderError =
   | AccessDeniedException
   | ConflictException
@@ -32939,8 +33302,11 @@ export const createFolder: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFolder",
 }));
+
 export type CreateFolderMembershipError =
   | AccessDeniedException
   | InternalFailureException
@@ -32972,8 +33338,11 @@ export const createFolderMembership: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFolderMembership",
 }));
+
 export type CreateGroupError =
   | AccessDeniedException
   | InternalFailureException
@@ -33013,8 +33382,11 @@ export const createGroup: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGroup",
 }));
+
 export type CreateGroupMembershipError =
   | AccessDeniedException
   | InternalFailureException
@@ -33044,8 +33416,11 @@ export const createGroupMembership: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGroupMembership",
 }));
+
 export type CreateIAMPolicyAssignmentError =
   | AccessDeniedException
   | ConcurrentUpdatingException
@@ -33079,8 +33454,11 @@ export const createIAMPolicyAssignment: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIAMPolicyAssignment",
 }));
+
 export type CreateIngestionError =
   | AccessDeniedException
   | InternalFailureException
@@ -33117,8 +33495,11 @@ export const createIngestion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIngestion",
 }));
+
 export type CreateNamespaceError =
   | AccessDeniedException
   | ConflictException
@@ -33162,8 +33543,11 @@ export const createNamespace: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNamespace",
 }));
+
 export type CreateOAuthClientApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -33195,8 +33579,11 @@ export const createOAuthClientApplication: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOAuthClientApplication",
 }));
+
 export type CreateRefreshScheduleError =
   | AccessDeniedException
   | InternalFailureException
@@ -33228,8 +33615,11 @@ export const createRefreshSchedule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRefreshSchedule",
 }));
+
 export type CreateRoleMembershipError =
   | AccessDeniedException
   | InternalFailureException
@@ -33259,8 +33649,11 @@ export const createRoleMembership: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRoleMembership",
 }));
+
 export type CreateSpaceError =
   | AccessDeniedException
   | ConflictException
@@ -33290,8 +33683,11 @@ export const createSpace: API.OperationMethod<
     ResourceExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSpace",
 }));
+
 export type CreateTemplateError =
   | AccessDeniedException
   | ConflictException
@@ -33333,8 +33729,11 @@ export const createTemplate: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTemplate",
 }));
+
 export type CreateTemplateAliasError =
   | ConflictException
   | InternalFailureException
@@ -33364,8 +33763,11 @@ export const createTemplateAlias: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTemplateAlias",
 }));
+
 export type CreateThemeError =
   | AccessDeniedException
   | InternalFailureException
@@ -33401,8 +33803,11 @@ export const createTheme: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTheme",
 }));
+
 export type CreateThemeAliasError =
   | ConflictException
   | InternalFailureException
@@ -33434,8 +33839,11 @@ export const createThemeAlias: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateThemeAlias",
 }));
+
 export type CreateTopicError =
   | AccessDeniedException
   | ConflictException
@@ -33467,8 +33875,11 @@ export const createTopic: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTopic",
 }));
+
 export type CreateTopicRefreshScheduleError =
   | AccessDeniedException
   | ConflictException
@@ -33500,8 +33911,11 @@ export const createTopicRefreshSchedule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTopicRefreshSchedule",
 }));
+
 export type CreateVPCConnectionError =
   | AccessDeniedException
   | ConflictException
@@ -33533,8 +33947,11 @@ export const createVPCConnection: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVPCConnection",
 }));
+
 export type DeleteAccountCustomizationError =
   | AccessDeniedException
   | ConflictException
@@ -33578,8 +33995,11 @@ export const deleteAccountCustomization: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccountCustomization",
 }));
+
 export type DeleteAccountCustomPermissionError =
   | AccessDeniedException
   | InternalFailureException
@@ -33605,8 +34025,11 @@ export const deleteAccountCustomPermission: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccountCustomPermission",
 }));
+
 export type DeleteAccountSubscriptionError =
   | AccessDeniedException
   | InternalFailureException
@@ -33652,8 +34075,11 @@ export const deleteAccountSubscription: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccountSubscription",
 }));
+
 export type DeleteActionConnectorError =
   | AccessDeniedException
   | InternalFailureException
@@ -33679,8 +34105,11 @@ export const deleteActionConnector: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteActionConnector",
 }));
+
 export type DeleteAgentError =
   | AccessDeniedException
   | ConflictException
@@ -33708,8 +34137,11 @@ export const deleteAgent: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAgent",
 }));
+
 export type DeleteAnalysisError =
   | ConflictException
   | InternalFailureException
@@ -33750,8 +34182,11 @@ export const deleteAnalysis: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAnalysis",
 }));
+
 export type DeleteBrandError =
   | AccessDeniedException
   | ConflictException
@@ -33789,8 +34224,11 @@ export const deleteBrand: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBrand",
 }));
+
 export type DeleteBrandAssignmentError =
   | AccessDeniedException
   | ConflictException
@@ -33818,8 +34256,11 @@ export const deleteBrandAssignment: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBrandAssignment",
 }));
+
 export type DeleteCustomPermissionsError =
   | AccessDeniedException
   | ConflictException
@@ -33853,8 +34294,11 @@ export const deleteCustomPermissions: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomPermissions",
 }));
+
 export type DeleteDashboardError =
   | ConflictException
   | InternalFailureException
@@ -33882,8 +34326,11 @@ export const deleteDashboard: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDashboard",
 }));
+
 export type DeleteDataSetError =
   | AccessDeniedException
   | InternalFailureException
@@ -33909,8 +34356,11 @@ export const deleteDataSet: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataSet",
 }));
+
 export type DeleteDataSetRefreshPropertiesError =
   | AccessDeniedException
   | ConflictException
@@ -33940,8 +34390,11 @@ export const deleteDataSetRefreshProperties: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataSetRefreshProperties",
 }));
+
 export type DeleteDataSourceError =
   | AccessDeniedException
   | InternalFailureException
@@ -33968,8 +34421,11 @@ export const deleteDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataSource",
 }));
+
 export type DeleteDefaultQBusinessApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -33995,8 +34451,11 @@ export const deleteDefaultQBusinessApplication: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDefaultQBusinessApplication",
 }));
+
 export type DeleteFlowError =
   | AccessDeniedException
   | ConflictException
@@ -34024,8 +34483,11 @@ export const deleteFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFlow",
 }));
+
 export type DeleteFolderError =
   | AccessDeniedException
   | ConflictException
@@ -34057,8 +34519,11 @@ export const deleteFolder: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFolder",
 }));
+
 export type DeleteFolderMembershipError =
   | AccessDeniedException
   | InternalFailureException
@@ -34086,8 +34551,11 @@ export const deleteFolderMembership: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFolderMembership",
 }));
+
 export type DeleteGroupError =
   | AccessDeniedException
   | InternalFailureException
@@ -34117,8 +34585,11 @@ export const deleteGroup: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGroup",
 }));
+
 export type DeleteGroupMembershipError =
   | AccessDeniedException
   | InternalFailureException
@@ -34148,8 +34619,11 @@ export const deleteGroupMembership: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGroupMembership",
 }));
+
 export type DeleteIAMPolicyAssignmentError =
   | AccessDeniedException
   | ConcurrentUpdatingException
@@ -34179,8 +34653,11 @@ export const deleteIAMPolicyAssignment: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIAMPolicyAssignment",
 }));
+
 export type DeleteIdentityPropagationConfigError =
   | AccessDeniedException
   | InternalFailureException
@@ -34208,8 +34685,11 @@ export const deleteIdentityPropagationConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIdentityPropagationConfig",
 }));
+
 export type DeleteKnowledgeBaseError =
   | AccessDeniedException
   | ConflictException
@@ -34243,8 +34723,11 @@ export const deleteKnowledgeBase: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKnowledgeBase",
 }));
+
 export type DeleteNamespaceError =
   | AccessDeniedException
   | InternalFailureException
@@ -34276,8 +34759,11 @@ export const deleteNamespace: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNamespace",
 }));
+
 export type DeleteOAuthClientApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -34305,8 +34791,11 @@ export const deleteOAuthClientApplication: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOAuthClientApplication",
 }));
+
 export type DeleteRefreshScheduleError =
   | AccessDeniedException
   | InternalFailureException
@@ -34334,8 +34823,11 @@ export const deleteRefreshSchedule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRefreshSchedule",
 }));
+
 export type DeleteRoleCustomPermissionError =
   | AccessDeniedException
   | InternalFailureException
@@ -34365,8 +34857,11 @@ export const deleteRoleCustomPermission: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRoleCustomPermission",
 }));
+
 export type DeleteRoleMembershipError =
   | AccessDeniedException
   | InternalFailureException
@@ -34396,8 +34891,11 @@ export const deleteRoleMembership: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRoleMembership",
 }));
+
 export type DeleteSpaceError =
   | AccessDeniedException
   | InternalFailureException
@@ -34423,8 +34921,11 @@ export const deleteSpace: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSpace",
 }));
+
 export type DeleteTemplateError =
   | ConflictException
   | InternalFailureException
@@ -34454,8 +34955,11 @@ export const deleteTemplate: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTemplate",
 }));
+
 export type DeleteTemplateAliasError =
   | ConflictException
   | InternalFailureException
@@ -34482,8 +34986,11 @@ export const deleteTemplateAlias: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTemplateAlias",
 }));
+
 export type DeleteThemeError =
   | AccessDeniedException
   | ConflictException
@@ -34513,8 +35020,11 @@ export const deleteTheme: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTheme",
 }));
+
 export type DeleteThemeAliasError =
   | ConflictException
   | InternalFailureException
@@ -34544,8 +35054,11 @@ export const deleteThemeAlias: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteThemeAlias",
 }));
+
 export type DeleteTopicError =
   | AccessDeniedException
   | ConflictException
@@ -34573,8 +35086,11 @@ export const deleteTopic: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTopic",
 }));
+
 export type DeleteTopicRefreshScheduleError =
   | AccessDeniedException
   | ConflictException
@@ -34606,8 +35122,11 @@ export const deleteTopicRefreshSchedule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTopicRefreshSchedule",
 }));
+
 export type DeleteUserError =
   | AccessDeniedException
   | InternalFailureException
@@ -34639,8 +35158,11 @@ export const deleteUser: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUser",
 }));
+
 export type DeleteUserByPrincipalIdError =
   | AccessDeniedException
   | InternalFailureException
@@ -34670,8 +35192,11 @@ export const deleteUserByPrincipalId: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUserByPrincipalId",
 }));
+
 export type DeleteUserCustomPermissionError =
   | AccessDeniedException
   | ConflictException
@@ -34703,8 +35228,11 @@ export const deleteUserCustomPermission: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUserCustomPermission",
 }));
+
 export type DeleteVPCConnectionError =
   | AccessDeniedException
   | ConflictException
@@ -34734,8 +35262,11 @@ export const deleteVPCConnection: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVPCConnection",
 }));
+
 export type DescribeAccountCustomizationError =
   | AccessDeniedException
   | InternalFailureException
@@ -34802,8 +35333,11 @@ export const describeAccountCustomization: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountCustomization",
 }));
+
 export type DescribeAccountCustomPermissionError =
   | AccessDeniedException
   | InternalFailureException
@@ -34829,8 +35363,11 @@ export const describeAccountCustomPermission: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountCustomPermission",
 }));
+
 export type DescribeAccountSettingsError =
   | AccessDeniedException
   | InternalFailureException
@@ -34859,8 +35396,11 @@ export const describeAccountSettings: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountSettings",
 }));
+
 export type DescribeAccountSubscriptionError =
   | AccessDeniedException
   | InternalFailureException
@@ -34888,8 +35428,11 @@ export const describeAccountSubscription: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountSubscription",
 }));
+
 export type DescribeActionConnectorError =
   | AccessDeniedException
   | InternalFailureException
@@ -34915,8 +35458,11 @@ export const describeActionConnector: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeActionConnector",
 }));
+
 export type DescribeActionConnectorPermissionsError =
   | AccessDeniedException
   | InternalFailureException
@@ -34942,8 +35488,11 @@ export const describeActionConnectorPermissions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeActionConnectorPermissions",
 }));
+
 export type DescribeAgentError =
   | AccessDeniedException
   | InternalFailureException
@@ -34971,8 +35520,11 @@ export const describeAgent: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAgent",
 }));
+
 export type DescribeAgentPermissionsError =
   | AccessDeniedException
   | InternalFailureException
@@ -35000,8 +35552,11 @@ export const describeAgentPermissions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAgentPermissions",
 }));
+
 export type DescribeAnalysisError =
   | AccessDeniedException
   | InternalFailureException
@@ -35029,8 +35584,11 @@ export const describeAnalysis: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAnalysis",
 }));
+
 export type DescribeAnalysisDefinitionError =
   | AccessDeniedException
   | ConflictException
@@ -35068,8 +35626,11 @@ export const describeAnalysisDefinition: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAnalysisDefinition",
 }));
+
 export type DescribeAnalysisPermissionsError =
   | InternalFailureException
   | InvalidParameterValueException
@@ -35095,8 +35656,11 @@ export const describeAnalysisPermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAnalysisPermissions",
 }));
+
 export type DescribeAssetBundleExportJobError =
   | ResourceNotFoundException
   | ThrottlingException
@@ -35125,8 +35689,11 @@ export const describeAssetBundleExportJob: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAssetBundleExportJob",
 }));
+
 export type DescribeAssetBundleImportJobError =
   | ResourceNotFoundException
   | ThrottlingException
@@ -35151,8 +35718,11 @@ export const describeAssetBundleImportJob: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAssetBundleImportJob",
 }));
+
 export type DescribeAutomationJobError =
   | AccessDeniedException
   | InternalFailureException
@@ -35178,8 +35748,11 @@ export const describeAutomationJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAutomationJob",
 }));
+
 export type DescribeBrandError =
   | AccessDeniedException
   | ConflictException
@@ -35207,8 +35780,11 @@ export const describeBrand: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBrand",
 }));
+
 export type DescribeBrandAssignmentError =
   | AccessDeniedException
   | ConflictException
@@ -35236,8 +35812,11 @@ export const describeBrandAssignment: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBrandAssignment",
 }));
+
 export type DescribeBrandPublishedVersionError =
   | AccessDeniedException
   | ConflictException
@@ -35265,8 +35844,11 @@ export const describeBrandPublishedVersion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBrandPublishedVersion",
 }));
+
 export type DescribeCustomPermissionsError =
   | AccessDeniedException
   | InternalFailureException
@@ -35296,8 +35878,11 @@ export const describeCustomPermissions: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCustomPermissions",
 }));
+
 export type DescribeDashboardError =
   | AccessDeniedException
   | InternalFailureException
@@ -35325,8 +35910,11 @@ export const describeDashboard: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDashboard",
 }));
+
 export type DescribeDashboardDefinitionError =
   | AccessDeniedException
   | ConflictException
@@ -35364,8 +35952,11 @@ export const describeDashboardDefinition: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDashboardDefinition",
 }));
+
 export type DescribeDashboardPermissionsError =
   | InternalFailureException
   | InvalidParameterValueException
@@ -35391,8 +35982,11 @@ export const describeDashboardPermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDashboardPermissions",
 }));
+
 export type DescribeDashboardSnapshotJobError =
   | AccessDeniedException
   | InternalFailureException
@@ -35434,8 +36028,11 @@ export const describeDashboardSnapshotJob: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDashboardSnapshotJob",
 }));
+
 export type DescribeDashboardSnapshotJobResultError =
   | AccessDeniedException
   | InternalFailureException
@@ -35499,8 +36096,11 @@ export const describeDashboardSnapshotJobResult: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDashboardSnapshotJobResult",
 }));
+
 export type DescribeDashboardsQAConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -35528,8 +36128,11 @@ export const describeDashboardsQAConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDashboardsQAConfiguration",
 }));
+
 export type DescribeDataSetError =
   | AccessDeniedException
   | InternalFailureException
@@ -35556,8 +36159,11 @@ export const describeDataSet: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataSet",
 }));
+
 export type DescribeDataSetPermissionsError =
   | AccessDeniedException
   | InternalFailureException
@@ -35586,8 +36192,11 @@ export const describeDataSetPermissions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataSetPermissions",
 }));
+
 export type DescribeDataSetRefreshPropertiesError =
   | AccessDeniedException
   | InternalFailureException
@@ -35617,8 +36226,11 @@ export const describeDataSetRefreshProperties: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataSetRefreshProperties",
 }));
+
 export type DescribeDataSourceError =
   | AccessDeniedException
   | InternalFailureException
@@ -35644,8 +36256,11 @@ export const describeDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataSource",
 }));
+
 export type DescribeDataSourcePermissionsError =
   | AccessDeniedException
   | InternalFailureException
@@ -35671,8 +36286,11 @@ export const describeDataSourcePermissions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataSourcePermissions",
 }));
+
 export type DescribeDefaultQBusinessApplicationError =
   | AccessDeniedException
   | InternalFailureException
@@ -35698,8 +36316,11 @@ export const describeDefaultQBusinessApplication: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDefaultQBusinessApplication",
 }));
+
 export type DescribeFlowError =
   | AccessDeniedException
   | InternalFailureException
@@ -35725,8 +36346,11 @@ export const describeFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFlow",
 }));
+
 export type DescribeFolderError =
   | AccessDeniedException
   | InternalFailureException
@@ -35754,8 +36378,11 @@ export const describeFolder: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFolder",
 }));
+
 export type DescribeFolderPermissionsError =
   | AccessDeniedException
   | InternalFailureException
@@ -35800,6 +36427,8 @@ export const describeFolderPermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFolderPermissions",
   pagination: {
     inputToken: "NextToken",
@@ -35808,6 +36437,7 @@ export const describeFolderPermissions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeFolderResolvedPermissionsError =
   | AccessDeniedException
   | InternalFailureException
@@ -35852,6 +36482,8 @@ export const describeFolderResolvedPermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFolderResolvedPermissions",
   pagination: {
     inputToken: "NextToken",
@@ -35860,6 +36492,7 @@ export const describeFolderResolvedPermissions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeGroupError =
   | AccessDeniedException
   | InternalFailureException
@@ -35889,8 +36522,11 @@ export const describeGroup: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGroup",
 }));
+
 export type DescribeGroupMembershipError =
   | AccessDeniedException
   | InternalFailureException
@@ -35922,8 +36558,11 @@ export const describeGroupMembership: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGroupMembership",
 }));
+
 export type DescribeIAMPolicyAssignmentError =
   | AccessDeniedException
   | InternalFailureException
@@ -35952,8 +36591,11 @@ export const describeIAMPolicyAssignment: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIAMPolicyAssignment",
 }));
+
 export type DescribeIngestionError =
   | AccessDeniedException
   | InternalFailureException
@@ -35981,8 +36623,11 @@ export const describeIngestion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIngestion",
 }));
+
 export type DescribeIpRestrictionError =
   | AccessDeniedException
   | InternalFailureException
@@ -36008,8 +36653,11 @@ export const describeIpRestriction: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIpRestriction",
 }));
+
 export type DescribeKeyRegistrationError =
   | AccessDeniedException
   | InternalFailureException
@@ -36033,8 +36681,11 @@ export const describeKeyRegistration: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeKeyRegistration",
 }));
+
 export type DescribeKnowledgeBaseError =
   | AccessDeniedException
   | InternalFailureException
@@ -36066,8 +36717,11 @@ export const describeKnowledgeBase: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeKnowledgeBase",
 }));
+
 export type DescribeKnowledgeBasePermissionsError =
   | AccessDeniedException
   | InternalFailureException
@@ -36099,8 +36753,11 @@ export const describeKnowledgeBasePermissions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeKnowledgeBasePermissions",
 }));
+
 export type DescribeNamespaceError =
   | AccessDeniedException
   | InternalFailureException
@@ -36128,8 +36785,11 @@ export const describeNamespace: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNamespace",
 }));
+
 export type DescribeOAuthClientApplicationError =
   | AccessDeniedException
   | InternalFailureException
@@ -36155,8 +36815,11 @@ export const describeOAuthClientApplication: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOAuthClientApplication",
 }));
+
 export type DescribeQPersonalizationConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -36184,8 +36847,11 @@ export const describeQPersonalizationConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeQPersonalizationConfiguration",
 }));
+
 export type DescribeQuickSightQSearchConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -36213,8 +36879,11 @@ export const describeQuickSightQSearchConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeQuickSightQSearchConfiguration",
 }));
+
 export type DescribeRefreshScheduleError =
   | AccessDeniedException
   | InternalFailureException
@@ -36242,8 +36911,11 @@ export const describeRefreshSchedule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRefreshSchedule",
 }));
+
 export type DescribeRoleCustomPermissionError =
   | AccessDeniedException
   | InternalFailureException
@@ -36273,8 +36945,11 @@ export const describeRoleCustomPermission: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRoleCustomPermission",
 }));
+
 export type DescribeSelfUpgradeConfigurationError =
   | AccessDeniedException
   | InternalFailureException
@@ -36306,8 +36981,11 @@ export const describeSelfUpgradeConfiguration: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSelfUpgradeConfiguration",
 }));
+
 export type DescribeSpaceError =
   | AccessDeniedException
   | InternalFailureException
@@ -36333,8 +37011,11 @@ export const describeSpace: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSpace",
 }));
+
 export type DescribeSpacePermissionsError =
   | AccessDeniedException
   | InternalFailureException
@@ -36360,8 +37041,11 @@ export const describeSpacePermissions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSpacePermissions",
 }));
+
 export type DescribeTemplateError =
   | AccessDeniedException
   | ConflictException
@@ -36393,8 +37077,11 @@ export const describeTemplate: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTemplate",
 }));
+
 export type DescribeTemplateAliasError =
   | InternalFailureException
   | ResourceNotFoundException
@@ -36418,8 +37105,11 @@ export const describeTemplateAlias: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTemplateAlias",
 }));
+
 export type DescribeTemplateDefinitionError =
   | AccessDeniedException
   | ConflictException
@@ -36457,8 +37147,11 @@ export const describeTemplateDefinition: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTemplateDefinition",
 }));
+
 export type DescribeTemplatePermissionsError =
   | ConflictException
   | InternalFailureException
@@ -36486,8 +37179,11 @@ export const describeTemplatePermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTemplatePermissions",
 }));
+
 export type DescribeThemeError =
   | AccessDeniedException
   | InternalFailureException
@@ -36517,8 +37213,11 @@ export const describeTheme: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTheme",
 }));
+
 export type DescribeThemeAliasError =
   | ConflictException
   | InternalFailureException
@@ -36546,8 +37245,11 @@ export const describeThemeAlias: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeThemeAlias",
 }));
+
 export type DescribeThemePermissionsError =
   | AccessDeniedException
   | InternalFailureException
@@ -36575,8 +37277,11 @@ export const describeThemePermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeThemePermissions",
 }));
+
 export type DescribeTopicError =
   | AccessDeniedException
   | InternalFailureException
@@ -36602,8 +37307,11 @@ export const describeTopic: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTopic",
 }));
+
 export type DescribeTopicPermissionsError =
   | AccessDeniedException
   | InternalFailureException
@@ -36629,8 +37337,11 @@ export const describeTopicPermissions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTopicPermissions",
 }));
+
 export type DescribeTopicRefreshError =
   | AccessDeniedException
   | InternalFailureException
@@ -36656,8 +37367,11 @@ export const describeTopicRefresh: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTopicRefresh",
 }));
+
 export type DescribeTopicRefreshScheduleError =
   | AccessDeniedException
   | ConflictException
@@ -36689,8 +37403,11 @@ export const describeTopicRefreshSchedule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTopicRefreshSchedule",
 }));
+
 export type DescribeUserError =
   | AccessDeniedException
   | InternalFailureException
@@ -36720,8 +37437,11 @@ export const describeUser: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUser",
 }));
+
 export type DescribeVPCConnectionError =
   | AccessDeniedException
   | InternalFailureException
@@ -36749,8 +37469,11 @@ export const describeVPCConnection: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVPCConnection",
 }));
+
 export type GenerateEmbedUrlForAnonymousUserError =
   | AccessDeniedException
   | InternalFailureException
@@ -36805,8 +37528,11 @@ export const generateEmbedUrlForAnonymousUser: API.OperationMethod<
     UnsupportedPricingPlanException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateEmbedUrlForAnonymousUser",
 }));
+
 export type GenerateEmbedUrlForRegisteredUserError =
   | AccessDeniedException
   | InternalFailureException
@@ -36864,8 +37590,11 @@ export const generateEmbedUrlForRegisteredUser: API.OperationMethod<
     UnsupportedPricingPlanException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateEmbedUrlForRegisteredUser",
 }));
+
 export type GenerateEmbedUrlForRegisteredUserWithIdentityError =
   | AccessDeniedException
   | InternalFailureException
@@ -36910,8 +37639,11 @@ export const generateEmbedUrlForRegisteredUserWithIdentity: API.OperationMethod<
     UnsupportedPricingPlanException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateEmbedUrlForRegisteredUserWithIdentity",
 }));
+
 export type GetDashboardEmbedUrlError =
   | AccessDeniedException
   | DomainNotWhitelistedException
@@ -36977,8 +37709,11 @@ export const getDashboardEmbedUrl: API.OperationMethod<
     UnsupportedPricingPlanException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDashboardEmbedUrl",
 }));
+
 export type GetFlowMetadataError =
   | AccessDeniedException
   | InternalFailureException
@@ -37002,8 +37737,11 @@ export const getFlowMetadata: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFlowMetadata",
 }));
+
 export type GetFlowPermissionsError =
   | AccessDeniedException
   | InternalFailureException
@@ -37027,8 +37765,11 @@ export const getFlowPermissions: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFlowPermissions",
 }));
+
 export type GetIdentityContextError =
   | AccessDeniedException
   | InternalFailureException
@@ -37094,8 +37835,11 @@ export const getIdentityContext: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdentityContext",
 }));
+
 export type GetSessionEmbedUrlError =
   | AccessDeniedException
   | InternalFailureException
@@ -37146,8 +37890,11 @@ export const getSessionEmbedUrl: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSessionEmbedUrl",
 }));
+
 export type ListActionConnectorsError =
   | AccessDeniedException
   | InternalFailureException
@@ -37188,6 +37935,8 @@ export const listActionConnectors: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListActionConnectors",
   pagination: {
     inputToken: "NextToken",
@@ -37196,6 +37945,7 @@ export const listActionConnectors: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAgentsError =
   | AccessDeniedException
   | InternalFailureException
@@ -37225,8 +37975,11 @@ export const listAgents: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAgents",
 }));
+
 export type ListAnalysesError =
   | InternalFailureException
   | InvalidNextTokenException
@@ -37265,6 +38018,8 @@ export const listAnalyses: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAnalyses",
   pagination: {
     inputToken: "NextToken",
@@ -37273,6 +38028,7 @@ export const listAnalyses: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAssetBundleExportJobsError =
   | AccessDeniedException
   | InvalidNextTokenException
@@ -37316,6 +38072,8 @@ export const listAssetBundleExportJobs: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssetBundleExportJobs",
   pagination: {
     inputToken: "NextToken",
@@ -37324,6 +38082,7 @@ export const listAssetBundleExportJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAssetBundleImportJobsError =
   | AccessDeniedException
   | InvalidNextTokenException
@@ -37367,6 +38126,8 @@ export const listAssetBundleImportJobs: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssetBundleImportJobs",
   pagination: {
     inputToken: "NextToken",
@@ -37375,6 +38136,7 @@ export const listAssetBundleImportJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListBrandsError =
   | AccessDeniedException
   | InternalServerException
@@ -37413,6 +38175,8 @@ export const listBrands: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBrands",
   pagination: {
     inputToken: "NextToken",
@@ -37421,6 +38185,7 @@ export const listBrands: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCustomPermissionsError =
   | AccessDeniedException
   | InternalFailureException
@@ -37465,6 +38230,8 @@ export const listCustomPermissions: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCustomPermissions",
   pagination: {
     inputToken: "NextToken",
@@ -37473,6 +38240,7 @@ export const listCustomPermissions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDashboardsError =
   | InternalFailureException
   | InvalidNextTokenException
@@ -37511,6 +38279,8 @@ export const listDashboards: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDashboards",
   pagination: {
     inputToken: "NextToken",
@@ -37519,6 +38289,7 @@ export const listDashboards: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDashboardVersionsError =
   | InternalFailureException
   | InvalidNextTokenException
@@ -37561,6 +38332,8 @@ export const listDashboardVersions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDashboardVersions",
   pagination: {
     inputToken: "NextToken",
@@ -37569,6 +38342,7 @@ export const listDashboardVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDataSetsError =
   | AccessDeniedException
   | InternalFailureException
@@ -37613,6 +38387,8 @@ export const listDataSets: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataSets",
   pagination: {
     inputToken: "NextToken",
@@ -37621,6 +38397,7 @@ export const listDataSets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDataSourcesError =
   | AccessDeniedException
   | InternalFailureException
@@ -37661,6 +38438,8 @@ export const listDataSources: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataSources",
   pagination: {
     inputToken: "NextToken",
@@ -37669,6 +38448,7 @@ export const listDataSources: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFlowsError =
   | AccessDeniedException
   | InternalFailureException
@@ -37707,6 +38487,8 @@ export const listFlows: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFlows",
   pagination: {
     inputToken: "NextToken",
@@ -37715,6 +38497,7 @@ export const listFlows: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFolderMembersError =
   | AccessDeniedException
   | InternalFailureException
@@ -37759,6 +38542,8 @@ export const listFolderMembers: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFolderMembers",
   pagination: {
     inputToken: "NextToken",
@@ -37767,6 +38552,7 @@ export const listFolderMembers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFoldersError =
   | AccessDeniedException
   | InternalFailureException
@@ -37811,6 +38597,8 @@ export const listFolders: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFolders",
   pagination: {
     inputToken: "NextToken",
@@ -37819,6 +38607,7 @@ export const listFolders: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFoldersForResourceError =
   | AccessDeniedException
   | InternalFailureException
@@ -37863,6 +38652,8 @@ export const listFoldersForResource: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFoldersForResource",
   pagination: {
     inputToken: "NextToken",
@@ -37871,6 +38662,7 @@ export const listFoldersForResource: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListGroupMembershipsError =
   | AccessDeniedException
   | InternalFailureException
@@ -37917,6 +38709,8 @@ export const listGroupMemberships: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroupMemberships",
   pagination: {
     inputToken: "NextToken",
@@ -37925,6 +38719,7 @@ export const listGroupMemberships: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListGroupsError =
   | AccessDeniedException
   | InternalFailureException
@@ -37971,6 +38766,8 @@ export const listGroups: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroups",
   pagination: {
     inputToken: "NextToken",
@@ -37979,6 +38776,7 @@ export const listGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListIAMPolicyAssignmentsError =
   | AccessDeniedException
   | InternalFailureException
@@ -38023,6 +38821,8 @@ export const listIAMPolicyAssignments: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIAMPolicyAssignments",
   pagination: {
     inputToken: "NextToken",
@@ -38031,6 +38831,7 @@ export const listIAMPolicyAssignments: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListIAMPolicyAssignmentsForUserError =
   | AccessDeniedException
   | ConcurrentUpdatingException
@@ -38081,6 +38882,8 @@ export const listIAMPolicyAssignmentsForUser: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIAMPolicyAssignmentsForUser",
   pagination: {
     inputToken: "NextToken",
@@ -38089,6 +38892,7 @@ export const listIAMPolicyAssignmentsForUser: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListIdentityPropagationConfigsError =
   | AccessDeniedException
   | InternalFailureException
@@ -38116,8 +38920,11 @@ export const listIdentityPropagationConfigs: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIdentityPropagationConfigs",
 }));
+
 export type ListIngestionsError =
   | AccessDeniedException
   | InternalFailureException
@@ -38162,6 +38969,8 @@ export const listIngestions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIngestions",
   pagination: {
     inputToken: "NextToken",
@@ -38170,6 +38979,7 @@ export const listIngestions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListKnowledgeBasesError =
   | AccessDeniedException
   | InternalFailureException
@@ -38212,6 +39022,8 @@ export const listKnowledgeBases: API.OperationMethod<
     PreconditionNotMetException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKnowledgeBases",
   pagination: {
     inputToken: "NextToken",
@@ -38220,6 +39032,7 @@ export const listKnowledgeBases: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListNamespacesError =
   | AccessDeniedException
   | InternalFailureException
@@ -38266,6 +39079,8 @@ export const listNamespaces: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNamespaces",
   pagination: {
     inputToken: "NextToken",
@@ -38274,6 +39089,7 @@ export const listNamespaces: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOAuthClientApplicationsError =
   | AccessDeniedException
   | InternalFailureException
@@ -38316,6 +39132,8 @@ export const listOAuthClientApplications: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOAuthClientApplications",
   pagination: {
     inputToken: "NextToken",
@@ -38324,6 +39142,7 @@ export const listOAuthClientApplications: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRefreshSchedulesError =
   | AccessDeniedException
   | InternalFailureException
@@ -38351,8 +39170,11 @@ export const listRefreshSchedules: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRefreshSchedules",
 }));
+
 export type ListRoleMembershipsError =
   | AccessDeniedException
   | InternalFailureException
@@ -38401,6 +39223,8 @@ export const listRoleMemberships: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRoleMemberships",
   pagination: {
     inputToken: "NextToken",
@@ -38409,6 +39233,7 @@ export const listRoleMemberships: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSelfUpgradesError =
   | AccessDeniedException
   | InternalFailureException
@@ -38442,8 +39267,11 @@ export const listSelfUpgrades: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSelfUpgrades",
 }));
+
 export type ListSpaceResourcesError =
   | AccessDeniedException
   | InternalFailureException
@@ -38469,8 +39297,11 @@ export const listSpaceResources: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSpaceResources",
 }));
+
 export type ListSpacesError =
   | AccessDeniedException
   | InternalFailureException
@@ -38496,8 +39327,11 @@ export const listSpaces: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSpaces",
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalFailureException
@@ -38523,8 +39357,11 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTemplateAliasesError =
   | InternalFailureException
   | InvalidNextTokenException
@@ -38565,6 +39402,8 @@ export const listTemplateAliases: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTemplateAliases",
   pagination: {
     inputToken: "NextToken",
@@ -38573,6 +39412,7 @@ export const listTemplateAliases: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTemplatesError =
   | InternalFailureException
   | InvalidNextTokenException
@@ -38615,6 +39455,8 @@ export const listTemplates: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTemplates",
   pagination: {
     inputToken: "NextToken",
@@ -38623,6 +39465,7 @@ export const listTemplates: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTemplateVersionsError =
   | InternalFailureException
   | InvalidNextTokenException
@@ -38665,6 +39508,8 @@ export const listTemplateVersions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTemplateVersions",
   pagination: {
     inputToken: "NextToken",
@@ -38673,6 +39518,7 @@ export const listTemplateVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListThemeAliasesError =
   | ConflictException
   | InternalFailureException
@@ -38702,8 +39548,11 @@ export const listThemeAliases: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListThemeAliases",
 }));
+
 export type ListThemesError =
   | AccessDeniedException
   | InternalFailureException
@@ -38748,6 +39597,8 @@ export const listThemes: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListThemes",
   pagination: {
     inputToken: "NextToken",
@@ -38756,6 +39607,7 @@ export const listThemes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListThemeVersionsError =
   | AccessDeniedException
   | InternalFailureException
@@ -38800,6 +39652,8 @@ export const listThemeVersions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListThemeVersions",
   pagination: {
     inputToken: "NextToken",
@@ -38808,6 +39662,7 @@ export const listThemeVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTopicRefreshSchedulesError =
   | AccessDeniedException
   | ConflictException
@@ -38839,8 +39694,11 @@ export const listTopicRefreshSchedules: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTopicRefreshSchedules",
 }));
+
 export type ListTopicReviewedAnswersError =
   | AccessDeniedException
   | InternalFailureException
@@ -38866,8 +39724,11 @@ export const listTopicReviewedAnswers: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTopicReviewedAnswers",
 }));
+
 export type ListTopicsError =
   | AccessDeniedException
   | InternalFailureException
@@ -38908,6 +39769,8 @@ export const listTopics: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTopics",
   pagination: {
     inputToken: "NextToken",
@@ -38915,6 +39778,7 @@ export const listTopics: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListUserGroupsError =
   | AccessDeniedException
   | InternalFailureException
@@ -38959,6 +39823,8 @@ export const listUserGroups: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUserGroups",
   pagination: {
     inputToken: "NextToken",
@@ -38967,6 +39833,7 @@ export const listUserGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListUsersError =
   | AccessDeniedException
   | InternalFailureException
@@ -39013,6 +39880,8 @@ export const listUsers: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUsers",
   pagination: {
     inputToken: "NextToken",
@@ -39021,6 +39890,7 @@ export const listUsers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListUsersIndexCapacityError =
   | AccessDeniedException
   | InternalFailureException
@@ -39048,8 +39918,11 @@ export const listUsersIndexCapacity: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUsersIndexCapacity",
 }));
+
 export type ListVPCConnectionsError =
   | AccessDeniedException
   | InternalFailureException
@@ -39093,6 +39966,8 @@ export const listVPCConnections: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVPCConnections",
   pagination: {
     inputToken: "NextToken",
@@ -39100,6 +39975,7 @@ export const listVPCConnections: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PredictQAResultsError =
   | AccessDeniedException
   | InternalFailureException
@@ -39127,8 +40003,11 @@ export const predictQAResults: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PredictQAResults",
 }));
+
 export type PutDataSetRefreshPropertiesError =
   | AccessDeniedException
   | ConflictException
@@ -39160,8 +40039,11 @@ export const putDataSetRefreshProperties: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDataSetRefreshProperties",
 }));
+
 export type RegisterUserError =
   | AccessDeniedException
   | InternalFailureException
@@ -39195,8 +40077,11 @@ export const registerUser: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterUser",
 }));
+
 export type RestoreAnalysisError =
   | ConflictException
   | InternalFailureException
@@ -39228,8 +40113,11 @@ export const restoreAnalysis: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreAnalysis",
 }));
+
 export type SearchActionConnectorsError =
   | AccessDeniedException
   | InvalidNextTokenException
@@ -39268,6 +40156,8 @@ export const searchActionConnectors: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchActionConnectors",
   pagination: {
     inputToken: "NextToken",
@@ -39276,6 +40166,7 @@ export const searchActionConnectors: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type SearchAgentsError =
   | AccessDeniedException
   | InternalFailureException
@@ -39303,8 +40194,11 @@ export const searchAgents: API.OperationMethod<
     ResourceExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchAgents",
 }));
+
 export type SearchAnalysesError =
   | InternalFailureException
   | InvalidNextTokenException
@@ -39349,6 +40243,8 @@ export const searchAnalyses: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchAnalyses",
   pagination: {
     inputToken: "NextToken",
@@ -39357,6 +40253,7 @@ export const searchAnalyses: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type SearchDashboardsError =
   | InternalFailureException
   | InvalidNextTokenException
@@ -39402,6 +40299,8 @@ export const searchDashboards: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchDashboards",
   pagination: {
     inputToken: "NextToken",
@@ -39410,6 +40309,7 @@ export const searchDashboards: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type SearchDataSetsError =
   | AccessDeniedException
   | InternalFailureException
@@ -39453,6 +40353,8 @@ export const searchDataSets: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchDataSets",
   pagination: {
     inputToken: "NextToken",
@@ -39461,6 +40363,7 @@ export const searchDataSets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type SearchDataSourcesError =
   | AccessDeniedException
   | InternalFailureException
@@ -39504,6 +40407,8 @@ export const searchDataSources: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchDataSources",
   pagination: {
     inputToken: "NextToken",
@@ -39512,6 +40417,7 @@ export const searchDataSources: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type SearchFlowsError =
   | AccessDeniedException
   | InternalFailureException
@@ -39550,6 +40456,8 @@ export const searchFlows: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchFlows",
   pagination: {
     inputToken: "NextToken",
@@ -39558,6 +40466,7 @@ export const searchFlows: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type SearchFoldersError =
   | AccessDeniedException
   | InternalFailureException
@@ -39604,6 +40513,8 @@ export const searchFolders: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchFolders",
   pagination: {
     inputToken: "NextToken",
@@ -39612,6 +40523,7 @@ export const searchFolders: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type SearchGroupsError =
   | AccessDeniedException
   | InternalFailureException
@@ -39658,6 +40570,8 @@ export const searchGroups: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchGroups",
   pagination: {
     inputToken: "NextToken",
@@ -39666,6 +40580,7 @@ export const searchGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type SearchKnowledgeBasesError =
   | AccessDeniedException
   | InternalFailureException
@@ -39710,6 +40625,8 @@ export const searchKnowledgeBases: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchKnowledgeBases",
   pagination: {
     inputToken: "NextToken",
@@ -39718,6 +40635,7 @@ export const searchKnowledgeBases: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type SearchSpacesError =
   | AccessDeniedException
   | InternalFailureException
@@ -39743,8 +40661,11 @@ export const searchSpaces: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchSpaces",
 }));
+
 export type SearchTopicsError =
   | InternalFailureException
   | InvalidNextTokenException
@@ -39787,6 +40708,8 @@ export const searchTopics: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchTopics",
   pagination: {
     inputToken: "NextToken",
@@ -39795,6 +40718,7 @@ export const searchTopics: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type StartAssetBundleExportJobError =
   | AccessDeniedException
   | ConflictException
@@ -39835,8 +40759,11 @@ export const startAssetBundleExportJob: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAssetBundleExportJob",
 }));
+
 export type StartAssetBundleImportJobError =
   | AccessDeniedException
   | ConflictException
@@ -39877,8 +40804,11 @@ export const startAssetBundleImportJob: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAssetBundleImportJob",
 }));
+
 export type StartAutomationJobError =
   | AccessDeniedException
   | InternalFailureException
@@ -39906,8 +40836,11 @@ export const startAutomationJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAutomationJob",
 }));
+
 export type StartDashboardSnapshotJobError =
   | AccessDeniedException
   | InternalFailureException
@@ -40027,8 +40960,11 @@ export const startDashboardSnapshotJob: API.OperationMethod<
     UnsupportedPricingPlanException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDashboardSnapshotJob",
 }));
+
 export type StartDashboardSnapshotJobScheduleError =
   | AccessDeniedException
   | InternalFailureException
@@ -40062,8 +40998,11 @@ export const startDashboardSnapshotJobSchedule: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDashboardSnapshotJobSchedule",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalFailureException
@@ -40111,8 +41050,11 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalFailureException
@@ -40138,8 +41080,11 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAccountCustomizationError =
   | AccessDeniedException
   | ConflictException
@@ -40174,8 +41119,11 @@ export const updateAccountCustomization: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccountCustomization",
 }));
+
 export type UpdateAccountCustomPermissionError =
   | AccessDeniedException
   | InternalFailureException
@@ -40201,8 +41149,11 @@ export const updateAccountCustomPermission: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccountCustomPermission",
 }));
+
 export type UpdateAccountSettingsError =
   | AccessDeniedException
   | InternalFailureException
@@ -40230,8 +41181,11 @@ export const updateAccountSettings: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccountSettings",
 }));
+
 export type UpdateActionConnectorError =
   | AccessDeniedException
   | ConflictException
@@ -40261,8 +41215,11 @@ export const updateActionConnector: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateActionConnector",
 }));
+
 export type UpdateActionConnectorPermissionsError =
   | AccessDeniedException
   | ConflictException
@@ -40294,8 +41251,11 @@ export const updateActionConnectorPermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateActionConnectorPermissions",
 }));
+
 export type UpdateAgentError =
   | AccessDeniedException
   | ConflictException
@@ -40327,8 +41287,11 @@ export const updateAgent: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAgent",
 }));
+
 export type UpdateAgentPermissionsError =
   | AccessDeniedException
   | ConflictException
@@ -40362,8 +41325,11 @@ export const updateAgentPermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAgentPermissions",
 }));
+
 export type UpdateAnalysisError =
   | ConflictException
   | InternalFailureException
@@ -40393,8 +41359,11 @@ export const updateAnalysis: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAnalysis",
 }));
+
 export type UpdateAnalysisPermissionsError =
   | ConflictException
   | InternalFailureException
@@ -40424,8 +41393,11 @@ export const updateAnalysisPermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAnalysisPermissions",
 }));
+
 export type UpdateApplicationWithTokenExchangeGrantError =
   | AccessDeniedException
   | InternalFailureException
@@ -40455,8 +41427,11 @@ export const updateApplicationWithTokenExchangeGrant: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplicationWithTokenExchangeGrant",
 }));
+
 export type UpdateBrandError =
   | AccessDeniedException
   | ConflictException
@@ -40484,8 +41459,11 @@ export const updateBrand: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBrand",
 }));
+
 export type UpdateBrandAssignmentError =
   | AccessDeniedException
   | ConflictException
@@ -40513,8 +41491,11 @@ export const updateBrandAssignment: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBrandAssignment",
 }));
+
 export type UpdateBrandPublishedVersionError =
   | AccessDeniedException
   | ConflictException
@@ -40542,8 +41523,11 @@ export const updateBrandPublishedVersion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBrandPublishedVersion",
 }));
+
 export type UpdateCustomPermissionsError =
   | AccessDeniedException
   | ConflictException
@@ -40575,8 +41559,11 @@ export const updateCustomPermissions: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCustomPermissions",
 }));
+
 export type UpdateDashboardError =
   | ConflictException
   | InternalFailureException
@@ -40612,8 +41599,11 @@ export const updateDashboard: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDashboard",
 }));
+
 export type UpdateDashboardLinksError =
   | AccessDeniedException
   | ConflictException
@@ -40643,8 +41633,11 @@ export const updateDashboardLinks: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDashboardLinks",
 }));
+
 export type UpdateDashboardPermissionsError =
   | ConflictException
   | InternalFailureException
@@ -40674,8 +41667,11 @@ export const updateDashboardPermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDashboardPermissions",
 }));
+
 export type UpdateDashboardPublishedVersionError =
   | ConflictException
   | InternalFailureException
@@ -40703,8 +41699,11 @@ export const updateDashboardPublishedVersion: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDashboardPublishedVersion",
 }));
+
 export type UpdateDashboardsQAConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -40732,8 +41731,11 @@ export const updateDashboardsQAConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDashboardsQAConfiguration",
 }));
+
 export type UpdateDataSetError =
   | AccessDeniedException
   | ConflictException
@@ -40768,8 +41770,11 @@ export const updateDataSet: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataSet",
 }));
+
 export type UpdateDataSetPermissionsError =
   | AccessDeniedException
   | ConflictException
@@ -40800,8 +41805,11 @@ export const updateDataSetPermissions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataSetPermissions",
 }));
+
 export type UpdateDataSourceError =
   | AccessDeniedException
   | ConflictException
@@ -40831,8 +41839,11 @@ export const updateDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataSource",
 }));
+
 export type UpdateDataSourcePermissionsError =
   | AccessDeniedException
   | ConflictException
@@ -40860,8 +41871,11 @@ export const updateDataSourcePermissions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataSourcePermissions",
 }));
+
 export type UpdateDefaultQBusinessApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -40889,8 +41903,11 @@ export const updateDefaultQBusinessApplication: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDefaultQBusinessApplication",
 }));
+
 export type UpdateFlowError =
   | AccessDeniedException
   | ConflictException
@@ -40920,8 +41937,11 @@ export const updateFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFlow",
 }));
+
 export type UpdateFlowPermissionsError =
   | AccessDeniedException
   | InternalFailureException
@@ -40945,8 +41965,11 @@ export const updateFlowPermissions: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFlowPermissions",
 }));
+
 export type UpdateFolderError =
   | AccessDeniedException
   | ConflictException
@@ -40978,8 +42001,11 @@ export const updateFolder: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFolder",
 }));
+
 export type UpdateFolderPermissionsError =
   | AccessDeniedException
   | InternalFailureException
@@ -41009,8 +42035,11 @@ export const updateFolderPermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFolderPermissions",
 }));
+
 export type UpdateGroupError =
   | AccessDeniedException
   | InternalFailureException
@@ -41040,8 +42069,11 @@ export const updateGroup: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGroup",
 }));
+
 export type UpdateIAMPolicyAssignmentError =
   | AccessDeniedException
   | ConcurrentUpdatingException
@@ -41073,8 +42105,11 @@ export const updateIAMPolicyAssignment: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIAMPolicyAssignment",
 }));
+
 export type UpdateIdentityPropagationConfigError =
   | AccessDeniedException
   | InternalFailureException
@@ -41102,8 +42137,11 @@ export const updateIdentityPropagationConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIdentityPropagationConfig",
 }));
+
 export type UpdateIpRestrictionError =
   | AccessDeniedException
   | InternalFailureException
@@ -41131,8 +42169,11 @@ export const updateIpRestriction: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIpRestriction",
 }));
+
 export type UpdateKeyRegistrationError =
   | AccessDeniedException
   | InternalFailureException
@@ -41156,8 +42197,11 @@ export const updateKeyRegistration: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKeyRegistration",
 }));
+
 export type UpdateKnowledgeBasePermissionsError =
   | AccessDeniedException
   | ConflictException
@@ -41191,8 +42235,11 @@ export const updateKnowledgeBasePermissions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKnowledgeBasePermissions",
 }));
+
 export type UpdateOAuthClientApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -41222,8 +42269,11 @@ export const updateOAuthClientApplication: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOAuthClientApplication",
 }));
+
 export type UpdatePublicSharingSettingsError =
   | AccessDeniedException
   | InternalFailureException
@@ -41272,8 +42322,11 @@ export const updatePublicSharingSettings: API.OperationMethod<
     ThrottlingException,
     UnsupportedPricingPlanException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePublicSharingSettings",
 }));
+
 export type UpdateQPersonalizationConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -41303,8 +42356,11 @@ export const updateQPersonalizationConfiguration: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQPersonalizationConfiguration",
 }));
+
 export type UpdateQuickSightQSearchConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -41332,8 +42388,11 @@ export const updateQuickSightQSearchConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQuickSightQSearchConfiguration",
 }));
+
 export type UpdateRefreshScheduleError =
   | AccessDeniedException
   | InternalFailureException
@@ -41363,8 +42422,11 @@ export const updateRefreshSchedule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRefreshSchedule",
 }));
+
 export type UpdateRoleCustomPermissionError =
   | AccessDeniedException
   | InternalFailureException
@@ -41394,8 +42456,11 @@ export const updateRoleCustomPermission: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRoleCustomPermission",
 }));
+
 export type UpdateSelfUpgradeError =
   | AccessDeniedException
   | InternalFailureException
@@ -41429,8 +42494,11 @@ export const updateSelfUpgrade: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSelfUpgrade",
 }));
+
 export type UpdateSelfUpgradeConfigurationError =
   | AccessDeniedException
   | InternalFailureException
@@ -41462,8 +42530,11 @@ export const updateSelfUpgradeConfiguration: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSelfUpgradeConfiguration",
 }));
+
 export type UpdateSpaceError =
   | AccessDeniedException
   | ConflictException
@@ -41491,8 +42562,11 @@ export const updateSpace: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSpace",
 }));
+
 export type UpdateSpacePermissionsError =
   | AccessDeniedException
   | ConflictException
@@ -41524,8 +42598,11 @@ export const updateSpacePermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSpacePermissions",
 }));
+
 export type UpdateSpaceResourcesError =
   | AccessDeniedException
   | ConflictException
@@ -41557,8 +42634,11 @@ export const updateSpaceResources: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSpaceResources",
 }));
+
 export type UpdateSPICECapacityConfigurationError =
   | AccessDeniedException
   | InternalFailureException
@@ -41584,8 +42664,11 @@ export const updateSPICECapacityConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSPICECapacityConfiguration",
 }));
+
 export type UpdateTemplateError =
   | ConflictException
   | InternalFailureException
@@ -41617,8 +42700,11 @@ export const updateTemplate: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTemplate",
 }));
+
 export type UpdateTemplateAliasError =
   | ConflictException
   | InternalFailureException
@@ -41644,8 +42730,11 @@ export const updateTemplateAlias: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTemplateAlias",
 }));
+
 export type UpdateTemplatePermissionsError =
   | ConflictException
   | InternalFailureException
@@ -41675,8 +42764,11 @@ export const updateTemplatePermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTemplatePermissions",
 }));
+
 export type UpdateThemeError =
   | AccessDeniedException
   | InternalFailureException
@@ -41708,8 +42800,11 @@ export const updateTheme: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTheme",
 }));
+
 export type UpdateThemeAliasError =
   | ConflictException
   | InternalFailureException
@@ -41739,8 +42834,11 @@ export const updateThemeAlias: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateThemeAlias",
 }));
+
 export type UpdateThemePermissionsError =
   | AccessDeniedException
   | InternalFailureException
@@ -41810,8 +42908,11 @@ export const updateThemePermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateThemePermissions",
 }));
+
 export type UpdateTopicError =
   | AccessDeniedException
   | ConflictException
@@ -41843,8 +42944,11 @@ export const updateTopic: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTopic",
 }));
+
 export type UpdateTopicPermissionsError =
   | AccessDeniedException
   | ConflictException
@@ -41876,8 +42980,11 @@ export const updateTopicPermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTopicPermissions",
 }));
+
 export type UpdateTopicRefreshScheduleError =
   | AccessDeniedException
   | ConflictException
@@ -41909,8 +43016,11 @@ export const updateTopicRefreshSchedule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTopicRefreshSchedule",
 }));
+
 export type UpdateUserError =
   | AccessDeniedException
   | InternalFailureException
@@ -41940,8 +43050,11 @@ export const updateUser: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUser",
 }));
+
 export type UpdateUserCustomPermissionError =
   | AccessDeniedException
   | ConflictException
@@ -41973,8 +43086,11 @@ export const updateUserCustomPermission: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUserCustomPermission",
 }));
+
 export type UpdateVPCConnectionError =
   | AccessDeniedException
   | ConflictException
@@ -42006,5 +43122,7 @@ export const updateVPCConnection: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVPCConnection",
 }));

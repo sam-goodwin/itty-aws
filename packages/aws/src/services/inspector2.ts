@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -85,213 +87,61 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    message: S.String,
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.String, resourceId: S.String },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.String,
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: S.String,
+    fields: S.optional(
+      S.suspend(() => ValidationExceptionFields).annotate({
+        identifier: "ValidationExceptionFields",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type AccountId = string;
-export type ValidationExceptionReason = string;
-export type ScanConfigurationArn = string;
-export type ProjectId = string;
-export type AssociationResultStatusMessage = string;
-export type Status = string;
-export type ErrorCode = string;
-export type NonEmptyString = string;
-export type FindingArn = string;
-export type CodeSnippetErrorCode = string;
-export type CisaDateAdded = Date;
-export type CisaDateDue = Date;
-export type CisaAction = string;
-export type RiskScore = number;
-export type EvidenceRule = string;
-export type EvidenceDetail = string;
-export type EvidenceSeverity = string;
-export type Ttp = string;
-export type Tool = string;
-export type LastSeen = Date;
-export type FirstSeen = Date;
-export type VulnerabilityReferenceUrl = string;
-export type Cwe = string;
-export type FindingDetailsErrorCode = string;
-export type MeteringAccountId = string;
-export type FreeTrialType = string;
-export type FreeTrialStatus = string;
-export type FreeTrialInfoErrorCode = string;
-export type Ec2DeepInspectionStatus = string;
-export type ReportId = string;
-export type CisScanName = string;
-export type TimeOfDay = string;
-export type Timezone = string;
-export type TargetAccount = string;
-export type TargetResourceTagsKey = string;
-export type TargetResourceTagsValue = string;
-export type MapKey = string;
-export type MapValue = string;
-export type CisScanConfigurationArn = string;
-export type IntegrationName = string;
-export type InstanceUrl = string | redacted.Redacted<string>;
-export type GitLabAccessToken = string | redacted.Redacted<string>;
-export type CodeSecurityIntegrationArn = string;
-export type AuthorizationUrl = string | redacted.Redacted<string>;
-export type ScanConfigurationName = string;
-export type FrequencyExpression = string;
-export type FilterAction = string;
-export type FilterDescription = string;
-export type StringComparison = string;
-export type StringInput = string;
-export type MapComparison = string;
-export type Port = number;
-export type FilterName = string;
-export type FilterReason = string;
-export type FilterArn = string;
-export type ReportFormat = string;
-export type ResourceStringComparison = string;
-export type ResourceStringInput = string;
-export type ResourceMapComparison = string;
-export type SbomReportFormat = string;
-export type ResourceScanType = string;
-export type ClientToken = string;
-export type CisScanArn = string;
-export type ResourceId = string;
-export type NextToken = string;
-export type GetCisScanResultDetailsMaxResults = number;
-export type CisFindingArn = string;
-export type GetClustersForImageNextToken = string;
-export type CodeSecurityUuid = string;
-export type EcrRescanDuration = string;
-export type EcrRescanDurationStatus = string;
-export type DateTimeTimestamp = Date;
-export type EcrPullDateRescanDuration = string;
-export type EcrPullDateRescanMode = string;
-export type Ec2ScanMode = string;
-export type Ec2ScanModeStatus = string;
-export type VMScannerStatus = string;
-export type RelationshipStatus = string;
-export type Path = string;
-export type ScanType = string;
-export type ResourceType = string;
-export type KmsKeyArn = string;
-export type ExternalReportStatus = string;
-export type ReportingErrorCode = string;
-export type ErrorMessage = string;
-export type Service = string;
-export type ListAccountPermissionsMaxResults = number;
-export type Operation = string;
-export type ListCisScanConfigurationsMaxResults = number;
-export type CisOwnerId = string;
-export type CisScanResultsMaxResults = number;
-export type ListCisScansMaxResults = number;
-export type OwnerId = string;
-export type ListCoverageMaxResults = number;
-export type CoverageStringComparison = string;
-export type CoverageStringInput = string;
-export type CoverageMapComparison = string;
-export type CoverageResourceType = string;
-export type ScanStatusCode = string;
-export type ScanStatusReason = string;
-export type EcrScanFrequency = string;
-export type AmiId = string;
-export type Ec2Platform = string;
-export type Runtime = string;
-export type CodeRepositoryIntegrationArn = string;
-export type CommitId = string;
-export type ScanMode = string;
-export type GroupKey = string;
-export type AggCounts = number;
-export type ListDelegatedAdminMaxResults = number;
-export type DelegatedAdminStatus = string;
-export type ListFilterMaxResults = number;
-export type AggregationType = string;
-export type ListFindingAggregationsMaxResults = number;
-export type AggregationFindingType = string;
-export type AggregationResourceType = string;
-export type SortOrder = string;
-export type AccountSortBy = string;
-export type AmiSortBy = string;
-export type AwsEcrContainerSortBy = string;
-export type Ec2InstanceSortBy = string;
-export type FindingTypeSortBy = string;
-export type ImageLayerSortBy = string;
-export type PackageSortBy = string;
-export type RepositorySortBy = string;
-export type TitleSortBy = string;
-export type LambdaLayerSortBy = string;
-export type LambdaFunctionSortBy = string;
-export type CodeRepositorySortBy = string;
-export type ListFindingsMaxResults = number;
-export type SortField = string;
-export type FindingType = string;
-export type FindingDescription = string;
-export type FindingTitle = string;
-export type Severity = string;
-export type FindingStatus = string;
-export type IpV4Address = string;
-export type IpV6Address = string;
-export type Platform = string;
-export type ImageHash = string;
-export type FunctionName = string;
-export type Version = string;
-export type ExecutionRoleArn = string;
-export type LambdaLayerArn = string;
-export type SubnetId = string;
-export type SecurityGroupId = string;
-export type VpcId = string;
-export type PackageType = string;
-export type Architecture = string;
-export type CodeRepositoryProjectName = string;
-export type CodeRepositoryProviderType = string;
-export type NetworkProtocol = string;
-export type Component = string;
-export type ComponentType = string;
-export type ComponentArn = string;
-export type VulnerabilityId = string;
-export type PackageName = string;
-export type PackageVersion = string;
-export type SourceLayerHash = string;
-export type PackageEpoch = number;
-export type PackageRelease = string;
-export type PackageArchitecture = string;
-export type PackageManager = string;
-export type FilePath = string;
-export type VulnerablePackageRemediation = string;
-export type FixAvailable = string;
-export type ExploitAvailable = string;
-export type EpssScoreValue = number;
-export type ListMembersMaxResults = number;
-export type Arn = string;
-export type ListUsageTotalsMaxResults = number;
-export type ListUsageTotalsNextToken = string;
-export type UsageAccountId = string;
-export type UsageType = string;
-export type UsageValue = number;
-export type MonthlyCostEstimate = number;
-export type Currency = string;
-export type VulnId = string;
-export type VulnerabilitySource = string;
-export type VulnerabilityDescription = string;
-export type Target = string;
-export type VendorSeverity = string;
-export type CvssBaseScore = number;
-export type CvssScoringVector = string;
-export type RelatedVulnerability = string;
-export type VendorCreatedAt = Date;
-export type VendorUpdatedAt = Date;
-export type VulnerabilitySourceUrl = string;
-export type EpssScore = number;
-export type UUID = string;
-export type RuleId = string;
-export type CisRuleDetails = Uint8Array;
-export type CodeSecurityClientToken = string;
-export type Reason = string;
-export type CheckCount = number;
-export type Vendor = string;
-export type Product = string;
-export type PlatformVersion = string;
-export type BenchmarkVersion = string;
-export type BenchmarkProfile = string;
-export type TagKey = string;
-export type GitLabAuthCode = string | redacted.Redacted<string>;
-export type GitHubAuthCode = string | redacted.Redacted<string>;
-export type GitHubInstallationId = string;
-
-//# Schemas
 export interface AssociateMemberRequest {
   accountId: string;
 }
@@ -317,19 +167,8 @@ export const AssociateMemberResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateMemberResponse",
 }) as any as S.Schema<AssociateMemberResponse>;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFields = ValidationExceptionField[];
-export const ValidationExceptionFields = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+export type ScanConfigurationArn = string;
+export type ProjectId = string;
 export type CodeSecurityResource = { projectId: string };
 export const CodeSecurityResource = /*@__PURE__*/ S.Union([
   S.Struct({ projectId: S.String }),
@@ -379,6 +218,8 @@ export type AssociationResultStatusCode =
   | "QUOTA_EXCEEDED"
   | (string & {});
 export const AssociationResultStatusCode = /*@__PURE__*/ S.String;
+
+export type AssociationResultStatusMessage = string;
 export interface FailedAssociationResult {
   scanConfigurationArn?: string;
   resource?: CodeSecurityResource;
@@ -497,6 +338,9 @@ export const BatchGetAccountStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetAccountStatusRequest",
 }) as any as S.Schema<BatchGetAccountStatusRequest>;
+export type Status = string;
+export type ErrorCode = string;
+export type NonEmptyString = string;
 export interface State {
   status: string;
   errorCode?: string;
@@ -581,6 +425,7 @@ export const BatchGetAccountStatusResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetAccountStatusResponse",
 }) as any as S.Schema<BatchGetAccountStatusResponse>;
+export type FindingArn = string;
 export type FindingArns = string[];
 export const FindingArns = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetCodeSnippetRequest {
@@ -638,6 +483,7 @@ export const CodeSnippetResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CodeSnippetResult>;
 export type CodeSnippetResultList = CodeSnippetResult[];
 export const CodeSnippetResultList = /*@__PURE__*/ S.Array(CodeSnippetResult);
+export type CodeSnippetErrorCode = string;
 export interface CodeSnippetError {
   findingArn: string;
   errorCode: string;
@@ -685,6 +531,9 @@ export const BatchGetFindingDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetFindingDetailsRequest",
 }) as any as S.Schema<BatchGetFindingDetailsRequest>;
+export type CisaDateAdded = Date;
+export type CisaDateDue = Date;
+export type CisaAction = string;
 export interface CisaData {
   dateAdded?: Date;
   dateDue?: Date;
@@ -697,6 +546,10 @@ export const CisaData = /*@__PURE__*/ S.suspend(() =>
     action: S.optional(S.String),
   }),
 ).annotate({ identifier: "CisaData" }) as any as S.Schema<CisaData>;
+export type RiskScore = number;
+export type EvidenceRule = string;
+export type EvidenceDetail = string;
+export type EvidenceSeverity = string;
 export interface Evidence {
   evidenceRule?: string;
   evidenceDetail?: string;
@@ -711,10 +564,14 @@ export const Evidence = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Evidence" }) as any as S.Schema<Evidence>;
 export type EvidenceList = Evidence[];
 export const EvidenceList = /*@__PURE__*/ S.Array(Evidence);
+export type Ttp = string;
 export type Ttps = string[];
 export const Ttps = /*@__PURE__*/ S.Array(S.String);
+export type Tool = string;
 export type Tools = string[];
 export const Tools = /*@__PURE__*/ S.Array(S.String);
+export type LastSeen = Date;
+export type FirstSeen = Date;
 export interface ExploitObserved {
   lastSeen?: Date;
   firstSeen?: Date;
@@ -727,8 +584,10 @@ export const ExploitObserved = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExploitObserved",
 }) as any as S.Schema<ExploitObserved>;
+export type VulnerabilityReferenceUrl = string;
 export type VulnerabilityReferenceUrls = string[];
 export const VulnerabilityReferenceUrls = /*@__PURE__*/ S.Array(S.String);
+export type Cwe = string;
 export type Cwes = string[];
 export const Cwes = /*@__PURE__*/ S.Array(S.String);
 export interface FindingDetail {
@@ -759,6 +618,7 @@ export const FindingDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FindingDetail" }) as any as S.Schema<FindingDetail>;
 export type FindingDetails = FindingDetail[];
 export const FindingDetails = /*@__PURE__*/ S.Array(FindingDetail);
+export type FindingDetailsErrorCode = string;
 export interface FindingDetailsError {
   findingArn: string;
   errorCode: string;
@@ -788,6 +648,7 @@ export const BatchGetFindingDetailsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetFindingDetailsResponse",
 }) as any as S.Schema<BatchGetFindingDetailsResponse>;
+export type MeteringAccountId = string;
 export type MeteringAccountIdList = string[];
 export const MeteringAccountIdList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetFreeTrialInfoRequest {
@@ -807,6 +668,8 @@ export const BatchGetFreeTrialInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetFreeTrialInfoRequest",
 }) as any as S.Schema<BatchGetFreeTrialInfoRequest>;
+export type FreeTrialType = string;
+export type FreeTrialStatus = string;
 export interface FreeTrialInfo {
   type: string;
   start: Date;
@@ -835,6 +698,7 @@ export const FreeTrialAccountInfo = /*@__PURE__*/ S.suspend(() =>
 export type FreeTrialAccountInfoList = FreeTrialAccountInfo[];
 export const FreeTrialAccountInfoList =
   /*@__PURE__*/ S.Array(FreeTrialAccountInfo);
+export type FreeTrialInfoErrorCode = string;
 export interface FreeTrialInfoError {
   accountId: string;
   code: string;
@@ -880,6 +744,7 @@ export const BatchGetMemberEc2DeepInspectionStatusRequest =
   ).annotate({
     identifier: "BatchGetMemberEc2DeepInspectionStatusRequest",
   }) as any as S.Schema<BatchGetMemberEc2DeepInspectionStatusRequest>;
+export type Ec2DeepInspectionStatus = string;
 export interface MemberAccountEc2DeepInspectionStatusState {
   accountId: string;
   status?: string;
@@ -983,6 +848,7 @@ export const BatchUpdateMemberEc2DeepInspectionStatusResponse =
   ).annotate({
     identifier: "BatchUpdateMemberEc2DeepInspectionStatusResponse",
   }) as any as S.Schema<BatchUpdateMemberEc2DeepInspectionStatusResponse>;
+export type ReportId = string;
 export interface CancelFindingsReportRequest {
   reportId: string;
 }
@@ -1033,14 +899,18 @@ export const CancelSbomExportResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelSbomExportResponse",
 }) as any as S.Schema<CancelSbomExportResponse>;
+export type CisScanName = string;
 export type CisSecurityLevel = "LEVEL_1" | "LEVEL_2" | (string & {});
 export const CisSecurityLevel = /*@__PURE__*/ S.String;
+
 export interface OneTimeSchedule {}
 export const OneTimeSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "OneTimeSchedule",
 }) as any as S.Schema<OneTimeSchedule>;
+export type TimeOfDay = string;
+export type Timezone = string;
 export interface Time {
   timeOfDay: string;
   timezone: string;
@@ -1064,6 +934,7 @@ export type Day =
   | "SAT"
   | (string & {});
 export const Day = /*@__PURE__*/ S.String;
+
 export type DaysList = Day[];
 export const DaysList = /*@__PURE__*/ S.Array(Day);
 export interface WeeklySchedule {
@@ -1098,8 +969,11 @@ export const Schedule = /*@__PURE__*/ S.Union([
   S.Struct({ weekly: WeeklySchedule }),
   S.Struct({ monthly: MonthlySchedule }),
 ]);
+export type TargetAccount = string;
 export type TargetAccountList = string[];
 export const TargetAccountList = /*@__PURE__*/ S.Array(S.String);
+export type TargetResourceTagsKey = string;
+export type TargetResourceTagsValue = string;
 export type TagValueList = string[];
 export const TagValueList = /*@__PURE__*/ S.Array(S.String);
 export type TargetResourceTags = { [key: string]: string[] | undefined };
@@ -1119,6 +993,8 @@ export const CreateCisTargets = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCisTargets",
 }) as any as S.Schema<CreateCisTargets>;
+export type MapKey = string;
+export type MapValue = string;
 export type CisTagMap = { [key: string]: string | undefined };
 export const CisTagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1151,6 +1027,7 @@ export const CreateCisScanConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCisScanConfigurationRequest",
 }) as any as S.Schema<CreateCisScanConfigurationRequest>;
+export type CisScanConfigurationArn = string;
 export interface CreateCisScanConfigurationResponse {
   scanConfigurationArn?: string;
 }
@@ -1159,8 +1036,12 @@ export const CreateCisScanConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCisScanConfigurationResponse",
 }) as any as S.Schema<CreateCisScanConfigurationResponse>;
+export type IntegrationName = string;
 export type IntegrationType = "GITLAB_SELF_MANAGED" | "GITHUB" | (string & {});
 export const IntegrationType = /*@__PURE__*/ S.String;
+
+export type InstanceUrl = string | redacted.Redacted<string>;
+export type GitLabAccessToken = string | redacted.Redacted<string>;
 export interface CreateGitLabSelfManagedIntegrationDetail {
   instanceUrl: string | redacted.Redacted<string>;
   accessToken: string | redacted.Redacted<string>;
@@ -1208,6 +1089,7 @@ export const CreateCodeSecurityIntegrationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateCodeSecurityIntegrationRequest",
 }) as any as S.Schema<CreateCodeSecurityIntegrationRequest>;
+export type CodeSecurityIntegrationArn = string;
 export type IntegrationStatus =
   | "PENDING"
   | "IN_PROGRESS"
@@ -1216,6 +1098,8 @@ export type IntegrationStatus =
   | "DISABLING"
   | (string & {});
 export const IntegrationStatus = /*@__PURE__*/ S.String;
+
+export type AuthorizationUrl = string | redacted.Redacted<string>;
 export interface CreateCodeSecurityIntegrationResponse {
   integrationArn: string;
   status: IntegrationStatus;
@@ -1231,14 +1115,18 @@ export const CreateCodeSecurityIntegrationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateCodeSecurityIntegrationResponse",
 }) as any as S.Schema<CreateCodeSecurityIntegrationResponse>;
+export type ScanConfigurationName = string;
 export type ConfigurationLevel = "ORGANIZATION" | "ACCOUNT" | (string & {});
 export const ConfigurationLevel = /*@__PURE__*/ S.String;
+
 export type PeriodicScanFrequency =
   | "WEEKLY"
   | "MONTHLY"
   | "NEVER"
   | (string & {});
 export const PeriodicScanFrequency = /*@__PURE__*/ S.String;
+
+export type FrequencyExpression = string;
 export interface PeriodicScanConfiguration {
   frequency?: PeriodicScanFrequency;
   frequencyExpression?: string;
@@ -1256,6 +1144,7 @@ export type ContinuousIntegrationScanEvent =
   | "PUSH"
   | (string & {});
 export const ContinuousIntegrationScanEvent = /*@__PURE__*/ S.String;
+
 export type ContinuousIntegrationScanSupportedEvents =
   ContinuousIntegrationScanEvent[];
 export const ContinuousIntegrationScanSupportedEvents = /*@__PURE__*/ S.Array(
@@ -1271,6 +1160,7 @@ export const ContinuousIntegrationScanConfiguration = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ContinuousIntegrationScanConfiguration>;
 export type RuleSetCategory = "SAST" | "IAC" | "SCA" | (string & {});
 export const RuleSetCategory = /*@__PURE__*/ S.String;
+
 export type RuleSetCategories = RuleSetCategory[];
 export const RuleSetCategories = /*@__PURE__*/ S.Array(RuleSetCategory);
 export interface CodeSecurityScanConfiguration {
@@ -1291,6 +1181,7 @@ export const CodeSecurityScanConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CodeSecurityScanConfiguration>;
 export type ProjectSelectionScope = "ALL" | (string & {});
 export const ProjectSelectionScope = /*@__PURE__*/ S.String;
+
 export interface ScopeSettings {
   projectSelectionScope?: ProjectSelectionScope;
 }
@@ -1337,6 +1228,10 @@ export const CreateCodeSecurityScanConfigurationResponse =
   ).annotate({
     identifier: "CreateCodeSecurityScanConfigurationResponse",
   }) as any as S.Schema<CreateCodeSecurityScanConfigurationResponse>;
+export type FilterAction = string;
+export type FilterDescription = string;
+export type StringComparison = string;
+export type StringInput = string;
 export interface StringFilter {
   comparison: string;
   value: string;
@@ -1370,6 +1265,7 @@ export const NumberFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NumberFilter" }) as any as S.Schema<NumberFilter>;
 export type NumberFilterList = NumberFilter[];
 export const NumberFilterList = /*@__PURE__*/ S.Array(NumberFilter);
+export type MapComparison = string;
 export interface MapFilter {
   comparison: string;
   key: string;
@@ -1384,6 +1280,7 @@ export const MapFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MapFilter" }) as any as S.Schema<MapFilter>;
 export type MapFilterList = MapFilter[];
 export const MapFilterList = /*@__PURE__*/ S.Array(MapFilter);
+export type Port = number;
 export interface PortRangeFilter {
   beginInclusive?: number;
   endInclusive?: number;
@@ -1520,6 +1417,8 @@ export const FilterCriteria = /*@__PURE__*/ S.suspend(() =>
     codeRepositoryProviderType: S.optional(StringFilterList),
   }),
 ).annotate({ identifier: "FilterCriteria" }) as any as S.Schema<FilterCriteria>;
+export type FilterName = string;
+export type FilterReason = string;
 export interface CreateFilterRequest {
   action: string;
   description?: string;
@@ -1549,6 +1448,7 @@ export const CreateFilterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFilterRequest",
 }) as any as S.Schema<CreateFilterRequest>;
+export type FilterArn = string;
 export interface CreateFilterResponse {
   arn: string;
 }
@@ -1557,6 +1457,7 @@ export const CreateFilterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFilterResponse",
 }) as any as S.Schema<CreateFilterResponse>;
+export type ReportFormat = string;
 export interface Destination {
   bucketName: string;
   keyPrefix?: string;
@@ -1600,6 +1501,8 @@ export const CreateFindingsReportResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFindingsReportResponse",
 }) as any as S.Schema<CreateFindingsReportResponse>;
+export type ResourceStringComparison = string;
+export type ResourceStringInput = string;
 export interface ResourceStringFilter {
   comparison: string;
   value: string;
@@ -1612,6 +1515,7 @@ export const ResourceStringFilter = /*@__PURE__*/ S.suspend(() =>
 export type ResourceStringFilterList = ResourceStringFilter[];
 export const ResourceStringFilterList =
   /*@__PURE__*/ S.Array(ResourceStringFilter);
+export type ResourceMapComparison = string;
 export interface ResourceMapFilter {
   comparison: string;
   key: string;
@@ -1652,6 +1556,7 @@ export const ResourceFilterCriteria = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResourceFilterCriteria",
 }) as any as S.Schema<ResourceFilterCriteria>;
+export type SbomReportFormat = string;
 export interface CreateSbomExportRequest {
   resourceFilterCriteria?: ResourceFilterCriteria;
   reportFormat: string;
@@ -1834,6 +1739,7 @@ export const DescribeOrganizationConfigurationResponse =
   ).annotate({
     identifier: "DescribeOrganizationConfigurationResponse",
   }) as any as S.Schema<DescribeOrganizationConfigurationResponse>;
+export type ResourceScanType = string;
 export type DisableResourceTypeList = string[];
 export const DisableResourceTypeList = /*@__PURE__*/ S.Array(S.String);
 export interface DisableRequest {
@@ -1933,6 +1839,7 @@ export const DisassociateMemberResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisassociateMemberResponse>;
 export type EnableResourceTypeList = string[];
 export const EnableResourceTypeList = /*@__PURE__*/ S.Array(S.String);
+export type ClientToken = string;
 export interface EnableRequest {
   accountIds?: string[];
   resourceTypes: string[];
@@ -1993,10 +1900,12 @@ export const EnableDelegatedAdminAccountResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EnableDelegatedAdminAccountResponse",
 }) as any as S.Schema<EnableDelegatedAdminAccountResponse>;
+export type CisScanArn = string;
 export type ReportTargetAccounts = string[];
 export const ReportTargetAccounts = /*@__PURE__*/ S.Array(S.String);
 export type CisReportFormat = "PDF" | "CSV" | (string & {});
 export const CisReportFormat = /*@__PURE__*/ S.String;
+
 export interface GetCisScanReportRequest {
   scanArn: string;
   targetAccounts?: string[];
@@ -2026,6 +1935,7 @@ export type CisReportStatus =
   | "IN_PROGRESS"
   | (string & {});
 export const CisReportStatus = /*@__PURE__*/ S.String;
+
 export interface GetCisScanReportResponse {
   url?: string;
   status?: CisReportStatus;
@@ -2035,10 +1945,13 @@ export const GetCisScanReportResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCisScanReportResponse",
 }) as any as S.Schema<GetCisScanReportResponse>;
+export type ResourceId = string;
 export type CisFindingStatusComparison = "EQUALS" | (string & {});
 export const CisFindingStatusComparison = /*@__PURE__*/ S.String;
+
 export type CisFindingStatus = "PASSED" | "FAILED" | "SKIPPED" | (string & {});
 export const CisFindingStatus = /*@__PURE__*/ S.String;
+
 export interface CisFindingStatusFilter {
   comparison: CisFindingStatusComparison;
   value: CisFindingStatus;
@@ -2058,6 +1971,7 @@ export type CisStringComparison =
   | "NOT_EQUALS"
   | (string & {});
 export const CisStringComparison = /*@__PURE__*/ S.String;
+
 export interface CisStringFilter {
   comparison: CisStringComparison;
   value: string;
@@ -2073,6 +1987,7 @@ export type TitleFilterList = CisStringFilter[];
 export const TitleFilterList = /*@__PURE__*/ S.Array(CisStringFilter);
 export type CisSecurityLevelComparison = "EQUALS" | (string & {});
 export const CisSecurityLevelComparison = /*@__PURE__*/ S.String;
+
 export interface CisSecurityLevelFilter {
   comparison: CisSecurityLevelComparison;
   value: CisSecurityLevel;
@@ -2108,8 +2023,12 @@ export const CisScanResultDetailsFilterCriteria = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CisScanResultDetailsFilterCriteria>;
 export type CisScanResultDetailsSortBy = "CHECK_ID" | "STATUS" | (string & {});
 export const CisScanResultDetailsSortBy = /*@__PURE__*/ S.String;
+
 export type CisSortOrder = "ASC" | "DESC" | (string & {});
 export const CisSortOrder = /*@__PURE__*/ S.String;
+
+export type NextToken = string;
+export type GetCisScanResultDetailsMaxResults = number;
 export interface GetCisScanResultDetailsRequest {
   scanArn: string;
   targetResourceId: string;
@@ -2143,6 +2062,7 @@ export const GetCisScanResultDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCisScanResultDetailsRequest",
 }) as any as S.Schema<GetCisScanResultDetailsRequest>;
+export type CisFindingArn = string;
 export interface CisScanResultDetails {
   scanArn: string;
   accountId?: string;
@@ -2198,6 +2118,7 @@ export const ClusterForImageFilterCriteria = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ClusterForImageFilterCriteria",
 }) as any as S.Schema<ClusterForImageFilterCriteria>;
+export type GetClustersForImageNextToken = string;
 export interface GetClustersForImageRequest {
   filter: ClusterForImageFilterCriteria;
   maxResults?: number;
@@ -2352,6 +2273,7 @@ export const GetCodeSecurityIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCodeSecurityIntegrationResponse",
 }) as any as S.Schema<GetCodeSecurityIntegrationResponse>;
+export type CodeSecurityUuid = string;
 export interface GetCodeSecurityScanRequest {
   resource: CodeSecurityResource;
   scanId: string;
@@ -2377,6 +2299,7 @@ export type CodeScanStatus =
   | "SKIPPED"
   | (string & {});
 export const CodeScanStatus = /*@__PURE__*/ S.String;
+
 export interface GetCodeSecurityScanResponse {
   scanId?: string;
   resource?: CodeSecurityResource;
@@ -2461,6 +2384,11 @@ export const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetConfigurationRequest",
 }) as any as S.Schema<GetConfigurationRequest>;
+export type EcrRescanDuration = string;
+export type EcrRescanDurationStatus = string;
+export type DateTimeTimestamp = Date;
+export type EcrPullDateRescanDuration = string;
+export type EcrPullDateRescanMode = string;
 export interface EcrRescanDurationState {
   rescanDuration?: string;
   status?: string;
@@ -2487,6 +2415,8 @@ export const EcrConfigurationState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EcrConfigurationState",
 }) as any as S.Schema<EcrConfigurationState>;
+export type Ec2ScanMode = string;
+export type Ec2ScanModeStatus = string;
 export interface Ec2ScanModeState {
   scanMode?: string;
   scanModeStatus?: string;
@@ -2499,6 +2429,7 @@ export const Ec2ScanModeState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "Ec2ScanModeState",
 }) as any as S.Schema<Ec2ScanModeState>;
+export type VMScannerStatus = string;
 export interface VMScannerState {
   activated?: boolean;
   activatedAt?: Date;
@@ -2550,6 +2481,7 @@ export const GetDelegatedAdminAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDelegatedAdminAccountRequest",
 }) as any as S.Schema<GetDelegatedAdminAccountRequest>;
+export type RelationshipStatus = string;
 export interface DelegatedAdmin {
   accountId?: string;
   relationshipStatus?: string;
@@ -2584,6 +2516,7 @@ export const GetEc2DeepInspectionConfigurationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetEc2DeepInspectionConfigurationRequest",
 }) as any as S.Schema<GetEc2DeepInspectionConfigurationRequest>;
+export type Path = string;
 export type PathList = string[];
 export const PathList = /*@__PURE__*/ S.Array(S.String);
 export interface GetEc2DeepInspectionConfigurationResponse {
@@ -2603,6 +2536,8 @@ export const GetEc2DeepInspectionConfigurationResponse =
   ).annotate({
     identifier: "GetEc2DeepInspectionConfigurationResponse",
   }) as any as S.Schema<GetEc2DeepInspectionConfigurationResponse>;
+export type ScanType = string;
+export type ResourceType = string;
 export interface GetEncryptionKeyRequest {
   scanType: string;
   resourceType: string;
@@ -2624,6 +2559,7 @@ export const GetEncryptionKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEncryptionKeyRequest",
 }) as any as S.Schema<GetEncryptionKeyRequest>;
+export type KmsKeyArn = string;
 export interface GetEncryptionKeyResponse {
   kmsKeyId: string;
 }
@@ -2649,6 +2585,9 @@ export const GetFindingsReportStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetFindingsReportStatusRequest",
 }) as any as S.Schema<GetFindingsReportStatusRequest>;
+export type ExternalReportStatus = string;
+export type ReportingErrorCode = string;
+export type ErrorMessage = string;
 export interface GetFindingsReportStatusResponse {
   reportId?: string;
   status?: string;
@@ -2747,6 +2686,8 @@ export const GetSbomExportResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSbomExportResponse",
 }) as any as S.Schema<GetSbomExportResponse>;
+export type Service = string;
+export type ListAccountPermissionsMaxResults = number;
 export interface ListAccountPermissionsRequest {
   service?: string;
   maxResults?: number;
@@ -2770,6 +2711,7 @@ export const ListAccountPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAccountPermissionsRequest",
 }) as any as S.Schema<ListAccountPermissionsRequest>;
+export type Operation = string;
 export interface Permission {
   service: string;
   operation: string;
@@ -2792,6 +2734,7 @@ export type CisScanNameFilterList = CisStringFilter[];
 export const CisScanNameFilterList = /*@__PURE__*/ S.Array(CisStringFilter);
 export type TagComparison = "EQUALS" | (string & {});
 export const TagComparison = /*@__PURE__*/ S.String;
+
 export interface TagFilter {
   comparison: TagComparison;
   key: string;
@@ -2827,6 +2770,8 @@ export type CisScanConfigurationsSortBy =
   | "SCAN_CONFIGURATION_ARN"
   | (string & {});
 export const CisScanConfigurationsSortBy = /*@__PURE__*/ S.String;
+
+export type ListCisScanConfigurationsMaxResults = number;
 export interface ListCisScanConfigurationsRequest {
   filterCriteria?: ListCisScanConfigurationsFilterCriteria;
   sortBy?: CisScanConfigurationsSortBy;
@@ -2854,6 +2799,7 @@ export const ListCisScanConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCisScanConfigurationsRequest",
 }) as any as S.Schema<ListCisScanConfigurationsRequest>;
+export type CisOwnerId = string;
 export type CisAccountIdList = string[];
 export const CisAccountIdList = /*@__PURE__*/ S.Array(S.String);
 export interface CisTargets {
@@ -2950,6 +2896,8 @@ export type CisScanResultsAggregatedByChecksSortBy =
   | "SECURITY_LEVEL"
   | (string & {});
 export const CisScanResultsAggregatedByChecksSortBy = /*@__PURE__*/ S.String;
+
+export type CisScanResultsMaxResults = number;
 export interface ListCisScanResultsAggregatedByChecksRequest {
   scanArn: string;
   filterCriteria?: CisScanResultsAggregatedByChecksFilterCriteria;
@@ -3038,8 +2986,10 @@ export type AccountIdFilterList = CisStringFilter[];
 export const AccountIdFilterList = /*@__PURE__*/ S.Array(CisStringFilter);
 export type CisResultStatusComparison = "EQUALS" | (string & {});
 export const CisResultStatusComparison = /*@__PURE__*/ S.String;
+
 export type CisResultStatus = "PASSED" | "FAILED" | "SKIPPED" | (string & {});
 export const CisResultStatus = /*@__PURE__*/ S.String;
+
 export interface CisResultStatusFilter {
   comparison: CisResultStatusComparison;
   value: CisResultStatus;
@@ -3057,12 +3007,14 @@ export type ResourceIdFilterList = CisStringFilter[];
 export const ResourceIdFilterList = /*@__PURE__*/ S.Array(CisStringFilter);
 export type CisTargetStatusComparison = "EQUALS" | (string & {});
 export const CisTargetStatusComparison = /*@__PURE__*/ S.String;
+
 export type CisTargetStatus =
   | "TIMED_OUT"
   | "CANCELLED"
   | "COMPLETED"
   | (string & {});
 export const CisTargetStatus = /*@__PURE__*/ S.String;
+
 export interface CisTargetStatusFilter {
   comparison: CisTargetStatusComparison;
   value: CisTargetStatus;
@@ -3082,6 +3034,7 @@ export type CisTargetStatusReason =
   | "SSM_UNMANAGED"
   | (string & {});
 export const CisTargetStatusReason = /*@__PURE__*/ S.String;
+
 export interface CisTargetStatusReasonFilter {
   comparison: CisTargetStatusComparison;
   value: CisTargetStatusReason;
@@ -3135,6 +3088,7 @@ export type CisScanResultsAggregatedByTargetResourceSortBy =
   | (string & {});
 export const CisScanResultsAggregatedByTargetResourceSortBy =
   /*@__PURE__*/ S.String;
+
 export interface ListCisScanResultsAggregatedByTargetResourceRequest {
   scanArn: string;
   filterCriteria?: CisScanResultsAggregatedByTargetResourceFilterCriteria;
@@ -3210,6 +3164,7 @@ export const ListCisScanResultsAggregatedByTargetResourceResponse =
   }) as any as S.Schema<ListCisScanResultsAggregatedByTargetResourceResponse>;
 export type CisScanStatusComparison = "EQUALS" | (string & {});
 export const CisScanStatusComparison = /*@__PURE__*/ S.String;
+
 export type CisScanStatus =
   | "FAILED"
   | "COMPLETED"
@@ -3217,6 +3172,7 @@ export type CisScanStatus =
   | "IN_PROGRESS"
   | (string & {});
 export const CisScanStatus = /*@__PURE__*/ S.String;
+
 export interface CisScanStatusFilter {
   comparison: CisScanStatusComparison;
   value: CisScanStatus;
@@ -3279,6 +3235,7 @@ export const ListCisScansFilterCriteria = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCisScansFilterCriteria>;
 export type ListCisScansDetailLevel = "ORGANIZATION" | "MEMBER" | (string & {});
 export const ListCisScansDetailLevel = /*@__PURE__*/ S.String;
+
 export type ListCisScansSortBy =
   | "STATUS"
   | "SCHEDULED_BY"
@@ -3286,6 +3243,8 @@ export type ListCisScansSortBy =
   | "FAILED_CHECKS"
   | (string & {});
 export const ListCisScansSortBy = /*@__PURE__*/ S.String;
+
+export type ListCisScansMaxResults = number;
 export interface ListCisScansRequest {
   filterCriteria?: ListCisScansFilterCriteria;
   detailLevel?: ListCisScansDetailLevel;
@@ -3494,6 +3453,7 @@ export const ListCodeSecurityScanConfigurationsRequest =
   ).annotate({
     identifier: "ListCodeSecurityScanConfigurationsRequest",
   }) as any as S.Schema<ListCodeSecurityScanConfigurationsRequest>;
+export type OwnerId = string;
 export interface CodeSecurityScanConfigurationSummary {
   scanConfigurationArn: string;
   name: string;
@@ -3541,6 +3501,9 @@ export const ListCodeSecurityScanConfigurationsResponse =
   ).annotate({
     identifier: "ListCodeSecurityScanConfigurationsResponse",
   }) as any as S.Schema<ListCodeSecurityScanConfigurationsResponse>;
+export type ListCoverageMaxResults = number;
+export type CoverageStringComparison = string;
+export type CoverageStringInput = string;
 export interface CoverageStringFilter {
   comparison: string;
   value: string;
@@ -3553,6 +3516,7 @@ export const CoverageStringFilter = /*@__PURE__*/ S.suspend(() =>
 export type CoverageStringFilterList = CoverageStringFilter[];
 export const CoverageStringFilterList =
   /*@__PURE__*/ S.Array(CoverageStringFilter);
+export type CoverageMapComparison = string;
 export interface CoverageMapFilter {
   comparison: string;
   key: string;
@@ -3671,6 +3635,9 @@ export const ListCoverageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCoverageRequest",
 }) as any as S.Schema<ListCoverageRequest>;
+export type CoverageResourceType = string;
+export type ScanStatusCode = string;
+export type ScanStatusReason = string;
 export interface ScanStatus {
   statusCode: string;
   reason: string;
@@ -3678,6 +3645,7 @@ export interface ScanStatus {
 export const ScanStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ statusCode: S.String, reason: S.String }),
 ).annotate({ identifier: "ScanStatus" }) as any as S.Schema<ScanStatus>;
+export type EcrScanFrequency = string;
 export interface EcrRepositoryMetadata {
   name?: string;
   scanFrequency?: string;
@@ -3705,6 +3673,8 @@ export const EcrContainerImageMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EcrContainerImageMetadata",
 }) as any as S.Schema<EcrContainerImageMetadata>;
+export type AmiId = string;
+export type Ec2Platform = string;
 export interface Ec2Metadata {
   tags?: { [key: string]: string | undefined };
   amiId?: string;
@@ -3719,6 +3689,7 @@ export const Ec2Metadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ec2Metadata" }) as any as S.Schema<Ec2Metadata>;
 export type LambdaLayerList = string[];
 export const LambdaLayerList = /*@__PURE__*/ S.Array(S.String);
+export type Runtime = string;
 export interface LambdaFunctionMetadata {
   functionTags?: { [key: string]: string | undefined };
   layers?: string[];
@@ -3735,6 +3706,8 @@ export const LambdaFunctionMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LambdaFunctionMetadata",
 }) as any as S.Schema<LambdaFunctionMetadata>;
+export type CodeRepositoryIntegrationArn = string;
+export type CommitId = string;
 export interface ProjectPeriodicScanConfiguration {
   frequencyExpression?: string;
   ruleSetCategories?: RuleSetCategory[];
@@ -3840,6 +3813,7 @@ export const ResourceScanMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResourceScanMetadata",
 }) as any as S.Schema<ResourceScanMetadata>;
+export type ScanMode = string;
 export interface CoveredResource {
   resourceType: string;
   resourceId: string;
@@ -3878,6 +3852,7 @@ export const ListCoverageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCoverageResponse",
 }) as any as S.Schema<ListCoverageResponse>;
+export type GroupKey = string;
 export interface ListCoverageStatisticsRequest {
   filterCriteria?: CoverageFilterCriteria;
   groupBy?: string;
@@ -3901,6 +3876,7 @@ export const ListCoverageStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCoverageStatisticsRequest",
 }) as any as S.Schema<ListCoverageStatisticsRequest>;
+export type AggCounts = number;
 export interface Counts {
   count?: number;
   groupKey?: string;
@@ -3924,6 +3900,7 @@ export const ListCoverageStatisticsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCoverageStatisticsResponse",
 }) as any as S.Schema<ListCoverageStatisticsResponse>;
+export type ListDelegatedAdminMaxResults = number;
 export interface ListDelegatedAdminAccountsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -3945,6 +3922,7 @@ export const ListDelegatedAdminAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDelegatedAdminAccountsRequest",
 }) as any as S.Schema<ListDelegatedAdminAccountsRequest>;
+export type DelegatedAdminStatus = string;
 export interface DelegatedAdminAccount {
   accountId?: string;
   status?: string;
@@ -3972,6 +3950,7 @@ export const ListDelegatedAdminAccountsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDelegatedAdminAccountsResponse>;
 export type FilterArnList = string[];
 export const FilterArnList = /*@__PURE__*/ S.Array(S.String);
+export type ListFilterMaxResults = number;
 export interface ListFiltersRequest {
   arns?: string[];
   action?: string;
@@ -4034,6 +4013,12 @@ export const ListFiltersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListFiltersResponse",
 }) as any as S.Schema<ListFiltersResponse>;
+export type AggregationType = string;
+export type ListFindingAggregationsMaxResults = number;
+export type AggregationFindingType = string;
+export type AggregationResourceType = string;
+export type SortOrder = string;
+export type AccountSortBy = string;
 export interface AccountAggregation {
   findingType?: string;
   resourceType?: string;
@@ -4050,6 +4035,7 @@ export const AccountAggregation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AccountAggregation",
 }) as any as S.Schema<AccountAggregation>;
+export type AmiSortBy = string;
 export interface AmiAggregation {
   amis?: StringFilter[];
   sortOrder?: string;
@@ -4062,6 +4048,7 @@ export const AmiAggregation = /*@__PURE__*/ S.suspend(() =>
     sortBy: S.optional(S.String),
   }),
 ).annotate({ identifier: "AmiAggregation" }) as any as S.Schema<AmiAggregation>;
+export type AwsEcrContainerSortBy = string;
 export interface AwsEcrContainerAggregation {
   resourceIds?: StringFilter[];
   imageShas?: StringFilter[];
@@ -4088,6 +4075,7 @@ export const AwsEcrContainerAggregation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AwsEcrContainerAggregation",
 }) as any as S.Schema<AwsEcrContainerAggregation>;
+export type Ec2InstanceSortBy = string;
 export interface Ec2InstanceAggregation {
   amis?: StringFilter[];
   operatingSystems?: StringFilter[];
@@ -4108,6 +4096,7 @@ export const Ec2InstanceAggregation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "Ec2InstanceAggregation",
 }) as any as S.Schema<Ec2InstanceAggregation>;
+export type FindingTypeSortBy = string;
 export interface FindingTypeAggregation {
   findingType?: string;
   resourceType?: string;
@@ -4124,6 +4113,7 @@ export const FindingTypeAggregation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FindingTypeAggregation",
 }) as any as S.Schema<FindingTypeAggregation>;
+export type ImageLayerSortBy = string;
 export interface ImageLayerAggregation {
   repositories?: StringFilter[];
   resourceIds?: StringFilter[];
@@ -4142,6 +4132,7 @@ export const ImageLayerAggregation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImageLayerAggregation",
 }) as any as S.Schema<ImageLayerAggregation>;
+export type PackageSortBy = string;
 export interface PackageAggregation {
   packageNames?: StringFilter[];
   sortOrder?: string;
@@ -4156,6 +4147,7 @@ export const PackageAggregation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PackageAggregation",
 }) as any as S.Schema<PackageAggregation>;
+export type RepositorySortBy = string;
 export interface RepositoryAggregation {
   repositories?: StringFilter[];
   sortOrder?: string;
@@ -4170,6 +4162,7 @@ export const RepositoryAggregation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RepositoryAggregation",
 }) as any as S.Schema<RepositoryAggregation>;
+export type TitleSortBy = string;
 export interface TitleAggregation {
   titles?: StringFilter[];
   vulnerabilityIds?: StringFilter[];
@@ -4190,6 +4183,7 @@ export const TitleAggregation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TitleAggregation",
 }) as any as S.Schema<TitleAggregation>;
+export type LambdaLayerSortBy = string;
 export interface LambdaLayerAggregation {
   functionNames?: StringFilter[];
   resourceIds?: StringFilter[];
@@ -4208,6 +4202,7 @@ export const LambdaLayerAggregation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LambdaLayerAggregation",
 }) as any as S.Schema<LambdaLayerAggregation>;
+export type LambdaFunctionSortBy = string;
 export interface LambdaFunctionAggregation {
   resourceIds?: StringFilter[];
   functionNames?: StringFilter[];
@@ -4228,6 +4223,7 @@ export const LambdaFunctionAggregation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LambdaFunctionAggregation",
 }) as any as S.Schema<LambdaFunctionAggregation>;
+export type CodeRepositorySortBy = string;
 export interface CodeRepositoryAggregation {
   projectNames?: StringFilter[];
   providerTypes?: StringFilter[];
@@ -4894,6 +4890,8 @@ export const ListFindingAggregationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListFindingAggregationsResponse",
 }) as any as S.Schema<ListFindingAggregationsResponse>;
+export type ListFindingsMaxResults = number;
+export type SortField = string;
 export interface SortCriteria {
   field: string;
   sortOrder: string;
@@ -4926,6 +4924,9 @@ export const ListFindingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListFindingsRequest",
 }) as any as S.Schema<ListFindingsRequest>;
+export type FindingType = string;
+export type FindingDescription = string;
+export type FindingTitle = string;
 export interface Recommendation {
   text?: string;
   Url?: string;
@@ -4939,10 +4940,15 @@ export interface Remediation {
 export const Remediation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ recommendation: S.optional(Recommendation) }),
 ).annotate({ identifier: "Remediation" }) as any as S.Schema<Remediation>;
+export type Severity = string;
+export type FindingStatus = string;
+export type IpV4Address = string;
 export type IpV4AddressList = string[];
 export const IpV4AddressList = /*@__PURE__*/ S.Array(S.String);
+export type IpV6Address = string;
 export type IpV6AddressList = string[];
 export const IpV6AddressList = /*@__PURE__*/ S.Array(S.String);
+export type Platform = string;
 export interface AwsEc2InstanceDetails {
   type?: string;
   imageId?: string;
@@ -4973,6 +4979,7 @@ export const AwsEc2InstanceDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AwsEc2InstanceDetails>;
 export type ImageTagList = string[];
 export const ImageTagList = /*@__PURE__*/ S.Array(S.String);
+export type ImageHash = string;
 export interface AwsEcrContainerImageDetails {
   repositoryName: string;
   imageTags?: string[];
@@ -5001,12 +5008,19 @@ export const AwsEcrContainerImageDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AwsEcrContainerImageDetails",
 }) as any as S.Schema<AwsEcrContainerImageDetails>;
+export type FunctionName = string;
+export type Version = string;
+export type ExecutionRoleArn = string;
+export type LambdaLayerArn = string;
 export type LayerList = string[];
 export const LayerList = /*@__PURE__*/ S.Array(S.String);
+export type SubnetId = string;
 export type SubnetIdList = string[];
 export const SubnetIdList = /*@__PURE__*/ S.Array(S.String);
+export type SecurityGroupId = string;
 export type SecurityGroupIdList = string[];
 export const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
+export type VpcId = string;
 export interface LambdaVpcConfig {
   subnetIds?: string[];
   securityGroupIds?: string[];
@@ -5021,6 +5035,8 @@ export const LambdaVpcConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LambdaVpcConfig",
 }) as any as S.Schema<LambdaVpcConfig>;
+export type PackageType = string;
+export type Architecture = string;
 export type ArchitectureList = string[];
 export const ArchitectureList = /*@__PURE__*/ S.Array(S.String);
 export interface AwsLambdaFunctionDetails {
@@ -5051,6 +5067,8 @@ export const AwsLambdaFunctionDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AwsLambdaFunctionDetails",
 }) as any as S.Schema<AwsLambdaFunctionDetails>;
+export type CodeRepositoryProjectName = string;
+export type CodeRepositoryProviderType = string;
 export interface CodeRepositoryDetails {
   projectName?: string;
   integrationArn?: string;
@@ -5148,6 +5166,10 @@ export interface PortRange {
 export const PortRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ begin: S.Number, end: S.Number }),
 ).annotate({ identifier: "PortRange" }) as any as S.Schema<PortRange>;
+export type NetworkProtocol = string;
+export type Component = string;
+export type ComponentType = string;
+export type ComponentArn = string;
 export interface Step {
   componentId: string;
   componentType: string;
@@ -5182,6 +5204,16 @@ export const NetworkReachabilityDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NetworkReachabilityDetails",
 }) as any as S.Schema<NetworkReachabilityDetails>;
+export type VulnerabilityId = string;
+export type PackageName = string;
+export type PackageVersion = string;
+export type SourceLayerHash = string;
+export type PackageEpoch = number;
+export type PackageRelease = string;
+export type PackageArchitecture = string;
+export type PackageManager = string;
+export type FilePath = string;
+export type VulnerablePackageRemediation = string;
 export interface VulnerablePackage {
   name: string;
   version: string;
@@ -5266,6 +5298,8 @@ export const PackageVulnerabilityDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PackageVulnerabilityDetails",
 }) as any as S.Schema<PackageVulnerabilityDetails>;
+export type FixAvailable = string;
+export type ExploitAvailable = string;
 export interface ExploitabilityDetails {
   lastKnownExploitAt?: Date;
 }
@@ -5322,6 +5356,7 @@ export const CodeVulnerabilityDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CodeVulnerabilityDetails",
 }) as any as S.Schema<CodeVulnerabilityDetails>;
+export type EpssScoreValue = number;
 export interface EpssDetails {
   score?: number;
 }
@@ -5390,6 +5425,7 @@ export const ListFindingsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListFindingsResponse",
 }) as any as S.Schema<ListFindingsResponse>;
+export type ListMembersMaxResults = number;
 export interface ListMembersRequest {
   onlyAssociated?: boolean;
   maxResults?: number;
@@ -5427,6 +5463,7 @@ export const ListMembersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListMembersResponse",
 }) as any as S.Schema<ListMembersResponse>;
+export type Arn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -5452,6 +5489,9 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
+export type ListUsageTotalsMaxResults = number;
+export type ListUsageTotalsNextToken = string;
+export type UsageAccountId = string;
 export type UsageAccountIdList = string[];
 export const UsageAccountIdList = /*@__PURE__*/ S.Array(S.String);
 export interface ListUsageTotalsRequest {
@@ -5477,6 +5517,10 @@ export const ListUsageTotalsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListUsageTotalsRequest",
 }) as any as S.Schema<ListUsageTotalsRequest>;
+export type UsageType = string;
+export type UsageValue = number;
+export type MonthlyCostEstimate = number;
+export type Currency = string;
 export interface Usage {
   type?: string;
   total?: number;
@@ -5538,6 +5582,7 @@ export const ResetEncryptionKeyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResetEncryptionKeyResponse",
 }) as any as S.Schema<ResetEncryptionKeyResponse>;
+export type VulnId = string;
 export type VulnIdList = string[];
 export const VulnIdList = /*@__PURE__*/ S.Array(S.String);
 export interface SearchVulnerabilitiesFilterCriteria {
@@ -5569,6 +5614,9 @@ export const SearchVulnerabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchVulnerabilitiesRequest",
 }) as any as S.Schema<SearchVulnerabilitiesRequest>;
+export type VulnerabilitySource = string;
+export type VulnerabilityDescription = string;
+export type Target = string;
 export type Targets = string[];
 export const Targets = /*@__PURE__*/ S.Array(S.String);
 export interface AtigData {
@@ -5585,6 +5633,9 @@ export const AtigData = /*@__PURE__*/ S.suspend(() =>
     ttps: S.optional(Ttps),
   }),
 ).annotate({ identifier: "AtigData" }) as any as S.Schema<AtigData>;
+export type VendorSeverity = string;
+export type CvssBaseScore = number;
+export type CvssScoringVector = string;
 export interface Cvss4 {
   baseScore?: number;
   scoringVector?: string;
@@ -5605,6 +5656,7 @@ export const Cvss3 = /*@__PURE__*/ S.suspend(() =>
     scoringVector: S.optional(S.String),
   }),
 ).annotate({ identifier: "Cvss3" }) as any as S.Schema<Cvss3>;
+export type RelatedVulnerability = string;
 export type RelatedVulnerabilities = string[];
 export const RelatedVulnerabilities = /*@__PURE__*/ S.Array(S.String);
 export interface Cvss2 {
@@ -5617,8 +5669,12 @@ export const Cvss2 = /*@__PURE__*/ S.suspend(() =>
     scoringVector: S.optional(S.String),
   }),
 ).annotate({ identifier: "Cvss2" }) as any as S.Schema<Cvss2>;
+export type VendorCreatedAt = Date;
+export type VendorUpdatedAt = Date;
+export type VulnerabilitySourceUrl = string;
 export type DetectionPlatforms = string[];
 export const DetectionPlatforms = /*@__PURE__*/ S.Array(S.String);
+export type EpssScore = number;
 export interface Epss {
   score?: number;
 }
@@ -5685,6 +5741,7 @@ export const SearchVulnerabilitiesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchVulnerabilitiesResponse",
 }) as any as S.Schema<SearchVulnerabilitiesResponse>;
+export type UUID = string;
 export interface SendCisSessionHealthRequest {
   scanJobId: string;
   sessionToken: string;
@@ -5709,6 +5766,7 @@ export const SendCisSessionHealthResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SendCisSessionHealthResponse",
 }) as any as S.Schema<SendCisSessionHealthResponse>;
+export type RuleId = string;
 export type CisRuleStatus =
   | "FAILED"
   | "PASSED"
@@ -5719,6 +5777,8 @@ export type CisRuleStatus =
   | "ERROR"
   | (string & {});
 export const CisRuleStatus = /*@__PURE__*/ S.String;
+
+export type CisRuleDetails = Uint8Array;
 export interface CisSessionMessage {
   ruleId: string;
   status: CisRuleStatus;
@@ -5792,6 +5852,7 @@ export const StartCisSessionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartCisSessionResponse",
 }) as any as S.Schema<StartCisSessionResponse>;
+export type CodeSecurityClientToken = string;
 export interface StartCodeSecurityScanRequest {
   clientToken?: string;
   resource: CodeSecurityResource;
@@ -5832,6 +5893,9 @@ export type StopCisSessionStatus =
   | "UNSUPPORTED_OS"
   | (string & {});
 export const StopCisSessionStatus = /*@__PURE__*/ S.String;
+
+export type Reason = string;
+export type CheckCount = number;
 export interface StopCisMessageProgress {
   totalChecks?: number;
   successfulChecks?: number;
@@ -5856,6 +5920,9 @@ export const StopCisMessageProgress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StopCisMessageProgress",
 }) as any as S.Schema<StopCisMessageProgress>;
+export type Vendor = string;
+export type Product = string;
+export type PlatformVersion = string;
 export interface ComputePlatform {
   vendor?: string;
   product?: string;
@@ -5870,6 +5937,8 @@ export const ComputePlatform = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ComputePlatform",
 }) as any as S.Schema<ComputePlatform>;
+export type BenchmarkVersion = string;
+export type BenchmarkProfile = string;
 export interface StopCisSessionMessage {
   status: StopCisSessionStatus;
   reason?: string;
@@ -5946,6 +6015,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
+export type TagKey = string;
 export type TagKeyList = string[];
 export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
@@ -6022,6 +6092,7 @@ export const UpdateCisScanConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateCisScanConfigurationResponse",
 }) as any as S.Schema<UpdateCisScanConfigurationResponse>;
+export type GitLabAuthCode = string | redacted.Redacted<string>;
 export interface UpdateGitLabSelfManagedIntegrationDetail {
   authCode: string | redacted.Redacted<string>;
 }
@@ -6030,6 +6101,8 @@ export const UpdateGitLabSelfManagedIntegrationDetail = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateGitLabSelfManagedIntegrationDetail",
 }) as any as S.Schema<UpdateGitLabSelfManagedIntegrationDetail>;
+export type GitHubAuthCode = string | redacted.Redacted<string>;
+export type GitHubInstallationId = string;
 export interface UpdateGitHubIntegrationDetail {
   code: string | redacted.Redacted<string>;
   installationId: string;
@@ -6324,60 +6397,20 @@ export const UpdateOrgEc2DeepInspectionConfigurationResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateOrgEc2DeepInspectionConfigurationResponse",
   }) as any as S.Schema<UpdateOrgEc2DeepInspectionConfigurationResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    message: S.String,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.String, resourceId: S.String },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.String,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.String,
-    reason: S.String,
-    fields: S.optional(ValidationExceptionFields),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ValidationExceptionReason = string;
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFields = ValidationExceptionField[];
+export const ValidationExceptionFields = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type AssociateMemberError =
   | AccessDeniedException
   | InternalServerException
@@ -6406,8 +6439,11 @@ export const associateMember: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateMember",
 }));
+
 export type BatchAssociateCodeSecurityScanConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -6436,8 +6472,11 @@ export const batchAssociateCodeSecurityScanConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchAssociateCodeSecurityScanConfiguration",
 }));
+
 export type BatchDisassociateCodeSecurityScanConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -6466,8 +6505,11 @@ export const batchDisassociateCodeSecurityScanConfiguration: API.OperationMethod
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDisassociateCodeSecurityScanConfiguration",
 }));
+
 export type BatchGetAccountStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -6493,8 +6535,11 @@ export const batchGetAccountStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetAccountStatus",
 }));
+
 export type BatchGetCodeSnippetError =
   | AccessDeniedException
   | InternalServerException
@@ -6519,8 +6564,11 @@ export const batchGetCodeSnippet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetCodeSnippet",
 }));
+
 export type BatchGetFindingDetailsError =
   | AccessDeniedException
   | InternalServerException
@@ -6544,8 +6592,11 @@ export const batchGetFindingDetails: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetFindingDetails",
 }));
+
 export type BatchGetFreeTrialInfoError =
   | AccessDeniedException
   | InternalServerException
@@ -6569,8 +6620,11 @@ export const batchGetFreeTrialInfo: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetFreeTrialInfo",
 }));
+
 export type BatchGetMemberEc2DeepInspectionStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -6596,8 +6650,11 @@ export const batchGetMemberEc2DeepInspectionStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetMemberEc2DeepInspectionStatus",
 }));
+
 export type BatchUpdateMemberEc2DeepInspectionStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -6623,8 +6680,11 @@ export const batchUpdateMemberEc2DeepInspectionStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateMemberEc2DeepInspectionStatus",
 }));
+
 export type CancelFindingsReportError =
   | AccessDeniedException
   | InternalServerException
@@ -6650,8 +6710,11 @@ export const cancelFindingsReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelFindingsReport",
 }));
+
 export type CancelSbomExportError =
   | AccessDeniedException
   | InternalServerException
@@ -6677,8 +6740,11 @@ export const cancelSbomExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelSbomExport",
 }));
+
 export type CreateCisScanConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -6702,8 +6768,11 @@ export const createCisScanConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCisScanConfiguration",
 }));
+
 export type CreateCodeSecurityIntegrationError =
   | AccessDeniedException
   | ConflictException
@@ -6736,8 +6805,11 @@ export const createCodeSecurityIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCodeSecurityIntegration",
 }));
+
 export type CreateCodeSecurityScanConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -6765,8 +6837,11 @@ export const createCodeSecurityScanConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCodeSecurityScanConfiguration",
 }));
+
 export type CreateFilterError =
   | AccessDeniedException
   | BadRequestException
@@ -6795,8 +6870,11 @@ export const createFilter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFilter",
 }));
+
 export type CreateFindingsReportError =
   | AccessDeniedException
   | InternalServerException
@@ -6824,8 +6902,11 @@ export const createFindingsReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFindingsReport",
 }));
+
 export type CreateSbomExportError =
   | AccessDeniedException
   | InternalServerException
@@ -6851,8 +6932,11 @@ export const createSbomExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSbomExport",
 }));
+
 export type DeleteCisScanConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -6878,8 +6962,11 @@ export const deleteCisScanConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCisScanConfiguration",
 }));
+
 export type DeleteCodeSecurityIntegrationError =
   | AccessDeniedException
   | InternalServerException
@@ -6905,8 +6992,11 @@ export const deleteCodeSecurityIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCodeSecurityIntegration",
 }));
+
 export type DeleteCodeSecurityScanConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -6932,8 +7022,11 @@ export const deleteCodeSecurityScanConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCodeSecurityScanConfiguration",
 }));
+
 export type DeleteFilterError =
   | AccessDeniedException
   | InternalServerException
@@ -6959,8 +7052,11 @@ export const deleteFilter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFilter",
 }));
+
 export type DescribeOrganizationConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -6984,8 +7080,11 @@ export const describeOrganizationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrganizationConfiguration",
 }));
+
 export type DisableError =
   | AccessDeniedException
   | InternalServerException
@@ -7012,8 +7111,11 @@ export const disable: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Disable",
 }));
+
 export type DisableDelegatedAdminAccountError =
   | AccessDeniedException
   | ConflictException
@@ -7041,8 +7143,11 @@ export const disableDelegatedAdminAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableDelegatedAdminAccount",
 }));
+
 export type DisassociateMemberError =
   | AccessDeniedException
   | InternalServerException
@@ -7066,8 +7171,11 @@ export const disassociateMember: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateMember",
 }));
+
 export type EnableError =
   | AccessDeniedException
   | InternalServerException
@@ -7093,8 +7201,11 @@ export const enable: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Enable",
 }));
+
 export type EnableDelegatedAdminAccountError =
   | AccessDeniedException
   | ConflictException
@@ -7122,8 +7233,11 @@ export const enableDelegatedAdminAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableDelegatedAdminAccount",
 }));
+
 export type GetCisScanReportError =
   | AccessDeniedException
   | InternalServerException
@@ -7149,8 +7263,11 @@ export const getCisScanReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCisScanReport",
 }));
+
 export type GetCisScanResultDetailsError =
   | AccessDeniedException
   | InternalServerException
@@ -7189,6 +7306,8 @@ export const getCisScanResultDetails: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCisScanResultDetails",
   pagination: {
     inputToken: "nextToken",
@@ -7197,6 +7316,7 @@ export const getCisScanResultDetails: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetClustersForImageError =
   | AccessDeniedException
   | InternalServerException
@@ -7235,6 +7355,8 @@ export const getClustersForImage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetClustersForImage",
   pagination: {
     inputToken: "nextToken",
@@ -7243,6 +7365,7 @@ export const getClustersForImage: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetCodeSecurityIntegrationError =
   | AccessDeniedException
   | InternalServerException
@@ -7268,8 +7391,11 @@ export const getCodeSecurityIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCodeSecurityIntegration",
 }));
+
 export type GetCodeSecurityScanError =
   | AccessDeniedException
   | ConflictException
@@ -7297,8 +7423,11 @@ export const getCodeSecurityScan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCodeSecurityScan",
 }));
+
 export type GetCodeSecurityScanConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -7324,8 +7453,11 @@ export const getCodeSecurityScanConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCodeSecurityScanConfiguration",
 }));
+
 export type GetConfigurationError =
   | InternalServerException
   | ResourceNotFoundException
@@ -7347,8 +7479,11 @@ export const getConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfiguration",
 }));
+
 export type GetDelegatedAdminAccountError =
   | AccessDeniedException
   | InternalServerException
@@ -7375,8 +7510,11 @@ export const getDelegatedAdminAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDelegatedAdminAccount",
 }));
+
 export type GetEc2DeepInspectionConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -7401,8 +7539,11 @@ export const getEc2DeepInspectionConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEc2DeepInspectionConfiguration",
 }));
+
 export type GetEncryptionKeyError =
   | AccessDeniedException
   | InternalServerException
@@ -7428,8 +7569,11 @@ export const getEncryptionKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEncryptionKey",
 }));
+
 export type GetFindingsReportStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -7455,8 +7599,11 @@ export const getFindingsReportStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFindingsReportStatus",
 }));
+
 export type GetMemberError =
   | AccessDeniedException
   | InternalServerException
@@ -7482,8 +7629,11 @@ export const getMember: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMember",
 }));
+
 export type GetSbomExportError =
   | AccessDeniedException
   | InternalServerException
@@ -7509,8 +7659,11 @@ export const getSbomExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSbomExport",
 }));
+
 export type ListAccountPermissionsError =
   | AccessDeniedException
   | InternalServerException
@@ -7550,6 +7703,8 @@ export const listAccountPermissions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccountPermissions",
   pagination: {
     inputToken: "nextToken",
@@ -7558,6 +7713,7 @@ export const listAccountPermissions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListCisScanConfigurationsError =
   | AccessDeniedException
   | InternalServerException
@@ -7596,6 +7752,8 @@ export const listCisScanConfigurations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCisScanConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -7604,6 +7762,7 @@ export const listCisScanConfigurations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListCisScanResultsAggregatedByChecksError =
   | AccessDeniedException
   | InternalServerException
@@ -7642,6 +7801,8 @@ export const listCisScanResultsAggregatedByChecks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCisScanResultsAggregatedByChecks",
   pagination: {
     inputToken: "nextToken",
@@ -7650,6 +7811,7 @@ export const listCisScanResultsAggregatedByChecks: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListCisScanResultsAggregatedByTargetResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -7688,6 +7850,8 @@ export const listCisScanResultsAggregatedByTargetResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCisScanResultsAggregatedByTargetResource",
   pagination: {
     inputToken: "nextToken",
@@ -7696,6 +7860,7 @@ export const listCisScanResultsAggregatedByTargetResource: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListCisScansError =
   | AccessDeniedException
   | InternalServerException
@@ -7734,6 +7899,8 @@ export const listCisScans: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCisScans",
   pagination: {
     inputToken: "nextToken",
@@ -7742,6 +7909,7 @@ export const listCisScans: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListCodeSecurityIntegrationsError =
   | AccessDeniedException
   | InternalServerException
@@ -7765,8 +7933,11 @@ export const listCodeSecurityIntegrations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCodeSecurityIntegrations",
 }));
+
 export type ListCodeSecurityScanConfigurationAssociationsError =
   | AccessDeniedException
   | InternalServerException
@@ -7793,8 +7964,11 @@ export const listCodeSecurityScanConfigurationAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCodeSecurityScanConfigurationAssociations",
 }));
+
 export type ListCodeSecurityScanConfigurationsError =
   | AccessDeniedException
   | InternalServerException
@@ -7820,8 +7994,11 @@ export const listCodeSecurityScanConfigurations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCodeSecurityScanConfigurations",
 }));
+
 export type ListCoverageError =
   | InternalServerException
   | ThrottlingException
@@ -7854,6 +8031,8 @@ export const listCoverage: API.OperationMethod<
   input: ListCoverageRequest,
   output: ListCoverageResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCoverage",
   pagination: {
     inputToken: "nextToken",
@@ -7862,6 +8041,7 @@ export const listCoverage: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListCoverageStatisticsError =
   | InternalServerException
   | ThrottlingException
@@ -7894,6 +8074,8 @@ export const listCoverageStatistics: API.OperationMethod<
   input: ListCoverageStatisticsRequest,
   output: ListCoverageStatisticsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCoverageStatistics",
   pagination: {
     inputToken: "nextToken",
@@ -7901,6 +8083,7 @@ export const listCoverageStatistics: API.OperationMethod<
     items: "countsByGroup",
   } as const,
 }));
+
 export type ListDelegatedAdminAccountsError =
   | AccessDeniedException
   | InternalServerException
@@ -7939,6 +8122,8 @@ export const listDelegatedAdminAccounts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDelegatedAdminAccounts",
   pagination: {
     inputToken: "nextToken",
@@ -7947,6 +8132,7 @@ export const listDelegatedAdminAccounts: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListFiltersError =
   | AccessDeniedException
   | InternalServerException
@@ -7985,6 +8171,8 @@ export const listFilters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFilters",
   pagination: {
     inputToken: "nextToken",
@@ -7993,6 +8181,7 @@ export const listFilters: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListFindingAggregationsError =
   | InternalServerException
   | ThrottlingException
@@ -8025,6 +8214,8 @@ export const listFindingAggregations: API.OperationMethod<
   input: ListFindingAggregationsRequest,
   output: ListFindingAggregationsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFindingAggregations",
   pagination: {
     inputToken: "nextToken",
@@ -8033,6 +8224,7 @@ export const listFindingAggregations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListFindingsError =
   | InternalServerException
   | ThrottlingException
@@ -8065,6 +8257,8 @@ export const listFindings: API.OperationMethod<
   input: ListFindingsRequest,
   output: ListFindingsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFindings",
   pagination: {
     inputToken: "nextToken",
@@ -8073,6 +8267,7 @@ export const listFindings: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListMembersError =
   | AccessDeniedException
   | InternalServerException
@@ -8112,6 +8307,8 @@ export const listMembers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMembers",
   pagination: {
     inputToken: "nextToken",
@@ -8120,6 +8317,7 @@ export const listMembers: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -8143,8 +8341,11 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListUsageTotalsError =
   | AccessDeniedException
   | InternalServerException
@@ -8183,6 +8384,8 @@ export const listUsageTotals: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUsageTotals",
   pagination: {
     inputToken: "nextToken",
@@ -8191,6 +8394,7 @@ export const listUsageTotals: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ResetEncryptionKeyError =
   | AccessDeniedException
   | InternalServerException
@@ -8217,8 +8421,11 @@ export const resetEncryptionKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetEncryptionKey",
 }));
+
 export type SearchVulnerabilitiesError =
   | AccessDeniedException
   | InternalServerException
@@ -8257,6 +8464,8 @@ export const searchVulnerabilities: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchVulnerabilities",
   pagination: {
     inputToken: "nextToken",
@@ -8264,6 +8473,7 @@ export const searchVulnerabilities: API.OperationMethod<
     items: "vulnerabilities",
   } as const,
 }));
+
 export type SendCisSessionHealthError =
   | AccessDeniedException
   | ConflictException
@@ -8291,8 +8501,11 @@ export const sendCisSessionHealth: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendCisSessionHealth",
 }));
+
 export type SendCisSessionTelemetryError =
   | AccessDeniedException
   | ConflictException
@@ -8320,8 +8533,11 @@ export const sendCisSessionTelemetry: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendCisSessionTelemetry",
 }));
+
 export type StartCisSessionError =
   | AccessDeniedException
   | ConflictException
@@ -8349,8 +8565,11 @@ export const startCisSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCisSession",
 }));
+
 export type StartCodeSecurityScanError =
   | AccessDeniedException
   | ConflictException
@@ -8378,8 +8597,11 @@ export const startCodeSecurityScan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCodeSecurityScan",
 }));
+
 export type StopCisSessionError =
   | AccessDeniedException
   | ConflictException
@@ -8407,8 +8629,11 @@ export const stopCisSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopCisSession",
 }));
+
 export type TagResourceError =
   | BadRequestException
   | InternalServerException
@@ -8434,8 +8659,11 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -8459,8 +8687,11 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateCisScanConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -8486,8 +8717,11 @@ export const updateCisScanConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCisScanConfiguration",
 }));
+
 export type UpdateCodeSecurityIntegrationError =
   | AccessDeniedException
   | ConflictException
@@ -8520,8 +8754,11 @@ export const updateCodeSecurityIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCodeSecurityIntegration",
 }));
+
 export type UpdateCodeSecurityScanConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -8549,8 +8786,11 @@ export const updateCodeSecurityScanConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCodeSecurityScanConfiguration",
 }));
+
 export type UpdateConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -8576,8 +8816,11 @@ export const updateConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConfiguration",
 }));
+
 export type UpdateEc2DeepInspectionConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -8601,8 +8844,11 @@ export const updateEc2DeepInspectionConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEc2DeepInspectionConfiguration",
 }));
+
 export type UpdateEncryptionKeyError =
   | AccessDeniedException
   | InternalServerException
@@ -8629,8 +8875,11 @@ export const updateEncryptionKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEncryptionKey",
 }));
+
 export type UpdateFilterError =
   | AccessDeniedException
   | InternalServerException
@@ -8656,8 +8905,11 @@ export const updateFilter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFilter",
 }));
+
 export type UpdateOrganizationConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -8681,8 +8933,11 @@ export const updateOrganizationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOrganizationConfiguration",
 }));
+
 export type UpdateOrgEc2DeepInspectionConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -8707,5 +8962,7 @@ export const updateOrgEc2DeepInspectionConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOrgEc2DeepInspectionConfiguration",
 }));

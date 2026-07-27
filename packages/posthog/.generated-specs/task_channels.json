@@ -1,0 +1,604 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.posthog.task_channels#TaskChannelsListRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit",
+            "smithy.api#documentation": "Number of results to return per page."
+          }
+        },
+        "offset": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "offset",
+            "smithy.api#documentation": "The initial index from which to return the results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.task_channels#PaginatedChannelDTOList": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "next": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "previous": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "results": {
+          "target": "com.posthog.task_channels#PaginatedChannelDTOListResultsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.task_channels#ChannelDTO": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "channel_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_by": {
+          "target": "com.posthog.task_channels#TaskUserBasicInfo",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response shape for a task channel, read from a frozen ``ChannelDTO``."
+      }
+    },
+    "com.posthog.task_channels#TaskUserBasicInfo": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "uuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "distinct_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "first_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "last_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "is_email_verified": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hedgehog_config": {
+          "target": "com.posthog.task_channels#TaskUserBasicInfoHedgehogConfigMap",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "role_at_organization": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response shape for a task creator, mirroring core ``UserBasicSerializer`` output."
+      }
+    },
+    "com.posthog.task_channels#TaskUserBasicInfoHedgehogConfigMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.posthog.task_channels#PaginatedChannelDTOListResultsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.task_channels#ChannelDTO"
+      },
+      "traits": {}
+    },
+    "com.posthog.task_channels#TaskChannelsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.task_channels#TaskChannelsListRequest"
+      },
+      "output": {
+        "target": "com.posthog.task_channels#PaginatedChannelDTOList"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/projects/{project_id}/task_channels/",
+          "code": 200
+        },
+        "smithy.api#documentation": "List channels\n\nAll live public channels plus the requester's personal #me channel (created on first list)."
+      }
+    },
+    "com.posthog.task_channels#TaskChannelsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Channel name, rendered as #<name>. Normalized to lowercase-dashed.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.task_channels#TaskChannelsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.task_channels#TaskChannelsCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.task_channels#ChannelDTO"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/task_channels/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Resolve or create a public channel\n\nReturns the existing public channel with the (normalized) name, creating it if needed."
+      }
+    },
+    "com.posthog.task_channels#TaskChannelsFeedListRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "channel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit",
+            "smithy.api#documentation": "Number of results to return per page."
+          }
+        },
+        "offset": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "offset",
+            "smithy.api#documentation": "The initial index from which to return the results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.task_channels#PaginatedChannelFeedMessageDTOList": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "next": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "previous": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "results": {
+          "target": "com.posthog.task_channels#PaginatedChannelFeedMessageDTOListResultsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.task_channels#ChannelFeedMessageDTO": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "channel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "author": {
+          "target": "com.posthog.task_channels#TaskUserBasicInfo",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "author_kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "event": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "payload": {
+          "target": "com.posthog.task_channels#ChannelFeedMessageDTOPayloadMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response shape for one system announcement in a channel's feed."
+      }
+    },
+    "com.posthog.task_channels#ChannelFeedMessageDTOPayloadMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.posthog.task_channels#PaginatedChannelFeedMessageDTOListResultsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.task_channels#ChannelFeedMessageDTO"
+      },
+      "traits": {}
+    },
+    "com.posthog.task_channels#TaskChannelsFeedList": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.task_channels#TaskChannelsFeedListRequest"
+      },
+      "output": {
+        "target": "com.posthog.task_channels#PaginatedChannelFeedMessageDTOList"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/projects/{project_id}/task_channels/{channel_id}/feed/",
+          "code": 200
+        },
+        "smithy.api#documentation": "List channel feed messages\n\nA channel's system announcements in chronological order."
+      }
+    },
+    "com.posthog.task_channels#EventEnum": {
+      "type": "enum",
+      "members": {
+        "CONTEXT_CREATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "context_created"
+          }
+        },
+        "CONTEXT_MD_BUILDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "context_md_building"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `context_created` - context_created\n* `context_md_building` - context_md_building"
+      }
+    },
+    "com.posthog.task_channels#TaskChannelsFeedCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "channel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "event": {
+          "target": "com.posthog.task_channels#EventEnum",
+          "traits": {
+            "smithy.api#documentation": "Lifecycle event key.\n\n* `context_created` - context_created\n* `context_md_building` - context_md_building",
+            "smithy.api#required": {}
+          }
+        },
+        "payload": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Structured event data, e.g. {\"context_name\": \"mobile\"}. At most 8 KB of JSON."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional explicit timestamp (within 10 minutes of now), so a client can order a burst of announcements."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.task_channels#TaskChannelsFeedCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.task_channels#TaskChannelsFeedCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.task_channels#ChannelFeedMessageDTO"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/task_channels/{channel_id}/feed/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Post a channel feed message\n\nAPI for a channel's system-announcement feed — durable \"PostHog agent\" rows\n(context created, CONTEXT.md being built) rendered alongside the channel's task\ncards. Read by any team member for a public channel; personal channels are owner-only."
+      }
+    },
+    "com.posthog.task_channels#TaskChannelsPartialUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Channel name, rendered as #<name>. Normalized to lowercase-dashed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.task_channels#TaskChannelsPartialUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.task_channels#TaskChannelsPartialUpdateRequest"
+      },
+      "output": {
+        "target": "com.posthog.task_channels#ChannelDTO"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/api/projects/{project_id}/task_channels/{id}/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Rename a public channel\n\nAPI for task channels — the shared feeds tasks are kicked off in. Listing lazily\nprovisions the requester's personal \"#me\" channel; creation is resolve-or-create\nby normalized name so clients can map channel-like surfaces onto backend channels."
+      }
+    },
+    "com.posthog.task_channels#TaskChannelsDestroyRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.task_channels#TaskChannelsDestroy": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.task_channels#TaskChannelsDestroyRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/api/projects/{project_id}/task_channels/{id}/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete a public channel\n\nAPI for task channels — the shared feeds tasks are kicked off in. Listing lazily\nprovisions the requester's personal \"#me\" channel; creation is resolve-or-create\nby normalized name so clients can map channel-like surfaces onto backend channels."
+      }
+    },
+    "com.posthog.task_channels#TaskChannels": {
+      "type": "service",
+      "version": "1.0.0",
+      "operations": [
+        {
+          "target": "com.posthog.task_channels#TaskChannelsList"
+        },
+        {
+          "target": "com.posthog.task_channels#TaskChannelsCreate"
+        },
+        {
+          "target": "com.posthog.task_channels#TaskChannelsFeedList"
+        },
+        {
+          "target": "com.posthog.task_channels#TaskChannelsFeedCreate"
+        },
+        {
+          "target": "com.posthog.task_channels#TaskChannelsPartialUpdate"
+        },
+        {
+          "target": "com.posthog.task_channels#TaskChannelsDestroy"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "PostHog API"
+      }
+    }
+  }
+}

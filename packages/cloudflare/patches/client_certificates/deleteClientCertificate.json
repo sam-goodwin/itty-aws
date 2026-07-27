@@ -1,0 +1,123 @@
+{
+  "description": "Align client_certificates#Delete with distilled cloudflare/client-certificates deleteClientCertificate",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.client_certificates#Delete",
+      "path": "/shapes/com.cloudflare.client_certificates#DeleteClientCertificate"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.client_certificates#DeleteRequest",
+      "path": "/shapes/com.cloudflare.client_certificates#DeleteClientCertificateRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.client_certificates#DeleteClientCertificate/input/target",
+      "value": "com.cloudflare.client_certificates#DeleteClientCertificateRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.client_certificates#DeleteResponse",
+      "path": "/shapes/com.cloudflare.client_certificates#DeleteClientCertificateResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.client_certificates#DeleteClientCertificate/output/target",
+      "value": "com.cloudflare.client_certificates#DeleteClientCertificateResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.client_certificates#ClientCertificateNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1415,
+              "message": {
+                "includes": "Invalid Certificate ID"
+              }
+            },
+            {
+              "status": 404
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.client_certificates#ClientCertificateAlreadyRevoked",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1407,
+              "message": {
+                "includes": "already deleted"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.client_certificates#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.client_certificates#DeleteClientCertificate/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.client_certificates#ClientCertificateNotFound"
+        },
+        {
+          "target": "com.cloudflare.client_certificates#ClientCertificateAlreadyRevoked"
+        },
+        {
+          "target": "com.cloudflare.client_certificates#Forbidden"
+        }
+      ]
+    }
+  ]
+}

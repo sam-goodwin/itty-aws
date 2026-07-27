@@ -161,7 +161,9 @@ test(
     Effect.gen(function* () {
       // Verify event bus ARN is returned
       expect(eventBusArn).toBeDefined();
-      expect(eventBusArn).toContain(`distilled-eventbridge-lifecycle-${testRunId}`);
+      expect(eventBusArn).toContain(
+        `distilled-eventbridge-lifecycle-${testRunId}`,
+      );
 
       // Describe the event bus
       const describeResult = yield* describeEventBus({ Name: eventBusName });
@@ -276,7 +278,8 @@ test(
             // List rules on custom bus
             const listResult = yield* listRules({ EventBusName: eventBusName });
             const foundRule = listResult.Rules?.find(
-              (r) => r.Name === `distilled-eventbridge-custom-rule-${testRunId}`,
+              (r) =>
+                r.Name === `distilled-eventbridge-custom-rule-${testRunId}`,
             );
             expect(foundRule).toBeDefined();
           }),

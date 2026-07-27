@@ -1,6 +1,88 @@
 {
-  "errors": {
-    "MemberNotFound": [{ "code": 1003 }],
-    "InvalidRoute": [{ "code": 7003 }]
-  }
+  "description": "Align accounts#MembersGet with distilled cloudflare/accounts getMember",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.accounts#MembersGet",
+      "path": "/shapes/com.cloudflare.accounts#GetMember"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.accounts#MembersGetRequest",
+      "path": "/shapes/com.cloudflare.accounts#GetMemberRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.accounts#GetMember/input/target",
+      "value": "com.cloudflare.accounts#GetMemberRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.accounts#MembersGetResponse",
+      "path": "/shapes/com.cloudflare.accounts#GetMemberResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.accounts#GetMember/output/target",
+      "value": "com.cloudflare.accounts#GetMemberResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#MemberNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#GetMember/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.accounts#MemberNotFound"
+        },
+        {
+          "target": "com.cloudflare.accounts#InvalidRoute"
+        }
+      ]
+    }
+  ]
 }

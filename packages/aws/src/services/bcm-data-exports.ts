@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -112,31 +114,64 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    Message: S.String,
+    ResourceId: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+    QuotaCode: S.String,
+    ServiceCode: S.String,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    Message: S.String,
+    QuotaCode: S.optional(S.String),
+    ServiceCode: S.optional(S.String),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    Message: S.String,
+    Reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+    Fields: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export type ExportName = string;
 export type QueryStatement = string;
 export type TableName = string;
 export type TableProperty = string;
 export type TablePropertyGenericString = string;
-export type AccountId = string;
-export type MaxResults = number;
-export type NextPageToken = string;
-export type ResourceTagKey = string;
-export type ResourceTagValue = string;
-
-//# Schemas
-export interface GetExecutionRequest {
-  ExportArn: string;
-  ExecutionId: string;
-}
-export const GetExecutionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ExportArn: S.String, ExecutionId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetExecutionRequest",
-}) as any as S.Schema<GetExecutionRequest>;
 export type TableProperties = { [key: string]: string | undefined };
 export const TableProperties = /*@__PURE__*/ S.Record(
   S.String,
@@ -161,17 +196,22 @@ export const DataQuery = /*@__PURE__*/ S.suspend(() =>
     TableConfigurations: S.optional(TableConfigurations),
   }),
 ).annotate({ identifier: "DataQuery" }) as any as S.Schema<DataQuery>;
+export type AccountId = string;
 export type S3OutputType = "CUSTOM" | "ATHENA" | "REDSHIFT" | (string & {});
 export const S3OutputType = /*@__PURE__*/ S.String;
+
 export type FormatOption = "TEXT_OR_CSV" | "PARQUET" | (string & {});
 export const FormatOption = /*@__PURE__*/ S.String;
+
 export type CompressionOption = "GZIP" | "PARQUET" | (string & {});
 export const CompressionOption = /*@__PURE__*/ S.String;
+
 export type OverwriteOption =
   | "CREATE_NEW_REPORT"
   | "OVERWRITE_REPORT"
   | (string & {});
 export const OverwriteOption = /*@__PURE__*/ S.String;
+
 export interface S3OutputConfigurations {
   OutputType: S3OutputType;
   Format: FormatOption;
@@ -214,6 +254,7 @@ export const DestinationConfigurations = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DestinationConfigurations>;
 export type FrequencyOption = "SYNCHRONOUS" | (string & {});
 export const FrequencyOption = /*@__PURE__*/ S.String;
+
 export interface RefreshCadence {
   Frequency: FrequencyOption;
 }
@@ -238,6 +279,65 @@ export const Export = /*@__PURE__*/ S.suspend(() =>
     RefreshCadence: RefreshCadence,
   }),
 ).annotate({ identifier: "Export" }) as any as S.Schema<Export>;
+export type ResourceTagKey = string;
+export type ResourceTagValue = string;
+export interface ResourceTag {
+  Key: string;
+  Value: string;
+}
+export const ResourceTag = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Key: S.String, Value: S.String }),
+).annotate({ identifier: "ResourceTag" }) as any as S.Schema<ResourceTag>;
+export type ResourceTagList = ResourceTag[];
+export const ResourceTagList = /*@__PURE__*/ S.Array(ResourceTag);
+export interface CreateExportRequest {
+  Export: Export;
+  ResourceTags?: ResourceTag[];
+}
+export const CreateExportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Export: Export, ResourceTags: S.optional(ResourceTagList) }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateExportRequest",
+}) as any as S.Schema<CreateExportRequest>;
+export interface CreateExportResponse {
+  ExportArn?: string;
+}
+export const CreateExportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ExportArn: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateExportResponse",
+}) as any as S.Schema<CreateExportResponse>;
+export interface DeleteExportRequest {
+  ExportArn: string;
+}
+export const DeleteExportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ExportArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteExportRequest",
+}) as any as S.Schema<DeleteExportRequest>;
+export interface DeleteExportResponse {
+  ExportArn?: string;
+}
+export const DeleteExportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ExportArn: S.optional(S.String) }),
+).annotate({
+  identifier: "DeleteExportResponse",
+}) as any as S.Schema<DeleteExportResponse>;
+export interface GetExecutionRequest {
+  ExportArn: string;
+  ExecutionId: string;
+}
+export const GetExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ExportArn: S.String, ExecutionId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "GetExecutionRequest",
+}) as any as S.Schema<GetExecutionRequest>;
 export type ExecutionStatusCode =
   | "INITIATION_IN_PROCESS"
   | "QUERY_QUEUED"
@@ -248,12 +348,14 @@ export type ExecutionStatusCode =
   | "DELIVERY_FAILURE"
   | (string & {});
 export const ExecutionStatusCode = /*@__PURE__*/ S.String;
+
 export type ExecutionStatusReason =
   | "INSUFFICIENT_PERMISSION"
   | "BILL_OWNER_CHANGED"
   | "INTERNAL_FAILURE"
   | (string & {});
 export const ExecutionStatusReason = /*@__PURE__*/ S.String;
+
 export interface ExecutionStatus {
   StatusCode?: ExecutionStatusCode;
   StatusReason?: ExecutionStatusReason;
@@ -292,26 +394,53 @@ export const GetExecutionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetExecutionResponse",
 }) as any as S.Schema<GetExecutionResponse>;
-export type ValidationExceptionReason =
-  | "unknownOperation"
-  | "cannotParse"
-  | "fieldValidationFailed"
-  | "other"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  Name: string;
-  Message: string;
+export interface GetExportRequest {
+  ExportArn: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Message: S.String }),
+export const GetExportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ExportArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+  identifier: "GetExportRequest",
+}) as any as S.Schema<GetExportRequest>;
+export type ExportStatusCode = "HEALTHY" | "UNHEALTHY" | (string & {});
+export const ExportStatusCode = /*@__PURE__*/ S.String;
+
+export interface ExportStatus {
+  StatusCode?: ExportStatusCode;
+  StatusReason?: ExecutionStatusReason;
+  CreatedAt?: Date;
+  LastUpdatedAt?: Date;
+  LastRefreshedAt?: Date;
+}
+export const ExportStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StatusCode: S.optional(ExportStatusCode),
+    StatusReason: S.optional(ExecutionStatusReason),
+    CreatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    LastUpdatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    LastRefreshedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({ identifier: "ExportStatus" }) as any as S.Schema<ExportStatus>;
+export interface GetExportResponse {
+  Export?: Export;
+  ExportStatus?: ExportStatus;
+}
+export const GetExportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Export: S.optional(Export),
+    ExportStatus: S.optional(ExportStatus),
+  }),
+).annotate({
+  identifier: "GetExportResponse",
+}) as any as S.Schema<GetExportResponse>;
 export interface GetTableRequest {
   TableName: string;
   TableProperties?: { [key: string]: string | undefined };
@@ -356,6 +485,8 @@ export const GetTableResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTableResponse",
 }) as any as S.Schema<GetTableResponse>;
+export type MaxResults = number;
+export type NextPageToken = string;
 export interface ListExecutionsRequest {
   ExportArn: string;
   MaxResults?: number;
@@ -395,6 +526,48 @@ export const ListExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListExecutionsResponse",
 }) as any as S.Schema<ListExecutionsResponse>;
+export interface ListExportsRequest {
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListExportsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListExportsRequest",
+}) as any as S.Schema<ListExportsRequest>;
+export interface ExportReference {
+  ExportArn: string;
+  ExportName: string;
+  ExportStatus: ExportStatus;
+}
+export const ExportReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ExportArn: S.String,
+    ExportName: S.String,
+    ExportStatus: ExportStatus,
+  }),
+).annotate({
+  identifier: "ExportReference",
+}) as any as S.Schema<ExportReference>;
+export type ExportReferenceList = ExportReference[];
+export const ExportReferenceList = /*@__PURE__*/ S.Array(ExportReference);
+export interface ListExportsResponse {
+  Exports?: ExportReference[];
+  NextToken?: string;
+}
+export const ListExportsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Exports: S.optional(ExportReferenceList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListExportsResponse",
+}) as any as S.Schema<ListExportsResponse>;
 export interface ListTablesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -470,28 +643,18 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
-export interface ResourceTag {
-  Key: string;
-  Value: string;
-}
-export const ResourceTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.String, Value: S.String }),
-).annotate({ identifier: "ResourceTag" }) as any as S.Schema<ResourceTag>;
-export type ResourceTagList = ResourceTag[];
-export const ResourceTagList = /*@__PURE__*/ S.Array(ResourceTag);
 export interface ListTagsForResourceResponse {
   ResourceTags?: ResourceTag[];
   NextToken?: string;
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ResourceTags: S.optional(ResourceTagList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceTags: S.optional(ResourceTagList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   ResourceTags: ResourceTag[];
@@ -528,71 +691,6 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-export interface CreateExportRequest {
-  Export: Export;
-  ResourceTags?: ResourceTag[];
-}
-export const CreateExportRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Export: Export, ResourceTags: S.optional(ResourceTagList) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateExportRequest",
-}) as any as S.Schema<CreateExportRequest>;
-export interface CreateExportResponse {
-  ExportArn?: string;
-}
-export const CreateExportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ExportArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateExportResponse",
-}) as any as S.Schema<CreateExportResponse>;
-export interface GetExportRequest {
-  ExportArn: string;
-}
-export const GetExportRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ExportArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetExportRequest",
-}) as any as S.Schema<GetExportRequest>;
-export type ExportStatusCode = "HEALTHY" | "UNHEALTHY" | (string & {});
-export const ExportStatusCode = /*@__PURE__*/ S.String;
-export interface ExportStatus {
-  StatusCode?: ExportStatusCode;
-  StatusReason?: ExecutionStatusReason;
-  CreatedAt?: Date;
-  LastUpdatedAt?: Date;
-  LastRefreshedAt?: Date;
-}
-export const ExportStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StatusCode: S.optional(ExportStatusCode),
-    StatusReason: S.optional(ExecutionStatusReason),
-    CreatedAt: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    LastUpdatedAt: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    LastRefreshedAt: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-  }),
-).annotate({ identifier: "ExportStatus" }) as any as S.Schema<ExportStatus>;
-export interface GetExportResponse {
-  Export?: Export;
-  ExportStatus?: ExportStatus;
-}
-export const GetExportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Export: S.optional(Export),
-    ExportStatus: S.optional(ExportStatus),
-  }),
-).annotate({
-  identifier: "GetExportResponse",
-}) as any as S.Schema<GetExportResponse>;
 export interface UpdateExportRequest {
   ExportArn: string;
   Export: Export;
@@ -612,108 +710,91 @@ export const UpdateExportResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateExportResponse",
 }) as any as S.Schema<UpdateExportResponse>;
-export interface DeleteExportRequest {
-  ExportArn: string;
-}
-export const DeleteExportRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ExportArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteExportRequest",
-}) as any as S.Schema<DeleteExportRequest>;
-export interface DeleteExportResponse {
-  ExportArn?: string;
-}
-export const DeleteExportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ExportArn: S.optional(S.String) }),
-).annotate({
-  identifier: "DeleteExportResponse",
-}) as any as S.Schema<DeleteExportResponse>;
-export interface ListExportsRequest {
-  MaxResults?: number;
-  NextToken?: string;
-}
-export const ListExportsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListExportsRequest",
-}) as any as S.Schema<ListExportsRequest>;
-export interface ExportReference {
-  ExportArn: string;
-  ExportName: string;
-  ExportStatus: ExportStatus;
-}
-export const ExportReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ExportArn: S.String,
-    ExportName: S.String,
-    ExportStatus: ExportStatus,
-  }),
-).annotate({
-  identifier: "ExportReference",
-}) as any as S.Schema<ExportReference>;
-export type ExportReferenceList = ExportReference[];
-export const ExportReferenceList = /*@__PURE__*/ S.Array(ExportReference);
-export interface ListExportsResponse {
-  Exports?: ExportReference[];
-  NextToken?: string;
-}
-export const ListExportsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Exports: S.optional(ExportReferenceList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListExportsResponse",
-}) as any as S.Schema<ListExportsResponse>;
+export type ValidationExceptionReason =
+  | "unknownOperation"
+  | "cannotParse"
+  | "fieldValidationFailed"
+  | "other"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.String },
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    Message: S.String,
-    QuotaCode: S.optional(S.String),
-    ServiceCode: S.optional(S.String),
-  },
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    Message: S.String,
-    Reason: S.optional(ValidationExceptionReason),
-    Fields: S.optional(ValidationExceptionFieldList),
-  },
-).pipe(C.withBadRequestError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.String },
-).pipe(C.withAuthError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    Message: S.String,
-    ResourceId: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    QuotaCode: S.String,
-    ServiceCode: S.String,
-  },
-).pipe(C.withQuotaError) {}
+export interface ValidationExceptionField {
+  Name: string;
+  Message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String, Message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
+export type CreateExportError =
+  | AccessDeniedException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a data export and specifies the data query, the delivery preference, and any optional resource tags.
+ *
+ * A `DataQuery` consists of both a `QueryStatement` and `TableConfigurations`.
+ *
+ * The `QueryStatement` is an SQL statement. Data Exports only supports a limited subset of the SQL syntax. For more information on the SQL syntax that is supported, see Data query. To view the available tables and columns, see the Data Exports table dictionary.
+ *
+ * The `TableConfigurations` is a collection of specified `TableProperties` for the table being queried in the `QueryStatement`. TableProperties are additional configurations you can provide to change the data and schema of a table. Each table can have different TableProperties. However, tables are not required to have any TableProperties. Each table property has a default value that it assumes if not specified. For more information on table configurations, see Data query. To view the table properties available for each table, see the Data Exports table dictionary or use the `ListTables` API to get a response of all tables and their available properties.
+ */
+export const createExport: API.OperationMethod<
+  CreateExportRequest,
+  CreateExportResponse,
+  CreateExportError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateExportRequest,
+  output: CreateExportResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateExport",
+}));
 
-//# Operations
+export type DeleteExportError =
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes an existing data export.
+ */
+export const deleteExport: API.OperationMethod<
+  DeleteExportRequest,
+  DeleteExportResponse,
+  DeleteExportError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteExportRequest,
+  output: DeleteExportResponse,
+  errors: [
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteExport",
+}));
+
 export type GetExecutionError =
   | InternalServerException
   | ResourceNotFoundException
@@ -737,8 +818,39 @@ export const getExecution: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExecution",
 }));
+
+export type GetExportError =
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Views the definition of an existing data export.
+ */
+export const getExport: API.OperationMethod<
+  GetExportRequest,
+  GetExportResponse,
+  GetExportError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetExportRequest,
+  output: GetExportResponse,
+  errors: [
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetExport",
+}));
+
 export type GetTableError =
   | InternalServerException
   | ThrottlingException
@@ -756,8 +868,11 @@ export const getTable: API.OperationMethod<
   input: GetTableRequest,
   output: GetTableResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTable",
 }));
+
 export type ListExecutionsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -796,6 +911,8 @@ export const listExecutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExecutions",
   pagination: {
     inputToken: "NextToken",
@@ -804,235 +921,7 @@ export const listExecutions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type ListTablesError =
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Lists all available tables in data exports.
- */
-export const listTables: API.OperationMethod<
-  ListTablesRequest,
-  ListTablesResponse,
-  ListTablesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTablesRequest,
-  ) => stream.Stream<
-    ListTablesResponse,
-    ListTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTablesRequest,
-  ) => stream.Stream<
-    Table,
-    ListTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTablesRequest,
-  output: ListTablesResponse,
-  errors: [InternalServerException, ThrottlingException, ValidationException],
-  operationName: "ListTables",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "Tables",
-    pageSize: "MaxResults",
-  } as const,
-}));
-export type ListTagsForResourceError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * List tags associated with an existing data export.
- */
-export const listTagsForResource: API.OperationMethod<
-  ListTagsForResourceRequest,
-  ListTagsForResourceResponse,
-  ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "ListTagsForResource",
-}));
-export type TagResourceError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Adds tags for an existing data export definition.
- */
-export const tagResource: API.OperationMethod<
-  TagResourceRequest,
-  TagResourceResponse,
-  TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "TagResource",
-}));
-export type UntagResourceError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes tags associated with an existing data export definition.
- */
-export const untagResource: API.OperationMethod<
-  UntagResourceRequest,
-  UntagResourceResponse,
-  UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "UntagResource",
-}));
-export type CreateExportError =
-  | AccessDeniedException
-  | InternalServerException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a data export and specifies the data query, the delivery preference, and any optional resource tags.
- *
- * A `DataQuery` consists of both a `QueryStatement` and `TableConfigurations`.
- *
- * The `QueryStatement` is an SQL statement. Data Exports only supports a limited subset of the SQL syntax. For more information on the SQL syntax that is supported, see Data query. To view the available tables and columns, see the Data Exports table dictionary.
- *
- * The `TableConfigurations` is a collection of specified `TableProperties` for the table being queried in the `QueryStatement`. TableProperties are additional configurations you can provide to change the data and schema of a table. Each table can have different TableProperties. However, tables are not required to have any TableProperties. Each table property has a default value that it assumes if not specified. For more information on table configurations, see Data query. To view the table properties available for each table, see the Data Exports table dictionary or use the `ListTables` API to get a response of all tables and their available properties.
- */
-export const createExport: API.OperationMethod<
-  CreateExportRequest,
-  CreateExportResponse,
-  CreateExportError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateExportRequest,
-  output: CreateExportResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "CreateExport",
-}));
-export type GetExportError =
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Views the definition of an existing data export.
- */
-export const getExport: API.OperationMethod<
-  GetExportRequest,
-  GetExportResponse,
-  GetExportError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetExportRequest,
-  output: GetExportResponse,
-  errors: [
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "GetExport",
-}));
-export type UpdateExportError =
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates an existing data export by overwriting all export parameters. All export parameters must be provided in the UpdateExport request.
- */
-export const updateExport: API.OperationMethod<
-  UpdateExportRequest,
-  UpdateExportResponse,
-  UpdateExportError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateExportRequest,
-  output: UpdateExportResponse,
-  errors: [
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "UpdateExport",
-}));
-export type DeleteExportError =
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes an existing data export.
- */
-export const deleteExport: API.OperationMethod<
-  DeleteExportRequest,
-  DeleteExportResponse,
-  DeleteExportError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteExportRequest,
-  output: DeleteExportResponse,
-  errors: [
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "DeleteExport",
-}));
+
 export type ListExportsError =
   | InternalServerException
   | ThrottlingException
@@ -1065,6 +954,8 @@ export const listExports: API.OperationMethod<
   input: ListExportsRequest,
   output: ListExportsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExports",
   pagination: {
     inputToken: "NextToken",
@@ -1072,4 +963,165 @@ export const listExports: API.OperationMethod<
     items: "Exports",
     pageSize: "MaxResults",
   } as const,
+}));
+
+export type ListTablesError =
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists all available tables in data exports.
+ */
+export const listTables: API.OperationMethod<
+  ListTablesRequest,
+  ListTablesResponse,
+  ListTablesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTablesRequest,
+  ) => stream.Stream<
+    ListTablesResponse,
+    ListTablesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTablesRequest,
+  ) => stream.Stream<
+    Table,
+    ListTablesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListTablesRequest,
+  output: ListTablesResponse,
+  errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListTables",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Tables",
+    pageSize: "MaxResults",
+  } as const,
+}));
+
+export type ListTagsForResourceError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * List tags associated with an existing data export.
+ */
+export const listTagsForResource: API.OperationMethod<
+  ListTagsForResourceRequest,
+  ListTagsForResourceResponse,
+  ListTagsForResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListTagsForResource",
+}));
+
+export type TagResourceError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Adds tags for an existing data export definition.
+ */
+export const tagResource: API.OperationMethod<
+  TagResourceRequest,
+  TagResourceResponse,
+  TagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: TagResourceRequest,
+  output: TagResourceResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "TagResource",
+}));
+
+export type UntagResourceError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes tags associated with an existing data export definition.
+ */
+export const untagResource: API.OperationMethod<
+  UntagResourceRequest,
+  UntagResourceResponse,
+  UntagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UntagResource",
+}));
+
+export type UpdateExportError =
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing data export by overwriting all export parameters. All export parameters must be provided in the UpdateExport request.
+ */
+export const updateExport: API.OperationMethod<
+  UpdateExportRequest,
+  UpdateExportResponse,
+  UpdateExportError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateExportRequest,
+  output: UpdateExportResponse,
+  errors: [
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateExport",
 }));

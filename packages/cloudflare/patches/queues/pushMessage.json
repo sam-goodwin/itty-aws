@@ -1,7 +1,117 @@
 {
-  "errors": {
-    "InvalidMessageBody": [{ "code": 10207 }],
-    "InvalidQueueId": [{ "code": 10107 }],
-    "InvalidRoute": [{ "code": 7003 }]
-  }
+  "description": "Align queues#MessagesPush with distilled cloudflare/queues pushMessage",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.queues#MessagesPush",
+      "path": "/shapes/com.cloudflare.queues#PushMessage"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.queues#MessagesPushRequest",
+      "path": "/shapes/com.cloudflare.queues#PushMessageRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.queues#PushMessage/input/target",
+      "value": "com.cloudflare.queues#PushMessageRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.queues#MessagesPushResponse",
+      "path": "/shapes/com.cloudflare.queues#PushMessageResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.queues#PushMessage/output/target",
+      "value": "com.cloudflare.queues#PushMessageResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#InvalidMessageBody",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10207
+            },
+            {
+              "code": 10013
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#InvalidQueueId",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10107
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#PushMessage/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.queues#InvalidMessageBody"
+        },
+        {
+          "target": "com.cloudflare.queues#InvalidQueueId"
+        },
+        {
+          "target": "com.cloudflare.queues#InvalidRoute"
+        }
+      ]
+    }
+  ]
 }

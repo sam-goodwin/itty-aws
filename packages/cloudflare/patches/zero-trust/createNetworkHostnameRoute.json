@@ -1,8 +1,0 @@
-{
-  "errors": {
-    "HostnameRouteAlreadyRouted": [
-      { "status": 409, "message": { "includes": "already routed to another tunnel" } }
-    ],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

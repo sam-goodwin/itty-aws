@@ -1,0 +1,1931 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.cloudflare.page_rules#CreateRequestActionsItemId": {
+      "type": "enum",
+      "members": {
+        "ALWAYS_USE_HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "always_use_https"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#CreateRequestActionsItemValue": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#CreateRequestActionsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.page_rules#CreateRequestActionsItemId",
+          "traits": {
+            "smithy.api#documentation": "If enabled, any `http://`` URL is converted to`https://` through a"
+          }
+        },
+        "value": {
+          "target": "com.cloudflare.page_rules#CreateRequestActionsItemValue",
+          "traits": {
+            "smithy.api#documentation": "The status of Automatic HTTPS Rewrites."
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#CreateRequestActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.page_rules#CreateRequestActionsItem"
+      }
+    },
+    "com.cloudflare.page_rules#CreateRequestTargetsItemConstraintOperator": {
+      "type": "enum",
+      "members": {
+        "MATCHES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "matches"
+          }
+        },
+        "CONTAINS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "contains"
+          }
+        },
+        "EQUALS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "equals"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#CreateRequestTargetsItemConstraint": {
+      "type": "structure",
+      "members": {
+        "operator": {
+          "target": "com.cloudflare.page_rules#CreateRequestTargetsItemConstraintOperator",
+          "traits": {
+            "smithy.api#documentation": "The matches operator can use asterisks and pipes as wildcard and 'or' operators.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#CreateRequestTargetsItemTarget": {
+      "type": "enum",
+      "members": {
+        "URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "url"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#CreateRequestTargetsItem": {
+      "type": "structure",
+      "members": {
+        "constraint": {
+          "target": "com.cloudflare.page_rules#CreateRequestTargetsItemConstraint",
+          "traits": {
+            "smithy.api#documentation": "String constraint."
+          }
+        },
+        "target": {
+          "target": "com.cloudflare.page_rules#CreateRequestTargetsItemTarget",
+          "traits": {
+            "smithy.api#documentation": "A target based on the URL of the request."
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#CreateRequestTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.page_rules#CreateRequestTargetsItem"
+      }
+    },
+    "com.cloudflare.page_rules#CreateRequestStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#CreateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "actions": {
+          "target": "com.cloudflare.page_rules#CreateRequestActionsList",
+          "traits": {
+            "smithy.api#documentation": "The set of actions to perform if the targets of this rule match the",
+            "smithy.api#required": {}
+          }
+        },
+        "targets": {
+          "target": "com.cloudflare.page_rules#CreateRequestTargetsList",
+          "traits": {
+            "smithy.api#documentation": "The rule targets to evaluate on each request.",
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The priority of the rule, used to define which Page Rule is processed"
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.page_rules#CreateRequestStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the Page Rule."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.page_rules#CreateResponseActionsItemId": {
+      "type": "enum",
+      "members": {
+        "ALWAYS_USE_HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "always_use_https"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#CreateResponseActionsItemValue": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#CreateResponseActionsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.page_rules#CreateResponseActionsItemId",
+          "traits": {
+            "smithy.api#documentation": "If enabled, any `http://`` URL is converted to`https://` through a"
+          }
+        },
+        "value": {
+          "target": "com.cloudflare.page_rules#CreateResponseActionsItemValue",
+          "traits": {
+            "smithy.api#documentation": "The status of Automatic HTTPS Rewrites."
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#CreateResponseActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.page_rules#CreateResponseActionsItem"
+      }
+    },
+    "com.cloudflare.page_rules#CreateResponseStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#CreateResponseTargetsItemConstraintOperator": {
+      "type": "enum",
+      "members": {
+        "MATCHES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "matches"
+          }
+        },
+        "CONTAINS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "contains"
+          }
+        },
+        "EQUALS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "equals"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#CreateResponseTargetsItemConstraint": {
+      "type": "structure",
+      "members": {
+        "operator": {
+          "target": "com.cloudflare.page_rules#CreateResponseTargetsItemConstraintOperator",
+          "traits": {
+            "smithy.api#documentation": "The matches operator can use asterisks and pipes as wildcard and 'or' operators.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#CreateResponseTargetsItemTarget": {
+      "type": "enum",
+      "members": {
+        "URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "url"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#CreateResponseTargetsItem": {
+      "type": "structure",
+      "members": {
+        "constraint": {
+          "target": "com.cloudflare.page_rules#CreateResponseTargetsItemConstraint",
+          "traits": {
+            "smithy.api#documentation": "String constraint."
+          }
+        },
+        "target": {
+          "target": "com.cloudflare.page_rules#CreateResponseTargetsItemTarget",
+          "traits": {
+            "smithy.api#documentation": "A target based on the URL of the request."
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#CreateResponseTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.page_rules#CreateResponseTargetsItem"
+      }
+    },
+    "com.cloudflare.page_rules#CreateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "actions": {
+          "target": "com.cloudflare.page_rules#CreateResponseActionsList",
+          "traits": {
+            "smithy.api#documentation": "The set of actions to perform if the targets of this rule match the",
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the Page Rule was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the Page Rule was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The priority of the rule, used to define which Page Rule is processed",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.page_rules#CreateResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the Page Rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "targets": {
+          "target": "com.cloudflare.page_rules#CreateResponseTargetsList",
+          "traits": {
+            "smithy.api#documentation": "The rule targets to evaluate on each request.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.page_rules#Create": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.page_rules#CreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.page_rules#CreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/pagerules",
+          "code": 200
+        },
+        "smithy.api#documentation": "Creates a new Page Rule."
+      }
+    },
+    "com.cloudflare.page_rules#DeleteRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pagerule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.page_rules#DeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.page_rules#Delete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.page_rules#DeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.page_rules#DeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/zones/{zone_id}/pagerules/{pagerule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Deletes an existing Page Rule.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.page_rules#EditRequestActionsItemId": {
+      "type": "enum",
+      "members": {
+        "ALWAYS_USE_HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "always_use_https"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#EditRequestActionsItemValue": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#EditRequestActionsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.page_rules#EditRequestActionsItemId",
+          "traits": {
+            "smithy.api#documentation": "If enabled, any `http://`` URL is converted to`https://` through a"
+          }
+        },
+        "value": {
+          "target": "com.cloudflare.page_rules#EditRequestActionsItemValue",
+          "traits": {
+            "smithy.api#documentation": "The status of Automatic HTTPS Rewrites."
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#EditRequestActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.page_rules#EditRequestActionsItem"
+      }
+    },
+    "com.cloudflare.page_rules#EditRequestStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#EditRequestTargetsItemConstraintOperator": {
+      "type": "enum",
+      "members": {
+        "MATCHES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "matches"
+          }
+        },
+        "CONTAINS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "contains"
+          }
+        },
+        "EQUALS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "equals"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#EditRequestTargetsItemConstraint": {
+      "type": "structure",
+      "members": {
+        "operator": {
+          "target": "com.cloudflare.page_rules#EditRequestTargetsItemConstraintOperator",
+          "traits": {
+            "smithy.api#documentation": "The matches operator can use asterisks and pipes as wildcard and 'or' operators.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#EditRequestTargetsItemTarget": {
+      "type": "enum",
+      "members": {
+        "URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "url"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#EditRequestTargetsItem": {
+      "type": "structure",
+      "members": {
+        "constraint": {
+          "target": "com.cloudflare.page_rules#EditRequestTargetsItemConstraint",
+          "traits": {
+            "smithy.api#documentation": "String constraint."
+          }
+        },
+        "target": {
+          "target": "com.cloudflare.page_rules#EditRequestTargetsItemTarget",
+          "traits": {
+            "smithy.api#documentation": "A target based on the URL of the request."
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#EditRequestTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.page_rules#EditRequestTargetsItem"
+      }
+    },
+    "com.cloudflare.page_rules#EditRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pagerule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "actions": {
+          "target": "com.cloudflare.page_rules#EditRequestActionsList",
+          "traits": {
+            "smithy.api#documentation": "The set of actions to perform if the targets of this rule match the"
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The priority of the rule, used to define which Page Rule is processed"
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.page_rules#EditRequestStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the Page Rule."
+          }
+        },
+        "targets": {
+          "target": "com.cloudflare.page_rules#EditRequestTargetsList",
+          "traits": {
+            "smithy.api#documentation": "The rule targets to evaluate on each request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.page_rules#EditResponseActionsItemId": {
+      "type": "enum",
+      "members": {
+        "ALWAYS_USE_HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "always_use_https"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#EditResponseActionsItemValue": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#EditResponseActionsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.page_rules#EditResponseActionsItemId",
+          "traits": {
+            "smithy.api#documentation": "If enabled, any `http://`` URL is converted to`https://` through a"
+          }
+        },
+        "value": {
+          "target": "com.cloudflare.page_rules#EditResponseActionsItemValue",
+          "traits": {
+            "smithy.api#documentation": "The status of Automatic HTTPS Rewrites."
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#EditResponseActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.page_rules#EditResponseActionsItem"
+      }
+    },
+    "com.cloudflare.page_rules#EditResponseStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#EditResponseTargetsItemConstraintOperator": {
+      "type": "enum",
+      "members": {
+        "MATCHES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "matches"
+          }
+        },
+        "CONTAINS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "contains"
+          }
+        },
+        "EQUALS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "equals"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#EditResponseTargetsItemConstraint": {
+      "type": "structure",
+      "members": {
+        "operator": {
+          "target": "com.cloudflare.page_rules#EditResponseTargetsItemConstraintOperator",
+          "traits": {
+            "smithy.api#documentation": "The matches operator can use asterisks and pipes as wildcard and 'or' operators.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#EditResponseTargetsItemTarget": {
+      "type": "enum",
+      "members": {
+        "URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "url"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#EditResponseTargetsItem": {
+      "type": "structure",
+      "members": {
+        "constraint": {
+          "target": "com.cloudflare.page_rules#EditResponseTargetsItemConstraint",
+          "traits": {
+            "smithy.api#documentation": "String constraint."
+          }
+        },
+        "target": {
+          "target": "com.cloudflare.page_rules#EditResponseTargetsItemTarget",
+          "traits": {
+            "smithy.api#documentation": "A target based on the URL of the request."
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#EditResponseTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.page_rules#EditResponseTargetsItem"
+      }
+    },
+    "com.cloudflare.page_rules#EditResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "actions": {
+          "target": "com.cloudflare.page_rules#EditResponseActionsList",
+          "traits": {
+            "smithy.api#documentation": "The set of actions to perform if the targets of this rule match the",
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the Page Rule was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the Page Rule was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The priority of the rule, used to define which Page Rule is processed",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.page_rules#EditResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the Page Rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "targets": {
+          "target": "com.cloudflare.page_rules#EditResponseTargetsList",
+          "traits": {
+            "smithy.api#documentation": "The rule targets to evaluate on each request.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.page_rules#Edit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.page_rules#EditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.page_rules#EditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/zones/{zone_id}/pagerules/{pagerule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates one or more fields of an existing Page Rule."
+      }
+    },
+    "com.cloudflare.page_rules#GetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pagerule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.page_rules#GetResponseActionsItemId": {
+      "type": "enum",
+      "members": {
+        "ALWAYS_USE_HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "always_use_https"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#GetResponseActionsItemValue": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#GetResponseActionsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.page_rules#GetResponseActionsItemId",
+          "traits": {
+            "smithy.api#documentation": "If enabled, any `http://`` URL is converted to`https://` through a"
+          }
+        },
+        "value": {
+          "target": "com.cloudflare.page_rules#GetResponseActionsItemValue",
+          "traits": {
+            "smithy.api#documentation": "The status of Automatic HTTPS Rewrites."
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#GetResponseActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.page_rules#GetResponseActionsItem"
+      }
+    },
+    "com.cloudflare.page_rules#GetResponseStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#GetResponseTargetsItemConstraintOperator": {
+      "type": "enum",
+      "members": {
+        "MATCHES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "matches"
+          }
+        },
+        "CONTAINS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "contains"
+          }
+        },
+        "EQUALS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "equals"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#GetResponseTargetsItemConstraint": {
+      "type": "structure",
+      "members": {
+        "operator": {
+          "target": "com.cloudflare.page_rules#GetResponseTargetsItemConstraintOperator",
+          "traits": {
+            "smithy.api#documentation": "The matches operator can use asterisks and pipes as wildcard and 'or' operators.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#GetResponseTargetsItemTarget": {
+      "type": "enum",
+      "members": {
+        "URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "url"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#GetResponseTargetsItem": {
+      "type": "structure",
+      "members": {
+        "constraint": {
+          "target": "com.cloudflare.page_rules#GetResponseTargetsItemConstraint",
+          "traits": {
+            "smithy.api#documentation": "String constraint."
+          }
+        },
+        "target": {
+          "target": "com.cloudflare.page_rules#GetResponseTargetsItemTarget",
+          "traits": {
+            "smithy.api#documentation": "A target based on the URL of the request."
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#GetResponseTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.page_rules#GetResponseTargetsItem"
+      }
+    },
+    "com.cloudflare.page_rules#GetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "actions": {
+          "target": "com.cloudflare.page_rules#GetResponseActionsList",
+          "traits": {
+            "smithy.api#documentation": "The set of actions to perform if the targets of this rule match the",
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the Page Rule was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the Page Rule was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The priority of the rule, used to define which Page Rule is processed",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.page_rules#GetResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the Page Rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "targets": {
+          "target": "com.cloudflare.page_rules#GetResponseTargetsList",
+          "traits": {
+            "smithy.api#documentation": "The rule targets to evaluate on each request.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.page_rules#Get": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.page_rules#GetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.page_rules#GetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/pagerules/{pagerule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches the details of a Page Rule.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.page_rules#ListRequestDirection": {
+      "type": "enum",
+      "members": {
+        "ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asc"
+          }
+        },
+        "DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "desc"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#ListRequestMatch": {
+      "type": "enum",
+      "members": {
+        "ANY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "any"
+          }
+        },
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#ListRequestOrder": {
+      "type": "enum",
+      "members": {
+        "STATUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "status"
+          }
+        },
+        "PRIORITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "priority"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#ListRequestStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#ListRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "direction": {
+          "target": "com.cloudflare.page_rules#ListRequestDirection",
+          "traits": {
+            "smithy.api#documentation": "The direction used to sort returned Page Rules.",
+            "smithy.api#httpQuery": "direction"
+          }
+        },
+        "match": {
+          "target": "com.cloudflare.page_rules#ListRequestMatch",
+          "traits": {
+            "smithy.api#documentation": "When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.",
+            "smithy.api#httpQuery": "match"
+          }
+        },
+        "order": {
+          "target": "com.cloudflare.page_rules#ListRequestOrder",
+          "traits": {
+            "smithy.api#documentation": "The field used to sort returned Page Rules.",
+            "smithy.api#httpQuery": "order"
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.page_rules#ListRequestStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the Page Rule.",
+            "smithy.api#httpQuery": "status"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.page_rules#ListResultItemActionsItemId": {
+      "type": "enum",
+      "members": {
+        "ALWAYS_USE_HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "always_use_https"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#ListResultItemActionsItemValue": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#ListResultItemActionsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.page_rules#ListResultItemActionsItemId",
+          "traits": {
+            "smithy.api#documentation": "If enabled, any `http://`` URL is converted to`https://` through a"
+          }
+        },
+        "value": {
+          "target": "com.cloudflare.page_rules#ListResultItemActionsItemValue",
+          "traits": {
+            "smithy.api#documentation": "The status of Automatic HTTPS Rewrites."
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#ListResultItemActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.page_rules#ListResultItemActionsItem"
+      }
+    },
+    "com.cloudflare.page_rules#ListResultItemStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#ListResultItemTargetsItemConstraintOperator": {
+      "type": "enum",
+      "members": {
+        "MATCHES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "matches"
+          }
+        },
+        "CONTAINS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "contains"
+          }
+        },
+        "EQUALS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "equals"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#ListResultItemTargetsItemConstraint": {
+      "type": "structure",
+      "members": {
+        "operator": {
+          "target": "com.cloudflare.page_rules#ListResultItemTargetsItemConstraintOperator",
+          "traits": {
+            "smithy.api#documentation": "The matches operator can use asterisks and pipes as wildcard and 'or' operators.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#ListResultItemTargetsItemTarget": {
+      "type": "enum",
+      "members": {
+        "URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "url"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#ListResultItemTargetsItem": {
+      "type": "structure",
+      "members": {
+        "constraint": {
+          "target": "com.cloudflare.page_rules#ListResultItemTargetsItemConstraint",
+          "traits": {
+            "smithy.api#documentation": "String constraint."
+          }
+        },
+        "target": {
+          "target": "com.cloudflare.page_rules#ListResultItemTargetsItemTarget",
+          "traits": {
+            "smithy.api#documentation": "A target based on the URL of the request."
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#ListResultItemTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.page_rules#ListResultItemTargetsItem"
+      }
+    },
+    "com.cloudflare.page_rules#ListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "actions": {
+          "target": "com.cloudflare.page_rules#ListResultItemActionsList",
+          "traits": {
+            "smithy.api#documentation": "The set of actions to perform if the targets of this rule match the",
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the Page Rule was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the Page Rule was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The priority of the rule, used to define which Page Rule is processed",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.page_rules#ListResultItemStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the Page Rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "targets": {
+          "target": "com.cloudflare.page_rules#ListResultItemTargetsList",
+          "traits": {
+            "smithy.api#documentation": "The rule targets to evaluate on each request.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#ListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.page_rules#ListResultItem"
+      }
+    },
+    "com.cloudflare.page_rules#ListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.page_rules#ListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.page_rules#List": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.page_rules#ListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.page_rules#ListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/pagerules",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches Page Rules in a zone.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.page_rules#UpdateRequestActionsItemId": {
+      "type": "enum",
+      "members": {
+        "ALWAYS_USE_HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "always_use_https"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#UpdateRequestActionsItemValue": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#UpdateRequestActionsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.page_rules#UpdateRequestActionsItemId",
+          "traits": {
+            "smithy.api#documentation": "If enabled, any `http://`` URL is converted to`https://` through a"
+          }
+        },
+        "value": {
+          "target": "com.cloudflare.page_rules#UpdateRequestActionsItemValue",
+          "traits": {
+            "smithy.api#documentation": "The status of Automatic HTTPS Rewrites."
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#UpdateRequestActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.page_rules#UpdateRequestActionsItem"
+      }
+    },
+    "com.cloudflare.page_rules#UpdateRequestTargetsItemConstraintOperator": {
+      "type": "enum",
+      "members": {
+        "MATCHES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "matches"
+          }
+        },
+        "CONTAINS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "contains"
+          }
+        },
+        "EQUALS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "equals"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#UpdateRequestTargetsItemConstraint": {
+      "type": "structure",
+      "members": {
+        "operator": {
+          "target": "com.cloudflare.page_rules#UpdateRequestTargetsItemConstraintOperator",
+          "traits": {
+            "smithy.api#documentation": "The matches operator can use asterisks and pipes as wildcard and 'or' operators.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#UpdateRequestTargetsItemTarget": {
+      "type": "enum",
+      "members": {
+        "URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "url"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#UpdateRequestTargetsItem": {
+      "type": "structure",
+      "members": {
+        "constraint": {
+          "target": "com.cloudflare.page_rules#UpdateRequestTargetsItemConstraint",
+          "traits": {
+            "smithy.api#documentation": "String constraint."
+          }
+        },
+        "target": {
+          "target": "com.cloudflare.page_rules#UpdateRequestTargetsItemTarget",
+          "traits": {
+            "smithy.api#documentation": "A target based on the URL of the request."
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#UpdateRequestTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.page_rules#UpdateRequestTargetsItem"
+      }
+    },
+    "com.cloudflare.page_rules#UpdateRequestStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#UpdateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pagerule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "actions": {
+          "target": "com.cloudflare.page_rules#UpdateRequestActionsList",
+          "traits": {
+            "smithy.api#documentation": "The set of actions to perform if the targets of this rule match the",
+            "smithy.api#required": {}
+          }
+        },
+        "targets": {
+          "target": "com.cloudflare.page_rules#UpdateRequestTargetsList",
+          "traits": {
+            "smithy.api#documentation": "The rule targets to evaluate on each request.",
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The priority of the rule, used to define which Page Rule is processed"
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.page_rules#UpdateRequestStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the Page Rule."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.page_rules#UpdateResponseActionsItemId": {
+      "type": "enum",
+      "members": {
+        "ALWAYS_USE_HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "always_use_https"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#UpdateResponseActionsItemValue": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#UpdateResponseActionsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.page_rules#UpdateResponseActionsItemId",
+          "traits": {
+            "smithy.api#documentation": "If enabled, any `http://`` URL is converted to`https://` through a"
+          }
+        },
+        "value": {
+          "target": "com.cloudflare.page_rules#UpdateResponseActionsItemValue",
+          "traits": {
+            "smithy.api#documentation": "The status of Automatic HTTPS Rewrites."
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#UpdateResponseActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.page_rules#UpdateResponseActionsItem"
+      }
+    },
+    "com.cloudflare.page_rules#UpdateResponseStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#UpdateResponseTargetsItemConstraintOperator": {
+      "type": "enum",
+      "members": {
+        "MATCHES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "matches"
+          }
+        },
+        "CONTAINS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "contains"
+          }
+        },
+        "EQUALS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "equals"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#UpdateResponseTargetsItemConstraint": {
+      "type": "structure",
+      "members": {
+        "operator": {
+          "target": "com.cloudflare.page_rules#UpdateResponseTargetsItemConstraintOperator",
+          "traits": {
+            "smithy.api#documentation": "The matches operator can use asterisks and pipes as wildcard and 'or' operators.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#UpdateResponseTargetsItemTarget": {
+      "type": "enum",
+      "members": {
+        "URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "url"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#UpdateResponseTargetsItem": {
+      "type": "structure",
+      "members": {
+        "constraint": {
+          "target": "com.cloudflare.page_rules#UpdateResponseTargetsItemConstraint",
+          "traits": {
+            "smithy.api#documentation": "String constraint."
+          }
+        },
+        "target": {
+          "target": "com.cloudflare.page_rules#UpdateResponseTargetsItemTarget",
+          "traits": {
+            "smithy.api#documentation": "A target based on the URL of the request."
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#UpdateResponseTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.page_rules#UpdateResponseTargetsItem"
+      }
+    },
+    "com.cloudflare.page_rules#UpdateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "actions": {
+          "target": "com.cloudflare.page_rules#UpdateResponseActionsList",
+          "traits": {
+            "smithy.api#documentation": "The set of actions to perform if the targets of this rule match the",
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the Page Rule was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the Page Rule was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The priority of the rule, used to define which Page Rule is processed",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.page_rules#UpdateResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the Page Rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "targets": {
+          "target": "com.cloudflare.page_rules#UpdateResponseTargetsList",
+          "traits": {
+            "smithy.api#documentation": "The rule targets to evaluate on each request.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.page_rules#Update": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.page_rules#UpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.page_rules#UpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/zones/{zone_id}/pagerules/{pagerule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Replaces the configuration of an existing Page Rule. The configuration of the updated Page Rule will exactly match the data passed in the API request.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.page_rules#PageRules": {
+      "type": "service",
+      "version": "4.0",
+      "operations": [
+        {
+          "target": "com.cloudflare.page_rules#Create"
+        },
+        {
+          "target": "com.cloudflare.page_rules#Delete"
+        },
+        {
+          "target": "com.cloudflare.page_rules#Edit"
+        },
+        {
+          "target": "com.cloudflare.page_rules#Get"
+        },
+        {
+          "target": "com.cloudflare.page_rules#List"
+        },
+        {
+          "target": "com.cloudflare.page_rules#Update"
+        }
+      ],
+      "traits": {
+        "com.cloudflare.protocols#v4Json": {},
+        "smithy.api#title": "Cloudflare PageRules",
+        "smithy.api#documentation": "Cloudflare API — page_rules resource. Speaks the v4 JSON envelope protocol; operation outputs describe the unwrapped `result` payload."
+      }
+    }
+  }
+}

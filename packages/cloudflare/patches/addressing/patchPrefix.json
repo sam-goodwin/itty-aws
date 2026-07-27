@@ -1,12 +1,138 @@
 {
-  "errors": {
-    "MethodNotAllowed": [
-      { "code": 10405, "message": { "includes": "not allowed" } },
-      { "code": 10000, "message": { "includes": "not allowed" } }
-    ],
-    "PrefixNotFound": [{ "code": 1000 }],
-    "InvalidAccountId": [
-      { "code": 7003, "message": { "includes": "Could not route" } }
-    ]
-  }
+  "description": "Align addressing#PrefixesEdit with distilled cloudflare/addressing patchPrefix",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.addressing#PrefixesEdit",
+      "path": "/shapes/com.cloudflare.addressing#PatchPrefix"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.addressing#PrefixesEditRequest",
+      "path": "/shapes/com.cloudflare.addressing#PatchPrefixRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.addressing#PatchPrefix/input/target",
+      "value": "com.cloudflare.addressing#PatchPrefixRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.addressing#PrefixesEditResponse",
+      "path": "/shapes/com.cloudflare.addressing#PatchPrefixResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.addressing#PatchPrefix/output/target",
+      "value": "com.cloudflare.addressing#PatchPrefixResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.addressing#MethodNotAllowed",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10405,
+              "message": {
+                "includes": "not allowed"
+              }
+            },
+            {
+              "code": 10000,
+              "message": {
+                "includes": "not allowed"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.addressing#PrefixNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1000
+            },
+            {
+              "code": 1000,
+              "message": {
+                "includes": "not_found"
+              }
+            },
+            {
+              "code": 1002,
+              "message": {
+                "includes": "forbidden"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.addressing#InvalidAccountId",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003,
+              "message": {
+                "includes": "Could not route"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.addressing#PatchPrefix/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.addressing#MethodNotAllowed"
+        },
+        {
+          "target": "com.cloudflare.addressing#PrefixNotFound"
+        },
+        {
+          "target": "com.cloudflare.addressing#InvalidAccountId"
+        }
+      ]
+    }
+  ]
 }

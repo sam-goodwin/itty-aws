@@ -1,0 +1,88 @@
+{
+  "description": "Align dns_firewall#ReverseDnsEdit with distilled cloudflare/dns-firewall patchReverseDn",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.dns_firewall#ReverseDnsEdit",
+      "path": "/shapes/com.cloudflare.dns_firewall#PatchReverseDn"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.dns_firewall#ReverseDnsEditRequest",
+      "path": "/shapes/com.cloudflare.dns_firewall#PatchReverseDnRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.dns_firewall#PatchReverseDn/input/target",
+      "value": "com.cloudflare.dns_firewall#PatchReverseDnRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.dns_firewall#ReverseDnsEditResponse",
+      "path": "/shapes/com.cloudflare.dns_firewall#PatchReverseDnResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.dns_firewall#PatchReverseDn/output/target",
+      "value": "com.cloudflare.dns_firewall#PatchReverseDnResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.dns_firewall#DnsFirewallNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 11001
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.dns_firewall#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.dns_firewall#PatchReverseDn/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.dns_firewall#DnsFirewallNotFound"
+        },
+        {
+          "target": "com.cloudflare.dns_firewall#Forbidden"
+        }
+      ]
+    }
+  ]
+}

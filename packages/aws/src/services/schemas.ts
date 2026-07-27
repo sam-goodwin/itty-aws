@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -80,16 +82,58 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class GoneException extends S.TaggedErrorClass<GoneException>()(
+  "GoneException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(410),
+).pipe(C.withBadRequestError) {}
+export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
+  "InternalServerErrorException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class PreconditionFailedException extends S.TaggedErrorClass<PreconditionFailedException>()(
+  "PreconditionFailedException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(412),
+) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
 export type __stringMin0Max256 = string;
 export type __stringMin20Max1600 = string;
-export type __stringMin1Max100000 = string;
-export type __timestampIso8601 = Date;
-export type GetDiscoveredSchemaVersionItemInput = string;
-export type SynthesizedJson__string = string;
-export type __stringMin0Max36 = string;
-
-//# Schemas
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface CreateDiscovererRequest {
@@ -121,6 +165,7 @@ export const CreateDiscovererRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDiscovererRequest>;
 export type DiscovererState = "STARTED" | "STOPPED" | (string & {});
 export const DiscovererState = /*@__PURE__*/ S.String;
+
 export interface CreateDiscovererResponse {
   Description?: string;
   DiscovererArn?: string;
@@ -184,8 +229,10 @@ export const CreateRegistryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRegistryResponse",
 }) as any as S.Schema<CreateRegistryResponse>;
+export type __stringMin1Max100000 = string;
 export type Type = "OpenApi3" | "JSONSchemaDraft4" | (string & {});
 export const Type = /*@__PURE__*/ S.String;
+
 export interface CreateSchemaRequest {
   Content?: string;
   Description?: string;
@@ -220,6 +267,7 @@ export const CreateSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSchemaRequest",
 }) as any as S.Schema<CreateSchemaRequest>;
+export type __timestampIso8601 = Date;
 export interface CreateSchemaResponse {
   Description?: string;
   LastModified?: Date;
@@ -297,28 +345,28 @@ export const DeleteRegistryResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteResourcePolicyRequest {
   RegistryName?: string;
 }
-export const DeleteResourcePolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RegistryName: S.optional(S.String).pipe(T.HttpQuery("registryName")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/v1/policy" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RegistryName: S.optional(S.String).pipe(T.HttpQuery("registryName")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/v1/policy" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteResourcePolicyRequest",
-  }) as any as S.Schema<DeleteResourcePolicyRequest>;
+  ),
+).annotate({
+  identifier: "DeleteResourcePolicyRequest",
+}) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteResourcePolicyResponse",
-  }) as any as S.Schema<DeleteResourcePolicyResponse>;
+export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteResourcePolicyResponse",
+}) as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteSchemaRequest {
   RegistryName: string;
   SchemaName: string;
@@ -376,10 +424,11 @@ export const DeleteSchemaVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSchemaVersionRequest",
 }) as any as S.Schema<DeleteSchemaVersionRequest>;
 export interface DeleteSchemaVersionResponse {}
-export const DeleteSchemaVersionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteSchemaVersionResponse",
-  }) as any as S.Schema<DeleteSchemaVersionResponse>;
+export const DeleteSchemaVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteSchemaVersionResponse",
+}) as any as S.Schema<DeleteSchemaVersionResponse>;
 export interface DescribeCodeBindingRequest {
   Language: string;
   RegistryName: string;
@@ -414,27 +463,27 @@ export type CodeGenerationStatus =
   | "CREATE_FAILED"
   | (string & {});
 export const CodeGenerationStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeCodeBindingResponse {
   CreationDate?: Date;
   LastModified?: Date;
   SchemaVersion?: string;
   Status?: CodeGenerationStatus;
 }
-export const DescribeCodeBindingResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CreationDate: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      LastModified: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      SchemaVersion: S.optional(S.String),
-      Status: S.optional(CodeGenerationStatus),
-    }),
-  ).annotate({
-    identifier: "DescribeCodeBindingResponse",
-  }) as any as S.Schema<DescribeCodeBindingResponse>;
+export const DescribeCodeBindingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CreationDate: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    LastModified: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    SchemaVersion: S.optional(S.String),
+    Status: S.optional(CodeGenerationStatus),
+  }),
+).annotate({
+  identifier: "DescribeCodeBindingResponse",
+}) as any as S.Schema<DescribeCodeBindingResponse>;
 export interface DescribeDiscovererRequest {
   DiscovererId: string;
 }
@@ -615,38 +664,37 @@ export interface GetCodeBindingSourceRequest {
   SchemaName: string;
   SchemaVersion?: string;
 }
-export const GetCodeBindingSourceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Language: S.String.pipe(T.HttpLabel("Language")),
-      RegistryName: S.String.pipe(T.HttpLabel("RegistryName")),
-      SchemaName: S.String.pipe(T.HttpLabel("SchemaName")),
-      SchemaVersion: S.optional(S.String).pipe(T.HttpQuery("schemaVersion")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v1/registries/name/{RegistryName}/schemas/name/{SchemaName}/language/{Language}/source",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetCodeBindingSourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Language: S.String.pipe(T.HttpLabel("Language")),
+    RegistryName: S.String.pipe(T.HttpLabel("RegistryName")),
+    SchemaName: S.String.pipe(T.HttpLabel("SchemaName")),
+    SchemaVersion: S.optional(S.String).pipe(T.HttpQuery("schemaVersion")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v1/registries/name/{RegistryName}/schemas/name/{SchemaName}/language/{Language}/source",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetCodeBindingSourceRequest",
-  }) as any as S.Schema<GetCodeBindingSourceRequest>;
+  ),
+).annotate({
+  identifier: "GetCodeBindingSourceRequest",
+}) as any as S.Schema<GetCodeBindingSourceRequest>;
 export interface GetCodeBindingSourceResponse {
   Body?: T.StreamingOutputBody;
 }
-export const GetCodeBindingSourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Body: S.optional(T.StreamingOutput).pipe(T.HttpPayload()) }),
-  ).annotate({
-    identifier: "GetCodeBindingSourceResponse",
-  }) as any as S.Schema<GetCodeBindingSourceResponse>;
+export const GetCodeBindingSourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Body: S.optional(T.StreamingOutput).pipe(T.HttpPayload()) }),
+).annotate({
+  identifier: "GetCodeBindingSourceResponse",
+}) as any as S.Schema<GetCodeBindingSourceResponse>;
+export type GetDiscoveredSchemaVersionItemInput = string;
 export type __listOfGetDiscoveredSchemaVersionItemInput = string[];
 export const __listOfGetDiscoveredSchemaVersionItemInput =
   /*@__PURE__*/ S.Array(S.String);
@@ -674,12 +722,11 @@ export const GetDiscoveredSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDiscoveredSchemaResponse {
   Content?: string;
 }
-export const GetDiscoveredSchemaResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Content: S.optional(S.String) }),
-  ).annotate({
-    identifier: "GetDiscoveredSchemaResponse",
-  }) as any as S.Schema<GetDiscoveredSchemaResponse>;
+export const GetDiscoveredSchemaResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Content: S.optional(S.String) }),
+).annotate({
+  identifier: "GetDiscoveredSchemaResponse",
+}) as any as S.Schema<GetDiscoveredSchemaResponse>;
 export interface GetResourcePolicyRequest {
   RegistryName?: string;
 }
@@ -699,15 +746,13 @@ export const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourcePolicyRequest",
 }) as any as S.Schema<GetResourcePolicyRequest>;
+export type SynthesizedJson__string = string;
 export interface GetResourcePolicyResponse {
   Policy?: string;
   RevisionId?: string;
 }
 export const GetResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Policy: S.optional(S.String),
-    RevisionId: S.optional(S.String),
-  }),
+  S.Struct({ Policy: S.optional(S.String), RevisionId: S.optional(S.String) }),
 ).annotate({
   identifier: "GetResourcePolicyResponse",
 }) as any as S.Schema<GetResourcePolicyResponse>;
@@ -969,12 +1014,11 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Tags: S.optional(Tags) }).pipe(S.encodeKeys({ Tags: "tags" })),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(Tags) }).pipe(S.encodeKeys({ Tags: "tags" })),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutCodeBindingRequest {
   Language: string;
   RegistryName: string;
@@ -1051,10 +1095,7 @@ export interface PutResourcePolicyResponse {
   RevisionId?: string;
 }
 export const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Policy: S.optional(S.String),
-    RevisionId: S.optional(S.String),
-  }),
+  S.Struct({ Policy: S.optional(S.String), RevisionId: S.optional(S.String) }),
 ).annotate({
   identifier: "PutResourcePolicyResponse",
 }) as any as S.Schema<PutResourcePolicyResponse>;
@@ -1103,8 +1144,9 @@ export const SearchSchemaVersionSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchSchemaVersionSummary",
 }) as any as S.Schema<SearchSchemaVersionSummary>;
 export type __listOfSearchSchemaVersionSummary = SearchSchemaVersionSummary[];
-export const __listOfSearchSchemaVersionSummary =
-  /*@__PURE__*/ S.Array(SearchSchemaVersionSummary);
+export const __listOfSearchSchemaVersionSummary = /*@__PURE__*/ S.Array(
+  SearchSchemaVersionSummary,
+);
 export interface SearchSchemaSummary {
   RegistryName?: string;
   SchemaArn?: string;
@@ -1337,6 +1379,7 @@ export const UpdateRegistryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateRegistryResponse",
 }) as any as S.Schema<UpdateRegistryResponse>;
+export type __stringMin0Max36 = string;
 export interface UpdateSchemaRequest {
   ClientTokenId?: string;
   Content?: string;
@@ -1397,60 +1440,6 @@ export const UpdateSchemaResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateSchemaResponse",
 }) as any as S.Schema<UpdateSchemaResponse>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
-  "InternalServerErrorException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class GoneException extends S.TaggedErrorClass<GoneException>()(
-  "GoneException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(410),
-).pipe(C.withBadRequestError) {}
-export class PreconditionFailedException extends S.TaggedErrorClass<PreconditionFailedException>()(
-  "PreconditionFailedException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(412),
-) {}
-
-//# Operations
 export type CreateDiscovererError =
   | BadRequestException
   | ConflictException
@@ -1478,8 +1467,11 @@ export const createDiscoverer: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDiscoverer",
 }));
+
 export type CreateRegistryError =
   | BadRequestException
   | ConflictException
@@ -1507,8 +1499,11 @@ export const createRegistry: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRegistry",
 }));
+
 export type CreateSchemaError =
   | BadRequestException
   | ForbiddenException
@@ -1534,8 +1529,11 @@ export const createSchema: API.OperationMethod<
     InternalServerErrorException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSchema",
 }));
+
 export type DeleteDiscovererError =
   | BadRequestException
   | ForbiddenException
@@ -1563,8 +1561,11 @@ export const deleteDiscoverer: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDiscoverer",
 }));
+
 export type DeleteRegistryError =
   | BadRequestException
   | ForbiddenException
@@ -1592,8 +1593,11 @@ export const deleteRegistry: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRegistry",
 }));
+
 export type DeleteResourcePolicyError =
   | BadRequestException
   | ForbiddenException
@@ -1621,8 +1625,11 @@ export const deleteResourcePolicy: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DeleteSchemaError =
   | BadRequestException
   | ForbiddenException
@@ -1650,8 +1657,11 @@ export const deleteSchema: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSchema",
 }));
+
 export type DeleteSchemaVersionError =
   | BadRequestException
   | ForbiddenException
@@ -1679,8 +1689,11 @@ export const deleteSchemaVersion: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSchemaVersion",
 }));
+
 export type DescribeCodeBindingError =
   | BadRequestException
   | ForbiddenException
@@ -1708,8 +1721,11 @@ export const describeCodeBinding: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCodeBinding",
 }));
+
 export type DescribeDiscovererError =
   | BadRequestException
   | ForbiddenException
@@ -1737,8 +1753,11 @@ export const describeDiscoverer: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDiscoverer",
 }));
+
 export type DescribeRegistryError =
   | BadRequestException
   | ForbiddenException
@@ -1766,8 +1785,11 @@ export const describeRegistry: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRegistry",
 }));
+
 export type DescribeSchemaError =
   | BadRequestException
   | ForbiddenException
@@ -1795,8 +1817,11 @@ export const describeSchema: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSchema",
 }));
+
 export type ExportSchemaError =
   | BadRequestException
   | ForbiddenException
@@ -1826,8 +1851,11 @@ export const exportSchema: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportSchema",
 }));
+
 export type GetCodeBindingSourceError =
   | BadRequestException
   | ForbiddenException
@@ -1855,8 +1883,11 @@ export const getCodeBindingSource: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCodeBindingSource",
 }));
+
 export type GetDiscoveredSchemaError =
   | BadRequestException
   | ForbiddenException
@@ -1882,8 +1913,11 @@ export const getDiscoveredSchema: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDiscoveredSchema",
 }));
+
 export type GetResourcePolicyError =
   | BadRequestException
   | ForbiddenException
@@ -1911,8 +1945,11 @@ export const getResourcePolicy: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
 export type ListDiscoverersError =
   | BadRequestException
   | ForbiddenException
@@ -1953,6 +1990,8 @@ export const listDiscoverers: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDiscoverers",
   pagination: {
     inputToken: "NextToken",
@@ -1961,6 +2000,7 @@ export const listDiscoverers: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListRegistriesError =
   | BadRequestException
   | ForbiddenException
@@ -2001,6 +2041,8 @@ export const listRegistries: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRegistries",
   pagination: {
     inputToken: "NextToken",
@@ -2009,6 +2051,7 @@ export const listRegistries: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListSchemasError =
   | BadRequestException
   | ForbiddenException
@@ -2049,6 +2092,8 @@ export const listSchemas: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSchemas",
   pagination: {
     inputToken: "NextToken",
@@ -2057,6 +2102,7 @@ export const listSchemas: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListSchemaVersionsError =
   | BadRequestException
   | ForbiddenException
@@ -2099,6 +2145,8 @@ export const listSchemaVersions: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSchemaVersions",
   pagination: {
     inputToken: "NextToken",
@@ -2107,6 +2155,7 @@ export const listSchemaVersions: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | BadRequestException
   | ForbiddenException
@@ -2130,8 +2179,11 @@ export const listTagsForResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutCodeBindingError =
   | BadRequestException
   | ForbiddenException
@@ -2163,8 +2215,11 @@ export const putCodeBinding: API.OperationMethod<
     UnauthorizedException,
     ConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutCodeBinding",
 }));
+
 export type PutResourcePolicyError =
   | BadRequestException
   | ForbiddenException
@@ -2194,8 +2249,11 @@ export const putResourcePolicy: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type SearchSchemasError =
   | BadRequestException
   | ForbiddenException
@@ -2236,6 +2294,8 @@ export const searchSchemas: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchSchemas",
   pagination: {
     inputToken: "NextToken",
@@ -2244,6 +2304,7 @@ export const searchSchemas: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type StartDiscovererError =
   | BadRequestException
   | ForbiddenException
@@ -2271,8 +2332,11 @@ export const startDiscoverer: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDiscoverer",
 }));
+
 export type StopDiscovererError =
   | BadRequestException
   | ForbiddenException
@@ -2300,8 +2364,11 @@ export const stopDiscoverer: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopDiscoverer",
 }));
+
 export type TagResourceError =
   | BadRequestException
   | ForbiddenException
@@ -2325,8 +2392,11 @@ export const tagResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | BadRequestException
   | ForbiddenException
@@ -2350,8 +2420,11 @@ export const untagResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateDiscovererError =
   | BadRequestException
   | ForbiddenException
@@ -2379,8 +2452,11 @@ export const updateDiscoverer: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDiscoverer",
 }));
+
 export type UpdateRegistryError =
   | BadRequestException
   | ForbiddenException
@@ -2408,8 +2484,11 @@ export const updateRegistry: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRegistry",
 }));
+
 export type UpdateSchemaError =
   | BadRequestException
   | ForbiddenException
@@ -2437,5 +2516,7 @@ export const updateSchema: API.OperationMethod<
     NotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSchema",
 }));

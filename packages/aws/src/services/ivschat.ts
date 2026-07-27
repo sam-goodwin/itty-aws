@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -85,49 +87,70 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class PendingVerification extends S.TaggedErrorClass<PendingVerification>()(
+  "PendingVerification",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    message: S.String,
+    resourceId: S.String,
+    resourceType: S.String,
+    limit: S.Number,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.String,
+    resourceId: S.String,
+    resourceType: S.String,
+    limit: S.Number,
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: S.optional(S.String),
+    fieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type RoomIdentifier = string;
 export type UserID = string | redacted.Redacted<string>;
 export type ChatTokenCapability = string;
-export type SessionDurationInMinutes = number;
-export type ChatToken = string | redacted.Redacted<string>;
-export type ErrorMessage = string;
-export type ResourceId = string;
-export type ResourceType = string;
-export type ValidationExceptionReason = string;
-export type FieldName = string;
-export type LoggingConfigurationName = string;
-export type BucketName = string;
-export type LogGroupName = string;
-export type DeliveryStreamName = string;
-export type TagKey = string;
-export type TagValue = string;
-export type LoggingConfigurationArn = string;
-export type LoggingConfigurationID = string;
-export type CreateLoggingConfigurationState = string;
-export type Limit = number;
-export type RoomName = string;
-export type RoomMaxMessageRatePerSecond = number;
-export type RoomMaxMessageLength = number;
-export type LambdaArn = string;
-export type FallbackResult = string;
-export type LoggingConfigurationIdentifier = string;
-export type RoomArn = string;
-export type RoomID = string;
-export type MessageID = string;
-export type Reason = string;
-export type ID = string;
-export type LoggingConfigurationState = string;
-export type PaginationToken = string;
-export type MaxLoggingConfigurationResults = number;
-export type MaxRoomResults = number;
-export type ResourceArn = string;
-export type EventName = string;
-export type UpdateLoggingConfigurationState = string;
-
-//# Schemas
 export type ChatTokenCapabilities = string[];
 export const ChatTokenCapabilities = /*@__PURE__*/ S.Array(S.String);
+export type SessionDurationInMinutes = number;
 export type ChatTokenAttributes = { [key: string]: string | undefined };
 export const ChatTokenAttributes = /*@__PURE__*/ S.Record(
   S.String,
@@ -160,6 +183,7 @@ export const CreateChatTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateChatTokenRequest",
 }) as any as S.Schema<CreateChatTokenRequest>;
+export type ChatToken = string | redacted.Redacted<string>;
 export interface CreateChatTokenResponse {
   token?: string | redacted.Redacted<string>;
   tokenExpirationTime?: Date;
@@ -178,19 +202,8 @@ export const CreateChatTokenResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateChatTokenResponse",
 }) as any as S.Schema<CreateChatTokenResponse>;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+export type LoggingConfigurationName = string;
+export type BucketName = string;
 export interface S3DestinationConfiguration {
   bucketName: string;
 }
@@ -199,22 +212,24 @@ export const S3DestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3DestinationConfiguration",
 }) as any as S.Schema<S3DestinationConfiguration>;
+export type LogGroupName = string;
 export interface CloudWatchLogsDestinationConfiguration {
   logGroupName: string;
 }
-export const CloudWatchLogsDestinationConfiguration =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ logGroupName: S.String })).annotate({
-    identifier: "CloudWatchLogsDestinationConfiguration",
-  }) as any as S.Schema<CloudWatchLogsDestinationConfiguration>;
+export const CloudWatchLogsDestinationConfiguration = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ logGroupName: S.String }),
+).annotate({
+  identifier: "CloudWatchLogsDestinationConfiguration",
+}) as any as S.Schema<CloudWatchLogsDestinationConfiguration>;
+export type DeliveryStreamName = string;
 export interface FirehoseDestinationConfiguration {
   deliveryStreamName: string;
 }
-export const FirehoseDestinationConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ deliveryStreamName: S.String }),
-  ).annotate({
-    identifier: "FirehoseDestinationConfiguration",
-  }) as any as S.Schema<FirehoseDestinationConfiguration>;
+export const FirehoseDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ deliveryStreamName: S.String }),
+).annotate({
+  identifier: "FirehoseDestinationConfiguration",
+}) as any as S.Schema<FirehoseDestinationConfiguration>;
 export type DestinationConfiguration =
   | { s3: S3DestinationConfiguration; cloudWatchLogs?: never; firehose?: never }
   | {
@@ -232,6 +247,8 @@ export const DestinationConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ cloudWatchLogs: CloudWatchLogsDestinationConfiguration }),
   S.Struct({ firehose: FirehoseDestinationConfiguration }),
 ]);
+export type TagKey = string;
+export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface CreateLoggingConfigurationRequest {
@@ -239,25 +256,27 @@ export interface CreateLoggingConfigurationRequest {
   destinationConfiguration: DestinationConfiguration;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateLoggingConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      destinationConfiguration: DestinationConfiguration,
-      tags: S.optional(Tags),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/CreateLoggingConfiguration" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    destinationConfiguration: DestinationConfiguration,
+    tags: S.optional(Tags),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/CreateLoggingConfiguration" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateLoggingConfigurationRequest",
-  }) as any as S.Schema<CreateLoggingConfigurationRequest>;
+  ),
+).annotate({
+  identifier: "CreateLoggingConfigurationRequest",
+}) as any as S.Schema<CreateLoggingConfigurationRequest>;
+export type LoggingConfigurationArn = string;
+export type LoggingConfigurationID = string;
+export type CreateLoggingConfigurationState = string;
 export interface CreateLoggingConfigurationResponse {
   arn?: string;
   id?: string;
@@ -268,25 +287,29 @@ export interface CreateLoggingConfigurationResponse {
   state?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateLoggingConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      arn: S.optional(S.String),
-      id: S.optional(S.String),
-      createTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      updateTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      name: S.optional(S.String),
-      destinationConfiguration: S.optional(DestinationConfiguration),
-      state: S.optional(S.String),
-      tags: S.optional(Tags),
-    }),
-  ).annotate({
-    identifier: "CreateLoggingConfigurationResponse",
-  }) as any as S.Schema<CreateLoggingConfigurationResponse>;
+export const CreateLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.optional(S.String),
+    id: S.optional(S.String),
+    createTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    updateTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    name: S.optional(S.String),
+    destinationConfiguration: S.optional(DestinationConfiguration),
+    state: S.optional(S.String),
+    tags: S.optional(Tags),
+  }),
+).annotate({
+  identifier: "CreateLoggingConfigurationResponse",
+}) as any as S.Schema<CreateLoggingConfigurationResponse>;
+export type RoomName = string;
+export type RoomMaxMessageRatePerSecond = number;
+export type RoomMaxMessageLength = number;
+export type LambdaArn = string;
+export type FallbackResult = string;
 export interface MessageReviewHandler {
   uri?: string;
   fallbackResult?: string;
@@ -296,9 +319,11 @@ export const MessageReviewHandler = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MessageReviewHandler",
 }) as any as S.Schema<MessageReviewHandler>;
+export type LoggingConfigurationIdentifier = string;
 export type LoggingConfigurationIdentifierList = string[];
-export const LoggingConfigurationIdentifierList =
-  /*@__PURE__*/ S.Array(S.String);
+export const LoggingConfigurationIdentifierList = /*@__PURE__*/ S.Array(
+  S.String,
+);
 export interface CreateRoomRequest {
   name?: string;
   maximumMessageRatePerSecond?: number;
@@ -330,6 +355,8 @@ export const CreateRoomRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRoomRequest",
 }) as any as S.Schema<CreateRoomRequest>;
+export type RoomArn = string;
+export type RoomID = string;
 export interface CreateRoomResponse {
   arn?: string;
   id?: string;
@@ -367,26 +394,28 @@ export const CreateRoomResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteLoggingConfigurationRequest {
   identifier: string;
 }
-export const DeleteLoggingConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ identifier: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/DeleteLoggingConfiguration" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ identifier: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/DeleteLoggingConfiguration" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteLoggingConfigurationRequest",
-  }) as any as S.Schema<DeleteLoggingConfigurationRequest>;
+  ),
+).annotate({
+  identifier: "DeleteLoggingConfigurationRequest",
+}) as any as S.Schema<DeleteLoggingConfigurationRequest>;
 export interface DeleteLoggingConfigurationResponse {}
-export const DeleteLoggingConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteLoggingConfigurationResponse",
-  }) as any as S.Schema<DeleteLoggingConfigurationResponse>;
+export const DeleteLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteLoggingConfigurationResponse",
+}) as any as S.Schema<DeleteLoggingConfigurationResponse>;
+export type MessageID = string;
+export type Reason = string;
 export interface DeleteMessageRequest {
   roomIdentifier: string;
   id: string;
@@ -410,6 +439,7 @@ export const DeleteMessageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteMessageRequest",
 }) as any as S.Schema<DeleteMessageRequest>;
+export type ID = string;
 export interface DeleteMessageResponse {
   id?: string;
 }
@@ -473,21 +503,21 @@ export const DisconnectUserResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetLoggingConfigurationRequest {
   identifier: string;
 }
-export const GetLoggingConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ identifier: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/GetLoggingConfiguration" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ identifier: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/GetLoggingConfiguration" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetLoggingConfigurationRequest",
-  }) as any as S.Schema<GetLoggingConfigurationRequest>;
+  ),
+).annotate({
+  identifier: "GetLoggingConfigurationRequest",
+}) as any as S.Schema<GetLoggingConfigurationRequest>;
+export type LoggingConfigurationState = string;
 export interface GetLoggingConfigurationResponse {
   arn?: string;
   id?: string;
@@ -498,25 +528,24 @@ export interface GetLoggingConfigurationResponse {
   state?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const GetLoggingConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      arn: S.optional(S.String),
-      id: S.optional(S.String),
-      createTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      updateTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      name: S.optional(S.String),
-      destinationConfiguration: S.optional(DestinationConfiguration),
-      state: S.optional(S.String),
-      tags: S.optional(Tags),
-    }),
-  ).annotate({
-    identifier: "GetLoggingConfigurationResponse",
-  }) as any as S.Schema<GetLoggingConfigurationResponse>;
+export const GetLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.optional(S.String),
+    id: S.optional(S.String),
+    createTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    updateTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    name: S.optional(S.String),
+    destinationConfiguration: S.optional(DestinationConfiguration),
+    state: S.optional(S.String),
+    tags: S.optional(Tags),
+  }),
+).annotate({
+  identifier: "GetLoggingConfigurationResponse",
+}) as any as S.Schema<GetLoggingConfigurationResponse>;
 export interface GetRoomRequest {
   identifier: string;
 }
@@ -566,28 +595,29 @@ export const GetRoomResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRoomResponse",
 }) as any as S.Schema<GetRoomResponse>;
+export type PaginationToken = string;
+export type MaxLoggingConfigurationResults = number;
 export interface ListLoggingConfigurationsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListLoggingConfigurationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListLoggingConfigurations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListLoggingConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListLoggingConfigurations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListLoggingConfigurationsRequest",
-  }) as any as S.Schema<ListLoggingConfigurationsRequest>;
+  ),
+).annotate({
+  identifier: "ListLoggingConfigurationsRequest",
+}) as any as S.Schema<ListLoggingConfigurationsRequest>;
 export interface LoggingConfigurationSummary {
   arn?: string;
   id?: string;
@@ -598,25 +628,24 @@ export interface LoggingConfigurationSummary {
   state?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const LoggingConfigurationSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      arn: S.optional(S.String),
-      id: S.optional(S.String),
-      createTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      updateTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      name: S.optional(S.String),
-      destinationConfiguration: S.optional(DestinationConfiguration),
-      state: S.optional(S.String),
-      tags: S.optional(Tags),
-    }),
-  ).annotate({
-    identifier: "LoggingConfigurationSummary",
-  }) as any as S.Schema<LoggingConfigurationSummary>;
+export const LoggingConfigurationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.optional(S.String),
+    id: S.optional(S.String),
+    createTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    updateTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    name: S.optional(S.String),
+    destinationConfiguration: S.optional(DestinationConfiguration),
+    state: S.optional(S.String),
+    tags: S.optional(Tags),
+  }),
+).annotate({
+  identifier: "LoggingConfigurationSummary",
+}) as any as S.Schema<LoggingConfigurationSummary>;
 export type LoggingConfigurationList = LoggingConfigurationSummary[];
 export const LoggingConfigurationList = /*@__PURE__*/ S.Array(
   LoggingConfigurationSummary,
@@ -625,15 +654,15 @@ export interface ListLoggingConfigurationsResponse {
   loggingConfigurations: LoggingConfigurationSummary[];
   nextToken?: string;
 }
-export const ListLoggingConfigurationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      loggingConfigurations: LoggingConfigurationList,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListLoggingConfigurationsResponse",
-  }) as any as S.Schema<ListLoggingConfigurationsResponse>;
+export const ListLoggingConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    loggingConfigurations: LoggingConfigurationList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLoggingConfigurationsResponse",
+}) as any as S.Schema<ListLoggingConfigurationsResponse>;
+export type MaxRoomResults = number;
 export interface ListRoomsRequest {
   name?: string;
   nextToken?: string;
@@ -700,6 +729,7 @@ export const ListRoomsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRoomsResponse",
 }) as any as S.Schema<ListRoomsResponse>;
+export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -720,10 +750,12 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ tags: Tags })).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: Tags }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
+export type EventName = string;
 export type EventAttributes = { [key: string]: string | undefined };
 export const EventAttributes = /*@__PURE__*/ S.Record(
   S.String,
@@ -821,25 +853,25 @@ export interface UpdateLoggingConfigurationRequest {
   name?: string;
   destinationConfiguration?: DestinationConfiguration;
 }
-export const UpdateLoggingConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      identifier: S.String,
-      name: S.optional(S.String),
-      destinationConfiguration: S.optional(DestinationConfiguration),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/UpdateLoggingConfiguration" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    identifier: S.String,
+    name: S.optional(S.String),
+    destinationConfiguration: S.optional(DestinationConfiguration),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/UpdateLoggingConfiguration" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateLoggingConfigurationRequest",
-  }) as any as S.Schema<UpdateLoggingConfigurationRequest>;
+  ),
+).annotate({
+  identifier: "UpdateLoggingConfigurationRequest",
+}) as any as S.Schema<UpdateLoggingConfigurationRequest>;
+export type UpdateLoggingConfigurationState = string;
 export interface UpdateLoggingConfigurationResponse {
   arn?: string;
   id?: string;
@@ -850,25 +882,24 @@ export interface UpdateLoggingConfigurationResponse {
   state?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const UpdateLoggingConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      arn: S.optional(S.String),
-      id: S.optional(S.String),
-      createTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      updateTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      name: S.optional(S.String),
-      destinationConfiguration: S.optional(DestinationConfiguration),
-      state: S.optional(S.String),
-      tags: S.optional(Tags),
-    }),
-  ).annotate({
-    identifier: "UpdateLoggingConfigurationResponse",
-  }) as any as S.Schema<UpdateLoggingConfigurationResponse>;
+export const UpdateLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.optional(S.String),
+    id: S.optional(S.String),
+    createTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    updateTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    name: S.optional(S.String),
+    destinationConfiguration: S.optional(DestinationConfiguration),
+    state: S.optional(S.String),
+    tags: S.optional(Tags),
+  }),
+).annotate({
+  identifier: "UpdateLoggingConfigurationResponse",
+}) as any as S.Schema<UpdateLoggingConfigurationResponse>;
 export interface UpdateRoomRequest {
   identifier: string;
   name?: string;
@@ -934,58 +965,25 @@ export const UpdateRoomResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateRoomResponse",
 }) as any as S.Schema<UpdateRoomResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class PendingVerification extends S.TaggedErrorClass<PendingVerification>()(
-  "PendingVerification",
-  { message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.String,
-    reason: S.optional(S.String),
-    fieldList: S.optional(ValidationExceptionFieldList),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    message: S.String,
-    resourceId: S.String,
-    resourceType: S.String,
-    limit: S.Number,
-  },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {},
-) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-
-//# Operations
+export type ErrorMessage = string;
+export type ResourceId = string;
+export type ResourceType = string;
+export type ValidationExceptionReason = string;
+export type FieldName = string;
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
+export type Limit = number;
 export type CreateChatTokenError =
   | AccessDeniedException
   | PendingVerification
@@ -1023,8 +1021,11 @@ export const createChatToken: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChatToken",
 }));
+
 export type CreateLoggingConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -1055,8 +1056,11 @@ export const createLoggingConfiguration: API.OperationMethod<
     ValidationException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLoggingConfiguration",
 }));
+
 export type CreateRoomError =
   | AccessDeniedException
   | ConflictException
@@ -1086,8 +1090,11 @@ export const createRoom: API.OperationMethod<
     ValidationException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRoom",
 }));
+
 export type DeleteLoggingConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -1115,8 +1122,11 @@ export const deleteLoggingConfiguration: API.OperationMethod<
     ValidationException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLoggingConfiguration",
 }));
+
 export type DeleteMessageError =
   | AccessDeniedException
   | PendingVerification
@@ -1145,8 +1155,11 @@ export const deleteMessage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMessage",
 }));
+
 export type DeleteRoomError =
   | AccessDeniedException
   | PendingVerification
@@ -1172,8 +1185,11 @@ export const deleteRoom: API.OperationMethod<
     ValidationException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRoom",
 }));
+
 export type DisconnectUserError =
   | AccessDeniedException
   | PendingVerification
@@ -1201,8 +1217,11 @@ export const disconnectUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisconnectUser",
 }));
+
 export type GetLoggingConfigurationError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -1226,8 +1245,11 @@ export const getLoggingConfiguration: API.OperationMethod<
     ValidationException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLoggingConfiguration",
 }));
+
 export type GetRoomError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -1251,8 +1273,11 @@ export const getRoom: API.OperationMethod<
     ValidationException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRoom",
 }));
+
 export type ListLoggingConfigurationsError =
   | AccessDeniedException
   | ValidationException
@@ -1286,6 +1311,8 @@ export const listLoggingConfigurations: API.OperationMethod<
   input: ListLoggingConfigurationsRequest,
   output: ListLoggingConfigurationsResponse,
   errors: [AccessDeniedException, ValidationException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLoggingConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -1293,6 +1320,7 @@ export const listLoggingConfigurations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListRoomsError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -1332,6 +1360,8 @@ export const listRooms: API.OperationMethod<
     ValidationException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRooms",
   pagination: {
     inputToken: "nextToken",
@@ -1339,6 +1369,7 @@ export const listRooms: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1362,8 +1393,11 @@ export const listTagsForResource: API.OperationMethod<
     ValidationException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type SendEventError =
   | AccessDeniedException
   | PendingVerification
@@ -1391,8 +1425,11 @@ export const sendEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendEvent",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1416,8 +1453,11 @@ export const tagResource: API.OperationMethod<
     ValidationException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1441,8 +1481,11 @@ export const untagResource: API.OperationMethod<
     ValidationException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateLoggingConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -1470,8 +1513,11 @@ export const updateLoggingConfiguration: API.OperationMethod<
     ValidationException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLoggingConfiguration",
 }));
+
 export type UpdateRoomError =
   | AccessDeniedException
   | PendingVerification
@@ -1497,5 +1543,7 @@ export const updateRoom: API.OperationMethod<
     ValidationException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRoom",
 }));

@@ -1,10 +1,113 @@
 {
-  "errors": {
-    "MethodNotAllowed": [
-      { "code": 10405, "message": { "includes": "not allowed" } },
-      { "code": 10000, "message": { "includes": "not allowed" } }
-    ],
-    "NamespaceNotFound": [{ "code": 10013 }],
-    "InvalidObjectIdentifier": [{ "code": 7003 }]
-  }
+  "description": "Align kv#NamespacesDelete with distilled cloudflare/kv deleteNamespace",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.kv#NamespacesDelete",
+      "path": "/shapes/com.cloudflare.kv#DeleteNamespace"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.kv#NamespacesDeleteRequest",
+      "path": "/shapes/com.cloudflare.kv#DeleteNamespaceRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.kv#DeleteNamespace/input/target",
+      "value": "com.cloudflare.kv#DeleteNamespaceRequest"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.kv#MethodNotAllowed",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10405,
+              "message": {
+                "includes": "not allowed"
+              }
+            },
+            {
+              "code": 10000,
+              "message": {
+                "includes": "not allowed"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.kv#NamespaceNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10013
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.kv#InvalidObjectIdentifier",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.kv#DeleteNamespace/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.kv#MethodNotAllowed"
+        },
+        {
+          "target": "com.cloudflare.kv#NamespaceNotFound"
+        },
+        {
+          "target": "com.cloudflare.kv#InvalidObjectIdentifier"
+        }
+      ]
+    }
+  ]
 }

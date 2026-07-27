@@ -1,6 +1,6 @@
 {
   "name": "@distilled.cloud/aws",
-  "version": "0.30.2",
+  "version": "0.29.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/alchemy-run/distilled",
@@ -75,16 +75,16 @@
     }
   },
   "scripts": {
-    "typecheck": "tsc",
-    "build": "tsc -b",
+    "typecheck": "tsgo",
+    "build": "tsgo -b",
     "fmt": "oxfmt --write src",
     "lint": "oxlint --fix src",
-    "check": "tsc && oxlint src && oxfmt --check src",
+    "check": "tsgo && oxlint src && oxfmt --check src",
     "test": "bunx vitest run test --exclude specs --passWithNoTests",
     "publish:npm": "bun run build && bun publish --access public",
     "generate": "bun run scripts/generate.ts && oxlint --fix src && oxfmt --write src && oxfmt --write src",
-    "specs:fetch": "git submodule update --force --init --recursive --depth=1 specs/api-models-aws && git -C specs/api-models-aws checkout -- . && git submodule update --force --init --recursive --depth=1 specs/aws-sdk-js-v3 && git -C specs/aws-sdk-js-v3 checkout -- . && git submodule update --force --init --recursive --depth=1 specs/smithy && git -C specs/smithy checkout -- . && git submodule update --force --init --recursive --depth=1 specs/smithy-typescript && git -C specs/smithy-typescript checkout -- .",
-    "specs:update": "git -C specs/api-models-aws fetch && git -C specs/api-models-aws checkout main && git -C specs/api-models-aws pull && git -C specs/aws-sdk-js-v3 fetch && git -C specs/aws-sdk-js-v3 checkout main && git -C specs/aws-sdk-js-v3 pull && git -C specs/smithy fetch && git -C specs/smithy checkout main && git -C specs/smithy pull && git -C specs/smithy-typescript fetch && git -C specs/smithy-typescript checkout main && git -C specs/smithy-typescript pull"
+    "specs:fetch": "git submodule update --force --init --recursive --depth=1 specs/api-models-aws && git -C specs/api-models-aws checkout -- .",
+    "specs:update": "git -C specs/api-models-aws fetch && git -C specs/api-models-aws checkout main && git -C specs/api-models-aws pull"
   },
   "dependencies": {
     "@aws-crypto/crc32": "catalog:",
@@ -108,7 +108,6 @@
     "dedent": "catalog:",
     "dotenv": "catalog:",
     "pathe": "catalog:",
-    "rolldown": "catalog:",
     "vitest": "catalog:"
   },
   "peerDependencies": {

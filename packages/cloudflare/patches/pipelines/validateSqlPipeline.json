@@ -1,10 +1,91 @@
 {
-  "errors": {
-    "TableNotFound": [
-      { "code": 1014, "message": { "includes": "not found" } }
-    ],
-    "InvalidSql": [
-      { "code": 1014 }
-    ]
-  }
+  "description": "Align pipelines#ValidateSql with distilled cloudflare/pipelines validateSqlPipeline",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.pipelines#ValidateSql",
+      "path": "/shapes/com.cloudflare.pipelines#ValidateSqlPipeline"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.pipelines#ValidateSqlRequest",
+      "path": "/shapes/com.cloudflare.pipelines#ValidateSqlPipelineRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.pipelines#ValidateSqlPipeline/input/target",
+      "value": "com.cloudflare.pipelines#ValidateSqlPipelineRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.pipelines#ValidateSqlResponse",
+      "path": "/shapes/com.cloudflare.pipelines#ValidateSqlPipelineResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.pipelines#ValidateSqlPipeline/output/target",
+      "value": "com.cloudflare.pipelines#ValidateSqlPipelineResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.pipelines#TableNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1014,
+              "message": {
+                "includes": "not found"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.pipelines#InvalidSql",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1014
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.pipelines#ValidateSqlPipeline/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.pipelines#TableNotFound"
+        },
+        {
+          "target": "com.cloudflare.pipelines#InvalidSql"
+        }
+      ]
+    }
+  ]
 }

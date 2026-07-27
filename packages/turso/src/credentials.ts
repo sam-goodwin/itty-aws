@@ -1,3 +1,11 @@
+/**
+ * Turso credentials — hand-written.
+ *
+ * API-compatible port of the distilled repo's turso credentials module: the
+ * `Credentials` service holds an *effect* that resolves the current
+ * credentials, so the protocol layer picks up rotations per request. Turso
+ * auth is a plain bearer token (`Authorization: Bearer <apiKey>`).
+ */
 import { ConfigError } from "@distilled.cloud/core/errors";
 import * as EffectConfig from "effect/Config";
 import * as Context from "effect/Context";

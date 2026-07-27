@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,59 +85,463 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
+  "AlreadyExistsException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AlreadyExists", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class CloudHsmClusterInUseException extends S.TaggedErrorClass<CloudHsmClusterInUseException>()(
+  "CloudHsmClusterInUseException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CloudHsmClusterInUseException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CloudHsmClusterInvalidConfigurationException extends S.TaggedErrorClass<CloudHsmClusterInvalidConfigurationException>()(
+  "CloudHsmClusterInvalidConfigurationException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CloudHsmClusterInvalidConfigurationException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CloudHsmClusterNotActiveException extends S.TaggedErrorClass<CloudHsmClusterNotActiveException>()(
+  "CloudHsmClusterNotActiveException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CloudHsmClusterNotActiveException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CloudHsmClusterNotFoundException extends S.TaggedErrorClass<CloudHsmClusterNotFoundException>()(
+  "CloudHsmClusterNotFoundException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CloudHsmClusterNotFoundException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CloudHsmClusterNotRelatedException extends S.TaggedErrorClass<CloudHsmClusterNotRelatedException>()(
+  "CloudHsmClusterNotRelatedException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CloudHsmClusterNotRelatedException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class CustomKeyStoreHasCMKsException extends S.TaggedErrorClass<CustomKeyStoreHasCMKsException>()(
+  "CustomKeyStoreHasCMKsException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CustomKeyStoreHasCMKsException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CustomKeyStoreInvalidStateException extends S.TaggedErrorClass<CustomKeyStoreInvalidStateException>()(
+  "CustomKeyStoreInvalidStateException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CustomKeyStoreInvalidStateException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CustomKeyStoreNameInUseException extends S.TaggedErrorClass<CustomKeyStoreNameInUseException>()(
+  "CustomKeyStoreNameInUseException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CustomKeyStoreNameInUseException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CustomKeyStoreNotFoundException extends S.TaggedErrorClass<CustomKeyStoreNotFoundException>()(
+  "CustomKeyStoreNotFoundException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CustomKeyStoreNotFoundException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DependencyTimeoutException extends S.TaggedErrorClass<DependencyTimeoutException>()(
+  "DependencyTimeoutException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "DependencyTimeout", httpResponseCode: 503 }),
+    T.HttpError(503),
+  ),
+).pipe(C.withServerError) {}
+export class DisabledException extends S.TaggedErrorClass<DisabledException>()(
+  "DisabledException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "Disabled", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class DryRunOperationException extends S.TaggedErrorClass<DryRunOperationException>()(
+  "DryRunOperationException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "DryRunOperation", httpResponseCode: 412 }),
+    T.HttpError(412),
+  ),
+) {}
+export class ExpiredImportTokenException extends S.TaggedErrorClass<ExpiredImportTokenException>()(
+  "ExpiredImportTokenException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ExpiredImportTokenException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class IncorrectKeyException extends S.TaggedErrorClass<IncorrectKeyException>()(
+  "IncorrectKeyException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "IncorrectKeyException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class IncorrectKeyMaterialException extends S.TaggedErrorClass<IncorrectKeyMaterialException>()(
+  "IncorrectKeyMaterialException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "IncorrectKeyMaterialException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class IncorrectTrustAnchorException extends S.TaggedErrorClass<IncorrectTrustAnchorException>()(
+  "IncorrectTrustAnchorException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "IncorrectTrustAnchorException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidAliasNameException extends S.TaggedErrorClass<InvalidAliasNameException>()(
+  "InvalidAliasNameException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidAliasName", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidArnException extends S.TaggedErrorClass<InvalidArnException>()(
+  "InvalidArnException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidArn", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidCiphertextException extends S.TaggedErrorClass<InvalidCiphertextException>()(
+  "InvalidCiphertextException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidCiphertext", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidGrantIdException extends S.TaggedErrorClass<InvalidGrantIdException>()(
+  "InvalidGrantIdException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidGrantId", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidGrantTokenException extends S.TaggedErrorClass<InvalidGrantTokenException>()(
+  "InvalidGrantTokenException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidGrantToken", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidImportTokenException extends S.TaggedErrorClass<InvalidImportTokenException>()(
+  "InvalidImportTokenException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidImportTokenException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidKeyUsageException extends S.TaggedErrorClass<InvalidKeyUsageException>()(
+  "InvalidKeyUsageException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidKeyUsage", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidMarkerException extends S.TaggedErrorClass<InvalidMarkerException>()(
+  "InvalidMarkerException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidMarker", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class KeyUnavailableException extends S.TaggedErrorClass<KeyUnavailableException>()(
+  "KeyUnavailableException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "KeyUnavailable", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class KMSInternalException extends S.TaggedErrorClass<KMSInternalException>()(
+  "KMSInternalException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "KMSInternal", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class KMSInvalidMacException extends S.TaggedErrorClass<KMSInvalidMacException>()(
+  "KMSInvalidMacException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "KMSInvalidMac", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class KMSInvalidSignatureException extends S.TaggedErrorClass<KMSInvalidSignatureException>()(
+  "KMSInvalidSignatureException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "KMSInvalidSignature", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class KMSInvalidStateException extends S.TaggedErrorClass<KMSInvalidStateException>()(
+  "KMSInvalidStateException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "KMSInvalidStateException",
+      httpResponseCode: 409,
+    }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class MalformedPolicyDocumentException extends S.TaggedErrorClass<MalformedPolicyDocumentException>()(
+  "MalformedPolicyDocumentException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "MalformedPolicyDocument", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "NotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TagException extends S.TaggedErrorClass<TagException>()(
+  "TagException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TagException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
+  "UnsupportedOperationException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "UnsupportedOperation", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class XksKeyAlreadyInUseException extends S.TaggedErrorClass<XksKeyAlreadyInUseException>()(
+  "XksKeyAlreadyInUseException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "XksKeyAlreadyInUse", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class XksKeyInvalidConfigurationException extends S.TaggedErrorClass<XksKeyInvalidConfigurationException>()(
+  "XksKeyInvalidConfigurationException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "XksKeyInvalidConfiguration",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class XksKeyNotFoundException extends S.TaggedErrorClass<XksKeyNotFoundException>()(
+  "XksKeyNotFoundException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "XksKeyNotFoundException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class XksProxyIncorrectAuthenticationCredentialException extends S.TaggedErrorClass<XksProxyIncorrectAuthenticationCredentialException>()(
+  "XksProxyIncorrectAuthenticationCredentialException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "XksProxyIncorrectAuthenticationCredentialException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class XksProxyInvalidConfigurationException extends S.TaggedErrorClass<XksProxyInvalidConfigurationException>()(
+  "XksProxyInvalidConfigurationException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "XksProxyInvalidConfigurationException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class XksProxyInvalidResponseException extends S.TaggedErrorClass<XksProxyInvalidResponseException>()(
+  "XksProxyInvalidResponseException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "XksProxyInvalidResponseException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class XksProxyUriEndpointInUseException extends S.TaggedErrorClass<XksProxyUriEndpointInUseException>()(
+  "XksProxyUriEndpointInUseException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "XksProxyUriEndpointInUseException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class XksProxyUriInUseException extends S.TaggedErrorClass<XksProxyUriInUseException>()(
+  "XksProxyUriInUseException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "XksProxyUriInUseException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class XksProxyUriUnreachableException extends S.TaggedErrorClass<XksProxyUriUnreachableException>()(
+  "XksProxyUriUnreachableException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "XksProxyUriUnreachableException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class XksProxyVpcEndpointServiceInUseException extends S.TaggedErrorClass<XksProxyVpcEndpointServiceInUseException>()(
+  "XksProxyVpcEndpointServiceInUseException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "XksProxyVpcEndpointServiceInUseException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class XksProxyVpcEndpointServiceInvalidConfigurationException extends S.TaggedErrorClass<XksProxyVpcEndpointServiceInvalidConfigurationException>()(
+  "XksProxyVpcEndpointServiceInvalidConfigurationException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "XksProxyVpcEndpointServiceInvalidConfigurationException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class XksProxyVpcEndpointServiceNotFoundException extends S.TaggedErrorClass<XksProxyVpcEndpointServiceNotFoundException>()(
+  "XksProxyVpcEndpointServiceNotFoundException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "XksProxyVpcEndpointServiceNotFoundException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
 export type KeyIdType = string;
-export type ErrorMessageType = string;
-export type CustomKeyStoreIdType = string;
-export type AliasNameType = string;
-export type CustomKeyStoreNameType = string;
-export type CloudHsmClusterIdType = string;
-export type TrustAnchorCertificateType = string;
-export type KeyStorePasswordType = string | redacted.Redacted<string>;
-export type XksProxyUriEndpointType = string;
-export type XksProxyUriPathType = string;
-export type XksProxyVpcEndpointServiceNameType = string;
-export type AccountIdType = string;
-export type XksProxyAuthenticationAccessKeyIdType =
-  | string
-  | redacted.Redacted<string>;
-export type XksProxyAuthenticationRawSecretAccessKeyType =
-  | string
-  | redacted.Redacted<string>;
-export type PrincipalIdType = string;
-export type EncryptionContextKey = string;
-export type EncryptionContextValue = string;
-export type GrantConstraintSourceArnType = string;
-export type GrantTokenType = string;
-export type GrantNameType = string;
-export type NullableBooleanType = boolean;
-export type ServicePrincipalType = string;
-export type GrantIdType = string;
-export type PolicyType = string;
-export type DescriptionType = string;
-export type TagKeyType = string;
-export type TagValueType = string;
-export type XksKeyIdType = string;
-export type AWSAccountIdType = string;
-export type ArnType = string;
-export type RegionType = string;
-export type PendingWindowInDaysType = number;
-export type BackingKeyIdType = string;
-export type CiphertextType = Uint8Array;
-export type AttestationDocumentType = Uint8Array;
-export type PlaintextType = Uint8Array | redacted.Redacted<Uint8Array>;
-export type BackingKeyIdResponseType = string;
-export type PublicKeyType = Uint8Array;
-export type LimitType = number;
-export type MarkerType = string;
-export type RotationPeriodInDaysType = number;
-export type NumberOfBytesType = number;
-export type CloudTrailEventIdType = string;
-export type KmsRequestIdType = string;
-export type PolicyNameType = string;
-export type KeyMaterialDescriptionType = string;
-
-//# Schemas
 export interface CancelKeyDeletionRequest {
   KeyId: string;
 }
@@ -162,30 +568,32 @@ export const CancelKeyDeletionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelKeyDeletionResponse",
 }) as any as S.Schema<CancelKeyDeletionResponse>;
+export type CustomKeyStoreIdType = string;
 export interface ConnectCustomKeyStoreRequest {
   CustomKeyStoreId: string;
 }
-export const ConnectCustomKeyStoreRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ CustomKeyStoreId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ConnectCustomKeyStoreRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CustomKeyStoreId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ConnectCustomKeyStoreRequest",
-  }) as any as S.Schema<ConnectCustomKeyStoreRequest>;
+  ),
+).annotate({
+  identifier: "ConnectCustomKeyStoreRequest",
+}) as any as S.Schema<ConnectCustomKeyStoreRequest>;
 export interface ConnectCustomKeyStoreResponse {}
-export const ConnectCustomKeyStoreResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "ConnectCustomKeyStoreResponse",
-  }) as any as S.Schema<ConnectCustomKeyStoreResponse>;
+export const ConnectCustomKeyStoreResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "ConnectCustomKeyStoreResponse",
+}) as any as S.Schema<ConnectCustomKeyStoreResponse>;
+export type AliasNameType = string;
 export interface CreateAliasRequest {
   AliasName: string;
   TargetKeyId: string;
@@ -211,29 +619,45 @@ export const CreateAliasResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAliasResponse",
 }) as any as S.Schema<CreateAliasResponse>;
+export type CustomKeyStoreNameType = string;
+export type CloudHsmClusterIdType = string;
+export type TrustAnchorCertificateType = string;
+export type KeyStorePasswordType = string | redacted.Redacted<string>;
 export type CustomKeyStoreType =
   | "AWS_CLOUDHSM"
   | "EXTERNAL_KEY_STORE"
   | (string & {});
 export const CustomKeyStoreType = /*@__PURE__*/ S.String;
+
+export type XksProxyUriEndpointType = string;
+export type XksProxyUriPathType = string;
+export type XksProxyVpcEndpointServiceNameType = string;
+export type AccountIdType = string;
+export type XksProxyAuthenticationAccessKeyIdType =
+  | string
+  | redacted.Redacted<string>;
+export type XksProxyAuthenticationRawSecretAccessKeyType =
+  | string
+  | redacted.Redacted<string>;
 export interface XksProxyAuthenticationCredentialType {
   AccessKeyId: string | redacted.Redacted<string>;
   RawSecretAccessKey: string | redacted.Redacted<string>;
 }
-export const XksProxyAuthenticationCredentialType =
-  /*@__PURE__*/ S.suspend(() =>
+export const XksProxyAuthenticationCredentialType = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       AccessKeyId: SensitiveString,
       RawSecretAccessKey: SensitiveString,
     }),
-  ).annotate({
-    identifier: "XksProxyAuthenticationCredentialType",
-  }) as any as S.Schema<XksProxyAuthenticationCredentialType>;
+).annotate({
+  identifier: "XksProxyAuthenticationCredentialType",
+}) as any as S.Schema<XksProxyAuthenticationCredentialType>;
 export type XksProxyConnectivityType =
   | "PUBLIC_ENDPOINT"
   | "VPC_ENDPOINT_SERVICE"
   | (string & {});
 export const XksProxyConnectivityType = /*@__PURE__*/ S.String;
+
 export interface CreateCustomKeyStoreRequest {
   CustomKeyStoreName: string;
   CloudHsmClusterId?: string;
@@ -247,45 +671,44 @@ export interface CreateCustomKeyStoreRequest {
   XksProxyAuthenticationCredential?: XksProxyAuthenticationCredentialType;
   XksProxyConnectivity?: XksProxyConnectivityType;
 }
-export const CreateCustomKeyStoreRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CustomKeyStoreName: S.String,
-      CloudHsmClusterId: S.optional(S.String),
-      TrustAnchorCertificate: S.optional(S.String),
-      KeyStorePassword: S.optional(SensitiveString),
-      CustomKeyStoreType: S.optional(CustomKeyStoreType),
-      XksProxyUriEndpoint: S.optional(S.String),
-      XksProxyUriPath: S.optional(S.String),
-      XksProxyVpcEndpointServiceName: S.optional(S.String),
-      XksProxyVpcEndpointServiceOwner: S.optional(S.String),
-      XksProxyAuthenticationCredential: S.optional(
-        XksProxyAuthenticationCredentialType,
-      ),
-      XksProxyConnectivity: S.optional(XksProxyConnectivityType),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateCustomKeyStoreRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CustomKeyStoreName: S.String,
+    CloudHsmClusterId: S.optional(S.String),
+    TrustAnchorCertificate: S.optional(S.String),
+    KeyStorePassword: S.optional(SensitiveString),
+    CustomKeyStoreType: S.optional(CustomKeyStoreType),
+    XksProxyUriEndpoint: S.optional(S.String),
+    XksProxyUriPath: S.optional(S.String),
+    XksProxyVpcEndpointServiceName: S.optional(S.String),
+    XksProxyVpcEndpointServiceOwner: S.optional(S.String),
+    XksProxyAuthenticationCredential: S.optional(
+      XksProxyAuthenticationCredentialType,
     ),
-  ).annotate({
-    identifier: "CreateCustomKeyStoreRequest",
-  }) as any as S.Schema<CreateCustomKeyStoreRequest>;
+    XksProxyConnectivity: S.optional(XksProxyConnectivityType),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateCustomKeyStoreRequest",
+}) as any as S.Schema<CreateCustomKeyStoreRequest>;
 export interface CreateCustomKeyStoreResponse {
   CustomKeyStoreId?: string;
 }
-export const CreateCustomKeyStoreResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ CustomKeyStoreId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "CreateCustomKeyStoreResponse",
-  }) as any as S.Schema<CreateCustomKeyStoreResponse>;
+export const CreateCustomKeyStoreResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CustomKeyStoreId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "CreateCustomKeyStoreResponse",
+}) as any as S.Schema<CreateCustomKeyStoreResponse>;
+export type PrincipalIdType = string;
 export type GrantOperation =
   | "Decrypt"
   | "Encrypt"
@@ -306,13 +729,17 @@ export type GrantOperation =
   | "DeriveSharedSecret"
   | (string & {});
 export const GrantOperation = /*@__PURE__*/ S.String;
+
 export type GrantOperationList = GrantOperation[];
 export const GrantOperationList = /*@__PURE__*/ S.Array(GrantOperation);
+export type EncryptionContextKey = string;
+export type EncryptionContextValue = string;
 export type EncryptionContextType = { [key: string]: string | undefined };
 export const EncryptionContextType = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type GrantConstraintSourceArnType = string;
 export interface GrantConstraints {
   EncryptionContextSubset?: { [key: string]: string | undefined };
   EncryptionContextEquals?: { [key: string]: string | undefined };
@@ -327,8 +754,12 @@ export const GrantConstraints = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GrantConstraints",
 }) as any as S.Schema<GrantConstraints>;
+export type GrantTokenType = string;
 export type GrantTokenList = string[];
 export const GrantTokenList = /*@__PURE__*/ S.Array(S.String);
+export type GrantNameType = string;
+export type NullableBooleanType = boolean;
+export type ServicePrincipalType = string;
 export interface CreateGrantRequest {
   KeyId: string;
   GranteePrincipal?: string;
@@ -367,6 +798,7 @@ export const CreateGrantRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGrantRequest",
 }) as any as S.Schema<CreateGrantRequest>;
+export type GrantIdType = string;
 export interface CreateGrantResponse {
   GrantToken?: string;
   GrantId?: string;
@@ -379,6 +811,8 @@ export const CreateGrantResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGrantResponse",
 }) as any as S.Schema<CreateGrantResponse>;
+export type PolicyType = string;
+export type DescriptionType = string;
 export type KeyUsageType =
   | "SIGN_VERIFY"
   | "ENCRYPT_DECRYPT"
@@ -386,6 +820,7 @@ export type KeyUsageType =
   | "KEY_AGREEMENT"
   | (string & {});
 export const KeyUsageType = /*@__PURE__*/ S.String;
+
 export type CustomerMasterKeySpec =
   | "RSA_2048"
   | "RSA_3072"
@@ -402,6 +837,7 @@ export type CustomerMasterKeySpec =
   | "SM2"
   | (string & {});
 export const CustomerMasterKeySpec = /*@__PURE__*/ S.String;
+
 export type KeySpec =
   | "RSA_2048"
   | "RSA_3072"
@@ -422,6 +858,7 @@ export type KeySpec =
   | "ECC_NIST_EDWARDS25519"
   | (string & {});
 export const KeySpec = /*@__PURE__*/ S.String;
+
 export type OriginType =
   | "AWS_KMS"
   | "EXTERNAL"
@@ -429,6 +866,9 @@ export type OriginType =
   | "EXTERNAL_KEY_STORE"
   | (string & {});
 export const OriginType = /*@__PURE__*/ S.String;
+
+export type TagKeyType = string;
+export type TagValueType = string;
 export interface Tag {
   TagKey: string;
   TagValue: string;
@@ -438,6 +878,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
+export type XksKeyIdType = string;
 export interface CreateKeyRequest {
   Policy?: string;
   Description?: string;
@@ -478,6 +919,8 @@ export const CreateKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateKeyRequest",
 }) as any as S.Schema<CreateKeyRequest>;
+export type AWSAccountIdType = string;
+export type ArnType = string;
 export type KeyState =
   | "Creating"
   | "Enabled"
@@ -489,13 +932,16 @@ export type KeyState =
   | "Updating"
   | (string & {});
 export const KeyState = /*@__PURE__*/ S.String;
+
 export type ExpirationModelType =
   | "KEY_MATERIAL_EXPIRES"
   | "KEY_MATERIAL_DOES_NOT_EXPIRE"
   | (string & {});
 export const ExpirationModelType = /*@__PURE__*/ S.String;
+
 export type KeyManagerType = "AWS" | "CUSTOMER" | (string & {});
 export const KeyManagerType = /*@__PURE__*/ S.String;
+
 export type EncryptionAlgorithmSpec =
   | "SYMMETRIC_DEFAULT"
   | "RSAES_OAEP_SHA_1"
@@ -503,6 +949,7 @@ export type EncryptionAlgorithmSpec =
   | "SM2PKE"
   | (string & {});
 export const EncryptionAlgorithmSpec = /*@__PURE__*/ S.String;
+
 export type EncryptionAlgorithmSpecList = EncryptionAlgorithmSpec[];
 export const EncryptionAlgorithmSpecList = /*@__PURE__*/ S.Array(
   EncryptionAlgorithmSpec,
@@ -523,16 +970,21 @@ export type SigningAlgorithmSpec =
   | "ED25519_PH_SHA_512"
   | (string & {});
 export const SigningAlgorithmSpec = /*@__PURE__*/ S.String;
+
 export type SigningAlgorithmSpecList = SigningAlgorithmSpec[];
 export const SigningAlgorithmSpecList =
   /*@__PURE__*/ S.Array(SigningAlgorithmSpec);
 export type KeyAgreementAlgorithmSpec = "ECDH" | (string & {});
 export const KeyAgreementAlgorithmSpec = /*@__PURE__*/ S.String;
+
 export type KeyAgreementAlgorithmSpecList = KeyAgreementAlgorithmSpec[];
-export const KeyAgreementAlgorithmSpecList =
-  /*@__PURE__*/ S.Array(KeyAgreementAlgorithmSpec);
+export const KeyAgreementAlgorithmSpecList = /*@__PURE__*/ S.Array(
+  KeyAgreementAlgorithmSpec,
+);
 export type MultiRegionKeyType = "PRIMARY" | "REPLICA" | (string & {});
 export const MultiRegionKeyType = /*@__PURE__*/ S.String;
+
+export type RegionType = string;
 export interface MultiRegionKey {
   Arn?: string;
   Region?: string;
@@ -556,6 +1008,7 @@ export const MultiRegionConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MultiRegionConfiguration",
 }) as any as S.Schema<MultiRegionConfiguration>;
+export type PendingWindowInDaysType = number;
 export type MacAlgorithmSpec =
   | "HMAC_SHA_224"
   | "HMAC_SHA_256"
@@ -563,6 +1016,7 @@ export type MacAlgorithmSpec =
   | "HMAC_SHA_512"
   | (string & {});
 export const MacAlgorithmSpec = /*@__PURE__*/ S.String;
+
 export type MacAlgorithmSpecList = MacAlgorithmSpec[];
 export const MacAlgorithmSpecList = /*@__PURE__*/ S.Array(MacAlgorithmSpec);
 export interface XksKeyConfigurationType {
@@ -573,6 +1027,7 @@ export const XksKeyConfigurationType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "XksKeyConfigurationType",
 }) as any as S.Schema<XksKeyConfigurationType>;
+export type BackingKeyIdType = string;
 export interface KeyMetadata {
   AWSAccountId?: string;
   KeyId: string;
@@ -639,8 +1094,11 @@ export const CreateKeyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateKeyResponse",
 }) as any as S.Schema<CreateKeyResponse>;
+export type CiphertextType = Uint8Array;
 export type KeyEncryptionMechanism = "RSAES_OAEP_SHA_256" | (string & {});
 export const KeyEncryptionMechanism = /*@__PURE__*/ S.String;
+
+export type AttestationDocumentType = Uint8Array;
 export interface RecipientInfo {
   KeyEncryptionAlgorithm?: KeyEncryptionMechanism;
   AttestationDocument?: Uint8Array;
@@ -653,6 +1111,7 @@ export const RecipientInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecipientInfo" }) as any as S.Schema<RecipientInfo>;
 export type DryRunModifierType = "IGNORE_CIPHERTEXT" | (string & {});
 export const DryRunModifierType = /*@__PURE__*/ S.String;
+
 export type DryRunModifierList = DryRunModifierType[];
 export const DryRunModifierList = /*@__PURE__*/ S.Array(DryRunModifierType);
 export interface DecryptRequest {
@@ -687,6 +1146,7 @@ export const DecryptRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "DecryptRequest" }) as any as S.Schema<DecryptRequest>;
+export type PlaintextType = Uint8Array | redacted.Redacted<Uint8Array>;
 export interface DecryptResponse {
   KeyId?: string;
   Plaintext?: Uint8Array | redacted.Redacted<Uint8Array>;
@@ -732,60 +1192,60 @@ export const DeleteAliasResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCustomKeyStoreRequest {
   CustomKeyStoreId: string;
 }
-export const DeleteCustomKeyStoreRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ CustomKeyStoreId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteCustomKeyStoreRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CustomKeyStoreId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteCustomKeyStoreRequest",
-  }) as any as S.Schema<DeleteCustomKeyStoreRequest>;
+  ),
+).annotate({
+  identifier: "DeleteCustomKeyStoreRequest",
+}) as any as S.Schema<DeleteCustomKeyStoreRequest>;
 export interface DeleteCustomKeyStoreResponse {}
-export const DeleteCustomKeyStoreResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteCustomKeyStoreResponse",
-  }) as any as S.Schema<DeleteCustomKeyStoreResponse>;
+export const DeleteCustomKeyStoreResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteCustomKeyStoreResponse",
+}) as any as S.Schema<DeleteCustomKeyStoreResponse>;
 export interface DeleteImportedKeyMaterialRequest {
   KeyId: string;
   KeyMaterialId?: string;
 }
-export const DeleteImportedKeyMaterialRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ KeyId: S.String, KeyMaterialId: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteImportedKeyMaterialRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ KeyId: S.String, KeyMaterialId: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteImportedKeyMaterialRequest",
-  }) as any as S.Schema<DeleteImportedKeyMaterialRequest>;
+  ),
+).annotate({
+  identifier: "DeleteImportedKeyMaterialRequest",
+}) as any as S.Schema<DeleteImportedKeyMaterialRequest>;
+export type BackingKeyIdResponseType = string;
 export interface DeleteImportedKeyMaterialResponse {
   KeyId?: string;
   KeyMaterialId?: string;
 }
-export const DeleteImportedKeyMaterialResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      KeyId: S.optional(S.String),
-      KeyMaterialId: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DeleteImportedKeyMaterialResponse",
-  }) as any as S.Schema<DeleteImportedKeyMaterialResponse>;
+export const DeleteImportedKeyMaterialResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    KeyId: S.optional(S.String),
+    KeyMaterialId: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DeleteImportedKeyMaterialResponse",
+}) as any as S.Schema<DeleteImportedKeyMaterialResponse>;
+export type PublicKeyType = Uint8Array;
 export interface DeriveSharedSecretRequest {
   KeyId: string;
   KeyAgreementAlgorithm: KeyAgreementAlgorithmSpec;
@@ -834,33 +1294,34 @@ export const DeriveSharedSecretResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeriveSharedSecretResponse",
 }) as any as S.Schema<DeriveSharedSecretResponse>;
+export type LimitType = number;
+export type MarkerType = string;
 export interface DescribeCustomKeyStoresRequest {
   CustomKeyStoreId?: string;
   CustomKeyStoreName?: string;
   Limit?: number;
   Marker?: string;
 }
-export const DescribeCustomKeyStoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CustomKeyStoreId: S.optional(S.String),
-      CustomKeyStoreName: S.optional(S.String),
-      Limit: S.optional(S.Number),
-      Marker: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeCustomKeyStoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CustomKeyStoreId: S.optional(S.String),
+    CustomKeyStoreName: S.optional(S.String),
+    Limit: S.optional(S.Number),
+    Marker: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeCustomKeyStoresRequest",
-  }) as any as S.Schema<DescribeCustomKeyStoresRequest>;
+  ),
+).annotate({
+  identifier: "DescribeCustomKeyStoresRequest",
+}) as any as S.Schema<DescribeCustomKeyStoresRequest>;
 export type ConnectionStateType =
   | "CONNECTED"
   | "CONNECTING"
@@ -869,6 +1330,7 @@ export type ConnectionStateType =
   | "DISCONNECTING"
   | (string & {});
 export const ConnectionStateType = /*@__PURE__*/ S.String;
+
 export type ConnectionErrorCodeType =
   | "INVALID_CREDENTIALS"
   | "CLUSTER_NOT_FOUND"
@@ -890,6 +1352,7 @@ export type ConnectionErrorCodeType =
   | "XKS_PROXY_INVALID_TLS_CONFIGURATION"
   | (string & {});
 export const ConnectionErrorCodeType = /*@__PURE__*/ S.String;
+
 export interface XksProxyConfigurationType {
   Connectivity?: XksProxyConnectivityType;
   AccessKeyId?: string | redacted.Redacted<string>;
@@ -945,16 +1408,15 @@ export interface DescribeCustomKeyStoresResponse {
   NextMarker?: string;
   Truncated?: boolean;
 }
-export const DescribeCustomKeyStoresResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CustomKeyStores: S.optional(CustomKeyStoresList),
-      NextMarker: S.optional(S.String),
-      Truncated: S.optional(S.Boolean),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeCustomKeyStoresResponse",
-  }) as any as S.Schema<DescribeCustomKeyStoresResponse>;
+export const DescribeCustomKeyStoresResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CustomKeyStores: S.optional(CustomKeyStoresList),
+    NextMarker: S.optional(S.String),
+    Truncated: S.optional(S.Boolean),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeCustomKeyStoresResponse",
+}) as any as S.Schema<DescribeCustomKeyStoresResponse>;
 export interface DescribeKeyRequest {
   KeyId: string;
   GrantTokens?: string[];
@@ -1033,27 +1495,27 @@ export const DisableKeyRotationResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DisconnectCustomKeyStoreRequest {
   CustomKeyStoreId: string;
 }
-export const DisconnectCustomKeyStoreRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ CustomKeyStoreId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DisconnectCustomKeyStoreRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CustomKeyStoreId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DisconnectCustomKeyStoreRequest",
-  }) as any as S.Schema<DisconnectCustomKeyStoreRequest>;
+  ),
+).annotate({
+  identifier: "DisconnectCustomKeyStoreRequest",
+}) as any as S.Schema<DisconnectCustomKeyStoreRequest>;
 export interface DisconnectCustomKeyStoreResponse {}
-export const DisconnectCustomKeyStoreResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DisconnectCustomKeyStoreResponse",
-  }) as any as S.Schema<DisconnectCustomKeyStoreResponse>;
+export const DisconnectCustomKeyStoreResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DisconnectCustomKeyStoreResponse",
+}) as any as S.Schema<DisconnectCustomKeyStoreResponse>;
 export interface EnableKeyRequest {
   KeyId: string;
 }
@@ -1078,6 +1540,7 @@ export const EnableKeyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EnableKeyResponse",
 }) as any as S.Schema<EnableKeyResponse>;
+export type RotationPeriodInDaysType = number;
 export interface EnableKeyRotationRequest {
   KeyId: string;
   RotationPeriodInDays?: number;
@@ -1148,8 +1611,10 @@ export const EncryptResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EncryptResponse",
 }) as any as S.Schema<EncryptResponse>;
+export type NumberOfBytesType = number;
 export type DataKeySpec = "AES_256" | "AES_128" | (string & {});
 export const DataKeySpec = /*@__PURE__*/ S.String;
+
 export interface GenerateDataKeyRequest {
   KeyId: string;
   EncryptionContext?: { [key: string]: string | undefined };
@@ -1212,6 +1677,7 @@ export type DataKeyPairSpec =
   | "ECC_NIST_EDWARDS25519"
   | (string & {});
 export const DataKeyPairSpec = /*@__PURE__*/ S.String;
+
 export interface GenerateDataKeyPairRequest {
   EncryptionContext?: { [key: string]: string | undefined };
   KeyId: string;
@@ -1251,20 +1717,19 @@ export interface GenerateDataKeyPairResponse {
   CiphertextForRecipient?: Uint8Array;
   KeyMaterialId?: string;
 }
-export const GenerateDataKeyPairResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PrivateKeyCiphertextBlob: S.optional(T.Blob),
-      PrivateKeyPlaintext: S.optional(SensitiveBlob),
-      PublicKey: S.optional(T.Blob),
-      KeyId: S.optional(S.String),
-      KeyPairSpec: S.optional(DataKeyPairSpec),
-      CiphertextForRecipient: S.optional(T.Blob),
-      KeyMaterialId: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "GenerateDataKeyPairResponse",
-  }) as any as S.Schema<GenerateDataKeyPairResponse>;
+export const GenerateDataKeyPairResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PrivateKeyCiphertextBlob: S.optional(T.Blob),
+    PrivateKeyPlaintext: S.optional(SensitiveBlob),
+    PublicKey: S.optional(T.Blob),
+    KeyId: S.optional(S.String),
+    KeyPairSpec: S.optional(DataKeyPairSpec),
+    CiphertextForRecipient: S.optional(T.Blob),
+    KeyMaterialId: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "GenerateDataKeyPairResponse",
+}) as any as S.Schema<GenerateDataKeyPairResponse>;
 export interface GenerateDataKeyPairWithoutPlaintextRequest {
   EncryptionContext?: { [key: string]: string | undefined };
   KeyId: string;
@@ -1321,8 +1786,8 @@ export interface GenerateDataKeyWithoutPlaintextRequest {
   GrantTokens?: string[];
   DryRun?: boolean;
 }
-export const GenerateDataKeyWithoutPlaintextRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GenerateDataKeyWithoutPlaintextRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       KeyId: S.String,
       EncryptionContext: S.optional(EncryptionContextType),
@@ -1341,24 +1806,24 @@ export const GenerateDataKeyWithoutPlaintextRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GenerateDataKeyWithoutPlaintextRequest",
-  }) as any as S.Schema<GenerateDataKeyWithoutPlaintextRequest>;
+).annotate({
+  identifier: "GenerateDataKeyWithoutPlaintextRequest",
+}) as any as S.Schema<GenerateDataKeyWithoutPlaintextRequest>;
 export interface GenerateDataKeyWithoutPlaintextResponse {
   CiphertextBlob?: Uint8Array;
   KeyId?: string;
   KeyMaterialId?: string;
 }
-export const GenerateDataKeyWithoutPlaintextResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const GenerateDataKeyWithoutPlaintextResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       CiphertextBlob: S.optional(T.Blob),
       KeyId: S.optional(S.String),
       KeyMaterialId: S.optional(S.String),
     }).pipe(ns),
-  ).annotate({
-    identifier: "GenerateDataKeyWithoutPlaintextResponse",
-  }) as any as S.Schema<GenerateDataKeyWithoutPlaintextResponse>;
+).annotate({
+  identifier: "GenerateDataKeyWithoutPlaintextResponse",
+}) as any as S.Schema<GenerateDataKeyWithoutPlaintextResponse>;
 export interface GenerateMacRequest {
   Message: Uint8Array | redacted.Redacted<Uint8Array>;
   KeyId: string;
@@ -1470,6 +1935,9 @@ export type KeyLastUsageTrackingOperation =
   | "VerifyMac"
   | (string & {});
 export const KeyLastUsageTrackingOperation = /*@__PURE__*/ S.String;
+
+export type CloudTrailEventIdType = string;
+export type KmsRequestIdType = string;
 export interface KeyLastUsageData {
   Operation?: KeyLastUsageTrackingOperation;
   Timestamp?: Date;
@@ -1506,6 +1974,7 @@ export const GetKeyLastUsageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetKeyLastUsageResponse",
 }) as any as S.Schema<GetKeyLastUsageResponse>;
+export type PolicyNameType = string;
 export interface GetKeyPolicyRequest {
   KeyId: string;
   PolicyName?: string;
@@ -1540,22 +2009,21 @@ export const GetKeyPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetKeyRotationStatusRequest {
   KeyId: string;
 }
-export const GetKeyRotationStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ KeyId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetKeyRotationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ KeyId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetKeyRotationStatusRequest",
-  }) as any as S.Schema<GetKeyRotationStatusRequest>;
+  ),
+).annotate({
+  identifier: "GetKeyRotationStatusRequest",
+}) as any as S.Schema<GetKeyRotationStatusRequest>;
 export interface GetKeyRotationStatusResponse {
   KeyRotationEnabled?: boolean;
   KeyId?: string;
@@ -1563,22 +2031,21 @@ export interface GetKeyRotationStatusResponse {
   NextRotationDate?: Date;
   OnDemandRotationStartDate?: Date;
 }
-export const GetKeyRotationStatusResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      KeyRotationEnabled: S.optional(S.Boolean),
-      KeyId: S.optional(S.String),
-      RotationPeriodInDays: S.optional(S.Number),
-      NextRotationDate: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      OnDemandRotationStartDate: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "GetKeyRotationStatusResponse",
-  }) as any as S.Schema<GetKeyRotationStatusResponse>;
+export const GetKeyRotationStatusResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    KeyRotationEnabled: S.optional(S.Boolean),
+    KeyId: S.optional(S.String),
+    RotationPeriodInDays: S.optional(S.Number),
+    NextRotationDate: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    OnDemandRotationStartDate: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetKeyRotationStatusResponse",
+}) as any as S.Schema<GetKeyRotationStatusResponse>;
 export type AlgorithmSpec =
   | "RSAES_PKCS1_V1_5"
   | "RSAES_OAEP_SHA_1"
@@ -1588,6 +2055,7 @@ export type AlgorithmSpec =
   | "SM2PKE"
   | (string & {});
 export const AlgorithmSpec = /*@__PURE__*/ S.String;
+
 export type WrappingKeySpec =
   | "RSA_2048"
   | "RSA_3072"
@@ -1595,50 +2063,49 @@ export type WrappingKeySpec =
   | "SM2"
   | (string & {});
 export const WrappingKeySpec = /*@__PURE__*/ S.String;
+
 export interface GetParametersForImportRequest {
   KeyId: string;
   WrappingAlgorithm: AlgorithmSpec;
   WrappingKeySpec: WrappingKeySpec;
 }
-export const GetParametersForImportRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      KeyId: S.String,
-      WrappingAlgorithm: AlgorithmSpec,
-      WrappingKeySpec: WrappingKeySpec,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetParametersForImportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    KeyId: S.String,
+    WrappingAlgorithm: AlgorithmSpec,
+    WrappingKeySpec: WrappingKeySpec,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetParametersForImportRequest",
-  }) as any as S.Schema<GetParametersForImportRequest>;
+  ),
+).annotate({
+  identifier: "GetParametersForImportRequest",
+}) as any as S.Schema<GetParametersForImportRequest>;
 export interface GetParametersForImportResponse {
   KeyId?: string;
   ImportToken?: Uint8Array;
   PublicKey?: Uint8Array | redacted.Redacted<Uint8Array>;
   ParametersValidTo?: Date;
 }
-export const GetParametersForImportResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      KeyId: S.optional(S.String),
-      ImportToken: S.optional(T.Blob),
-      PublicKey: S.optional(SensitiveBlob),
-      ParametersValidTo: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "GetParametersForImportResponse",
-  }) as any as S.Schema<GetParametersForImportResponse>;
+export const GetParametersForImportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    KeyId: S.optional(S.String),
+    ImportToken: S.optional(T.Blob),
+    PublicKey: S.optional(SensitiveBlob),
+    ParametersValidTo: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetParametersForImportResponse",
+}) as any as S.Schema<GetParametersForImportResponse>;
 export interface GetPublicKeyRequest {
   KeyId: string;
   GrantTokens?: string[];
@@ -1687,6 +2154,8 @@ export type ImportType =
   | "EXISTING_KEY_MATERIAL"
   | (string & {});
 export const ImportType = /*@__PURE__*/ S.String;
+
+export type KeyMaterialDescriptionType = string;
 export interface ImportKeyMaterialRequest {
   KeyId: string;
   ImportToken: Uint8Array;
@@ -1910,6 +2379,7 @@ export type IncludeKeyMaterial =
   | "ROTATIONS_ONLY"
   | (string & {});
 export const IncludeKeyMaterial = /*@__PURE__*/ S.String;
+
 export interface ListKeyRotationsRequest {
   KeyId: string;
   IncludeKeyMaterial?: IncludeKeyMaterial;
@@ -1938,6 +2408,7 @@ export const ListKeyRotationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListKeyRotationsRequest>;
 export type ImportState = "IMPORTED" | "PENDING_IMPORT" | (string & {});
 export const ImportState = /*@__PURE__*/ S.String;
+
 export type KeyMaterialState =
   | "NON_CURRENT"
   | "CURRENT"
@@ -1945,8 +2416,10 @@ export type KeyMaterialState =
   | "PENDING_MULTI_REGION_IMPORT_AND_ROTATION"
   | (string & {});
 export const KeyMaterialState = /*@__PURE__*/ S.String;
+
 export type RotationType = "AUTOMATIC" | "ON_DEMAND" | (string & {});
 export const RotationType = /*@__PURE__*/ S.String;
+
 export interface RotationsListEntry {
   KeyId?: string;
   KeyMaterialId?: string;
@@ -2324,10 +2797,7 @@ export interface ScheduleKeyDeletionRequest {
   PendingWindowInDays?: number;
 }
 export const ScheduleKeyDeletionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    KeyId: S.String,
-    PendingWindowInDays: S.optional(S.Number),
-  }).pipe(
+  S.Struct({ KeyId: S.String, PendingWindowInDays: S.optional(S.Number) }).pipe(
     T.all(
       ns,
       T.Http({ method: "POST", uri: "/" }),
@@ -2347,19 +2817,19 @@ export interface ScheduleKeyDeletionResponse {
   KeyState?: KeyState;
   PendingWindowInDays?: number;
 }
-export const ScheduleKeyDeletionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      KeyId: S.optional(S.String),
-      DeletionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      KeyState: S.optional(KeyState),
-      PendingWindowInDays: S.optional(S.Number),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ScheduleKeyDeletionResponse",
-  }) as any as S.Schema<ScheduleKeyDeletionResponse>;
+export const ScheduleKeyDeletionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    KeyId: S.optional(S.String),
+    DeletionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    KeyState: S.optional(KeyState),
+    PendingWindowInDays: S.optional(S.Number),
+  }).pipe(ns),
+).annotate({
+  identifier: "ScheduleKeyDeletionResponse",
+}) as any as S.Schema<ScheduleKeyDeletionResponse>;
 export type MessageType = "RAW" | "DIGEST" | "EXTERNAL_MU" | (string & {});
 export const MessageType = /*@__PURE__*/ S.String;
+
 export interface SignRequest {
   KeyId: string;
   Message: Uint8Array | redacted.Redacted<Uint8Array>;
@@ -2489,65 +2959,65 @@ export interface UpdateCustomKeyStoreRequest {
   XksProxyAuthenticationCredential?: XksProxyAuthenticationCredentialType;
   XksProxyConnectivity?: XksProxyConnectivityType;
 }
-export const UpdateCustomKeyStoreRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CustomKeyStoreId: S.String,
-      NewCustomKeyStoreName: S.optional(S.String),
-      KeyStorePassword: S.optional(SensitiveString),
-      CloudHsmClusterId: S.optional(S.String),
-      XksProxyUriEndpoint: S.optional(S.String),
-      XksProxyUriPath: S.optional(S.String),
-      XksProxyVpcEndpointServiceName: S.optional(S.String),
-      XksProxyVpcEndpointServiceOwner: S.optional(S.String),
-      XksProxyAuthenticationCredential: S.optional(
-        XksProxyAuthenticationCredentialType,
-      ),
-      XksProxyConnectivity: S.optional(XksProxyConnectivityType),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateCustomKeyStoreRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CustomKeyStoreId: S.String,
+    NewCustomKeyStoreName: S.optional(S.String),
+    KeyStorePassword: S.optional(SensitiveString),
+    CloudHsmClusterId: S.optional(S.String),
+    XksProxyUriEndpoint: S.optional(S.String),
+    XksProxyUriPath: S.optional(S.String),
+    XksProxyVpcEndpointServiceName: S.optional(S.String),
+    XksProxyVpcEndpointServiceOwner: S.optional(S.String),
+    XksProxyAuthenticationCredential: S.optional(
+      XksProxyAuthenticationCredentialType,
     ),
-  ).annotate({
-    identifier: "UpdateCustomKeyStoreRequest",
-  }) as any as S.Schema<UpdateCustomKeyStoreRequest>;
+    XksProxyConnectivity: S.optional(XksProxyConnectivityType),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateCustomKeyStoreRequest",
+}) as any as S.Schema<UpdateCustomKeyStoreRequest>;
 export interface UpdateCustomKeyStoreResponse {}
-export const UpdateCustomKeyStoreResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "UpdateCustomKeyStoreResponse",
-  }) as any as S.Schema<UpdateCustomKeyStoreResponse>;
+export const UpdateCustomKeyStoreResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "UpdateCustomKeyStoreResponse",
+}) as any as S.Schema<UpdateCustomKeyStoreResponse>;
 export interface UpdateKeyDescriptionRequest {
   KeyId: string;
   Description: string;
 }
-export const UpdateKeyDescriptionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ KeyId: S.String, Description: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateKeyDescriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ KeyId: S.String, Description: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateKeyDescriptionRequest",
-  }) as any as S.Schema<UpdateKeyDescriptionRequest>;
+  ),
+).annotate({
+  identifier: "UpdateKeyDescriptionRequest",
+}) as any as S.Schema<UpdateKeyDescriptionRequest>;
 export interface UpdateKeyDescriptionResponse {}
-export const UpdateKeyDescriptionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "UpdateKeyDescriptionResponse",
-  }) as any as S.Schema<UpdateKeyDescriptionResponse>;
+export const UpdateKeyDescriptionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "UpdateKeyDescriptionResponse",
+}) as any as S.Schema<UpdateKeyDescriptionResponse>;
 export interface UpdatePrimaryRegionRequest {
   KeyId: string;
   PrimaryRegion: string;
@@ -2568,10 +3038,11 @@ export const UpdatePrimaryRegionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePrimaryRegionRequest",
 }) as any as S.Schema<UpdatePrimaryRegionRequest>;
 export interface UpdatePrimaryRegionResponse {}
-export const UpdatePrimaryRegionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "UpdatePrimaryRegionResponse",
-  }) as any as S.Schema<UpdatePrimaryRegionResponse>;
+export const UpdatePrimaryRegionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "UpdatePrimaryRegionResponse",
+}) as any as S.Schema<UpdatePrimaryRegionResponse>;
 export interface VerifyRequest {
   KeyId: string;
   Message: Uint8Array | redacted.Redacted<Uint8Array>;
@@ -2658,316 +3129,7 @@ export const VerifyMacResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VerifyMacResponse",
 }) as any as S.Schema<VerifyMacResponse>;
-
-//# Errors
-export class DependencyTimeoutException extends S.TaggedErrorClass<DependencyTimeoutException>()(
-  "DependencyTimeoutException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "DependencyTimeout", httpResponseCode: 503 }),
-).pipe(C.withServerError) {}
-export class InvalidArnException extends S.TaggedErrorClass<InvalidArnException>()(
-  "InvalidArnException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidArn", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class KMSInternalException extends S.TaggedErrorClass<KMSInternalException>()(
-  "KMSInternalException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "KMSInternal", httpResponseCode: 500 }),
-).pipe(C.withServerError) {}
-export class KMSInvalidStateException extends S.TaggedErrorClass<KMSInvalidStateException>()(
-  "KMSInvalidStateException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "KMSInvalidStateException", httpResponseCode: 409 }),
-).pipe(C.withConflictError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "NotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class CloudHsmClusterInvalidConfigurationException extends S.TaggedErrorClass<CloudHsmClusterInvalidConfigurationException>()(
-  "CloudHsmClusterInvalidConfigurationException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "CloudHsmClusterInvalidConfigurationException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class CloudHsmClusterNotActiveException extends S.TaggedErrorClass<CloudHsmClusterNotActiveException>()(
-  "CloudHsmClusterNotActiveException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "CloudHsmClusterNotActiveException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class CustomKeyStoreInvalidStateException extends S.TaggedErrorClass<CustomKeyStoreInvalidStateException>()(
-  "CustomKeyStoreInvalidStateException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "CustomKeyStoreInvalidStateException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class CustomKeyStoreNotFoundException extends S.TaggedErrorClass<CustomKeyStoreNotFoundException>()(
-  "CustomKeyStoreNotFoundException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "CustomKeyStoreNotFoundException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
-  "AlreadyExistsException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "AlreadyExists", httpResponseCode: 409 }),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class InvalidAliasNameException extends S.TaggedErrorClass<InvalidAliasNameException>()(
-  "InvalidAliasNameException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidAliasName", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class CloudHsmClusterInUseException extends S.TaggedErrorClass<CloudHsmClusterInUseException>()(
-  "CloudHsmClusterInUseException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "CloudHsmClusterInUseException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class CloudHsmClusterNotFoundException extends S.TaggedErrorClass<CloudHsmClusterNotFoundException>()(
-  "CloudHsmClusterNotFoundException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "CloudHsmClusterNotFoundException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class CustomKeyStoreNameInUseException extends S.TaggedErrorClass<CustomKeyStoreNameInUseException>()(
-  "CustomKeyStoreNameInUseException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "CustomKeyStoreNameInUseException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class IncorrectTrustAnchorException extends S.TaggedErrorClass<IncorrectTrustAnchorException>()(
-  "IncorrectTrustAnchorException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "IncorrectTrustAnchorException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class XksProxyIncorrectAuthenticationCredentialException extends S.TaggedErrorClass<XksProxyIncorrectAuthenticationCredentialException>()(
-  "XksProxyIncorrectAuthenticationCredentialException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "XksProxyIncorrectAuthenticationCredentialException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class XksProxyInvalidConfigurationException extends S.TaggedErrorClass<XksProxyInvalidConfigurationException>()(
-  "XksProxyInvalidConfigurationException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "XksProxyInvalidConfigurationException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class XksProxyInvalidResponseException extends S.TaggedErrorClass<XksProxyInvalidResponseException>()(
-  "XksProxyInvalidResponseException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "XksProxyInvalidResponseException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class XksProxyUriEndpointInUseException extends S.TaggedErrorClass<XksProxyUriEndpointInUseException>()(
-  "XksProxyUriEndpointInUseException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "XksProxyUriEndpointInUseException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class XksProxyUriInUseException extends S.TaggedErrorClass<XksProxyUriInUseException>()(
-  "XksProxyUriInUseException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "XksProxyUriInUseException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class XksProxyUriUnreachableException extends S.TaggedErrorClass<XksProxyUriUnreachableException>()(
-  "XksProxyUriUnreachableException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "XksProxyUriUnreachableException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class XksProxyVpcEndpointServiceInUseException extends S.TaggedErrorClass<XksProxyVpcEndpointServiceInUseException>()(
-  "XksProxyVpcEndpointServiceInUseException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "XksProxyVpcEndpointServiceInUseException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class XksProxyVpcEndpointServiceInvalidConfigurationException extends S.TaggedErrorClass<XksProxyVpcEndpointServiceInvalidConfigurationException>()(
-  "XksProxyVpcEndpointServiceInvalidConfigurationException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "XksProxyVpcEndpointServiceInvalidConfigurationException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class XksProxyVpcEndpointServiceNotFoundException extends S.TaggedErrorClass<XksProxyVpcEndpointServiceNotFoundException>()(
-  "XksProxyVpcEndpointServiceNotFoundException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "XksProxyVpcEndpointServiceNotFoundException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class DisabledException extends S.TaggedErrorClass<DisabledException>()(
-  "DisabledException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "Disabled", httpResponseCode: 409 }),
-).pipe(C.withConflictError) {}
-export class DryRunOperationException extends S.TaggedErrorClass<DryRunOperationException>()(
-  "DryRunOperationException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "DryRunOperation", httpResponseCode: 412 }),
-) {}
-export class InvalidGrantTokenException extends S.TaggedErrorClass<InvalidGrantTokenException>()(
-  "InvalidGrantTokenException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidGrantToken", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class MalformedPolicyDocumentException extends S.TaggedErrorClass<MalformedPolicyDocumentException>()(
-  "MalformedPolicyDocumentException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "MalformedPolicyDocument", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class TagException extends S.TaggedErrorClass<TagException>()(
-  "TagException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "TagException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
-  "UnsupportedOperationException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "UnsupportedOperation", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class XksKeyAlreadyInUseException extends S.TaggedErrorClass<XksKeyAlreadyInUseException>()(
-  "XksKeyAlreadyInUseException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "XksKeyAlreadyInUse", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class XksKeyInvalidConfigurationException extends S.TaggedErrorClass<XksKeyInvalidConfigurationException>()(
-  "XksKeyInvalidConfigurationException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "XksKeyInvalidConfiguration",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class XksKeyNotFoundException extends S.TaggedErrorClass<XksKeyNotFoundException>()(
-  "XksKeyNotFoundException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "XksKeyNotFoundException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class IncorrectKeyException extends S.TaggedErrorClass<IncorrectKeyException>()(
-  "IncorrectKeyException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "IncorrectKeyException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidCiphertextException extends S.TaggedErrorClass<InvalidCiphertextException>()(
-  "InvalidCiphertextException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidCiphertext", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidKeyUsageException extends S.TaggedErrorClass<InvalidKeyUsageException>()(
-  "InvalidKeyUsageException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidKeyUsage", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class KeyUnavailableException extends S.TaggedErrorClass<KeyUnavailableException>()(
-  "KeyUnavailableException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "KeyUnavailable", httpResponseCode: 500 }),
-).pipe(C.withServerError) {}
-export class CustomKeyStoreHasCMKsException extends S.TaggedErrorClass<CustomKeyStoreHasCMKsException>()(
-  "CustomKeyStoreHasCMKsException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "CustomKeyStoreHasCMKsException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidMarkerException extends S.TaggedErrorClass<InvalidMarkerException>()(
-  "InvalidMarkerException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidMarker", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ExpiredImportTokenException extends S.TaggedErrorClass<ExpiredImportTokenException>()(
-  "ExpiredImportTokenException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ExpiredImportTokenException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class IncorrectKeyMaterialException extends S.TaggedErrorClass<IncorrectKeyMaterialException>()(
-  "IncorrectKeyMaterialException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "IncorrectKeyMaterialException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidImportTokenException extends S.TaggedErrorClass<InvalidImportTokenException>()(
-  "InvalidImportTokenException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidImportTokenException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidGrantIdException extends S.TaggedErrorClass<InvalidGrantIdException>()(
-  "InvalidGrantIdException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidGrantId", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
-).pipe(C.withConflictError) {}
-export class CloudHsmClusterNotRelatedException extends S.TaggedErrorClass<CloudHsmClusterNotRelatedException>()(
-  "CloudHsmClusterNotRelatedException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "CloudHsmClusterNotRelatedException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class KMSInvalidSignatureException extends S.TaggedErrorClass<KMSInvalidSignatureException>()(
-  "KMSInvalidSignatureException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "KMSInvalidSignature", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class KMSInvalidMacException extends S.TaggedErrorClass<KMSInvalidMacException>()(
-  "KMSInvalidMacException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "KMSInvalidMac", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessageType = string;
 export type CancelKeyDeletionError =
   | DependencyTimeoutException
   | InvalidArnException
@@ -3009,8 +3171,11 @@ export const cancelKeyDeletion: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelKeyDeletion",
 }));
+
 export type ConnectCustomKeyStoreError =
   | CloudHsmClusterInvalidConfigurationException
   | CloudHsmClusterNotActiveException
@@ -3117,8 +3282,11 @@ export const connectCustomKeyStore: API.OperationMethod<
     CustomKeyStoreNotFoundException,
     KMSInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConnectCustomKeyStore",
 }));
+
 export type CreateAliasError =
   | AlreadyExistsException
   | DependencyTimeoutException
@@ -3192,8 +3360,11 @@ export const createAlias: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAlias",
 }));
+
 export type CreateCustomKeyStoreError =
   | CloudHsmClusterInUseException
   | CloudHsmClusterInvalidConfigurationException
@@ -3315,8 +3486,11 @@ export const createCustomKeyStore: API.OperationMethod<
     XksProxyVpcEndpointServiceInvalidConfigurationException,
     XksProxyVpcEndpointServiceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomKeyStore",
 }));
+
 export type CreateGrantError =
   | DependencyTimeoutException
   | DisabledException
@@ -3405,8 +3579,11 @@ export const createGrant: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGrant",
 }));
+
 export type CreateKeyError =
   | CloudHsmClusterInvalidConfigurationException
   | CustomKeyStoreInvalidStateException
@@ -3612,8 +3789,11 @@ export const createKey: API.OperationMethod<
     XksKeyInvalidConfigurationException,
     XksKeyNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKey",
 }));
+
 export type DecryptError =
   | DependencyTimeoutException
   | DisabledException
@@ -3722,8 +3902,11 @@ export const decrypt: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Decrypt",
 }));
+
 export type DeleteAliasError =
   | DependencyTimeoutException
   | KMSInternalException
@@ -3780,8 +3963,11 @@ export const deleteAlias: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAlias",
 }));
+
 export type DeleteCustomKeyStoreError =
   | CustomKeyStoreHasCMKsException
   | CustomKeyStoreInvalidStateException
@@ -3853,8 +4039,11 @@ export const deleteCustomKeyStore: API.OperationMethod<
     CustomKeyStoreNotFoundException,
     KMSInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomKeyStore",
 }));
+
 export type DeleteImportedKeyMaterialError =
   | DependencyTimeoutException
   | InvalidArnException
@@ -3916,8 +4105,11 @@ export const deleteImportedKeyMaterial: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteImportedKeyMaterial",
 }));
+
 export type DeriveSharedSecretError =
   | DependencyTimeoutException
   | DisabledException
@@ -4024,8 +4216,11 @@ export const deriveSharedSecret: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeriveSharedSecret",
 }));
+
 export type DescribeCustomKeyStoresError =
   | CustomKeyStoreNotFoundException
   | InvalidMarkerException
@@ -4110,6 +4305,8 @@ export const describeCustomKeyStores: API.OperationMethod<
     InvalidMarkerException,
     KMSInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCustomKeyStores",
   pagination: {
     inputToken: "Marker",
@@ -4118,6 +4315,7 @@ export const describeCustomKeyStores: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeKeyError =
   | DependencyTimeoutException
   | InvalidArnException
@@ -4197,8 +4395,11 @@ export const describeKey: API.OperationMethod<
     KMSInternalException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeKey",
 }));
+
 export type DisableKeyError =
   | DependencyTimeoutException
   | InvalidArnException
@@ -4240,8 +4441,11 @@ export const disableKey: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableKey",
 }));
+
 export type DisableKeyRotationError =
   | DependencyTimeoutException
   | DisabledException
@@ -4303,8 +4507,11 @@ export const disableKeyRotation: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableKeyRotation",
 }));
+
 export type DisconnectCustomKeyStoreError =
   | CustomKeyStoreInvalidStateException
   | CustomKeyStoreNotFoundException
@@ -4365,8 +4572,11 @@ export const disconnectCustomKeyStore: API.OperationMethod<
     CustomKeyStoreNotFoundException,
     KMSInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisconnectCustomKeyStore",
 }));
+
 export type EnableKeyError =
   | DependencyTimeoutException
   | InvalidArnException
@@ -4407,8 +4617,11 @@ export const enableKey: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableKey",
 }));
+
 export type EnableKeyRotationError =
   | DependencyTimeoutException
   | DisabledException
@@ -4490,8 +4703,11 @@ export const enableKeyRotation: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableKeyRotation",
 }));
+
 export type EncryptError =
   | DependencyTimeoutException
   | DisabledException
@@ -4593,8 +4809,11 @@ export const encrypt: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Encrypt",
 }));
+
 export type GenerateDataKeyError =
   | DependencyTimeoutException
   | DisabledException
@@ -4714,8 +4933,11 @@ export const generateDataKey: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateDataKey",
 }));
+
 export type GenerateDataKeyPairError =
   | DependencyTimeoutException
   | DisabledException
@@ -4823,8 +5045,11 @@ export const generateDataKeyPair: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateDataKeyPair",
 }));
+
 export type GenerateDataKeyPairWithoutPlaintextError =
   | DependencyTimeoutException
   | DisabledException
@@ -4913,8 +5138,11 @@ export const generateDataKeyPairWithoutPlaintext: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateDataKeyPairWithoutPlaintext",
 }));
+
 export type GenerateDataKeyWithoutPlaintextError =
   | DependencyTimeoutException
   | DisabledException
@@ -5014,8 +5242,11 @@ export const generateDataKeyWithoutPlaintext: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateDataKeyWithoutPlaintext",
 }));
+
 export type GenerateMacError =
   | DisabledException
   | DryRunOperationException
@@ -5078,8 +5309,11 @@ export const generateMac: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateMac",
 }));
+
 export type GenerateRandomError =
   | CustomKeyStoreInvalidStateException
   | CustomKeyStoreNotFoundException
@@ -5130,8 +5364,11 @@ export const generateRandom: API.OperationMethod<
     KMSInternalException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateRandom",
 }));
+
 export type GetKeyLastUsageError =
   | DependencyTimeoutException
   | InvalidArnException
@@ -5207,8 +5444,11 @@ export const getKeyLastUsage: API.OperationMethod<
     KMSInternalException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKeyLastUsage",
 }));
+
 export type GetKeyPolicyError =
   | DependencyTimeoutException
   | InvalidArnException
@@ -5243,8 +5483,11 @@ export const getKeyPolicy: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKeyPolicy",
 }));
+
 export type GetKeyRotationStatusError =
   | DependencyTimeoutException
   | InvalidArnException
@@ -5324,8 +5567,11 @@ export const getKeyRotationStatus: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKeyRotationStatus",
 }));
+
 export type GetParametersForImportError =
   | DependencyTimeoutException
   | InvalidArnException
@@ -5417,8 +5663,11 @@ export const getParametersForImport: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetParametersForImport",
 }));
+
 export type GetPublicKeyError =
   | DependencyTimeoutException
   | DisabledException
@@ -5501,8 +5750,11 @@ export const getPublicKey: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPublicKey",
 }));
+
 export type ImportKeyMaterialError =
   | DependencyTimeoutException
   | ExpiredImportTokenException
@@ -5651,8 +5903,11 @@ export const importKeyMaterial: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportKeyMaterial",
 }));
+
 export type ListAliasesError =
   | DependencyTimeoutException
   | InvalidArnException
@@ -5727,6 +5982,8 @@ export const listAliases: API.OperationMethod<
     KMSInternalException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAliases",
   pagination: {
     inputToken: "Marker",
@@ -5735,6 +5992,7 @@ export const listAliases: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListGrantsError =
   | DependencyTimeoutException
   | InvalidArnException
@@ -5815,6 +6073,8 @@ export const listGrants: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGrants",
   pagination: {
     inputToken: "Marker",
@@ -5823,6 +6083,7 @@ export const listGrants: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListKeyPoliciesError =
   | DependencyTimeoutException
   | InvalidArnException
@@ -5878,6 +6139,8 @@ export const listKeyPolicies: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKeyPolicies",
   pagination: {
     inputToken: "Marker",
@@ -5886,6 +6149,7 @@ export const listKeyPolicies: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListKeyRotationsError =
   | InvalidArnException
   | InvalidMarkerException
@@ -5957,6 +6221,8 @@ export const listKeyRotations: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKeyRotations",
   pagination: {
     inputToken: "Marker",
@@ -5965,6 +6231,7 @@ export const listKeyRotations: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListKeysError =
   | DependencyTimeoutException
   | InvalidMarkerException
@@ -6018,6 +6285,8 @@ export const listKeys: API.OperationMethod<
     InvalidMarkerException,
     KMSInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKeys",
   pagination: {
     inputToken: "Marker",
@@ -6026,6 +6295,7 @@ export const listKeys: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListResourceTagsError =
   | InvalidArnException
   | InvalidMarkerException
@@ -6086,6 +6356,8 @@ export const listResourceTags: API.OperationMethod<
     KMSInternalException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceTags",
   pagination: {
     inputToken: "Marker",
@@ -6094,6 +6366,7 @@ export const listResourceTags: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListRetirableGrantsError =
   | DependencyTimeoutException
   | InvalidArnException
@@ -6178,6 +6451,8 @@ export const listRetirableGrants: API.OperationMethod<
     KMSInternalException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRetirableGrants",
   pagination: {
     inputToken: "Marker",
@@ -6186,6 +6461,7 @@ export const listRetirableGrants: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type PutKeyPolicyError =
   | DependencyTimeoutException
   | InvalidArnException
@@ -6233,8 +6509,11 @@ export const putKeyPolicy: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutKeyPolicy",
 }));
+
 export type ReEncryptError =
   | DependencyTimeoutException
   | DisabledException
@@ -6351,8 +6630,11 @@ export const reEncrypt: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReEncrypt",
 }));
+
 export type ReplicateKeyError =
   | AlreadyExistsException
   | DisabledException
@@ -6458,8 +6740,11 @@ export const replicateKey: API.OperationMethod<
     TagException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReplicateKey",
 }));
+
 export type RetireGrantError =
   | DependencyTimeoutException
   | DryRunOperationException
@@ -6525,8 +6810,11 @@ export const retireGrant: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RetireGrant",
 }));
+
 export type RevokeGrantError =
   | DependencyTimeoutException
   | DryRunOperationException
@@ -6589,8 +6877,11 @@ export const revokeGrant: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeGrant",
 }));
+
 export type RotateKeyOnDemandError =
   | ConflictException
   | DependencyTimeoutException
@@ -6678,8 +6969,11 @@ export const rotateKeyOnDemand: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RotateKeyOnDemand",
 }));
+
 export type ScheduleKeyDeletionError =
   | DependencyTimeoutException
   | InvalidArnException
@@ -6758,8 +7052,11 @@ export const scheduleKeyDeletion: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ScheduleKeyDeletion",
 }));
+
 export type SignError =
   | DependencyTimeoutException
   | DisabledException
@@ -6843,8 +7140,11 @@ export const sign: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Sign",
 }));
+
 export type TagResourceError =
   | InvalidArnException
   | KMSInternalException
@@ -6909,8 +7209,11 @@ export const tagResource: API.OperationMethod<
     NotFoundException,
     TagException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InvalidArnException
   | KMSInternalException
@@ -6967,8 +7270,11 @@ export const untagResource: API.OperationMethod<
     NotFoundException,
     TagException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAliasError =
   | DependencyTimeoutException
   | KMSInternalException
@@ -7042,8 +7348,11 @@ export const updateAlias: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAlias",
 }));
+
 export type UpdateCustomKeyStoreError =
   | CloudHsmClusterInvalidConfigurationException
   | CloudHsmClusterNotActiveException
@@ -7177,8 +7486,11 @@ export const updateCustomKeyStore: API.OperationMethod<
     XksProxyVpcEndpointServiceInvalidConfigurationException,
     XksProxyVpcEndpointServiceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCustomKeyStore",
 }));
+
 export type UpdateKeyDescriptionError =
   | DependencyTimeoutException
   | InvalidArnException
@@ -7220,8 +7532,11 @@ export const updateKeyDescription: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKeyDescription",
 }));
+
 export type UpdatePrimaryRegionError =
   | DisabledException
   | InvalidArnException
@@ -7309,8 +7624,11 @@ export const updatePrimaryRegion: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePrimaryRegion",
 }));
+
 export type VerifyError =
   | DependencyTimeoutException
   | DisabledException
@@ -7387,8 +7705,11 @@ export const verify: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Verify",
 }));
+
 export type VerifyMacError =
   | DisabledException
   | DryRunOperationException
@@ -7447,5 +7768,7 @@ export const verifyMac: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VerifyMac",
 }));

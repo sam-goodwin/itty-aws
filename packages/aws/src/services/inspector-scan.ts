@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -82,16 +84,53 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    message: S.String,
+    reason: S.suspend(() => InternalServerExceptionReason).annotate({
+      identifier: "InternalServerExceptionReason",
+    }),
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.String,
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: S.suspend(() => ValidationExceptionReason).annotate({
+      identifier: "ValidationExceptionReason",
+    }),
+    fields: S.optional(
+      S.suspend(() => ValidationExceptionFields).annotate({
+        identifier: "ValidationExceptionFields",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type Sbom = unknown;
-
-//# Schemas
 export type OutputFormat =
   | "CYCLONE_DX_1_5"
   | "INSPECTOR"
   | "INSPECTOR_ALT"
   | (string & {});
 export const OutputFormat = /*@__PURE__*/ S.String;
+
 export interface ScanSbomRequest {
   sbom: any;
   outputFormat?: OutputFormat;
@@ -123,6 +162,7 @@ export type InternalServerExceptionReason =
   | "OTHER"
   | (string & {});
 export const InternalServerExceptionReason = /*@__PURE__*/ S.String;
+
 export type ValidationExceptionReason =
   | "UNKNOWN_OPERATION"
   | "CANNOT_PARSE"
@@ -131,6 +171,7 @@ export type ValidationExceptionReason =
   | "OTHER"
   | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+
 export interface ValidationExceptionField {
   name: string;
   message: string;
@@ -144,39 +185,6 @@ export type ValidationExceptionFields = ValidationExceptionField[];
 export const ValidationExceptionFields = /*@__PURE__*/ S.Array(
   ValidationExceptionField,
 );
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    message: S.String,
-    reason: InternalServerExceptionReason,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.Retryable(),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.String,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.Retryable({ throttling: true }),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.String,
-    reason: ValidationExceptionReason,
-    fields: S.optional(ValidationExceptionFields),
-  },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type ScanSbomError =
   | AccessDeniedException
   | InternalServerException
@@ -202,5 +210,7 @@ export const scanSbom: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ScanSbom",
 }));

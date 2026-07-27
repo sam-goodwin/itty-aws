@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials as Creds } from "../credentials.ts";
@@ -71,36 +73,77 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withAuthError) {}
+export class ExpiredTokenException extends S.TaggedErrorClass<ExpiredTokenException>()(
+  "ExpiredTokenException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidTokenException extends S.TaggedErrorClass<InvalidTokenException>()(
+  "InvalidTokenException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
 export type ClusterName = string;
 export type JwtToken = string | redacted.Redacted<string>;
-
-//# Schemas
 export interface AssumeRoleForPodIdentityRequest {
   clusterName: string;
   token: string | redacted.Redacted<string>;
 }
-export const AssumeRoleForPodIdentityRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clusterName: S.String.pipe(T.HttpLabel("clusterName")),
-      token: SensitiveString,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/clusters/{clusterName}/assume-role-for-pod-identity",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const AssumeRoleForPodIdentityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clusterName: S.String.pipe(T.HttpLabel("clusterName")),
+    token: SensitiveString,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/clusters/{clusterName}/assume-role-for-pod-identity",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "AssumeRoleForPodIdentityRequest",
-  }) as any as S.Schema<AssumeRoleForPodIdentityRequest>;
+  ),
+).annotate({
+  identifier: "AssumeRoleForPodIdentityRequest",
+}) as any as S.Schema<AssumeRoleForPodIdentityRequest>;
 export interface Subject {
   namespace: string;
   serviceAccount: string;
@@ -147,67 +190,17 @@ export interface AssumeRoleForPodIdentityResponse {
   assumedRoleUser: AssumedRoleUser;
   credentials: Credentials;
 }
-export const AssumeRoleForPodIdentityResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subject: Subject,
-      audience: S.String,
-      podIdentityAssociation: PodIdentityAssociation,
-      assumedRoleUser: AssumedRoleUser,
-      credentials: Credentials,
-    }),
-  ).annotate({
-    identifier: "AssumeRoleForPodIdentityResponse",
-  }) as any as S.Schema<AssumeRoleForPodIdentityResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withAuthError) {}
-export class ExpiredTokenException extends S.TaggedErrorClass<ExpiredTokenException>()(
-  "ExpiredTokenException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidTokenException extends S.TaggedErrorClass<InvalidTokenException>()(
-  "InvalidTokenException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-
-//# Operations
+export const AssumeRoleForPodIdentityResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subject: Subject,
+    audience: S.String,
+    podIdentityAssociation: PodIdentityAssociation,
+    assumedRoleUser: AssumedRoleUser,
+    credentials: Credentials,
+  }),
+).annotate({
+  identifier: "AssumeRoleForPodIdentityResponse",
+}) as any as S.Schema<AssumeRoleForPodIdentityResponse>;
 export type AssumeRoleForPodIdentityError =
   | AccessDeniedException
   | ExpiredTokenException
@@ -246,5 +239,7 @@ export const assumeRoleForPodIdentity: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssumeRoleForPodIdentity",
 }));

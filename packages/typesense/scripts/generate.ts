@@ -1,40 +1,78 @@
+#!/usr/bin/env bun
 /**
- * Typesense SDK Code Generator
+ * generate — turn the Smithy JSON model in .generated-specs into an Effect SDK.
  *
- * Uses the shared OpenAPI generator from sdk-core to generate operations
- * from the Typesense OpenAPI 3.0 spec (specs/typesense-api-spec/openapi.yml).
+ * Input:  .generated-specs/typesense.json  (Smithy 2.0 model, written by
+ *         scripts/convert.ts from the OpenAPI spec)
+ * Output: src/services/typesense.ts  +  services/index.ts
  *
- * The Typesense spec is in YAML format, so we convert it to JSON before
- * passing it to the shared generator which expects JSON.
+ * The smithy→SDK compiler and CLI pipeline live in
+ * `@distilled.cloud/core/codegen`; this script is Typesense's provider spec:
+ * the OpenAPI trait vocabulary (nullable / raw-response / sensitive / error
+ * matchers), protocol/retry names, and the import header.
  */
-import * as fs from "fs";
-import * as path from "path";
-import YAML from "yaml";
-import { generateFromOpenAPI } from "@distilled.cloud/core/openapi/generate";
+import { type SdkSpec } from "@distilled.cloud/core/codegen/generator";
+import { runGeneratorCli } from "@distilled.cloud/core/codegen/cli";
+import {
+  ERROR_MATCHERS_TRAIT,
+  NULLABLE_TRAIT,
+  RAW_RESPONSE_TRAIT,
+} from "@distilled.cloud/core/codegen/openapi";
 
-const rootDir = path.join(import.meta.dir, "..");
+/** Typesense's provider spec for the shared smithy→SDK compiler. */
+const spec: SdkSpec = {
+  // Wire names are the spec's own (snake_case) names — v0 parity.
+  nullableTrait: NULLABLE_TRAIT,
+  errorMatchersTrait: ERROR_MATCHERS_TRAIT,
 
-// Convert YAML spec to JSON for the generator
-const yamlPath = path.join(rootDir, "specs/typesense-api-spec/openapi.yml");
-const jsonPath = path.join(rootDir, "specs/typesense-api-spec/openapi.json");
-const yamlContent = fs.readFileSync(yamlPath, "utf-8");
-const spec = YAML.parse(yamlContent);
-fs.writeFileSync(jsonPath, JSON.stringify(spec, null, 2));
+  extraBindings: [
+    {
+      // Sole output member carrying a bare (array/scalar) response body; as
+      // a response's only member, the response IS the payload.
+      trait: RAW_RESPONSE_TRAIT,
+      binding: "payload",
+      pipe: "T.RawResponse()",
+      rootPipe: "T.RawResponseRoot()",
+    },
+  ],
 
-try {
-  generateFromOpenAPI({
-    specPath: jsonPath,
-    patchDir: path.join(rootDir, "patches"),
-    outputDir: path.join(rootDir, "src/operations"),
-    importPrefix: "..",
-    clientImport: "../client",
-    traitsImport: "../traits",
-    sensitiveImport: "../sensitive",
-    errorsImport: "../errors",
-    includeOperationErrors: true,
-    skipDeprecated: true,
-  });
-} finally {
-  // Clean up temporary JSON file
-  fs.unlinkSync(jsonPath);
-}
+  // Sensitive strings (embedding-model api_key / access_token / …): the REST
+  // protocol redacts decoded values and unwraps Redacted inputs.
+  memberTraitPipes: {
+    "smithy.api#sensitive": "T.SensitiveValue",
+  },
+  memberTsType: (m) =>
+    m.traits["smithy.api#sensitive"] !== undefined
+      ? `string | import("effect/Redacted").Redacted<string>`
+      : undefined,
+
+  // oneOf/anyOf shapes (analytics rules, curation items, …): the TS type is
+  // the case union. Typesense returns just the active case's keys and the
+  // wire names equal the TS names (identity memberName), so key-set
+  // discrimination degrades to a safe passthrough at decode time — the same
+  // runtime behavior a structural S.Union would have here.
+  unionStyle: "opaque-cases",
+
+  sourceNote: ".generated-specs",
+
+  operationDecl: {
+    contextType: "TypesenseOpContext",
+    commonErrorType: "TypesenseOpError",
+    commonErrorClasses: [],
+    protocol: "TypesenseProtocol",
+    retry: "Retry.Retry",
+  },
+
+  // No common error classes → drop the empty errors import.
+  postProcess: (code) =>
+    code.replace(/^import \{\s*\} from "\.\.\/errors\.ts";\n/m, ""),
+};
+
+runGeneratorCli({
+  description: "Generate the Typesense Effect SDK from the Smithy model",
+  root: `${import.meta.dir}/..`,
+  // The RFC-6902 patch chain in patches/ applies to the OpenAPI document in
+  // scripts/convert.ts — there is no smithy-model patch chain.
+  patchesDir: false,
+  spec: () => spec,
+});

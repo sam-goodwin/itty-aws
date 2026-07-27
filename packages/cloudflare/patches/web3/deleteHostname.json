@@ -1,6 +1,88 @@
 {
-  "errors": {
-    "Web3HostnameNotFound": [{ "code": 1002 }],
-    "Forbidden": [{ "status": 403 }]
-  }
+  "description": "Align web3#HostnamesDelete with distilled cloudflare/web3 deleteHostname",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.web3#HostnamesDelete",
+      "path": "/shapes/com.cloudflare.web3#DeleteHostname"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.web3#HostnamesDeleteRequest",
+      "path": "/shapes/com.cloudflare.web3#DeleteHostnameRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.web3#DeleteHostname/input/target",
+      "value": "com.cloudflare.web3#DeleteHostnameRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.web3#HostnamesDeleteResponse",
+      "path": "/shapes/com.cloudflare.web3#DeleteHostnameResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.web3#DeleteHostname/output/target",
+      "value": "com.cloudflare.web3#DeleteHostnameResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.web3#Web3HostnameNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1002
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.web3#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.web3#DeleteHostname/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.web3#Web3HostnameNotFound"
+        },
+        {
+          "target": "com.cloudflare.web3#Forbidden"
+        }
+      ]
+    }
+  ]
 }

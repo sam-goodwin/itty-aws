@@ -81,7 +81,9 @@ beforeAll(
     // to prevent accumulation from failed test runs
     yield* deleteExistingApiByName(`distilled-apigw-shared-${testRunId}`);
 
-    const api = yield* createRestApi({ name: `distilled-apigw-shared-${testRunId}` });
+    const api = yield* createRestApi({
+      name: `distilled-apigw-shared-${testRunId}`,
+    });
     sharedRestApiId = api.id!;
 
     // Get root resource

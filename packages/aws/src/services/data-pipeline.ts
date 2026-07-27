@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -83,22 +85,29 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InternalServiceError extends S.TaggedErrorClass<InternalServiceError>()(
+  "InternalServiceError",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { message: S.optional(S.String) },
+) {}
+export class PipelineDeletedException extends S.TaggedErrorClass<PipelineDeletedException>()(
+  "PipelineDeletedException",
+  { message: S.optional(S.String) },
+) {}
+export class PipelineNotFoundException extends S.TaggedErrorClass<PipelineNotFoundException>()(
+  "PipelineNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class TaskNotFoundException extends S.TaggedErrorClass<TaskNotFoundException>()(
+  "TaskNotFoundException",
+  { message: S.optional(S.String) },
+) {}
 export type Id = string;
 export type FieldNameString = string;
 export type FieldStringValue = string;
-export type ErrorMessage = string;
-export type TagKey = string;
-export type TagValue = string;
-export type CancelActive = boolean;
-export type LongString = string;
-export type AttributeNameString = string;
-export type AttributeValueString = string;
-export type TaskId = string;
-export type ValidationMessage = string;
-export type Int = number;
-
-//# Schemas
 export interface ParameterValue {
   id: string;
   stringValue: string;
@@ -138,6 +147,8 @@ export const ActivatePipelineOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActivatePipelineOutput",
 }) as any as S.Schema<ActivatePipelineOutput>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   key: string;
   value: string;
@@ -202,15 +213,13 @@ export const CreatePipelineOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePipelineOutput",
 }) as any as S.Schema<CreatePipelineOutput>;
+export type CancelActive = boolean;
 export interface DeactivatePipelineInput {
   pipelineId: string;
   cancelActive?: boolean;
 }
 export const DeactivatePipelineInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pipelineId: S.String,
-    cancelActive: S.optional(S.Boolean),
-  }).pipe(
+  S.Struct({ pipelineId: S.String, cancelActive: S.optional(S.Boolean) }).pipe(
     T.all(
       ns,
       T.Http({ method: "POST", uri: "/" }),
@@ -367,6 +376,7 @@ export const DescribePipelinesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribePipelinesOutput",
 }) as any as S.Schema<DescribePipelinesOutput>;
+export type LongString = string;
 export interface EvaluateExpressionInput {
   pipelineId: string;
   objectId: string;
@@ -418,6 +428,8 @@ export const GetPipelineDefinitionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPipelineDefinitionInput",
 }) as any as S.Schema<GetPipelineDefinitionInput>;
+export type AttributeNameString = string;
+export type AttributeValueString = string;
 export interface ParameterAttribute {
   key: string;
   stringValue: string;
@@ -445,16 +457,15 @@ export interface GetPipelineDefinitionOutput {
   parameterObjects?: ParameterObject[];
   parameterValues?: ParameterValue[];
 }
-export const GetPipelineDefinitionOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pipelineObjects: S.optional(PipelineObjectList),
-      parameterObjects: S.optional(ParameterObjectList),
-      parameterValues: S.optional(ParameterValueList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "GetPipelineDefinitionOutput",
-  }) as any as S.Schema<GetPipelineDefinitionOutput>;
+export const GetPipelineDefinitionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pipelineObjects: S.optional(PipelineObjectList),
+    parameterObjects: S.optional(ParameterObjectList),
+    parameterValues: S.optional(ParameterValueList),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetPipelineDefinitionOutput",
+}) as any as S.Schema<GetPipelineDefinitionOutput>;
 export interface ListPipelinesInput {
   marker?: string;
 }
@@ -529,6 +540,7 @@ export const PollForTaskInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PollForTaskInput",
 }) as any as S.Schema<PollForTaskInput>;
+export type TaskId = string;
 export type PipelineObjectMap = { [key: string]: PipelineObject | undefined };
 export const PipelineObjectMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -582,6 +594,7 @@ export const PutPipelineDefinitionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutPipelineDefinitionInput",
 }) as any as S.Schema<PutPipelineDefinitionInput>;
+export type ValidationMessage = string;
 export type ValidationMessages = string[];
 export const ValidationMessages = /*@__PURE__*/ S.Array(S.String);
 export interface ValidationError {
@@ -617,16 +630,15 @@ export interface PutPipelineDefinitionOutput {
   validationWarnings?: ValidationWarning[];
   errored: boolean;
 }
-export const PutPipelineDefinitionOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      validationErrors: S.optional(ValidationErrors),
-      validationWarnings: S.optional(ValidationWarnings),
-      errored: S.Boolean,
-    }).pipe(ns),
-  ).annotate({
-    identifier: "PutPipelineDefinitionOutput",
-  }) as any as S.Schema<PutPipelineDefinitionOutput>;
+export const PutPipelineDefinitionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    validationErrors: S.optional(ValidationErrors),
+    validationWarnings: S.optional(ValidationWarnings),
+    errored: S.Boolean,
+  }).pipe(ns),
+).annotate({
+  identifier: "PutPipelineDefinitionOutput",
+}) as any as S.Schema<PutPipelineDefinitionOutput>;
 export type OperatorType =
   | "EQ"
   | "REF_EQ"
@@ -635,6 +647,7 @@ export type OperatorType =
   | "BETWEEN"
   | (string & {});
 export const OperatorType = /*@__PURE__*/ S.String;
+
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface Operator {
@@ -659,6 +672,7 @@ export interface Query {
 export const Query = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ selectors: S.optional(SelectorList) }),
 ).annotate({ identifier: "Query" }) as any as S.Schema<Query>;
+export type Int = number;
 export interface QueryObjectsInput {
   pipelineId: string;
   query?: Query;
@@ -758,35 +772,33 @@ export interface ReportTaskRunnerHeartbeatInput {
   workerGroup?: string;
   hostname?: string;
 }
-export const ReportTaskRunnerHeartbeatInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      taskrunnerId: S.String,
-      workerGroup: S.optional(S.String),
-      hostname: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ReportTaskRunnerHeartbeatInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    taskrunnerId: S.String,
+    workerGroup: S.optional(S.String),
+    hostname: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ReportTaskRunnerHeartbeatInput",
-  }) as any as S.Schema<ReportTaskRunnerHeartbeatInput>;
+  ),
+).annotate({
+  identifier: "ReportTaskRunnerHeartbeatInput",
+}) as any as S.Schema<ReportTaskRunnerHeartbeatInput>;
 export interface ReportTaskRunnerHeartbeatOutput {
   terminate: boolean;
 }
-export const ReportTaskRunnerHeartbeatOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ terminate: S.Boolean }).pipe(ns),
-  ).annotate({
-    identifier: "ReportTaskRunnerHeartbeatOutput",
-  }) as any as S.Schema<ReportTaskRunnerHeartbeatOutput>;
+export const ReportTaskRunnerHeartbeatOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ terminate: S.Boolean }).pipe(ns),
+).annotate({
+  identifier: "ReportTaskRunnerHeartbeatOutput",
+}) as any as S.Schema<ReportTaskRunnerHeartbeatOutput>;
 export interface SetStatusInput {
   pipelineId: string;
   objectIds: string[];
@@ -813,6 +825,8 @@ export const SetStatusResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetStatusResponse>;
 export type TaskStatus = "FINISHED" | "FAILED" | "FALSE" | (string & {});
 export const TaskStatus = /*@__PURE__*/ S.String;
+
+export type ErrorMessage = string;
 export interface SetTaskStatusInput {
   taskId: string;
   taskStatus: TaskStatus;
@@ -853,66 +867,40 @@ export interface ValidatePipelineDefinitionInput {
   parameterObjects?: ParameterObject[];
   parameterValues?: ParameterValue[];
 }
-export const ValidatePipelineDefinitionInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pipelineId: S.String,
-      pipelineObjects: PipelineObjectList,
-      parameterObjects: S.optional(ParameterObjectList),
-      parameterValues: S.optional(ParameterValueList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ValidatePipelineDefinitionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pipelineId: S.String,
+    pipelineObjects: PipelineObjectList,
+    parameterObjects: S.optional(ParameterObjectList),
+    parameterValues: S.optional(ParameterValueList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ValidatePipelineDefinitionInput",
-  }) as any as S.Schema<ValidatePipelineDefinitionInput>;
+  ),
+).annotate({
+  identifier: "ValidatePipelineDefinitionInput",
+}) as any as S.Schema<ValidatePipelineDefinitionInput>;
 export interface ValidatePipelineDefinitionOutput {
   validationErrors?: ValidationError[];
   validationWarnings?: ValidationWarning[];
   errored: boolean;
 }
-export const ValidatePipelineDefinitionOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      validationErrors: S.optional(ValidationErrors),
-      validationWarnings: S.optional(ValidationWarnings),
-      errored: S.Boolean,
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ValidatePipelineDefinitionOutput",
-  }) as any as S.Schema<ValidatePipelineDefinitionOutput>;
-
-//# Errors
-export class InternalServiceError extends S.TaggedErrorClass<InternalServiceError>()(
-  "InternalServiceError",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { message: S.optional(S.String) },
-) {}
-export class PipelineDeletedException extends S.TaggedErrorClass<PipelineDeletedException>()(
-  "PipelineDeletedException",
-  { message: S.optional(S.String) },
-) {}
-export class PipelineNotFoundException extends S.TaggedErrorClass<PipelineNotFoundException>()(
-  "PipelineNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class TaskNotFoundException extends S.TaggedErrorClass<TaskNotFoundException>()(
-  "TaskNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-
-//# Operations
+export const ValidatePipelineDefinitionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    validationErrors: S.optional(ValidationErrors),
+    validationWarnings: S.optional(ValidationWarnings),
+    errored: S.Boolean,
+  }).pipe(ns),
+).annotate({
+  identifier: "ValidatePipelineDefinitionOutput",
+}) as any as S.Schema<ValidatePipelineDefinitionOutput>;
 export type ActivatePipelineError =
   | InternalServiceError
   | InvalidRequestException
@@ -960,8 +948,11 @@ export const activatePipeline: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ActivatePipeline",
 }));
+
 export type AddTagsError =
   | InternalServiceError
   | InvalidRequestException
@@ -985,8 +976,11 @@ export const addTags: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTags",
 }));
+
 export type CreatePipelineError =
   | InternalServiceError
   | InvalidRequestException
@@ -1023,8 +1017,11 @@ export const createPipeline: API.OperationMethod<
   input: CreatePipelineInput,
   output: CreatePipelineOutput,
   errors: [InternalServiceError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePipeline",
 }));
+
 export type DeactivatePipelineError =
   | InternalServiceError
   | InvalidRequestException
@@ -1052,8 +1049,11 @@ export const deactivatePipeline: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeactivatePipeline",
 }));
+
 export type DeletePipelineError =
   | InternalServiceError
   | InvalidRequestException
@@ -1097,8 +1097,11 @@ export const deletePipeline: API.OperationMethod<
     InvalidRequestException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePipeline",
 }));
+
 export type DescribeObjectsError =
   | InternalServiceError
   | InvalidRequestException
@@ -1185,6 +1188,8 @@ export const describeObjects: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeObjects",
   pagination: {
     inputToken: "marker",
@@ -1192,6 +1197,7 @@ export const describeObjects: API.OperationMethod<
     items: "pipelineObjects",
   } as const,
 }));
+
 export type DescribePipelinesError =
   | InternalServiceError
   | InvalidRequestException
@@ -1268,8 +1274,11 @@ export const describePipelines: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePipelines",
 }));
+
 export type EvaluateExpressionError =
   | InternalServiceError
   | InvalidRequestException
@@ -1315,8 +1324,11 @@ export const evaluateExpression: API.OperationMethod<
     PipelineNotFoundException,
     TaskNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EvaluateExpression",
 }));
+
 export type GetPipelineDefinitionError =
   | InternalServiceError
   | InvalidRequestException
@@ -1394,8 +1406,11 @@ export const getPipelineDefinition: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPipelineDefinition",
 }));
+
 export type ListPipelinesError =
   | InternalServiceError
   | InvalidRequestException
@@ -1452,6 +1467,8 @@ export const listPipelines: API.OperationMethod<
   input: ListPipelinesInput,
   output: ListPipelinesOutput,
   errors: [InternalServiceError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPipelines",
   pagination: {
     inputToken: "marker",
@@ -1459,6 +1476,7 @@ export const listPipelines: API.OperationMethod<
     items: "pipelineIdList",
   } as const,
 }));
+
 export type PollForTaskError =
   | InternalServiceError
   | InvalidRequestException
@@ -1548,8 +1566,11 @@ export const pollForTask: API.OperationMethod<
     InvalidRequestException,
     TaskNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PollForTask",
 }));
+
 export type PutPipelineDefinitionError =
   | InternalServiceError
   | InvalidRequestException
@@ -1712,8 +1733,11 @@ export const putPipelineDefinition: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutPipelineDefinition",
 }));
+
 export type QueryObjectsError =
   | InternalServiceError
   | InvalidRequestException
@@ -1780,6 +1804,8 @@ export const queryObjects: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "QueryObjects",
   pagination: {
     inputToken: "marker",
@@ -1788,6 +1814,7 @@ export const queryObjects: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type RemoveTagsError =
   | InternalServiceError
   | InvalidRequestException
@@ -1811,8 +1838,11 @@ export const removeTags: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTags",
 }));
+
 export type ReportTaskProgressError =
   | InternalServiceError
   | InvalidRequestException
@@ -1867,8 +1897,11 @@ export const reportTaskProgress: API.OperationMethod<
     PipelineNotFoundException,
     TaskNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReportTaskProgress",
 }));
+
 export type ReportTaskRunnerHeartbeatError =
   | InternalServiceError
   | InvalidRequestException
@@ -1907,8 +1940,11 @@ export const reportTaskRunnerHeartbeat: API.OperationMethod<
   input: ReportTaskRunnerHeartbeatInput,
   output: ReportTaskRunnerHeartbeatOutput,
   errors: [InternalServiceError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReportTaskRunnerHeartbeat",
 }));
+
 export type SetStatusError =
   | InternalServiceError
   | InvalidRequestException
@@ -1954,8 +1990,11 @@ export const setStatus: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetStatus",
 }));
+
 export type SetTaskStatusError =
   | InternalServiceError
   | InvalidRequestException
@@ -2001,8 +2040,11 @@ export const setTaskStatus: API.OperationMethod<
     PipelineNotFoundException,
     TaskNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetTaskStatus",
 }));
+
 export type ValidatePipelineDefinitionError =
   | InternalServiceError
   | InvalidRequestException
@@ -2157,5 +2199,7 @@ export const validatePipelineDefinition: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ValidatePipelineDefinition",
 }));

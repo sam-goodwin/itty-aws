@@ -43,7 +43,10 @@ const waitForStreamActive = (streamName: string) =>
     }),
     Effect.retry({
       while: (err) => err instanceof NotReady && err.status !== "DELETING",
-      schedule: Schedule.max([Schedule.min([Schedule.exponential("1 second", 1.5), Schedule.spaced("10 seconds")]), Schedule.recurs(60)]),
+      schedule: Schedule.exponential("1 second", 1.5).pipe(
+        Schedule.either(Schedule.spaced("10 seconds")),
+        Schedule.both(Schedule.recurs(60)),
+      ),
     }),
     Effect.mapError(() => new StreamNotActive()),
   );
@@ -64,7 +67,10 @@ const waitForStreamDeleted = (streamName: string) =>
     Effect.retry({
       while: (err) => err instanceof StillExists,
       // Use exponential backoff capped at 10 seconds, with more retries
-      schedule: Schedule.max([Schedule.min([Schedule.exponential("1 second", 1.5), Schedule.spaced("10 seconds")]), Schedule.recurs(60)]),
+      schedule: Schedule.exponential("1 second", 1.5).pipe(
+        Schedule.either(Schedule.spaced("10 seconds")),
+        Schedule.both(Schedule.recurs(60)),
+      ),
     }),
     Effect.mapError(() => new StreamNotDeleted()),
   );
@@ -92,7 +98,10 @@ const waitForConsumerActive = (consumerArn: string) =>
   }).pipe(
     Effect.retry({
       while: (err) => err instanceof NotReady,
-      schedule: Schedule.max([Schedule.min([Schedule.exponential("1 second", 1.5), Schedule.spaced("10 seconds")]), Schedule.recurs(60)]),
+      schedule: Schedule.exponential("1 second", 1.5).pipe(
+        Schedule.either(Schedule.spaced("10 seconds")),
+        Schedule.both(Schedule.recurs(60)),
+      ),
     }),
     Effect.mapError((err) =>
       err instanceof ConsumerDeleting ? err : new ConsumerNotActive(),
@@ -209,7 +218,9 @@ test(
       }).pipe(
         Effect.retry({
           while: (err) => err._tag === "ResourceNotFoundException",
-          schedule: Schedule.max([Schedule.spaced("2 seconds"), Schedule.recurs(10)]),
+          schedule: Schedule.spaced("2 seconds").pipe(
+            Schedule.both(Schedule.recurs(10)),
+          ),
         }),
       );
 
@@ -219,7 +230,9 @@ test(
       const shardsResult = yield* listShards({ StreamName: streamName }).pipe(
         Effect.retry({
           while: (err) => err._tag === "ResourceNotFoundException",
-          schedule: Schedule.max([Schedule.spaced("2 seconds"), Schedule.recurs(10)]),
+          schedule: Schedule.spaced("2 seconds").pipe(
+            Schedule.both(Schedule.recurs(10)),
+          ),
         }),
       );
       const shardId = shardsResult.Shards?.[0]?.ShardId;
@@ -245,7 +258,9 @@ test(
         return result;
       }).pipe(
         Effect.retry({
-          schedule: Schedule.max([Schedule.spaced("1 second"), Schedule.recurs(30)]),
+          schedule: Schedule.spaced("1 second").pipe(
+            Schedule.both(Schedule.recurs(30)),
+          ),
         }),
       );
 
@@ -280,7 +295,9 @@ test(
       ];
 
       // Retry schedule for eventual consistency
-      const retrySchedule = Schedule.max([Schedule.spaced("2 seconds"), Schedule.recurs(10)]);
+      const retrySchedule = Schedule.spaced("2 seconds").pipe(
+        Schedule.both(Schedule.recurs(10)),
+      );
 
       for (const record of testRecords) {
         yield* putRecord({

@@ -1,10 +1,10 @@
 /**
- * PrismaPostgres retry configuration.
+ * Prisma Postgres retry configuration.
  *
- * Defines the per-SDK `Retry` Context.Service tag that
- * `packages/prisma-postgres/src/client.ts` wires into `makeAPI`. Callers can
- * install a blanket retry policy at the layer level and have every
- * PrismaPostgres API call below it pick it up:
+ * Defines the per-SDK `Retry` Context.Service tag that the generated
+ * operations wire into `API.make`. Callers can install a blanket retry
+ * policy at the layer level and have every Prisma Postgres API call below it
+ * pick it up:
  *
  * @example
  * ```ts
@@ -36,12 +36,12 @@ export {
   transientFactory,
 } from "@distilled.cloud/core/retry";
 
-/** Context tag for configuring retry behavior of PrismaPostgres API calls. */
+/** Context tag for configuring retry behavior of Prisma Postgres API calls. */
 export class Retry extends Context.Service<Retry, Policy>()(
   "PrismaPostgresRetry",
 ) {}
 
-/** Provides a custom retry policy to every PrismaPostgres API call below it. */
+/** Provides a custom retry policy to every Prisma Postgres API call below it. */
 export const policy = (optionsOrFactory: Policy) =>
   Effect.provide(Layer.succeed(Retry, optionsOrFactory));
 

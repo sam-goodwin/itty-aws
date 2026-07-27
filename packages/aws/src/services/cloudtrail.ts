@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -90,74 +92,785 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ResourceAccessDenied", httpResponseCode: 403 }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class AccountHasOngoingImportException extends S.TaggedErrorClass<AccountHasOngoingImportException>()(
+  "AccountHasOngoingImportException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AccountHasOngoingImport", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class AccountNotFoundException extends S.TaggedErrorClass<AccountNotFoundException>()(
+  "AccountNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AccountNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class AccountNotRegisteredException extends S.TaggedErrorClass<AccountNotRegisteredException>()(
+  "AccountNotRegisteredException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AccountNotRegistered", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class AccountRegisteredException extends S.TaggedErrorClass<AccountRegisteredException>()(
+  "AccountRegisteredException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AccountRegistered", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CannotDelegateManagementAccountException extends S.TaggedErrorClass<CannotDelegateManagementAccountException>()(
+  "CannotDelegateManagementAccountException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CannotDelegateManagementAccount",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ChannelAlreadyExistsException extends S.TaggedErrorClass<ChannelAlreadyExistsException>()(
+  "ChannelAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ChannelAlreadyExists", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ChannelARNInvalidException extends S.TaggedErrorClass<ChannelARNInvalidException>()(
+  "ChannelARNInvalidException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ChannelARNInvalid", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ChannelExistsForEDSException extends S.TaggedErrorClass<ChannelExistsForEDSException>()(
+  "ChannelExistsForEDSException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ChannelExistsForEDS", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ChannelMaxLimitExceededException extends S.TaggedErrorClass<ChannelMaxLimitExceededException>()(
+  "ChannelMaxLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ChannelMaxLimitExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ChannelNotFoundException extends S.TaggedErrorClass<ChannelNotFoundException>()(
+  "ChannelNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ChannelNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CloudTrailAccessNotEnabledException extends S.TaggedErrorClass<CloudTrailAccessNotEnabledException>()(
+  "CloudTrailAccessNotEnabledException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CloudTrailAccessNotEnabled",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CloudTrailARNInvalidException extends S.TaggedErrorClass<CloudTrailARNInvalidException>()(
+  "CloudTrailARNInvalidException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "CloudTrailARNInvalid", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CloudTrailInvalidClientTokenIdException extends S.TaggedErrorClass<CloudTrailInvalidClientTokenIdException>()(
+  "CloudTrailInvalidClientTokenIdException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CloudTrailInvalidClientTokenId",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CloudTrailLakeOnboardingClosed extends S.TaggedErrorClass<CloudTrailLakeOnboardingClosed>()(
+  "CloudTrailLakeOnboardingClosed",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidParameterException",
+    message: { includes: "no longer accepting new customers" },
+  }),
+).pipe(C.withBadRequestError) {}
+export class CloudWatchLogsDeliveryUnavailableException extends S.TaggedErrorClass<CloudWatchLogsDeliveryUnavailableException>()(
+  "CloudWatchLogsDeliveryUnavailableException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CloudWatchLogsDeliveryUnavailable",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ConcurrentModification", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class DelegatedAdminAccountLimitExceededException extends S.TaggedErrorClass<DelegatedAdminAccountLimitExceededException>()(
+  "DelegatedAdminAccountLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DelegatedAdminAccountLimitExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EventDataStoreAlreadyExistsException extends S.TaggedErrorClass<EventDataStoreAlreadyExistsException>()(
+  "EventDataStoreAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "EventDataStoreAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class EventDataStoreARNInvalidException extends S.TaggedErrorClass<EventDataStoreARNInvalidException>()(
+  "EventDataStoreARNInvalidException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "EventDataStoreARNInvalid",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EventDataStoreFederationEnabledException extends S.TaggedErrorClass<EventDataStoreFederationEnabledException>()(
+  "EventDataStoreFederationEnabledException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "EventDataStoreFederationEnabled",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EventDataStoreHasOngoingImportException extends S.TaggedErrorClass<EventDataStoreHasOngoingImportException>()(
+  "EventDataStoreHasOngoingImportException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "EventDataStoreHasOngoingImport",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EventDataStoreMaxLimitExceededException extends S.TaggedErrorClass<EventDataStoreMaxLimitExceededException>()(
+  "EventDataStoreMaxLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "EventDataStoreMaxLimitExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EventDataStoreNotFoundException extends S.TaggedErrorClass<EventDataStoreNotFoundException>()(
+  "EventDataStoreNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "EventDataStoreNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EventDataStoreTerminationProtectedException extends S.TaggedErrorClass<EventDataStoreTerminationProtectedException>()(
+  "EventDataStoreTerminationProtectedException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "EventDataStoreTerminationProtectedException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class GenerateResponseException extends S.TaggedErrorClass<GenerateResponseException>()(
+  "GenerateResponseException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "GenerateResponse", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ImportNotFoundException extends S.TaggedErrorClass<ImportNotFoundException>()(
+  "ImportNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ImportNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InactiveEventDataStoreException extends S.TaggedErrorClass<InactiveEventDataStoreException>()(
+  "InactiveEventDataStoreException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InactiveEventDataStore", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InactiveQueryException extends S.TaggedErrorClass<InactiveQueryException>()(
+  "InactiveQueryException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InactiveQuery", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InsightNotEnabledException extends S.TaggedErrorClass<InsightNotEnabledException>()(
+  "InsightNotEnabledException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InsightNotEnabled", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InsufficientDependencyServiceAccessPermissionException extends S.TaggedErrorClass<InsufficientDependencyServiceAccessPermissionException>()(
+  "InsufficientDependencyServiceAccessPermissionException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InsufficientDependencyServiceAccessPermission",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InsufficientEncryptionPolicyException extends S.TaggedErrorClass<InsufficientEncryptionPolicyException>()(
+  "InsufficientEncryptionPolicyException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InsufficientEncryptionPolicy",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InsufficientIAMAccessPermissionException extends S.TaggedErrorClass<InsufficientIAMAccessPermissionException>()(
+  "InsufficientIAMAccessPermissionException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InsufficientIAMAccessPermission",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InsufficientS3BucketPolicyException extends S.TaggedErrorClass<InsufficientS3BucketPolicyException>()(
+  "InsufficientS3BucketPolicyException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InsufficientS3BucketPolicy",
+      httpResponseCode: 403,
+    }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class InsufficientSnsTopicPolicyException extends S.TaggedErrorClass<InsufficientSnsTopicPolicyException>()(
+  "InsufficientSnsTopicPolicyException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InsufficientSnsTopicPolicy",
+      httpResponseCode: 403,
+    }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class InvalidCloudWatchLogsLogGroupArnException extends S.TaggedErrorClass<InvalidCloudWatchLogsLogGroupArnException>()(
+  "InvalidCloudWatchLogsLogGroupArnException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidCloudWatchLogsLogGroupArn",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidCloudWatchLogsRoleArnException extends S.TaggedErrorClass<InvalidCloudWatchLogsRoleArnException>()(
+  "InvalidCloudWatchLogsRoleArnException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidCloudWatchLogsRoleArn",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidDateRangeException extends S.TaggedErrorClass<InvalidDateRangeException>()(
+  "InvalidDateRangeException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidDateRange", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidEventCategoryException extends S.TaggedErrorClass<InvalidEventCategoryException>()(
+  "InvalidEventCategoryException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidEventCategory", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidEventDataStoreCategoryException extends S.TaggedErrorClass<InvalidEventDataStoreCategoryException>()(
+  "InvalidEventDataStoreCategoryException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidEventDataStoreCategory",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidEventDataStoreStatusException extends S.TaggedErrorClass<InvalidEventDataStoreStatusException>()(
+  "InvalidEventDataStoreStatusException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidEventDataStoreStatus",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidEventSelectorsException extends S.TaggedErrorClass<InvalidEventSelectorsException>()(
+  "InvalidEventSelectorsException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidEventSelectors", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidHomeRegionException extends S.TaggedErrorClass<InvalidHomeRegionException>()(
+  "InvalidHomeRegionException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidHomeRegion", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidImportSourceException extends S.TaggedErrorClass<InvalidImportSourceException>()(
+  "InvalidImportSourceException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidImportSource", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidInsightSelectorsException extends S.TaggedErrorClass<InvalidInsightSelectorsException>()(
+  "InvalidInsightSelectorsException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidInsightSelectors", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidKmsKeyIdException extends S.TaggedErrorClass<InvalidKmsKeyIdException>()(
+  "InvalidKmsKeyIdException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidKmsKeyId", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidLookupAttributesException extends S.TaggedErrorClass<InvalidLookupAttributesException>()(
+  "InvalidLookupAttributesException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidLookupAttributes", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidMaxResultsException extends S.TaggedErrorClass<InvalidMaxResultsException>()(
+  "InvalidMaxResultsException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidMaxResults", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidNextToken", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterCombinationException extends S.TaggedErrorClass<InvalidParameterCombinationException>()(
+  "InvalidParameterCombinationException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidParameterCombinationError",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidParameter", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidQueryStatementException extends S.TaggedErrorClass<InvalidQueryStatementException>()(
+  "InvalidQueryStatementException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidQueryStatement", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidQueryStatusException extends S.TaggedErrorClass<InvalidQueryStatusException>()(
+  "InvalidQueryStatusException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidQueryStatus", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidS3BucketNameException extends S.TaggedErrorClass<InvalidS3BucketNameException>()(
+  "InvalidS3BucketNameException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidS3BucketName", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidS3PrefixException extends S.TaggedErrorClass<InvalidS3PrefixException>()(
+  "InvalidS3PrefixException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidS3Prefix", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidSnsTopicNameException extends S.TaggedErrorClass<InvalidSnsTopicNameException>()(
+  "InvalidSnsTopicNameException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidSnsTopicName", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidSourceException extends S.TaggedErrorClass<InvalidSourceException>()(
+  "InvalidSourceException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidSource", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidTagParameterException extends S.TaggedErrorClass<InvalidTagParameterException>()(
+  "InvalidTagParameterException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidTagParameter", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidTimeRangeException extends S.TaggedErrorClass<InvalidTimeRangeException>()(
+  "InvalidTimeRangeException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidTimeRange", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidTokenException extends S.TaggedErrorClass<InvalidTokenException>()(
+  "InvalidTokenException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidToken", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidTrailNameException extends S.TaggedErrorClass<InvalidTrailNameException>()(
+  "InvalidTrailNameException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidTrailName", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class KmsException extends S.TaggedErrorClass<KmsException>()(
+  "KmsException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "KmsException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class KmsKeyDisabledException extends S.TaggedErrorClass<KmsKeyDisabledException>()(
+  "KmsKeyDisabledException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "KmsKeyDisabled", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class KmsKeyNotFoundException extends S.TaggedErrorClass<KmsKeyNotFoundException>()(
+  "KmsKeyNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "KmsKeyNotFound", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class MaxConcurrentQueriesException extends S.TaggedErrorClass<MaxConcurrentQueriesException>()(
+  "MaxConcurrentQueriesException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "MaxConcurrentQueries", httpResponseCode: 429 }),
+    T.HttpError(429),
+  ),
+).pipe(C.withThrottlingError) {}
+export class MaximumNumberOfTrailsExceededException extends S.TaggedErrorClass<MaximumNumberOfTrailsExceededException>()(
+  "MaximumNumberOfTrailsExceededException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "MaximumNumberOfTrailsExceeded",
+      httpResponseCode: 403,
+    }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class NoManagementAccountSLRExistsException extends S.TaggedErrorClass<NoManagementAccountSLRExistsException>()(
+  "NoManagementAccountSLRExistsException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "NoManagementAccountSLRExists",
+      httpResponseCode: 403,
+    }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class NotOrganizationManagementAccountException extends S.TaggedErrorClass<NotOrganizationManagementAccountException>()(
+  "NotOrganizationManagementAccountException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "NotOrganizationManagementAccount",
+      httpResponseCode: 403,
+    }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class NotOrganizationMasterAccountException extends S.TaggedErrorClass<NotOrganizationMasterAccountException>()(
+  "NotOrganizationMasterAccountException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "NotOrganizationMasterAccount",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class OperationNotPermittedException extends S.TaggedErrorClass<OperationNotPermittedException>()(
+  "OperationNotPermittedException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "OperationNotPermitted", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class OrganizationNotInAllFeaturesModeException extends S.TaggedErrorClass<OrganizationNotInAllFeaturesModeException>()(
+  "OrganizationNotInAllFeaturesModeException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "OrganizationNotInAllFeaturesMode",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class OrganizationsNotInUseException extends S.TaggedErrorClass<OrganizationsNotInUseException>()(
+  "OrganizationsNotInUseException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "OrganizationsNotInUse", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class QueryIdNotFoundException extends S.TaggedErrorClass<QueryIdNotFoundException>()(
+  "QueryIdNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "QueryIdNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceARNNotValidException extends S.TaggedErrorClass<ResourceARNNotValidException>()(
+  "ResourceARNNotValidException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ResourceARNNotValid", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourcePolicyNotFoundException extends S.TaggedErrorClass<ResourcePolicyNotFoundException>()(
+  "ResourcePolicyNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ResourcePolicyNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourcePolicyNotValidException extends S.TaggedErrorClass<ResourcePolicyNotValidException>()(
+  "ResourcePolicyNotValidException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ResourcePolicyNotValid", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceTypeNotSupportedException extends S.TaggedErrorClass<ResourceTypeNotSupportedException>()(
+  "ResourceTypeNotSupportedException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ResourceTypeNotSupported",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class S3BucketDoesNotExistException extends S.TaggedErrorClass<S3BucketDoesNotExistException>()(
+  "S3BucketDoesNotExistException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "S3BucketDoesNotExist", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ServiceQuotaExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TagsLimitExceededException extends S.TaggedErrorClass<TagsLimitExceededException>()(
+  "TagsLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TagsLimitExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ThrottlingException", httpResponseCode: 429 }),
+    T.HttpError(429),
+  ),
+).pipe(C.withThrottlingError) {}
+export class TrailAlreadyExistsException extends S.TaggedErrorClass<TrailAlreadyExistsException>()(
+  "TrailAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TrailAlreadyExists", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class TrailNotFoundException extends S.TaggedErrorClass<TrailNotFoundException>()(
+  "TrailNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TrailNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TrailNotProvidedException extends S.TaggedErrorClass<TrailNotProvidedException>()(
+  "TrailNotProvidedException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TrailNotProvided", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
+  "UnsupportedOperationException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "UnsupportedOperation", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
 export type TagKey = string;
 export type TagValue = string;
-export type ErrorMessage = string;
-export type EventDataStoreArn = string;
-export type UUID = string;
-export type AccountId = string;
-export type ChannelName = string;
-export type Source = string;
-export type Location = string;
-export type ChannelArn = string;
-export type DashboardName = string;
-export type RefreshScheduleFrequencyValue = number;
-export type TimeOfDay = string;
-export type TerminationProtectionEnabled = boolean;
-export type QueryStatement = string;
-export type QueryParameter = string;
-export type ViewPropertiesKey = string;
-export type ViewPropertiesValue = string;
-export type DashboardArn = string;
-export type QueryAlias = string;
-export type EventDataStoreName = string;
-export type SelectorName = string;
-export type SelectorField = string;
-export type OperatorValue = string;
-export type RetentionPeriod = number;
-export type EventDataStoreKmsKeyId = string;
-export type ResourceArn = string;
-export type RefreshId = string;
-export type DeliveryS3Uri = string;
-export type Prompt = string;
-export type FederationRoleArn = string;
-export type OperatorTargetListMember = string;
-export type PartitionKeyName = string;
-export type PartitionKeyType = string;
-export type PaginationToken = string;
-export type MaxQueryResults = number;
-export type QueryResultKey = string;
-export type QueryResultValue = string;
-export type ResourcePolicy = string;
-export type ListChannelsMaxResultsCount = number;
-export type ListDashboardsMaxResultsCount = number;
-export type ListEventDataStoresMaxResultsCount = number;
-export type ListImportFailuresMaxResultsCount = number;
-export type ListImportsMaxResultsCount = number;
-export type ListInsightsDataDimensionValue = string;
-export type ListInsightsDataMaxResultsCount = number;
-export type EventSource = string;
-export type EventName = string;
-export type ErrorCode = string;
-export type InsightsMetricPeriod = number;
-export type InsightsMetricMaxResults = number;
-export type InsightsMetricNextToken = string;
-export type ByteBuffer = Uint8Array;
-export type ListQueriesMaxResultsCount = number;
-export type LookupAttributeValue = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type SearchSampleQueriesSearchPhrase = string;
-export type SearchSampleQueriesMaxResults = number;
-export type SampleQueryName = string;
-export type SampleQueryDescription = string;
-export type SampleQuerySQL = string;
-export type SampleQueryRelevance = number;
-export type QueryParameterKey = string;
-export type QueryParameterValue = string;
-
-//# Schemas
 export interface Tag {
   Key: string;
   Value?: string;
@@ -190,6 +903,9 @@ export const AddTagsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddTagsResponse",
 }) as any as S.Schema<AddTagsResponse>;
+export type EventDataStoreArn = string;
+export type UUID = string;
+export type AccountId = string;
 export interface CancelQueryRequest {
   EventDataStore?: string;
   QueryId: string;
@@ -223,6 +939,7 @@ export type QueryStatus =
   | "TIMED_OUT"
   | (string & {});
 export const QueryStatus = /*@__PURE__*/ S.String;
+
 export interface CancelQueryResponse {
   QueryId: string;
   QueryStatus: QueryStatus;
@@ -237,11 +954,15 @@ export const CancelQueryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelQueryResponse",
 }) as any as S.Schema<CancelQueryResponse>;
+export type ChannelName = string;
+export type Source = string;
 export type DestinationType =
   | "EVENT_DATA_STORE"
   | "AWS_SERVICE"
   | (string & {});
 export const DestinationType = /*@__PURE__*/ S.String;
+
+export type Location = string;
 export interface Destination {
   Type: DestinationType;
   Location: string;
@@ -277,6 +998,7 @@ export const CreateChannelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateChannelRequest",
 }) as any as S.Schema<CreateChannelRequest>;
+export type ChannelArn = string;
 export interface CreateChannelResponse {
   ChannelArn?: string;
   Name?: string;
@@ -295,8 +1017,11 @@ export const CreateChannelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateChannelResponse",
 }) as any as S.Schema<CreateChannelResponse>;
+export type DashboardName = string;
 export type RefreshScheduleFrequencyUnit = "HOURS" | "DAYS" | (string & {});
 export const RefreshScheduleFrequencyUnit = /*@__PURE__*/ S.String;
+
+export type RefreshScheduleFrequencyValue = number;
 export interface RefreshScheduleFrequency {
   Unit?: RefreshScheduleFrequencyUnit;
   Value?: number;
@@ -311,6 +1036,8 @@ export const RefreshScheduleFrequency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RefreshScheduleFrequency>;
 export type RefreshScheduleStatus = "ENABLED" | "DISABLED" | (string & {});
 export const RefreshScheduleStatus = /*@__PURE__*/ S.String;
+
+export type TimeOfDay = string;
 export interface RefreshSchedule {
   Frequency?: RefreshScheduleFrequency;
   Status?: RefreshScheduleStatus;
@@ -325,8 +1052,13 @@ export const RefreshSchedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RefreshSchedule",
 }) as any as S.Schema<RefreshSchedule>;
+export type TerminationProtectionEnabled = boolean;
+export type QueryStatement = string;
+export type QueryParameter = string;
 export type QueryParameters = string[];
 export const QueryParameters = /*@__PURE__*/ S.Array(S.String);
+export type ViewPropertiesKey = string;
+export type ViewPropertiesValue = string;
 export type ViewPropertiesMap = { [key: string]: string | undefined };
 export const ViewPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -374,8 +1106,11 @@ export const CreateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDashboardRequest",
 }) as any as S.Schema<CreateDashboardRequest>;
+export type DashboardArn = string;
 export type DashboardType = "MANAGED" | "CUSTOM" | (string & {});
 export const DashboardType = /*@__PURE__*/ S.String;
+
+export type QueryAlias = string;
 export interface Widget {
   QueryAlias?: string;
   QueryStatement?: string;
@@ -414,6 +1149,10 @@ export const CreateDashboardResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDashboardResponse",
 }) as any as S.Schema<CreateDashboardResponse>;
+export type EventDataStoreName = string;
+export type SelectorName = string;
+export type SelectorField = string;
+export type OperatorValue = string;
 export type Operator = string[];
 export const Operator = /*@__PURE__*/ S.Array(S.String);
 export interface AdvancedFieldSelector {
@@ -458,11 +1197,14 @@ export type AdvancedEventSelectors = AdvancedEventSelector[];
 export const AdvancedEventSelectors = /*@__PURE__*/ S.Array(
   AdvancedEventSelector,
 );
+export type RetentionPeriod = number;
+export type EventDataStoreKmsKeyId = string;
 export type BillingMode =
   | "EXTENDABLE_RETENTION_PRICING"
   | "FIXED_RETENTION_PRICING"
   | (string & {});
 export const BillingMode = /*@__PURE__*/ S.String;
+
 export interface CreateEventDataStoreRequest {
   Name: string;
   AdvancedEventSelectors?: AdvancedEventSelector[];
@@ -475,33 +1217,32 @@ export interface CreateEventDataStoreRequest {
   StartIngestion?: boolean;
   BillingMode?: BillingMode;
 }
-export const CreateEventDataStoreRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.String,
-      AdvancedEventSelectors: S.optional(AdvancedEventSelectors),
-      MultiRegionEnabled: S.optional(S.Boolean),
-      OrganizationEnabled: S.optional(S.Boolean),
-      RetentionPeriod: S.optional(S.Number),
-      TerminationProtectionEnabled: S.optional(S.Boolean),
-      TagsList: S.optional(TagsList),
-      KmsKeyId: S.optional(S.String),
-      StartIngestion: S.optional(S.Boolean),
-      BillingMode: S.optional(BillingMode),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateEventDataStoreRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    AdvancedEventSelectors: S.optional(AdvancedEventSelectors),
+    MultiRegionEnabled: S.optional(S.Boolean),
+    OrganizationEnabled: S.optional(S.Boolean),
+    RetentionPeriod: S.optional(S.Number),
+    TerminationProtectionEnabled: S.optional(S.Boolean),
+    TagsList: S.optional(TagsList),
+    KmsKeyId: S.optional(S.String),
+    StartIngestion: S.optional(S.Boolean),
+    BillingMode: S.optional(BillingMode),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateEventDataStoreRequest",
-  }) as any as S.Schema<CreateEventDataStoreRequest>;
+  ),
+).annotate({
+  identifier: "CreateEventDataStoreRequest",
+}) as any as S.Schema<CreateEventDataStoreRequest>;
 export type EventDataStoreStatus =
   | "CREATED"
   | "ENABLED"
@@ -511,6 +1252,7 @@ export type EventDataStoreStatus =
   | "STOPPED_INGESTION"
   | (string & {});
 export const EventDataStoreStatus = /*@__PURE__*/ S.String;
+
 export interface CreateEventDataStoreResponse {
   EventDataStoreArn?: string;
   Name?: string;
@@ -526,30 +1268,29 @@ export interface CreateEventDataStoreResponse {
   KmsKeyId?: string;
   BillingMode?: BillingMode;
 }
-export const CreateEventDataStoreResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EventDataStoreArn: S.optional(S.String),
-      Name: S.optional(S.String),
-      Status: S.optional(EventDataStoreStatus),
-      AdvancedEventSelectors: S.optional(AdvancedEventSelectors),
-      MultiRegionEnabled: S.optional(S.Boolean),
-      OrganizationEnabled: S.optional(S.Boolean),
-      RetentionPeriod: S.optional(S.Number),
-      TerminationProtectionEnabled: S.optional(S.Boolean),
-      TagsList: S.optional(TagsList),
-      CreatedTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      UpdatedTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      KmsKeyId: S.optional(S.String),
-      BillingMode: S.optional(BillingMode),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "CreateEventDataStoreResponse",
-  }) as any as S.Schema<CreateEventDataStoreResponse>;
+export const CreateEventDataStoreResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EventDataStoreArn: S.optional(S.String),
+    Name: S.optional(S.String),
+    Status: S.optional(EventDataStoreStatus),
+    AdvancedEventSelectors: S.optional(AdvancedEventSelectors),
+    MultiRegionEnabled: S.optional(S.Boolean),
+    OrganizationEnabled: S.optional(S.Boolean),
+    RetentionPeriod: S.optional(S.Number),
+    TerminationProtectionEnabled: S.optional(S.Boolean),
+    TagsList: S.optional(TagsList),
+    CreatedTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    UpdatedTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    KmsKeyId: S.optional(S.String),
+    BillingMode: S.optional(BillingMode),
+  }).pipe(ns),
+).annotate({
+  identifier: "CreateEventDataStoreResponse",
+}) as any as S.Schema<CreateEventDataStoreResponse>;
 export interface CreateTrailRequest {
   Name: string;
   S3BucketName: string;
@@ -677,51 +1418,52 @@ export const DeleteDashboardResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteEventDataStoreRequest {
   EventDataStore: string;
 }
-export const DeleteEventDataStoreRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ EventDataStore: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteEventDataStoreRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EventDataStore: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteEventDataStoreRequest",
-  }) as any as S.Schema<DeleteEventDataStoreRequest>;
+  ),
+).annotate({
+  identifier: "DeleteEventDataStoreRequest",
+}) as any as S.Schema<DeleteEventDataStoreRequest>;
 export interface DeleteEventDataStoreResponse {}
-export const DeleteEventDataStoreResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteEventDataStoreResponse",
-  }) as any as S.Schema<DeleteEventDataStoreResponse>;
+export const DeleteEventDataStoreResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteEventDataStoreResponse",
+}) as any as S.Schema<DeleteEventDataStoreResponse>;
+export type ResourceArn = string;
 export interface DeleteResourcePolicyRequest {
   ResourceArn: string;
 }
-export const DeleteResourcePolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ResourceArn: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteResourcePolicyRequest",
-  }) as any as S.Schema<DeleteResourcePolicyRequest>;
+  ),
+).annotate({
+  identifier: "DeleteResourcePolicyRequest",
+}) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteResourcePolicyResponse",
-  }) as any as S.Schema<DeleteResourcePolicyResponse>;
+export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteResourcePolicyResponse",
+}) as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteTrailRequest {
   Name: string;
 }
@@ -770,6 +1512,7 @@ export const DeregisterOrganizationDelegatedAdminResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "DeregisterOrganizationDelegatedAdminResponse",
   }) as any as S.Schema<DeregisterOrganizationDelegatedAdminResponse>;
+export type RefreshId = string;
 export interface DescribeQueryRequest {
   EventDataStore?: string;
   QueryId?: string;
@@ -805,18 +1548,19 @@ export interface QueryStatisticsForDescribeQuery {
   ExecutionTimeInMillis?: number;
   CreationTime?: Date;
 }
-export const QueryStatisticsForDescribeQuery =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EventsMatched: S.optional(S.Number),
-      EventsScanned: S.optional(S.Number),
-      BytesScanned: S.optional(S.Number),
-      ExecutionTimeInMillis: S.optional(S.Number),
-      CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }),
-  ).annotate({
-    identifier: "QueryStatisticsForDescribeQuery",
-  }) as any as S.Schema<QueryStatisticsForDescribeQuery>;
+export const QueryStatisticsForDescribeQuery = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EventsMatched: S.optional(S.Number),
+    EventsScanned: S.optional(S.Number),
+    BytesScanned: S.optional(S.Number),
+    ExecutionTimeInMillis: S.optional(S.Number),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "QueryStatisticsForDescribeQuery",
+}) as any as S.Schema<QueryStatisticsForDescribeQuery>;
+export type ErrorMessage = string;
+export type DeliveryS3Uri = string;
 export type DeliveryStatus =
   | "SUCCESS"
   | "FAILED"
@@ -829,6 +1573,8 @@ export type DeliveryStatus =
   | "UNKNOWN"
   | (string & {});
 export const DeliveryStatus = /*@__PURE__*/ S.String;
+
+export type Prompt = string;
 export interface DescribeQueryResponse {
   QueryId?: string;
   QueryString?: string;
@@ -952,6 +1698,7 @@ export type FederationStatus =
   | "DISABLED"
   | (string & {});
 export const FederationStatus = /*@__PURE__*/ S.String;
+
 export interface DisableFederationResponse {
   EventDataStoreArn?: string;
   FederationStatus?: FederationStatus;
@@ -964,6 +1711,7 @@ export const DisableFederationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisableFederationResponse",
 }) as any as S.Schema<DisableFederationResponse>;
+export type FederationRoleArn = string;
 export interface EnableFederationRequest {
   EventDataStore: string;
   FederationRoleArn: string;
@@ -1128,6 +1876,7 @@ export type DashboardStatus =
   | "DELETING"
   | (string & {});
 export const DashboardStatus = /*@__PURE__*/ S.String;
+
 export interface GetDashboardResponse {
   DashboardArn?: string;
   Type?: DashboardType;
@@ -1164,29 +1913,31 @@ export interface GetEventConfigurationRequest {
   TrailName?: string;
   EventDataStore?: string;
 }
-export const GetEventConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TrailName: S.optional(S.String),
-      EventDataStore: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetEventConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TrailName: S.optional(S.String),
+    EventDataStore: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetEventConfigurationRequest",
-  }) as any as S.Schema<GetEventConfigurationRequest>;
+  ),
+).annotate({
+  identifier: "GetEventConfigurationRequest",
+}) as any as S.Schema<GetEventConfigurationRequest>;
 export type MaxEventSize = "Standard" | "Large" | (string & {});
 export const MaxEventSize = /*@__PURE__*/ S.String;
+
 export type Type = "TagContext" | "RequestContext" | (string & {});
 export const Type = /*@__PURE__*/ S.String;
+
+export type OperatorTargetListMember = string;
 export type OperatorTargetList = string[];
 export const OperatorTargetList = /*@__PURE__*/ S.Array(S.String);
 export interface ContextKeySelector {
@@ -1206,10 +1957,12 @@ export type Template =
   | "USER_ACTIONS"
   | (string & {});
 export const Template = /*@__PURE__*/ S.String;
+
 export type Templates = Template[];
 export const Templates = /*@__PURE__*/ S.Array(Template);
 export type EventCategoryAggregation = "Data" | (string & {});
 export const EventCategoryAggregation = /*@__PURE__*/ S.String;
+
 export interface AggregationConfiguration {
   Templates: Template[];
   EventCategory: EventCategoryAggregation;
@@ -1230,18 +1983,17 @@ export interface GetEventConfigurationResponse {
   ContextKeySelectors?: ContextKeySelector[];
   AggregationConfigurations?: AggregationConfiguration[];
 }
-export const GetEventConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TrailARN: S.optional(S.String),
-      EventDataStoreArn: S.optional(S.String),
-      MaxEventSize: S.optional(MaxEventSize),
-      ContextKeySelectors: S.optional(ContextKeySelectors),
-      AggregationConfigurations: S.optional(AggregationConfigurations),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "GetEventConfigurationResponse",
-  }) as any as S.Schema<GetEventConfigurationResponse>;
+export const GetEventConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TrailARN: S.optional(S.String),
+    EventDataStoreArn: S.optional(S.String),
+    MaxEventSize: S.optional(MaxEventSize),
+    ContextKeySelectors: S.optional(ContextKeySelectors),
+    AggregationConfigurations: S.optional(AggregationConfigurations),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetEventConfigurationResponse",
+}) as any as S.Schema<GetEventConfigurationResponse>;
 export interface GetEventDataStoreRequest {
   EventDataStore: string;
 }
@@ -1260,6 +2012,8 @@ export const GetEventDataStoreRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEventDataStoreRequest",
 }) as any as S.Schema<GetEventDataStoreRequest>;
+export type PartitionKeyName = string;
+export type PartitionKeyType = string;
 export interface PartitionKey {
   Name: string;
   Type: string;
@@ -1331,6 +2085,7 @@ export const GetEventSelectorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEventSelectorsRequest>;
 export type ReadWriteType = "ReadOnly" | "WriteOnly" | "All" | (string & {});
 export const ReadWriteType = /*@__PURE__*/ S.String;
+
 export type DataResourceValues = string[];
 export const DataResourceValues = /*@__PURE__*/ S.Array(S.String);
 export interface DataResource {
@@ -1423,6 +2178,7 @@ export type ImportStatus =
   | "COMPLETED"
   | (string & {});
 export const ImportStatus = /*@__PURE__*/ S.String;
+
 export interface ImportStatistics {
   PrefixesFound?: number;
   PrefixesCompleted?: number;
@@ -1498,8 +2254,10 @@ export type InsightType =
   | "ApiErrorRateInsight"
   | (string & {});
 export const InsightType = /*@__PURE__*/ S.String;
+
 export type SourceEventCategory = "Management" | "Data" | (string & {});
 export const SourceEventCategory = /*@__PURE__*/ S.String;
+
 export type SourceEventCategories = SourceEventCategory[];
 export const SourceEventCategories = /*@__PURE__*/ S.Array(SourceEventCategory);
 export interface InsightSelector {
@@ -1522,17 +2280,18 @@ export interface GetInsightSelectorsResponse {
   EventDataStoreArn?: string;
   InsightsDestination?: string;
 }
-export const GetInsightSelectorsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TrailARN: S.optional(S.String),
-      InsightSelectors: S.optional(InsightSelectors),
-      EventDataStoreArn: S.optional(S.String),
-      InsightsDestination: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "GetInsightSelectorsResponse",
-  }) as any as S.Schema<GetInsightSelectorsResponse>;
+export const GetInsightSelectorsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TrailARN: S.optional(S.String),
+    InsightSelectors: S.optional(InsightSelectors),
+    EventDataStoreArn: S.optional(S.String),
+    InsightsDestination: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetInsightSelectorsResponse",
+}) as any as S.Schema<GetInsightSelectorsResponse>;
+export type PaginationToken = string;
+export type MaxQueryResults = number;
 export interface GetQueryResultsRequest {
   EventDataStore?: string;
   QueryId: string;
@@ -1575,6 +2334,8 @@ export const QueryStatistics = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "QueryStatistics",
 }) as any as S.Schema<QueryStatistics>;
+export type QueryResultKey = string;
+export type QueryResultValue = string;
 export type QueryResultColumn = { [key: string]: string | undefined };
 export const QueryResultColumn = /*@__PURE__*/ S.Record(
   S.String,
@@ -1620,6 +2381,7 @@ export const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourcePolicyRequest",
 }) as any as S.Schema<GetResourcePolicyRequest>;
+export type ResourcePolicy = string;
 export interface GetResourcePolicyResponse {
   ResourceArn?: string;
   ResourcePolicy?: string;
@@ -1732,6 +2494,7 @@ export const GetTrailStatusResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTrailStatusResponse",
 }) as any as S.Schema<GetTrailStatusResponse>;
+export type ListChannelsMaxResultsCount = number;
 export interface ListChannelsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -1775,6 +2538,7 @@ export const ListChannelsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListChannelsResponse",
 }) as any as S.Schema<ListChannelsResponse>;
+export type ListDashboardsMaxResultsCount = number;
 export interface ListDashboardsRequest {
   NamePrefix?: string;
   Type?: DashboardType;
@@ -1827,6 +2591,7 @@ export const ListDashboardsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDashboardsResponse",
 }) as any as S.Schema<ListDashboardsResponse>;
+export type ListEventDataStoresMaxResultsCount = number;
 export interface ListEventDataStoresRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -1885,15 +2650,15 @@ export interface ListEventDataStoresResponse {
   EventDataStores?: EventDataStore[];
   NextToken?: string;
 }
-export const ListEventDataStoresResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EventDataStores: S.optional(EventDataStores),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListEventDataStoresResponse",
-  }) as any as S.Schema<ListEventDataStoresResponse>;
+export const ListEventDataStoresResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EventDataStores: S.optional(EventDataStores),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListEventDataStoresResponse",
+}) as any as S.Schema<ListEventDataStoresResponse>;
+export type ListImportFailuresMaxResultsCount = number;
 export interface ListImportFailuresRequest {
   ImportId: string;
   MaxResults?: number;
@@ -1924,6 +2689,7 @@ export type ImportFailureStatus =
   | "SUCCEEDED"
   | (string & {});
 export const ImportFailureStatus = /*@__PURE__*/ S.String;
+
 export interface ImportFailureListItem {
   Location?: string;
   Status?: ImportFailureStatus;
@@ -1958,6 +2724,7 @@ export const ListImportFailuresResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListImportFailuresResponse",
 }) as any as S.Schema<ListImportFailuresResponse>;
+export type ListImportsMaxResultsCount = number;
 export interface ListImportsRequest {
   MaxResults?: number;
   Destination?: string;
@@ -2022,12 +2789,15 @@ export const ListImportsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListImportsResponse>;
 export type ListInsightsDataType = "InsightsEvents" | (string & {});
 export const ListInsightsDataType = /*@__PURE__*/ S.String;
+
 export type ListInsightsDataDimensionKey =
   | "EventId"
   | "EventName"
   | "EventSource"
   | (string & {});
 export const ListInsightsDataDimensionKey = /*@__PURE__*/ S.String;
+
+export type ListInsightsDataDimensionValue = string;
 export type ListInsightsDataDimensions = {
   [key in ListInsightsDataDimensionKey]?: string;
 };
@@ -2035,6 +2805,7 @@ export const ListInsightsDataDimensions = /*@__PURE__*/ S.Record(
   ListInsightsDataDimensionKey,
   S.String.pipe(S.optional),
 );
+export type ListInsightsDataMaxResultsCount = number;
 export interface ListInsightsDataRequest {
   InsightSource: string;
   DataType: ListInsightsDataType;
@@ -2117,11 +2888,18 @@ export const ListInsightsDataResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListInsightsDataResponse",
 }) as any as S.Schema<ListInsightsDataResponse>;
+export type EventSource = string;
+export type EventName = string;
+export type ErrorCode = string;
+export type InsightsMetricPeriod = number;
 export type InsightsMetricDataType =
   | "FillWithZeros"
   | "NonZeroData"
   | (string & {});
 export const InsightsMetricDataType = /*@__PURE__*/ S.String;
+
+export type InsightsMetricMaxResults = number;
+export type InsightsMetricNextToken = string;
 export interface ListInsightsMetricDataRequest {
   TrailName?: string;
   EventSource: string;
@@ -2135,34 +2913,33 @@ export interface ListInsightsMetricDataRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListInsightsMetricDataRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TrailName: S.optional(S.String),
-      EventSource: S.String,
-      EventName: S.String,
-      InsightType: InsightType,
-      ErrorCode: S.optional(S.String),
-      StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      Period: S.optional(S.Number),
-      DataType: S.optional(InsightsMetricDataType),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListInsightsMetricDataRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TrailName: S.optional(S.String),
+    EventSource: S.String,
+    EventName: S.String,
+    InsightType: InsightType,
+    ErrorCode: S.optional(S.String),
+    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    Period: S.optional(S.Number),
+    DataType: S.optional(InsightsMetricDataType),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListInsightsMetricDataRequest",
-  }) as any as S.Schema<ListInsightsMetricDataRequest>;
+  ),
+).annotate({
+  identifier: "ListInsightsMetricDataRequest",
+}) as any as S.Schema<ListInsightsMetricDataRequest>;
 export type Timestamps = Date[];
 export const Timestamps = /*@__PURE__*/ S.Array(
   S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -2179,21 +2956,20 @@ export interface ListInsightsMetricDataResponse {
   Values?: number[];
   NextToken?: string;
 }
-export const ListInsightsMetricDataResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TrailARN: S.optional(S.String),
-      EventSource: S.optional(S.String),
-      EventName: S.optional(S.String),
-      InsightType: S.optional(InsightType),
-      ErrorCode: S.optional(S.String),
-      Timestamps: S.optional(Timestamps),
-      Values: S.optional(InsightsMetricValues),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListInsightsMetricDataResponse",
-  }) as any as S.Schema<ListInsightsMetricDataResponse>;
+export const ListInsightsMetricDataResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TrailARN: S.optional(S.String),
+    EventSource: S.optional(S.String),
+    EventName: S.optional(S.String),
+    InsightType: S.optional(InsightType),
+    ErrorCode: S.optional(S.String),
+    Timestamps: S.optional(Timestamps),
+    Values: S.optional(InsightsMetricValues),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListInsightsMetricDataResponse",
+}) as any as S.Schema<ListInsightsMetricDataResponse>;
 export interface ListPublicKeysRequest {
   StartTime?: Date;
   EndTime?: Date;
@@ -2218,6 +2994,7 @@ export const ListPublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPublicKeysRequest",
 }) as any as S.Schema<ListPublicKeysRequest>;
+export type ByteBuffer = Uint8Array;
 export interface PublicKey {
   Value?: Uint8Array;
   ValidityStartTime?: Date;
@@ -2250,6 +3027,7 @@ export const ListPublicKeysResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPublicKeysResponse",
 }) as any as S.Schema<ListPublicKeysResponse>;
+export type ListQueriesMaxResultsCount = number;
 export interface ListQueriesRequest {
   EventDataStore: string;
   NextToken?: string;
@@ -2409,6 +3187,8 @@ export type LookupAttributeKey =
   | "AccessKeyId"
   | (string & {});
 export const LookupAttributeKey = /*@__PURE__*/ S.String;
+
+export type LookupAttributeValue = string;
 export interface LookupAttribute {
   AttributeKey: LookupAttributeKey;
   AttributeValue: string;
@@ -2422,6 +3202,9 @@ export type LookupAttributesList = LookupAttribute[];
 export const LookupAttributesList = /*@__PURE__*/ S.Array(LookupAttribute);
 export type EventCategory = "insight" | (string & {});
 export const EventCategory = /*@__PURE__*/ S.String;
+
+export type MaxResults = number;
+export type NextToken = string;
 export interface LookupEventsRequest {
   LookupAttributes?: LookupAttribute[];
   StartTime?: Date;
@@ -2471,28 +3254,27 @@ export interface PutEventConfigurationRequest {
   ContextKeySelectors?: ContextKeySelector[];
   AggregationConfigurations?: AggregationConfiguration[];
 }
-export const PutEventConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TrailName: S.optional(S.String),
-      EventDataStore: S.optional(S.String),
-      MaxEventSize: S.optional(MaxEventSize),
-      ContextKeySelectors: S.optional(ContextKeySelectors),
-      AggregationConfigurations: S.optional(AggregationConfigurations),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutEventConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TrailName: S.optional(S.String),
+    EventDataStore: S.optional(S.String),
+    MaxEventSize: S.optional(MaxEventSize),
+    ContextKeySelectors: S.optional(ContextKeySelectors),
+    AggregationConfigurations: S.optional(AggregationConfigurations),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PutEventConfigurationRequest",
-  }) as any as S.Schema<PutEventConfigurationRequest>;
+  ),
+).annotate({
+  identifier: "PutEventConfigurationRequest",
+}) as any as S.Schema<PutEventConfigurationRequest>;
 export interface PutEventConfigurationResponse {
   TrailARN?: string;
   EventDataStoreArn?: string;
@@ -2500,18 +3282,17 @@ export interface PutEventConfigurationResponse {
   ContextKeySelectors?: ContextKeySelector[];
   AggregationConfigurations?: AggregationConfiguration[];
 }
-export const PutEventConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TrailARN: S.optional(S.String),
-      EventDataStoreArn: S.optional(S.String),
-      MaxEventSize: S.optional(MaxEventSize),
-      ContextKeySelectors: S.optional(ContextKeySelectors),
-      AggregationConfigurations: S.optional(AggregationConfigurations),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "PutEventConfigurationResponse",
-  }) as any as S.Schema<PutEventConfigurationResponse>;
+export const PutEventConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TrailARN: S.optional(S.String),
+    EventDataStoreArn: S.optional(S.String),
+    MaxEventSize: S.optional(MaxEventSize),
+    ContextKeySelectors: S.optional(ContextKeySelectors),
+    AggregationConfigurations: S.optional(AggregationConfigurations),
+  }).pipe(ns),
+).annotate({
+  identifier: "PutEventConfigurationResponse",
+}) as any as S.Schema<PutEventConfigurationResponse>;
 export interface PutEventSelectorsRequest {
   TrailName: string;
   EventSelectors?: EventSelector[];
@@ -2582,17 +3363,16 @@ export interface PutInsightSelectorsResponse {
   EventDataStoreArn?: string;
   InsightsDestination?: string;
 }
-export const PutInsightSelectorsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TrailARN: S.optional(S.String),
-      InsightSelectors: S.optional(InsightSelectors),
-      EventDataStoreArn: S.optional(S.String),
-      InsightsDestination: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "PutInsightSelectorsResponse",
-  }) as any as S.Schema<PutInsightSelectorsResponse>;
+export const PutInsightSelectorsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TrailARN: S.optional(S.String),
+    InsightSelectors: S.optional(InsightSelectors),
+    EventDataStoreArn: S.optional(S.String),
+    InsightsDestination: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "PutInsightSelectorsResponse",
+}) as any as S.Schema<PutInsightSelectorsResponse>;
 export interface PutResourcePolicyRequest {
   ResourceArn: string;
   ResourcePolicy: string;
@@ -2678,22 +3458,21 @@ export const RemoveTagsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface RestoreEventDataStoreRequest {
   EventDataStore: string;
 }
-export const RestoreEventDataStoreRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ EventDataStore: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RestoreEventDataStoreRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EventDataStore: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RestoreEventDataStoreRequest",
-  }) as any as S.Schema<RestoreEventDataStoreRequest>;
+  ),
+).annotate({
+  identifier: "RestoreEventDataStoreRequest",
+}) as any as S.Schema<RestoreEventDataStoreRequest>;
 export interface RestoreEventDataStoreResponse {
   EventDataStoreArn?: string;
   Name?: string;
@@ -2708,29 +3487,30 @@ export interface RestoreEventDataStoreResponse {
   KmsKeyId?: string;
   BillingMode?: BillingMode;
 }
-export const RestoreEventDataStoreResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EventDataStoreArn: S.optional(S.String),
-      Name: S.optional(S.String),
-      Status: S.optional(EventDataStoreStatus),
-      AdvancedEventSelectors: S.optional(AdvancedEventSelectors),
-      MultiRegionEnabled: S.optional(S.Boolean),
-      OrganizationEnabled: S.optional(S.Boolean),
-      RetentionPeriod: S.optional(S.Number),
-      TerminationProtectionEnabled: S.optional(S.Boolean),
-      CreatedTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      UpdatedTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      KmsKeyId: S.optional(S.String),
-      BillingMode: S.optional(BillingMode),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "RestoreEventDataStoreResponse",
-  }) as any as S.Schema<RestoreEventDataStoreResponse>;
+export const RestoreEventDataStoreResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EventDataStoreArn: S.optional(S.String),
+    Name: S.optional(S.String),
+    Status: S.optional(EventDataStoreStatus),
+    AdvancedEventSelectors: S.optional(AdvancedEventSelectors),
+    MultiRegionEnabled: S.optional(S.Boolean),
+    OrganizationEnabled: S.optional(S.Boolean),
+    RetentionPeriod: S.optional(S.Number),
+    TerminationProtectionEnabled: S.optional(S.Boolean),
+    CreatedTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    UpdatedTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    KmsKeyId: S.optional(S.String),
+    BillingMode: S.optional(BillingMode),
+  }).pipe(ns),
+).annotate({
+  identifier: "RestoreEventDataStoreResponse",
+}) as any as S.Schema<RestoreEventDataStoreResponse>;
+export type SearchSampleQueriesSearchPhrase = string;
+export type SearchSampleQueriesMaxResults = number;
 export interface SearchSampleQueriesRequest {
   SearchPhrase: string;
   MaxResults?: number;
@@ -2755,40 +3535,45 @@ export const SearchSampleQueriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchSampleQueriesRequest",
 }) as any as S.Schema<SearchSampleQueriesRequest>;
+export type SampleQueryName = string;
+export type SampleQueryDescription = string;
+export type SampleQuerySQL = string;
+export type SampleQueryRelevance = number;
 export interface SearchSampleQueriesSearchResult {
   Name?: string;
   Description?: string;
   SQL?: string;
   Relevance?: number;
 }
-export const SearchSampleQueriesSearchResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.optional(S.String),
-      Description: S.optional(S.String),
-      SQL: S.optional(S.String),
-      Relevance: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "SearchSampleQueriesSearchResult",
-  }) as any as S.Schema<SearchSampleQueriesSearchResult>;
+export const SearchSampleQueriesSearchResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    SQL: S.optional(S.String),
+    Relevance: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SearchSampleQueriesSearchResult",
+}) as any as S.Schema<SearchSampleQueriesSearchResult>;
 export type SearchSampleQueriesSearchResults =
   SearchSampleQueriesSearchResult[];
-export const SearchSampleQueriesSearchResults =
-  /*@__PURE__*/ S.Array(SearchSampleQueriesSearchResult);
+export const SearchSampleQueriesSearchResults = /*@__PURE__*/ S.Array(
+  SearchSampleQueriesSearchResult,
+);
 export interface SearchSampleQueriesResponse {
   SearchResults?: SearchSampleQueriesSearchResult[];
   NextToken?: string;
 }
-export const SearchSampleQueriesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SearchResults: S.optional(SearchSampleQueriesSearchResults),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "SearchSampleQueriesResponse",
-  }) as any as S.Schema<SearchSampleQueriesResponse>;
+export const SearchSampleQueriesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SearchResults: S.optional(SearchSampleQueriesSearchResults),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "SearchSampleQueriesResponse",
+}) as any as S.Schema<SearchSampleQueriesResponse>;
+export type QueryParameterKey = string;
+export type QueryParameterValue = string;
 export type QueryParameterValues = { [key: string]: string | undefined };
 export const QueryParameterValues = /*@__PURE__*/ S.Record(
   S.String,
@@ -2798,58 +3583,56 @@ export interface StartDashboardRefreshRequest {
   DashboardId: string;
   QueryParameterValues?: { [key: string]: string | undefined };
 }
-export const StartDashboardRefreshRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DashboardId: S.String,
-      QueryParameterValues: S.optional(QueryParameterValues),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartDashboardRefreshRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DashboardId: S.String,
+    QueryParameterValues: S.optional(QueryParameterValues),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartDashboardRefreshRequest",
-  }) as any as S.Schema<StartDashboardRefreshRequest>;
+  ),
+).annotate({
+  identifier: "StartDashboardRefreshRequest",
+}) as any as S.Schema<StartDashboardRefreshRequest>;
 export interface StartDashboardRefreshResponse {
   RefreshId?: string;
 }
-export const StartDashboardRefreshResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RefreshId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "StartDashboardRefreshResponse",
-  }) as any as S.Schema<StartDashboardRefreshResponse>;
+export const StartDashboardRefreshResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RefreshId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "StartDashboardRefreshResponse",
+}) as any as S.Schema<StartDashboardRefreshResponse>;
 export interface StartEventDataStoreIngestionRequest {
   EventDataStore: string;
 }
-export const StartEventDataStoreIngestionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ EventDataStore: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartEventDataStoreIngestionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EventDataStore: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartEventDataStoreIngestionRequest",
-  }) as any as S.Schema<StartEventDataStoreIngestionRequest>;
+  ),
+).annotate({
+  identifier: "StartEventDataStoreIngestionRequest",
+}) as any as S.Schema<StartEventDataStoreIngestionRequest>;
 export interface StartEventDataStoreIngestionResponse {}
-export const StartEventDataStoreIngestionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "StartEventDataStoreIngestionResponse",
-  }) as any as S.Schema<StartEventDataStoreIngestionResponse>;
+export const StartEventDataStoreIngestionResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "StartEventDataStoreIngestionResponse",
+}) as any as S.Schema<StartEventDataStoreIngestionResponse>;
 export interface StartImportRequest {
   Destinations?: string[];
   ImportSource?: ImportSource;
@@ -2973,27 +3756,27 @@ export const StartQueryResponse = /*@__PURE__*/ S.suspend(() =>
 export interface StopEventDataStoreIngestionRequest {
   EventDataStore: string;
 }
-export const StopEventDataStoreIngestionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ EventDataStore: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StopEventDataStoreIngestionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EventDataStore: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StopEventDataStoreIngestionRequest",
-  }) as any as S.Schema<StopEventDataStoreIngestionRequest>;
+  ),
+).annotate({
+  identifier: "StopEventDataStoreIngestionRequest",
+}) as any as S.Schema<StopEventDataStoreIngestionRequest>;
 export interface StopEventDataStoreIngestionResponse {}
-export const StopEventDataStoreIngestionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "StopEventDataStoreIngestionResponse",
-  }) as any as S.Schema<StopEventDataStoreIngestionResponse>;
+export const StopEventDataStoreIngestionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "StopEventDataStoreIngestionResponse",
+}) as any as S.Schema<StopEventDataStoreIngestionResponse>;
 export interface StopImportRequest {
   ImportId: string;
 }
@@ -3171,32 +3954,31 @@ export interface UpdateEventDataStoreRequest {
   KmsKeyId?: string;
   BillingMode?: BillingMode;
 }
-export const UpdateEventDataStoreRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EventDataStore: S.String,
-      Name: S.optional(S.String),
-      AdvancedEventSelectors: S.optional(AdvancedEventSelectors),
-      MultiRegionEnabled: S.optional(S.Boolean),
-      OrganizationEnabled: S.optional(S.Boolean),
-      RetentionPeriod: S.optional(S.Number),
-      TerminationProtectionEnabled: S.optional(S.Boolean),
-      KmsKeyId: S.optional(S.String),
-      BillingMode: S.optional(BillingMode),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateEventDataStoreRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EventDataStore: S.String,
+    Name: S.optional(S.String),
+    AdvancedEventSelectors: S.optional(AdvancedEventSelectors),
+    MultiRegionEnabled: S.optional(S.Boolean),
+    OrganizationEnabled: S.optional(S.Boolean),
+    RetentionPeriod: S.optional(S.Number),
+    TerminationProtectionEnabled: S.optional(S.Boolean),
+    KmsKeyId: S.optional(S.String),
+    BillingMode: S.optional(BillingMode),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateEventDataStoreRequest",
-  }) as any as S.Schema<UpdateEventDataStoreRequest>;
+  ),
+).annotate({
+  identifier: "UpdateEventDataStoreRequest",
+}) as any as S.Schema<UpdateEventDataStoreRequest>;
 export interface UpdateEventDataStoreResponse {
   EventDataStoreArn?: string;
   Name?: string;
@@ -3213,31 +3995,30 @@ export interface UpdateEventDataStoreResponse {
   FederationStatus?: FederationStatus;
   FederationRoleArn?: string;
 }
-export const UpdateEventDataStoreResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EventDataStoreArn: S.optional(S.String),
-      Name: S.optional(S.String),
-      Status: S.optional(EventDataStoreStatus),
-      AdvancedEventSelectors: S.optional(AdvancedEventSelectors),
-      MultiRegionEnabled: S.optional(S.Boolean),
-      OrganizationEnabled: S.optional(S.Boolean),
-      RetentionPeriod: S.optional(S.Number),
-      TerminationProtectionEnabled: S.optional(S.Boolean),
-      CreatedTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      UpdatedTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      KmsKeyId: S.optional(S.String),
-      BillingMode: S.optional(BillingMode),
-      FederationStatus: S.optional(FederationStatus),
-      FederationRoleArn: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateEventDataStoreResponse",
-  }) as any as S.Schema<UpdateEventDataStoreResponse>;
+export const UpdateEventDataStoreResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EventDataStoreArn: S.optional(S.String),
+    Name: S.optional(S.String),
+    Status: S.optional(EventDataStoreStatus),
+    AdvancedEventSelectors: S.optional(AdvancedEventSelectors),
+    MultiRegionEnabled: S.optional(S.Boolean),
+    OrganizationEnabled: S.optional(S.Boolean),
+    RetentionPeriod: S.optional(S.Number),
+    TerminationProtectionEnabled: S.optional(S.Boolean),
+    CreatedTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    UpdatedTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    KmsKeyId: S.optional(S.String),
+    BillingMode: S.optional(BillingMode),
+    FederationStatus: S.optional(FederationStatus),
+    FederationRoleArn: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "UpdateEventDataStoreResponse",
+}) as any as S.Schema<UpdateEventDataStoreResponse>;
 export interface UpdateTrailRequest {
   Name: string;
   S3BucketName?: string;
@@ -3312,523 +4093,6 @@ export const UpdateTrailResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTrailResponse",
 }) as any as S.Schema<UpdateTrailResponse>;
-
-//# Errors
-export class ChannelARNInvalidException extends S.TaggedErrorClass<ChannelARNInvalidException>()(
-  "ChannelARNInvalidException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ChannelARNInvalid", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ChannelNotFoundException extends S.TaggedErrorClass<ChannelNotFoundException>()(
-  "ChannelNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ChannelNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class CloudTrailARNInvalidException extends S.TaggedErrorClass<CloudTrailARNInvalidException>()(
-  "CloudTrailARNInvalidException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "CloudTrailARNInvalid", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
-).pipe(C.withConflictError) {}
-export class EventDataStoreARNInvalidException extends S.TaggedErrorClass<EventDataStoreARNInvalidException>()(
-  "EventDataStoreARNInvalidException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "EventDataStoreARNInvalid", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class EventDataStoreNotFoundException extends S.TaggedErrorClass<EventDataStoreNotFoundException>()(
-  "EventDataStoreNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "EventDataStoreNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class InactiveEventDataStoreException extends S.TaggedErrorClass<InactiveEventDataStoreException>()(
-  "InactiveEventDataStoreException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InactiveEventDataStore", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidTagParameterException extends S.TaggedErrorClass<InvalidTagParameterException>()(
-  "InvalidTagParameterException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidTagParameter", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidTrailNameException extends S.TaggedErrorClass<InvalidTrailNameException>()(
-  "InvalidTrailNameException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidTrailName", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class NoManagementAccountSLRExistsException extends S.TaggedErrorClass<NoManagementAccountSLRExistsException>()(
-  "NoManagementAccountSLRExistsException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "NoManagementAccountSLRExists",
-    httpResponseCode: 403,
-  }),
-).pipe(C.withAuthError) {}
-export class NotOrganizationMasterAccountException extends S.TaggedErrorClass<NotOrganizationMasterAccountException>()(
-  "NotOrganizationMasterAccountException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "NotOrganizationMasterAccount",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class OperationNotPermittedException extends S.TaggedErrorClass<OperationNotPermittedException>()(
-  "OperationNotPermittedException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "OperationNotPermitted", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ResourceTypeNotSupportedException extends S.TaggedErrorClass<ResourceTypeNotSupportedException>()(
-  "ResourceTypeNotSupportedException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ResourceTypeNotSupported", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class TagsLimitExceededException extends S.TaggedErrorClass<TagsLimitExceededException>()(
-  "TagsLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "TagsLimitExceeded", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
-  "UnsupportedOperationException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "UnsupportedOperation", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InactiveQueryException extends S.TaggedErrorClass<InactiveQueryException>()(
-  "InactiveQueryException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InactiveQuery", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidParameter", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class QueryIdNotFoundException extends S.TaggedErrorClass<QueryIdNotFoundException>()(
-  "QueryIdNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "QueryIdNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class ChannelAlreadyExistsException extends S.TaggedErrorClass<ChannelAlreadyExistsException>()(
-  "ChannelAlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ChannelAlreadyExists", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ChannelMaxLimitExceededException extends S.TaggedErrorClass<ChannelMaxLimitExceededException>()(
-  "ChannelMaxLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ChannelMaxLimitExceeded", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidEventDataStoreCategoryException extends S.TaggedErrorClass<InvalidEventDataStoreCategoryException>()(
-  "InvalidEventDataStoreCategoryException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidEventDataStoreCategory",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidSourceException extends S.TaggedErrorClass<InvalidSourceException>()(
-  "InvalidSourceException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidSource", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InsufficientEncryptionPolicyException extends S.TaggedErrorClass<InsufficientEncryptionPolicyException>()(
-  "InsufficientEncryptionPolicyException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InsufficientEncryptionPolicy",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidQueryStatementException extends S.TaggedErrorClass<InvalidQueryStatementException>()(
-  "InvalidQueryStatementException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidQueryStatement", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ServiceQuotaExceeded", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class CloudTrailAccessNotEnabledException extends S.TaggedErrorClass<CloudTrailAccessNotEnabledException>()(
-  "CloudTrailAccessNotEnabledException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "CloudTrailAccessNotEnabled",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class EventDataStoreAlreadyExistsException extends S.TaggedErrorClass<EventDataStoreAlreadyExistsException>()(
-  "EventDataStoreAlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "EventDataStoreAlreadyExists",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class EventDataStoreMaxLimitExceededException extends S.TaggedErrorClass<EventDataStoreMaxLimitExceededException>()(
-  "EventDataStoreMaxLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "EventDataStoreMaxLimitExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InsufficientDependencyServiceAccessPermissionException extends S.TaggedErrorClass<InsufficientDependencyServiceAccessPermissionException>()(
-  "InsufficientDependencyServiceAccessPermissionException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InsufficientDependencyServiceAccessPermission",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidEventSelectorsException extends S.TaggedErrorClass<InvalidEventSelectorsException>()(
-  "InvalidEventSelectorsException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidEventSelectors", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidKmsKeyIdException extends S.TaggedErrorClass<InvalidKmsKeyIdException>()(
-  "InvalidKmsKeyIdException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidKmsKeyId", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class KmsException extends S.TaggedErrorClass<KmsException>()(
-  "KmsException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "KmsException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class KmsKeyNotFoundException extends S.TaggedErrorClass<KmsKeyNotFoundException>()(
-  "KmsKeyNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "KmsKeyNotFound", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class OrganizationNotInAllFeaturesModeException extends S.TaggedErrorClass<OrganizationNotInAllFeaturesModeException>()(
-  "OrganizationNotInAllFeaturesModeException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "OrganizationNotInAllFeaturesMode",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class OrganizationsNotInUseException extends S.TaggedErrorClass<OrganizationsNotInUseException>()(
-  "OrganizationsNotInUseException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "OrganizationsNotInUse", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ThrottlingException", httpResponseCode: 429 }),
-).pipe(C.withThrottlingError) {}
-export class CloudTrailLakeOnboardingClosed extends S.TaggedErrorClass<CloudTrailLakeOnboardingClosed>()(
-  "CloudTrailLakeOnboardingClosed",
-  { Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidParameterException",
-    message: { includes: "no longer accepting new customers" },
-  }),
-).pipe(C.withBadRequestError) {}
-export class CloudTrailInvalidClientTokenIdException extends S.TaggedErrorClass<CloudTrailInvalidClientTokenIdException>()(
-  "CloudTrailInvalidClientTokenIdException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "CloudTrailInvalidClientTokenId",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class CloudWatchLogsDeliveryUnavailableException extends S.TaggedErrorClass<CloudWatchLogsDeliveryUnavailableException>()(
-  "CloudWatchLogsDeliveryUnavailableException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "CloudWatchLogsDeliveryUnavailable",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InsufficientS3BucketPolicyException extends S.TaggedErrorClass<InsufficientS3BucketPolicyException>()(
-  "InsufficientS3BucketPolicyException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InsufficientS3BucketPolicy",
-    httpResponseCode: 403,
-  }),
-).pipe(C.withAuthError) {}
-export class InsufficientSnsTopicPolicyException extends S.TaggedErrorClass<InsufficientSnsTopicPolicyException>()(
-  "InsufficientSnsTopicPolicyException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InsufficientSnsTopicPolicy",
-    httpResponseCode: 403,
-  }),
-).pipe(C.withAuthError) {}
-export class InvalidCloudWatchLogsLogGroupArnException extends S.TaggedErrorClass<InvalidCloudWatchLogsLogGroupArnException>()(
-  "InvalidCloudWatchLogsLogGroupArnException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidCloudWatchLogsLogGroupArn",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidCloudWatchLogsRoleArnException extends S.TaggedErrorClass<InvalidCloudWatchLogsRoleArnException>()(
-  "InvalidCloudWatchLogsRoleArnException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidCloudWatchLogsRoleArn",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterCombinationException extends S.TaggedErrorClass<InvalidParameterCombinationException>()(
-  "InvalidParameterCombinationException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidParameterCombinationError",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidS3BucketNameException extends S.TaggedErrorClass<InvalidS3BucketNameException>()(
-  "InvalidS3BucketNameException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidS3BucketName", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidS3PrefixException extends S.TaggedErrorClass<InvalidS3PrefixException>()(
-  "InvalidS3PrefixException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidS3Prefix", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidSnsTopicNameException extends S.TaggedErrorClass<InvalidSnsTopicNameException>()(
-  "InvalidSnsTopicNameException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidSnsTopicName", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class KmsKeyDisabledException extends S.TaggedErrorClass<KmsKeyDisabledException>()(
-  "KmsKeyDisabledException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "KmsKeyDisabled", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class MaximumNumberOfTrailsExceededException extends S.TaggedErrorClass<MaximumNumberOfTrailsExceededException>()(
-  "MaximumNumberOfTrailsExceededException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "MaximumNumberOfTrailsExceeded",
-    httpResponseCode: 403,
-  }),
-).pipe(C.withAuthError) {}
-export class S3BucketDoesNotExistException extends S.TaggedErrorClass<S3BucketDoesNotExistException>()(
-  "S3BucketDoesNotExistException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "S3BucketDoesNotExist", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class TrailAlreadyExistsException extends S.TaggedErrorClass<TrailAlreadyExistsException>()(
-  "TrailAlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "TrailAlreadyExists", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class TrailNotProvidedException extends S.TaggedErrorClass<TrailNotProvidedException>()(
-  "TrailNotProvidedException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "TrailNotProvided", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class ChannelExistsForEDSException extends S.TaggedErrorClass<ChannelExistsForEDSException>()(
-  "ChannelExistsForEDSException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ChannelExistsForEDS", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class EventDataStoreFederationEnabledException extends S.TaggedErrorClass<EventDataStoreFederationEnabledException>()(
-  "EventDataStoreFederationEnabledException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "EventDataStoreFederationEnabled",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class EventDataStoreHasOngoingImportException extends S.TaggedErrorClass<EventDataStoreHasOngoingImportException>()(
-  "EventDataStoreHasOngoingImportException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "EventDataStoreHasOngoingImport",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class EventDataStoreTerminationProtectedException extends S.TaggedErrorClass<EventDataStoreTerminationProtectedException>()(
-  "EventDataStoreTerminationProtectedException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "EventDataStoreTerminationProtectedException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ResourceARNNotValidException extends S.TaggedErrorClass<ResourceARNNotValidException>()(
-  "ResourceARNNotValidException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ResourceARNNotValid", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ResourcePolicyNotFoundException extends S.TaggedErrorClass<ResourcePolicyNotFoundException>()(
-  "ResourcePolicyNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ResourcePolicyNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidHomeRegionException extends S.TaggedErrorClass<InvalidHomeRegionException>()(
-  "InvalidHomeRegionException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidHomeRegion", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class TrailNotFoundException extends S.TaggedErrorClass<TrailNotFoundException>()(
-  "TrailNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "TrailNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class AccountNotFoundException extends S.TaggedErrorClass<AccountNotFoundException>()(
-  "AccountNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "AccountNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class AccountNotRegisteredException extends S.TaggedErrorClass<AccountNotRegisteredException>()(
-  "AccountNotRegisteredException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "AccountNotRegistered", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class NotOrganizationManagementAccountException extends S.TaggedErrorClass<NotOrganizationManagementAccountException>()(
-  "NotOrganizationManagementAccountException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "NotOrganizationManagementAccount",
-    httpResponseCode: 403,
-  }),
-).pipe(C.withAuthError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ResourceAccessDenied", httpResponseCode: 403 }),
-).pipe(C.withAuthError) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ConcurrentModification", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class GenerateResponseException extends S.TaggedErrorClass<GenerateResponseException>()(
-  "GenerateResponseException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "GenerateResponse", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidEventDataStoreStatusException extends S.TaggedErrorClass<InvalidEventDataStoreStatusException>()(
-  "InvalidEventDataStoreStatusException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidEventDataStoreStatus",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ImportNotFoundException extends S.TaggedErrorClass<ImportNotFoundException>()(
-  "ImportNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ImportNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class InsightNotEnabledException extends S.TaggedErrorClass<InsightNotEnabledException>()(
-  "InsightNotEnabledException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InsightNotEnabled", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidMaxResultsException extends S.TaggedErrorClass<InvalidMaxResultsException>()(
-  "InvalidMaxResultsException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidMaxResults", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidNextToken", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidTimeRangeException extends S.TaggedErrorClass<InvalidTimeRangeException>()(
-  "InvalidTimeRangeException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidTimeRange", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidTokenException extends S.TaggedErrorClass<InvalidTokenException>()(
-  "InvalidTokenException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidToken", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidDateRangeException extends S.TaggedErrorClass<InvalidDateRangeException>()(
-  "InvalidDateRangeException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidDateRange", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidQueryStatusException extends S.TaggedErrorClass<InvalidQueryStatusException>()(
-  "InvalidQueryStatusException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidQueryStatus", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidEventCategoryException extends S.TaggedErrorClass<InvalidEventCategoryException>()(
-  "InvalidEventCategoryException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidEventCategory", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidLookupAttributesException extends S.TaggedErrorClass<InvalidLookupAttributesException>()(
-  "InvalidLookupAttributesException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidLookupAttributes", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InsufficientIAMAccessPermissionException extends S.TaggedErrorClass<InsufficientIAMAccessPermissionException>()(
-  "InsufficientIAMAccessPermissionException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InsufficientIAMAccessPermission",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidInsightSelectorsException extends S.TaggedErrorClass<InvalidInsightSelectorsException>()(
-  "InvalidInsightSelectorsException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidInsightSelectors", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ResourcePolicyNotValidException extends S.TaggedErrorClass<ResourcePolicyNotValidException>()(
-  "ResourcePolicyNotValidException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ResourcePolicyNotValid", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class AccountRegisteredException extends S.TaggedErrorClass<AccountRegisteredException>()(
-  "AccountRegisteredException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "AccountRegistered", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class CannotDelegateManagementAccountException extends S.TaggedErrorClass<CannotDelegateManagementAccountException>()(
-  "CannotDelegateManagementAccountException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "CannotDelegateManagementAccount",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class DelegatedAdminAccountLimitExceededException extends S.TaggedErrorClass<DelegatedAdminAccountLimitExceededException>()(
-  "DelegatedAdminAccountLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "DelegatedAdminAccountLimitExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class AccountHasOngoingImportException extends S.TaggedErrorClass<AccountHasOngoingImportException>()(
-  "AccountHasOngoingImportException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "AccountHasOngoingImport", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidImportSourceException extends S.TaggedErrorClass<InvalidImportSourceException>()(
-  "InvalidImportSourceException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidImportSource", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class MaxConcurrentQueriesException extends S.TaggedErrorClass<MaxConcurrentQueriesException>()(
-  "MaxConcurrentQueriesException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "MaxConcurrentQueries", httpResponseCode: 429 }),
-).pipe(C.withThrottlingError) {}
-
-//# Operations
 export type AddTagsError =
   | ChannelARNInvalidException
   | ChannelNotFoundException
@@ -3882,8 +4146,11 @@ export const addTags: API.OperationMethod<
     TagsLimitExceededException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTags",
 }));
+
 export type CancelQueryError =
   | ConflictException
   | EventDataStoreARNInvalidException
@@ -3924,8 +4191,11 @@ export const cancelQuery: API.OperationMethod<
     QueryIdNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelQuery",
 }));
+
 export type CreateChannelError =
   | ChannelAlreadyExistsException
   | ChannelMaxLimitExceededException
@@ -3967,8 +4237,11 @@ export const createChannel: API.OperationMethod<
     TagsLimitExceededException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChannel",
 }));
+
 export type CreateDashboardError =
   | ConflictException
   | EventDataStoreNotFoundException
@@ -4016,8 +4289,11 @@ export const createDashboard: API.OperationMethod<
     ServiceQuotaExceededException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDashboard",
 }));
+
 export type CreateEventDataStoreError =
   | CloudTrailAccessNotEnabledException
   | ConflictException
@@ -4073,8 +4349,11 @@ export const createEventDataStore: API.OperationMethod<
     UnsupportedOperationException,
     CloudTrailLakeOnboardingClosed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEventDataStore",
 }));
+
 export type CreateTrailError =
   | CloudTrailAccessNotEnabledException
   | CloudTrailInvalidClientTokenIdException
@@ -4156,8 +4435,11 @@ export const createTrail: API.OperationMethod<
     TrailNotProvidedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrail",
 }));
+
 export type DeleteChannelError =
   | ChannelARNInvalidException
   | ChannelNotFoundException
@@ -4181,8 +4463,11 @@ export const deleteChannel: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChannel",
 }));
+
 export type DeleteDashboardError =
   | ConflictException
   | ResourceNotFoundException
@@ -4204,8 +4489,11 @@ export const deleteDashboard: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDashboard",
 }));
+
 export type DeleteEventDataStoreError =
   | ChannelExistsForEDSException
   | ConflictException
@@ -4260,8 +4548,11 @@ export const deleteEventDataStore: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventDataStore",
 }));
+
 export type DeleteResourcePolicyError =
   | ConflictException
   | OperationNotPermittedException
@@ -4291,8 +4582,11 @@ export const deleteResourcePolicy: API.OperationMethod<
     ResourceTypeNotSupportedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DeleteTrailError =
   | CloudTrailARNInvalidException
   | ConflictException
@@ -4342,8 +4636,11 @@ export const deleteTrail: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrail",
 }));
+
 export type DeregisterOrganizationDelegatedAdminError =
   | AccountNotFoundException
   | AccountNotRegisteredException
@@ -4382,8 +4679,11 @@ export const deregisterOrganizationDelegatedAdmin: API.OperationMethod<
     OrganizationsNotInUseException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterOrganizationDelegatedAdmin",
 }));
+
 export type DescribeQueryError =
   | EventDataStoreARNInvalidException
   | EventDataStoreNotFoundException
@@ -4422,8 +4722,11 @@ export const describeQuery: API.OperationMethod<
     QueryIdNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeQuery",
 }));
+
 export type DescribeTrailsError =
   | CloudTrailARNInvalidException
   | InvalidTrailNameException
@@ -4450,8 +4753,11 @@ export const describeTrails: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrails",
 }));
+
 export type DisableFederationError =
   | AccessDeniedException
   | CloudTrailAccessNotEnabledException
@@ -4499,8 +4805,11 @@ export const disableFederation: API.OperationMethod<
     OrganizationsNotInUseException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableFederation",
 }));
+
 export type EnableFederationError =
   | AccessDeniedException
   | CloudTrailAccessNotEnabledException
@@ -4557,8 +4866,11 @@ export const enableFederation: API.OperationMethod<
     OrganizationsNotInUseException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableFederation",
 }));
+
 export type GenerateQueryError =
   | EventDataStoreARNInvalidException
   | EventDataStoreNotFoundException
@@ -4605,8 +4917,11 @@ export const generateQuery: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateQuery",
 }));
+
 export type GetChannelError =
   | ChannelARNInvalidException
   | ChannelNotFoundException
@@ -4630,8 +4945,11 @@ export const getChannel: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetChannel",
 }));
+
 export type GetDashboardError =
   | ResourceNotFoundException
   | UnsupportedOperationException
@@ -4648,8 +4966,11 @@ export const getDashboard: API.OperationMethod<
   input: GetDashboardRequest,
   output: GetDashboardResponse,
   errors: [ResourceNotFoundException, UnsupportedOperationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDashboard",
 }));
+
 export type GetEventConfigurationError =
   | CloudTrailARNInvalidException
   | EventDataStoreARNInvalidException
@@ -4689,8 +5010,11 @@ export const getEventConfiguration: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEventConfiguration",
 }));
+
 export type GetEventDataStoreError =
   | EventDataStoreARNInvalidException
   | EventDataStoreNotFoundException
@@ -4719,8 +5043,11 @@ export const getEventDataStore: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEventDataStore",
 }));
+
 export type GetEventSelectorsError =
   | CloudTrailARNInvalidException
   | InvalidTrailNameException
@@ -4769,8 +5096,11 @@ export const getEventSelectors: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEventSelectors",
 }));
+
 export type GetImportError =
   | ImportNotFoundException
   | InvalidParameterException
@@ -4794,8 +5124,11 @@ export const getImport: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImport",
 }));
+
 export type GetInsightSelectorsError =
   | CloudTrailARNInvalidException
   | InsightNotEnabledException
@@ -4840,8 +5173,11 @@ export const getInsightSelectors: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInsightSelectors",
 }));
+
 export type GetQueryResultsError =
   | EventDataStoreARNInvalidException
   | EventDataStoreNotFoundException
@@ -4895,9 +5231,12 @@ export const getQueryResults: API.OperationMethod<
     QueryIdNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQueryResults",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
+
 export type GetResourcePolicyError =
   | OperationNotPermittedException
   | ResourceARNNotValidException
@@ -4925,8 +5264,11 @@ export const getResourcePolicy: API.OperationMethod<
     ResourceTypeNotSupportedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
 export type GetTrailError =
   | CloudTrailARNInvalidException
   | InvalidTrailNameException
@@ -4952,8 +5294,11 @@ export const getTrail: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTrail",
 }));
+
 export type GetTrailStatusError =
   | CloudTrailARNInvalidException
   | InvalidTrailNameException
@@ -4983,8 +5328,11 @@ export const getTrailStatus: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTrailStatus",
 }));
+
 export type ListChannelsError =
   | InvalidNextTokenException
   | OperationNotPermittedException
@@ -5021,6 +5369,8 @@ export const listChannels: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannels",
   pagination: {
     inputToken: "NextToken",
@@ -5028,6 +5378,7 @@ export const listChannels: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDashboardsError = UnsupportedOperationException | CommonErrors;
 /**
  * Returns information about all dashboards in the account, in the current Region.
@@ -5041,8 +5392,11 @@ export const listDashboards: API.OperationMethod<
   input: ListDashboardsRequest,
   output: ListDashboardsResponse,
   errors: [UnsupportedOperationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDashboards",
 }));
+
 export type ListEventDataStoresError =
   | InvalidMaxResultsException
   | InvalidNextTokenException
@@ -5084,6 +5438,8 @@ export const listEventDataStores: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEventDataStores",
   pagination: {
     inputToken: "NextToken",
@@ -5091,6 +5447,7 @@ export const listEventDataStores: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListImportFailuresError =
   | InvalidNextTokenException
   | InvalidParameterException
@@ -5129,6 +5486,8 @@ export const listImportFailures: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImportFailures",
   pagination: {
     inputToken: "NextToken",
@@ -5137,6 +5496,7 @@ export const listImportFailures: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListImportsError =
   | EventDataStoreARNInvalidException
   | InvalidNextTokenException
@@ -5178,6 +5538,8 @@ export const listImports: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImports",
   pagination: {
     inputToken: "NextToken",
@@ -5186,6 +5548,7 @@ export const listImports: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListInsightsDataError =
   | InvalidParameterException
   | OperationNotPermittedException
@@ -5237,6 +5600,8 @@ export const listInsightsData: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInsightsData",
   pagination: {
     inputToken: "NextToken",
@@ -5245,6 +5610,7 @@ export const listInsightsData: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListInsightsMetricDataError =
   | InvalidParameterException
   | InvalidTrailNameException
@@ -5302,6 +5668,8 @@ export const listInsightsMetricData: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInsightsMetricData",
   pagination: {
     inputToken: "NextToken",
@@ -5309,6 +5677,7 @@ export const listInsightsMetricData: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPublicKeysError =
   | InvalidTimeRangeException
   | InvalidTokenException
@@ -5354,6 +5723,8 @@ export const listPublicKeys: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPublicKeys",
   pagination: {
     inputToken: "NextToken",
@@ -5361,6 +5732,7 @@ export const listPublicKeys: API.OperationMethod<
     items: "PublicKeyList",
   } as const,
 }));
+
 export type ListQueriesError =
   | EventDataStoreARNInvalidException
   | EventDataStoreNotFoundException
@@ -5419,6 +5791,8 @@ export const listQueries: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQueries",
   pagination: {
     inputToken: "NextToken",
@@ -5426,6 +5800,7 @@ export const listQueries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsError =
   | ChannelARNInvalidException
   | CloudTrailARNInvalidException
@@ -5480,6 +5855,8 @@ export const listTags: API.OperationMethod<
     ResourceTypeNotSupportedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTags",
   pagination: {
     inputToken: "NextToken",
@@ -5487,6 +5864,7 @@ export const listTags: API.OperationMethod<
     items: "ResourceTagList",
   } as const,
 }));
+
 export type ListTrailsError =
   | OperationNotPermittedException
   | UnsupportedOperationException
@@ -5518,6 +5896,8 @@ export const listTrails: API.OperationMethod<
   input: ListTrailsRequest,
   output: ListTrailsResponse,
   errors: [OperationNotPermittedException, UnsupportedOperationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrails",
   pagination: {
     inputToken: "NextToken",
@@ -5525,6 +5905,7 @@ export const listTrails: API.OperationMethod<
     items: "Trails",
   } as const,
 }));
+
 export type LookupEventsError =
   | InvalidEventCategoryException
   | InvalidLookupAttributesException
@@ -5606,6 +5987,8 @@ export const lookupEvents: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "LookupEvents",
   pagination: {
     inputToken: "NextToken",
@@ -5614,6 +5997,7 @@ export const lookupEvents: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PutEventConfigurationError =
   | CloudTrailARNInvalidException
   | ConflictException
@@ -5667,8 +6051,11 @@ export const putEventConfiguration: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEventConfiguration",
 }));
+
 export type PutEventSelectorsError =
   | CloudTrailARNInvalidException
   | ConflictException
@@ -5763,8 +6150,11 @@ export const putEventSelectors: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEventSelectors",
 }));
+
 export type PutInsightSelectorsError =
   | CloudTrailARNInvalidException
   | InsufficientEncryptionPolicyException
@@ -5838,8 +6228,11 @@ export const putInsightSelectors: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutInsightSelectors",
 }));
+
 export type PutResourcePolicyError =
   | ConflictException
   | OperationNotPermittedException
@@ -5871,8 +6264,11 @@ export const putResourcePolicy: API.OperationMethod<
     ResourceTypeNotSupportedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type RegisterOrganizationDelegatedAdminError =
   | AccountNotFoundException
   | AccountRegisteredException
@@ -5916,8 +6312,11 @@ export const registerOrganizationDelegatedAdmin: API.OperationMethod<
     OrganizationsNotInUseException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterOrganizationDelegatedAdmin",
 }));
+
 export type RemoveTagsError =
   | ChannelARNInvalidException
   | ChannelNotFoundException
@@ -5963,8 +6362,11 @@ export const removeTags: API.OperationMethod<
     ResourceTypeNotSupportedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTags",
 }));
+
 export type RestoreEventDataStoreError =
   | CloudTrailAccessNotEnabledException
   | EventDataStoreARNInvalidException
@@ -6009,8 +6411,11 @@ export const restoreEventDataStore: API.OperationMethod<
     OrganizationsNotInUseException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreEventDataStore",
 }));
+
 export type SearchSampleQueriesError =
   | InvalidParameterException
   | OperationNotPermittedException
@@ -6033,8 +6438,11 @@ export const searchSampleQueries: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchSampleQueries",
 }));
+
 export type StartDashboardRefreshError =
   | EventDataStoreNotFoundException
   | InactiveEventDataStoreException
@@ -6063,8 +6471,11 @@ export const startDashboardRefresh: API.OperationMethod<
     ServiceQuotaExceededException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDashboardRefresh",
 }));
+
 export type StartEventDataStoreIngestionError =
   | ConflictException
   | EventDataStoreARNInvalidException
@@ -6103,8 +6514,11 @@ export const startEventDataStoreIngestion: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartEventDataStoreIngestion",
 }));
+
 export type StartImportError =
   | AccountHasOngoingImportException
   | EventDataStoreARNInvalidException
@@ -6161,8 +6575,11 @@ export const startImport: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartImport",
 }));
+
 export type StartLoggingError =
   | CloudTrailARNInvalidException
   | ConflictException
@@ -6203,8 +6620,11 @@ export const startLogging: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartLogging",
 }));
+
 export type StartQueryError =
   | EventDataStoreARNInvalidException
   | EventDataStoreNotFoundException
@@ -6254,8 +6674,11 @@ export const startQuery: API.OperationMethod<
     S3BucketDoesNotExistException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartQuery",
 }));
+
 export type StopEventDataStoreIngestionError =
   | ConflictException
   | EventDataStoreARNInvalidException
@@ -6294,8 +6717,11 @@ export const stopEventDataStoreIngestion: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopEventDataStoreIngestion",
 }));
+
 export type StopImportError =
   | ImportNotFoundException
   | InvalidParameterException
@@ -6319,8 +6745,11 @@ export const stopImport: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopImport",
 }));
+
 export type StopLoggingError =
   | CloudTrailARNInvalidException
   | ConflictException
@@ -6364,8 +6793,11 @@ export const stopLogging: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopLogging",
 }));
+
 export type UpdateChannelError =
   | ChannelAlreadyExistsException
   | ChannelARNInvalidException
@@ -6401,8 +6833,11 @@ export const updateChannel: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateChannel",
 }));
+
 export type UpdateDashboardError =
   | ConflictException
   | EventDataStoreNotFoundException
@@ -6441,8 +6876,11 @@ export const updateDashboard: API.OperationMethod<
     ServiceQuotaExceededException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDashboard",
 }));
+
 export type UpdateEventDataStoreError =
   | CloudTrailAccessNotEnabledException
   | ConflictException
@@ -6513,8 +6951,11 @@ export const updateEventDataStore: API.OperationMethod<
     ThrottlingException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEventDataStore",
 }));
+
 export type UpdateTrailError =
   | CloudTrailAccessNotEnabledException
   | CloudTrailARNInvalidException
@@ -6601,5 +7042,7 @@ export const updateTrail: API.OperationMethod<
     TrailNotProvidedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTrail",
 }));

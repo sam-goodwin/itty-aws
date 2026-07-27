@@ -1,0 +1,117 @@
+{
+  "description": "Align email_security#SettingsBlockSendersEdit with distilled cloudflare/email-security patchSettingBlockSender",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.email_security#SettingsBlockSendersEdit",
+      "path": "/shapes/com.cloudflare.email_security#PatchSettingBlockSender"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.email_security#SettingsBlockSendersEditRequest",
+      "path": "/shapes/com.cloudflare.email_security#PatchSettingBlockSenderRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.email_security#PatchSettingBlockSender/input/target",
+      "value": "com.cloudflare.email_security#PatchSettingBlockSenderRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.email_security#SettingsBlockSendersEditResponse",
+      "path": "/shapes/com.cloudflare.email_security#PatchSettingBlockSenderResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.email_security#PatchSettingBlockSender/output/target",
+      "value": "com.cloudflare.email_security#PatchSettingBlockSenderResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.email_security#BlockSenderNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 404
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.email_security#EmailSecurityNotEntitled",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403,
+              "message": {
+                "includes": "not available in the current subscription"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.email_security#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.email_security#PatchSettingBlockSender/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.email_security#BlockSenderNotFound"
+        },
+        {
+          "target": "com.cloudflare.email_security#EmailSecurityNotEntitled"
+        },
+        {
+          "target": "com.cloudflare.email_security#Forbidden"
+        }
+      ]
+    }
+  ]
+}

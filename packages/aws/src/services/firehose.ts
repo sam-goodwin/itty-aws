@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -85,114 +87,40 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
+  "InvalidArgumentException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidKMSResourceException extends S.TaggedErrorClass<InvalidKMSResourceException>()(
+  "InvalidKMSResourceException",
+  { code: S.optional(S.String), message: S.optional(S.String) },
+) {}
+export class InvalidSourceException extends S.TaggedErrorClass<InvalidSourceException>()(
+  "InvalidSourceException",
+  { code: S.optional(S.String), message: S.optional(S.String) },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
 export type DeliveryStreamName = string;
-export type ThroughputHintInMBs = number;
-export type KinesisStreamARN = string;
-export type RoleARN = string;
-export type AWSKMSKeyARNForSSE = string;
-export type BucketARN = string;
-export type Prefix = string;
-export type ErrorOutputPrefix = string;
-export type SizeInMBs = number;
-export type IntervalInSeconds = number;
-export type AWSKMSKeyARN = string;
-export type LogGroupName = string;
-export type LogStreamName = string;
-export type ProcessorParameterValue = string;
-export type NonEmptyStringWithoutWhitespace = string;
-export type NonEmptyString = string;
-export type BlockSizeBytes = number;
-export type ParquetPageSizeBytes = number;
-export type NonNegativeIntegerObject = number;
-export type OrcStripeSizeBytes = number;
-export type OrcRowIndexStride = number;
-export type Proportion = number;
-export type RetryDurationInSeconds = number;
-export type FileExtension = string;
-export type CustomTimeZone = string;
-export type ClusterJDBCURL = string;
-export type DataTableName = string;
-export type DataTableColumns = string;
-export type CopyOptions = string;
-export type Username = string | redacted.Redacted<string>;
-export type Password = string | redacted.Redacted<string>;
-export type RedshiftRetryDurationInSeconds = number;
-export type SecretARN = string;
-export type ElasticsearchDomainARN = string;
-export type ElasticsearchClusterEndpoint = string;
-export type ElasticsearchIndexName = string;
-export type ElasticsearchTypeName = string;
-export type ElasticsearchBufferingIntervalInSeconds = number;
-export type ElasticsearchBufferingSizeInMBs = number;
-export type ElasticsearchRetryDurationInSeconds = number;
-export type AmazonopensearchserviceDomainARN = string;
-export type AmazonopensearchserviceClusterEndpoint = string;
-export type AmazonopensearchserviceIndexName = string;
-export type AmazonopensearchserviceTypeName = string;
-export type AmazonopensearchserviceBufferingIntervalInSeconds = number;
-export type AmazonopensearchserviceBufferingSizeInMBs = number;
-export type AmazonopensearchserviceRetryDurationInSeconds = number;
-export type HECEndpoint = string;
-export type HECToken = string;
-export type HECAcknowledgmentTimeoutInSeconds = number;
-export type SplunkRetryDurationInSeconds = number;
-export type SplunkBufferingIntervalInSeconds = number;
-export type SplunkBufferingSizeInMBs = number;
-export type HttpEndpointUrl = string | redacted.Redacted<string>;
-export type HttpEndpointName = string;
-export type HttpEndpointAccessKey = string | redacted.Redacted<string>;
-export type HttpEndpointBufferingSizeInMBs = number;
-export type HttpEndpointBufferingIntervalInSeconds = number;
-export type HttpEndpointAttributeName = string | redacted.Redacted<string>;
-export type HttpEndpointAttributeValue = string | redacted.Redacted<string>;
-export type HttpEndpointRetryDurationInSeconds = number;
-export type TagKey = string;
-export type TagValue = string;
-export type AmazonOpenSearchServerlessCollectionEndpoint = string;
-export type AmazonOpenSearchServerlessIndexName = string;
-export type AmazonOpenSearchServerlessBufferingIntervalInSeconds = number;
-export type AmazonOpenSearchServerlessBufferingSizeInMBs = number;
-export type AmazonOpenSearchServerlessRetryDurationInSeconds = number;
-export type MSKClusterARN = string;
-export type TopicName = string;
-export type ReadFromTimestamp = Date;
-export type SnowflakeAccountUrl = string | redacted.Redacted<string>;
-export type SnowflakePrivateKey = string | redacted.Redacted<string>;
-export type SnowflakeKeyPassphrase = string | redacted.Redacted<string>;
-export type SnowflakeUser = string | redacted.Redacted<string>;
-export type SnowflakeDatabase = string | redacted.Redacted<string>;
-export type SnowflakeSchema = string | redacted.Redacted<string>;
-export type SnowflakeTable = string | redacted.Redacted<string>;
-export type SnowflakeRole = string | redacted.Redacted<string>;
-export type SnowflakeMetaDataColumnName = string | redacted.Redacted<string>;
-export type SnowflakeContentColumnName = string | redacted.Redacted<string>;
-export type SnowflakePrivateLinkVpceId = string | redacted.Redacted<string>;
-export type SnowflakeRetryDurationInSeconds = number;
-export type SnowflakeBufferingSizeInMBs = number;
-export type SnowflakeBufferingIntervalInSeconds = number;
-export type StringWithLettersDigitsUnderscoresDots = string;
-export type GlueDataCatalogARN = string;
-export type WarehouseLocation = string;
-export type DatabaseEndpoint = string;
-export type DatabasePort = number;
-export type DatabaseName = string;
-export type DatabaseTableName = string;
-export type DatabaseColumnName = string;
-export type VpcEndpointServiceName = string;
-export type DeliveryStreamARN = string;
-export type ErrorMessage = string;
-export type ErrorCode = string;
-export type DescribeDeliveryStreamInputLimit = number;
-export type DestinationId = string;
-export type DeliveryStreamVersionId = string;
-export type DeliveryStartTimestamp = Date;
-export type ListDeliveryStreamsInputLimit = number;
-export type ListTagsForDeliveryStreamInputLimit = number;
-export type Data = Uint8Array;
-export type PutResponseRecordId = string;
-
-//# Schemas
 export type DeliveryStreamType =
   | "DirectPut"
   | "KinesisStreamAsSource"
@@ -200,6 +128,8 @@ export type DeliveryStreamType =
   | "DatabaseAsSource"
   | (string & {});
 export const DeliveryStreamType = /*@__PURE__*/ S.String;
+
+export type ThroughputHintInMBs = number;
 export interface DirectPutSourceConfiguration {
   ThroughputHintInMBs: number;
 }
@@ -208,6 +138,8 @@ export const DirectPutSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DirectPutSourceConfiguration",
 }) as any as S.Schema<DirectPutSourceConfiguration>;
+export type KinesisStreamARN = string;
+export type RoleARN = string;
 export interface KinesisStreamSourceConfiguration {
   KinesisStreamARN: string;
   RoleARN: string;
@@ -217,8 +149,10 @@ export const KinesisStreamSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KinesisStreamSourceConfiguration",
 }) as any as S.Schema<KinesisStreamSourceConfiguration>;
+export type AWSKMSKeyARNForSSE = string;
 export type KeyType = "AWS_OWNED_CMK" | "CUSTOMER_MANAGED_CMK" | (string & {});
 export const KeyType = /*@__PURE__*/ S.String;
+
 export interface DeliveryStreamEncryptionConfigurationInput {
   KeyARN?: string;
   KeyType: KeyType;
@@ -229,6 +163,11 @@ export const DeliveryStreamEncryptionConfigurationInput =
   ).annotate({
     identifier: "DeliveryStreamEncryptionConfigurationInput",
   }) as any as S.Schema<DeliveryStreamEncryptionConfigurationInput>;
+export type BucketARN = string;
+export type Prefix = string;
+export type ErrorOutputPrefix = string;
+export type SizeInMBs = number;
+export type IntervalInSeconds = number;
 export interface BufferingHints {
   SizeInMBs?: number;
   IntervalInSeconds?: number;
@@ -247,8 +186,11 @@ export type CompressionFormat =
   | "HADOOP_SNAPPY"
   | (string & {});
 export const CompressionFormat = /*@__PURE__*/ S.String;
+
 export type NoEncryptionConfig = "NoEncryption" | (string & {});
 export const NoEncryptionConfig = /*@__PURE__*/ S.String;
+
+export type AWSKMSKeyARN = string;
 export interface KMSEncryptionConfig {
   AWSKMSKeyARN: string;
 }
@@ -269,6 +211,8 @@ export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EncryptionConfiguration",
 }) as any as S.Schema<EncryptionConfiguration>;
+export type LogGroupName = string;
+export type LogStreamName = string;
 export interface CloudWatchLoggingOptions {
   Enabled?: boolean;
   LogGroupName?: string;
@@ -316,6 +260,7 @@ export type ProcessorType =
   | "AppendDelimiterToRecord"
   | (string & {});
 export const ProcessorType = /*@__PURE__*/ S.String;
+
 export type ProcessorParameterName =
   | "LambdaArn"
   | "NumberOfRetries"
@@ -330,6 +275,8 @@ export type ProcessorParameterName =
   | "DataMessageExtraction"
   | (string & {});
 export const ProcessorParameterName = /*@__PURE__*/ S.String;
+
+export type ProcessorParameterValue = string;
 export interface ProcessorParameter {
   ParameterName: ProcessorParameterName;
   ParameterValue: string;
@@ -367,6 +314,8 @@ export const ProcessingConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProcessingConfiguration>;
 export type S3BackupMode = "Disabled" | "Enabled" | (string & {});
 export const S3BackupMode = /*@__PURE__*/ S.String;
+
+export type NonEmptyStringWithoutWhitespace = string;
 export interface SchemaConfiguration {
   RoleARN?: string;
   CatalogId?: string;
@@ -387,6 +336,7 @@ export const SchemaConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SchemaConfiguration",
 }) as any as S.Schema<SchemaConfiguration>;
+export type NonEmptyString = string;
 export type ColumnToJsonKeyMappings = { [key: string]: string | undefined };
 export const ColumnToJsonKeyMappings = /*@__PURE__*/ S.Record(
   S.String,
@@ -430,14 +380,19 @@ export const InputFormatConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InputFormatConfiguration",
 }) as any as S.Schema<InputFormatConfiguration>;
+export type BlockSizeBytes = number;
+export type ParquetPageSizeBytes = number;
 export type ParquetCompression =
   | "UNCOMPRESSED"
   | "GZIP"
   | "SNAPPY"
   | (string & {});
 export const ParquetCompression = /*@__PURE__*/ S.String;
+
+export type NonNegativeIntegerObject = number;
 export type ParquetWriterVersion = "V1" | "V2" | (string & {});
 export const ParquetWriterVersion = /*@__PURE__*/ S.String;
+
 export interface ParquetSerDe {
   BlockSizeBytes?: number;
   PageSizeBytes?: number;
@@ -456,14 +411,19 @@ export const ParquetSerDe = /*@__PURE__*/ S.suspend(() =>
     WriterVersion: S.optional(ParquetWriterVersion),
   }),
 ).annotate({ identifier: "ParquetSerDe" }) as any as S.Schema<ParquetSerDe>;
+export type OrcStripeSizeBytes = number;
+export type OrcRowIndexStride = number;
+export type Proportion = number;
 export type OrcCompression = "NONE" | "ZLIB" | "SNAPPY" | (string & {});
 export const OrcCompression = /*@__PURE__*/ S.String;
+
 export type ListOfNonEmptyStringsWithoutWhitespace = string[];
 export const ListOfNonEmptyStringsWithoutWhitespace = /*@__PURE__*/ S.Array(
   S.String,
 );
 export type OrcFormatVersion = "V0_11" | "V0_12" | (string & {});
 export const OrcFormatVersion = /*@__PURE__*/ S.String;
+
 export interface OrcSerDe {
   StripeSizeBytes?: number;
   BlockSizeBytes?: number;
@@ -524,6 +484,7 @@ export const DataFormatConversionConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataFormatConversionConfiguration",
 }) as any as S.Schema<DataFormatConversionConfiguration>;
+export type RetryDurationInSeconds = number;
 export interface RetryOptions {
   DurationInSeconds?: number;
 }
@@ -542,6 +503,8 @@ export const DynamicPartitioningConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DynamicPartitioningConfiguration",
 }) as any as S.Schema<DynamicPartitioningConfiguration>;
+export type FileExtension = string;
+export type CustomTimeZone = string;
 export interface ExtendedS3DestinationConfiguration {
   RoleARN: string;
   BucketARN: string;
@@ -584,6 +547,10 @@ export const ExtendedS3DestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExtendedS3DestinationConfiguration",
 }) as any as S.Schema<ExtendedS3DestinationConfiguration>;
+export type ClusterJDBCURL = string;
+export type DataTableName = string;
+export type DataTableColumns = string;
+export type CopyOptions = string;
 export interface CopyCommand {
   DataTableName: string;
   DataTableColumns?: string;
@@ -596,6 +563,9 @@ export const CopyCommand = /*@__PURE__*/ S.suspend(() =>
     CopyOptions: S.optional(S.String),
   }),
 ).annotate({ identifier: "CopyCommand" }) as any as S.Schema<CopyCommand>;
+export type Username = string | redacted.Redacted<string>;
+export type Password = string | redacted.Redacted<string>;
+export type RedshiftRetryDurationInSeconds = number;
 export interface RedshiftRetryOptions {
   DurationInSeconds?: number;
 }
@@ -606,6 +576,8 @@ export const RedshiftRetryOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedshiftRetryOptions>;
 export type RedshiftS3BackupMode = "Disabled" | "Enabled" | (string & {});
 export const RedshiftS3BackupMode = /*@__PURE__*/ S.String;
+
+export type SecretARN = string;
 export interface SecretsManagerConfiguration {
   SecretARN?: string;
   RoleARN?: string;
@@ -652,6 +624,10 @@ export const RedshiftDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RedshiftDestinationConfiguration",
 }) as any as S.Schema<RedshiftDestinationConfiguration>;
+export type ElasticsearchDomainARN = string;
+export type ElasticsearchClusterEndpoint = string;
+export type ElasticsearchIndexName = string;
+export type ElasticsearchTypeName = string;
 export type ElasticsearchIndexRotationPeriod =
   | "NoRotation"
   | "OneHour"
@@ -660,6 +636,9 @@ export type ElasticsearchIndexRotationPeriod =
   | "OneMonth"
   | (string & {});
 export const ElasticsearchIndexRotationPeriod = /*@__PURE__*/ S.String;
+
+export type ElasticsearchBufferingIntervalInSeconds = number;
+export type ElasticsearchBufferingSizeInMBs = number;
 export interface ElasticsearchBufferingHints {
   IntervalInSeconds?: number;
   SizeInMBs?: number;
@@ -672,6 +651,7 @@ export const ElasticsearchBufferingHints = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ElasticsearchBufferingHints",
 }) as any as S.Schema<ElasticsearchBufferingHints>;
+export type ElasticsearchRetryDurationInSeconds = number;
 export interface ElasticsearchRetryOptions {
   DurationInSeconds?: number;
 }
@@ -685,6 +665,7 @@ export type ElasticsearchS3BackupMode =
   | "AllDocuments"
   | (string & {});
 export const ElasticsearchS3BackupMode = /*@__PURE__*/ S.String;
+
 export type SubnetIdList = string[];
 export const SubnetIdList = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroupIdList = string[];
@@ -708,6 +689,7 @@ export type DefaultDocumentIdFormat =
   | "NO_DOCUMENT_ID"
   | (string & {});
 export const DefaultDocumentIdFormat = /*@__PURE__*/ S.String;
+
 export interface DocumentIdOptions {
   DefaultDocumentIdFormat: DefaultDocumentIdFormat;
 }
@@ -753,6 +735,10 @@ export const ElasticsearchDestinationConfiguration = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ElasticsearchDestinationConfiguration",
 }) as any as S.Schema<ElasticsearchDestinationConfiguration>;
+export type AmazonopensearchserviceDomainARN = string;
+export type AmazonopensearchserviceClusterEndpoint = string;
+export type AmazonopensearchserviceIndexName = string;
+export type AmazonopensearchserviceTypeName = string;
 export type AmazonopensearchserviceIndexRotationPeriod =
   | "NoRotation"
   | "OneHour"
@@ -762,6 +748,9 @@ export type AmazonopensearchserviceIndexRotationPeriod =
   | (string & {});
 export const AmazonopensearchserviceIndexRotationPeriod =
   /*@__PURE__*/ S.String;
+
+export type AmazonopensearchserviceBufferingIntervalInSeconds = number;
+export type AmazonopensearchserviceBufferingSizeInMBs = number;
 export interface AmazonopensearchserviceBufferingHints {
   IntervalInSeconds?: number;
   SizeInMBs?: number;
@@ -775,6 +764,7 @@ export const AmazonopensearchserviceBufferingHints = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AmazonopensearchserviceBufferingHints",
 }) as any as S.Schema<AmazonopensearchserviceBufferingHints>;
+export type AmazonopensearchserviceRetryDurationInSeconds = number;
 export interface AmazonopensearchserviceRetryOptions {
   DurationInSeconds?: number;
 }
@@ -788,6 +778,7 @@ export type AmazonopensearchserviceS3BackupMode =
   | "AllDocuments"
   | (string & {});
 export const AmazonopensearchserviceS3BackupMode = /*@__PURE__*/ S.String;
+
 export interface AmazonopensearchserviceDestinationConfiguration {
   RoleARN: string;
   DomainARN?: string;
@@ -827,8 +818,13 @@ export const AmazonopensearchserviceDestinationConfiguration =
   ).annotate({
     identifier: "AmazonopensearchserviceDestinationConfiguration",
   }) as any as S.Schema<AmazonopensearchserviceDestinationConfiguration>;
+export type HECEndpoint = string;
 export type HECEndpointType = "Raw" | "Event" | (string & {});
 export const HECEndpointType = /*@__PURE__*/ S.String;
+
+export type HECToken = string;
+export type HECAcknowledgmentTimeoutInSeconds = number;
+export type SplunkRetryDurationInSeconds = number;
 export interface SplunkRetryOptions {
   DurationInSeconds?: number;
 }
@@ -842,6 +838,9 @@ export type SplunkS3BackupMode =
   | "AllEvents"
   | (string & {});
 export const SplunkS3BackupMode = /*@__PURE__*/ S.String;
+
+export type SplunkBufferingIntervalInSeconds = number;
+export type SplunkBufferingSizeInMBs = number;
 export interface SplunkBufferingHints {
   IntervalInSeconds?: number;
   SizeInMBs?: number;
@@ -884,6 +883,9 @@ export const SplunkDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SplunkDestinationConfiguration",
 }) as any as S.Schema<SplunkDestinationConfiguration>;
+export type HttpEndpointUrl = string | redacted.Redacted<string>;
+export type HttpEndpointName = string;
+export type HttpEndpointAccessKey = string | redacted.Redacted<string>;
 export interface HttpEndpointConfiguration {
   Url: string | redacted.Redacted<string>;
   Name?: string;
@@ -898,6 +900,8 @@ export const HttpEndpointConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HttpEndpointConfiguration",
 }) as any as S.Schema<HttpEndpointConfiguration>;
+export type HttpEndpointBufferingSizeInMBs = number;
+export type HttpEndpointBufferingIntervalInSeconds = number;
 export interface HttpEndpointBufferingHints {
   SizeInMBs?: number;
   IntervalInSeconds?: number;
@@ -912,6 +916,9 @@ export const HttpEndpointBufferingHints = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HttpEndpointBufferingHints>;
 export type ContentEncoding = "NONE" | "GZIP" | (string & {});
 export const ContentEncoding = /*@__PURE__*/ S.String;
+
+export type HttpEndpointAttributeName = string | redacted.Redacted<string>;
+export type HttpEndpointAttributeValue = string | redacted.Redacted<string>;
 export interface HttpEndpointCommonAttribute {
   AttributeName: string | redacted.Redacted<string>;
   AttributeValue: string | redacted.Redacted<string>;
@@ -937,6 +944,7 @@ export const HttpEndpointRequestConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HttpEndpointRequestConfiguration",
 }) as any as S.Schema<HttpEndpointRequestConfiguration>;
+export type HttpEndpointRetryDurationInSeconds = number;
 export interface HttpEndpointRetryOptions {
   DurationInSeconds?: number;
 }
@@ -950,6 +958,7 @@ export type HttpEndpointS3BackupMode =
   | "AllData"
   | (string & {});
 export const HttpEndpointS3BackupMode = /*@__PURE__*/ S.String;
+
 export interface HttpEndpointDestinationConfiguration {
   EndpointConfiguration: HttpEndpointConfiguration;
   BufferingHints?: HttpEndpointBufferingHints;
@@ -979,6 +988,8 @@ export const HttpEndpointDestinationConfiguration = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "HttpEndpointDestinationConfiguration",
 }) as any as S.Schema<HttpEndpointDestinationConfiguration>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value?: string;
@@ -988,6 +999,10 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagDeliveryStreamInputTagList = Tag[];
 export const TagDeliveryStreamInputTagList = /*@__PURE__*/ S.Array(Tag);
+export type AmazonOpenSearchServerlessCollectionEndpoint = string;
+export type AmazonOpenSearchServerlessIndexName = string;
+export type AmazonOpenSearchServerlessBufferingIntervalInSeconds = number;
+export type AmazonOpenSearchServerlessBufferingSizeInMBs = number;
 export interface AmazonOpenSearchServerlessBufferingHints {
   IntervalInSeconds?: number;
   SizeInMBs?: number;
@@ -1001,6 +1016,7 @@ export const AmazonOpenSearchServerlessBufferingHints = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AmazonOpenSearchServerlessBufferingHints",
 }) as any as S.Schema<AmazonOpenSearchServerlessBufferingHints>;
+export type AmazonOpenSearchServerlessRetryDurationInSeconds = number;
 export interface AmazonOpenSearchServerlessRetryOptions {
   DurationInSeconds?: number;
 }
@@ -1014,6 +1030,7 @@ export type AmazonOpenSearchServerlessS3BackupMode =
   | "AllDocuments"
   | (string & {});
 export const AmazonOpenSearchServerlessS3BackupMode = /*@__PURE__*/ S.String;
+
 export interface AmazonOpenSearchServerlessDestinationConfiguration {
   RoleARN: string;
   CollectionEndpoint?: string;
@@ -1043,8 +1060,11 @@ export const AmazonOpenSearchServerlessDestinationConfiguration =
   ).annotate({
     identifier: "AmazonOpenSearchServerlessDestinationConfiguration",
   }) as any as S.Schema<AmazonOpenSearchServerlessDestinationConfiguration>;
+export type MSKClusterARN = string;
+export type TopicName = string;
 export type Connectivity = "PUBLIC" | "PRIVATE" | (string & {});
 export const Connectivity = /*@__PURE__*/ S.String;
+
 export interface AuthenticationConfiguration {
   RoleARN: string;
   Connectivity: Connectivity;
@@ -1054,6 +1074,7 @@ export const AuthenticationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AuthenticationConfiguration",
 }) as any as S.Schema<AuthenticationConfiguration>;
+export type ReadFromTimestamp = Date;
 export interface MSKSourceConfiguration {
   MSKClusterARN: string;
   TopicName: string;
@@ -1072,6 +1093,14 @@ export const MSKSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MSKSourceConfiguration",
 }) as any as S.Schema<MSKSourceConfiguration>;
+export type SnowflakeAccountUrl = string | redacted.Redacted<string>;
+export type SnowflakePrivateKey = string | redacted.Redacted<string>;
+export type SnowflakeKeyPassphrase = string | redacted.Redacted<string>;
+export type SnowflakeUser = string | redacted.Redacted<string>;
+export type SnowflakeDatabase = string | redacted.Redacted<string>;
+export type SnowflakeSchema = string | redacted.Redacted<string>;
+export type SnowflakeTable = string | redacted.Redacted<string>;
+export type SnowflakeRole = string | redacted.Redacted<string>;
 export interface SnowflakeRoleConfiguration {
   Enabled?: boolean;
   SnowflakeRole?: string | redacted.Redacted<string>;
@@ -1090,6 +1119,10 @@ export type SnowflakeDataLoadingOption =
   | "VARIANT_CONTENT_AND_METADATA_MAPPING"
   | (string & {});
 export const SnowflakeDataLoadingOption = /*@__PURE__*/ S.String;
+
+export type SnowflakeMetaDataColumnName = string | redacted.Redacted<string>;
+export type SnowflakeContentColumnName = string | redacted.Redacted<string>;
+export type SnowflakePrivateLinkVpceId = string | redacted.Redacted<string>;
 export interface SnowflakeVpcConfiguration {
   PrivateLinkVpceId: string | redacted.Redacted<string>;
 }
@@ -1098,6 +1131,7 @@ export const SnowflakeVpcConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SnowflakeVpcConfiguration",
 }) as any as S.Schema<SnowflakeVpcConfiguration>;
+export type SnowflakeRetryDurationInSeconds = number;
 export interface SnowflakeRetryOptions {
   DurationInSeconds?: number;
 }
@@ -1111,6 +1145,9 @@ export type SnowflakeS3BackupMode =
   | "AllData"
   | (string & {});
 export const SnowflakeS3BackupMode = /*@__PURE__*/ S.String;
+
+export type SnowflakeBufferingSizeInMBs = number;
+export type SnowflakeBufferingIntervalInSeconds = number;
 export interface SnowflakeBufferingHints {
   SizeInMBs?: number;
   IntervalInSeconds?: number;
@@ -1171,6 +1208,7 @@ export const SnowflakeDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SnowflakeDestinationConfiguration",
 }) as any as S.Schema<SnowflakeDestinationConfiguration>;
+export type StringWithLettersDigitsUnderscoresDots = string;
 export interface PartitionField {
   SourceName: string;
 }
@@ -1225,6 +1263,9 @@ export const TableCreationConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TableCreationConfiguration>;
 export type IcebergS3BackupMode = "FailedDataOnly" | "AllData" | (string & {});
 export const IcebergS3BackupMode = /*@__PURE__*/ S.String;
+
+export type GlueDataCatalogARN = string;
+export type WarehouseLocation = string;
 export interface CatalogConfiguration {
   CatalogARN?: string;
   WarehouseLocation?: string;
@@ -1273,8 +1314,13 @@ export const IcebergDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IcebergDestinationConfiguration>;
 export type DatabaseType = "MySQL" | "PostgreSQL" | (string & {});
 export const DatabaseType = /*@__PURE__*/ S.String;
+
+export type DatabaseEndpoint = string;
+export type DatabasePort = number;
 export type SSLMode = "Disabled" | "Enabled" | (string & {});
 export const SSLMode = /*@__PURE__*/ S.String;
+
+export type DatabaseName = string;
 export type DatabaseIncludeOrExcludeList = string[];
 export const DatabaseIncludeOrExcludeList = /*@__PURE__*/ S.Array(S.String);
 export interface DatabaseList {
@@ -1287,6 +1333,7 @@ export const DatabaseList = /*@__PURE__*/ S.suspend(() =>
     Exclude: S.optional(DatabaseIncludeOrExcludeList),
   }),
 ).annotate({ identifier: "DatabaseList" }) as any as S.Schema<DatabaseList>;
+export type DatabaseTableName = string;
 export type DatabaseTableIncludeOrExcludeList = string[];
 export const DatabaseTableIncludeOrExcludeList = /*@__PURE__*/ S.Array(
   S.String,
@@ -1303,6 +1350,7 @@ export const DatabaseTableList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DatabaseTableList",
 }) as any as S.Schema<DatabaseTableList>;
+export type DatabaseColumnName = string;
 export type DatabaseColumnIncludeOrExcludeList = string[];
 export const DatabaseColumnIncludeOrExcludeList = /*@__PURE__*/ S.Array(
   S.String,
@@ -1330,6 +1378,7 @@ export const DatabaseSourceAuthenticationConfiguration =
   ).annotate({
     identifier: "DatabaseSourceAuthenticationConfiguration",
   }) as any as S.Schema<DatabaseSourceAuthenticationConfiguration>;
+export type VpcEndpointServiceName = string;
 export interface DatabaseSourceVPCConfiguration {
   VpcEndpointServiceName: string;
 }
@@ -1443,6 +1492,7 @@ export const CreateDeliveryStreamInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDeliveryStreamInput",
 }) as any as S.Schema<CreateDeliveryStreamInput>;
+export type DeliveryStreamARN = string;
 export interface CreateDeliveryStreamOutput {
   DeliveryStreamARN?: string;
 }
@@ -1479,6 +1529,8 @@ export const DeleteDeliveryStreamOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteDeliveryStreamOutput",
 }) as any as S.Schema<DeleteDeliveryStreamOutput>;
+export type DescribeDeliveryStreamInputLimit = number;
+export type DestinationId = string;
 export interface DescribeDeliveryStreamInput {
   DeliveryStreamName: string;
   Limit?: number;
@@ -1511,6 +1563,7 @@ export type DeliveryStreamStatus =
   | "ACTIVE"
   | (string & {});
 export const DeliveryStreamStatus = /*@__PURE__*/ S.String;
+
 export type DeliveryStreamFailureType =
   | "VPC_ENDPOINT_SERVICE_NAME_NOT_FOUND"
   | "VPC_INTERFACE_ENDPOINT_SERVICE_ACCESS_DENIED"
@@ -1531,6 +1584,7 @@ export type DeliveryStreamFailureType =
   | "UNKNOWN_ERROR"
   | (string & {});
 export const DeliveryStreamFailureType = /*@__PURE__*/ S.String;
+
 export interface FailureDescription {
   Type: DeliveryStreamFailureType;
   Details: string;
@@ -1549,6 +1603,7 @@ export type DeliveryStreamEncryptionStatus =
   | "DISABLING_FAILED"
   | (string & {});
 export const DeliveryStreamEncryptionStatus = /*@__PURE__*/ S.String;
+
 export interface DeliveryStreamEncryptionConfiguration {
   KeyARN?: string;
   KeyType?: KeyType;
@@ -1566,6 +1621,7 @@ export const DeliveryStreamEncryptionConfiguration = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeliveryStreamEncryptionConfiguration",
 }) as any as S.Schema<DeliveryStreamEncryptionConfiguration>;
+export type DeliveryStreamVersionId = string;
 export interface DirectPutSourceDescription {
   ThroughputHintInMBs?: number;
 }
@@ -1574,6 +1630,7 @@ export const DirectPutSourceDescription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DirectPutSourceDescription",
 }) as any as S.Schema<DirectPutSourceDescription>;
+export type DeliveryStartTimestamp = Date;
 export interface KinesisStreamSourceDescription {
   KinesisStreamARN?: string;
   RoleARN?: string;
@@ -1614,12 +1671,14 @@ export const MSKSourceDescription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MSKSourceDescription>;
 export type SnapshotRequestedBy = "USER" | "FIREHOSE" | (string & {});
 export const SnapshotRequestedBy = /*@__PURE__*/ S.String;
+
 export type SnapshotStatus =
   | "IN_PROGRESS"
   | "COMPLETE"
   | "SUSPENDED"
   | (string & {});
 export const SnapshotStatus = /*@__PURE__*/ S.String;
+
 export interface DatabaseSnapshotInfo {
   Id: string;
   Table: string;
@@ -2146,6 +2205,7 @@ export const DescribeDeliveryStreamOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDeliveryStreamOutput",
 }) as any as S.Schema<DescribeDeliveryStreamOutput>;
+export type ListDeliveryStreamsInputLimit = number;
 export interface ListDeliveryStreamsInput {
   Limit?: number;
   DeliveryStreamType?: DeliveryStreamType;
@@ -2184,6 +2244,7 @@ export const ListDeliveryStreamsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDeliveryStreamsOutput",
 }) as any as S.Schema<ListDeliveryStreamsOutput>;
+export type ListTagsForDeliveryStreamInputLimit = number;
 export interface ListTagsForDeliveryStreamInput {
   DeliveryStreamName: string;
   ExclusiveStartTagKey?: string;
@@ -2223,6 +2284,7 @@ export const ListTagsForDeliveryStreamOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForDeliveryStreamOutput",
 }) as any as S.Schema<ListTagsForDeliveryStreamOutput>;
+export type Data = Uint8Array;
 export interface Record {
   Data: Uint8Array;
 }
@@ -2246,6 +2308,7 @@ export const PutRecordInput = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "PutRecordInput" }) as any as S.Schema<PutRecordInput>;
+export type PutResponseRecordId = string;
 export interface PutRecordOutput {
   RecordId: string;
   Encrypted?: boolean;
@@ -2279,6 +2342,8 @@ export const PutRecordBatchInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutRecordBatchInput",
 }) as any as S.Schema<PutRecordBatchInput>;
+export type ErrorCode = string;
+export type ErrorMessage = string;
 export interface PutRecordBatchResponseEntry {
   RecordId?: string;
   ErrorCode?: string;
@@ -2802,43 +2867,6 @@ export const UpdateDestinationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateDestinationOutput",
 }) as any as S.Schema<UpdateDestinationOutput>;
-
-//# Errors
-export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
-  "InvalidArgumentException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidKMSResourceException extends S.TaggedErrorClass<InvalidKMSResourceException>()(
-  "InvalidKMSResourceException",
-  { code: S.optional(S.String), message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidSourceException extends S.TaggedErrorClass<InvalidSourceException>()(
-  "InvalidSourceException",
-  { code: S.optional(S.String), message: S.optional(S.String) },
-) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { message: S.optional(S.String) },
-) {}
-
-//# Operations
 export type CreateDeliveryStreamError =
   | InvalidArgumentException
   | InvalidKMSResourceException
@@ -2932,8 +2960,11 @@ export const createDeliveryStream: API.OperationMethod<
     LimitExceededException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDeliveryStream",
 }));
+
 export type DeleteDeliveryStreamError =
   | ResourceInUseException
   | ResourceNotFoundException
@@ -2965,8 +2996,11 @@ export const deleteDeliveryStream: API.OperationMethod<
   input: DeleteDeliveryStreamInput,
   output: DeleteDeliveryStreamOutput,
   errors: [ResourceInUseException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDeliveryStream",
 }));
+
 export type DescribeDeliveryStreamError =
   | ResourceNotFoundException
   | CommonErrors;
@@ -2989,8 +3023,11 @@ export const describeDeliveryStream: API.OperationMethod<
   input: DescribeDeliveryStreamInput,
   output: DescribeDeliveryStreamOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDeliveryStream",
 }));
+
 export type ListDeliveryStreamsError = CommonErrors;
 /**
  * Lists your Firehose streams in alphabetical order of their names.
@@ -3012,8 +3049,11 @@ export const listDeliveryStreams: API.OperationMethod<
   input: ListDeliveryStreamsInput,
   output: ListDeliveryStreamsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeliveryStreams",
 }));
+
 export type ListTagsForDeliveryStreamError =
   | InvalidArgumentException
   | LimitExceededException
@@ -3036,8 +3076,11 @@ export const listTagsForDeliveryStream: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForDeliveryStream",
 }));
+
 export type PutRecordError =
   | InvalidArgumentException
   | InvalidKMSResourceException
@@ -3111,8 +3154,11 @@ export const putRecord: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRecord",
 }));
+
 export type PutRecordBatchError =
   | InvalidArgumentException
   | InvalidKMSResourceException
@@ -3207,8 +3253,11 @@ export const putRecordBatch: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRecordBatch",
 }));
+
 export type StartDeliveryStreamEncryptionError =
   | InvalidArgumentException
   | InvalidKMSResourceException
@@ -3279,8 +3328,11 @@ export const startDeliveryStreamEncryption: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDeliveryStreamEncryption",
 }));
+
 export type StopDeliveryStreamEncryptionError =
   | InvalidArgumentException
   | LimitExceededException
@@ -3326,8 +3378,11 @@ export const stopDeliveryStreamEncryption: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopDeliveryStreamEncryption",
 }));
+
 export type TagDeliveryStreamError =
   | InvalidArgumentException
   | LimitExceededException
@@ -3362,8 +3417,11 @@ export const tagDeliveryStream: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagDeliveryStream",
 }));
+
 export type UntagDeliveryStreamError =
   | InvalidArgumentException
   | LimitExceededException
@@ -3392,8 +3450,11 @@ export const untagDeliveryStream: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagDeliveryStream",
 }));
+
 export type UpdateDestinationError =
   | ConcurrentModificationException
   | InvalidArgumentException
@@ -3444,5 +3505,7 @@ export const updateDestination: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDestination",
 }));

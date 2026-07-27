@@ -1,6 +1,0 @@
-{
-  "errors": {
-    "TokenValidationNotEntitled": [{ "code": 10403 }],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

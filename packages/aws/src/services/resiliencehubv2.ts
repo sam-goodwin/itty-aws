@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,36 +85,60 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    message: S.String,
+    resourceId: S.optional(S.String),
+    resourceType: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.String },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.String, retryAfterSeconds: S.optional(S.Number) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+    fieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export type AssertionText = string;
 export type ClientToken = string;
-export type Uuid = string;
-export type TagKey = string;
-export type TagValue = string;
-export type S3Url = string;
-export type EksNamespace = string;
-export type InputSourceId = string;
-export type EntityName = string;
-export type LongDescription = string;
-export type KmsKeyId = string;
-export type UserJourneyId = string;
-export type AwsRegion = string;
-export type IamRoleName = string;
-export type IamRoleArn = string;
-export type S3BucketPath = string;
-export type AwsAccountId = string;
-export type OrganizationId = string;
-export type OuId = string;
-export type AccountId = string;
-export type EntityLabel = string;
-export type EntityDescription = string;
-export type EntityId = string;
-export type SystemId = string;
-export type MaxResults = number;
-export type NextToken = string;
-
-//# Schemas
 export interface CreateAssertionRequest {
   serviceArn: string;
   text: string;
@@ -136,8 +162,10 @@ export const CreateAssertionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAssertionRequest",
 }) as any as S.Schema<CreateAssertionRequest>;
+export type Uuid = string;
 export type AssertionSource = "AI_GENERATED" | "USER" | (string & {});
 export const AssertionSource = /*@__PURE__*/ S.String;
+
 export interface Assertion {
   serviceArn: string;
   assertionId: string;
@@ -164,26 +192,8 @@ export const CreateAssertionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAssertionResponse",
 }) as any as S.Schema<CreateAssertionResponse>;
-export type ValidationExceptionReason =
-  | "INVALID_FIELD_VALUE"
-  | "DUPLICATE_VALUE"
-  | "MISSING_REQUIRED_FIELD"
-  | "OTHER"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+export type TagKey = string;
+export type TagValue = string;
 export type TagValueList = string[];
 export const TagValueList = /*@__PURE__*/ S.Array(S.String);
 export interface ResourceTag {
@@ -195,6 +205,8 @@ export const ResourceTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceTag" }) as any as S.Schema<ResourceTag>;
 export type ResourceTagList = ResourceTag[];
 export const ResourceTagList = /*@__PURE__*/ S.Array(ResourceTag);
+export type S3Url = string;
+export type EksNamespace = string;
 export type EksNamespaceList = string[];
 export const EksNamespaceList = /*@__PURE__*/ S.Array(S.String);
 export interface EksSource {
@@ -270,6 +282,7 @@ export const CreateInputSourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateInputSourceRequest",
 }) as any as S.Schema<CreateInputSourceRequest>;
+export type InputSourceId = string;
 export interface CreateInputSourceResponse {
   serviceArn: string;
   inputSourceId: string;
@@ -279,6 +292,8 @@ export const CreateInputSourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateInputSourceResponse",
 }) as any as S.Schema<CreateInputSourceResponse>;
+export type EntityName = string;
+export type LongDescription = string;
 export interface AvailabilitySlo {
   target?: number;
 }
@@ -295,6 +310,7 @@ export type MultiAzDisasterRecoveryApproach =
   | "BACKUP_AND_RESTORE"
   | (string & {});
 export const MultiAzDisasterRecoveryApproach = /*@__PURE__*/ S.String;
+
 export interface MultiAzTargets {
   rtoInMinutes?: number;
   rpoInMinutes?: number;
@@ -315,6 +331,7 @@ export type MultiRegionDisasterRecoveryApproach =
   | "BACKUP_AND_RESTORE"
   | (string & {});
 export const MultiRegionDisasterRecoveryApproach = /*@__PURE__*/ S.String;
+
 export interface MultiRegionTargets {
   rtoInMinutes?: number;
   rpoInMinutes?: number;
@@ -337,6 +354,7 @@ export const DataRecoveryTargets = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataRecoveryTargets",
 }) as any as S.Schema<DataRecoveryTargets>;
+export type KmsKeyId = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -417,6 +435,7 @@ export const CreatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePolicyResponse>;
 export type ReportType = "FAILURE_MODE" | (string & {});
 export const ReportType = /*@__PURE__*/ S.String;
+
 export interface CreateReportRequest {
   serviceArn: string;
   reportType: ReportType;
@@ -446,6 +465,7 @@ export type ReportGenerationStatus =
   | "FAILED"
   | (string & {});
 export const ReportGenerationStatus = /*@__PURE__*/ S.String;
+
 export interface S3ReportOutput {
   s3ObjectKey: string;
 }
@@ -458,6 +478,7 @@ export type ReportGenerationErrorCode =
   | "INTERNAL_ERROR"
   | (string & {});
 export const ReportGenerationErrorCode = /*@__PURE__*/ S.String;
+
 export interface FailedReportOutput {
   errorCode: ReportGenerationErrorCode;
   errorMessage?: string;
@@ -505,6 +526,7 @@ export const CreateReportResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateReportResponse",
 }) as any as S.Schema<CreateReportResponse>;
+export type UserJourneyId = string;
 export type UserJourneyIdList = string[];
 export const UserJourneyIdList = /*@__PURE__*/ S.Array(S.String);
 export interface AssociatedSystem {
@@ -523,8 +545,11 @@ export const AssociatedSystem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssociatedSystem>;
 export type AssociatedSystemList = AssociatedSystem[];
 export const AssociatedSystemList = /*@__PURE__*/ S.Array(AssociatedSystem);
+export type AwsRegion = string;
 export type RegionList = string[];
 export const RegionList = /*@__PURE__*/ S.Array(S.String);
+export type IamRoleName = string;
+export type IamRoleArn = string;
 export interface CrossAccountRole {
   crossAccountRoleArn: string;
   externalId?: string;
@@ -550,23 +575,26 @@ export const PermissionModel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PermissionModel>;
 export type DependencyDiscoveryInput = "ENABLED" | "DISABLED" | (string & {});
 export const DependencyDiscoveryInput = /*@__PURE__*/ S.String;
+
+export type S3BucketPath = string;
+export type AwsAccountId = string;
 export interface S3ReportOutputConfiguration {
   bucketPath: string;
   bucketOwner: string;
 }
-export const S3ReportOutputConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ bucketPath: S.String, bucketOwner: S.String }),
-  ).annotate({
-    identifier: "S3ReportOutputConfiguration",
-  }) as any as S.Schema<S3ReportOutputConfiguration>;
+export const S3ReportOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ bucketPath: S.String, bucketOwner: S.String }),
+).annotate({
+  identifier: "S3ReportOutputConfiguration",
+}) as any as S.Schema<S3ReportOutputConfiguration>;
 export type ReportOutputConfiguration = { s3: S3ReportOutputConfiguration };
 export const ReportOutputConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ s3: S3ReportOutputConfiguration }),
 ]);
 export type ReportOutputConfigurationList = ReportOutputConfiguration[];
-export const ReportOutputConfigurationList =
-  /*@__PURE__*/ S.Array(ReportOutputConfiguration);
+export const ReportOutputConfigurationList = /*@__PURE__*/ S.Array(
+  ReportOutputConfiguration,
+);
 export interface ServiceReportConfiguration {
   reportOutputs: ReportOutputConfiguration[];
 }
@@ -620,6 +648,7 @@ export type DependencyDiscoveryStatus =
   | "DISABLED"
   | (string & {});
 export const DependencyDiscoveryStatus = /*@__PURE__*/ S.String;
+
 export interface DependencyDiscoveryConfig {
   status: DependencyDiscoveryStatus;
   updatedAt?: Date;
@@ -634,6 +663,7 @@ export const DependencyDiscoveryConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DependencyDiscoveryConfig>;
 export type PolicyValueSource = "SELF" | "CROSS_ACCOUNT" | (string & {});
 export const PolicyValueSource = /*@__PURE__*/ S.String;
+
 export interface SloSource {
   value?: number;
   policyName?: string;
@@ -701,6 +731,7 @@ export type AchievabilityStatus =
   | "NOT_ACHIEVABLE"
   | (string & {});
 export const AchievabilityStatus = /*@__PURE__*/ S.String;
+
 export interface Achievability {
   availabilitySlo?: AchievabilityStatus;
   multiAzRtoRpo?: AchievabilityStatus;
@@ -715,6 +746,7 @@ export const Achievability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Achievability" }) as any as S.Schema<Achievability>;
 export type CostCurrency = "USD" | (string & {});
 export const CostCurrency = /*@__PURE__*/ S.String;
+
 export interface AssessmentCost {
   amount?: number;
   currency?: CostCurrency;
@@ -733,6 +765,7 @@ export type ResourceDiscoveryRunStatus =
   | "NOT_STARTED"
   | (string & {});
 export const ResourceDiscoveryRunStatus = /*@__PURE__*/ S.String;
+
 export type ResourceDiscoveryErrorCode =
   | "INVALID_PERMISSIONS"
   | "STACK_NOT_FOUND"
@@ -743,6 +776,7 @@ export type ResourceDiscoveryErrorCode =
   | "INTERNAL_ERROR"
   | (string & {});
 export const ResourceDiscoveryErrorCode = /*@__PURE__*/ S.String;
+
 export interface ResourceDiscoveryStatus {
   status?: ResourceDiscoveryRunStatus;
   lastRunAt?: Date;
@@ -767,6 +801,10 @@ export type AssessmentStatus =
   | "SUCCESS"
   | (string & {});
 export const AssessmentStatus = /*@__PURE__*/ S.String;
+
+export type OrganizationId = string;
+export type OuId = string;
+export type AccountId = string;
 export interface Service {
   serviceArn: string;
   name: string;
@@ -829,11 +867,14 @@ export const CreateServiceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateServiceResponse",
 }) as any as S.Schema<CreateServiceResponse>;
+export type EntityLabel = string;
+export type EntityDescription = string;
 export type ServiceFunctionCriticality =
   | "PRIMARY"
   | "SUPPLEMENTAL"
   | (string & {});
 export const ServiceFunctionCriticality = /*@__PURE__*/ S.String;
+
 export interface CreateServiceFunctionRequest {
   name: string;
   serviceArn: string;
@@ -841,29 +882,30 @@ export interface CreateServiceFunctionRequest {
   criticality: ServiceFunctionCriticality;
   clientToken?: string;
 }
-export const CreateServiceFunctionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      serviceArn: S.String,
-      description: S.optional(S.String),
-      criticality: ServiceFunctionCriticality,
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/v2/create-service-function" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateServiceFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    serviceArn: S.String,
+    description: S.optional(S.String),
+    criticality: ServiceFunctionCriticality,
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/v2/create-service-function" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateServiceFunctionRequest",
-  }) as any as S.Schema<CreateServiceFunctionRequest>;
+  ),
+).annotate({
+  identifier: "CreateServiceFunctionRequest",
+}) as any as S.Schema<CreateServiceFunctionRequest>;
+export type EntityId = string;
 export type ServiceFunctionSource = "AI_GENERATED" | "USER" | (string & {});
 export const ServiceFunctionSource = /*@__PURE__*/ S.String;
+
 export interface ServiceFunction {
   serviceArn: string;
   serviceFunctionId: string;
@@ -893,12 +935,11 @@ export const ServiceFunction = /*@__PURE__*/ S.suspend(() =>
 export interface CreateServiceFunctionResponse {
   serviceFunction: ServiceFunction;
 }
-export const CreateServiceFunctionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ serviceFunction: ServiceFunction }),
-  ).annotate({
-    identifier: "CreateServiceFunctionResponse",
-  }) as any as S.Schema<CreateServiceFunctionResponse>;
+export const CreateServiceFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ serviceFunction: ServiceFunction }),
+).annotate({
+  identifier: "CreateServiceFunctionResponse",
+}) as any as S.Schema<CreateServiceFunctionResponse>;
 export type ResourceList = string[];
 export const ResourceList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateServiceFunctionResourcesRequest {
@@ -906,8 +947,8 @@ export interface CreateServiceFunctionResourcesRequest {
   serviceFunctionId: string;
   resources: string[];
 }
-export const CreateServiceFunctionResourcesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateServiceFunctionResourcesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       serviceArn: S.String,
       serviceFunctionId: S.String,
@@ -925,24 +966,24 @@ export const CreateServiceFunctionResourcesRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "CreateServiceFunctionResourcesRequest",
-  }) as any as S.Schema<CreateServiceFunctionResourcesRequest>;
+).annotate({
+  identifier: "CreateServiceFunctionResourcesRequest",
+}) as any as S.Schema<CreateServiceFunctionResourcesRequest>;
 export interface CreateServiceFunctionResourcesResponse {
   serviceArn?: string;
   serviceFunctionId?: string;
   resources?: string[];
 }
-export const CreateServiceFunctionResourcesResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateServiceFunctionResourcesResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       serviceArn: S.optional(S.String),
       serviceFunctionId: S.optional(S.String),
       resources: S.optional(ResourceList),
     }),
-  ).annotate({
-    identifier: "CreateServiceFunctionResourcesResponse",
-  }) as any as S.Schema<CreateServiceFunctionResourcesResponse>;
+).annotate({
+  identifier: "CreateServiceFunctionResourcesResponse",
+}) as any as S.Schema<CreateServiceFunctionResourcesResponse>;
 export interface CreateSystemRequest {
   name: string;
   description?: string;
@@ -972,6 +1013,7 @@ export const CreateSystemRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSystemRequest",
 }) as any as S.Schema<CreateSystemRequest>;
+export type SystemId = string;
 export interface System {
   systemArn: string;
   systemId: string;
@@ -1168,37 +1210,35 @@ export interface DeleteServiceFunctionRequest {
   serviceArn: string;
   serviceFunctionId: string;
 }
-export const DeleteServiceFunctionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ serviceArn: S.String, serviceFunctionId: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/v2/delete-function" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteServiceFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ serviceArn: S.String, serviceFunctionId: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/v2/delete-function" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteServiceFunctionRequest",
-  }) as any as S.Schema<DeleteServiceFunctionRequest>;
+  ),
+).annotate({
+  identifier: "DeleteServiceFunctionRequest",
+}) as any as S.Schema<DeleteServiceFunctionRequest>;
 export interface DeleteServiceFunctionResponse {
   serviceFunctionId?: string;
 }
-export const DeleteServiceFunctionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ serviceFunctionId: S.optional(S.String) }),
-  ).annotate({
-    identifier: "DeleteServiceFunctionResponse",
-  }) as any as S.Schema<DeleteServiceFunctionResponse>;
+export const DeleteServiceFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ serviceFunctionId: S.optional(S.String) }),
+).annotate({
+  identifier: "DeleteServiceFunctionResponse",
+}) as any as S.Schema<DeleteServiceFunctionResponse>;
 export interface DeleteServiceFunctionResourcesRequest {
   serviceArn: string;
   serviceFunctionId: string;
   resources: string[];
 }
-export const DeleteServiceFunctionResourcesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DeleteServiceFunctionResourcesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       serviceArn: S.String,
       serviceFunctionId: S.String,
@@ -1216,24 +1256,24 @@ export const DeleteServiceFunctionResourcesRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DeleteServiceFunctionResourcesRequest",
-  }) as any as S.Schema<DeleteServiceFunctionResourcesRequest>;
+).annotate({
+  identifier: "DeleteServiceFunctionResourcesRequest",
+}) as any as S.Schema<DeleteServiceFunctionResourcesRequest>;
 export interface DeleteServiceFunctionResourcesResponse {
   serviceArn?: string;
   serviceFunctionId?: string;
   resources?: string[];
 }
-export const DeleteServiceFunctionResourcesResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DeleteServiceFunctionResourcesResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       serviceArn: S.optional(S.String),
       serviceFunctionId: S.optional(S.String),
       resources: S.optional(ResourceList),
     }),
-  ).annotate({
-    identifier: "DeleteServiceFunctionResourcesResponse",
-  }) as any as S.Schema<DeleteServiceFunctionResourcesResponse>;
+).annotate({
+  identifier: "DeleteServiceFunctionResourcesResponse",
+}) as any as S.Schema<DeleteServiceFunctionResourcesResponse>;
 export interface DeleteSystemRequest {
   systemArn: string;
 }
@@ -1289,24 +1329,23 @@ export interface GetFailureModeFindingRequest {
   findingId: string;
   serviceArn: string;
 }
-export const GetFailureModeFindingRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      findingId: S.String.pipe(T.HttpQuery("findingId")),
-      serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/v2/get-failure-mode-finding" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetFailureModeFindingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    findingId: S.String.pipe(T.HttpQuery("findingId")),
+    serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v2/get-failure-mode-finding" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetFailureModeFindingRequest",
-  }) as any as S.Schema<GetFailureModeFindingRequest>;
+  ),
+).annotate({
+  identifier: "GetFailureModeFindingRequest",
+}) as any as S.Schema<GetFailureModeFindingRequest>;
 export type FailureCategory =
   | "SHARED_FATE"
   | "EXCESSIVE_LOAD"
@@ -1315,10 +1354,13 @@ export type FailureCategory =
   | "SINGLE_POINT_OF_FAILURE"
   | (string & {});
 export const FailureCategory = /*@__PURE__*/ S.String;
+
 export type FindingStatus = "OPEN" | "RESOLVED" | "IRRELEVANT" | (string & {});
 export const FindingStatus = /*@__PURE__*/ S.String;
+
 export type FindingSeverity = "LOW" | "MEDIUM" | "HIGH" | (string & {});
 export const FindingSeverity = /*@__PURE__*/ S.String;
+
 export type FunctionsList = string[];
 export const FunctionsList = /*@__PURE__*/ S.Array(S.String);
 export type PolicyComponent =
@@ -1328,33 +1370,34 @@ export type PolicyComponent =
   | "DATA_RECOVERY"
   | (string & {});
 export const PolicyComponent = /*@__PURE__*/ S.String;
+
 export type SuggestedChangesList = string[];
 export const SuggestedChangesList = /*@__PURE__*/ S.Array(S.String);
 export interface InfrastructureAndCodeRecommendation {
   suggestedChanges?: string[];
 }
-export const InfrastructureAndCodeRecommendation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ suggestedChanges: S.optional(SuggestedChangesList) }),
-  ).annotate({
-    identifier: "InfrastructureAndCodeRecommendation",
-  }) as any as S.Schema<InfrastructureAndCodeRecommendation>;
+export const InfrastructureAndCodeRecommendation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ suggestedChanges: S.optional(SuggestedChangesList) }),
+).annotate({
+  identifier: "InfrastructureAndCodeRecommendation",
+}) as any as S.Schema<InfrastructureAndCodeRecommendation>;
 export type InfrastructureAndCodeRecommendationsList =
   InfrastructureAndCodeRecommendation[];
-export const InfrastructureAndCodeRecommendationsList =
-  /*@__PURE__*/ S.Array(InfrastructureAndCodeRecommendation);
+export const InfrastructureAndCodeRecommendationsList = /*@__PURE__*/ S.Array(
+  InfrastructureAndCodeRecommendation,
+);
 export interface ObservabilityRecommendation {
   suggestedChanges?: string[];
 }
-export const ObservabilityRecommendation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ suggestedChanges: S.optional(SuggestedChangesList) }),
-  ).annotate({
-    identifier: "ObservabilityRecommendation",
-  }) as any as S.Schema<ObservabilityRecommendation>;
+export const ObservabilityRecommendation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ suggestedChanges: S.optional(SuggestedChangesList) }),
+).annotate({
+  identifier: "ObservabilityRecommendation",
+}) as any as S.Schema<ObservabilityRecommendation>;
 export type ObservabilityRecommendationsList = ObservabilityRecommendation[];
-export const ObservabilityRecommendationsList =
-  /*@__PURE__*/ S.Array(ObservabilityRecommendation);
+export const ObservabilityRecommendationsList = /*@__PURE__*/ S.Array(
+  ObservabilityRecommendation,
+);
 export interface TestingRecommendation {
   suggestedChanges?: string[];
 }
@@ -1406,12 +1449,11 @@ export const Finding = /*@__PURE__*/ S.suspend(() =>
 export interface GetFailureModeFindingResponse {
   finding?: Finding;
 }
-export const GetFailureModeFindingResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ finding: S.optional(Finding) }),
-  ).annotate({
-    identifier: "GetFailureModeFindingResponse",
-  }) as any as S.Schema<GetFailureModeFindingResponse>;
+export const GetFailureModeFindingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ finding: S.optional(Finding) }),
+).annotate({
+  identifier: "GetFailureModeFindingResponse",
+}) as any as S.Schema<GetFailureModeFindingResponse>;
 export interface GetPolicyRequest {
   policyArn: string;
 }
@@ -1598,6 +1640,8 @@ export const ImportPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImportPolicyResponse",
 }) as any as S.Schema<ImportPolicyResponse>;
+export type MaxResults = number;
+export type NextToken = string;
 export interface ListAssertionsRequest {
   serviceArn: string;
   source?: AssertionSource;
@@ -1636,6 +1680,7 @@ export const ListAssertionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAssertionsResponse>;
 export type QueryGranularity = "HOURLY" | "DAILY" | (string & {});
 export const QueryGranularity = /*@__PURE__*/ S.String;
+
 export interface ListDependenciesRequest {
   serviceArn?: string;
   queryRangeStartTime?: Date;
@@ -1699,6 +1744,7 @@ export const QueryRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryRange" }) as any as S.Schema<QueryRange>;
 export type DependencyCriticality = "HARD" | "SOFT" | "UNKNOWN" | (string & {});
 export const DependencyCriticality = /*@__PURE__*/ S.String;
+
 export interface DependencySummary {
   dependencyId: string;
   serviceArn: string;
@@ -1748,31 +1794,31 @@ export interface ListFailureModeAssessmentsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListFailureModeAssessmentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/v2/list-failure-mode-assessments" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListFailureModeAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v2/list-failure-mode-assessments" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListFailureModeAssessmentsRequest",
-  }) as any as S.Schema<ListFailureModeAssessmentsRequest>;
+  ),
+).annotate({
+  identifier: "ListFailureModeAssessmentsRequest",
+}) as any as S.Schema<ListFailureModeAssessmentsRequest>;
 export type AssessmentStep =
   | "TOPOLOGY_ENHANCEMENT"
   | "SERVICE_FUNCTION_GENERATION"
   | "RESILIENCE_ASSESSMENT"
   | (string & {});
 export const AssessmentStep = /*@__PURE__*/ S.String;
+
 export type AssessmentErrorCode =
   | "INVALID_PERMISSIONS"
   | "CMK_ACCESS_DENIED"
@@ -1781,6 +1827,7 @@ export type AssessmentErrorCode =
   | "DESIGN_FILE_ACCESS_DENIED"
   | (string & {});
 export const AssessmentErrorCode = /*@__PURE__*/ S.String;
+
 export interface AssessmentSummary {
   assessmentId: string;
   serviceArn: string;
@@ -1819,15 +1866,14 @@ export interface ListFailureModeAssessmentsResponse {
   assessmentSummaries: AssessmentSummary[];
   nextToken?: string;
 }
-export const ListFailureModeAssessmentsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assessmentSummaries: AssessmentSummaryList,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListFailureModeAssessmentsResponse",
-  }) as any as S.Schema<ListFailureModeAssessmentsResponse>;
+export const ListFailureModeAssessmentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assessmentSummaries: AssessmentSummaryList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListFailureModeAssessmentsResponse",
+}) as any as S.Schema<ListFailureModeAssessmentsResponse>;
 export interface ListFailureModeFindingsRequest {
   serviceArn: string;
   severity?: FindingSeverity;
@@ -1836,30 +1882,29 @@ export interface ListFailureModeFindingsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListFailureModeFindingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
-      severity: S.optional(FindingSeverity).pipe(T.HttpQuery("severity")),
-      failureCategory: S.optional(FailureCategory).pipe(
-        T.HttpQuery("failureCategory"),
-      ),
-      status: S.optional(FindingStatus).pipe(T.HttpQuery("status")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/v2/list-failure-mode-findings" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListFailureModeFindingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
+    severity: S.optional(FindingSeverity).pipe(T.HttpQuery("severity")),
+    failureCategory: S.optional(FailureCategory).pipe(
+      T.HttpQuery("failureCategory"),
     ),
-  ).annotate({
-    identifier: "ListFailureModeFindingsRequest",
-  }) as any as S.Schema<ListFailureModeFindingsRequest>;
+    status: S.optional(FindingStatus).pipe(T.HttpQuery("status")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v2/list-failure-mode-findings" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListFailureModeFindingsRequest",
+}) as any as S.Schema<ListFailureModeFindingsRequest>;
 export interface FindingSummary {
   serviceArn?: string;
   findingId?: string;
@@ -1890,15 +1935,11 @@ export interface ListFailureModeFindingsResponse {
   findingsSummary: FindingSummary[];
   nextToken?: string;
 }
-export const ListFailureModeFindingsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      findingsSummary: FindingsList,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListFailureModeFindingsResponse",
-  }) as any as S.Schema<ListFailureModeFindingsResponse>;
+export const ListFailureModeFindingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ findingsSummary: FindingsList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListFailureModeFindingsResponse",
+}) as any as S.Schema<ListFailureModeFindingsResponse>;
 export type InputSourceType =
   | "CFN_STACK"
   | "TAGS"
@@ -1908,6 +1949,7 @@ export type InputSourceType =
   | "MONITORING"
   | (string & {});
 export const InputSourceType = /*@__PURE__*/ S.String;
+
 export interface ListInputSourcesRequest {
   serviceArn: string;
   type?: InputSourceType;
@@ -2173,6 +2215,7 @@ export type ServiceEventType =
   | "ASSERTION_DELETED"
   | (string & {});
 export const ServiceEventType = /*@__PURE__*/ S.String;
+
 export type ServiceEventTypeList = ServiceEventType[];
 export const ServiceEventTypeList = /*@__PURE__*/ S.Array(ServiceEventType);
 export interface ListServiceEventsRequest {
@@ -2212,6 +2255,7 @@ export const ListServiceEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListServiceEventsRequest>;
 export type ActorType = "USER" | "SYSTEM" | (string & {});
 export const ActorType = /*@__PURE__*/ S.String;
+
 export interface EventActor {
   type: ActorType;
   principalId: string;
@@ -2242,115 +2286,109 @@ export interface ServiceSystemAssociatedMetadata {
   systemName?: string;
   systemArn?: string;
 }
-export const ServiceSystemAssociatedMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      systemName: S.optional(S.String),
-      systemArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ServiceSystemAssociatedMetadata",
-  }) as any as S.Schema<ServiceSystemAssociatedMetadata>;
+export const ServiceSystemAssociatedMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    systemName: S.optional(S.String),
+    systemArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServiceSystemAssociatedMetadata",
+}) as any as S.Schema<ServiceSystemAssociatedMetadata>;
 export interface ServiceSystemDisassociatedMetadata {
   systemId?: string;
   systemName?: string;
   systemArn?: string;
 }
-export const ServiceSystemDisassociatedMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      systemId: S.optional(S.String),
-      systemName: S.optional(S.String),
-      systemArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ServiceSystemDisassociatedMetadata",
-  }) as any as S.Schema<ServiceSystemDisassociatedMetadata>;
+export const ServiceSystemDisassociatedMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    systemId: S.optional(S.String),
+    systemName: S.optional(S.String),
+    systemArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServiceSystemDisassociatedMetadata",
+}) as any as S.Schema<ServiceSystemDisassociatedMetadata>;
 export type ResourceTypeList = string[];
 export const ResourceTypeList = /*@__PURE__*/ S.Array(S.String);
 export interface ServiceResourcesAssociatedMetadata {
   resourceCount?: number;
   resourceTypes?: string[];
 }
-export const ServiceResourcesAssociatedMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceCount: S.optional(S.Number),
-      resourceTypes: S.optional(ResourceTypeList),
-    }),
-  ).annotate({
-    identifier: "ServiceResourcesAssociatedMetadata",
-  }) as any as S.Schema<ServiceResourcesAssociatedMetadata>;
+export const ServiceResourcesAssociatedMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceCount: S.optional(S.Number),
+    resourceTypes: S.optional(ResourceTypeList),
+  }),
+).annotate({
+  identifier: "ServiceResourcesAssociatedMetadata",
+}) as any as S.Schema<ServiceResourcesAssociatedMetadata>;
 export interface ServiceResourcesDisassociatedMetadata {
   resourceCount?: number;
   resourceTypes?: string[];
 }
-export const ServiceResourcesDisassociatedMetadata =
-  /*@__PURE__*/ S.suspend(() =>
+export const ServiceResourcesDisassociatedMetadata = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resourceCount: S.optional(S.Number),
       resourceTypes: S.optional(ResourceTypeList),
     }),
-  ).annotate({
-    identifier: "ServiceResourcesDisassociatedMetadata",
-  }) as any as S.Schema<ServiceResourcesDisassociatedMetadata>;
+).annotate({
+  identifier: "ServiceResourcesDisassociatedMetadata",
+}) as any as S.Schema<ServiceResourcesDisassociatedMetadata>;
 export interface ServiceWorkflowUpdatedMetadata {
   serviceFunctionId?: string;
   serviceFunctionName?: string;
 }
-export const ServiceWorkflowUpdatedMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceFunctionId: S.optional(S.String),
-      serviceFunctionName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ServiceWorkflowUpdatedMetadata",
-  }) as any as S.Schema<ServiceWorkflowUpdatedMetadata>;
+export const ServiceWorkflowUpdatedMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceFunctionId: S.optional(S.String),
+    serviceFunctionName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServiceWorkflowUpdatedMetadata",
+}) as any as S.Schema<ServiceWorkflowUpdatedMetadata>;
 export interface ServiceInputSourcesUpdatedMetadata {}
-export const ServiceInputSourcesUpdatedMetadata =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ServiceInputSourcesUpdatedMetadata",
-  }) as any as S.Schema<ServiceInputSourcesUpdatedMetadata>;
+export const ServiceInputSourcesUpdatedMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ServiceInputSourcesUpdatedMetadata",
+}) as any as S.Schema<ServiceInputSourcesUpdatedMetadata>;
 export interface ServicePolicyAssociatedMetadata {
   policyName?: string;
   policyArn?: string;
 }
-export const ServicePolicyAssociatedMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      policyName: S.optional(S.String),
-      policyArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ServicePolicyAssociatedMetadata",
-  }) as any as S.Schema<ServicePolicyAssociatedMetadata>;
+export const ServicePolicyAssociatedMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyName: S.optional(S.String),
+    policyArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServicePolicyAssociatedMetadata",
+}) as any as S.Schema<ServicePolicyAssociatedMetadata>;
 export interface ServicePolicyDisassociatedMetadata {
   policyName?: string;
   policyArn?: string;
 }
-export const ServicePolicyDisassociatedMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      policyName: S.optional(S.String),
-      policyArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ServicePolicyDisassociatedMetadata",
-  }) as any as S.Schema<ServicePolicyDisassociatedMetadata>;
+export const ServicePolicyDisassociatedMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyName: S.optional(S.String),
+    policyArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServicePolicyDisassociatedMetadata",
+}) as any as S.Schema<ServicePolicyDisassociatedMetadata>;
 export interface ServiceFunctionCreatedMetadata {
   serviceFunctionId?: string;
   serviceFunctionName?: string;
 }
-export const ServiceFunctionCreatedMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceFunctionId: S.optional(S.String),
-      serviceFunctionName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ServiceFunctionCreatedMetadata",
-  }) as any as S.Schema<ServiceFunctionCreatedMetadata>;
+export const ServiceFunctionCreatedMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceFunctionId: S.optional(S.String),
+    serviceFunctionName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServiceFunctionCreatedMetadata",
+}) as any as S.Schema<ServiceFunctionCreatedMetadata>;
 export type ArnList = string[];
 export const ArnList = /*@__PURE__*/ S.Array(S.String);
 export interface ServiceFunctionUpdatedMetadata {
@@ -2359,77 +2397,74 @@ export interface ServiceFunctionUpdatedMetadata {
   resourcesAdded?: string[];
   resourcesRemoved?: string[];
 }
-export const ServiceFunctionUpdatedMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceFunctionId: S.optional(S.String),
-      serviceFunctionName: S.optional(S.String),
-      resourcesAdded: S.optional(ArnList),
-      resourcesRemoved: S.optional(ArnList),
-    }),
-  ).annotate({
-    identifier: "ServiceFunctionUpdatedMetadata",
-  }) as any as S.Schema<ServiceFunctionUpdatedMetadata>;
+export const ServiceFunctionUpdatedMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceFunctionId: S.optional(S.String),
+    serviceFunctionName: S.optional(S.String),
+    resourcesAdded: S.optional(ArnList),
+    resourcesRemoved: S.optional(ArnList),
+  }),
+).annotate({
+  identifier: "ServiceFunctionUpdatedMetadata",
+}) as any as S.Schema<ServiceFunctionUpdatedMetadata>;
 export interface ServiceFunctionDeletedMetadata {
   serviceFunctionId?: string;
   serviceFunctionName?: string;
 }
-export const ServiceFunctionDeletedMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceFunctionId: S.optional(S.String),
-      serviceFunctionName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ServiceFunctionDeletedMetadata",
-  }) as any as S.Schema<ServiceFunctionDeletedMetadata>;
+export const ServiceFunctionDeletedMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceFunctionId: S.optional(S.String),
+    serviceFunctionName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServiceFunctionDeletedMetadata",
+}) as any as S.Schema<ServiceFunctionDeletedMetadata>;
 export interface ServiceFunctionResourcesAddedMetadata {
   serviceFunctionId?: string;
   serviceFunctionName?: string;
   resourcesAdded?: string[];
 }
-export const ServiceFunctionResourcesAddedMetadata =
-  /*@__PURE__*/ S.suspend(() =>
+export const ServiceFunctionResourcesAddedMetadata = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       serviceFunctionId: S.optional(S.String),
       serviceFunctionName: S.optional(S.String),
       resourcesAdded: S.optional(ArnList),
     }),
-  ).annotate({
-    identifier: "ServiceFunctionResourcesAddedMetadata",
-  }) as any as S.Schema<ServiceFunctionResourcesAddedMetadata>;
+).annotate({
+  identifier: "ServiceFunctionResourcesAddedMetadata",
+}) as any as S.Schema<ServiceFunctionResourcesAddedMetadata>;
 export interface ServiceFunctionResourcesRemovedMetadata {
   serviceFunctionId?: string;
   serviceFunctionName?: string;
   resourcesRemoved?: string[];
 }
-export const ServiceFunctionResourcesRemovedMetadata =
-  /*@__PURE__*/ S.suspend(() =>
+export const ServiceFunctionResourcesRemovedMetadata = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       serviceFunctionId: S.optional(S.String),
       serviceFunctionName: S.optional(S.String),
       resourcesRemoved: S.optional(ArnList),
     }),
-  ).annotate({
-    identifier: "ServiceFunctionResourcesRemovedMetadata",
-  }) as any as S.Schema<ServiceFunctionResourcesRemovedMetadata>;
+).annotate({
+  identifier: "ServiceFunctionResourcesRemovedMetadata",
+}) as any as S.Schema<ServiceFunctionResourcesRemovedMetadata>;
 export interface ServiceAchievabilityUpdatedMetadata {
   assessmentId?: string;
   availabilitySlo?: string;
   multiAzRtoRpo?: string;
   multiRegionRtoRpo?: string;
 }
-export const ServiceAchievabilityUpdatedMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assessmentId: S.optional(S.String),
-      availabilitySlo: S.optional(S.String),
-      multiAzRtoRpo: S.optional(S.String),
-      multiRegionRtoRpo: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ServiceAchievabilityUpdatedMetadata",
-  }) as any as S.Schema<ServiceAchievabilityUpdatedMetadata>;
+export const ServiceAchievabilityUpdatedMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assessmentId: S.optional(S.String),
+    availabilitySlo: S.optional(S.String),
+    multiAzRtoRpo: S.optional(S.String),
+    multiRegionRtoRpo: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServiceAchievabilityUpdatedMetadata",
+}) as any as S.Schema<ServiceAchievabilityUpdatedMetadata>;
 export interface AssertionCreatedMetadata {
   assertionId?: string;
   assertionName?: string;
@@ -2943,40 +2978,38 @@ export interface ListServiceFunctionsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListServiceFunctionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/v2/list-functions" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListServiceFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v2/list-functions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListServiceFunctionsRequest",
-  }) as any as S.Schema<ListServiceFunctionsRequest>;
+  ),
+).annotate({
+  identifier: "ListServiceFunctionsRequest",
+}) as any as S.Schema<ListServiceFunctionsRequest>;
 export type ServiceFunctionList = ServiceFunction[];
 export const ServiceFunctionList = /*@__PURE__*/ S.Array(ServiceFunction);
 export interface ListServiceFunctionsResponse {
   serviceFunctions: ServiceFunction[];
   nextToken?: string;
 }
-export const ListServiceFunctionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceFunctions: ServiceFunctionList,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListServiceFunctionsResponse",
-  }) as any as S.Schema<ListServiceFunctionsResponse>;
+export const ListServiceFunctionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceFunctions: ServiceFunctionList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListServiceFunctionsResponse",
+}) as any as S.Schema<ListServiceFunctionsResponse>;
 export interface ListServicesRequest {
   systemArn?: string;
   userJourneyId?: string;
@@ -3067,25 +3100,24 @@ export interface ListServiceTopologyEdgesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListServiceTopologyEdgesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/v2/list-service-topology-edges" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListServiceTopologyEdgesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v2/list-service-topology-edges" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListServiceTopologyEdgesRequest",
-  }) as any as S.Schema<ListServiceTopologyEdgesRequest>;
+  ),
+).annotate({
+  identifier: "ListServiceTopologyEdgesRequest",
+}) as any as S.Schema<ListServiceTopologyEdgesRequest>;
 export type TopologyType =
   | "CONTAINMENT"
   | "DATA_FLOW"
@@ -3093,6 +3125,7 @@ export type TopologyType =
   | "PERMISSIONS"
   | (string & {});
 export const TopologyType = /*@__PURE__*/ S.String;
+
 export interface EdgePropertySummary {
   topologyType?: TopologyType;
   label?: string;
@@ -3122,21 +3155,21 @@ export const ServiceTopologyEdgeSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceTopologyEdgeSummary",
 }) as any as S.Schema<ServiceTopologyEdgeSummary>;
 export type ServiceTopologyEdgeSummaryList = ServiceTopologyEdgeSummary[];
-export const ServiceTopologyEdgeSummaryList =
-  /*@__PURE__*/ S.Array(ServiceTopologyEdgeSummary);
+export const ServiceTopologyEdgeSummaryList = /*@__PURE__*/ S.Array(
+  ServiceTopologyEdgeSummary,
+);
 export interface ListServiceTopologyEdgesResponse {
   serviceTopologyEdgeSummaries?: ServiceTopologyEdgeSummary[];
   nextToken?: string;
 }
-export const ListServiceTopologyEdgesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceTopologyEdgeSummaries: S.optional(ServiceTopologyEdgeSummaryList),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListServiceTopologyEdgesResponse",
-  }) as any as S.Schema<ListServiceTopologyEdgesResponse>;
+export const ListServiceTopologyEdgesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceTopologyEdgeSummaries: S.optional(ServiceTopologyEdgeSummaryList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListServiceTopologyEdgesResponse",
+}) as any as S.Schema<ListServiceTopologyEdgesResponse>;
 export type SystemEventType =
   | "SYSTEM_CREATED"
   | "SYSTEM_DELETED"
@@ -3149,6 +3182,7 @@ export type SystemEventType =
   | "SYSTEM_POLICY_DISASSOCIATED"
   | (string & {});
 export const SystemEventType = /*@__PURE__*/ S.String;
+
 export type SystemEventTypeList = SystemEventType[];
 export const SystemEventTypeList = /*@__PURE__*/ S.Array(SystemEventType);
 export interface ListSystemEventsRequest {
@@ -3214,15 +3248,14 @@ export interface SystemUserJourneyCreatedMetadata {
   userJourneyName?: string;
   associatedServices?: ServiceReference[];
 }
-export const SystemUserJourneyCreatedMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      userJourneyName: S.optional(S.String),
-      associatedServices: S.optional(ServiceReferenceList),
-    }),
-  ).annotate({
-    identifier: "SystemUserJourneyCreatedMetadata",
-  }) as any as S.Schema<SystemUserJourneyCreatedMetadata>;
+export const SystemUserJourneyCreatedMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userJourneyName: S.optional(S.String),
+    associatedServices: S.optional(ServiceReferenceList),
+  }),
+).annotate({
+  identifier: "SystemUserJourneyCreatedMetadata",
+}) as any as S.Schema<SystemUserJourneyCreatedMetadata>;
 export interface StringChange {
   oldValue?: string;
   newValue?: string;
@@ -3258,28 +3291,26 @@ export interface SystemUserJourneyUpdatedMetadata {
   userJourneyName?: string;
   changes?: UserJourneyChanges;
 }
-export const SystemUserJourneyUpdatedMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      userJourneyName: S.optional(S.String),
-      changes: S.optional(UserJourneyChanges),
-    }),
-  ).annotate({
-    identifier: "SystemUserJourneyUpdatedMetadata",
-  }) as any as S.Schema<SystemUserJourneyUpdatedMetadata>;
+export const SystemUserJourneyUpdatedMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userJourneyName: S.optional(S.String),
+    changes: S.optional(UserJourneyChanges),
+  }),
+).annotate({
+  identifier: "SystemUserJourneyUpdatedMetadata",
+}) as any as S.Schema<SystemUserJourneyUpdatedMetadata>;
 export interface SystemUserJourneyDeletedMetadata {
   userJourneyName?: string;
   associatedServicesAtDeletion?: ServiceReference[];
 }
-export const SystemUserJourneyDeletedMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      userJourneyName: S.optional(S.String),
-      associatedServicesAtDeletion: S.optional(ServiceReferenceList),
-    }),
-  ).annotate({
-    identifier: "SystemUserJourneyDeletedMetadata",
-  }) as any as S.Schema<SystemUserJourneyDeletedMetadata>;
+export const SystemUserJourneyDeletedMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userJourneyName: S.optional(S.String),
+    associatedServicesAtDeletion: S.optional(ServiceReferenceList),
+  }),
+).annotate({
+  identifier: "SystemUserJourneyDeletedMetadata",
+}) as any as S.Schema<SystemUserJourneyDeletedMetadata>;
 export type UserJourneyNameList = string[];
 export const UserJourneyNameList = /*@__PURE__*/ S.Array(S.String);
 export interface SystemServiceAssociatedMetadata {
@@ -3287,59 +3318,55 @@ export interface SystemServiceAssociatedMetadata {
   serviceArn?: string;
   userJourneys?: string[];
 }
-export const SystemServiceAssociatedMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceName: S.optional(S.String),
-      serviceArn: S.optional(S.String),
-      userJourneys: S.optional(UserJourneyNameList),
-    }),
-  ).annotate({
-    identifier: "SystemServiceAssociatedMetadata",
-  }) as any as S.Schema<SystemServiceAssociatedMetadata>;
+export const SystemServiceAssociatedMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.optional(S.String),
+    serviceArn: S.optional(S.String),
+    userJourneys: S.optional(UserJourneyNameList),
+  }),
+).annotate({
+  identifier: "SystemServiceAssociatedMetadata",
+}) as any as S.Schema<SystemServiceAssociatedMetadata>;
 export interface SystemServiceDisassociatedMetadata {
   serviceName?: string;
   serviceArn?: string;
   userJourneysAffected?: string[];
   comment?: string;
 }
-export const SystemServiceDisassociatedMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceName: S.optional(S.String),
-      serviceArn: S.optional(S.String),
-      userJourneysAffected: S.optional(UserJourneyNameList),
-      comment: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SystemServiceDisassociatedMetadata",
-  }) as any as S.Schema<SystemServiceDisassociatedMetadata>;
+export const SystemServiceDisassociatedMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.optional(S.String),
+    serviceArn: S.optional(S.String),
+    userJourneysAffected: S.optional(UserJourneyNameList),
+    comment: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SystemServiceDisassociatedMetadata",
+}) as any as S.Schema<SystemServiceDisassociatedMetadata>;
 export interface SystemPolicyAssociatedMetadata {
   policyName?: string;
   policyArn?: string;
 }
-export const SystemPolicyAssociatedMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      policyName: S.optional(S.String),
-      policyArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SystemPolicyAssociatedMetadata",
-  }) as any as S.Schema<SystemPolicyAssociatedMetadata>;
+export const SystemPolicyAssociatedMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyName: S.optional(S.String),
+    policyArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SystemPolicyAssociatedMetadata",
+}) as any as S.Schema<SystemPolicyAssociatedMetadata>;
 export interface SystemPolicyDisassociatedMetadata {
   policyName?: string;
   policyArn?: string;
 }
-export const SystemPolicyDisassociatedMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      policyName: S.optional(S.String),
-      policyArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SystemPolicyDisassociatedMetadata",
-  }) as any as S.Schema<SystemPolicyDisassociatedMetadata>;
+export const SystemPolicyDisassociatedMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyName: S.optional(S.String),
+    policyArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SystemPolicyDisassociatedMetadata",
+}) as any as S.Schema<SystemPolicyDisassociatedMetadata>;
 export type SystemEventMetadata =
   | {
       systemCreated: SystemCreatedMetadata;
@@ -3575,12 +3602,11 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(TagMap) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagMap) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListUserJourneysRequest {
   systemArn: string;
   maxResults?: number;
@@ -3638,41 +3664,39 @@ export interface StartFailureModeAssessmentRequest {
   serviceArn: string;
   clientToken?: string;
 }
-export const StartFailureModeAssessmentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceArn: S.String,
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/v2/start-failure-mode-assessment" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartFailureModeAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceArn: S.String,
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/v2/start-failure-mode-assessment" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartFailureModeAssessmentRequest",
-  }) as any as S.Schema<StartFailureModeAssessmentRequest>;
+  ),
+).annotate({
+  identifier: "StartFailureModeAssessmentRequest",
+}) as any as S.Schema<StartFailureModeAssessmentRequest>;
 export interface StartFailureModeAssessmentResponse {
   assessmentId?: string;
   serviceArn?: string;
   assessmentStatus?: AssessmentStatus;
   startedAt?: Date;
 }
-export const StartFailureModeAssessmentResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assessmentId: S.optional(S.String),
-      serviceArn: S.optional(S.String),
-      assessmentStatus: S.optional(AssessmentStatus),
-      startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }),
-  ).annotate({
-    identifier: "StartFailureModeAssessmentResponse",
-  }) as any as S.Schema<StartFailureModeAssessmentResponse>;
+export const StartFailureModeAssessmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assessmentId: S.optional(S.String),
+    serviceArn: S.optional(S.String),
+    assessmentStatus: S.optional(AssessmentStatus),
+    startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "StartFailureModeAssessmentResponse",
+}) as any as S.Schema<StartFailureModeAssessmentResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -3813,35 +3837,33 @@ export interface UpdateFailureModeFindingRequest {
   serviceArn: string;
   comment?: string;
 }
-export const UpdateFailureModeFindingRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      findingId: S.String,
-      status: FindingStatus,
-      serviceArn: S.String,
-      comment: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/v2/update-failure-mode-finding" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateFailureModeFindingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    findingId: S.String,
+    status: FindingStatus,
+    serviceArn: S.String,
+    comment: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/v2/update-failure-mode-finding" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateFailureModeFindingRequest",
-  }) as any as S.Schema<UpdateFailureModeFindingRequest>;
+  ),
+).annotate({
+  identifier: "UpdateFailureModeFindingRequest",
+}) as any as S.Schema<UpdateFailureModeFindingRequest>;
 export interface UpdateFailureModeFindingResponse {
   finding?: Finding;
 }
-export const UpdateFailureModeFindingResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ finding: S.optional(Finding) }),
-  ).annotate({
-    identifier: "UpdateFailureModeFindingResponse",
-  }) as any as S.Schema<UpdateFailureModeFindingResponse>;
+export const UpdateFailureModeFindingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ finding: S.optional(Finding) }),
+).annotate({
+  identifier: "UpdateFailureModeFindingResponse",
+}) as any as S.Schema<UpdateFailureModeFindingResponse>;
 export interface UpdatePolicyRequest {
   policyArn: string;
   description?: string;
@@ -3927,36 +3949,34 @@ export interface UpdateServiceFunctionRequest {
   description?: string;
   criticality?: ServiceFunctionCriticality;
 }
-export const UpdateServiceFunctionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceArn: S.String,
-      serviceFunctionId: S.String,
-      name: S.optional(S.String),
-      description: S.optional(S.String),
-      criticality: S.optional(ServiceFunctionCriticality),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/v2/update-function" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateServiceFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceArn: S.String,
+    serviceFunctionId: S.String,
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    criticality: S.optional(ServiceFunctionCriticality),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/v2/update-function" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateServiceFunctionRequest",
-  }) as any as S.Schema<UpdateServiceFunctionRequest>;
+  ),
+).annotate({
+  identifier: "UpdateServiceFunctionRequest",
+}) as any as S.Schema<UpdateServiceFunctionRequest>;
 export interface UpdateServiceFunctionResponse {
   serviceFunction: ServiceFunction;
 }
-export const UpdateServiceFunctionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ serviceFunction: ServiceFunction }),
-  ).annotate({
-    identifier: "UpdateServiceFunctionResponse",
-  }) as any as S.Schema<UpdateServiceFunctionResponse>;
+export const UpdateServiceFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ serviceFunction: ServiceFunction }),
+).annotate({
+  identifier: "UpdateServiceFunctionResponse",
+}) as any as S.Schema<UpdateServiceFunctionResponse>;
 export interface UpdateSystemRequest {
   systemArn: string;
   description?: string;
@@ -4023,46 +4043,27 @@ export const UpdateUserJourneyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateUserJourneyResponse",
 }) as any as S.Schema<UpdateUserJourneyResponse>;
+export type ValidationExceptionReason =
+  | "INVALID_FIELD_VALUE"
+  | "DUPLICATE_VALUE"
+  | "MISSING_REQUIRED_FIELD"
+  | "OTHER"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String },
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.String },
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    message: S.String,
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(S.String),
-  },
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.String },
-).pipe(C.withQuotaError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.String,
-    reason: S.optional(ValidationExceptionReason),
-    fieldList: S.optional(ValidationExceptionFieldList),
-  },
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.String, retryAfterSeconds: S.optional(S.Number) },
-).pipe(C.withThrottlingError) {}
-
-//# Operations
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type CreateAssertionError =
   | AccessDeniedException
   | ConflictException
@@ -4090,8 +4091,11 @@ export const createAssertion: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAssertion",
 }));
+
 export type CreateInputSourceError =
   | AccessDeniedException
   | ConflictException
@@ -4119,8 +4123,11 @@ export const createInputSource: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInputSource",
 }));
+
 export type CreatePolicyError =
   | AccessDeniedException
   | ConflictException
@@ -4148,8 +4155,11 @@ export const createPolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePolicy",
 }));
+
 export type CreateReportError =
   | AccessDeniedException
   | ConflictException
@@ -4177,8 +4187,11 @@ export const createReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReport",
 }));
+
 export type CreateServiceError =
   | AccessDeniedException
   | ConflictException
@@ -4206,8 +4219,11 @@ export const createService: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateService",
 }));
+
 export type CreateServiceFunctionError =
   | AccessDeniedException
   | ConflictException
@@ -4235,8 +4251,11 @@ export const createServiceFunction: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateServiceFunction",
 }));
+
 export type CreateServiceFunctionResourcesError =
   | AccessDeniedException
   | ConflictException
@@ -4262,8 +4281,11 @@ export const createServiceFunctionResources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateServiceFunctionResources",
 }));
+
 export type CreateSystemError =
   | AccessDeniedException
   | ConflictException
@@ -4291,8 +4313,11 @@ export const createSystem: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSystem",
 }));
+
 export type CreateUserJourneyError =
   | AccessDeniedException
   | ConflictException
@@ -4320,8 +4345,11 @@ export const createUserJourney: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUserJourney",
 }));
+
 export type DeleteAssertionError =
   | AccessDeniedException
   | InternalServerException
@@ -4345,8 +4373,11 @@ export const deleteAssertion: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssertion",
 }));
+
 export type DeleteInputSourceError =
   | AccessDeniedException
   | InternalServerException
@@ -4370,8 +4401,11 @@ export const deleteInputSource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInputSource",
 }));
+
 export type DeletePolicyError =
   | AccessDeniedException
   | ConflictException
@@ -4397,8 +4431,11 @@ export const deletePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePolicy",
 }));
+
 export type DeleteServiceError =
   | AccessDeniedException
   | ConflictException
@@ -4424,8 +4461,11 @@ export const deleteService: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteService",
 }));
+
 export type DeleteServiceFunctionError =
   | AccessDeniedException
   | ConflictException
@@ -4451,8 +4491,11 @@ export const deleteServiceFunction: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteServiceFunction",
 }));
+
 export type DeleteServiceFunctionResourcesError =
   | AccessDeniedException
   | ConflictException
@@ -4478,8 +4521,11 @@ export const deleteServiceFunctionResources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteServiceFunctionResources",
 }));
+
 export type DeleteSystemError =
   | AccessDeniedException
   | ConflictException
@@ -4505,8 +4551,11 @@ export const deleteSystem: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSystem",
 }));
+
 export type DeleteUserJourneyError =
   | AccessDeniedException
   | ConflictException
@@ -4532,8 +4581,11 @@ export const deleteUserJourney: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUserJourney",
 }));
+
 export type GetFailureModeFindingError =
   | AccessDeniedException
   | InternalServerException
@@ -4557,8 +4609,11 @@ export const getFailureModeFinding: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFailureModeFinding",
 }));
+
 export type GetPolicyError =
   | AccessDeniedException
   | InternalServerException
@@ -4582,8 +4637,11 @@ export const getPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPolicy",
 }));
+
 export type GetServiceError =
   | AccessDeniedException
   | InternalServerException
@@ -4607,8 +4665,11 @@ export const getService: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetService",
 }));
+
 export type GetSystemError =
   | AccessDeniedException
   | InternalServerException
@@ -4632,8 +4693,11 @@ export const getSystem: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSystem",
 }));
+
 export type GetUserJourneyError =
   | AccessDeniedException
   | InternalServerException
@@ -4657,8 +4721,11 @@ export const getUserJourney: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUserJourney",
 }));
+
 export type ImportAppError =
   | AccessDeniedException
   | ConflictException
@@ -4684,8 +4751,11 @@ export const importApp: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportApp",
 }));
+
 export type ImportPolicyError =
   | AccessDeniedException
   | ConflictException
@@ -4711,8 +4781,11 @@ export const importPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportPolicy",
 }));
+
 export type ListAssertionsError =
   | AccessDeniedException
   | InternalServerException
@@ -4751,6 +4824,8 @@ export const listAssertions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssertions",
   pagination: {
     inputToken: "nextToken",
@@ -4759,6 +4834,7 @@ export const listAssertions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListDependenciesError =
   | AccessDeniedException
   | InternalServerException
@@ -4797,6 +4873,8 @@ export const listDependencies: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDependencies",
   pagination: {
     inputToken: "nextToken",
@@ -4805,6 +4883,7 @@ export const listDependencies: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListFailureModeAssessmentsError =
   | AccessDeniedException
   | InternalServerException
@@ -4843,6 +4922,8 @@ export const listFailureModeAssessments: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFailureModeAssessments",
   pagination: {
     inputToken: "nextToken",
@@ -4851,6 +4932,7 @@ export const listFailureModeAssessments: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListFailureModeFindingsError =
   | AccessDeniedException
   | InternalServerException
@@ -4889,6 +4971,8 @@ export const listFailureModeFindings: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFailureModeFindings",
   pagination: {
     inputToken: "nextToken",
@@ -4897,6 +4981,7 @@ export const listFailureModeFindings: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListInputSourcesError =
   | AccessDeniedException
   | InternalServerException
@@ -4935,6 +5020,8 @@ export const listInputSources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInputSources",
   pagination: {
     inputToken: "nextToken",
@@ -4943,6 +5030,7 @@ export const listInputSources: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPoliciesError =
   | AccessDeniedException
   | InternalServerException
@@ -4975,6 +5063,8 @@ export const listPolicies: API.OperationMethod<
   input: ListPoliciesRequest,
   output: ListPoliciesResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPolicies",
   pagination: {
     inputToken: "nextToken",
@@ -4983,6 +5073,7 @@ export const listPolicies: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListReportsError =
   | AccessDeniedException
   | InternalServerException
@@ -5023,6 +5114,8 @@ export const listReports: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReports",
   pagination: {
     inputToken: "nextToken",
@@ -5031,6 +5124,7 @@ export const listReports: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListResourcesError =
   | AccessDeniedException
   | InternalServerException
@@ -5069,6 +5163,8 @@ export const listResources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResources",
   pagination: {
     inputToken: "nextToken",
@@ -5077,6 +5173,7 @@ export const listResources: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListServiceEventsError =
   | AccessDeniedException
   | InternalServerException
@@ -5115,6 +5212,8 @@ export const listServiceEvents: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServiceEvents",
   pagination: {
     inputToken: "nextToken",
@@ -5123,6 +5222,7 @@ export const listServiceEvents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListServiceFunctionsError =
   | AccessDeniedException
   | InternalServerException
@@ -5161,6 +5261,8 @@ export const listServiceFunctions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServiceFunctions",
   pagination: {
     inputToken: "nextToken",
@@ -5169,6 +5271,7 @@ export const listServiceFunctions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListServicesError =
   | AccessDeniedException
   | InternalServerException
@@ -5201,6 +5304,8 @@ export const listServices: API.OperationMethod<
   input: ListServicesRequest,
   output: ListServicesResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServices",
   pagination: {
     inputToken: "nextToken",
@@ -5209,6 +5314,7 @@ export const listServices: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListServiceTopologyEdgesError =
   | AccessDeniedException
   | InternalServerException
@@ -5241,6 +5347,8 @@ export const listServiceTopologyEdges: API.OperationMethod<
   input: ListServiceTopologyEdgesRequest,
   output: ListServiceTopologyEdgesResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServiceTopologyEdges",
   pagination: {
     inputToken: "nextToken",
@@ -5249,6 +5357,7 @@ export const listServiceTopologyEdges: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSystemEventsError =
   | AccessDeniedException
   | InternalServerException
@@ -5287,6 +5396,8 @@ export const listSystemEvents: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSystemEvents",
   pagination: {
     inputToken: "nextToken",
@@ -5295,6 +5406,7 @@ export const listSystemEvents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSystemsError =
   | AccessDeniedException
   | InternalServerException
@@ -5327,6 +5439,8 @@ export const listSystems: API.OperationMethod<
   input: ListSystemsRequest,
   output: ListSystemsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSystems",
   pagination: {
     inputToken: "nextToken",
@@ -5335,6 +5449,7 @@ export const listSystems: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -5360,8 +5475,11 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListUserJourneysError =
   | AccessDeniedException
   | InternalServerException
@@ -5400,6 +5518,8 @@ export const listUserJourneys: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUserJourneys",
   pagination: {
     inputToken: "nextToken",
@@ -5408,6 +5528,7 @@ export const listUserJourneys: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type StartFailureModeAssessmentError =
   | AccessDeniedException
   | ConflictException
@@ -5435,8 +5556,11 @@ export const startFailureModeAssessment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartFailureModeAssessment",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -5462,8 +5586,11 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -5489,8 +5616,11 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAssertionError =
   | AccessDeniedException
   | ConflictException
@@ -5516,8 +5646,11 @@ export const updateAssertion: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAssertion",
 }));
+
 export type UpdateDependencyError =
   | AccessDeniedException
   | ConflictException
@@ -5543,8 +5676,11 @@ export const updateDependency: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDependency",
 }));
+
 export type UpdateFailureModeFindingError =
   | AccessDeniedException
   | ConflictException
@@ -5570,8 +5706,11 @@ export const updateFailureModeFinding: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFailureModeFinding",
 }));
+
 export type UpdatePolicyError =
   | AccessDeniedException
   | ConflictException
@@ -5597,8 +5736,11 @@ export const updatePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePolicy",
 }));
+
 export type UpdateServiceError =
   | AccessDeniedException
   | ConflictException
@@ -5626,8 +5768,11 @@ export const updateService: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateService",
 }));
+
 export type UpdateServiceFunctionError =
   | AccessDeniedException
   | ConflictException
@@ -5653,8 +5798,11 @@ export const updateServiceFunction: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateServiceFunction",
 }));
+
 export type UpdateSystemError =
   | AccessDeniedException
   | ConflictException
@@ -5680,8 +5828,11 @@ export const updateSystem: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSystem",
 }));
+
 export type UpdateUserJourneyError =
   | AccessDeniedException
   | ConflictException
@@ -5707,5 +5858,7 @@ export const updateUserJourney: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUserJourney",
 }));

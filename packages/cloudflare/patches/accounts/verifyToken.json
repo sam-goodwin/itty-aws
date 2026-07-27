@@ -1,6 +1,88 @@
 {
-  "errors": {
-    "MissingAuthenticationToken": [{ "code": 1001 }],
-    "InvalidRoute": [{ "code": 7003 }]
-  }
+  "description": "Align accounts#TokensVerify with distilled cloudflare/accounts verifyToken",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.accounts#TokensVerify",
+      "path": "/shapes/com.cloudflare.accounts#VerifyToken"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.accounts#TokensVerifyRequest",
+      "path": "/shapes/com.cloudflare.accounts#VerifyTokenRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.accounts#VerifyToken/input/target",
+      "value": "com.cloudflare.accounts#VerifyTokenRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.accounts#TokensVerifyResponse",
+      "path": "/shapes/com.cloudflare.accounts#VerifyTokenResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.accounts#VerifyToken/output/target",
+      "value": "com.cloudflare.accounts#VerifyTokenResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#MissingAuthenticationToken",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1001
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#VerifyToken/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.accounts#MissingAuthenticationToken"
+        },
+        {
+          "target": "com.cloudflare.accounts#InvalidRoute"
+        }
+      ]
+    }
+  ]
 }

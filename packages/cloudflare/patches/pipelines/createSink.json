@@ -1,29 +1,117 @@
 {
-  "errors": {
-    "SinkAuthFailed": [
-      {
-        "code": 1012,
-        "message": {
-          "includes": "could not authenticate"
+  "description": "Align pipelines#SinksCreate with distilled cloudflare/pipelines createSink",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.pipelines#SinksCreate",
+      "path": "/shapes/com.cloudflare.pipelines#CreateSink"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.pipelines#SinksCreateRequest",
+      "path": "/shapes/com.cloudflare.pipelines#CreateSinkRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.pipelines#CreateSink/input/target",
+      "value": "com.cloudflare.pipelines#CreateSinkRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.pipelines#SinksCreateResponse",
+      "path": "/shapes/com.cloudflare.pipelines#CreateSinkResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.pipelines#CreateSink/output/target",
+      "value": "com.cloudflare.pipelines#CreateSinkResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.pipelines#SinkAuthFailed",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1012,
+              "message": {
+                "includes": "could not authenticate"
+              }
+            }
+          ]
         }
       }
-    ],
-    "InvalidSinkConfig": [
-      {
-        "code": 1012
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.pipelines#InvalidSinkConfig",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1012
+            }
+          ]
+        }
       }
-    ],
-    "SinkAlreadyExists": [
-      {
-        "code": 1003
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.pipelines#SinkAlreadyExists",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1003
+            }
+          ]
+        }
       }
-    ]
-  },
-  "response": {
-    "properties": {
-      "config.credentials": {
-        "optional": true
-      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.pipelines#CreateSink/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.pipelines#SinkAuthFailed"
+        },
+        {
+          "target": "com.cloudflare.pipelines#InvalidSinkConfig"
+        },
+        {
+          "target": "com.cloudflare.pipelines#SinkAlreadyExists"
+        }
+      ]
     }
-  }
+  ]
 }

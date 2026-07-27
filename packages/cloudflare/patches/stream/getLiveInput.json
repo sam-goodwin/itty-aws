@@ -1,6 +1,88 @@
 {
-  "errors": {
-    "LiveInputNotFound": [{ "code": 10003 }],
-    "Forbidden": [{ "status": 403 }]
-  }
+  "description": "Align stream#LiveInputsGet with distilled cloudflare/stream getLiveInput",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.stream#LiveInputsGet",
+      "path": "/shapes/com.cloudflare.stream#GetLiveInput"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.stream#LiveInputsGetRequest",
+      "path": "/shapes/com.cloudflare.stream#GetLiveInputRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.stream#GetLiveInput/input/target",
+      "value": "com.cloudflare.stream#GetLiveInputRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.stream#LiveInputsGetResponse",
+      "path": "/shapes/com.cloudflare.stream#GetLiveInputResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.stream#GetLiveInput/output/target",
+      "value": "com.cloudflare.stream#GetLiveInputResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.stream#LiveInputNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.stream#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.stream#GetLiveInput/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.stream#LiveInputNotFound"
+        },
+        {
+          "target": "com.cloudflare.stream#Forbidden"
+        }
+      ]
+    }
+  ]
 }

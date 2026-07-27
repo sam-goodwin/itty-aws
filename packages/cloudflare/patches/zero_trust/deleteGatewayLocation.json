@@ -1,0 +1,114 @@
+{
+  "description": "Align zero_trust#GatewayLocationsDelete with distilled cloudflare/zero-trust deleteGatewayLocation",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#GatewayLocationsDelete",
+      "path": "/shapes/com.cloudflare.zero_trust#DeleteGatewayLocation"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#GatewayLocationsDeleteRequest",
+      "path": "/shapes/com.cloudflare.zero_trust#DeleteGatewayLocationRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zero_trust#DeleteGatewayLocation/input/target",
+      "value": "com.cloudflare.zero_trust#DeleteGatewayLocationRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#GatewayLocationsDeleteResponse",
+      "path": "/shapes/com.cloudflare.zero_trust#DeleteGatewayLocationResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zero_trust#DeleteGatewayLocation/output/target",
+      "value": "com.cloudflare.zero_trust#DeleteGatewayLocationResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#GatewayLocationNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1103
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#CannotDeleteDefaultGatewayLocation",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1217
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#DeleteGatewayLocation/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.zero_trust#GatewayLocationNotFound"
+        },
+        {
+          "target": "com.cloudflare.zero_trust#CannotDeleteDefaultGatewayLocation"
+        },
+        {
+          "target": "com.cloudflare.zero_trust#Forbidden"
+        }
+      ]
+    }
+  ]
+}

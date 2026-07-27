@@ -1,94 +1,74 @@
 {
   "name": "@distilled.cloud/axiom",
-  "version": "0.30.2",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/alchemy-run/distilled",
-    "directory": "packages/axiom"
-  },
+  "version": "0.31.0",
+  "private": true,
   "license": "Apache-2.0",
   "type": "module",
   "sideEffects": false,
-  "module": "src/index.ts",
   "files": [
-    "lib",
     "src"
   ],
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
+      "types": "./src/index.ts",
       "bun": "./src/index.ts",
-      "default": "./lib/index.js"
-    },
-    "./Category": {
-      "types": "./lib/category.d.ts",
-      "bun": "./src/category.ts",
-      "default": "./lib/category.js"
-    },
-    "./Client": {
-      "types": "./lib/client.d.ts",
-      "bun": "./src/client.ts",
-      "default": "./lib/client.js"
+      "default": "./src/index.ts"
     },
     "./Credentials": {
-      "types": "./lib/credentials.d.ts",
+      "types": "./src/credentials.ts",
       "bun": "./src/credentials.ts",
-      "default": "./lib/credentials.js"
+      "default": "./src/credentials.ts"
     },
     "./Errors": {
-      "types": "./lib/errors.d.ts",
+      "types": "./src/errors.ts",
       "bun": "./src/errors.ts",
-      "default": "./lib/errors.js"
-    },
-    "./edge-ingest": {
-      "types": "./lib/edge-ingest.d.ts",
-      "bun": "./src/edge-ingest.ts",
-      "default": "./lib/edge-ingest.js"
-    },
-    "./edge-query": {
-      "types": "./lib/edge-query.d.ts",
-      "bun": "./src/edge-query.ts",
-      "default": "./lib/edge-query.js"
-    },
-    "./Retry": {
-      "types": "./lib/retry.d.ts",
-      "bun": "./src/retry.ts",
-      "default": "./lib/retry.js"
-    },
-    "./Sensitive": {
-      "types": "./lib/sensitive.d.ts",
-      "bun": "./src/sensitive.ts",
-      "default": "./lib/sensitive.js"
+      "default": "./src/errors.ts"
     },
     "./Traits": {
-      "types": "./lib/traits.d.ts",
+      "types": "./src/traits.ts",
       "bun": "./src/traits.ts",
-      "default": "./lib/traits.js"
+      "default": "./src/traits.ts"
+    },
+    "./Protocol": {
+      "types": "./src/protocol.ts",
+      "bun": "./src/protocol.ts",
+      "default": "./src/protocol.ts"
+    },
+    "./Retry": {
+      "types": "./src/retry.ts",
+      "bun": "./src/retry.ts",
+      "default": "./src/retry.ts"
+    },
+    "./edge-ingest": {
+      "types": "./src/edge-ingest.ts",
+      "bun": "./src/edge-ingest.ts",
+      "default": "./src/edge-ingest.ts"
+    },
+    "./edge-query": {
+      "types": "./src/edge-query.ts",
+      "bun": "./src/edge-query.ts",
+      "default": "./src/edge-query.ts"
+    },
+    "./*": {
+      "types": "./src/services/*.ts",
+      "bun": "./src/services/*.ts",
+      "default": "./src/services/*.ts"
     }
   },
   "scripts": {
-    "typecheck": "tsc",
-    "build": "tsc -b",
-    "fmt": "oxfmt --write src",
-    "lint": "oxlint --fix src",
-    "check": "tsc && oxlint src && oxfmt --check src",
-    "test": "bunx vitest run test --passWithNoTests",
-    "publish:npm": "bun run build && bun publish --access public",
-    "generate": "bun run scripts/generate.ts && oxlint --fix src && oxfmt --write src && oxfmt --write src",
+    "convert": "bun scripts/convert.ts",
+    "generate": "bun scripts/convert.ts && bun scripts/generate.ts",
+    "typecheck": "tsgo -p tsconfig.json",
     "specs:fetch": "git submodule update --force --init --recursive --depth=1 specs/docs && git -C specs/docs checkout -- .",
     "specs:update": "git -C specs/docs fetch && git -C specs/docs checkout main && git -C specs/docs pull"
   },
   "dependencies": {
-    "@distilled.cloud/core": "workspace:*"
+    "@distilled.cloud/core": "workspace:*",
+    "@effect/platform-bun": "catalog:",
+    "effect": "catalog:"
   },
   "devDependencies": {
     "@types/bun": "catalog:",
-    "@types/node": "catalog:",
-    "dotenv": "catalog:",
-    "rolldown": "catalog:",
-    "vitest": "catalog:"
-  },
-  "peerDependencies": {
-    "effect": "catalog:"
+    "@types/node": "catalog:"
   }
 }

@@ -5,7 +5,9 @@
         {
           "name": "SourceSnapshotNotFound",
           "from": "BadRequest",
-          "message": { "includes": "SourceSnapshotARN provided is not a valid ARN" }
+          "message": {
+            "includes": "SourceSnapshotARN provided is not a valid ARN"
+          }
         }
       ]
     },

@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -85,29 +87,208 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
+  "AlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AlreadyExistsException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ClientTokenConflictException extends S.TaggedErrorClass<ClientTokenConflictException>()(
+  "ClientTokenConflictException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClientTokenConflictException",
+      httpResponseCode: 409,
+    }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ConcurrentModificationException",
+      httpResponseCode: 500,
+    }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class ConcurrentOperationException extends S.TaggedErrorClass<ConcurrentOperationException>()(
+  "ConcurrentOperationException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ConcurrentOperationException",
+      httpResponseCode: 409,
+    }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class GeneralServiceException extends S.TaggedErrorClass<GeneralServiceException>()(
+  "GeneralServiceException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "GeneralServiceException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class HandlerFailureException extends S.TaggedErrorClass<HandlerFailureException>()(
+  "HandlerFailureException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "HandlerFailureException", httpResponseCode: 502 }),
+    T.HttpError(502),
+  ),
+).pipe(C.withServerError) {}
+export class HandlerInternalFailureException extends S.TaggedErrorClass<HandlerInternalFailureException>()(
+  "HandlerInternalFailureException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "HandlerInternalFailureException",
+      httpResponseCode: 502,
+    }),
+    T.HttpError(502),
+  ),
+).pipe(C.withServerError) {}
+export class InvalidCredentialsException extends S.TaggedErrorClass<InvalidCredentialsException>()(
+  "InvalidCredentialsException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidCredentialsException",
+      httpResponseCode: 401,
+    }),
+    T.HttpError(401),
+  ),
+).pipe(C.withAuthError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidRequestException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class NetworkFailureException extends S.TaggedErrorClass<NetworkFailureException>()(
+  "NetworkFailureException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "NetworkFailureException", httpResponseCode: 502 }),
+    T.HttpError(502),
+  ),
+).pipe(C.withServerError) {}
+export class NotStabilizedException extends S.TaggedErrorClass<NotStabilizedException>()(
+  "NotStabilizedException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "NotStabilizedException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class NotUpdatableException extends S.TaggedErrorClass<NotUpdatableException>()(
+  "NotUpdatableException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "NotUpdatableException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class PrivateTypeException extends S.TaggedErrorClass<PrivateTypeException>()(
+  "PrivateTypeException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "PrivateTypeException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class RequestTokenNotFoundException extends S.TaggedErrorClass<RequestTokenNotFoundException>()(
+  "RequestTokenNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "RequestTokenNotFoundException",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceConflictException extends S.TaggedErrorClass<ResourceConflictException>()(
+  "ResourceConflictException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ResourceConflictException",
+      httpResponseCode: 409,
+    }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ResourceNotFoundException",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ServiceInternalErrorException extends S.TaggedErrorClass<ServiceInternalErrorException>()(
+  "ServiceInternalErrorException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ServiceInternalErrorException",
+      httpResponseCode: 502,
+    }),
+    T.HttpError(502),
+  ),
+).pipe(C.withServerError) {}
+export class ServiceLimitExceededException extends S.TaggedErrorClass<ServiceLimitExceededException>()(
+  "ServiceLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ServiceLimitExceededException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ThrottlingException", httpResponseCode: 429 }),
+    T.HttpError(429),
+  ),
+).pipe(C.withThrottlingError) {}
+export class TypeNotFoundException extends S.TaggedErrorClass<TypeNotFoundException>()(
+  "TypeNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TypeNotFoundException", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class UnsupportedActionException extends S.TaggedErrorClass<UnsupportedActionException>()(
+  "UnsupportedActionException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "UnsupportedActionException",
+      httpResponseCode: 405,
+    }),
+    T.HttpError(405),
+  ),
+).pipe(C.withBadRequestError) {}
 export type RequestToken = string;
-export type TypeName = string;
-export type Identifier = string;
-export type Operation = string;
-export type OperationStatus = string;
-export type Properties = string | redacted.Redacted<string>;
-export type StatusMessage = string;
-export type HandlerErrorCode = string;
-export type ErrorMessage = string;
-export type TypeVersionId = string;
-export type RoleArn = string;
-export type ClientToken = string;
-export type HookTypeArn = string;
-export type HookInvocationPoint = string;
-export type HookStatus = string;
-export type HookFailureMode = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type HandlerNextToken = string;
-export type PatchDocument = string | redacted.Redacted<string>;
-
-//# Schemas
 export interface CancelResourceRequestInput {
   RequestToken: string;
 }
@@ -118,6 +299,13 @@ export const CancelResourceRequestInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelResourceRequestInput",
 }) as any as S.Schema<CancelResourceRequestInput>;
+export type TypeName = string;
+export type Identifier = string;
+export type Operation = string;
+export type OperationStatus = string;
+export type Properties = string | redacted.Redacted<string>;
+export type StatusMessage = string;
+export type HandlerErrorCode = string;
 export interface ProgressEvent {
   TypeName?: string;
   Identifier?: string;
@@ -149,12 +337,14 @@ export const ProgressEvent = /*@__PURE__*/ S.suspend(() =>
 export interface CancelResourceRequestOutput {
   ProgressEvent?: ProgressEvent;
 }
-export const CancelResourceRequestOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ProgressEvent: S.optional(ProgressEvent) }),
-  ).annotate({
-    identifier: "CancelResourceRequestOutput",
-  }) as any as S.Schema<CancelResourceRequestOutput>;
+export const CancelResourceRequestOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ProgressEvent: S.optional(ProgressEvent) }),
+).annotate({
+  identifier: "CancelResourceRequestOutput",
+}) as any as S.Schema<CancelResourceRequestOutput>;
+export type TypeVersionId = string;
+export type RoleArn = string;
+export type ClientToken = string;
 export interface CreateResourceInput {
   TypeName: string;
   TypeVersionId?: string;
@@ -256,14 +446,17 @@ export const GetResourceOutput = /*@__PURE__*/ S.suspend(() =>
 export interface GetResourceRequestStatusInput {
   RequestToken: string;
 }
-export const GetResourceRequestStatusInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RequestToken: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "GetResourceRequestStatusInput",
-  }) as any as S.Schema<GetResourceRequestStatusInput>;
+export const GetResourceRequestStatusInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RequestToken: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "GetResourceRequestStatusInput",
+}) as any as S.Schema<GetResourceRequestStatusInput>;
+export type HookTypeArn = string;
+export type HookInvocationPoint = string;
+export type HookStatus = string;
+export type HookFailureMode = string;
 export interface HookProgressEvent {
   HookTypeName?: string;
   HookTypeVersionId?: string;
@@ -294,15 +487,16 @@ export interface GetResourceRequestStatusOutput {
   ProgressEvent?: ProgressEvent;
   HooksProgressEvent?: HookProgressEvent[];
 }
-export const GetResourceRequestStatusOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ProgressEvent: S.optional(ProgressEvent),
-      HooksProgressEvent: S.optional(HooksProgressEvent),
-    }),
-  ).annotate({
-    identifier: "GetResourceRequestStatusOutput",
-  }) as any as S.Schema<GetResourceRequestStatusOutput>;
+export const GetResourceRequestStatusOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProgressEvent: S.optional(ProgressEvent),
+    HooksProgressEvent: S.optional(HooksProgressEvent),
+  }),
+).annotate({
+  identifier: "GetResourceRequestStatusOutput",
+}) as any as S.Schema<GetResourceRequestStatusOutput>;
+export type MaxResults = number;
+export type NextToken = string;
 export type Operations = string[];
 export const Operations = /*@__PURE__*/ S.Array(S.String);
 export type OperationStatuses = string[];
@@ -311,15 +505,14 @@ export interface ResourceRequestStatusFilter {
   Operations?: string[];
   OperationStatuses?: string[];
 }
-export const ResourceRequestStatusFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Operations: S.optional(Operations),
-      OperationStatuses: S.optional(OperationStatuses),
-    }),
-  ).annotate({
-    identifier: "ResourceRequestStatusFilter",
-  }) as any as S.Schema<ResourceRequestStatusFilter>;
+export const ResourceRequestStatusFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Operations: S.optional(Operations),
+    OperationStatuses: S.optional(OperationStatuses),
+  }),
+).annotate({
+  identifier: "ResourceRequestStatusFilter",
+}) as any as S.Schema<ResourceRequestStatusFilter>;
 export interface ListResourceRequestsInput {
   MaxResults?: number;
   NextToken?: string;
@@ -351,6 +544,7 @@ export const ListResourceRequestsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListResourceRequestsOutput",
 }) as any as S.Schema<ListResourceRequestsOutput>;
+export type HandlerNextToken = string;
 export interface ListResourcesInput {
   TypeName: string;
   TypeVersionId?: string;
@@ -389,6 +583,7 @@ export const ListResourcesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListResourcesOutput",
 }) as any as S.Schema<ListResourcesOutput>;
+export type PatchDocument = string | redacted.Redacted<string>;
 export interface UpdateResourceInput {
   TypeName: string;
   TypeVersionId?: string;
@@ -419,142 +614,7 @@ export const UpdateResourceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateResourceOutput",
 }) as any as S.Schema<UpdateResourceOutput>;
-
-//# Errors
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ConcurrentModificationException",
-    httpResponseCode: 500,
-  }),
-).pipe(C.withServerError) {}
-export class RequestTokenNotFoundException extends S.TaggedErrorClass<RequestTokenNotFoundException>()(
-  "RequestTokenNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "RequestTokenNotFoundException",
-    httpResponseCode: 404,
-  }),
-).pipe(C.withBadRequestError) {}
-export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
-  "AlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "AlreadyExistsException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ClientTokenConflictException extends S.TaggedErrorClass<ClientTokenConflictException>()(
-  "ClientTokenConflictException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ClientTokenConflictException",
-    httpResponseCode: 409,
-  }),
-).pipe(C.withConflictError) {}
-export class ConcurrentOperationException extends S.TaggedErrorClass<ConcurrentOperationException>()(
-  "ConcurrentOperationException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ConcurrentOperationException",
-    httpResponseCode: 409,
-  }),
-).pipe(C.withConflictError) {}
-export class GeneralServiceException extends S.TaggedErrorClass<GeneralServiceException>()(
-  "GeneralServiceException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "GeneralServiceException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class HandlerFailureException extends S.TaggedErrorClass<HandlerFailureException>()(
-  "HandlerFailureException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "HandlerFailureException", httpResponseCode: 502 }),
-).pipe(C.withServerError) {}
-export class HandlerInternalFailureException extends S.TaggedErrorClass<HandlerInternalFailureException>()(
-  "HandlerInternalFailureException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "HandlerInternalFailureException",
-    httpResponseCode: 502,
-  }),
-).pipe(C.withServerError) {}
-export class InvalidCredentialsException extends S.TaggedErrorClass<InvalidCredentialsException>()(
-  "InvalidCredentialsException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidCredentialsException",
-    httpResponseCode: 401,
-  }),
-).pipe(C.withAuthError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidRequestException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class NetworkFailureException extends S.TaggedErrorClass<NetworkFailureException>()(
-  "NetworkFailureException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "NetworkFailureException", httpResponseCode: 502 }),
-).pipe(C.withServerError) {}
-export class NotStabilizedException extends S.TaggedErrorClass<NotStabilizedException>()(
-  "NotStabilizedException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "NotStabilizedException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class NotUpdatableException extends S.TaggedErrorClass<NotUpdatableException>()(
-  "NotUpdatableException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "NotUpdatableException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class PrivateTypeException extends S.TaggedErrorClass<PrivateTypeException>()(
-  "PrivateTypeException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "PrivateTypeException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ResourceConflictException extends S.TaggedErrorClass<ResourceConflictException>()(
-  "ResourceConflictException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ResourceConflictException", httpResponseCode: 409 }),
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ResourceNotFoundException", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class ServiceInternalErrorException extends S.TaggedErrorClass<ServiceInternalErrorException>()(
-  "ServiceInternalErrorException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ServiceInternalErrorException",
-    httpResponseCode: 502,
-  }),
-).pipe(C.withServerError) {}
-export class ServiceLimitExceededException extends S.TaggedErrorClass<ServiceLimitExceededException>()(
-  "ServiceLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ServiceLimitExceededException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ThrottlingException", httpResponseCode: 429 }),
-).pipe(C.withThrottlingError) {}
-export class TypeNotFoundException extends S.TaggedErrorClass<TypeNotFoundException>()(
-  "TypeNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "TypeNotFoundException", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class UnsupportedActionException extends S.TaggedErrorClass<UnsupportedActionException>()(
-  "UnsupportedActionException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "UnsupportedActionException",
-    httpResponseCode: 405,
-  }),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type CancelResourceRequestError =
   | ConcurrentModificationException
   | RequestTokenNotFoundException
@@ -575,8 +635,11 @@ export const cancelResourceRequest: API.OperationMethod<
   input: CancelResourceRequestInput,
   output: CancelResourceRequestOutput,
   errors: [ConcurrentModificationException, RequestTokenNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelResourceRequest",
 }));
+
 export type CreateResourceError =
   | AlreadyExistsException
   | ClientTokenConflictException
@@ -635,8 +698,11 @@ export const createResource: API.OperationMethod<
     TypeNotFoundException,
     UnsupportedActionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResource",
 }));
+
 export type DeleteResourceError =
   | AlreadyExistsException
   | ClientTokenConflictException
@@ -695,8 +761,11 @@ export const deleteResource: API.OperationMethod<
     TypeNotFoundException,
     UnsupportedActionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResource",
 }));
+
 export type GetResourceError =
   | AlreadyExistsException
   | GeneralServiceException
@@ -750,8 +819,11 @@ export const getResource: API.OperationMethod<
     TypeNotFoundException,
     UnsupportedActionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResource",
 }));
+
 export type GetResourceRequestStatusError =
   | RequestTokenNotFoundException
   | CommonErrors;
@@ -769,8 +841,11 @@ export const getResourceRequestStatus: API.OperationMethod<
   input: GetResourceRequestStatusInput,
   output: GetResourceRequestStatusOutput,
   errors: [RequestTokenNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceRequestStatus",
 }));
+
 export type ListResourceRequestsError = CommonErrors;
 /**
  * Returns existing resource operation requests. This includes requests of all status types.
@@ -803,6 +878,8 @@ export const listResourceRequests: API.OperationMethod<
   input: ListResourceRequestsInput,
   output: ListResourceRequestsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceRequests",
   pagination: {
     inputToken: "NextToken",
@@ -811,6 +888,7 @@ export const listResourceRequests: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResourcesError =
   | AlreadyExistsException
   | GeneralServiceException
@@ -878,6 +956,8 @@ export const listResources: API.OperationMethod<
     TypeNotFoundException,
     UnsupportedActionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResources",
   pagination: {
     inputToken: "NextToken",
@@ -886,6 +966,7 @@ export const listResources: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type UpdateResourceError =
   | AlreadyExistsException
   | ClientTokenConflictException
@@ -954,5 +1035,7 @@ export const updateResource: API.OperationMethod<
     TypeNotFoundException,
     UnsupportedActionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResource",
 }));

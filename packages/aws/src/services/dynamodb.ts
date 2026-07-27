@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -339,120 +341,196 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class BackupInUseException extends S.TaggedErrorClass<BackupInUseException>()(
+  "BackupInUseException",
+  { message: S.optional(S.String) },
+).pipe(C.withConflictError) {}
+export class BackupNotFoundException extends S.TaggedErrorClass<BackupNotFoundException>()(
+  "BackupNotFoundException",
+  { message: S.optional(S.String) },
+).pipe(C.withNotFoundError) {}
+export class ConditionalCheckFailedException extends S.TaggedErrorClass<ConditionalCheckFailedException>()(
+  "ConditionalCheckFailedException",
+  {
+    message: S.optional(S.String),
+    Item: S.optional(
+      S.suspend(() => AttributeMap).annotate({ identifier: "AttributeMap" }),
+    ),
+  },
+).pipe(C.withConflictError) {}
+export class ContinuousBackupsUnavailableException extends S.TaggedErrorClass<ContinuousBackupsUnavailableException>()(
+  "ContinuousBackupsUnavailableException",
+  { message: S.optional(S.String) },
+).pipe(C.withConflictError, C.withRetryableError) {}
+export class DuplicateItemException extends S.TaggedErrorClass<DuplicateItemException>()(
+  "DuplicateItemException",
+  { message: S.optional(S.String) },
+).pipe(C.withConflictError) {}
+export class ExportConflictException extends S.TaggedErrorClass<ExportConflictException>()(
+  "ExportConflictException",
+  { message: S.optional(S.String) },
+).pipe(C.withConflictError) {}
+export class ExportNotFoundException extends S.TaggedErrorClass<ExportNotFoundException>()(
+  "ExportNotFoundException",
+  { message: S.optional(S.String) },
+).pipe(C.withNotFoundError) {}
+export class GlobalTableAlreadyExistsException extends S.TaggedErrorClass<GlobalTableAlreadyExistsException>()(
+  "GlobalTableAlreadyExistsException",
+  { message: S.optional(S.String) },
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class GlobalTableNotFoundException extends S.TaggedErrorClass<GlobalTableNotFoundException>()(
+  "GlobalTableNotFoundException",
+  { message: S.optional(S.String) },
+).pipe(C.withNotFoundError) {}
+export class IdempotentParameterMismatchException extends S.TaggedErrorClass<IdempotentParameterMismatchException>()(
+  "IdempotentParameterMismatchException",
+  { Message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class ImportConflictException extends S.TaggedErrorClass<ImportConflictException>()(
+  "ImportConflictException",
+  { message: S.optional(S.String) },
+).pipe(C.withConflictError) {}
+export class ImportNotFoundException extends S.TaggedErrorClass<ImportNotFoundException>()(
+  "ImportNotFoundException",
+  { message: S.optional(S.String) },
+).pipe(C.withNotFoundError) {}
+export class IndexNotFoundException extends S.TaggedErrorClass<IndexNotFoundException>()(
+  "IndexNotFoundException",
+  { message: S.optional(S.String) },
+).pipe(C.withNotFoundError) {}
+export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
+  "InternalServerError",
+  { message: S.optional(S.String) },
+).pipe(C.withServerError, C.withRetryableError) {}
+export class InvalidEndpointException extends S.TaggedErrorClass<InvalidEndpointException>()(
+  "InvalidEndpointException",
+  { Message: S.optional(S.String) },
+  T.HttpError(421),
+).pipe(C.withBadRequestError) {}
+export class InvalidExportTimeException extends S.TaggedErrorClass<InvalidExportTimeException>()(
+  "InvalidExportTimeException",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class InvalidRestoreTimeException extends S.TaggedErrorClass<InvalidRestoreTimeException>()(
+  "InvalidRestoreTimeException",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class ItemCollectionSizeLimitExceededException extends S.TaggedErrorClass<ItemCollectionSizeLimitExceededException>()(
+  "ItemCollectionSizeLimitExceededException",
+  { message: S.optional(S.String) },
+).pipe(C.withQuotaError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+).pipe(C.withQuotaError, C.withRetryableError) {}
+export class PointInTimeRecoveryUnavailableException extends S.TaggedErrorClass<PointInTimeRecoveryUnavailableException>()(
+  "PointInTimeRecoveryUnavailableException",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class PolicyNotFoundException extends S.TaggedErrorClass<PolicyNotFoundException>()(
+  "PolicyNotFoundException",
+  { message: S.optional(S.String) },
+).pipe(C.withNotFoundError) {}
+export class ProvisionedThroughputExceededException extends S.TaggedErrorClass<ProvisionedThroughputExceededException>()(
+  "ProvisionedThroughputExceededException",
+  {
+    message: S.optional(S.String),
+    ThrottlingReasons: S.optional(
+      S.suspend(() => ThrottlingReasonList).annotate({
+        identifier: "ThrottlingReasonList",
+      }),
+    ),
+  },
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ReplicaAlreadyExistsException extends S.TaggedErrorClass<ReplicaAlreadyExistsException>()(
+  "ReplicaAlreadyExistsException",
+  { message: S.optional(S.String) },
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class ReplicaNotFoundException extends S.TaggedErrorClass<ReplicaNotFoundException>()(
+  "ReplicaNotFoundException",
+  { message: S.optional(S.String) },
+).pipe(C.withNotFoundError) {}
+export class ReplicatedWriteConflictException extends S.TaggedErrorClass<ReplicatedWriteConflictException>()(
+  "ReplicatedWriteConflictException",
+  { message: S.optional(S.String) },
+  T.Retryable(),
+).pipe(C.withRetryableError) {}
+export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceeded>()(
+  "RequestLimitExceeded",
+  {
+    message: S.optional(S.String),
+    ThrottlingReasons: S.optional(
+      S.suspend(() => ThrottlingReasonList).annotate({
+        identifier: "ThrottlingReasonList",
+      }),
+    ),
+  },
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { message: S.optional(S.String) },
+).pipe(C.withConflictError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+).pipe(C.withNotFoundError) {}
+export class TableAlreadyExistsException extends S.TaggedErrorClass<TableAlreadyExistsException>()(
+  "TableAlreadyExistsException",
+  { message: S.optional(S.String) },
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class TableInUseException extends S.TaggedErrorClass<TableInUseException>()(
+  "TableInUseException",
+  { message: S.optional(S.String) },
+).pipe(C.withConflictError, C.withRetryableError) {}
+export class TableNotFoundException extends S.TaggedErrorClass<TableNotFoundException>()(
+  "TableNotFoundException",
+  { message: S.optional(S.String) },
+).pipe(C.withNotFoundError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.optional(S.String),
+    throttlingReasons: S.optional(
+      S.suspend(() => ThrottlingReasonList).annotate({
+        identifier: "ThrottlingReasonList",
+      }),
+    ),
+  },
+  T.all(
+    T.AwsQueryError({ code: "Throttling", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withThrottlingError, C.withRetryableError) {}
+export class TransactionCanceledException extends S.TaggedErrorClass<TransactionCanceledException>()(
+  "TransactionCanceledException",
+  {
+    Message: S.optional(S.String),
+    CancellationReasons: S.optional(
+      S.suspend(() => CancellationReasonList).annotate({
+        identifier: "CancellationReasonList",
+      }),
+    ),
+  },
+) {}
+export class TransactionConflictException extends S.TaggedErrorClass<TransactionConflictException>()(
+  "TransactionConflictException",
+  { message: S.optional(S.String) },
+).pipe(C.withConflictError, C.withRetryableError) {}
+export class TransactionInProgressException extends S.TaggedErrorClass<TransactionInProgressException>()(
+  "TransactionInProgressException",
+  { Message: S.optional(S.String) },
+).pipe(C.withConflictError, C.withRetryableError) {}
 export type PartiQLStatement = string;
 export type StringAttributeValue = string;
 export type NumberAttributeValue = string;
 export type BinaryAttributeValue = Uint8Array;
-export type AttributeName = string;
-export type NullAttributeValue = boolean;
-export type BooleanAttributeValue = boolean;
-export type ConsistentRead = boolean;
-export type TableName = string;
-export type TableArn = string;
-export type ConsumedCapacityUnits = number;
-export type IndexName = string;
-export type ErrorMessage = string;
-export type Reason = string;
-export type Resource = string;
-export type AvailabilityErrorMessage = string;
-export type ProjectionExpression = string;
-export type ExpressionAttributeNameVariable = string;
-export type ItemCollectionSizeEstimateBound = number;
-export type BackupName = string;
-export type BackupArn = string;
-export type BackupSizeBytes = number;
-export type BackupCreationDateTime = Date;
-export type RegionName = string;
-export type ReplicaStatusDescription = string;
-export type ReplicaStatusPercentProgress = string;
-export type KMSMasterKeyId = string;
-export type PositiveLongObject = number;
-export type LongObject = number;
-export type GlobalTableArnString = string;
-export type KeySchemaAttributeName = string;
-export type NonKeyAttributeName = string;
-export type StreamEnabled = boolean;
-export type SSEEnabled = boolean;
-export type TagKeyString = string;
-export type TagValueString = string;
-export type DeletionProtectionEnabled = boolean;
-export type ResourcePolicy = string;
-export type NonNegativeLongObject = number;
-export type TableId = string;
-export type Backfilling = boolean;
-export type StreamArn = string;
-export type RestoreInProgress = boolean;
-export type KMSMasterKeyArn = string;
-export type ArchivalReason = string;
-export type TableCreationDateTime = Date;
-export type ItemCount = number;
-export type TimeToLiveAttributeName = string;
-export type ConditionExpression = string;
-export type ExpressionAttributeValueVariable = string;
-export type ResourceArnString = string;
-export type PolicyRevisionId = string;
-export type RecoveryPeriodInDays = number;
-export type ContributorInsightsRule = string;
-export type LastUpdateDateTime = Date;
-export type ExceptionName = string;
-export type ExceptionDescription = string;
-export type ExportArn = string;
-export type ExportStartTime = Date;
-export type ExportEndTime = Date;
-export type ExportManifest = string;
-export type ExportTime = Date;
-export type ClientToken = string;
-export type S3Bucket = string;
-export type S3BucketOwner = string;
-export type S3Prefix = string;
-export type S3SseKmsKeyId = string;
-export type FailureCode = string;
-export type FailureMessage = string;
-export type BilledSizeBytes = number;
-export type ExportFromTime = Date;
-export type ExportToTime = Date;
-export type AutoScalingPolicyName = string;
-export type IntegerObject = number;
-export type DoubleObject = number;
-export type ImportArn = string;
-export type ErrorCount = number;
-export type CloudWatchLogGroupArn = string;
-export type CsvDelimiter = string;
-export type CsvHeader = string;
-export type ImportStartTime = Date;
-export type ImportEndTime = Date;
-export type ProcessedItemCount = number;
-export type ImportedItemCount = number;
-export type PartiQLNextToken = string;
-export type PositiveIntegerObject = number;
-export type ClientRequestToken = string;
-export type Code = string;
-export type BackupsInputLimit = number;
-export type TimeRangeLowerBound = Date;
-export type TimeRangeUpperBound = Date;
-export type NextTokenString = string;
-export type ListContributorInsightsLimit = number;
-export type ListExportsMaxLimit = number;
-export type ExportNextToken = string;
-export type ListImportsMaxLimit = number;
-export type ImportNextToken = string;
-export type ListTablesInputLimit = number;
-export type ConfirmRemoveSelfResourceAccess = boolean;
-export type KeyExpression = string;
-export type ScanTotalSegments = number;
-export type ScanSegment = number;
-export type UpdateExpression = string;
-export type AutoScalingRoleArn = string;
-export type TimeToLiveEnabled = boolean;
-
-//# Schemas
 export type StringSetAttributeValue = string[];
 export const StringSetAttributeValue = /*@__PURE__*/ S.Array(S.String);
 export type NumberSetAttributeValue = string[];
 export const NumberSetAttributeValue = /*@__PURE__*/ S.Array(S.String);
 export type BinarySetAttributeValue = Uint8Array[];
 export const BinarySetAttributeValue = /*@__PURE__*/ S.Array(T.Blob);
+export type AttributeName = string;
 export type MapAttributeValue = { [key: string]: AttributeValue | undefined };
 export const MapAttributeValue = /*@__PURE__*/ S.Record(
   S.String,
@@ -464,6 +542,8 @@ export type ListAttributeValue = AttributeValue[];
 export const ListAttributeValue = /*@__PURE__*/ S.Array(
   S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
 ) as any as S.Schema<ListAttributeValue>;
+export type NullAttributeValue = boolean;
+export type BooleanAttributeValue = boolean;
 export type AttributeValue =
   | {
       S: string;
@@ -609,11 +689,13 @@ export type PreparedStatementParameters = AttributeValue[];
 export const PreparedStatementParameters = /*@__PURE__*/ S.Array(
   S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
 );
+export type ConsistentRead = boolean;
 export type ReturnValuesOnConditionCheckFailure =
   | "ALL_OLD"
   | "NONE"
   | (string & {});
 export const ReturnValuesOnConditionCheckFailure = /*@__PURE__*/ S.String;
+
 export interface BatchStatementRequest {
   Statement: string;
   Parameters?: AttributeValue[];
@@ -640,6 +722,7 @@ export type ReturnConsumedCapacity =
   | "NONE"
   | (string & {});
 export const ReturnConsumedCapacity = /*@__PURE__*/ S.String;
+
 export interface BatchExecuteStatementInput {
   Statements: BatchStatementRequest[];
   ReturnConsumedCapacity?: ReturnConsumedCapacity;
@@ -676,6 +759,7 @@ export type BatchStatementErrorCodeEnum =
   | "DuplicateItem"
   | (string & {});
 export const BatchStatementErrorCodeEnum = /*@__PURE__*/ S.String;
+
 export type AttributeMap = { [key: string]: AttributeValue | undefined };
 export const AttributeMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -697,6 +781,7 @@ export const BatchStatementError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchStatementError",
 }) as any as S.Schema<BatchStatementError>;
+export type TableName = string;
 export interface BatchStatementResponse {
   Error?: BatchStatementError;
   TableName?: string;
@@ -715,6 +800,8 @@ export type PartiQLBatchResponse = BatchStatementResponse[];
 export const PartiQLBatchResponse = /*@__PURE__*/ S.Array(
   BatchStatementResponse,
 );
+export type TableArn = string;
+export type ConsumedCapacityUnits = number;
 export interface Capacity {
   ReadCapacityUnits?: number;
   WriteCapacityUnits?: number;
@@ -727,6 +814,7 @@ export const Capacity = /*@__PURE__*/ S.suspend(() =>
     CapacityUnits: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Capacity" }) as any as S.Schema<Capacity>;
+export type IndexName = string;
 export type SecondaryIndexesCapacityMap = {
   [key: string]: Capacity | undefined;
 };
@@ -762,26 +850,14 @@ export interface BatchExecuteStatementOutput {
   Responses?: BatchStatementResponse[];
   ConsumedCapacity?: ConsumedCapacity[];
 }
-export const BatchExecuteStatementOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Responses: S.optional(PartiQLBatchResponse),
-      ConsumedCapacity: S.optional(ConsumedCapacityMultiple),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "BatchExecuteStatementOutput",
-  }) as any as S.Schema<BatchExecuteStatementOutput>;
-export interface ThrottlingReason {
-  reason?: string;
-  resource?: string;
-}
-export const ThrottlingReason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ reason: S.optional(S.String), resource: S.optional(S.String) }),
+export const BatchExecuteStatementOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Responses: S.optional(PartiQLBatchResponse),
+    ConsumedCapacity: S.optional(ConsumedCapacityMultiple),
+  }).pipe(ns),
 ).annotate({
-  identifier: "ThrottlingReason",
-}) as any as S.Schema<ThrottlingReason>;
-export type ThrottlingReasonList = ThrottlingReason[];
-export const ThrottlingReasonList = /*@__PURE__*/ S.Array(ThrottlingReason);
+  identifier: "BatchExecuteStatementOutput",
+}) as any as S.Schema<BatchExecuteStatementOutput>;
 export type Key = { [key: string]: AttributeValue | undefined };
 export const Key = /*@__PURE__*/ S.Record(
   S.String,
@@ -793,6 +869,8 @@ export type KeyList = { [key: string]: AttributeValue | undefined }[];
 export const KeyList = /*@__PURE__*/ S.Array(Key);
 export type AttributeNameList = string[];
 export const AttributeNameList = /*@__PURE__*/ S.Array(S.String);
+export type ProjectionExpression = string;
+export type ExpressionAttributeNameVariable = string;
 export type ExpressionAttributeNameMap = { [key: string]: string | undefined };
 export const ExpressionAttributeNameMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -912,6 +990,7 @@ export const BatchWriteItemRequestMap = /*@__PURE__*/ S.Record(
 );
 export type ReturnItemCollectionMetrics = "SIZE" | "NONE" | (string & {});
 export const ReturnItemCollectionMetrics = /*@__PURE__*/ S.String;
+
 export interface BatchWriteItemInput {
   RequestItems: { [key: string]: WriteRequest[] | undefined };
   ReturnConsumedCapacity?: ReturnConsumedCapacity;
@@ -939,13 +1018,13 @@ export const BatchWriteItemInput = /*@__PURE__*/ S.suspend(() =>
 export type ItemCollectionKeyAttributeMap = {
   [key: string]: AttributeValue | undefined;
 };
-export const ItemCollectionKeyAttributeMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.suspend(() => AttributeValue)
-      .annotate({ identifier: "AttributeValue" })
-      .pipe(S.optional),
-  );
+export const ItemCollectionKeyAttributeMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.suspend(() => AttributeValue)
+    .annotate({ identifier: "AttributeValue" })
+    .pipe(S.optional),
+);
+export type ItemCollectionSizeEstimateBound = number;
 export type ItemCollectionSizeEstimateRange = number[];
 export const ItemCollectionSizeEstimateRange = /*@__PURE__*/ S.Array(S.Number);
 export interface ItemCollectionMetrics {
@@ -961,16 +1040,16 @@ export const ItemCollectionMetrics = /*@__PURE__*/ S.suspend(() =>
   identifier: "ItemCollectionMetrics",
 }) as any as S.Schema<ItemCollectionMetrics>;
 export type ItemCollectionMetricsMultiple = ItemCollectionMetrics[];
-export const ItemCollectionMetricsMultiple =
-  /*@__PURE__*/ S.Array(ItemCollectionMetrics);
+export const ItemCollectionMetricsMultiple = /*@__PURE__*/ S.Array(
+  ItemCollectionMetrics,
+);
 export type ItemCollectionMetricsPerTable = {
   [key: string]: ItemCollectionMetrics[] | undefined;
 };
-export const ItemCollectionMetricsPerTable =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ItemCollectionMetricsMultiple.pipe(S.optional),
-  );
+export const ItemCollectionMetricsPerTable = /*@__PURE__*/ S.Record(
+  S.String,
+  ItemCollectionMetricsMultiple.pipe(S.optional),
+);
 export interface BatchWriteItemOutput {
   UnprocessedItems?: { [key: string]: WriteRequest[] | undefined };
   ItemCollectionMetrics?: {
@@ -987,6 +1066,7 @@ export const BatchWriteItemOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchWriteItemOutput",
 }) as any as S.Schema<BatchWriteItemOutput>;
+export type BackupName = string;
 export interface CreateBackupInput {
   TableName: string;
   BackupName: string;
@@ -1009,10 +1089,15 @@ export const CreateBackupInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBackupInput",
 }) as any as S.Schema<CreateBackupInput>;
+export type BackupArn = string;
+export type BackupSizeBytes = number;
 export type BackupStatus = "CREATING" | "DELETED" | "AVAILABLE" | (string & {});
 export const BackupStatus = /*@__PURE__*/ S.String;
+
 export type BackupType = "USER" | "SYSTEM" | "AWS_BACKUP" | (string & {});
 export const BackupType = /*@__PURE__*/ S.String;
+
+export type BackupCreationDateTime = Date;
 export interface BackupDetails {
   BackupArn: string;
   BackupName: string;
@@ -1043,6 +1128,7 @@ export const CreateBackupOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBackupOutput",
 }) as any as S.Schema<CreateBackupOutput>;
+export type RegionName = string;
 export interface Replica {
   RegionName?: string;
 }
@@ -1086,15 +1172,20 @@ export type ReplicaStatus =
   | "REPLICATION_NOT_AUTHORIZED"
   | (string & {});
 export const ReplicaStatus = /*@__PURE__*/ S.String;
+
+export type ReplicaStatusDescription = string;
+export type ReplicaStatusPercentProgress = string;
+export type KMSMasterKeyId = string;
+export type PositiveLongObject = number;
 export interface ProvisionedThroughputOverride {
   ReadCapacityUnits?: number;
 }
-export const ProvisionedThroughputOverride =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReadCapacityUnits: S.optional(S.Number) }),
-  ).annotate({
-    identifier: "ProvisionedThroughputOverride",
-  }) as any as S.Schema<ProvisionedThroughputOverride>;
+export const ProvisionedThroughputOverride = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReadCapacityUnits: S.optional(S.Number) }),
+).annotate({
+  identifier: "ProvisionedThroughputOverride",
+}) as any as S.Schema<ProvisionedThroughputOverride>;
+export type LongObject = number;
 export interface OnDemandThroughputOverride {
   MaxReadRequestUnits?: number;
 }
@@ -1114,21 +1205,21 @@ export type TableStatus =
   | "REPLICATION_NOT_AUTHORIZED"
   | (string & {});
 export const TableStatus = /*@__PURE__*/ S.String;
+
 export interface TableWarmThroughputDescription {
   ReadUnitsPerSecond?: number;
   WriteUnitsPerSecond?: number;
   Status?: TableStatus;
 }
-export const TableWarmThroughputDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReadUnitsPerSecond: S.optional(S.Number),
-      WriteUnitsPerSecond: S.optional(S.Number),
-      Status: S.optional(TableStatus),
-    }),
-  ).annotate({
-    identifier: "TableWarmThroughputDescription",
-  }) as any as S.Schema<TableWarmThroughputDescription>;
+export const TableWarmThroughputDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReadUnitsPerSecond: S.optional(S.Number),
+    WriteUnitsPerSecond: S.optional(S.Number),
+    Status: S.optional(TableStatus),
+  }),
+).annotate({
+  identifier: "TableWarmThroughputDescription",
+}) as any as S.Schema<TableWarmThroughputDescription>;
 export type IndexStatus =
   | "CREATING"
   | "UPDATING"
@@ -1136,6 +1227,7 @@ export type IndexStatus =
   | "ACTIVE"
   | (string & {});
 export const IndexStatus = /*@__PURE__*/ S.String;
+
 export interface GlobalSecondaryIndexWarmThroughputDescription {
   ReadUnitsPerSecond?: number;
   WriteUnitsPerSecond?: number;
@@ -1157,26 +1249,28 @@ export interface ReplicaGlobalSecondaryIndexDescription {
   OnDemandThroughputOverride?: OnDemandThroughputOverride;
   WarmThroughput?: GlobalSecondaryIndexWarmThroughputDescription;
 }
-export const ReplicaGlobalSecondaryIndexDescription =
-  /*@__PURE__*/ S.suspend(() =>
+export const ReplicaGlobalSecondaryIndexDescription = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       IndexName: S.optional(S.String),
       ProvisionedThroughputOverride: S.optional(ProvisionedThroughputOverride),
       OnDemandThroughputOverride: S.optional(OnDemandThroughputOverride),
       WarmThroughput: S.optional(GlobalSecondaryIndexWarmThroughputDescription),
     }),
-  ).annotate({
-    identifier: "ReplicaGlobalSecondaryIndexDescription",
-  }) as any as S.Schema<ReplicaGlobalSecondaryIndexDescription>;
+).annotate({
+  identifier: "ReplicaGlobalSecondaryIndexDescription",
+}) as any as S.Schema<ReplicaGlobalSecondaryIndexDescription>;
 export type ReplicaGlobalSecondaryIndexDescriptionList =
   ReplicaGlobalSecondaryIndexDescription[];
-export const ReplicaGlobalSecondaryIndexDescriptionList =
-  /*@__PURE__*/ S.Array(ReplicaGlobalSecondaryIndexDescription);
+export const ReplicaGlobalSecondaryIndexDescriptionList = /*@__PURE__*/ S.Array(
+  ReplicaGlobalSecondaryIndexDescription,
+);
 export type TableClass =
   | "STANDARD"
   | "STANDARD_INFREQUENT_ACCESS"
   | (string & {});
 export const TableClass = /*@__PURE__*/ S.String;
+
 export interface TableClassSummary {
   TableClass?: TableClass;
   LastUpdateDateTime?: Date;
@@ -1197,6 +1291,7 @@ export type GlobalTableSettingsReplicationMode =
   | "ENABLED_WITH_OVERRIDES"
   | (string & {});
 export const GlobalTableSettingsReplicationMode = /*@__PURE__*/ S.String;
+
 export interface ReplicaDescription {
   RegionName?: string;
   ReplicaStatus?: ReplicaStatus;
@@ -1239,6 +1334,7 @@ export const ReplicaDescription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicaDescription>;
 export type ReplicaDescriptionList = ReplicaDescription[];
 export const ReplicaDescriptionList = /*@__PURE__*/ S.Array(ReplicaDescription);
+export type GlobalTableArnString = string;
 export type GlobalTableStatus =
   | "CREATING"
   | "ACTIVE"
@@ -1246,6 +1342,7 @@ export type GlobalTableStatus =
   | "UPDATING"
   | (string & {});
 export const GlobalTableStatus = /*@__PURE__*/ S.String;
+
 export interface GlobalTableDescription {
   ReplicationGroup?: ReplicaDescription[];
   GlobalTableArn?: string;
@@ -1270,14 +1367,16 @@ export interface CreateGlobalTableOutput {
   GlobalTableDescription?: GlobalTableDescription;
 }
 export const CreateGlobalTableOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalTableDescription: S.optional(GlobalTableDescription),
-  }).pipe(ns),
+  S.Struct({ GlobalTableDescription: S.optional(GlobalTableDescription) }).pipe(
+    ns,
+  ),
 ).annotate({
   identifier: "CreateGlobalTableOutput",
 }) as any as S.Schema<CreateGlobalTableOutput>;
+export type KeySchemaAttributeName = string;
 export type ScalarAttributeType = "S" | "N" | "B" | (string & {});
 export const ScalarAttributeType = /*@__PURE__*/ S.String;
+
 export interface AttributeDefinition {
   AttributeName: string;
   AttributeType: ScalarAttributeType;
@@ -1291,6 +1390,7 @@ export type AttributeDefinitions = AttributeDefinition[];
 export const AttributeDefinitions = /*@__PURE__*/ S.Array(AttributeDefinition);
 export type KeyType = "HASH" | "RANGE" | (string & {});
 export const KeyType = /*@__PURE__*/ S.String;
+
 export interface KeySchemaElement {
   AttributeName: string;
   KeyType: KeyType;
@@ -1304,6 +1404,8 @@ export type KeySchema = KeySchemaElement[];
 export const KeySchema = /*@__PURE__*/ S.Array(KeySchemaElement);
 export type ProjectionType = "ALL" | "KEYS_ONLY" | "INCLUDE" | (string & {});
 export const ProjectionType = /*@__PURE__*/ S.String;
+
+export type NonKeyAttributeName = string;
 export type NonKeyAttributeNameList = string[];
 export const NonKeyAttributeNameList = /*@__PURE__*/ S.Array(S.String);
 export interface Projection {
@@ -1389,6 +1491,8 @@ export const GlobalSecondaryIndexList =
   /*@__PURE__*/ S.Array(GlobalSecondaryIndex);
 export type BillingMode = "PROVISIONED" | "PAY_PER_REQUEST" | (string & {});
 export const BillingMode = /*@__PURE__*/ S.String;
+
+export type StreamEnabled = boolean;
 export type StreamViewType =
   | "NEW_IMAGE"
   | "OLD_IMAGE"
@@ -1396,6 +1500,7 @@ export type StreamViewType =
   | "KEYS_ONLY"
   | (string & {});
 export const StreamViewType = /*@__PURE__*/ S.String;
+
 export interface StreamSpecification {
   StreamEnabled: boolean;
   StreamViewType?: StreamViewType;
@@ -1408,8 +1513,10 @@ export const StreamSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StreamSpecification",
 }) as any as S.Schema<StreamSpecification>;
+export type SSEEnabled = boolean;
 export type SSEType = "AES256" | "KMS" | (string & {});
 export const SSEType = /*@__PURE__*/ S.String;
+
 export interface SSESpecification {
   Enabled?: boolean;
   SSEType?: SSEType;
@@ -1424,6 +1531,8 @@ export const SSESpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SSESpecification",
 }) as any as S.Schema<SSESpecification>;
+export type TagKeyString = string;
+export type TagValueString = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -1433,6 +1542,8 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
+export type DeletionProtectionEnabled = boolean;
+export type ResourcePolicy = string;
 export interface CreateTableInput {
   AttributeDefinitions?: AttributeDefinition[];
   TableName: string;
@@ -1487,6 +1598,7 @@ export const CreateTableInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTableInput",
 }) as any as S.Schema<CreateTableInput>;
+export type NonNegativeLongObject = number;
 export interface ProvisionedThroughputDescription {
   LastIncreaseDateTime?: Date;
   LastDecreaseDateTime?: Date;
@@ -1494,22 +1606,22 @@ export interface ProvisionedThroughputDescription {
   ReadCapacityUnits?: number;
   WriteCapacityUnits?: number;
 }
-export const ProvisionedThroughputDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LastIncreaseDateTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      LastDecreaseDateTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      NumberOfDecreasesToday: S.optional(S.Number),
-      ReadCapacityUnits: S.optional(S.Number),
-      WriteCapacityUnits: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "ProvisionedThroughputDescription",
-  }) as any as S.Schema<ProvisionedThroughputDescription>;
+export const ProvisionedThroughputDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LastIncreaseDateTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    LastDecreaseDateTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    NumberOfDecreasesToday: S.optional(S.Number),
+    ReadCapacityUnits: S.optional(S.Number),
+    WriteCapacityUnits: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ProvisionedThroughputDescription",
+}) as any as S.Schema<ProvisionedThroughputDescription>;
+export type TableId = string;
 export interface BillingModeSummary {
   BillingMode?: BillingMode;
   LastUpdateToPayPerRequestDateTime?: Date;
@@ -1532,23 +1644,24 @@ export interface LocalSecondaryIndexDescription {
   ItemCount?: number;
   IndexArn?: string;
 }
-export const LocalSecondaryIndexDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      IndexName: S.optional(S.String),
-      KeySchema: S.optional(KeySchema),
-      Projection: S.optional(Projection),
-      IndexSizeBytes: S.optional(S.Number),
-      ItemCount: S.optional(S.Number),
-      IndexArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "LocalSecondaryIndexDescription",
-  }) as any as S.Schema<LocalSecondaryIndexDescription>;
+export const LocalSecondaryIndexDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IndexName: S.optional(S.String),
+    KeySchema: S.optional(KeySchema),
+    Projection: S.optional(Projection),
+    IndexSizeBytes: S.optional(S.Number),
+    ItemCount: S.optional(S.Number),
+    IndexArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LocalSecondaryIndexDescription",
+}) as any as S.Schema<LocalSecondaryIndexDescription>;
 export type LocalSecondaryIndexDescriptionList =
   LocalSecondaryIndexDescription[];
-export const LocalSecondaryIndexDescriptionList =
-  /*@__PURE__*/ S.Array(LocalSecondaryIndexDescription);
+export const LocalSecondaryIndexDescriptionList = /*@__PURE__*/ S.Array(
+  LocalSecondaryIndexDescription,
+);
+export type Backfilling = boolean;
 export interface GlobalSecondaryIndexDescription {
   IndexName?: string;
   KeySchema?: KeySchemaElement[];
@@ -1562,46 +1675,49 @@ export interface GlobalSecondaryIndexDescription {
   OnDemandThroughput?: OnDemandThroughput;
   WarmThroughput?: GlobalSecondaryIndexWarmThroughputDescription;
 }
-export const GlobalSecondaryIndexDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      IndexName: S.optional(S.String),
-      KeySchema: S.optional(KeySchema),
-      Projection: S.optional(Projection),
-      IndexStatus: S.optional(IndexStatus),
-      Backfilling: S.optional(S.Boolean),
-      ProvisionedThroughput: S.optional(ProvisionedThroughputDescription),
-      IndexSizeBytes: S.optional(S.Number),
-      ItemCount: S.optional(S.Number),
-      IndexArn: S.optional(S.String),
-      OnDemandThroughput: S.optional(OnDemandThroughput),
-      WarmThroughput: S.optional(GlobalSecondaryIndexWarmThroughputDescription),
-    }),
-  ).annotate({
-    identifier: "GlobalSecondaryIndexDescription",
-  }) as any as S.Schema<GlobalSecondaryIndexDescription>;
+export const GlobalSecondaryIndexDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IndexName: S.optional(S.String),
+    KeySchema: S.optional(KeySchema),
+    Projection: S.optional(Projection),
+    IndexStatus: S.optional(IndexStatus),
+    Backfilling: S.optional(S.Boolean),
+    ProvisionedThroughput: S.optional(ProvisionedThroughputDescription),
+    IndexSizeBytes: S.optional(S.Number),
+    ItemCount: S.optional(S.Number),
+    IndexArn: S.optional(S.String),
+    OnDemandThroughput: S.optional(OnDemandThroughput),
+    WarmThroughput: S.optional(GlobalSecondaryIndexWarmThroughputDescription),
+  }),
+).annotate({
+  identifier: "GlobalSecondaryIndexDescription",
+}) as any as S.Schema<GlobalSecondaryIndexDescription>;
 export type GlobalSecondaryIndexDescriptionList =
   GlobalSecondaryIndexDescription[];
-export const GlobalSecondaryIndexDescriptionList =
-  /*@__PURE__*/ S.Array(GlobalSecondaryIndexDescription);
+export const GlobalSecondaryIndexDescriptionList = /*@__PURE__*/ S.Array(
+  GlobalSecondaryIndexDescription,
+);
+export type StreamArn = string;
 export type WitnessStatus = "CREATING" | "DELETING" | "ACTIVE" | (string & {});
 export const WitnessStatus = /*@__PURE__*/ S.String;
+
 export interface GlobalTableWitnessDescription {
   RegionName?: string;
   WitnessStatus?: WitnessStatus;
 }
-export const GlobalTableWitnessDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RegionName: S.optional(S.String),
-      WitnessStatus: S.optional(WitnessStatus),
-    }),
-  ).annotate({
-    identifier: "GlobalTableWitnessDescription",
-  }) as any as S.Schema<GlobalTableWitnessDescription>;
+export const GlobalTableWitnessDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RegionName: S.optional(S.String),
+    WitnessStatus: S.optional(WitnessStatus),
+  }),
+).annotate({
+  identifier: "GlobalTableWitnessDescription",
+}) as any as S.Schema<GlobalTableWitnessDescription>;
 export type GlobalTableWitnessDescriptionList = GlobalTableWitnessDescription[];
-export const GlobalTableWitnessDescriptionList =
-  /*@__PURE__*/ S.Array(GlobalTableWitnessDescription);
+export const GlobalTableWitnessDescriptionList = /*@__PURE__*/ S.Array(
+  GlobalTableWitnessDescription,
+);
+export type RestoreInProgress = boolean;
 export interface RestoreSummary {
   SourceBackupArn?: string;
   SourceTableArn?: string;
@@ -1624,6 +1740,8 @@ export type SSEStatus =
   | "UPDATING"
   | (string & {});
 export const SSEStatus = /*@__PURE__*/ S.String;
+
+export type KMSMasterKeyArn = string;
 export interface SSEDescription {
   Status?: SSEStatus;
   SSEType?: SSEType;
@@ -1640,6 +1758,7 @@ export const SSEDescription = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({ identifier: "SSEDescription" }) as any as S.Schema<SSEDescription>;
+export type ArchivalReason = string;
 export interface ArchivalSummary {
   ArchivalDateTime?: Date;
   ArchivalReason?: string;
@@ -1658,6 +1777,7 @@ export const ArchivalSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ArchivalSummary>;
 export type MultiRegionConsistency = "EVENTUAL" | "STRONG" | (string & {});
 export const MultiRegionConsistency = /*@__PURE__*/ S.String;
+
 export interface TableDescription {
   AttributeDefinitions?: AttributeDefinition[];
   TableName?: string;
@@ -1752,6 +1872,8 @@ export const DeleteBackupInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteBackupInput",
 }) as any as S.Schema<DeleteBackupInput>;
+export type TableCreationDateTime = Date;
+export type ItemCount = number;
 export interface SourceTableDetails {
   TableName: string;
   TableId: string;
@@ -1827,6 +1949,8 @@ export type TimeToLiveStatus =
   | "DISABLED"
   | (string & {});
 export const TimeToLiveStatus = /*@__PURE__*/ S.String;
+
+export type TimeToLiveAttributeName = string;
 export interface TimeToLiveDescription {
   TimeToLiveStatus?: TimeToLiveStatus;
   AttributeName?: string;
@@ -1895,6 +2019,7 @@ export type ComparisonOperator =
   | "BEGINS_WITH"
   | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
+
 export type AttributeValueList = AttributeValue[];
 export const AttributeValueList = /*@__PURE__*/ S.Array(
   S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
@@ -1924,6 +2049,7 @@ export const ExpectedAttributeMap = /*@__PURE__*/ S.Record(
 );
 export type ConditionalOperator = "AND" | "OR" | (string & {});
 export const ConditionalOperator = /*@__PURE__*/ S.String;
+
 export type ReturnValue =
   | "NONE"
   | "ALL_OLD"
@@ -1932,6 +2058,9 @@ export type ReturnValue =
   | "UPDATED_NEW"
   | (string & {});
 export const ReturnValue = /*@__PURE__*/ S.String;
+
+export type ConditionExpression = string;
+export type ExpressionAttributeValueVariable = string;
 export type ExpressionAttributeValueMap = {
   [key: string]: AttributeValue | undefined;
 };
@@ -1997,6 +2126,8 @@ export const DeleteItemOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteItemOutput",
 }) as any as S.Schema<DeleteItemOutput>;
+export type ResourceArnString = string;
+export type PolicyRevisionId = string;
 export interface DeleteResourcePolicyInput {
   ResourceArn: string;
   ExpectedRevisionId?: string;
@@ -2082,96 +2213,93 @@ export const DescribeBackupOutput = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeContinuousBackupsInput {
   TableName: string;
 }
-export const DescribeContinuousBackupsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ TableName: S.String.pipe(T.ContextParam("ResourceArn")) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeContinuousBackupsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TableName: S.String.pipe(T.ContextParam("ResourceArn")) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeContinuousBackupsInput",
-  }) as any as S.Schema<DescribeContinuousBackupsInput>;
+  ),
+).annotate({
+  identifier: "DescribeContinuousBackupsInput",
+}) as any as S.Schema<DescribeContinuousBackupsInput>;
 export type ContinuousBackupsStatus = "ENABLED" | "DISABLED" | (string & {});
 export const ContinuousBackupsStatus = /*@__PURE__*/ S.String;
+
 export type PointInTimeRecoveryStatus = "ENABLED" | "DISABLED" | (string & {});
 export const PointInTimeRecoveryStatus = /*@__PURE__*/ S.String;
+
+export type RecoveryPeriodInDays = number;
 export interface PointInTimeRecoveryDescription {
   PointInTimeRecoveryStatus?: PointInTimeRecoveryStatus;
   RecoveryPeriodInDays?: number;
   EarliestRestorableDateTime?: Date;
   LatestRestorableDateTime?: Date;
 }
-export const PointInTimeRecoveryDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PointInTimeRecoveryStatus: S.optional(PointInTimeRecoveryStatus),
-      RecoveryPeriodInDays: S.optional(S.Number),
-      EarliestRestorableDateTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      LatestRestorableDateTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier: "PointInTimeRecoveryDescription",
-  }) as any as S.Schema<PointInTimeRecoveryDescription>;
+export const PointInTimeRecoveryDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PointInTimeRecoveryStatus: S.optional(PointInTimeRecoveryStatus),
+    RecoveryPeriodInDays: S.optional(S.Number),
+    EarliestRestorableDateTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    LatestRestorableDateTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }),
+).annotate({
+  identifier: "PointInTimeRecoveryDescription",
+}) as any as S.Schema<PointInTimeRecoveryDescription>;
 export interface ContinuousBackupsDescription {
   ContinuousBackupsStatus: ContinuousBackupsStatus;
   PointInTimeRecoveryDescription?: PointInTimeRecoveryDescription;
 }
-export const ContinuousBackupsDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ContinuousBackupsStatus: ContinuousBackupsStatus,
-      PointInTimeRecoveryDescription: S.optional(
-        PointInTimeRecoveryDescription,
-      ),
-    }),
-  ).annotate({
-    identifier: "ContinuousBackupsDescription",
-  }) as any as S.Schema<ContinuousBackupsDescription>;
+export const ContinuousBackupsDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ContinuousBackupsStatus: ContinuousBackupsStatus,
+    PointInTimeRecoveryDescription: S.optional(PointInTimeRecoveryDescription),
+  }),
+).annotate({
+  identifier: "ContinuousBackupsDescription",
+}) as any as S.Schema<ContinuousBackupsDescription>;
 export interface DescribeContinuousBackupsOutput {
   ContinuousBackupsDescription?: ContinuousBackupsDescription;
 }
-export const DescribeContinuousBackupsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ContinuousBackupsDescription: S.optional(ContinuousBackupsDescription),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeContinuousBackupsOutput",
-  }) as any as S.Schema<DescribeContinuousBackupsOutput>;
+export const DescribeContinuousBackupsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ContinuousBackupsDescription: S.optional(ContinuousBackupsDescription),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeContinuousBackupsOutput",
+}) as any as S.Schema<DescribeContinuousBackupsOutput>;
 export interface DescribeContributorInsightsInput {
   TableName: string;
   IndexName?: string;
 }
-export const DescribeContributorInsightsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TableName: S.String.pipe(T.ContextParam("ResourceArn")),
-      IndexName: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeContributorInsightsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TableName: S.String.pipe(T.ContextParam("ResourceArn")),
+    IndexName: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeContributorInsightsInput",
-  }) as any as S.Schema<DescribeContributorInsightsInput>;
+  ),
+).annotate({
+  identifier: "DescribeContributorInsightsInput",
+}) as any as S.Schema<DescribeContributorInsightsInput>;
+export type ContributorInsightsRule = string;
 export type ContributorInsightsRuleList = string[];
 export const ContributorInsightsRuleList = /*@__PURE__*/ S.Array(S.String);
 export type ContributorInsightsStatus =
@@ -2182,6 +2310,10 @@ export type ContributorInsightsStatus =
   | "FAILED"
   | (string & {});
 export const ContributorInsightsStatus = /*@__PURE__*/ S.String;
+
+export type LastUpdateDateTime = Date;
+export type ExceptionName = string;
+export type ExceptionDescription = string;
 export interface FailureException {
   ExceptionName?: string;
   ExceptionDescription?: string;
@@ -2199,6 +2331,7 @@ export type ContributorInsightsMode =
   | "THROTTLED_KEYS"
   | (string & {});
 export const ContributorInsightsMode = /*@__PURE__*/ S.String;
+
 export interface DescribeContributorInsightsOutput {
   TableName?: string;
   IndexName?: string;
@@ -2208,22 +2341,21 @@ export interface DescribeContributorInsightsOutput {
   FailureException?: FailureException;
   ContributorInsightsMode?: ContributorInsightsMode;
 }
-export const DescribeContributorInsightsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TableName: S.optional(S.String),
-      IndexName: S.optional(S.String),
-      ContributorInsightsRuleList: S.optional(ContributorInsightsRuleList),
-      ContributorInsightsStatus: S.optional(ContributorInsightsStatus),
-      LastUpdateDateTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      FailureException: S.optional(FailureException),
-      ContributorInsightsMode: S.optional(ContributorInsightsMode),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeContributorInsightsOutput",
-  }) as any as S.Schema<DescribeContributorInsightsOutput>;
+export const DescribeContributorInsightsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TableName: S.optional(S.String),
+    IndexName: S.optional(S.String),
+    ContributorInsightsRuleList: S.optional(ContributorInsightsRuleList),
+    ContributorInsightsStatus: S.optional(ContributorInsightsStatus),
+    LastUpdateDateTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    FailureException: S.optional(FailureException),
+    ContributorInsightsMode: S.optional(ContributorInsightsMode),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeContributorInsightsOutput",
+}) as any as S.Schema<DescribeContributorInsightsOutput>;
 export interface DescribeEndpointsRequest {}
 export const DescribeEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -2257,6 +2389,7 @@ export const DescribeEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEndpointsResponse",
 }) as any as S.Schema<DescribeEndpointsResponse>;
+export type ExportArn = string;
 export interface DescribeExportInput {
   ExportArn: string;
 }
@@ -2281,31 +2414,47 @@ export type ExportStatus =
   | "FAILED"
   | (string & {});
 export const ExportStatus = /*@__PURE__*/ S.String;
+
+export type ExportStartTime = Date;
+export type ExportEndTime = Date;
+export type ExportManifest = string;
+export type ExportTime = Date;
+export type ClientToken = string;
+export type S3Bucket = string;
+export type S3BucketOwner = string;
+export type S3Prefix = string;
 export type S3SseAlgorithm = "AES256" | "KMS" | (string & {});
 export const S3SseAlgorithm = /*@__PURE__*/ S.String;
+
+export type S3SseKmsKeyId = string;
+export type FailureCode = string;
+export type FailureMessage = string;
 export type ExportFormat = "DYNAMODB_JSON" | "ION" | (string & {});
 export const ExportFormat = /*@__PURE__*/ S.String;
+
+export type BilledSizeBytes = number;
 export type ExportType = "FULL_EXPORT" | "INCREMENTAL_EXPORT" | (string & {});
 export const ExportType = /*@__PURE__*/ S.String;
+
+export type ExportFromTime = Date;
+export type ExportToTime = Date;
 export type ExportViewType = "NEW_IMAGE" | "NEW_AND_OLD_IMAGES" | (string & {});
 export const ExportViewType = /*@__PURE__*/ S.String;
+
 export interface IncrementalExportSpecification {
   ExportFromTime?: Date;
   ExportToTime?: Date;
   ExportViewType?: ExportViewType;
 }
-export const IncrementalExportSpecification =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ExportFromTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      ExportToTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      ExportViewType: S.optional(ExportViewType),
-    }),
-  ).annotate({
-    identifier: "IncrementalExportSpecification",
-  }) as any as S.Schema<IncrementalExportSpecification>;
+export const IncrementalExportSpecification = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ExportFromTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    ExportToTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    ExportViewType: S.optional(ExportViewType),
+  }),
+).annotate({
+  identifier: "IncrementalExportSpecification",
+}) as any as S.Schema<IncrementalExportSpecification>;
 export interface ExportDescription {
   ExportArn?: string;
   ExportStatus?: ExportStatus;
@@ -2388,33 +2537,35 @@ export interface DescribeGlobalTableOutput {
   GlobalTableDescription?: GlobalTableDescription;
 }
 export const DescribeGlobalTableOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalTableDescription: S.optional(GlobalTableDescription),
-  }).pipe(ns),
+  S.Struct({ GlobalTableDescription: S.optional(GlobalTableDescription) }).pipe(
+    ns,
+  ),
 ).annotate({
   identifier: "DescribeGlobalTableOutput",
 }) as any as S.Schema<DescribeGlobalTableOutput>;
 export interface DescribeGlobalTableSettingsInput {
   GlobalTableName: string;
 }
-export const DescribeGlobalTableSettingsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      GlobalTableName: S.String.pipe(T.ContextParam("ResourceArn")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeGlobalTableSettingsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    GlobalTableName: S.String.pipe(T.ContextParam("ResourceArn")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeGlobalTableSettingsInput",
-  }) as any as S.Schema<DescribeGlobalTableSettingsInput>;
+  ),
+).annotate({
+  identifier: "DescribeGlobalTableSettingsInput",
+}) as any as S.Schema<DescribeGlobalTableSettingsInput>;
+export type AutoScalingPolicyName = string;
+export type IntegerObject = number;
+export type DoubleObject = number;
 export interface AutoScalingTargetTrackingScalingPolicyConfigurationDescription {
   DisableScaleIn?: boolean;
   ScaleInCooldown?: number;
@@ -2437,20 +2588,20 @@ export interface AutoScalingPolicyDescription {
   PolicyName?: string;
   TargetTrackingScalingPolicyConfiguration?: AutoScalingTargetTrackingScalingPolicyConfigurationDescription;
 }
-export const AutoScalingPolicyDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PolicyName: S.optional(S.String),
-      TargetTrackingScalingPolicyConfiguration: S.optional(
-        AutoScalingTargetTrackingScalingPolicyConfigurationDescription,
-      ),
-    }),
-  ).annotate({
-    identifier: "AutoScalingPolicyDescription",
-  }) as any as S.Schema<AutoScalingPolicyDescription>;
+export const AutoScalingPolicyDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PolicyName: S.optional(S.String),
+    TargetTrackingScalingPolicyConfiguration: S.optional(
+      AutoScalingTargetTrackingScalingPolicyConfigurationDescription,
+    ),
+  }),
+).annotate({
+  identifier: "AutoScalingPolicyDescription",
+}) as any as S.Schema<AutoScalingPolicyDescription>;
 export type AutoScalingPolicyDescriptionList = AutoScalingPolicyDescription[];
-export const AutoScalingPolicyDescriptionList =
-  /*@__PURE__*/ S.Array(AutoScalingPolicyDescription);
+export const AutoScalingPolicyDescriptionList = /*@__PURE__*/ S.Array(
+  AutoScalingPolicyDescription,
+);
 export interface AutoScalingSettingsDescription {
   MinimumUnits?: number;
   MaximumUnits?: number;
@@ -2458,18 +2609,17 @@ export interface AutoScalingSettingsDescription {
   AutoScalingRoleArn?: string;
   ScalingPolicies?: AutoScalingPolicyDescription[];
 }
-export const AutoScalingSettingsDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MinimumUnits: S.optional(S.Number),
-      MaximumUnits: S.optional(S.Number),
-      AutoScalingDisabled: S.optional(S.Boolean),
-      AutoScalingRoleArn: S.optional(S.String),
-      ScalingPolicies: S.optional(AutoScalingPolicyDescriptionList),
-    }),
-  ).annotate({
-    identifier: "AutoScalingSettingsDescription",
-  }) as any as S.Schema<AutoScalingSettingsDescription>;
+export const AutoScalingSettingsDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MinimumUnits: S.optional(S.Number),
+    MaximumUnits: S.optional(S.Number),
+    AutoScalingDisabled: S.optional(S.Boolean),
+    AutoScalingRoleArn: S.optional(S.String),
+    ScalingPolicies: S.optional(AutoScalingPolicyDescriptionList),
+  }),
+).annotate({
+  identifier: "AutoScalingSettingsDescription",
+}) as any as S.Schema<AutoScalingSettingsDescription>;
 export interface ReplicaGlobalSecondaryIndexSettingsDescription {
   IndexName: string;
   IndexStatus?: IndexStatus;
@@ -2532,21 +2682,22 @@ export const ReplicaSettingsDescription = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReplicaSettingsDescription",
 }) as any as S.Schema<ReplicaSettingsDescription>;
 export type ReplicaSettingsDescriptionList = ReplicaSettingsDescription[];
-export const ReplicaSettingsDescriptionList =
-  /*@__PURE__*/ S.Array(ReplicaSettingsDescription);
+export const ReplicaSettingsDescriptionList = /*@__PURE__*/ S.Array(
+  ReplicaSettingsDescription,
+);
 export interface DescribeGlobalTableSettingsOutput {
   GlobalTableName?: string;
   ReplicaSettings?: ReplicaSettingsDescription[];
 }
-export const DescribeGlobalTableSettingsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      GlobalTableName: S.optional(S.String),
-      ReplicaSettings: S.optional(ReplicaSettingsDescriptionList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeGlobalTableSettingsOutput",
-  }) as any as S.Schema<DescribeGlobalTableSettingsOutput>;
+export const DescribeGlobalTableSettingsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    GlobalTableName: S.optional(S.String),
+    ReplicaSettings: S.optional(ReplicaSettingsDescriptionList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeGlobalTableSettingsOutput",
+}) as any as S.Schema<DescribeGlobalTableSettingsOutput>;
+export type ImportArn = string;
 export interface DescribeImportInput {
   ImportArn: string;
 }
@@ -2573,6 +2724,7 @@ export type ImportStatus =
   | "FAILED"
   | (string & {});
 export const ImportStatus = /*@__PURE__*/ S.String;
+
 export interface S3BucketSource {
   S3BucketOwner?: string;
   S3Bucket: string;
@@ -2585,8 +2737,13 @@ export const S3BucketSource = /*@__PURE__*/ S.suspend(() =>
     S3KeyPrefix: S.optional(S.String),
   }),
 ).annotate({ identifier: "S3BucketSource" }) as any as S.Schema<S3BucketSource>;
+export type ErrorCount = number;
+export type CloudWatchLogGroupArn = string;
 export type InputFormat = "DYNAMODB_JSON" | "ION" | "CSV" | (string & {});
 export const InputFormat = /*@__PURE__*/ S.String;
+
+export type CsvDelimiter = string;
+export type CsvHeader = string;
 export type CsvHeaderList = string[];
 export const CsvHeaderList = /*@__PURE__*/ S.Array(S.String);
 export interface CsvOptions {
@@ -2609,6 +2766,7 @@ export const InputFormatOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InputFormatOptions>;
 export type InputCompressionType = "GZIP" | "ZSTD" | "NONE" | (string & {});
 export const InputCompressionType = /*@__PURE__*/ S.String;
+
 export interface TableCreationParameters {
   TableName: string;
   AttributeDefinitions: AttributeDefinition[];
@@ -2633,6 +2791,10 @@ export const TableCreationParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TableCreationParameters",
 }) as any as S.Schema<TableCreationParameters>;
+export type ImportStartTime = Date;
+export type ImportEndTime = Date;
+export type ProcessedItemCount = number;
+export type ImportedItemCount = number;
 export interface ImportTableDescription {
   ImportArn?: string;
   ImportStatus?: ImportStatus;
@@ -2690,8 +2852,8 @@ export const DescribeImportOutput = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeKinesisStreamingDestinationInput {
   TableName: string;
 }
-export const DescribeKinesisStreamingDestinationInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeKinesisStreamingDestinationInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ TableName: S.String.pipe(T.ContextParam("ResourceArn")) }).pipe(
       T.all(
         ns,
@@ -2703,9 +2865,9 @@ export const DescribeKinesisStreamingDestinationInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeKinesisStreamingDestinationInput",
-  }) as any as S.Schema<DescribeKinesisStreamingDestinationInput>;
+).annotate({
+  identifier: "DescribeKinesisStreamingDestinationInput",
+}) as any as S.Schema<DescribeKinesisStreamingDestinationInput>;
 export type DestinationStatus =
   | "ENABLING"
   | "ACTIVE"
@@ -2715,33 +2877,35 @@ export type DestinationStatus =
   | "UPDATING"
   | (string & {});
 export const DestinationStatus = /*@__PURE__*/ S.String;
+
 export type ApproximateCreationDateTimePrecision =
   | "MILLISECOND"
   | "MICROSECOND"
   | (string & {});
 export const ApproximateCreationDateTimePrecision = /*@__PURE__*/ S.String;
+
 export interface KinesisDataStreamDestination {
   StreamArn?: string;
   DestinationStatus?: DestinationStatus;
   DestinationStatusDescription?: string;
   ApproximateCreationDateTimePrecision?: ApproximateCreationDateTimePrecision;
 }
-export const KinesisDataStreamDestination =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StreamArn: S.optional(S.String),
-      DestinationStatus: S.optional(DestinationStatus),
-      DestinationStatusDescription: S.optional(S.String),
-      ApproximateCreationDateTimePrecision: S.optional(
-        ApproximateCreationDateTimePrecision,
-      ),
-    }),
-  ).annotate({
-    identifier: "KinesisDataStreamDestination",
-  }) as any as S.Schema<KinesisDataStreamDestination>;
+export const KinesisDataStreamDestination = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StreamArn: S.optional(S.String),
+    DestinationStatus: S.optional(DestinationStatus),
+    DestinationStatusDescription: S.optional(S.String),
+    ApproximateCreationDateTimePrecision: S.optional(
+      ApproximateCreationDateTimePrecision,
+    ),
+  }),
+).annotate({
+  identifier: "KinesisDataStreamDestination",
+}) as any as S.Schema<KinesisDataStreamDestination>;
 export type KinesisDataStreamDestinations = KinesisDataStreamDestination[];
-export const KinesisDataStreamDestinations =
-  /*@__PURE__*/ S.Array(KinesisDataStreamDestination);
+export const KinesisDataStreamDestinations = /*@__PURE__*/ S.Array(
+  KinesisDataStreamDestination,
+);
 export interface DescribeKinesisStreamingDestinationOutput {
   TableName?: string;
   KinesisDataStreamDestinations?: KinesisDataStreamDestination[];
@@ -2816,8 +2980,8 @@ export const DescribeTableOutput = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeTableReplicaAutoScalingInput {
   TableName: string;
 }
-export const DescribeTableReplicaAutoScalingInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeTableReplicaAutoScalingInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ TableName: S.String.pipe(T.ContextParam("ResourceArn")) }).pipe(
       T.all(
         ns,
@@ -2829,9 +2993,9 @@ export const DescribeTableReplicaAutoScalingInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeTableReplicaAutoScalingInput",
-  }) as any as S.Schema<DescribeTableReplicaAutoScalingInput>;
+).annotate({
+  identifier: "DescribeTableReplicaAutoScalingInput",
+}) as any as S.Schema<DescribeTableReplicaAutoScalingInput>;
 export interface ReplicaGlobalSecondaryIndexAutoScalingDescription {
   IndexName?: string;
   IndexStatus?: IndexStatus;
@@ -2864,53 +3028,52 @@ export interface ReplicaAutoScalingDescription {
   ReplicaProvisionedWriteCapacityAutoScalingSettings?: AutoScalingSettingsDescription;
   ReplicaStatus?: ReplicaStatus;
 }
-export const ReplicaAutoScalingDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RegionName: S.optional(S.String),
-      GlobalSecondaryIndexes: S.optional(
-        ReplicaGlobalSecondaryIndexAutoScalingDescriptionList,
-      ),
-      ReplicaProvisionedReadCapacityAutoScalingSettings: S.optional(
-        AutoScalingSettingsDescription,
-      ),
-      ReplicaProvisionedWriteCapacityAutoScalingSettings: S.optional(
-        AutoScalingSettingsDescription,
-      ),
-      ReplicaStatus: S.optional(ReplicaStatus),
-    }),
-  ).annotate({
-    identifier: "ReplicaAutoScalingDescription",
-  }) as any as S.Schema<ReplicaAutoScalingDescription>;
+export const ReplicaAutoScalingDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RegionName: S.optional(S.String),
+    GlobalSecondaryIndexes: S.optional(
+      ReplicaGlobalSecondaryIndexAutoScalingDescriptionList,
+    ),
+    ReplicaProvisionedReadCapacityAutoScalingSettings: S.optional(
+      AutoScalingSettingsDescription,
+    ),
+    ReplicaProvisionedWriteCapacityAutoScalingSettings: S.optional(
+      AutoScalingSettingsDescription,
+    ),
+    ReplicaStatus: S.optional(ReplicaStatus),
+  }),
+).annotate({
+  identifier: "ReplicaAutoScalingDescription",
+}) as any as S.Schema<ReplicaAutoScalingDescription>;
 export type ReplicaAutoScalingDescriptionList = ReplicaAutoScalingDescription[];
-export const ReplicaAutoScalingDescriptionList =
-  /*@__PURE__*/ S.Array(ReplicaAutoScalingDescription);
+export const ReplicaAutoScalingDescriptionList = /*@__PURE__*/ S.Array(
+  ReplicaAutoScalingDescription,
+);
 export interface TableAutoScalingDescription {
   TableName?: string;
   TableStatus?: TableStatus;
   Replicas?: ReplicaAutoScalingDescription[];
 }
-export const TableAutoScalingDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TableName: S.optional(S.String),
-      TableStatus: S.optional(TableStatus),
-      Replicas: S.optional(ReplicaAutoScalingDescriptionList),
-    }),
-  ).annotate({
-    identifier: "TableAutoScalingDescription",
-  }) as any as S.Schema<TableAutoScalingDescription>;
+export const TableAutoScalingDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TableName: S.optional(S.String),
+    TableStatus: S.optional(TableStatus),
+    Replicas: S.optional(ReplicaAutoScalingDescriptionList),
+  }),
+).annotate({
+  identifier: "TableAutoScalingDescription",
+}) as any as S.Schema<TableAutoScalingDescription>;
 export interface DescribeTableReplicaAutoScalingOutput {
   TableAutoScalingDescription?: TableAutoScalingDescription;
 }
-export const DescribeTableReplicaAutoScalingOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeTableReplicaAutoScalingOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       TableAutoScalingDescription: S.optional(TableAutoScalingDescription),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeTableReplicaAutoScalingOutput",
-  }) as any as S.Schema<DescribeTableReplicaAutoScalingOutput>;
+).annotate({
+  identifier: "DescribeTableReplicaAutoScalingOutput",
+}) as any as S.Schema<DescribeTableReplicaAutoScalingOutput>;
 export interface DescribeTimeToLiveInput {
   TableName: string;
 }
@@ -2942,62 +3105,61 @@ export const DescribeTimeToLiveOutput = /*@__PURE__*/ S.suspend(() =>
 export interface EnableKinesisStreamingConfiguration {
   ApproximateCreationDateTimePrecision?: ApproximateCreationDateTimePrecision;
 }
-export const EnableKinesisStreamingConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApproximateCreationDateTimePrecision: S.optional(
-        ApproximateCreationDateTimePrecision,
-      ),
-    }),
-  ).annotate({
-    identifier: "EnableKinesisStreamingConfiguration",
-  }) as any as S.Schema<EnableKinesisStreamingConfiguration>;
+export const EnableKinesisStreamingConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApproximateCreationDateTimePrecision: S.optional(
+      ApproximateCreationDateTimePrecision,
+    ),
+  }),
+).annotate({
+  identifier: "EnableKinesisStreamingConfiguration",
+}) as any as S.Schema<EnableKinesisStreamingConfiguration>;
 export interface KinesisStreamingDestinationInput {
   TableName: string;
   StreamArn: string;
   EnableKinesisStreamingConfiguration?: EnableKinesisStreamingConfiguration;
 }
-export const KinesisStreamingDestinationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TableName: S.String.pipe(T.ContextParam("ResourceArn")),
-      StreamArn: S.String,
-      EnableKinesisStreamingConfiguration: S.optional(
-        EnableKinesisStreamingConfiguration,
-      ),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const KinesisStreamingDestinationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TableName: S.String.pipe(T.ContextParam("ResourceArn")),
+    StreamArn: S.String,
+    EnableKinesisStreamingConfiguration: S.optional(
+      EnableKinesisStreamingConfiguration,
     ),
-  ).annotate({
-    identifier: "KinesisStreamingDestinationInput",
-  }) as any as S.Schema<KinesisStreamingDestinationInput>;
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "KinesisStreamingDestinationInput",
+}) as any as S.Schema<KinesisStreamingDestinationInput>;
 export interface KinesisStreamingDestinationOutput {
   TableName?: string;
   StreamArn?: string;
   DestinationStatus?: DestinationStatus;
   EnableKinesisStreamingConfiguration?: EnableKinesisStreamingConfiguration;
 }
-export const KinesisStreamingDestinationOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TableName: S.optional(S.String),
-      StreamArn: S.optional(S.String),
-      DestinationStatus: S.optional(DestinationStatus),
-      EnableKinesisStreamingConfiguration: S.optional(
-        EnableKinesisStreamingConfiguration,
-      ),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "KinesisStreamingDestinationOutput",
-  }) as any as S.Schema<KinesisStreamingDestinationOutput>;
+export const KinesisStreamingDestinationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TableName: S.optional(S.String),
+    StreamArn: S.optional(S.String),
+    DestinationStatus: S.optional(DestinationStatus),
+    EnableKinesisStreamingConfiguration: S.optional(
+      EnableKinesisStreamingConfiguration,
+    ),
+  }).pipe(ns),
+).annotate({
+  identifier: "KinesisStreamingDestinationOutput",
+}) as any as S.Schema<KinesisStreamingDestinationOutput>;
+export type PartiQLNextToken = string;
+export type PositiveIntegerObject = number;
 export interface ExecuteStatementInput {
   Statement: string;
   Parameters?: AttributeValue[];
@@ -3068,6 +3230,7 @@ export type ParameterizedStatements = ParameterizedStatement[];
 export const ParameterizedStatements = /*@__PURE__*/ S.Array(
   ParameterizedStatement,
 );
+export type ClientRequestToken = string;
 export interface ExecuteTransactionInput {
   TransactStatements: ParameterizedStatement[];
   ClientRequestToken?: string;
@@ -3112,22 +3275,6 @@ export const ExecuteTransactionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExecuteTransactionOutput",
 }) as any as S.Schema<ExecuteTransactionOutput>;
-export interface CancellationReason {
-  Item?: { [key: string]: AttributeValue | undefined };
-  Code?: string;
-  Message?: string;
-}
-export const CancellationReason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Item: S.optional(AttributeMap),
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CancellationReason",
-}) as any as S.Schema<CancellationReason>;
-export type CancellationReasonList = CancellationReason[];
-export const CancellationReasonList = /*@__PURE__*/ S.Array(CancellationReason);
 export interface ExportTableToPointInTimeInput {
   TableArn: string;
   ExportTime?: Date;
@@ -3141,45 +3288,41 @@ export interface ExportTableToPointInTimeInput {
   ExportType?: ExportType;
   IncrementalExportSpecification?: IncrementalExportSpecification;
 }
-export const ExportTableToPointInTimeInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TableArn: S.String.pipe(T.ContextParam("ResourceArn")),
-      ExportTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      S3Bucket: S.String,
-      S3BucketOwner: S.optional(S.String),
-      S3Prefix: S.optional(S.String),
-      S3SseAlgorithm: S.optional(S3SseAlgorithm),
-      S3SseKmsKeyId: S.optional(S.String),
-      ExportFormat: S.optional(ExportFormat),
-      ExportType: S.optional(ExportType),
-      IncrementalExportSpecification: S.optional(
-        IncrementalExportSpecification,
-      ),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ExportTableToPointInTimeInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TableArn: S.String.pipe(T.ContextParam("ResourceArn")),
+    ExportTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    S3Bucket: S.String,
+    S3BucketOwner: S.optional(S.String),
+    S3Prefix: S.optional(S.String),
+    S3SseAlgorithm: S.optional(S3SseAlgorithm),
+    S3SseKmsKeyId: S.optional(S.String),
+    ExportFormat: S.optional(ExportFormat),
+    ExportType: S.optional(ExportType),
+    IncrementalExportSpecification: S.optional(IncrementalExportSpecification),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ExportTableToPointInTimeInput",
-  }) as any as S.Schema<ExportTableToPointInTimeInput>;
+  ),
+).annotate({
+  identifier: "ExportTableToPointInTimeInput",
+}) as any as S.Schema<ExportTableToPointInTimeInput>;
 export interface ExportTableToPointInTimeOutput {
   ExportDescription?: ExportDescription;
 }
-export const ExportTableToPointInTimeOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ExportDescription: S.optional(ExportDescription) }).pipe(ns),
-  ).annotate({
-    identifier: "ExportTableToPointInTimeOutput",
-  }) as any as S.Schema<ExportTableToPointInTimeOutput>;
+export const ExportTableToPointInTimeOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ExportDescription: S.optional(ExportDescription) }).pipe(ns),
+).annotate({
+  identifier: "ExportTableToPointInTimeOutput",
+}) as any as S.Schema<ExportTableToPointInTimeOutput>;
 export interface GetItemInput {
   TableName: string;
   Key: { [key: string]: AttributeValue | undefined };
@@ -3224,9 +3367,7 @@ export interface GetResourcePolicyInput {
   ResourceArn: string;
 }
 export const GetResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceArn: S.String.pipe(T.ContextParam("ResourceArn")),
-  }).pipe(
+  S.Struct({ ResourceArn: S.String.pipe(T.ContextParam("ResourceArn")) }).pipe(
     T.all(
       ns,
       T.Http({ method: "POST", uri: "/" }),
@@ -3290,6 +3431,9 @@ export const ImportTableOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImportTableOutput",
 }) as any as S.Schema<ImportTableOutput>;
+export type BackupsInputLimit = number;
+export type TimeRangeLowerBound = Date;
+export type TimeRangeUpperBound = Date;
 export type BackupTypeFilter =
   | "USER"
   | "SYSTEM"
@@ -3297,6 +3441,7 @@ export type BackupTypeFilter =
   | "ALL"
   | (string & {});
 export const BackupTypeFilter = /*@__PURE__*/ S.String;
+
 export interface ListBackupsInput {
   TableName?: string;
   Limit?: number;
@@ -3375,31 +3520,32 @@ export const ListBackupsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListBackupsOutput",
 }) as any as S.Schema<ListBackupsOutput>;
+export type NextTokenString = string;
+export type ListContributorInsightsLimit = number;
 export interface ListContributorInsightsInput {
   TableName?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListContributorInsightsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TableName: S.optional(S.String).pipe(T.ContextParam("ResourceArn")),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListContributorInsightsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TableName: S.optional(S.String).pipe(T.ContextParam("ResourceArn")),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListContributorInsightsInput",
-  }) as any as S.Schema<ListContributorInsightsInput>;
+  ),
+).annotate({
+  identifier: "ListContributorInsightsInput",
+}) as any as S.Schema<ListContributorInsightsInput>;
 export interface ContributorInsightsSummary {
   TableName?: string;
   IndexName?: string;
@@ -3424,15 +3570,16 @@ export interface ListContributorInsightsOutput {
   ContributorInsightsSummaries?: ContributorInsightsSummary[];
   NextToken?: string;
 }
-export const ListContributorInsightsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ContributorInsightsSummaries: S.optional(ContributorInsightsSummaries),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListContributorInsightsOutput",
-  }) as any as S.Schema<ListContributorInsightsOutput>;
+export const ListContributorInsightsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ContributorInsightsSummaries: S.optional(ContributorInsightsSummaries),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListContributorInsightsOutput",
+}) as any as S.Schema<ListContributorInsightsOutput>;
+export type ListExportsMaxLimit = number;
+export type ExportNextToken = string;
 export interface ListExportsInput {
   TableArn?: string;
   MaxResults?: number;
@@ -3531,6 +3678,8 @@ export const ListGlobalTablesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListGlobalTablesOutput",
 }) as any as S.Schema<ListGlobalTablesOutput>;
+export type ListImportsMaxLimit = number;
+export type ImportNextToken = string;
 export interface ListImportsInput {
   TableArn?: string;
   PageSize?: number;
@@ -3591,6 +3740,7 @@ export const ListImportsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListImportsOutput",
 }) as any as S.Schema<ListImportsOutput>;
+export type ListTablesInputLimit = number;
 export interface ListTablesInput {
   ExclusiveStartTableName?: string;
   Limit?: number;
@@ -3654,10 +3804,9 @@ export interface ListTagsOfResourceOutput {
   NextToken?: string;
 }
 export const ListTagsOfResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Tags: S.optional(TagList),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
+  S.Struct({ Tags: S.optional(TagList), NextToken: S.optional(S.String) }).pipe(
+    ns,
+  ),
 ).annotate({
   identifier: "ListTagsOfResourceOutput",
 }) as any as S.Schema<ListTagsOfResourceOutput>;
@@ -3713,6 +3862,7 @@ export const PutItemOutput = /*@__PURE__*/ S.suspend(() =>
     ItemCollectionMetrics: S.optional(ItemCollectionMetrics),
   }).pipe(ns),
 ).annotate({ identifier: "PutItemOutput" }) as any as S.Schema<PutItemOutput>;
+export type ConfirmRemoveSelfResourceAccess = boolean;
 export interface PutResourcePolicyInput {
   ResourceArn: string;
   Policy: string;
@@ -3756,6 +3906,7 @@ export type Select =
   | "COUNT"
   | (string & {});
 export const Select = /*@__PURE__*/ S.String;
+
 export interface Condition {
   AttributeValueList?: AttributeValue[];
   ComparisonOperator: ComparisonOperator;
@@ -3776,6 +3927,7 @@ export const FilterConditionMap = /*@__PURE__*/ S.Record(
   S.String,
   Condition.pipe(S.optional),
 );
+export type KeyExpression = string;
 export interface QueryInput {
   TableName: string;
   IndexName?: string;
@@ -3852,40 +4004,38 @@ export interface RestoreTableFromBackupInput {
   OnDemandThroughputOverride?: OnDemandThroughput;
   SSESpecificationOverride?: SSESpecification;
 }
-export const RestoreTableFromBackupInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TargetTableName: S.String.pipe(T.ContextParam("ResourceArn")),
-      BackupArn: S.String,
-      BillingModeOverride: S.optional(BillingMode),
-      GlobalSecondaryIndexOverride: S.optional(GlobalSecondaryIndexList),
-      LocalSecondaryIndexOverride: S.optional(LocalSecondaryIndexList),
-      ProvisionedThroughputOverride: S.optional(ProvisionedThroughput),
-      OnDemandThroughputOverride: S.optional(OnDemandThroughput),
-      SSESpecificationOverride: S.optional(SSESpecification),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RestoreTableFromBackupInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TargetTableName: S.String.pipe(T.ContextParam("ResourceArn")),
+    BackupArn: S.String,
+    BillingModeOverride: S.optional(BillingMode),
+    GlobalSecondaryIndexOverride: S.optional(GlobalSecondaryIndexList),
+    LocalSecondaryIndexOverride: S.optional(LocalSecondaryIndexList),
+    ProvisionedThroughputOverride: S.optional(ProvisionedThroughput),
+    OnDemandThroughputOverride: S.optional(OnDemandThroughput),
+    SSESpecificationOverride: S.optional(SSESpecification),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RestoreTableFromBackupInput",
-  }) as any as S.Schema<RestoreTableFromBackupInput>;
+  ),
+).annotate({
+  identifier: "RestoreTableFromBackupInput",
+}) as any as S.Schema<RestoreTableFromBackupInput>;
 export interface RestoreTableFromBackupOutput {
   TableDescription?: TableDescription;
 }
-export const RestoreTableFromBackupOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ TableDescription: S.optional(TableDescription) }).pipe(ns),
-  ).annotate({
-    identifier: "RestoreTableFromBackupOutput",
-  }) as any as S.Schema<RestoreTableFromBackupOutput>;
+export const RestoreTableFromBackupOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TableDescription: S.optional(TableDescription) }).pipe(ns),
+).annotate({
+  identifier: "RestoreTableFromBackupOutput",
+}) as any as S.Schema<RestoreTableFromBackupOutput>;
 export interface RestoreTableToPointInTimeInput {
   SourceTableArn?: string;
   SourceTableName?: string;
@@ -3899,45 +4049,45 @@ export interface RestoreTableToPointInTimeInput {
   OnDemandThroughputOverride?: OnDemandThroughput;
   SSESpecificationOverride?: SSESpecification;
 }
-export const RestoreTableToPointInTimeInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SourceTableArn: S.optional(S.String),
-      SourceTableName: S.optional(S.String),
-      TargetTableName: S.String.pipe(T.ContextParam("ResourceArn")),
-      UseLatestRestorableTime: S.optional(S.Boolean),
-      RestoreDateTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      BillingModeOverride: S.optional(BillingMode),
-      GlobalSecondaryIndexOverride: S.optional(GlobalSecondaryIndexList),
-      LocalSecondaryIndexOverride: S.optional(LocalSecondaryIndexList),
-      ProvisionedThroughputOverride: S.optional(ProvisionedThroughput),
-      OnDemandThroughputOverride: S.optional(OnDemandThroughput),
-      SSESpecificationOverride: S.optional(SSESpecification),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RestoreTableToPointInTimeInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SourceTableArn: S.optional(S.String),
+    SourceTableName: S.optional(S.String),
+    TargetTableName: S.String.pipe(T.ContextParam("ResourceArn")),
+    UseLatestRestorableTime: S.optional(S.Boolean),
+    RestoreDateTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     ),
-  ).annotate({
-    identifier: "RestoreTableToPointInTimeInput",
-  }) as any as S.Schema<RestoreTableToPointInTimeInput>;
+    BillingModeOverride: S.optional(BillingMode),
+    GlobalSecondaryIndexOverride: S.optional(GlobalSecondaryIndexList),
+    LocalSecondaryIndexOverride: S.optional(LocalSecondaryIndexList),
+    ProvisionedThroughputOverride: S.optional(ProvisionedThroughput),
+    OnDemandThroughputOverride: S.optional(OnDemandThroughput),
+    SSESpecificationOverride: S.optional(SSESpecification),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "RestoreTableToPointInTimeInput",
+}) as any as S.Schema<RestoreTableToPointInTimeInput>;
 export interface RestoreTableToPointInTimeOutput {
   TableDescription?: TableDescription;
 }
-export const RestoreTableToPointInTimeOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ TableDescription: S.optional(TableDescription) }).pipe(ns),
-  ).annotate({
-    identifier: "RestoreTableToPointInTimeOutput",
-  }) as any as S.Schema<RestoreTableToPointInTimeOutput>;
+export const RestoreTableToPointInTimeOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TableDescription: S.optional(TableDescription) }).pipe(ns),
+).annotate({
+  identifier: "RestoreTableToPointInTimeOutput",
+}) as any as S.Schema<RestoreTableToPointInTimeOutput>;
+export type ScanTotalSegments = number;
+export type ScanSegment = number;
 export interface ScanInput {
   TableName: string;
   IndexName?: string;
@@ -4148,6 +4298,7 @@ export const Delete = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({ identifier: "Delete" }) as any as S.Schema<Delete>;
+export type UpdateExpression = string;
 export interface Update {
   Key: { [key: string]: AttributeValue | undefined };
   UpdateExpression: string;
@@ -4262,95 +4413,91 @@ export interface PointInTimeRecoverySpecification {
   PointInTimeRecoveryEnabled: boolean;
   RecoveryPeriodInDays?: number;
 }
-export const PointInTimeRecoverySpecification =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PointInTimeRecoveryEnabled: S.Boolean,
-      RecoveryPeriodInDays: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "PointInTimeRecoverySpecification",
-  }) as any as S.Schema<PointInTimeRecoverySpecification>;
+export const PointInTimeRecoverySpecification = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PointInTimeRecoveryEnabled: S.Boolean,
+    RecoveryPeriodInDays: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PointInTimeRecoverySpecification",
+}) as any as S.Schema<PointInTimeRecoverySpecification>;
 export interface UpdateContinuousBackupsInput {
   TableName: string;
   PointInTimeRecoverySpecification: PointInTimeRecoverySpecification;
 }
-export const UpdateContinuousBackupsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TableName: S.String.pipe(T.ContextParam("ResourceArn")),
-      PointInTimeRecoverySpecification: PointInTimeRecoverySpecification,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateContinuousBackupsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TableName: S.String.pipe(T.ContextParam("ResourceArn")),
+    PointInTimeRecoverySpecification: PointInTimeRecoverySpecification,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateContinuousBackupsInput",
-  }) as any as S.Schema<UpdateContinuousBackupsInput>;
+  ),
+).annotate({
+  identifier: "UpdateContinuousBackupsInput",
+}) as any as S.Schema<UpdateContinuousBackupsInput>;
 export interface UpdateContinuousBackupsOutput {
   ContinuousBackupsDescription?: ContinuousBackupsDescription;
 }
-export const UpdateContinuousBackupsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ContinuousBackupsDescription: S.optional(ContinuousBackupsDescription),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateContinuousBackupsOutput",
-  }) as any as S.Schema<UpdateContinuousBackupsOutput>;
+export const UpdateContinuousBackupsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ContinuousBackupsDescription: S.optional(ContinuousBackupsDescription),
+  }).pipe(ns),
+).annotate({
+  identifier: "UpdateContinuousBackupsOutput",
+}) as any as S.Schema<UpdateContinuousBackupsOutput>;
 export type ContributorInsightsAction = "ENABLE" | "DISABLE" | (string & {});
 export const ContributorInsightsAction = /*@__PURE__*/ S.String;
+
 export interface UpdateContributorInsightsInput {
   TableName: string;
   IndexName?: string;
   ContributorInsightsAction: ContributorInsightsAction;
   ContributorInsightsMode?: ContributorInsightsMode;
 }
-export const UpdateContributorInsightsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TableName: S.String.pipe(T.ContextParam("ResourceArn")),
-      IndexName: S.optional(S.String),
-      ContributorInsightsAction: ContributorInsightsAction,
-      ContributorInsightsMode: S.optional(ContributorInsightsMode),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateContributorInsightsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TableName: S.String.pipe(T.ContextParam("ResourceArn")),
+    IndexName: S.optional(S.String),
+    ContributorInsightsAction: ContributorInsightsAction,
+    ContributorInsightsMode: S.optional(ContributorInsightsMode),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateContributorInsightsInput",
-  }) as any as S.Schema<UpdateContributorInsightsInput>;
+  ),
+).annotate({
+  identifier: "UpdateContributorInsightsInput",
+}) as any as S.Schema<UpdateContributorInsightsInput>;
 export interface UpdateContributorInsightsOutput {
   TableName?: string;
   IndexName?: string;
   ContributorInsightsStatus?: ContributorInsightsStatus;
   ContributorInsightsMode?: ContributorInsightsMode;
 }
-export const UpdateContributorInsightsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TableName: S.optional(S.String),
-      IndexName: S.optional(S.String),
-      ContributorInsightsStatus: S.optional(ContributorInsightsStatus),
-      ContributorInsightsMode: S.optional(ContributorInsightsMode),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateContributorInsightsOutput",
-  }) as any as S.Schema<UpdateContributorInsightsOutput>;
+export const UpdateContributorInsightsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TableName: S.optional(S.String),
+    IndexName: S.optional(S.String),
+    ContributorInsightsStatus: S.optional(ContributorInsightsStatus),
+    ContributorInsightsMode: S.optional(ContributorInsightsMode),
+  }).pipe(ns),
+).annotate({
+  identifier: "UpdateContributorInsightsOutput",
+}) as any as S.Schema<UpdateContributorInsightsOutput>;
 export interface CreateReplicaAction {
   RegionName: string;
 }
@@ -4405,12 +4552,13 @@ export interface UpdateGlobalTableOutput {
   GlobalTableDescription?: GlobalTableDescription;
 }
 export const UpdateGlobalTableOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalTableDescription: S.optional(GlobalTableDescription),
-  }).pipe(ns),
+  S.Struct({ GlobalTableDescription: S.optional(GlobalTableDescription) }).pipe(
+    ns,
+  ),
 ).annotate({
   identifier: "UpdateGlobalTableOutput",
 }) as any as S.Schema<UpdateGlobalTableOutput>;
+export type AutoScalingRoleArn = string;
 export interface AutoScalingTargetTrackingScalingPolicyConfigurationUpdate {
   DisableScaleIn?: boolean;
   ScaleInCooldown?: number;
@@ -4535,48 +4683,47 @@ export interface UpdateGlobalTableSettingsInput {
   GlobalTableGlobalSecondaryIndexSettingsUpdate?: GlobalTableGlobalSecondaryIndexSettingsUpdate[];
   ReplicaSettingsUpdate?: ReplicaSettingsUpdate[];
 }
-export const UpdateGlobalTableSettingsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      GlobalTableName: S.String.pipe(T.ContextParam("ResourceArn")),
-      GlobalTableBillingMode: S.optional(BillingMode),
-      GlobalTableProvisionedWriteCapacityUnits: S.optional(S.Number),
-      GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate: S.optional(
-        AutoScalingSettingsUpdate,
-      ),
-      GlobalTableGlobalSecondaryIndexSettingsUpdate: S.optional(
-        GlobalTableGlobalSecondaryIndexSettingsUpdateList,
-      ),
-      ReplicaSettingsUpdate: S.optional(ReplicaSettingsUpdateList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateGlobalTableSettingsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    GlobalTableName: S.String.pipe(T.ContextParam("ResourceArn")),
+    GlobalTableBillingMode: S.optional(BillingMode),
+    GlobalTableProvisionedWriteCapacityUnits: S.optional(S.Number),
+    GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate: S.optional(
+      AutoScalingSettingsUpdate,
     ),
-  ).annotate({
-    identifier: "UpdateGlobalTableSettingsInput",
-  }) as any as S.Schema<UpdateGlobalTableSettingsInput>;
+    GlobalTableGlobalSecondaryIndexSettingsUpdate: S.optional(
+      GlobalTableGlobalSecondaryIndexSettingsUpdateList,
+    ),
+    ReplicaSettingsUpdate: S.optional(ReplicaSettingsUpdateList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateGlobalTableSettingsInput",
+}) as any as S.Schema<UpdateGlobalTableSettingsInput>;
 export interface UpdateGlobalTableSettingsOutput {
   GlobalTableName?: string;
   ReplicaSettings?: ReplicaSettingsDescription[];
 }
-export const UpdateGlobalTableSettingsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      GlobalTableName: S.optional(S.String),
-      ReplicaSettings: S.optional(ReplicaSettingsDescriptionList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateGlobalTableSettingsOutput",
-  }) as any as S.Schema<UpdateGlobalTableSettingsOutput>;
+export const UpdateGlobalTableSettingsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    GlobalTableName: S.optional(S.String),
+    ReplicaSettings: S.optional(ReplicaSettingsDescriptionList),
+  }).pipe(ns),
+).annotate({
+  identifier: "UpdateGlobalTableSettingsOutput",
+}) as any as S.Schema<UpdateGlobalTableSettingsOutput>;
 export type AttributeAction = "ADD" | "PUT" | "DELETE" | (string & {});
 export const AttributeAction = /*@__PURE__*/ S.String;
+
 export interface AttributeValueUpdate {
   Value?: AttributeValue;
   Action?: AttributeAction;
@@ -4659,23 +4806,22 @@ export const UpdateItemOutput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateKinesisStreamingConfiguration {
   ApproximateCreationDateTimePrecision?: ApproximateCreationDateTimePrecision;
 }
-export const UpdateKinesisStreamingConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApproximateCreationDateTimePrecision: S.optional(
-        ApproximateCreationDateTimePrecision,
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateKinesisStreamingConfiguration",
-  }) as any as S.Schema<UpdateKinesisStreamingConfiguration>;
+export const UpdateKinesisStreamingConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApproximateCreationDateTimePrecision: S.optional(
+      ApproximateCreationDateTimePrecision,
+    ),
+  }),
+).annotate({
+  identifier: "UpdateKinesisStreamingConfiguration",
+}) as any as S.Schema<UpdateKinesisStreamingConfiguration>;
 export interface UpdateKinesisStreamingDestinationInput {
   TableName: string;
   StreamArn: string;
   UpdateKinesisStreamingConfiguration?: UpdateKinesisStreamingConfiguration;
 }
-export const UpdateKinesisStreamingDestinationInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const UpdateKinesisStreamingDestinationInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       TableName: S.String.pipe(T.ContextParam("ResourceArn")),
       StreamArn: S.String,
@@ -4693,17 +4839,17 @@ export const UpdateKinesisStreamingDestinationInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "UpdateKinesisStreamingDestinationInput",
-  }) as any as S.Schema<UpdateKinesisStreamingDestinationInput>;
+).annotate({
+  identifier: "UpdateKinesisStreamingDestinationInput",
+}) as any as S.Schema<UpdateKinesisStreamingDestinationInput>;
 export interface UpdateKinesisStreamingDestinationOutput {
   TableName?: string;
   StreamArn?: string;
   DestinationStatus?: DestinationStatus;
   UpdateKinesisStreamingConfiguration?: UpdateKinesisStreamingConfiguration;
 }
-export const UpdateKinesisStreamingDestinationOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const UpdateKinesisStreamingDestinationOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       TableName: S.optional(S.String),
       StreamArn: S.optional(S.String),
@@ -4712,26 +4858,25 @@ export const UpdateKinesisStreamingDestinationOutput =
         UpdateKinesisStreamingConfiguration,
       ),
     }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateKinesisStreamingDestinationOutput",
-  }) as any as S.Schema<UpdateKinesisStreamingDestinationOutput>;
+).annotate({
+  identifier: "UpdateKinesisStreamingDestinationOutput",
+}) as any as S.Schema<UpdateKinesisStreamingDestinationOutput>;
 export interface UpdateGlobalSecondaryIndexAction {
   IndexName: string;
   ProvisionedThroughput?: ProvisionedThroughput;
   OnDemandThroughput?: OnDemandThroughput;
   WarmThroughput?: WarmThroughput;
 }
-export const UpdateGlobalSecondaryIndexAction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      IndexName: S.String,
-      ProvisionedThroughput: S.optional(ProvisionedThroughput),
-      OnDemandThroughput: S.optional(OnDemandThroughput),
-      WarmThroughput: S.optional(WarmThroughput),
-    }),
-  ).annotate({
-    identifier: "UpdateGlobalSecondaryIndexAction",
-  }) as any as S.Schema<UpdateGlobalSecondaryIndexAction>;
+export const UpdateGlobalSecondaryIndexAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IndexName: S.String,
+    ProvisionedThroughput: S.optional(ProvisionedThroughput),
+    OnDemandThroughput: S.optional(OnDemandThroughput),
+    WarmThroughput: S.optional(WarmThroughput),
+  }),
+).annotate({
+  identifier: "UpdateGlobalSecondaryIndexAction",
+}) as any as S.Schema<UpdateGlobalSecondaryIndexAction>;
 export interface CreateGlobalSecondaryIndexAction {
   IndexName: string;
   KeySchema: KeySchemaElement[];
@@ -4740,26 +4885,26 @@ export interface CreateGlobalSecondaryIndexAction {
   OnDemandThroughput?: OnDemandThroughput;
   WarmThroughput?: WarmThroughput;
 }
-export const CreateGlobalSecondaryIndexAction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      IndexName: S.String,
-      KeySchema: KeySchema,
-      Projection: Projection,
-      ProvisionedThroughput: S.optional(ProvisionedThroughput),
-      OnDemandThroughput: S.optional(OnDemandThroughput),
-      WarmThroughput: S.optional(WarmThroughput),
-    }),
-  ).annotate({
-    identifier: "CreateGlobalSecondaryIndexAction",
-  }) as any as S.Schema<CreateGlobalSecondaryIndexAction>;
+export const CreateGlobalSecondaryIndexAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IndexName: S.String,
+    KeySchema: KeySchema,
+    Projection: Projection,
+    ProvisionedThroughput: S.optional(ProvisionedThroughput),
+    OnDemandThroughput: S.optional(OnDemandThroughput),
+    WarmThroughput: S.optional(WarmThroughput),
+  }),
+).annotate({
+  identifier: "CreateGlobalSecondaryIndexAction",
+}) as any as S.Schema<CreateGlobalSecondaryIndexAction>;
 export interface DeleteGlobalSecondaryIndexAction {
   IndexName: string;
 }
-export const DeleteGlobalSecondaryIndexAction =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ IndexName: S.String })).annotate({
-    identifier: "DeleteGlobalSecondaryIndexAction",
-  }) as any as S.Schema<DeleteGlobalSecondaryIndexAction>;
+export const DeleteGlobalSecondaryIndexAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ IndexName: S.String }),
+).annotate({
+  identifier: "DeleteGlobalSecondaryIndexAction",
+}) as any as S.Schema<DeleteGlobalSecondaryIndexAction>;
 export interface GlobalSecondaryIndexUpdate {
   Update?: UpdateGlobalSecondaryIndexAction;
   Create?: CreateGlobalSecondaryIndexAction;
@@ -4775,26 +4920,27 @@ export const GlobalSecondaryIndexUpdate = /*@__PURE__*/ S.suspend(() =>
   identifier: "GlobalSecondaryIndexUpdate",
 }) as any as S.Schema<GlobalSecondaryIndexUpdate>;
 export type GlobalSecondaryIndexUpdateList = GlobalSecondaryIndexUpdate[];
-export const GlobalSecondaryIndexUpdateList =
-  /*@__PURE__*/ S.Array(GlobalSecondaryIndexUpdate);
+export const GlobalSecondaryIndexUpdateList = /*@__PURE__*/ S.Array(
+  GlobalSecondaryIndexUpdate,
+);
 export interface ReplicaGlobalSecondaryIndex {
   IndexName: string;
   ProvisionedThroughputOverride?: ProvisionedThroughputOverride;
   OnDemandThroughputOverride?: OnDemandThroughputOverride;
 }
-export const ReplicaGlobalSecondaryIndex =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      IndexName: S.String,
-      ProvisionedThroughputOverride: S.optional(ProvisionedThroughputOverride),
-      OnDemandThroughputOverride: S.optional(OnDemandThroughputOverride),
-    }),
-  ).annotate({
-    identifier: "ReplicaGlobalSecondaryIndex",
-  }) as any as S.Schema<ReplicaGlobalSecondaryIndex>;
+export const ReplicaGlobalSecondaryIndex = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IndexName: S.String,
+    ProvisionedThroughputOverride: S.optional(ProvisionedThroughputOverride),
+    OnDemandThroughputOverride: S.optional(OnDemandThroughputOverride),
+  }),
+).annotate({
+  identifier: "ReplicaGlobalSecondaryIndex",
+}) as any as S.Schema<ReplicaGlobalSecondaryIndex>;
 export type ReplicaGlobalSecondaryIndexList = ReplicaGlobalSecondaryIndex[];
-export const ReplicaGlobalSecondaryIndexList =
-  /*@__PURE__*/ S.Array(ReplicaGlobalSecondaryIndex);
+export const ReplicaGlobalSecondaryIndexList = /*@__PURE__*/ S.Array(
+  ReplicaGlobalSecondaryIndex,
+);
 export interface CreateReplicationGroupMemberAction {
   RegionName: string;
   KMSMasterKeyId?: string;
@@ -4803,19 +4949,18 @@ export interface CreateReplicationGroupMemberAction {
   GlobalSecondaryIndexes?: ReplicaGlobalSecondaryIndex[];
   TableClassOverride?: TableClass;
 }
-export const CreateReplicationGroupMemberAction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RegionName: S.String,
-      KMSMasterKeyId: S.optional(S.String),
-      ProvisionedThroughputOverride: S.optional(ProvisionedThroughputOverride),
-      OnDemandThroughputOverride: S.optional(OnDemandThroughputOverride),
-      GlobalSecondaryIndexes: S.optional(ReplicaGlobalSecondaryIndexList),
-      TableClassOverride: S.optional(TableClass),
-    }),
-  ).annotate({
-    identifier: "CreateReplicationGroupMemberAction",
-  }) as any as S.Schema<CreateReplicationGroupMemberAction>;
+export const CreateReplicationGroupMemberAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RegionName: S.String,
+    KMSMasterKeyId: S.optional(S.String),
+    ProvisionedThroughputOverride: S.optional(ProvisionedThroughputOverride),
+    OnDemandThroughputOverride: S.optional(OnDemandThroughputOverride),
+    GlobalSecondaryIndexes: S.optional(ReplicaGlobalSecondaryIndexList),
+    TableClassOverride: S.optional(TableClass),
+  }),
+).annotate({
+  identifier: "CreateReplicationGroupMemberAction",
+}) as any as S.Schema<CreateReplicationGroupMemberAction>;
 export interface UpdateReplicationGroupMemberAction {
   RegionName: string;
   KMSMasterKeyId?: string;
@@ -4824,26 +4969,26 @@ export interface UpdateReplicationGroupMemberAction {
   GlobalSecondaryIndexes?: ReplicaGlobalSecondaryIndex[];
   TableClassOverride?: TableClass;
 }
-export const UpdateReplicationGroupMemberAction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RegionName: S.String,
-      KMSMasterKeyId: S.optional(S.String),
-      ProvisionedThroughputOverride: S.optional(ProvisionedThroughputOverride),
-      OnDemandThroughputOverride: S.optional(OnDemandThroughputOverride),
-      GlobalSecondaryIndexes: S.optional(ReplicaGlobalSecondaryIndexList),
-      TableClassOverride: S.optional(TableClass),
-    }),
-  ).annotate({
-    identifier: "UpdateReplicationGroupMemberAction",
-  }) as any as S.Schema<UpdateReplicationGroupMemberAction>;
+export const UpdateReplicationGroupMemberAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RegionName: S.String,
+    KMSMasterKeyId: S.optional(S.String),
+    ProvisionedThroughputOverride: S.optional(ProvisionedThroughputOverride),
+    OnDemandThroughputOverride: S.optional(OnDemandThroughputOverride),
+    GlobalSecondaryIndexes: S.optional(ReplicaGlobalSecondaryIndexList),
+    TableClassOverride: S.optional(TableClass),
+  }),
+).annotate({
+  identifier: "UpdateReplicationGroupMemberAction",
+}) as any as S.Schema<UpdateReplicationGroupMemberAction>;
 export interface DeleteReplicationGroupMemberAction {
   RegionName: string;
 }
-export const DeleteReplicationGroupMemberAction =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ RegionName: S.String })).annotate({
-    identifier: "DeleteReplicationGroupMemberAction",
-  }) as any as S.Schema<DeleteReplicationGroupMemberAction>;
+export const DeleteReplicationGroupMemberAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RegionName: S.String }),
+).annotate({
+  identifier: "DeleteReplicationGroupMemberAction",
+}) as any as S.Schema<DeleteReplicationGroupMemberAction>;
 export interface ReplicationGroupUpdate {
   Create?: CreateReplicationGroupMemberAction;
   Update?: UpdateReplicationGroupMemberAction;
@@ -4880,18 +5025,18 @@ export interface GlobalTableWitnessGroupUpdate {
   Create?: CreateGlobalTableWitnessGroupMemberAction;
   Delete?: DeleteGlobalTableWitnessGroupMemberAction;
 }
-export const GlobalTableWitnessGroupUpdate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Create: S.optional(CreateGlobalTableWitnessGroupMemberAction),
-      Delete: S.optional(DeleteGlobalTableWitnessGroupMemberAction),
-    }),
-  ).annotate({
-    identifier: "GlobalTableWitnessGroupUpdate",
-  }) as any as S.Schema<GlobalTableWitnessGroupUpdate>;
+export const GlobalTableWitnessGroupUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Create: S.optional(CreateGlobalTableWitnessGroupMemberAction),
+    Delete: S.optional(DeleteGlobalTableWitnessGroupMemberAction),
+  }),
+).annotate({
+  identifier: "GlobalTableWitnessGroupUpdate",
+}) as any as S.Schema<GlobalTableWitnessGroupUpdate>;
 export type GlobalTableWitnessGroupUpdateList = GlobalTableWitnessGroupUpdate[];
-export const GlobalTableWitnessGroupUpdateList =
-  /*@__PURE__*/ S.Array(GlobalTableWitnessGroupUpdate);
+export const GlobalTableWitnessGroupUpdateList = /*@__PURE__*/ S.Array(
+  GlobalTableWitnessGroupUpdate,
+);
 export interface UpdateTableInput {
   AttributeDefinitions?: AttributeDefinition[];
   TableName: string;
@@ -4954,21 +5099,22 @@ export interface GlobalSecondaryIndexAutoScalingUpdate {
   IndexName?: string;
   ProvisionedWriteCapacityAutoScalingUpdate?: AutoScalingSettingsUpdate;
 }
-export const GlobalSecondaryIndexAutoScalingUpdate =
-  /*@__PURE__*/ S.suspend(() =>
+export const GlobalSecondaryIndexAutoScalingUpdate = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       IndexName: S.optional(S.String),
       ProvisionedWriteCapacityAutoScalingUpdate: S.optional(
         AutoScalingSettingsUpdate,
       ),
     }),
-  ).annotate({
-    identifier: "GlobalSecondaryIndexAutoScalingUpdate",
-  }) as any as S.Schema<GlobalSecondaryIndexAutoScalingUpdate>;
+).annotate({
+  identifier: "GlobalSecondaryIndexAutoScalingUpdate",
+}) as any as S.Schema<GlobalSecondaryIndexAutoScalingUpdate>;
 export type GlobalSecondaryIndexAutoScalingUpdateList =
   GlobalSecondaryIndexAutoScalingUpdate[];
-export const GlobalSecondaryIndexAutoScalingUpdateList =
-  /*@__PURE__*/ S.Array(GlobalSecondaryIndexAutoScalingUpdate);
+export const GlobalSecondaryIndexAutoScalingUpdateList = /*@__PURE__*/ S.Array(
+  GlobalSecondaryIndexAutoScalingUpdate,
+);
 export interface ReplicaGlobalSecondaryIndexAutoScalingUpdate {
   IndexName?: string;
   ProvisionedReadCapacityAutoScalingUpdate?: AutoScalingSettingsUpdate;
@@ -5016,42 +5162,41 @@ export interface UpdateTableReplicaAutoScalingInput {
   ProvisionedWriteCapacityAutoScalingUpdate?: AutoScalingSettingsUpdate;
   ReplicaUpdates?: ReplicaAutoScalingUpdate[];
 }
-export const UpdateTableReplicaAutoScalingInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      GlobalSecondaryIndexUpdates: S.optional(
-        GlobalSecondaryIndexAutoScalingUpdateList,
-      ),
-      TableName: S.String.pipe(T.ContextParam("ResourceArn")),
-      ProvisionedWriteCapacityAutoScalingUpdate: S.optional(
-        AutoScalingSettingsUpdate,
-      ),
-      ReplicaUpdates: S.optional(ReplicaAutoScalingUpdateList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateTableReplicaAutoScalingInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    GlobalSecondaryIndexUpdates: S.optional(
+      GlobalSecondaryIndexAutoScalingUpdateList,
     ),
-  ).annotate({
-    identifier: "UpdateTableReplicaAutoScalingInput",
-  }) as any as S.Schema<UpdateTableReplicaAutoScalingInput>;
+    TableName: S.String.pipe(T.ContextParam("ResourceArn")),
+    ProvisionedWriteCapacityAutoScalingUpdate: S.optional(
+      AutoScalingSettingsUpdate,
+    ),
+    ReplicaUpdates: S.optional(ReplicaAutoScalingUpdateList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateTableReplicaAutoScalingInput",
+}) as any as S.Schema<UpdateTableReplicaAutoScalingInput>;
 export interface UpdateTableReplicaAutoScalingOutput {
   TableAutoScalingDescription?: TableAutoScalingDescription;
 }
-export const UpdateTableReplicaAutoScalingOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TableAutoScalingDescription: S.optional(TableAutoScalingDescription),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateTableReplicaAutoScalingOutput",
-  }) as any as S.Schema<UpdateTableReplicaAutoScalingOutput>;
+export const UpdateTableReplicaAutoScalingOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TableAutoScalingDescription: S.optional(TableAutoScalingDescription),
+  }).pipe(ns),
+).annotate({
+  identifier: "UpdateTableReplicaAutoScalingOutput",
+}) as any as S.Schema<UpdateTableReplicaAutoScalingOutput>;
+export type TimeToLiveEnabled = boolean;
 export interface TimeToLiveSpecification {
   Enabled: boolean;
   AttributeName: string;
@@ -5093,164 +5238,38 @@ export const UpdateTimeToLiveOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTimeToLiveOutput",
 }) as any as S.Schema<UpdateTimeToLiveOutput>;
-
-//# Errors
-export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError, C.withRetryableError) {}
-export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceeded>()(
-  "RequestLimitExceeded",
-  {
-    message: S.optional(S.String),
-    ThrottlingReasons: S.optional(ThrottlingReasonList),
-  },
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.optional(S.String),
-    throttlingReasons: S.optional(ThrottlingReasonList),
-  },
-  T.AwsQueryError({ code: "Throttling", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError, C.withThrottlingError, C.withRetryableError) {}
-export class InvalidEndpointException extends S.TaggedErrorClass<InvalidEndpointException>()(
-  "InvalidEndpointException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ProvisionedThroughputExceededException extends S.TaggedErrorClass<ProvisionedThroughputExceededException>()(
-  "ProvisionedThroughputExceededException",
-  {
-    message: S.optional(S.String),
-    ThrottlingReasons: S.optional(ThrottlingReasonList),
-  },
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withNotFoundError) {}
-export class ItemCollectionSizeLimitExceededException extends S.TaggedErrorClass<ItemCollectionSizeLimitExceededException>()(
-  "ItemCollectionSizeLimitExceededException",
-  { message: S.optional(S.String) },
-).pipe(C.withQuotaError) {}
-export class ReplicatedWriteConflictException extends S.TaggedErrorClass<ReplicatedWriteConflictException>()(
-  "ReplicatedWriteConflictException",
-  { message: S.optional(S.String) },
-  T.Retryable(),
-).pipe(C.withRetryableError) {}
-export class BackupInUseException extends S.TaggedErrorClass<BackupInUseException>()(
-  "BackupInUseException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class ContinuousBackupsUnavailableException extends S.TaggedErrorClass<ContinuousBackupsUnavailableException>()(
-  "ContinuousBackupsUnavailableException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError, C.withRetryableError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-).pipe(C.withQuotaError, C.withRetryableError) {}
-export class TableInUseException extends S.TaggedErrorClass<TableInUseException>()(
-  "TableInUseException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError, C.withRetryableError) {}
-export class TableNotFoundException extends S.TaggedErrorClass<TableNotFoundException>()(
-  "TableNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withNotFoundError) {}
-export class GlobalTableAlreadyExistsException extends S.TaggedErrorClass<GlobalTableAlreadyExistsException>()(
-  "GlobalTableAlreadyExistsException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError, C.withRetryableError) {}
-export class BackupNotFoundException extends S.TaggedErrorClass<BackupNotFoundException>()(
-  "BackupNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withNotFoundError) {}
-export class ConditionalCheckFailedException extends S.TaggedErrorClass<ConditionalCheckFailedException>()(
-  "ConditionalCheckFailedException",
-  { message: S.optional(S.String), Item: S.optional(AttributeMap) },
-).pipe(C.withConflictError) {}
-export class TransactionConflictException extends S.TaggedErrorClass<TransactionConflictException>()(
-  "TransactionConflictException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError, C.withRetryableError) {}
-export class PolicyNotFoundException extends S.TaggedErrorClass<PolicyNotFoundException>()(
-  "PolicyNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withNotFoundError) {}
-export class ExportNotFoundException extends S.TaggedErrorClass<ExportNotFoundException>()(
-  "ExportNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withNotFoundError) {}
-export class GlobalTableNotFoundException extends S.TaggedErrorClass<GlobalTableNotFoundException>()(
-  "GlobalTableNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withNotFoundError) {}
-export class ImportNotFoundException extends S.TaggedErrorClass<ImportNotFoundException>()(
-  "ImportNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withNotFoundError) {}
-export class DuplicateItemException extends S.TaggedErrorClass<DuplicateItemException>()(
-  "DuplicateItemException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class IdempotentParameterMismatchException extends S.TaggedErrorClass<IdempotentParameterMismatchException>()(
-  "IdempotentParameterMismatchException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class TransactionCanceledException extends S.TaggedErrorClass<TransactionCanceledException>()(
-  "TransactionCanceledException",
-  {
+export type ErrorMessage = string;
+export type Reason = string;
+export type Resource = string;
+export interface ThrottlingReason {
+  reason?: string;
+  resource?: string;
+}
+export const ThrottlingReason = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ reason: S.optional(S.String), resource: S.optional(S.String) }),
+).annotate({
+  identifier: "ThrottlingReason",
+}) as any as S.Schema<ThrottlingReason>;
+export type ThrottlingReasonList = ThrottlingReason[];
+export const ThrottlingReasonList = /*@__PURE__*/ S.Array(ThrottlingReason);
+export type AvailabilityErrorMessage = string;
+export type Code = string;
+export interface CancellationReason {
+  Item?: { [key: string]: AttributeValue | undefined };
+  Code?: string;
+  Message?: string;
+}
+export const CancellationReason = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Item: S.optional(AttributeMap),
+    Code: S.optional(S.String),
     Message: S.optional(S.String),
-    CancellationReasons: S.optional(CancellationReasonList),
-  },
-) {}
-export class TransactionInProgressException extends S.TaggedErrorClass<TransactionInProgressException>()(
-  "TransactionInProgressException",
-  { Message: S.optional(S.String) },
-).pipe(C.withConflictError, C.withRetryableError) {}
-export class ExportConflictException extends S.TaggedErrorClass<ExportConflictException>()(
-  "ExportConflictException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class InvalidExportTimeException extends S.TaggedErrorClass<InvalidExportTimeException>()(
-  "InvalidExportTimeException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class PointInTimeRecoveryUnavailableException extends S.TaggedErrorClass<PointInTimeRecoveryUnavailableException>()(
-  "PointInTimeRecoveryUnavailableException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ImportConflictException extends S.TaggedErrorClass<ImportConflictException>()(
-  "ImportConflictException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class TableAlreadyExistsException extends S.TaggedErrorClass<TableAlreadyExistsException>()(
-  "TableAlreadyExistsException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class InvalidRestoreTimeException extends S.TaggedErrorClass<InvalidRestoreTimeException>()(
-  "InvalidRestoreTimeException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ReplicaAlreadyExistsException extends S.TaggedErrorClass<ReplicaAlreadyExistsException>()(
-  "ReplicaAlreadyExistsException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class ReplicaNotFoundException extends S.TaggedErrorClass<ReplicaNotFoundException>()(
-  "ReplicaNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withNotFoundError) {}
-export class IndexNotFoundException extends S.TaggedErrorClass<IndexNotFoundException>()(
-  "IndexNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withNotFoundError) {}
-
-//# Operations
+  }),
+).annotate({
+  identifier: "CancellationReason",
+}) as any as S.Schema<CancellationReason>;
+export type CancellationReasonList = CancellationReason[];
+export const CancellationReasonList = /*@__PURE__*/ S.Array(CancellationReason);
 export type BatchExecuteStatementError =
   | InternalServerError
   | RequestLimitExceeded
@@ -5278,8 +5297,11 @@ export const batchExecuteStatement: API.OperationMethod<
   input: BatchExecuteStatementInput,
   output: BatchExecuteStatementOutput,
   errors: [InternalServerError, RequestLimitExceeded, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchExecuteStatement",
 }));
+
 export type BatchGetItemError =
   | InternalServerError
   | InvalidEndpointException
@@ -5362,8 +5384,11 @@ export const batchGetItem: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetItem",
 }));
+
 export type BatchWriteItemError =
   | InternalServerError
   | InvalidEndpointException
@@ -5478,8 +5503,11 @@ export const batchWriteItem: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchWriteItem",
 }));
+
 export type CreateBackupError =
   | BackupInUseException
   | ContinuousBackupsUnavailableException
@@ -5538,8 +5566,11 @@ export const createBackup: API.OperationMethod<
     TableInUseException,
     TableNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBackup",
 }));
+
 export type CreateGlobalTableError =
   | GlobalTableAlreadyExistsException
   | InternalServerError
@@ -5608,8 +5639,11 @@ export const createGlobalTable: API.OperationMethod<
     LimitExceededException,
     TableNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGlobalTable",
 }));
+
 export type CreateTableError =
   | InternalServerError
   | InvalidEndpointException
@@ -5647,8 +5681,11 @@ export const createTable: API.OperationMethod<
     LimitExceededException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTable",
 }));
+
 export type DeleteBackupError =
   | BackupInUseException
   | BackupNotFoundException
@@ -5677,8 +5714,11 @@ export const deleteBackup: API.OperationMethod<
     InvalidEndpointException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBackup",
 }));
+
 export type DeleteItemError =
   | ConditionalCheckFailedException
   | InternalServerError
@@ -5727,8 +5767,11 @@ export const deleteItem: API.OperationMethod<
     ThrottlingException,
     TransactionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteItem",
 }));
+
 export type DeleteResourcePolicyError =
   | InternalServerError
   | InvalidEndpointException
@@ -5774,8 +5817,11 @@ export const deleteResourcePolicy: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DeleteTableError =
   | InternalServerError
   | InvalidEndpointException
@@ -5821,8 +5867,11 @@ export const deleteTable: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTable",
 }));
+
 export type DescribeBackupError =
   | BackupNotFoundException
   | InternalServerError
@@ -5847,8 +5896,11 @@ export const describeBackup: API.OperationMethod<
     InternalServerError,
     InvalidEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBackup",
 }));
+
 export type DescribeContinuousBackupsError =
   | InternalServerError
   | InvalidEndpointException
@@ -5884,8 +5936,11 @@ export const describeContinuousBackups: API.OperationMethod<
     InvalidEndpointException,
     TableNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeContinuousBackups",
 }));
+
 export type DescribeContributorInsightsError =
   | InternalServerError
   | ResourceNotFoundException
@@ -5903,8 +5958,11 @@ export const describeContributorInsights: API.OperationMethod<
   input: DescribeContributorInsightsInput,
   output: DescribeContributorInsightsOutput,
   errors: [InternalServerError, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeContributorInsights",
 }));
+
 export type DescribeEndpointsError = CommonErrors;
 /**
  * Returns the regional endpoint information. For more information on policy permissions,
@@ -5919,8 +5977,11 @@ export const describeEndpoints: API.OperationMethod<
   input: DescribeEndpointsRequest,
   output: DescribeEndpointsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpoints",
 }));
+
 export type DescribeExportError =
   | ExportNotFoundException
   | InternalServerError
@@ -5942,8 +6003,11 @@ export const describeExport: API.OperationMethod<
     InternalServerError,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExport",
 }));
+
 export type DescribeGlobalTableError =
   | GlobalTableNotFoundException
   | InternalServerError
@@ -5969,8 +6033,11 @@ export const describeGlobalTable: API.OperationMethod<
     InternalServerError,
     InvalidEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGlobalTable",
 }));
+
 export type DescribeGlobalTableSettingsError =
   | GlobalTableNotFoundException
   | InternalServerError
@@ -5996,8 +6063,11 @@ export const describeGlobalTableSettings: API.OperationMethod<
     InternalServerError,
     InvalidEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGlobalTableSettings",
 }));
+
 export type DescribeImportError = ImportNotFoundException | CommonErrors;
 /**
  * Represents the properties of the import.
@@ -6011,8 +6081,11 @@ export const describeImport: API.OperationMethod<
   input: DescribeImportInput,
   output: DescribeImportOutput,
   errors: [ImportNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImport",
 }));
+
 export type DescribeKinesisStreamingDestinationError =
   | InternalServerError
   | InvalidEndpointException
@@ -6034,8 +6107,11 @@ export const describeKinesisStreamingDestination: API.OperationMethod<
     InvalidEndpointException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeKinesisStreamingDestination",
 }));
+
 export type DescribeLimitsError =
   | InternalServerError
   | InvalidEndpointException
@@ -6114,8 +6190,11 @@ export const describeLimits: API.OperationMethod<
   input: DescribeLimitsInput,
   output: DescribeLimitsOutput,
   errors: [InternalServerError, InvalidEndpointException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLimits",
 }));
+
 export type DescribeTableError =
   | InternalServerError
   | InvalidEndpointException
@@ -6145,8 +6224,11 @@ export const describeTable: API.OperationMethod<
     InvalidEndpointException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTable",
 }));
+
 export type DescribeTableReplicaAutoScalingError =
   | InternalServerError
   | ResourceNotFoundException
@@ -6163,8 +6245,11 @@ export const describeTableReplicaAutoScaling: API.OperationMethod<
   input: DescribeTableReplicaAutoScalingInput,
   output: DescribeTableReplicaAutoScalingOutput,
   errors: [InternalServerError, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTableReplicaAutoScaling",
 }));
+
 export type DescribeTimeToLiveError =
   | InternalServerError
   | InvalidEndpointException
@@ -6186,8 +6271,11 @@ export const describeTimeToLive: API.OperationMethod<
     InvalidEndpointException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTimeToLive",
 }));
+
 export type DisableKinesisStreamingDestinationError =
   | InternalServerError
   | InvalidEndpointException
@@ -6214,8 +6302,11 @@ export const disableKinesisStreamingDestination: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableKinesisStreamingDestination",
 }));
+
 export type EnableKinesisStreamingDestinationError =
   | InternalServerError
   | InvalidEndpointException
@@ -6244,8 +6335,11 @@ export const enableKinesisStreamingDestination: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableKinesisStreamingDestination",
 }));
+
 export type ExecuteStatementError =
   | ConditionalCheckFailedException
   | DuplicateItemException
@@ -6293,8 +6387,11 @@ export const executeStatement: API.OperationMethod<
     ThrottlingException,
     TransactionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteStatement",
 }));
+
 export type ExecuteTransactionError =
   | IdempotentParameterMismatchException
   | InternalServerError
@@ -6332,8 +6429,11 @@ export const executeTransaction: API.OperationMethod<
     TransactionCanceledException,
     TransactionInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteTransaction",
 }));
+
 export type ExportTableToPointInTimeError =
   | ExportConflictException
   | InternalServerError
@@ -6363,8 +6463,11 @@ export const exportTableToPointInTime: API.OperationMethod<
     PointInTimeRecoveryUnavailableException,
     TableNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportTableToPointInTime",
 }));
+
 export type GetItemError =
   | InternalServerError
   | InvalidEndpointException
@@ -6399,8 +6502,11 @@ export const getItem: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetItem",
 }));
+
 export type GetResourcePolicyError =
   | InternalServerError
   | InvalidEndpointException
@@ -6456,8 +6562,11 @@ export const getResourcePolicy: API.OperationMethod<
     PolicyNotFoundException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
 export type ImportTableError =
   | ImportConflictException
   | LimitExceededException
@@ -6479,8 +6588,11 @@ export const importTable: API.OperationMethod<
     LimitExceededException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportTable",
 }));
+
 export type ListBackupsError =
   | InternalServerError
   | InvalidEndpointException
@@ -6510,8 +6622,11 @@ export const listBackups: API.OperationMethod<
   input: ListBackupsInput,
   output: ListBackupsOutput,
   errors: [InternalServerError, InvalidEndpointException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBackups",
 }));
+
 export type ListContributorInsightsError =
   | InternalServerError
   | ResourceNotFoundException
@@ -6544,6 +6659,8 @@ export const listContributorInsights: API.OperationMethod<
   input: ListContributorInsightsInput,
   output: ListContributorInsightsOutput,
   errors: [InternalServerError, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContributorInsights",
   pagination: {
     inputToken: "NextToken",
@@ -6551,6 +6668,7 @@ export const listContributorInsights: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListExportsError =
   | InternalServerError
   | LimitExceededException
@@ -6582,6 +6700,8 @@ export const listExports: API.OperationMethod<
   input: ListExportsInput,
   output: ListExportsOutput,
   errors: [InternalServerError, LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExports",
   pagination: {
     inputToken: "NextToken",
@@ -6589,6 +6709,7 @@ export const listExports: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListGlobalTablesError =
   | InternalServerError
   | InvalidEndpointException
@@ -6609,8 +6730,11 @@ export const listGlobalTables: API.OperationMethod<
   input: ListGlobalTablesInput,
   output: ListGlobalTablesOutput,
   errors: [InternalServerError, InvalidEndpointException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGlobalTables",
 }));
+
 export type ListImportsError = LimitExceededException | CommonErrors;
 /**
  * Lists completed imports within the past 90 days.
@@ -6639,6 +6763,8 @@ export const listImports: API.OperationMethod<
   input: ListImportsInput,
   output: ListImportsOutput,
   errors: [LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImports",
   pagination: {
     inputToken: "NextToken",
@@ -6646,6 +6772,7 @@ export const listImports: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListTablesError =
   | InternalServerError
   | InvalidEndpointException
@@ -6679,6 +6806,8 @@ export const listTables: API.OperationMethod<
   input: ListTablesInput,
   output: ListTablesOutput,
   errors: [InternalServerError, InvalidEndpointException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTables",
   pagination: {
     inputToken: "ExclusiveStartTableName",
@@ -6687,6 +6816,7 @@ export const listTables: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListTagsOfResourceError =
   | InternalServerError
   | InvalidEndpointException
@@ -6712,8 +6842,11 @@ export const listTagsOfResource: API.OperationMethod<
     InvalidEndpointException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsOfResource",
 }));
+
 export type PutItemError =
   | ConditionalCheckFailedException
   | InternalServerError
@@ -6776,8 +6909,11 @@ export const putItem: API.OperationMethod<
     ThrottlingException,
     TransactionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutItem",
 }));
+
 export type PutResourcePolicyError =
   | InternalServerError
   | InvalidEndpointException
@@ -6824,8 +6960,11 @@ export const putResourcePolicy: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type QueryError =
   | InternalServerError
   | InvalidEndpointException
@@ -6919,6 +7058,8 @@ export const query: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Query",
   pagination: {
     inputToken: "ExclusiveStartKey",
@@ -6927,6 +7068,7 @@ export const query: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type RestoreTableFromBackupError =
   | BackupInUseException
   | BackupNotFoundException
@@ -6974,8 +7116,11 @@ export const restoreTableFromBackup: API.OperationMethod<
     TableAlreadyExistsException,
     TableInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreTableFromBackup",
 }));
+
 export type RestoreTableToPointInTimeError =
   | InternalServerError
   | InvalidEndpointException
@@ -7044,8 +7189,11 @@ export const restoreTableToPointInTime: API.OperationMethod<
     TableInUseException,
     TableNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreTableToPointInTime",
 }));
+
 export type ScanError =
   | InternalServerError
   | InvalidEndpointException
@@ -7130,6 +7278,8 @@ export const scan: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Scan",
   pagination: {
     inputToken: "ExclusiveStartKey",
@@ -7138,6 +7288,7 @@ export const scan: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type TagResourceError =
   | InternalServerError
   | InvalidEndpointException
@@ -7182,8 +7333,11 @@ export const tagResource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type TransactGetItemsError =
   | InternalServerError
   | InvalidEndpointException
@@ -7233,8 +7387,11 @@ export const transactGetItems: API.OperationMethod<
     ThrottlingException,
     TransactionCanceledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TransactGetItems",
 }));
+
 export type TransactWriteItemsError =
   | IdempotentParameterMismatchException
   | InternalServerError
@@ -7323,8 +7480,11 @@ export const transactWriteItems: API.OperationMethod<
     TransactionCanceledException,
     TransactionInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TransactWriteItems",
 }));
+
 export type UntagResourceError =
   | InternalServerError
   | InvalidEndpointException
@@ -7367,8 +7527,11 @@ export const untagResource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateContinuousBackupsError =
   | ContinuousBackupsUnavailableException
   | InternalServerError
@@ -7404,8 +7567,11 @@ export const updateContinuousBackups: API.OperationMethod<
     InvalidEndpointException,
     TableNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContinuousBackups",
 }));
+
 export type UpdateContributorInsightsError =
   | InternalServerError
   | ResourceNotFoundException
@@ -7428,8 +7594,11 @@ export const updateContributorInsights: API.OperationMethod<
   input: UpdateContributorInsightsInput,
   output: UpdateContributorInsightsOutput,
   errors: [InternalServerError, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContributorInsights",
 }));
+
 export type UpdateGlobalTableError =
   | GlobalTableNotFoundException
   | InternalServerError
@@ -7482,8 +7651,11 @@ export const updateGlobalTable: API.OperationMethod<
     ReplicaNotFoundException,
     TableNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGlobalTable",
 }));
+
 export type UpdateGlobalTableSettingsError =
   | GlobalTableNotFoundException
   | IndexNotFoundException
@@ -7517,8 +7689,11 @@ export const updateGlobalTableSettings: API.OperationMethod<
     ReplicaNotFoundException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGlobalTableSettings",
 }));
+
 export type UpdateItemError =
   | ConditionalCheckFailedException
   | InternalServerError
@@ -7561,8 +7736,11 @@ export const updateItem: API.OperationMethod<
     ThrottlingException,
     TransactionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateItem",
 }));
+
 export type UpdateKinesisStreamingDestinationError =
   | InternalServerError
   | InvalidEndpointException
@@ -7588,8 +7766,11 @@ export const updateKinesisStreamingDestination: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKinesisStreamingDestination",
 }));
+
 export type UpdateTableError =
   | InternalServerError
   | InvalidEndpointException
@@ -7632,8 +7813,11 @@ export const updateTable: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTable",
 }));
+
 export type UpdateTableReplicaAutoScalingError =
   | InternalServerError
   | LimitExceededException
@@ -7657,8 +7841,11 @@ export const updateTableReplicaAutoScaling: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTableReplicaAutoScaling",
 }));
+
 export type UpdateTimeToLiveError =
   | InternalServerError
   | InvalidEndpointException
@@ -7710,5 +7897,7 @@ export const updateTimeToLive: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTimeToLive",
 }));

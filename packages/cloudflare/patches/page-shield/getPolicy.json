@@ -1,8 +1,0 @@
-{
-  "errors": {
-    "PolicyNotFound": [
-      { "status": 404, "message": { "includes": "Could not find Policy" } }
-    ],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

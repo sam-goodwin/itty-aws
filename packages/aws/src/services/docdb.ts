@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -89,12 +91,572 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type ExceptionMessage = string;
-export type GlobalClusterIdentifier = string;
-export type DBClusterIdentifier = string;
-
-//# Schemas
+export class AuthorizationNotFoundFault extends S.TaggedErrorClass<AuthorizationNotFoundFault>()(
+  "AuthorizationNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AuthorizationNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CertificateNotFoundFault extends S.TaggedErrorClass<CertificateNotFoundFault>()(
+  "CertificateNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "CertificateNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DBClusterAlreadyExistsFault extends S.TaggedErrorClass<DBClusterAlreadyExistsFault>()(
+  "DBClusterAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DBClusterAlreadyExistsFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class DBClusterNotFoundFault extends S.TaggedErrorClass<DBClusterNotFoundFault>()(
+  "DBClusterNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "DBClusterNotFoundFault", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DBClusterParameterGroupNotFoundFault extends S.TaggedErrorClass<DBClusterParameterGroupNotFoundFault>()(
+  "DBClusterParameterGroupNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DBClusterParameterGroupNotFound",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DBClusterQuotaExceededFault extends S.TaggedErrorClass<DBClusterQuotaExceededFault>()(
+  "DBClusterQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DBClusterQuotaExceededFault",
+      httpResponseCode: 403,
+    }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class DBClusterSnapshotAlreadyExistsFault extends S.TaggedErrorClass<DBClusterSnapshotAlreadyExistsFault>()(
+  "DBClusterSnapshotAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DBClusterSnapshotAlreadyExistsFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class DBClusterSnapshotNotFoundFault extends S.TaggedErrorClass<DBClusterSnapshotNotFoundFault>()(
+  "DBClusterSnapshotNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DBClusterSnapshotNotFoundFault",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DBInstanceAlreadyExistsFault extends S.TaggedErrorClass<DBInstanceAlreadyExistsFault>()(
+  "DBInstanceAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "DBInstanceAlreadyExists", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class DBInstanceNotFoundFault extends S.TaggedErrorClass<DBInstanceNotFoundFault>()(
+  "DBInstanceNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "DBInstanceNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DBParameterGroupAlreadyExistsFault extends S.TaggedErrorClass<DBParameterGroupAlreadyExistsFault>()(
+  "DBParameterGroupAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DBParameterGroupAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class DBParameterGroupNotFoundFault extends S.TaggedErrorClass<DBParameterGroupNotFoundFault>()(
+  "DBParameterGroupNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DBParameterGroupNotFound",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DBParameterGroupQuotaExceededFault extends S.TaggedErrorClass<DBParameterGroupQuotaExceededFault>()(
+  "DBParameterGroupQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DBParameterGroupQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DBSecurityGroupNotFoundFault extends S.TaggedErrorClass<DBSecurityGroupNotFoundFault>()(
+  "DBSecurityGroupNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "DBSecurityGroupNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DBSnapshotAlreadyExistsFault extends S.TaggedErrorClass<DBSnapshotAlreadyExistsFault>()(
+  "DBSnapshotAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "DBSnapshotAlreadyExists", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class DBSnapshotNotFoundFault extends S.TaggedErrorClass<DBSnapshotNotFoundFault>()(
+  "DBSnapshotNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "DBSnapshotNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DBSubnetGroupAlreadyExistsFault extends S.TaggedErrorClass<DBSubnetGroupAlreadyExistsFault>()(
+  "DBSubnetGroupAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DBSubnetGroupAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class DBSubnetGroupDoesNotCoverEnoughAZs extends S.TaggedErrorClass<DBSubnetGroupDoesNotCoverEnoughAZs>()(
+  "DBSubnetGroupDoesNotCoverEnoughAZs",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DBSubnetGroupDoesNotCoverEnoughAZs",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DBSubnetGroupNotFoundFault extends S.TaggedErrorClass<DBSubnetGroupNotFoundFault>()(
+  "DBSubnetGroupNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DBSubnetGroupNotFoundFault",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DBSubnetGroupQuotaExceededFault extends S.TaggedErrorClass<DBSubnetGroupQuotaExceededFault>()(
+  "DBSubnetGroupQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DBSubnetGroupQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DBSubnetQuotaExceededFault extends S.TaggedErrorClass<DBSubnetQuotaExceededFault>()(
+  "DBSubnetQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DBSubnetQuotaExceededFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DBUpgradeDependencyFailureFault extends S.TaggedErrorClass<DBUpgradeDependencyFailureFault>()(
+  "DBUpgradeDependencyFailureFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DBUpgradeDependencyFailure",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EventSubscriptionQuotaExceededFault extends S.TaggedErrorClass<EventSubscriptionQuotaExceededFault>()(
+  "EventSubscriptionQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "EventSubscriptionQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class GlobalClusterAlreadyExistsFault extends S.TaggedErrorClass<GlobalClusterAlreadyExistsFault>()(
+  "GlobalClusterAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "GlobalClusterAlreadyExistsFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class GlobalClusterNotFoundFault extends S.TaggedErrorClass<GlobalClusterNotFoundFault>()(
+  "GlobalClusterNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "GlobalClusterNotFoundFault",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class GlobalClusterQuotaExceededFault extends S.TaggedErrorClass<GlobalClusterQuotaExceededFault>()(
+  "GlobalClusterQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "GlobalClusterQuotaExceededFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InstanceQuotaExceededFault extends S.TaggedErrorClass<InstanceQuotaExceededFault>()(
+  "InstanceQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InstanceQuotaExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InsufficientDBClusterCapacityFault extends S.TaggedErrorClass<InsufficientDBClusterCapacityFault>()(
+  "InsufficientDBClusterCapacityFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InsufficientDBClusterCapacityFault",
+      httpResponseCode: 403,
+    }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class InsufficientDBInstanceCapacityFault extends S.TaggedErrorClass<InsufficientDBInstanceCapacityFault>()(
+  "InsufficientDBInstanceCapacityFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InsufficientDBInstanceCapacity",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InsufficientStorageClusterCapacityFault extends S.TaggedErrorClass<InsufficientStorageClusterCapacityFault>()(
+  "InsufficientStorageClusterCapacityFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InsufficientStorageClusterCapacity",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidDBClusterSnapshotStateFault extends S.TaggedErrorClass<InvalidDBClusterSnapshotStateFault>()(
+  "InvalidDBClusterSnapshotStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidDBClusterSnapshotStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidDBClusterStateFault extends S.TaggedErrorClass<InvalidDBClusterStateFault>()(
+  "InvalidDBClusterStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidDBClusterStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidDBInstanceStateFault extends S.TaggedErrorClass<InvalidDBInstanceStateFault>()(
+  "InvalidDBInstanceStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidDBInstanceState", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidDBParameterGroupStateFault extends S.TaggedErrorClass<InvalidDBParameterGroupStateFault>()(
+  "InvalidDBParameterGroupStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidDBParameterGroupState",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidDBSecurityGroupStateFault extends S.TaggedErrorClass<InvalidDBSecurityGroupStateFault>()(
+  "InvalidDBSecurityGroupStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidDBSecurityGroupState",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidDBSnapshotStateFault extends S.TaggedErrorClass<InvalidDBSnapshotStateFault>()(
+  "InvalidDBSnapshotStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidDBSnapshotState", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidDBSubnetGroupStateFault extends S.TaggedErrorClass<InvalidDBSubnetGroupStateFault>()(
+  "InvalidDBSubnetGroupStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidDBSubnetGroupStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidDBSubnetStateFault extends S.TaggedErrorClass<InvalidDBSubnetStateFault>()(
+  "InvalidDBSubnetStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidDBSubnetStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidEventSubscriptionStateFault extends S.TaggedErrorClass<InvalidEventSubscriptionStateFault>()(
+  "InvalidEventSubscriptionStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidEventSubscriptionState",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidGlobalClusterStateFault extends S.TaggedErrorClass<InvalidGlobalClusterStateFault>()(
+  "InvalidGlobalClusterStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidGlobalClusterStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidRestoreFault extends S.TaggedErrorClass<InvalidRestoreFault>()(
+  "InvalidRestoreFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidRestoreFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidSubnet extends S.TaggedErrorClass<InvalidSubnet>()(
+  "InvalidSubnet",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidSubnet", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidVPCNetworkStateFault extends S.TaggedErrorClass<InvalidVPCNetworkStateFault>()(
+  "InvalidVPCNetworkStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidVPCNetworkStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class KMSKeyNotAccessibleFault extends S.TaggedErrorClass<KMSKeyNotAccessibleFault>()(
+  "KMSKeyNotAccessibleFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "KMSKeyNotAccessibleFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class NetworkTypeNotSupported extends S.TaggedErrorClass<NetworkTypeNotSupported>()(
+  "NetworkTypeNotSupported",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "NetworkTypeNotSupported", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundFault extends S.TaggedErrorClass<ResourceNotFoundFault>()(
+  "ResourceNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ResourceNotFoundFault", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SharedSnapshotQuotaExceededFault extends S.TaggedErrorClass<SharedSnapshotQuotaExceededFault>()(
+  "SharedSnapshotQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SharedSnapshotQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SnapshotQuotaExceededFault extends S.TaggedErrorClass<SnapshotQuotaExceededFault>()(
+  "SnapshotQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SnapshotQuotaExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SNSInvalidTopicFault extends S.TaggedErrorClass<SNSInvalidTopicFault>()(
+  "SNSInvalidTopicFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SNSInvalidTopic", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SNSNoAuthorizationFault extends S.TaggedErrorClass<SNSNoAuthorizationFault>()(
+  "SNSNoAuthorizationFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SNSNoAuthorization", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SNSTopicArnNotFoundFault extends S.TaggedErrorClass<SNSTopicArnNotFoundFault>()(
+  "SNSTopicArnNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SNSTopicArnNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SourceNotFoundFault extends S.TaggedErrorClass<SourceNotFoundFault>()(
+  "SourceNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SourceNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class StorageQuotaExceededFault extends S.TaggedErrorClass<StorageQuotaExceededFault>()(
+  "StorageQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "StorageQuotaExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class StorageTypeNotSupportedFault extends S.TaggedErrorClass<StorageTypeNotSupportedFault>()(
+  "StorageTypeNotSupportedFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "StorageTypeNotSupported", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SubnetAlreadyInUse extends S.TaggedErrorClass<SubnetAlreadyInUse>()(
+  "SubnetAlreadyInUse",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SubnetAlreadyInUse", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
+export class SubscriptionAlreadyExistFault extends S.TaggedErrorClass<SubscriptionAlreadyExistFault>()(
+  "SubscriptionAlreadyExistFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SubscriptionAlreadyExist",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SubscriptionCategoryNotFoundFault extends S.TaggedErrorClass<SubscriptionCategoryNotFoundFault>()(
+  "SubscriptionCategoryNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SubscriptionCategoryNotFound",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SubscriptionNotFoundFault extends S.TaggedErrorClass<SubscriptionNotFoundFault>()(
+  "SubscriptionNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SubscriptionNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
 export interface AddSourceIdentifierToSubscriptionMessage {
   SubscriptionName?: string;
   SourceIdentifier?: string;
@@ -432,6 +994,7 @@ export const VpcSecurityGroupIdList = /*@__PURE__*/ S.Array(
 );
 export type LogTypeList = string[];
 export const LogTypeList = /*@__PURE__*/ S.Array(S.String);
+export type GlobalClusterIdentifier = string;
 export interface ServerlessV2ScalingConfiguration {
   MinCapacity?: number;
   MaxCapacity?: number;
@@ -1146,6 +1709,7 @@ export type GlobalClusterMemberSynchronizationStatus =
   | "pending-resync"
   | (string & {});
 export const GlobalClusterMemberSynchronizationStatus = /*@__PURE__*/ S.String;
+
 export interface GlobalClusterMember {
   DBClusterArn?: string;
   Readers?: string[];
@@ -1174,6 +1738,7 @@ export type FailoverStatus =
   | "cancelling"
   | (string & {});
 export const FailoverStatus = /*@__PURE__*/ S.String;
+
 export interface FailoverState {
   Status?: FailoverStatus;
   FromDbClusterArn?: string;
@@ -1567,6 +2132,7 @@ export const DescribeDBClusterParametersMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeDBClusterParametersMessage>;
 export type ApplyMethod = "immediate" | "pending-reboot" | (string & {});
 export const ApplyMethod = /*@__PURE__*/ S.String;
+
 export interface Parameter {
   ParameterName?: string;
   ParameterValue?: string;
@@ -2084,6 +2650,7 @@ export type SourceType =
   | "db-cluster-snapshot"
   | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
+
 export interface DescribeEventsMessage {
   SourceIdentifier?: string;
   SourceType?: SourceType;
@@ -2398,6 +2965,7 @@ export const FailoverDBClusterResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FailoverDBClusterResult",
 }) as any as S.Schema<FailoverDBClusterResult>;
+export type DBClusterIdentifier = string;
 export interface FailoverGlobalClusterMessage {
   GlobalClusterIdentifier?: string;
   TargetDbClusterIdentifier?: string;
@@ -3112,576 +3680,7 @@ export const SwitchoverGlobalClusterResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SwitchoverGlobalClusterResult",
 }) as any as S.Schema<SwitchoverGlobalClusterResult>;
-
-//# Errors
-export class SourceNotFoundFault extends S.TaggedErrorClass<SourceNotFoundFault>()(
-  "SourceNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "SourceNotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SubscriptionNotFoundFault extends S.TaggedErrorClass<SubscriptionNotFoundFault>()(
-  "SubscriptionNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "SubscriptionNotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DBClusterNotFoundFault extends S.TaggedErrorClass<DBClusterNotFoundFault>()(
-  "DBClusterNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "DBClusterNotFoundFault", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DBInstanceNotFoundFault extends S.TaggedErrorClass<DBInstanceNotFoundFault>()(
-  "DBInstanceNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "DBInstanceNotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DBSnapshotNotFoundFault extends S.TaggedErrorClass<DBSnapshotNotFoundFault>()(
-  "DBSnapshotNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "DBSnapshotNotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidDBClusterStateFault extends S.TaggedErrorClass<InvalidDBClusterStateFault>()(
-  "InvalidDBClusterStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidDBClusterStateFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidDBInstanceStateFault extends S.TaggedErrorClass<InvalidDBInstanceStateFault>()(
-  "InvalidDBInstanceStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidDBInstanceState", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundFault extends S.TaggedErrorClass<ResourceNotFoundFault>()(
-  "ResourceNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ResourceNotFoundFault", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DBParameterGroupAlreadyExistsFault extends S.TaggedErrorClass<DBParameterGroupAlreadyExistsFault>()(
-  "DBParameterGroupAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "DBParameterGroupAlreadyExists",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class DBParameterGroupNotFoundFault extends S.TaggedErrorClass<DBParameterGroupNotFoundFault>()(
-  "DBParameterGroupNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "DBParameterGroupNotFound",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DBParameterGroupQuotaExceededFault extends S.TaggedErrorClass<DBParameterGroupQuotaExceededFault>()(
-  "DBParameterGroupQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "DBParameterGroupQuotaExceeded",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DBClusterSnapshotAlreadyExistsFault extends S.TaggedErrorClass<DBClusterSnapshotAlreadyExistsFault>()(
-  "DBClusterSnapshotAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "DBClusterSnapshotAlreadyExistsFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class DBClusterSnapshotNotFoundFault extends S.TaggedErrorClass<DBClusterSnapshotNotFoundFault>()(
-  "DBClusterSnapshotNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "DBClusterSnapshotNotFoundFault",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidDBClusterSnapshotStateFault extends S.TaggedErrorClass<InvalidDBClusterSnapshotStateFault>()(
-  "InvalidDBClusterSnapshotStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidDBClusterSnapshotStateFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class KMSKeyNotAccessibleFault extends S.TaggedErrorClass<KMSKeyNotAccessibleFault>()(
-  "KMSKeyNotAccessibleFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "KMSKeyNotAccessibleFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SnapshotQuotaExceededFault extends S.TaggedErrorClass<SnapshotQuotaExceededFault>()(
-  "SnapshotQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "SnapshotQuotaExceeded", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DBClusterAlreadyExistsFault extends S.TaggedErrorClass<DBClusterAlreadyExistsFault>()(
-  "DBClusterAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "DBClusterAlreadyExistsFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class DBClusterParameterGroupNotFoundFault extends S.TaggedErrorClass<DBClusterParameterGroupNotFoundFault>()(
-  "DBClusterParameterGroupNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "DBClusterParameterGroupNotFound",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DBClusterQuotaExceededFault extends S.TaggedErrorClass<DBClusterQuotaExceededFault>()(
-  "DBClusterQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "DBClusterQuotaExceededFault",
-      httpResponseCode: 403,
-    }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class DBSubnetGroupDoesNotCoverEnoughAZs extends S.TaggedErrorClass<DBSubnetGroupDoesNotCoverEnoughAZs>()(
-  "DBSubnetGroupDoesNotCoverEnoughAZs",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "DBSubnetGroupDoesNotCoverEnoughAZs",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DBSubnetGroupNotFoundFault extends S.TaggedErrorClass<DBSubnetGroupNotFoundFault>()(
-  "DBSubnetGroupNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "DBSubnetGroupNotFoundFault",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class GlobalClusterNotFoundFault extends S.TaggedErrorClass<GlobalClusterNotFoundFault>()(
-  "GlobalClusterNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "GlobalClusterNotFoundFault",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InsufficientStorageClusterCapacityFault extends S.TaggedErrorClass<InsufficientStorageClusterCapacityFault>()(
-  "InsufficientStorageClusterCapacityFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InsufficientStorageClusterCapacity",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidDBSubnetGroupStateFault extends S.TaggedErrorClass<InvalidDBSubnetGroupStateFault>()(
-  "InvalidDBSubnetGroupStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidDBSubnetGroupStateFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidGlobalClusterStateFault extends S.TaggedErrorClass<InvalidGlobalClusterStateFault>()(
-  "InvalidGlobalClusterStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidGlobalClusterStateFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidSubnet extends S.TaggedErrorClass<InvalidSubnet>()(
-  "InvalidSubnet",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidSubnet", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidVPCNetworkStateFault extends S.TaggedErrorClass<InvalidVPCNetworkStateFault>()(
-  "InvalidVPCNetworkStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidVPCNetworkStateFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class NetworkTypeNotSupported extends S.TaggedErrorClass<NetworkTypeNotSupported>()(
-  "NetworkTypeNotSupported",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "NetworkTypeNotSupported", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class StorageQuotaExceededFault extends S.TaggedErrorClass<StorageQuotaExceededFault>()(
-  "StorageQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "StorageQuotaExceeded", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class AuthorizationNotFoundFault extends S.TaggedErrorClass<AuthorizationNotFoundFault>()(
-  "AuthorizationNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "AuthorizationNotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DBInstanceAlreadyExistsFault extends S.TaggedErrorClass<DBInstanceAlreadyExistsFault>()(
-  "DBInstanceAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "DBInstanceAlreadyExists", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class DBSecurityGroupNotFoundFault extends S.TaggedErrorClass<DBSecurityGroupNotFoundFault>()(
-  "DBSecurityGroupNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "DBSecurityGroupNotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InstanceQuotaExceededFault extends S.TaggedErrorClass<InstanceQuotaExceededFault>()(
-  "InstanceQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InstanceQuotaExceeded", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InsufficientDBInstanceCapacityFault extends S.TaggedErrorClass<InsufficientDBInstanceCapacityFault>()(
-  "InsufficientDBInstanceCapacityFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InsufficientDBInstanceCapacity",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class StorageTypeNotSupportedFault extends S.TaggedErrorClass<StorageTypeNotSupportedFault>()(
-  "StorageTypeNotSupportedFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "StorageTypeNotSupported", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DBSubnetGroupAlreadyExistsFault extends S.TaggedErrorClass<DBSubnetGroupAlreadyExistsFault>()(
-  "DBSubnetGroupAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "DBSubnetGroupAlreadyExists",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class DBSubnetGroupQuotaExceededFault extends S.TaggedErrorClass<DBSubnetGroupQuotaExceededFault>()(
-  "DBSubnetGroupQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "DBSubnetGroupQuotaExceeded",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DBSubnetQuotaExceededFault extends S.TaggedErrorClass<DBSubnetQuotaExceededFault>()(
-  "DBSubnetQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "DBSubnetQuotaExceededFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class EventSubscriptionQuotaExceededFault extends S.TaggedErrorClass<EventSubscriptionQuotaExceededFault>()(
-  "EventSubscriptionQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "EventSubscriptionQuotaExceeded",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SNSInvalidTopicFault extends S.TaggedErrorClass<SNSInvalidTopicFault>()(
-  "SNSInvalidTopicFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "SNSInvalidTopic", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SNSNoAuthorizationFault extends S.TaggedErrorClass<SNSNoAuthorizationFault>()(
-  "SNSNoAuthorizationFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "SNSNoAuthorization", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SNSTopicArnNotFoundFault extends S.TaggedErrorClass<SNSTopicArnNotFoundFault>()(
-  "SNSTopicArnNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "SNSTopicArnNotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SubscriptionAlreadyExistFault extends S.TaggedErrorClass<SubscriptionAlreadyExistFault>()(
-  "SubscriptionAlreadyExistFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "SubscriptionAlreadyExist",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SubscriptionCategoryNotFoundFault extends S.TaggedErrorClass<SubscriptionCategoryNotFoundFault>()(
-  "SubscriptionCategoryNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "SubscriptionCategoryNotFound",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class GlobalClusterAlreadyExistsFault extends S.TaggedErrorClass<GlobalClusterAlreadyExistsFault>()(
-  "GlobalClusterAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "GlobalClusterAlreadyExistsFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class GlobalClusterQuotaExceededFault extends S.TaggedErrorClass<GlobalClusterQuotaExceededFault>()(
-  "GlobalClusterQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "GlobalClusterQuotaExceededFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidDBParameterGroupStateFault extends S.TaggedErrorClass<InvalidDBParameterGroupStateFault>()(
-  "InvalidDBParameterGroupStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidDBParameterGroupState",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DBSnapshotAlreadyExistsFault extends S.TaggedErrorClass<DBSnapshotAlreadyExistsFault>()(
-  "DBSnapshotAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "DBSnapshotAlreadyExists", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class InvalidDBSubnetStateFault extends S.TaggedErrorClass<InvalidDBSubnetStateFault>()(
-  "InvalidDBSubnetStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidDBSubnetStateFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidEventSubscriptionStateFault extends S.TaggedErrorClass<InvalidEventSubscriptionStateFault>()(
-  "InvalidEventSubscriptionStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidEventSubscriptionState",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class CertificateNotFoundFault extends S.TaggedErrorClass<CertificateNotFoundFault>()(
-  "CertificateNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "CertificateNotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidDBSecurityGroupStateFault extends S.TaggedErrorClass<InvalidDBSecurityGroupStateFault>()(
-  "InvalidDBSecurityGroupStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidDBSecurityGroupState",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SharedSnapshotQuotaExceededFault extends S.TaggedErrorClass<SharedSnapshotQuotaExceededFault>()(
-  "SharedSnapshotQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "SharedSnapshotQuotaExceeded",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DBUpgradeDependencyFailureFault extends S.TaggedErrorClass<DBUpgradeDependencyFailureFault>()(
-  "DBUpgradeDependencyFailureFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "DBUpgradeDependencyFailure",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SubnetAlreadyInUse extends S.TaggedErrorClass<SubnetAlreadyInUse>()(
-  "SubnetAlreadyInUse",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "SubnetAlreadyInUse", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
-export class InsufficientDBClusterCapacityFault extends S.TaggedErrorClass<InsufficientDBClusterCapacityFault>()(
-  "InsufficientDBClusterCapacityFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InsufficientDBClusterCapacityFault",
-      httpResponseCode: 403,
-    }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class InvalidDBSnapshotStateFault extends S.TaggedErrorClass<InvalidDBSnapshotStateFault>()(
-  "InvalidDBSnapshotStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidDBSnapshotState", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidRestoreFault extends S.TaggedErrorClass<InvalidRestoreFault>()(
-  "InvalidRestoreFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidRestoreFault", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ExceptionMessage = string;
 export type AddSourceIdentifierToSubscriptionError =
   | SourceNotFoundFault
   | SubscriptionNotFoundFault
@@ -3699,8 +3698,11 @@ export const addSourceIdentifierToSubscription: API.OperationMethod<
   input: AddSourceIdentifierToSubscriptionMessage,
   output: AddSourceIdentifierToSubscriptionResult,
   errors: [SourceNotFoundFault, SubscriptionNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddSourceIdentifierToSubscription",
 }));
+
 export type AddTagsToResourceError =
   | DBClusterNotFoundFault
   | DBInstanceNotFoundFault
@@ -3725,8 +3727,11 @@ export const addTagsToResource: API.OperationMethod<
     DBInstanceNotFoundFault,
     DBSnapshotNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTagsToResource",
 }));
+
 export type ApplyPendingMaintenanceActionError =
   | InvalidDBClusterStateFault
   | InvalidDBInstanceStateFault
@@ -3749,8 +3754,11 @@ export const applyPendingMaintenanceAction: API.OperationMethod<
     InvalidDBInstanceStateFault,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ApplyPendingMaintenanceAction",
 }));
+
 export type CopyDBClusterParameterGroupError =
   | DBParameterGroupAlreadyExistsFault
   | DBParameterGroupNotFoundFault
@@ -3772,8 +3780,11 @@ export const copyDBClusterParameterGroup: API.OperationMethod<
     DBParameterGroupNotFoundFault,
     DBParameterGroupQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyDBClusterParameterGroup",
 }));
+
 export type CopyDBClusterSnapshotError =
   | DBClusterSnapshotAlreadyExistsFault
   | DBClusterSnapshotNotFoundFault
@@ -3812,8 +3823,11 @@ export const copyDBClusterSnapshot: API.OperationMethod<
     KMSKeyNotAccessibleFault,
     SnapshotQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyDBClusterSnapshot",
 }));
+
 export type CreateDBClusterError =
   | DBClusterAlreadyExistsFault
   | DBClusterNotFoundFault
@@ -3865,8 +3879,11 @@ export const createDBCluster: API.OperationMethod<
     NetworkTypeNotSupported,
     StorageQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDBCluster",
 }));
+
 export type CreateDBClusterParameterGroupError =
   | DBParameterGroupAlreadyExistsFault
   | DBParameterGroupQuotaExceededFault
@@ -3905,8 +3922,11 @@ export const createDBClusterParameterGroup: API.OperationMethod<
     DBParameterGroupAlreadyExistsFault,
     DBParameterGroupQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDBClusterParameterGroup",
 }));
+
 export type CreateDBClusterSnapshotError =
   | DBClusterNotFoundFault
   | DBClusterSnapshotAlreadyExistsFault
@@ -3932,8 +3952,11 @@ export const createDBClusterSnapshot: API.OperationMethod<
     InvalidDBClusterStateFault,
     SnapshotQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDBClusterSnapshot",
 }));
+
 export type CreateDBInstanceError =
   | AuthorizationNotFoundFault
   | DBClusterNotFoundFault
@@ -3979,8 +4002,11 @@ export const createDBInstance: API.OperationMethod<
     StorageQuotaExceededFault,
     StorageTypeNotSupportedFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDBInstance",
 }));
+
 export type CreateDBSubnetGroupError =
   | DBSubnetGroupAlreadyExistsFault
   | DBSubnetGroupDoesNotCoverEnoughAZs
@@ -4007,8 +4033,11 @@ export const createDBSubnetGroup: API.OperationMethod<
     DBSubnetQuotaExceededFault,
     InvalidSubnet,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDBSubnetGroup",
 }));
+
 export type CreateEventSubscriptionError =
   | EventSubscriptionQuotaExceededFault
   | SNSInvalidTopicFault
@@ -4042,8 +4071,11 @@ export const createEventSubscription: API.OperationMethod<
     SubscriptionAlreadyExistFault,
     SubscriptionCategoryNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEventSubscription",
 }));
+
 export type CreateGlobalClusterError =
   | DBClusterNotFoundFault
   | GlobalClusterAlreadyExistsFault
@@ -4073,8 +4105,11 @@ export const createGlobalCluster: API.OperationMethod<
     GlobalClusterQuotaExceededFault,
     InvalidDBClusterStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGlobalCluster",
 }));
+
 export type DeleteDBClusterError =
   | DBClusterNotFoundFault
   | DBClusterSnapshotAlreadyExistsFault
@@ -4100,8 +4135,11 @@ export const deleteDBCluster: API.OperationMethod<
     InvalidDBClusterStateFault,
     SnapshotQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDBCluster",
 }));
+
 export type DeleteDBClusterParameterGroupError =
   | DBParameterGroupNotFoundFault
   | InvalidDBParameterGroupStateFault
@@ -4118,8 +4156,11 @@ export const deleteDBClusterParameterGroup: API.OperationMethod<
   input: DeleteDBClusterParameterGroupMessage,
   output: DeleteDBClusterParameterGroupResponse,
   errors: [DBParameterGroupNotFoundFault, InvalidDBParameterGroupStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDBClusterParameterGroup",
 }));
+
 export type DeleteDBClusterSnapshotError =
   | DBClusterSnapshotNotFoundFault
   | InvalidDBClusterSnapshotStateFault
@@ -4138,8 +4179,11 @@ export const deleteDBClusterSnapshot: API.OperationMethod<
   input: DeleteDBClusterSnapshotMessage,
   output: DeleteDBClusterSnapshotResult,
   errors: [DBClusterSnapshotNotFoundFault, InvalidDBClusterSnapshotStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDBClusterSnapshot",
 }));
+
 export type DeleteDBInstanceError =
   | DBInstanceNotFoundFault
   | DBSnapshotAlreadyExistsFault
@@ -4165,8 +4209,11 @@ export const deleteDBInstance: API.OperationMethod<
     InvalidDBInstanceStateFault,
     SnapshotQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDBInstance",
 }));
+
 export type DeleteDBSubnetGroupError =
   | DBSubnetGroupNotFoundFault
   | InvalidDBSubnetGroupStateFault
@@ -4191,8 +4238,11 @@ export const deleteDBSubnetGroup: API.OperationMethod<
     InvalidDBSubnetGroupStateFault,
     InvalidDBSubnetStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDBSubnetGroup",
 }));
+
 export type DeleteEventSubscriptionError =
   | InvalidEventSubscriptionStateFault
   | SubscriptionNotFoundFault
@@ -4209,8 +4259,11 @@ export const deleteEventSubscription: API.OperationMethod<
   input: DeleteEventSubscriptionMessage,
   output: DeleteEventSubscriptionResult,
   errors: [InvalidEventSubscriptionStateFault, SubscriptionNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventSubscription",
 }));
+
 export type DeleteGlobalClusterError =
   | GlobalClusterNotFoundFault
   | InvalidGlobalClusterStateFault
@@ -4229,8 +4282,11 @@ export const deleteGlobalCluster: API.OperationMethod<
   input: DeleteGlobalClusterMessage,
   output: DeleteGlobalClusterResult,
   errors: [GlobalClusterNotFoundFault, InvalidGlobalClusterStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGlobalCluster",
 }));
+
 export type DescribeCertificatesError = CertificateNotFoundFault | CommonErrors;
 /**
  * Returns a list of certificate authority (CA) certificates provided by Amazon DocumentDB for this Amazon Web Services account.
@@ -4259,6 +4315,8 @@ export const describeCertificates: API.OperationMethod<
   input: DescribeCertificatesMessage,
   output: CertificateMessage,
   errors: [CertificateNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCertificates",
   pagination: {
     inputToken: "Marker",
@@ -4267,6 +4325,7 @@ export const describeCertificates: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeDBClusterParameterGroupsError =
   | DBParameterGroupNotFoundFault
   | CommonErrors;
@@ -4297,6 +4356,8 @@ export const describeDBClusterParameterGroups: API.OperationMethod<
   input: DescribeDBClusterParameterGroupsMessage,
   output: DBClusterParameterGroupsMessage,
   errors: [DBParameterGroupNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDBClusterParameterGroups",
   pagination: {
     inputToken: "Marker",
@@ -4305,6 +4366,7 @@ export const describeDBClusterParameterGroups: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeDBClusterParametersError =
   | DBParameterGroupNotFoundFault
   | CommonErrors;
@@ -4336,6 +4398,8 @@ export const describeDBClusterParameters: API.OperationMethod<
   input: DescribeDBClusterParametersMessage,
   output: DBClusterParameterGroupDetails,
   errors: [DBParameterGroupNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDBClusterParameters",
   pagination: {
     inputToken: "Marker",
@@ -4344,6 +4408,7 @@ export const describeDBClusterParameters: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeDBClustersError = DBClusterNotFoundFault | CommonErrors;
 /**
  * Returns information about provisioned Amazon DocumentDB clusters. This API
@@ -4377,6 +4442,8 @@ export const describeDBClusters: API.OperationMethod<
   input: DescribeDBClustersMessage,
   output: DBClusterMessage,
   errors: [DBClusterNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDBClusters",
   pagination: {
     inputToken: "Marker",
@@ -4385,6 +4452,7 @@ export const describeDBClusters: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeDBClusterSnapshotAttributesError =
   | DBClusterSnapshotNotFoundFault
   | CommonErrors;
@@ -4404,8 +4472,11 @@ export const describeDBClusterSnapshotAttributes: API.OperationMethod<
   input: DescribeDBClusterSnapshotAttributesMessage,
   output: DescribeDBClusterSnapshotAttributesResult,
   errors: [DBClusterSnapshotNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDBClusterSnapshotAttributes",
 }));
+
 export type DescribeDBClusterSnapshotsError =
   | DBClusterSnapshotNotFoundFault
   | CommonErrors;
@@ -4436,6 +4507,8 @@ export const describeDBClusterSnapshots: API.OperationMethod<
   input: DescribeDBClusterSnapshotsMessage,
   output: DBClusterSnapshotMessage,
   errors: [DBClusterSnapshotNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDBClusterSnapshots",
   pagination: {
     inputToken: "Marker",
@@ -4444,6 +4517,7 @@ export const describeDBClusterSnapshots: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeDBEngineVersionsError = CommonErrors;
 /**
  * Returns a list of the available engines.
@@ -4472,6 +4546,8 @@ export const describeDBEngineVersions: API.OperationMethod<
   input: DescribeDBEngineVersionsMessage,
   output: DBEngineVersionMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDBEngineVersions",
   pagination: {
     inputToken: "Marker",
@@ -4480,6 +4556,7 @@ export const describeDBEngineVersions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeDBInstancesError = DBInstanceNotFoundFault | CommonErrors;
 /**
  * Returns information about provisioned Amazon DocumentDB instances. This API supports pagination.
@@ -4508,6 +4585,8 @@ export const describeDBInstances: API.OperationMethod<
   input: DescribeDBInstancesMessage,
   output: DBInstanceMessage,
   errors: [DBInstanceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDBInstances",
   pagination: {
     inputToken: "Marker",
@@ -4516,6 +4595,7 @@ export const describeDBInstances: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeDBSubnetGroupsError =
   | DBSubnetGroupNotFoundFault
   | CommonErrors;
@@ -4547,6 +4627,8 @@ export const describeDBSubnetGroups: API.OperationMethod<
   input: DescribeDBSubnetGroupsMessage,
   output: DBSubnetGroupMessage,
   errors: [DBSubnetGroupNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDBSubnetGroups",
   pagination: {
     inputToken: "Marker",
@@ -4555,6 +4637,7 @@ export const describeDBSubnetGroups: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeEngineDefaultClusterParametersError = CommonErrors;
 /**
  * Returns the default engine and system parameter information for the cluster database
@@ -4569,8 +4652,11 @@ export const describeEngineDefaultClusterParameters: API.OperationMethod<
   input: DescribeEngineDefaultClusterParametersMessage,
   output: DescribeEngineDefaultClusterParametersResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEngineDefaultClusterParameters",
 }));
+
 export type DescribeEventCategoriesError = CommonErrors;
 /**
  * Displays a list of categories for all event source types, or, if specified, for a
@@ -4585,8 +4671,11 @@ export const describeEventCategories: API.OperationMethod<
   input: DescribeEventCategoriesMessage,
   output: EventCategoriesMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventCategories",
 }));
+
 export type DescribeEventsError = CommonErrors;
 /**
  * Returns events related to instances, security groups, snapshots, and DB parameter groups for the past 14 days. You can obtain events specific to a particular DB instance, security group, snapshot, or parameter group by providing the name as a parameter. By default, the events of the past hour are returned.
@@ -4615,6 +4704,8 @@ export const describeEvents: API.OperationMethod<
   input: DescribeEventsMessage,
   output: EventsMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEvents",
   pagination: {
     inputToken: "Marker",
@@ -4623,6 +4714,7 @@ export const describeEvents: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeEventSubscriptionsError =
   | SubscriptionNotFoundFault
   | CommonErrors;
@@ -4655,6 +4747,8 @@ export const describeEventSubscriptions: API.OperationMethod<
   input: DescribeEventSubscriptionsMessage,
   output: EventSubscriptionsMessage,
   errors: [SubscriptionNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventSubscriptions",
   pagination: {
     inputToken: "Marker",
@@ -4663,6 +4757,7 @@ export const describeEventSubscriptions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeGlobalClustersError =
   | GlobalClusterNotFoundFault
   | CommonErrors;
@@ -4695,6 +4790,8 @@ export const describeGlobalClusters: API.OperationMethod<
   input: DescribeGlobalClustersMessage,
   output: GlobalClustersMessage,
   errors: [GlobalClusterNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGlobalClusters",
   pagination: {
     inputToken: "Marker",
@@ -4703,6 +4800,7 @@ export const describeGlobalClusters: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeOrderableDBInstanceOptionsError = CommonErrors;
 /**
  * Returns a list of orderable instance options for the specified engine.
@@ -4731,6 +4829,8 @@ export const describeOrderableDBInstanceOptions: API.OperationMethod<
   input: DescribeOrderableDBInstanceOptionsMessage,
   output: OrderableDBInstanceOptionsMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrderableDBInstanceOptions",
   pagination: {
     inputToken: "Marker",
@@ -4739,6 +4839,7 @@ export const describeOrderableDBInstanceOptions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribePendingMaintenanceActionsError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -4770,6 +4871,8 @@ export const describePendingMaintenanceActions: API.OperationMethod<
   input: DescribePendingMaintenanceActionsMessage,
   output: PendingMaintenanceActionsMessage,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePendingMaintenanceActions",
   pagination: {
     inputToken: "Marker",
@@ -4778,6 +4881,7 @@ export const describePendingMaintenanceActions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type FailoverDBClusterError =
   | DBClusterNotFoundFault
   | InvalidDBClusterStateFault
@@ -4803,8 +4907,11 @@ export const failoverDBCluster: API.OperationMethod<
     InvalidDBClusterStateFault,
     InvalidDBInstanceStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "FailoverDBCluster",
 }));
+
 export type FailoverGlobalClusterError =
   | DBClusterNotFoundFault
   | GlobalClusterNotFoundFault
@@ -4832,8 +4939,11 @@ export const failoverGlobalCluster: API.OperationMethod<
     InvalidDBClusterStateFault,
     InvalidGlobalClusterStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "FailoverGlobalCluster",
 }));
+
 export type ListTagsForResourceError =
   | DBClusterNotFoundFault
   | DBInstanceNotFoundFault
@@ -4855,8 +4965,11 @@ export const listTagsForResource: API.OperationMethod<
     DBInstanceNotFoundFault,
     DBSnapshotNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ModifyDBClusterError =
   | DBClusterAlreadyExistsFault
   | DBClusterNotFoundFault
@@ -4898,8 +5011,11 @@ export const modifyDBCluster: API.OperationMethod<
     NetworkTypeNotSupported,
     StorageQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyDBCluster",
 }));
+
 export type ModifyDBClusterParameterGroupError =
   | DBParameterGroupNotFoundFault
   | InvalidDBParameterGroupStateFault
@@ -4932,8 +5048,11 @@ export const modifyDBClusterParameterGroup: API.OperationMethod<
   input: ModifyDBClusterParameterGroupMessage,
   output: DBClusterParameterGroupNameMessage,
   errors: [DBParameterGroupNotFoundFault, InvalidDBParameterGroupStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyDBClusterParameterGroup",
 }));
+
 export type ModifyDBClusterSnapshotAttributeError =
   | DBClusterSnapshotNotFoundFault
   | InvalidDBClusterSnapshotStateFault
@@ -4957,8 +5076,11 @@ export const modifyDBClusterSnapshotAttribute: API.OperationMethod<
     InvalidDBClusterSnapshotStateFault,
     SharedSnapshotQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyDBClusterSnapshotAttribute",
 }));
+
 export type ModifyDBInstanceError =
   | AuthorizationNotFoundFault
   | CertificateNotFoundFault
@@ -5000,8 +5122,11 @@ export const modifyDBInstance: API.OperationMethod<
     StorageQuotaExceededFault,
     StorageTypeNotSupportedFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyDBInstance",
 }));
+
 export type ModifyDBSubnetGroupError =
   | DBSubnetGroupDoesNotCoverEnoughAZs
   | DBSubnetGroupNotFoundFault
@@ -5027,8 +5152,11 @@ export const modifyDBSubnetGroup: API.OperationMethod<
     InvalidSubnet,
     SubnetAlreadyInUse,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyDBSubnetGroup",
 }));
+
 export type ModifyEventSubscriptionError =
   | EventSubscriptionQuotaExceededFault
   | SNSInvalidTopicFault
@@ -5056,8 +5184,11 @@ export const modifyEventSubscription: API.OperationMethod<
     SubscriptionCategoryNotFoundFault,
     SubscriptionNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyEventSubscription",
 }));
+
 export type ModifyGlobalClusterError =
   | GlobalClusterNotFoundFault
   | InvalidGlobalClusterStateFault
@@ -5076,8 +5207,11 @@ export const modifyGlobalCluster: API.OperationMethod<
   input: ModifyGlobalClusterMessage,
   output: ModifyGlobalClusterResult,
   errors: [GlobalClusterNotFoundFault, InvalidGlobalClusterStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyGlobalCluster",
 }));
+
 export type RebootDBInstanceError =
   | DBInstanceNotFoundFault
   | InvalidDBInstanceStateFault
@@ -5101,8 +5235,11 @@ export const rebootDBInstance: API.OperationMethod<
   input: RebootDBInstanceMessage,
   output: RebootDBInstanceResult,
   errors: [DBInstanceNotFoundFault, InvalidDBInstanceStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebootDBInstance",
 }));
+
 export type RemoveFromGlobalClusterError =
   | DBClusterNotFoundFault
   | GlobalClusterNotFoundFault
@@ -5126,8 +5263,11 @@ export const removeFromGlobalCluster: API.OperationMethod<
     GlobalClusterNotFoundFault,
     InvalidGlobalClusterStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveFromGlobalCluster",
 }));
+
 export type RemoveSourceIdentifierFromSubscriptionError =
   | SourceNotFoundFault
   | SubscriptionNotFoundFault
@@ -5145,8 +5285,11 @@ export const removeSourceIdentifierFromSubscription: API.OperationMethod<
   input: RemoveSourceIdentifierFromSubscriptionMessage,
   output: RemoveSourceIdentifierFromSubscriptionResult,
   errors: [SourceNotFoundFault, SubscriptionNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveSourceIdentifierFromSubscription",
 }));
+
 export type RemoveTagsFromResourceError =
   | DBClusterNotFoundFault
   | DBInstanceNotFoundFault
@@ -5168,8 +5311,11 @@ export const removeTagsFromResource: API.OperationMethod<
     DBInstanceNotFoundFault,
     DBSnapshotNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTagsFromResource",
 }));
+
 export type ResetDBClusterParameterGroupError =
   | DBParameterGroupNotFoundFault
   | InvalidDBParameterGroupStateFault
@@ -5194,8 +5340,11 @@ export const resetDBClusterParameterGroup: API.OperationMethod<
   input: ResetDBClusterParameterGroupMessage,
   output: DBClusterParameterGroupNameMessage,
   errors: [DBParameterGroupNotFoundFault, InvalidDBParameterGroupStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetDBClusterParameterGroup",
 }));
+
 export type RestoreDBClusterFromSnapshotError =
   | DBClusterAlreadyExistsFault
   | DBClusterQuotaExceededFault
@@ -5245,8 +5394,11 @@ export const restoreDBClusterFromSnapshot: API.OperationMethod<
     NetworkTypeNotSupported,
     StorageQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreDBClusterFromSnapshot",
 }));
+
 export type RestoreDBClusterToPointInTimeError =
   | DBClusterAlreadyExistsFault
   | DBClusterNotFoundFault
@@ -5298,8 +5450,11 @@ export const restoreDBClusterToPointInTime: API.OperationMethod<
     NetworkTypeNotSupported,
     StorageQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreDBClusterToPointInTime",
 }));
+
 export type StartDBClusterError =
   | DBClusterNotFoundFault
   | InvalidDBClusterStateFault
@@ -5323,8 +5478,11 @@ export const startDBCluster: API.OperationMethod<
     InvalidDBClusterStateFault,
     InvalidDBInstanceStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDBCluster",
 }));
+
 export type StopDBClusterError =
   | DBClusterNotFoundFault
   | InvalidDBClusterStateFault
@@ -5349,8 +5507,11 @@ export const stopDBCluster: API.OperationMethod<
     InvalidDBClusterStateFault,
     InvalidDBInstanceStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopDBCluster",
 }));
+
 export type SwitchoverGlobalClusterError =
   | DBClusterNotFoundFault
   | GlobalClusterNotFoundFault
@@ -5374,5 +5535,7 @@ export const switchoverGlobalCluster: API.OperationMethod<
     InvalidDBClusterStateFault,
     InvalidGlobalClusterStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SwitchoverGlobalCluster",
 }));

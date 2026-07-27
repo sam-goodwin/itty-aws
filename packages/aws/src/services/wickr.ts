@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -85,16 +87,51 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class BadRequestError extends S.TaggedErrorClass<BadRequestError>()(
+  "BadRequestError",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ForbiddenError extends S.TaggedErrorClass<ForbiddenError>()(
+  "ForbiddenError",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
+  "InternalServerError",
+  { message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class RateLimitError extends S.TaggedErrorClass<RateLimitError>()(
+  "RateLimitError",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ResourceNotFoundError extends S.TaggedErrorClass<ResourceNotFoundError>()(
+  "ResourceNotFoundError",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class UnauthorizedError extends S.TaggedErrorClass<UnauthorizedError>()(
+  "UnauthorizedError",
+  { message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class ValidationError extends S.TaggedErrorClass<ValidationError>()(
+  "ValidationError",
+  {
+    reasons: S.optional(
+      S.suspend(() => ErrorDetailList).annotate({
+        identifier: "ErrorDetailList",
+      }),
+    ),
+    message: S.optional(S.String),
+  },
+  T.HttpError(422),
+).pipe(C.withBadRequestError) {}
 export type NetworkId = string;
 export type SensitiveString = string | redacted.Redacted<string>;
 export type SecurityGroupId = string;
-export type ClientToken = string;
-export type UserId = string;
-export type Uname = string;
-export type BotId = string;
-
-//# Schemas
 export type SecurityGroupIdList = string[];
 export const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchCreateUserRequestItem {
@@ -123,6 +160,7 @@ export type BatchCreateUserRequestItems = BatchCreateUserRequestItem[];
 export const BatchCreateUserRequestItems = /*@__PURE__*/ S.Array(
   BatchCreateUserRequestItem,
 );
+export type ClientToken = string;
 export interface BatchCreateUserRequest {
   networkId: string;
   users: BatchCreateUserRequestItem[];
@@ -149,6 +187,7 @@ export const BatchCreateUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchCreateUserRequest",
 }) as any as S.Schema<BatchCreateUserRequest>;
+export type UserId = string;
 export interface User {
   userId?: string;
   firstName?: string | redacted.Redacted<string>;
@@ -227,15 +266,6 @@ export const BatchCreateUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchCreateUserResponse",
 }) as any as S.Schema<BatchCreateUserResponse>;
-export interface ErrorDetail {
-  field?: string;
-  reason?: string;
-}
-export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ field: S.optional(S.String), reason: S.optional(S.String) }),
-).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
-export type ErrorDetailList = ErrorDetail[];
-export const ErrorDetailList = /*@__PURE__*/ S.Array(ErrorDetail);
 export type UserIds = string[];
 export const UserIds = /*@__PURE__*/ S.Array(S.String);
 export interface BatchDeleteUserRequest {
@@ -270,13 +300,15 @@ export const BatchDeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface BatchUserSuccessResponseItem {
   userId: string;
 }
-export const BatchUserSuccessResponseItem =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ userId: S.String })).annotate({
-    identifier: "BatchUserSuccessResponseItem",
-  }) as any as S.Schema<BatchUserSuccessResponseItem>;
+export const BatchUserSuccessResponseItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ userId: S.String }),
+).annotate({
+  identifier: "BatchUserSuccessResponseItem",
+}) as any as S.Schema<BatchUserSuccessResponseItem>;
 export type BatchUserSuccessResponseItems = BatchUserSuccessResponseItem[];
-export const BatchUserSuccessResponseItems =
-  /*@__PURE__*/ S.Array(BatchUserSuccessResponseItem);
+export const BatchUserSuccessResponseItems = /*@__PURE__*/ S.Array(
+  BatchUserSuccessResponseItem,
+);
 export interface BatchDeleteUserResponse {
   message?: string;
   successful?: BatchUserSuccessResponseItem[];
@@ -298,59 +330,58 @@ export interface BatchLookupUserUnameRequest {
   unames: string[];
   clientToken?: string;
 }
-export const BatchLookupUserUnameRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      networkId: S.String.pipe(T.HttpLabel("networkId")),
-      unames: Unames,
-      clientToken: S.optional(S.String).pipe(
-        T.HttpHeader("X-Client-Token"),
-        T.IdempotencyToken(),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/networks/{networkId}/users/uname-lookup",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchLookupUserUnameRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    networkId: S.String.pipe(T.HttpLabel("networkId")),
+    unames: Unames,
+    clientToken: S.optional(S.String).pipe(
+      T.HttpHeader("X-Client-Token"),
+      T.IdempotencyToken(),
     ),
-  ).annotate({
-    identifier: "BatchLookupUserUnameRequest",
-  }) as any as S.Schema<BatchLookupUserUnameRequest>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/networks/{networkId}/users/uname-lookup",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "BatchLookupUserUnameRequest",
+}) as any as S.Schema<BatchLookupUserUnameRequest>;
+export type Uname = string;
 export interface BatchUnameSuccessResponseItem {
   uname: string;
   username: string;
 }
-export const BatchUnameSuccessResponseItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ uname: S.String, username: S.String }),
-  ).annotate({
-    identifier: "BatchUnameSuccessResponseItem",
-  }) as any as S.Schema<BatchUnameSuccessResponseItem>;
+export const BatchUnameSuccessResponseItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ uname: S.String, username: S.String }),
+).annotate({
+  identifier: "BatchUnameSuccessResponseItem",
+}) as any as S.Schema<BatchUnameSuccessResponseItem>;
 export type BatchUnameSuccessResponseItems = BatchUnameSuccessResponseItem[];
-export const BatchUnameSuccessResponseItems =
-  /*@__PURE__*/ S.Array(BatchUnameSuccessResponseItem);
+export const BatchUnameSuccessResponseItems = /*@__PURE__*/ S.Array(
+  BatchUnameSuccessResponseItem,
+);
 export interface BatchUnameErrorResponseItem {
   field?: string;
   reason?: string;
   uname: string;
 }
-export const BatchUnameErrorResponseItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.optional(S.String),
-      reason: S.optional(S.String),
-      uname: S.String,
-    }),
-  ).annotate({
-    identifier: "BatchUnameErrorResponseItem",
-  }) as any as S.Schema<BatchUnameErrorResponseItem>;
+export const BatchUnameErrorResponseItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    field: S.optional(S.String),
+    reason: S.optional(S.String),
+    uname: S.String,
+  }),
+).annotate({
+  identifier: "BatchUnameErrorResponseItem",
+}) as any as S.Schema<BatchUnameErrorResponseItem>;
 export type BatchUnameErrorResponseItems = BatchUnameErrorResponseItem[];
 export const BatchUnameErrorResponseItems = /*@__PURE__*/ S.Array(
   BatchUnameErrorResponseItem,
@@ -360,16 +391,15 @@ export interface BatchLookupUserUnameResponse {
   successful?: BatchUnameSuccessResponseItem[];
   failed?: BatchUnameErrorResponseItem[];
 }
-export const BatchLookupUserUnameResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.optional(S.String),
-      successful: S.optional(BatchUnameSuccessResponseItems),
-      failed: S.optional(BatchUnameErrorResponseItems),
-    }),
-  ).annotate({
-    identifier: "BatchLookupUserUnameResponse",
-  }) as any as S.Schema<BatchLookupUserUnameResponse>;
+export const BatchLookupUserUnameResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    message: S.optional(S.String),
+    successful: S.optional(BatchUnameSuccessResponseItems),
+    failed: S.optional(BatchUnameErrorResponseItems),
+  }),
+).annotate({
+  identifier: "BatchLookupUserUnameResponse",
+}) as any as S.Schema<BatchLookupUserUnameResponse>;
 export interface BatchReinviteUserRequest {
   networkId: string;
   userIds: string[];
@@ -385,10 +415,7 @@ export const BatchReinviteUserRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   }).pipe(
     T.all(
-      T.Http({
-        method: "PATCH",
-        uri: "/networks/{networkId}/users/re-invite",
-      }),
+      T.Http({ method: "PATCH", uri: "/networks/{networkId}/users/re-invite" }),
       svc,
       auth,
       proto,
@@ -421,122 +448,121 @@ export interface BatchResetDevicesForUserRequest {
   appIds: string[];
   clientToken?: string;
 }
-export const BatchResetDevicesForUserRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      networkId: S.String.pipe(T.HttpLabel("networkId")),
-      userId: S.String.pipe(T.HttpLabel("userId")),
-      appIds: AppIds,
-      clientToken: S.optional(S.String).pipe(
-        T.HttpHeader("X-Client-Token"),
-        T.IdempotencyToken(),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PATCH",
-          uri: "/networks/{networkId}/users/{userId}/devices",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchResetDevicesForUserRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    networkId: S.String.pipe(T.HttpLabel("networkId")),
+    userId: S.String.pipe(T.HttpLabel("userId")),
+    appIds: AppIds,
+    clientToken: S.optional(S.String).pipe(
+      T.HttpHeader("X-Client-Token"),
+      T.IdempotencyToken(),
     ),
-  ).annotate({
-    identifier: "BatchResetDevicesForUserRequest",
-  }) as any as S.Schema<BatchResetDevicesForUserRequest>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/networks/{networkId}/users/{userId}/devices",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "BatchResetDevicesForUserRequest",
+}) as any as S.Schema<BatchResetDevicesForUserRequest>;
 export interface BatchDeviceSuccessResponseItem {
   appId: string;
 }
-export const BatchDeviceSuccessResponseItem =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ appId: S.String })).annotate({
-    identifier: "BatchDeviceSuccessResponseItem",
-  }) as any as S.Schema<BatchDeviceSuccessResponseItem>;
+export const BatchDeviceSuccessResponseItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ appId: S.String }),
+).annotate({
+  identifier: "BatchDeviceSuccessResponseItem",
+}) as any as S.Schema<BatchDeviceSuccessResponseItem>;
 export type BatchDeviceSuccessResponseItems = BatchDeviceSuccessResponseItem[];
-export const BatchDeviceSuccessResponseItems =
-  /*@__PURE__*/ S.Array(BatchDeviceSuccessResponseItem);
+export const BatchDeviceSuccessResponseItems = /*@__PURE__*/ S.Array(
+  BatchDeviceSuccessResponseItem,
+);
 export interface BatchDeviceErrorResponseItem {
   field?: string;
   reason?: string;
   appId: string;
 }
-export const BatchDeviceErrorResponseItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.optional(S.String),
-      reason: S.optional(S.String),
-      appId: S.String,
-    }),
-  ).annotate({
-    identifier: "BatchDeviceErrorResponseItem",
-  }) as any as S.Schema<BatchDeviceErrorResponseItem>;
+export const BatchDeviceErrorResponseItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    field: S.optional(S.String),
+    reason: S.optional(S.String),
+    appId: S.String,
+  }),
+).annotate({
+  identifier: "BatchDeviceErrorResponseItem",
+}) as any as S.Schema<BatchDeviceErrorResponseItem>;
 export type BatchDeviceErrorResponseItems = BatchDeviceErrorResponseItem[];
-export const BatchDeviceErrorResponseItems =
-  /*@__PURE__*/ S.Array(BatchDeviceErrorResponseItem);
+export const BatchDeviceErrorResponseItems = /*@__PURE__*/ S.Array(
+  BatchDeviceErrorResponseItem,
+);
 export interface BatchResetDevicesForUserResponse {
   message?: string;
   successful?: BatchDeviceSuccessResponseItem[];
   failed?: BatchDeviceErrorResponseItem[];
 }
-export const BatchResetDevicesForUserResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.optional(S.String),
-      successful: S.optional(BatchDeviceSuccessResponseItems),
-      failed: S.optional(BatchDeviceErrorResponseItems),
-    }),
-  ).annotate({
-    identifier: "BatchResetDevicesForUserResponse",
-  }) as any as S.Schema<BatchResetDevicesForUserResponse>;
+export const BatchResetDevicesForUserResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    message: S.optional(S.String),
+    successful: S.optional(BatchDeviceSuccessResponseItems),
+    failed: S.optional(BatchDeviceErrorResponseItems),
+  }),
+).annotate({
+  identifier: "BatchResetDevicesForUserResponse",
+}) as any as S.Schema<BatchResetDevicesForUserResponse>;
 export interface BatchToggleUserSuspendStatusRequest {
   networkId: string;
   suspend: boolean;
   userIds: string[];
   clientToken?: string;
 }
-export const BatchToggleUserSuspendStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      networkId: S.String.pipe(T.HttpLabel("networkId")),
-      suspend: S.Boolean.pipe(T.HttpQuery("suspend")),
-      userIds: UserIds,
-      clientToken: S.optional(S.String).pipe(
-        T.HttpHeader("X-Client-Token"),
-        T.IdempotencyToken(),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PATCH",
-          uri: "/networks/{networkId}/users/toggleSuspend",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchToggleUserSuspendStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    networkId: S.String.pipe(T.HttpLabel("networkId")),
+    suspend: S.Boolean.pipe(T.HttpQuery("suspend")),
+    userIds: UserIds,
+    clientToken: S.optional(S.String).pipe(
+      T.HttpHeader("X-Client-Token"),
+      T.IdempotencyToken(),
     ),
-  ).annotate({
-    identifier: "BatchToggleUserSuspendStatusRequest",
-  }) as any as S.Schema<BatchToggleUserSuspendStatusRequest>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/networks/{networkId}/users/toggleSuspend",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "BatchToggleUserSuspendStatusRequest",
+}) as any as S.Schema<BatchToggleUserSuspendStatusRequest>;
 export interface BatchToggleUserSuspendStatusResponse {
   message?: string;
   successful?: BatchUserSuccessResponseItem[];
   failed?: BatchUserErrorResponseItem[];
 }
-export const BatchToggleUserSuspendStatusResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const BatchToggleUserSuspendStatusResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       message: S.optional(S.String),
       successful: S.optional(BatchUserSuccessResponseItems),
       failed: S.optional(BatchUserErrorResponseItems),
     }),
-  ).annotate({
-    identifier: "BatchToggleUserSuspendStatusResponse",
-  }) as any as S.Schema<BatchToggleUserSuspendStatusResponse>;
+).annotate({
+  identifier: "BatchToggleUserSuspendStatusResponse",
+}) as any as S.Schema<BatchToggleUserSuspendStatusResponse>;
 export interface CreateBotRequest {
   networkId: string;
   username: string;
@@ -564,6 +590,7 @@ export const CreateBotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBotRequest",
 }) as any as S.Schema<CreateBotRequest>;
+export type BotId = string;
 export interface CreateBotResponse {
   message?: string;
   botId: string;
@@ -587,38 +614,36 @@ export const CreateBotResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDataRetentionBotRequest {
   networkId: string;
 }
-export const CreateDataRetentionBotRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/networks/{networkId}/data-retention-bots",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateDataRetentionBotRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/networks/{networkId}/data-retention-bots",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateDataRetentionBotRequest",
-  }) as any as S.Schema<CreateDataRetentionBotRequest>;
+  ),
+).annotate({
+  identifier: "CreateDataRetentionBotRequest",
+}) as any as S.Schema<CreateDataRetentionBotRequest>;
 export interface CreateDataRetentionBotResponse {
   message?: string;
 }
-export const CreateDataRetentionBotResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ message: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreateDataRetentionBotResponse",
-  }) as any as S.Schema<CreateDataRetentionBotResponse>;
+export const CreateDataRetentionBotResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ message: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateDataRetentionBotResponse",
+}) as any as S.Schema<CreateDataRetentionBotResponse>;
 export interface CreateDataRetentionBotChallengeRequest {
   networkId: string;
 }
-export const CreateDataRetentionBotChallengeRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateDataRetentionBotChallengeRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
       T.all(
         T.Http({
@@ -632,20 +657,20 @@ export const CreateDataRetentionBotChallengeRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "CreateDataRetentionBotChallengeRequest",
-  }) as any as S.Schema<CreateDataRetentionBotChallengeRequest>;
+).annotate({
+  identifier: "CreateDataRetentionBotChallengeRequest",
+}) as any as S.Schema<CreateDataRetentionBotChallengeRequest>;
 export interface CreateDataRetentionBotChallengeResponse {
   challenge: string | redacted.Redacted<string>;
 }
-export const CreateDataRetentionBotChallengeResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ challenge: SensitiveString }),
-  ).annotate({
-    identifier: "CreateDataRetentionBotChallengeResponse",
-  }) as any as S.Schema<CreateDataRetentionBotChallengeResponse>;
+export const CreateDataRetentionBotChallengeResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ challenge: SensitiveString }),
+).annotate({
+  identifier: "CreateDataRetentionBotChallengeResponse",
+}) as any as S.Schema<CreateDataRetentionBotChallengeResponse>;
 export type AccessLevel = "STANDARD" | "PREMIUM" | (string & {});
 export const AccessLevel = /*@__PURE__*/ S.String;
+
 export interface CreateNetworkRequest {
   networkName: string;
   accessLevel: AccessLevel;
@@ -702,16 +727,16 @@ export interface PermittedWickrEnterpriseNetwork {
   domain: string;
   networkId: string;
 }
-export const PermittedWickrEnterpriseNetwork =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ domain: S.String, networkId: S.String }),
-  ).annotate({
-    identifier: "PermittedWickrEnterpriseNetwork",
-  }) as any as S.Schema<PermittedWickrEnterpriseNetwork>;
+export const PermittedWickrEnterpriseNetwork = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ domain: S.String, networkId: S.String }),
+).annotate({
+  identifier: "PermittedWickrEnterpriseNetwork",
+}) as any as S.Schema<PermittedWickrEnterpriseNetwork>;
 export type PermittedWickrEnterpriseNetworksList =
   PermittedWickrEnterpriseNetwork[];
-export const PermittedWickrEnterpriseNetworksList =
-  /*@__PURE__*/ S.Array(PermittedWickrEnterpriseNetwork);
+export const PermittedWickrEnterpriseNetworksList = /*@__PURE__*/ S.Array(
+  PermittedWickrEnterpriseNetwork,
+);
 export interface SecurityGroupSettingsRequest {
   lockoutThreshold?: number;
   permittedNetworks?: string[];
@@ -722,23 +747,22 @@ export interface SecurityGroupSettingsRequest {
   permittedWickrAwsNetworks?: WickrAwsNetworks[];
   permittedWickrEnterpriseNetworks?: PermittedWickrEnterpriseNetwork[];
 }
-export const SecurityGroupSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      lockoutThreshold: S.optional(S.Number),
-      permittedNetworks: S.optional(PermittedNetworksList),
-      enableGuestFederation: S.optional(S.Boolean),
-      globalFederation: S.optional(S.Boolean),
-      federationMode: S.optional(S.Number),
-      enableRestrictedGlobalFederation: S.optional(S.Boolean),
-      permittedWickrAwsNetworks: S.optional(WickrAwsNetworksList),
-      permittedWickrEnterpriseNetworks: S.optional(
-        PermittedWickrEnterpriseNetworksList,
-      ),
-    }),
-  ).annotate({
-    identifier: "SecurityGroupSettingsRequest",
-  }) as any as S.Schema<SecurityGroupSettingsRequest>;
+export const SecurityGroupSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lockoutThreshold: S.optional(S.Number),
+    permittedNetworks: S.optional(PermittedNetworksList),
+    enableGuestFederation: S.optional(S.Boolean),
+    globalFederation: S.optional(S.Boolean),
+    federationMode: S.optional(S.Number),
+    enableRestrictedGlobalFederation: S.optional(S.Boolean),
+    permittedWickrAwsNetworks: S.optional(WickrAwsNetworksList),
+    permittedWickrEnterpriseNetworks: S.optional(
+      PermittedWickrEnterpriseNetworksList,
+    ),
+  }),
+).annotate({
+  identifier: "SecurityGroupSettingsRequest",
+}) as any as S.Schema<SecurityGroupSettingsRequest>;
 export interface CreateSecurityGroupRequest {
   networkId: string;
   name: string;
@@ -756,10 +780,7 @@ export const CreateSecurityGroupRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   }).pipe(
     T.all(
-      T.Http({
-        method: "POST",
-        uri: "/networks/{networkId}/security-groups",
-      }),
+      T.Http({ method: "POST", uri: "/networks/{networkId}/security-groups" }),
       svc,
       auth,
       proto,
@@ -923,12 +944,11 @@ export const SecurityGroup = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSecurityGroupResponse {
   securityGroup: SecurityGroup;
 }
-export const CreateSecurityGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ securityGroup: SecurityGroup }),
-  ).annotate({
-    identifier: "CreateSecurityGroupResponse",
-  }) as any as S.Schema<CreateSecurityGroupResponse>;
+export const CreateSecurityGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ securityGroup: SecurityGroup }),
+).annotate({
+  identifier: "CreateSecurityGroupResponse",
+}) as any as S.Schema<CreateSecurityGroupResponse>;
 export interface DeleteBotRequest {
   networkId: string;
   botId: string;
@@ -961,33 +981,31 @@ export const DeleteBotResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDataRetentionBotRequest {
   networkId: string;
 }
-export const DeleteDataRetentionBotRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/networks/{networkId}/data-retention-bots",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteDataRetentionBotRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/networks/{networkId}/data-retention-bots",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteDataRetentionBotRequest",
-  }) as any as S.Schema<DeleteDataRetentionBotRequest>;
+  ),
+).annotate({
+  identifier: "DeleteDataRetentionBotRequest",
+}) as any as S.Schema<DeleteDataRetentionBotRequest>;
 export interface DeleteDataRetentionBotResponse {
   message?: string;
 }
-export const DeleteDataRetentionBotResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ message: S.optional(S.String) }),
-  ).annotate({
-    identifier: "DeleteDataRetentionBotResponse",
-  }) as any as S.Schema<DeleteDataRetentionBotResponse>;
+export const DeleteDataRetentionBotResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ message: S.optional(S.String) }),
+).annotate({
+  identifier: "DeleteDataRetentionBotResponse",
+}) as any as S.Schema<DeleteDataRetentionBotResponse>;
 export interface DeleteNetworkRequest {
   networkId: string;
   clientToken?: string;
@@ -1049,16 +1067,15 @@ export interface DeleteSecurityGroupResponse {
   networkId?: string;
   groupId?: string;
 }
-export const DeleteSecurityGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.optional(S.String),
-      networkId: S.optional(S.String),
-      groupId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DeleteSecurityGroupResponse",
-  }) as any as S.Schema<DeleteSecurityGroupResponse>;
+export const DeleteSecurityGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    message: S.optional(S.String),
+    networkId: S.optional(S.String),
+    groupId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteSecurityGroupResponse",
+}) as any as S.Schema<DeleteSecurityGroupResponse>;
 export interface GetBotRequest {
   networkId: string;
   botId: string;
@@ -1161,40 +1178,35 @@ export interface GetDataRetentionBotResponse {
   isDataRetentionServiceEnabled?: boolean;
   isPubkeyMsgAcked?: boolean;
 }
-export const GetDataRetentionBotResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      botName: S.optional(S.String),
-      botExists: S.optional(S.Boolean),
-      isBotActive: S.optional(S.Boolean),
-      isDataRetentionBotRegistered: S.optional(S.Boolean),
-      isDataRetentionServiceEnabled: S.optional(S.Boolean),
-      isPubkeyMsgAcked: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GetDataRetentionBotResponse",
-  }) as any as S.Schema<GetDataRetentionBotResponse>;
+export const GetDataRetentionBotResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    botName: S.optional(S.String),
+    botExists: S.optional(S.Boolean),
+    isBotActive: S.optional(S.Boolean),
+    isDataRetentionBotRegistered: S.optional(S.Boolean),
+    isDataRetentionServiceEnabled: S.optional(S.Boolean),
+    isPubkeyMsgAcked: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GetDataRetentionBotResponse",
+}) as any as S.Schema<GetDataRetentionBotResponse>;
 export interface GetGuestUserHistoryCountRequest {
   networkId: string;
 }
-export const GetGuestUserHistoryCountRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/networks/{networkId}/guest-users/count",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetGuestUserHistoryCountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/networks/{networkId}/guest-users/count" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetGuestUserHistoryCountRequest",
-  }) as any as S.Schema<GetGuestUserHistoryCountRequest>;
+  ),
+).annotate({
+  identifier: "GetGuestUserHistoryCountRequest",
+}) as any as S.Schema<GetGuestUserHistoryCountRequest>;
 export interface GuestUserHistoryCount {
   month: string;
   count: string;
@@ -1211,12 +1223,11 @@ export const GuestUserHistoryCountList = /*@__PURE__*/ S.Array(
 export interface GetGuestUserHistoryCountResponse {
   history: GuestUserHistoryCount[];
 }
-export const GetGuestUserHistoryCountResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ history: GuestUserHistoryCountList }),
-  ).annotate({
-    identifier: "GetGuestUserHistoryCountResponse",
-  }) as any as S.Schema<GetGuestUserHistoryCountResponse>;
+export const GetGuestUserHistoryCountResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ history: GuestUserHistoryCountList }),
+).annotate({
+  identifier: "GetGuestUserHistoryCountResponse",
+}) as any as S.Schema<GetGuestUserHistoryCountResponse>;
 export interface GetNetworkRequest {
   networkId: string;
 }
@@ -1553,6 +1564,7 @@ export const GetUsersCountResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUsersCountResponse>;
 export type SortDirection = "ASC" | "DESC" | (string & {});
 export const SortDirection = /*@__PURE__*/ S.String;
+
 export interface ListBlockedGuestUsersRequest {
   networkId: string;
   maxResults?: number;
@@ -1562,34 +1574,31 @@ export interface ListBlockedGuestUsersRequest {
   admin?: string;
   nextToken?: string;
 }
-export const ListBlockedGuestUsersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      networkId: S.String.pipe(T.HttpLabel("networkId")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      sortDirection: S.optional(SortDirection).pipe(
-        T.HttpQuery("sortDirection"),
-      ),
-      sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
-      username: S.optional(S.String).pipe(T.HttpQuery("username")),
-      admin: S.optional(S.String).pipe(T.HttpQuery("admin")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/networks/{networkId}/guest-users/blocklist",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListBlockedGuestUsersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    networkId: S.String.pipe(T.HttpLabel("networkId")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
+    sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
+    username: S.optional(S.String).pipe(T.HttpQuery("username")),
+    admin: S.optional(S.String).pipe(T.HttpQuery("admin")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/networks/{networkId}/guest-users/blocklist",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListBlockedGuestUsersRequest",
-  }) as any as S.Schema<ListBlockedGuestUsersRequest>;
+  ),
+).annotate({
+  identifier: "ListBlockedGuestUsersRequest",
+}) as any as S.Schema<ListBlockedGuestUsersRequest>;
 export interface BlockedGuestUser {
   username: string;
   admin: string;
@@ -1612,15 +1621,14 @@ export interface ListBlockedGuestUsersResponse {
   nextToken?: string;
   blocklist: BlockedGuestUser[];
 }
-export const ListBlockedGuestUsersResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      blocklist: BlockedGuestUserList,
-    }),
-  ).annotate({
-    identifier: "ListBlockedGuestUsersResponse",
-  }) as any as S.Schema<ListBlockedGuestUsersResponse>;
+export const ListBlockedGuestUsersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    blocklist: BlockedGuestUserList,
+  }),
+).annotate({
+  identifier: "ListBlockedGuestUsersResponse",
+}) as any as S.Schema<ListBlockedGuestUsersResponse>;
 export interface ListBotsRequest {
   networkId: string;
   nextToken?: string;
@@ -1919,43 +1927,39 @@ export interface ListSecurityGroupUsersRequest {
   sortFields?: string;
   sortDirection?: SortDirection;
 }
-export const ListSecurityGroupUsersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      networkId: S.String.pipe(T.HttpLabel("networkId")),
-      groupId: S.String.pipe(T.HttpLabel("groupId")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
-      sortDirection: S.optional(SortDirection).pipe(
-        T.HttpQuery("sortDirection"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/networks/{networkId}/security-groups/{groupId}/users",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListSecurityGroupUsersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    networkId: S.String.pipe(T.HttpLabel("networkId")),
+    groupId: S.String.pipe(T.HttpLabel("groupId")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
+    sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/networks/{networkId}/security-groups/{groupId}/users",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListSecurityGroupUsersRequest",
-  }) as any as S.Schema<ListSecurityGroupUsersRequest>;
+  ),
+).annotate({
+  identifier: "ListSecurityGroupUsersRequest",
+}) as any as S.Schema<ListSecurityGroupUsersRequest>;
 export interface ListSecurityGroupUsersResponse {
   users: User[];
   nextToken?: string;
 }
-export const ListSecurityGroupUsersResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ users: Users, nextToken: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ListSecurityGroupUsersResponse",
-  }) as any as S.Schema<ListSecurityGroupUsersResponse>;
+export const ListSecurityGroupUsersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ users: Users, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListSecurityGroupUsersResponse",
+}) as any as S.Schema<ListSecurityGroupUsersResponse>;
 export type UserStatus = 1 | 2;
 export const UserStatus = /*@__PURE__*/ S.Literals([1, 2]);
 export interface ListUsersRequest {
@@ -2082,27 +2086,26 @@ export interface RegisterOidcConfigTestRequest {
   scopes: string;
   certificate?: string;
 }
-export const RegisterOidcConfigTestRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      networkId: S.String.pipe(T.HttpLabel("networkId")),
-      extraAuthParams: S.optional(S.String),
-      issuer: S.String,
-      scopes: S.String,
-      certificate: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/networks/{networkId}/oidc/test" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RegisterOidcConfigTestRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    networkId: S.String.pipe(T.HttpLabel("networkId")),
+    extraAuthParams: S.optional(S.String),
+    issuer: S.String,
+    scopes: S.String,
+    certificate: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/networks/{networkId}/oidc/test" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RegisterOidcConfigTestRequest",
-  }) as any as S.Schema<RegisterOidcConfigTestRequest>;
+  ),
+).annotate({
+  identifier: "RegisterOidcConfigTestRequest",
+}) as any as S.Schema<RegisterOidcConfigTestRequest>;
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface RegisterOidcConfigTestResponse {
@@ -2119,25 +2122,24 @@ export interface RegisterOidcConfigTestResponse {
   tokenEndpointAuthMethodsSupported?: string[];
   microsoftMultiRefreshToken?: boolean;
 }
-export const RegisterOidcConfigTestResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tokenEndpoint: S.optional(S.String),
-      userinfoEndpoint: S.optional(S.String),
-      responseTypesSupported: S.optional(StringList),
-      scopesSupported: S.optional(StringList),
-      issuer: S.optional(S.String),
-      authorizationEndpoint: S.optional(S.String),
-      endSessionEndpoint: S.optional(S.String),
-      logoutEndpoint: S.optional(S.String),
-      grantTypesSupported: S.optional(StringList),
-      revocationEndpoint: S.optional(S.String),
-      tokenEndpointAuthMethodsSupported: S.optional(StringList),
-      microsoftMultiRefreshToken: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "RegisterOidcConfigTestResponse",
-  }) as any as S.Schema<RegisterOidcConfigTestResponse>;
+export const RegisterOidcConfigTestResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tokenEndpoint: S.optional(S.String),
+    userinfoEndpoint: S.optional(S.String),
+    responseTypesSupported: S.optional(StringList),
+    scopesSupported: S.optional(StringList),
+    issuer: S.optional(S.String),
+    authorizationEndpoint: S.optional(S.String),
+    endSessionEndpoint: S.optional(S.String),
+    logoutEndpoint: S.optional(S.String),
+    grantTypesSupported: S.optional(StringList),
+    revocationEndpoint: S.optional(S.String),
+    tokenEndpointAuthMethodsSupported: S.optional(StringList),
+    microsoftMultiRefreshToken: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "RegisterOidcConfigTestResponse",
+}) as any as S.Schema<RegisterOidcConfigTestResponse>;
 export interface RegisterOpentdfConfigRequest {
   networkId: string;
   clientId: string;
@@ -2146,45 +2148,43 @@ export interface RegisterOpentdfConfigRequest {
   provider: string;
   dryRun?: boolean;
 }
-export const RegisterOpentdfConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      networkId: S.String.pipe(T.HttpLabel("networkId")),
-      clientId: S.String,
-      clientSecret: SensitiveString,
-      domain: S.String,
-      provider: S.String,
-      dryRun: S.optional(S.Boolean).pipe(T.HttpQuery("dryRun")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/networks/{networkId}/tdf" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RegisterOpentdfConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    networkId: S.String.pipe(T.HttpLabel("networkId")),
+    clientId: S.String,
+    clientSecret: SensitiveString,
+    domain: S.String,
+    provider: S.String,
+    dryRun: S.optional(S.Boolean).pipe(T.HttpQuery("dryRun")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/networks/{networkId}/tdf" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RegisterOpentdfConfigRequest",
-  }) as any as S.Schema<RegisterOpentdfConfigRequest>;
+  ),
+).annotate({
+  identifier: "RegisterOpentdfConfigRequest",
+}) as any as S.Schema<RegisterOpentdfConfigRequest>;
 export interface RegisterOpentdfConfigResponse {
   clientId: string;
   domain: string;
   clientSecret: string | redacted.Redacted<string>;
   provider: string;
 }
-export const RegisterOpentdfConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clientId: S.String,
-      domain: S.String,
-      clientSecret: SensitiveString,
-      provider: S.String,
-    }),
-  ).annotate({
-    identifier: "RegisterOpentdfConfigResponse",
-  }) as any as S.Schema<RegisterOpentdfConfigResponse>;
+export const RegisterOpentdfConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientId: S.String,
+    domain: S.String,
+    clientSecret: SensitiveString,
+    provider: S.String,
+  }),
+).annotate({
+  identifier: "RegisterOpentdfConfigResponse",
+}) as any as S.Schema<RegisterOpentdfConfigResponse>;
 export interface UpdateBotRequest {
   networkId: string;
   botId: string;
@@ -2228,6 +2228,7 @@ export type DataRetentionActionType =
   | "PUBKEY_MSG_ACK"
   | (string & {});
 export const DataRetentionActionType = /*@__PURE__*/ S.String;
+
 export interface UpdateDataRetentionRequest {
   networkId: string;
   actionType: DataRetentionActionType;
@@ -2255,12 +2256,11 @@ export const UpdateDataRetentionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDataRetentionResponse {
   message?: string;
 }
-export const UpdateDataRetentionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ message: S.optional(S.String) }),
-  ).annotate({
-    identifier: "UpdateDataRetentionResponse",
-  }) as any as S.Schema<UpdateDataRetentionResponse>;
+export const UpdateDataRetentionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ message: S.optional(S.String) }),
+).annotate({
+  identifier: "UpdateDataRetentionResponse",
+}) as any as S.Schema<UpdateDataRetentionResponse>;
 export interface UpdateGuestUserRequest {
   networkId: string;
   usernameHash: string;
@@ -2333,6 +2333,7 @@ export const UpdateNetworkResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateNetworkResponse>;
 export type Status = "DISABLED" | "ENABLED" | "FORCE_ENABLED" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
 export interface ReadReceiptConfig {
   status?: Status;
 }
@@ -2379,31 +2380,31 @@ export interface UpdateNetworkSettingsRequest {
   networkId: string;
   settings: NetworkSettings;
 }
-export const UpdateNetworkSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      networkId: S.String.pipe(T.HttpLabel("networkId")),
-      settings: NetworkSettings,
-    }).pipe(
-      T.all(
-        T.Http({ method: "PATCH", uri: "/networks/{networkId}/settings" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateNetworkSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    networkId: S.String.pipe(T.HttpLabel("networkId")),
+    settings: NetworkSettings,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/networks/{networkId}/settings" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateNetworkSettingsRequest",
-  }) as any as S.Schema<UpdateNetworkSettingsRequest>;
+  ),
+).annotate({
+  identifier: "UpdateNetworkSettingsRequest",
+}) as any as S.Schema<UpdateNetworkSettingsRequest>;
 export interface UpdateNetworkSettingsResponse {
   settings: Setting[];
 }
-export const UpdateNetworkSettingsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ settings: SettingsList })).annotate({
-    identifier: "UpdateNetworkSettingsResponse",
-  }) as any as S.Schema<UpdateNetworkSettingsResponse>;
+export const UpdateNetworkSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ settings: SettingsList }),
+).annotate({
+  identifier: "UpdateNetworkSettingsResponse",
+}) as any as S.Schema<UpdateNetworkSettingsResponse>;
 export interface UpdateSecurityGroupRequest {
   networkId: string;
   groupId: string;
@@ -2435,12 +2436,11 @@ export const UpdateSecurityGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSecurityGroupResponse {
   securityGroup: SecurityGroup;
 }
-export const UpdateSecurityGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ securityGroup: SecurityGroup }),
-  ).annotate({
-    identifier: "UpdateSecurityGroupResponse",
-  }) as any as S.Schema<UpdateSecurityGroupResponse>;
+export const UpdateSecurityGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ securityGroup: SecurityGroup }),
+).annotate({
+  identifier: "UpdateSecurityGroupResponse",
+}) as any as S.Schema<UpdateSecurityGroupResponse>;
 export interface UpdateUserDetails {
   firstName?: string | redacted.Redacted<string>;
   lastName?: string | redacted.Redacted<string>;
@@ -2518,38 +2518,15 @@ export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateUserResponse",
 }) as any as S.Schema<UpdateUserResponse>;
-
-//# Errors
-export class BadRequestError extends S.TaggedErrorClass<BadRequestError>()(
-  "BadRequestError",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ForbiddenError extends S.TaggedErrorClass<ForbiddenError>()(
-  "ForbiddenError",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  { message: S.String },
-).pipe(C.withServerError) {}
-export class RateLimitError extends S.TaggedErrorClass<RateLimitError>()(
-  "RateLimitError",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class ResourceNotFoundError extends S.TaggedErrorClass<ResourceNotFoundError>()(
-  "ResourceNotFoundError",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class UnauthorizedError extends S.TaggedErrorClass<UnauthorizedError>()(
-  "UnauthorizedError",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class ValidationError extends S.TaggedErrorClass<ValidationError>()(
-  "ValidationError",
-  { reasons: S.optional(ErrorDetailList), message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export interface ErrorDetail {
+  field?: string;
+  reason?: string;
+}
+export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ field: S.optional(S.String), reason: S.optional(S.String) }),
+).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
+export type ErrorDetailList = ErrorDetail[];
+export const ErrorDetailList = /*@__PURE__*/ S.Array(ErrorDetail);
 export type BatchCreateUserError =
   | BadRequestError
   | ForbiddenError
@@ -2581,8 +2558,11 @@ export const batchCreateUser: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchCreateUser",
 }));
+
 export type BatchDeleteUserError =
   | BadRequestError
   | ForbiddenError
@@ -2612,8 +2592,11 @@ export const batchDeleteUser: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteUser",
 }));
+
 export type BatchLookupUserUnameError =
   | BadRequestError
   | ForbiddenError
@@ -2643,8 +2626,11 @@ export const batchLookupUserUname: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchLookupUserUname",
 }));
+
 export type BatchReinviteUserError =
   | BadRequestError
   | ForbiddenError
@@ -2674,8 +2660,11 @@ export const batchReinviteUser: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchReinviteUser",
 }));
+
 export type BatchResetDevicesForUserError =
   | BadRequestError
   | ForbiddenError
@@ -2705,8 +2694,11 @@ export const batchResetDevicesForUser: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchResetDevicesForUser",
 }));
+
 export type BatchToggleUserSuspendStatusError =
   | BadRequestError
   | ForbiddenError
@@ -2736,8 +2728,11 @@ export const batchToggleUserSuspendStatus: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchToggleUserSuspendStatus",
 }));
+
 export type CreateBotError =
   | BadRequestError
   | ForbiddenError
@@ -2767,8 +2762,11 @@ export const createBot: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBot",
 }));
+
 export type CreateDataRetentionBotError =
   | BadRequestError
   | ForbiddenError
@@ -2798,8 +2796,11 @@ export const createDataRetentionBot: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataRetentionBot",
 }));
+
 export type CreateDataRetentionBotChallengeError =
   | BadRequestError
   | ForbiddenError
@@ -2829,8 +2830,11 @@ export const createDataRetentionBotChallenge: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataRetentionBotChallenge",
 }));
+
 export type CreateNetworkError =
   | BadRequestError
   | ForbiddenError
@@ -2860,8 +2864,11 @@ export const createNetwork: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNetwork",
 }));
+
 export type CreateSecurityGroupError =
   | BadRequestError
   | ForbiddenError
@@ -2891,8 +2898,11 @@ export const createSecurityGroup: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSecurityGroup",
 }));
+
 export type DeleteBotError =
   | BadRequestError
   | ForbiddenError
@@ -2922,8 +2932,11 @@ export const deleteBot: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBot",
 }));
+
 export type DeleteDataRetentionBotError =
   | BadRequestError
   | ForbiddenError
@@ -2953,8 +2966,11 @@ export const deleteDataRetentionBot: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataRetentionBot",
 }));
+
 export type DeleteNetworkError =
   | BadRequestError
   | ForbiddenError
@@ -2984,8 +3000,11 @@ export const deleteNetwork: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNetwork",
 }));
+
 export type DeleteSecurityGroupError =
   | BadRequestError
   | ForbiddenError
@@ -3015,8 +3034,11 @@ export const deleteSecurityGroup: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSecurityGroup",
 }));
+
 export type GetBotError =
   | BadRequestError
   | ForbiddenError
@@ -3046,8 +3068,11 @@ export const getBot: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBot",
 }));
+
 export type GetBotsCountError =
   | BadRequestError
   | ForbiddenError
@@ -3077,8 +3102,11 @@ export const getBotsCount: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBotsCount",
 }));
+
 export type GetDataRetentionBotError =
   | BadRequestError
   | ForbiddenError
@@ -3108,8 +3136,11 @@ export const getDataRetentionBot: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataRetentionBot",
 }));
+
 export type GetGuestUserHistoryCountError =
   | BadRequestError
   | ForbiddenError
@@ -3139,8 +3170,11 @@ export const getGuestUserHistoryCount: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGuestUserHistoryCount",
 }));
+
 export type GetNetworkError =
   | BadRequestError
   | ForbiddenError
@@ -3170,8 +3204,11 @@ export const getNetwork: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNetwork",
 }));
+
 export type GetNetworkSettingsError =
   | BadRequestError
   | ForbiddenError
@@ -3201,8 +3238,11 @@ export const getNetworkSettings: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNetworkSettings",
 }));
+
 export type GetOidcInfoError =
   | BadRequestError
   | ForbiddenError
@@ -3232,8 +3272,11 @@ export const getOidcInfo: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOidcInfo",
 }));
+
 export type GetOpentdfConfigError =
   | BadRequestError
   | ForbiddenError
@@ -3263,8 +3306,11 @@ export const getOpentdfConfig: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOpentdfConfig",
 }));
+
 export type GetSecurityGroupError =
   | BadRequestError
   | ForbiddenError
@@ -3294,8 +3340,11 @@ export const getSecurityGroup: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSecurityGroup",
 }));
+
 export type GetUserError =
   | BadRequestError
   | ForbiddenError
@@ -3325,8 +3374,11 @@ export const getUser: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUser",
 }));
+
 export type GetUsersCountError =
   | BadRequestError
   | ForbiddenError
@@ -3356,8 +3408,11 @@ export const getUsersCount: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUsersCount",
 }));
+
 export type ListBlockedGuestUsersError =
   | BadRequestError
   | ForbiddenError
@@ -3402,6 +3457,8 @@ export const listBlockedGuestUsers: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBlockedGuestUsers",
   pagination: {
     inputToken: "nextToken",
@@ -3410,6 +3467,7 @@ export const listBlockedGuestUsers: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListBotsError =
   | BadRequestError
   | ForbiddenError
@@ -3454,6 +3512,8 @@ export const listBots: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBots",
   pagination: {
     inputToken: "nextToken",
@@ -3462,6 +3522,7 @@ export const listBots: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListDevicesForUserError =
   | BadRequestError
   | ForbiddenError
@@ -3506,6 +3567,8 @@ export const listDevicesForUser: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDevicesForUser",
   pagination: {
     inputToken: "nextToken",
@@ -3514,6 +3577,7 @@ export const listDevicesForUser: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListGuestUsersError =
   | BadRequestError
   | ForbiddenError
@@ -3558,6 +3622,8 @@ export const listGuestUsers: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGuestUsers",
   pagination: {
     inputToken: "nextToken",
@@ -3566,6 +3632,7 @@ export const listGuestUsers: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListNetworksError =
   | BadRequestError
   | ForbiddenError
@@ -3608,6 +3675,8 @@ export const listNetworks: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNetworks",
   pagination: {
     inputToken: "nextToken",
@@ -3616,6 +3685,7 @@ export const listNetworks: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSecurityGroupsError =
   | BadRequestError
   | ForbiddenError
@@ -3660,6 +3730,8 @@ export const listSecurityGroups: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSecurityGroups",
   pagination: {
     inputToken: "nextToken",
@@ -3668,6 +3740,7 @@ export const listSecurityGroups: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSecurityGroupUsersError =
   | BadRequestError
   | ForbiddenError
@@ -3712,6 +3785,8 @@ export const listSecurityGroupUsers: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSecurityGroupUsers",
   pagination: {
     inputToken: "nextToken",
@@ -3720,6 +3795,7 @@ export const listSecurityGroupUsers: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListUsersError =
   | BadRequestError
   | ForbiddenError
@@ -3764,6 +3840,8 @@ export const listUsers: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUsers",
   pagination: {
     inputToken: "nextToken",
@@ -3772,6 +3850,7 @@ export const listUsers: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type RegisterOidcConfigError =
   | BadRequestError
   | ForbiddenError
@@ -3801,8 +3880,11 @@ export const registerOidcConfig: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterOidcConfig",
 }));
+
 export type RegisterOidcConfigTestError =
   | BadRequestError
   | ForbiddenError
@@ -3832,8 +3914,11 @@ export const registerOidcConfigTest: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterOidcConfigTest",
 }));
+
 export type RegisterOpentdfConfigError =
   | BadRequestError
   | ForbiddenError
@@ -3863,8 +3948,11 @@ export const registerOpentdfConfig: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterOpentdfConfig",
 }));
+
 export type UpdateBotError =
   | BadRequestError
   | ForbiddenError
@@ -3894,8 +3982,11 @@ export const updateBot: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBot",
 }));
+
 export type UpdateDataRetentionError =
   | BadRequestError
   | ForbiddenError
@@ -3925,8 +4016,11 @@ export const updateDataRetention: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataRetention",
 }));
+
 export type UpdateGuestUserError =
   | BadRequestError
   | ForbiddenError
@@ -3956,8 +4050,11 @@ export const updateGuestUser: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGuestUser",
 }));
+
 export type UpdateNetworkError =
   | BadRequestError
   | ForbiddenError
@@ -3987,8 +4084,11 @@ export const updateNetwork: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNetwork",
 }));
+
 export type UpdateNetworkSettingsError =
   | BadRequestError
   | ForbiddenError
@@ -4018,8 +4118,11 @@ export const updateNetworkSettings: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNetworkSettings",
 }));
+
 export type UpdateSecurityGroupError =
   | BadRequestError
   | ForbiddenError
@@ -4049,8 +4152,11 @@ export const updateSecurityGroup: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSecurityGroup",
 }));
+
 export type UpdateUserError =
   | BadRequestError
   | ForbiddenError
@@ -4082,5 +4188,7 @@ export const updateUser: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUser",
 }));

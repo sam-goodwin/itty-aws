@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -337,10 +339,41 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InputValidationError extends S.TaggedErrorClass<InputValidationError>()(
+  "InputValidationError",
+  { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
+  "InternalServerError",
+  { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InternalStreamFailure extends S.TaggedErrorClass<InternalStreamFailure>()(
+  "InternalStreamFailure",
+  { Message: S.optional(S.String) },
+) {}
+export class ModelError extends S.TaggedErrorClass<ModelError>()(
+  "ModelError",
+  {
+    Message: S.optional(S.String),
+    OriginalStatusCode: S.optional(S.Number),
+    OriginalMessage: S.optional(S.String),
+    LogStreamArn: S.optional(S.String),
+    ErrorCode: S.optional(S.String),
+  },
+  T.HttpError(424),
+) {}
+export class ModelStreamError extends S.TaggedErrorClass<ModelStreamError>()(
+  "ModelStreamError",
+  { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
+) {}
+export class ServiceUnavailableError extends S.TaggedErrorClass<ServiceUnavailableError>()(
+  "ServiceUnavailableError",
+  { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
 export type SensitiveBlob = Uint8Array | redacted.Redacted<Uint8Array>;
-
-//# Schemas
 export interface RequestPayloadPart {
   Bytes?: Uint8Array | redacted.Redacted<Uint8Array>;
   DataType?: string;
@@ -358,10 +391,9 @@ export const RequestPayloadPart = /*@__PURE__*/ S.suspend(() =>
   identifier: "RequestPayloadPart",
 }) as any as S.Schema<RequestPayloadPart>;
 export type RequestStreamEvent = { PayloadPart: RequestPayloadPart };
-export const RequestStreamEvent =
-  /*@__PURE__*/ T.InputEventStream(
-    S.Union([S.Struct({ PayloadPart: RequestPayloadPart })]),
-  ) as any as S.Schema<stream.Stream<RequestStreamEvent, Error, never>>;
+export const RequestStreamEvent = /*@__PURE__*/ T.InputEventStream(
+  S.Union([S.Struct({ PayloadPart: RequestPayloadPart })]),
+) as any as S.Schema<stream.Stream<RequestStreamEvent, Error, never>>;
 export interface InvokeEndpointWithBidirectionalStreamInput {
   EndpointName: string;
   Body: stream.Stream<RequestStreamEvent, Error, never>;
@@ -461,37 +493,6 @@ export const InvokeEndpointWithBidirectionalStreamOutput =
   ).annotate({
     identifier: "InvokeEndpointWithBidirectionalStreamOutput",
   }) as any as S.Schema<InvokeEndpointWithBidirectionalStreamOutput>;
-
-//# Errors
-export class InputValidationError extends S.TaggedErrorClass<InputValidationError>()(
-  "InputValidationError",
-  { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class InternalStreamFailure extends S.TaggedErrorClass<InternalStreamFailure>()(
-  "InternalStreamFailure",
-  { Message: S.optional(S.String) },
-) {}
-export class ModelError extends S.TaggedErrorClass<ModelError>()("ModelError", {
-  Message: S.optional(S.String),
-  OriginalStatusCode: S.optional(S.Number),
-  OriginalMessage: S.optional(S.String),
-  LogStreamArn: S.optional(S.String),
-  ErrorCode: S.optional(S.String),
-}) {}
-export class ModelStreamError extends S.TaggedErrorClass<ModelStreamError>()(
-  "ModelStreamError",
-  { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
-) {}
-export class ServiceUnavailableError extends S.TaggedErrorClass<ServiceUnavailableError>()(
-  "ServiceUnavailableError",
-  { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
-).pipe(C.withServerError) {}
-
-//# Operations
 export type InvokeEndpointWithBidirectionalStreamError =
   | InputValidationError
   | InternalServerError
@@ -531,5 +532,7 @@ export const invokeEndpointWithBidirectionalStream: API.OperationMethod<
     ModelStreamError,
     ServiceUnavailableError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InvokeEndpointWithBidirectionalStream",
 }));

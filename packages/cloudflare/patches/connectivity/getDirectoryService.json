@@ -1,82 +1,88 @@
 {
-  "errors": {
-    "VpcServiceNotFound": [
-      {
-        "code": 5104
-      }
-    ],
-    "Forbidden": [
-      {
-        "status": 403
-      }
-    ]
-  },
-  "response": {
-    "properties": {
-      "tcp_port": {
-        "optional": true,
-        "definition": {
-          "kind": "union",
-          "values": [
+  "description": "Align connectivity#DirectoryServicesGet with distilled cloudflare/connectivity getDirectoryService",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.connectivity#DirectoryServicesGet",
+      "path": "/shapes/com.cloudflare.connectivity#GetDirectoryService"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.connectivity#DirectoryServicesGetRequest",
+      "path": "/shapes/com.cloudflare.connectivity#GetDirectoryServiceRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.connectivity#GetDirectoryService/input/target",
+      "value": "com.cloudflare.connectivity#GetDirectoryServiceRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.connectivity#DirectoryServicesGetResponse",
+      "path": "/shapes/com.cloudflare.connectivity#GetDirectoryServiceResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.connectivity#GetDirectoryService/output/target",
+      "value": "com.cloudflare.connectivity#GetDirectoryServiceResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.connectivity#VpcServiceNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
             {
-              "kind": "primitive",
-              "value": "number"
-            },
-            {
-              "kind": "null"
-            }
-          ]
-        }
-      },
-      "app_protocol": {
-        "optional": true,
-        "definition": {
-          "kind": "union",
-          "values": [
-            {
-              "kind": "literal",
-              "value": "postgresql"
-            },
-            {
-              "kind": "literal",
-              "value": "mysql"
-            },
-            {
-              "kind": "null"
-            }
-          ]
-        }
-      },
-      "http_port": {
-        "optional": true,
-        "definition": {
-          "kind": "union",
-          "values": [
-            {
-              "kind": "primitive",
-              "value": "number"
-            },
-            {
-              "kind": "null"
-            }
-          ]
-        }
-      },
-      "https_port": {
-        "optional": true,
-        "definition": {
-          "kind": "union",
-          "values": [
-            {
-              "kind": "primitive",
-              "value": "number"
-            },
-            {
-              "kind": "null"
+              "code": 5104
             }
           ]
         }
       }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.connectivity#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.connectivity#GetDirectoryService/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.connectivity#VpcServiceNotFound"
+        },
+        {
+          "target": "com.cloudflare.connectivity#Forbidden"
+        }
+      ]
     }
-  }
+  ]
 }

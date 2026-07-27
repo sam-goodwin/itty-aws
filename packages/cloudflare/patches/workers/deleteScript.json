@@ -1,7 +1,114 @@
 {
-  "errors": {
-    "WorkerNotFound": [{ "code": 10007 }],
-    "QueueConsumerConflict": [{ "code": 10064 }],
-    "ServiceBindingConflict": [{ "code": 10142 }]
-  }
+  "description": "Align workers#ScriptsDelete with distilled cloudflare/workers deleteScript",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#ScriptsDelete",
+      "path": "/shapes/com.cloudflare.workers#DeleteScript"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#ScriptsDeleteRequest",
+      "path": "/shapes/com.cloudflare.workers#DeleteScriptRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workers#DeleteScript/input/target",
+      "value": "com.cloudflare.workers#DeleteScriptRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#ScriptsDeleteResponse",
+      "path": "/shapes/com.cloudflare.workers#DeleteScriptResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workers#DeleteScript/output/target",
+      "value": "com.cloudflare.workers#DeleteScriptResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#WorkerNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10007
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#QueueConsumerConflict",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10064
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#ServiceBindingConflict",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10142
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#DeleteScript/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.workers#WorkerNotFound"
+        },
+        {
+          "target": "com.cloudflare.workers#QueueConsumerConflict"
+        },
+        {
+          "target": "com.cloudflare.workers#ServiceBindingConflict"
+        }
+      ]
+    }
+  ]
 }

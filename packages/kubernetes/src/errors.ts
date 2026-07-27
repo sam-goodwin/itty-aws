@@ -1,13 +1,16 @@
 /**
  * Kubernetes-specific error types.
  *
- * Re-exports common HTTP errors from sdk-core and adds Kubernetes-specific
- * error matching and API error types.
+ * Re-exports the common HTTP errors from core and adds the Kubernetes
+ * fallback errors. Kubernetes API errors follow the `v1.Status` schema and
+ * include a `reason` field (e.g. "NotFound", "AlreadyExists", "Forbidden")
+ * that maps to HTTP status codes; the status code is the canonical
+ * discriminator used to select the error class.
  *
- * Kubernetes API errors include a `reason` field (e.g. "NotFound",
- * "AlreadyExists", "Forbidden") that maps to HTTP status codes. The
- * standard HTTP error classes from core handle the common status codes;
- * `UnknownKubernetesError` catches anything else.
+ * Note the generated service modules additionally define their own
+ * per-status matcher classes (NotFound/Conflict/UnprocessableEntity) for the
+ * statuses each operation declares — those share `_tag`s with the core
+ * classes here, so `catchTag` works against either.
  */
 export {
   BadGateway,
@@ -48,7 +51,7 @@ export class UnknownKubernetesError extends Schema.TaggedErrorClass<UnknownKuber
 
 /**
  * Returned when a Kubernetes API response cannot be decoded
- * against the expected schema.
+ * against the expected schema (kept for v0 surface parity).
  */
 export class KubernetesParseError extends Schema.TaggedErrorClass<KubernetesParseError>()(
   "KubernetesParseError",

@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -82,26 +84,54 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type __timestampIso8601 = Date;
-export type __stringMin1Max512PatternSS = string;
-export type __stringMin3Max255PatternAZaZ093255 = string;
-export type __stringMin1Max1024PatternSS = string;
-export type __stringMin1Max128Pattern = string;
-export type __stringMin71Max89PatternArnAwsAwsCnAwsUsGovMacie2AZ19920D12AllowListAZ0922 =
-  string;
-export type __stringMin22Max22PatternAZ0922 = string;
-export type ClassificationScopeId = string;
-export type SensitivityInspectionTemplateId = string;
-export type ClassificationScopeName = string;
-export type S3BucketName = string;
-export type __stringMin1Max2048 = string;
-export type __stringMin1Max64PatternW = string;
-export type __stringMin1Max128 = string;
-export type MaxResults = number;
-export type NextToken = string;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class MacieNotEnabled extends S.TaggedErrorClass<MacieNotEnabled>()(
+  "MacieNotEnabled",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "AccessDeniedException",
+    message: { matches: "Macie is(n[’']t| not) enabled" },
+  }),
+).pipe(C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnprocessableEntityException extends S.TaggedErrorClass<UnprocessableEntityException>()(
+  "UnprocessableEntityException",
+  { message: S.optional(S.String) },
+  T.HttpError(422),
+).pipe(C.withBadRequestError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export interface AcceptInvitationRequest {
   administratorAccountId?: string;
   invitationId?: string;
@@ -151,6 +181,7 @@ export const BatchGetCustomDataIdentifiersRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "BatchGetCustomDataIdentifiersRequest",
 }) as any as S.Schema<BatchGetCustomDataIdentifiersRequest>;
+export type __timestampIso8601 = Date;
 export interface BatchGetCustomDataIdentifierSummary {
   arn?: string;
   createdAt?: Date;
@@ -197,6 +228,7 @@ export type AutomatedDiscoveryAccountStatus =
   | "DISABLED"
   | (string & {});
 export const AutomatedDiscoveryAccountStatus = /*@__PURE__*/ S.String;
+
 export interface AutomatedDiscoveryAccountUpdate {
   accountId?: string;
   status?: AutomatedDiscoveryAccountStatus;
@@ -239,6 +271,7 @@ export type AutomatedDiscoveryAccountUpdateErrorCode =
   | "ACCOUNT_NOT_FOUND"
   | (string & {});
 export const AutomatedDiscoveryAccountUpdateErrorCode = /*@__PURE__*/ S.String;
+
 export interface AutomatedDiscoveryAccountUpdateError {
   accountId?: string;
   errorCode?: AutomatedDiscoveryAccountUpdateErrorCode;
@@ -267,6 +300,9 @@ export const BatchUpdateAutomatedDiscoveryAccountsResponse =
   ).annotate({
     identifier: "BatchUpdateAutomatedDiscoveryAccountsResponse",
   }) as any as S.Schema<BatchUpdateAutomatedDiscoveryAccountsResponse>;
+export type __stringMin1Max512PatternSS = string;
+export type __stringMin3Max255PatternAZaZ093255 = string;
+export type __stringMin1Max1024PatternSS = string;
 export interface S3WordsList {
   bucketName?: string;
   objectKey?: string;
@@ -289,6 +325,7 @@ export const AllowListCriteria = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AllowListCriteria",
 }) as any as S.Schema<AllowListCriteria>;
+export type __stringMin1Max128Pattern = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -321,6 +358,9 @@ export const CreateAllowListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAllowListRequest",
 }) as any as S.Schema<CreateAllowListRequest>;
+export type __stringMin71Max89PatternArnAwsAwsCnAwsUsGovMacie2AZ19920D12AllowListAZ0922 =
+  string;
+export type __stringMin22Max22PatternAZ0922 = string;
 export interface CreateAllowListResponse {
   arn?: string;
   id?: string;
@@ -332,6 +372,7 @@ export const CreateAllowListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAllowListResponse>;
 export type JobType = "ONE_TIME" | "SCHEDULED" | (string & {});
 export const JobType = /*@__PURE__*/ S.String;
+
 export type ManagedDataIdentifierSelector =
   | "ALL"
   | "EXCLUDE"
@@ -340,6 +381,7 @@ export type ManagedDataIdentifierSelector =
   | "RECOMMENDED"
   | (string & {});
 export const ManagedDataIdentifierSelector = /*@__PURE__*/ S.String;
+
 export type JobComparator =
   | "EQ"
   | "GT"
@@ -351,6 +393,7 @@ export type JobComparator =
   | "STARTS_WITH"
   | (string & {});
 export const JobComparator = /*@__PURE__*/ S.String;
+
 export type SimpleCriterionKeyForJob =
   | "ACCOUNT_ID"
   | "S3_BUCKET_NAME"
@@ -358,6 +401,7 @@ export type SimpleCriterionKeyForJob =
   | "S3_BUCKET_SHARED_ACCESS"
   | (string & {});
 export const SimpleCriterionKeyForJob = /*@__PURE__*/ S.String;
+
 export interface SimpleCriterionForJob {
   comparator?: JobComparator;
   key?: SimpleCriterionKeyForJob;
@@ -452,6 +496,7 @@ export type ScopeFilterKey =
   | "OBJECT_KEY"
   | (string & {});
 export const ScopeFilterKey = /*@__PURE__*/ S.String;
+
 export interface SimpleScopeTerm {
   comparator?: JobComparator;
   key?: ScopeFilterKey;
@@ -477,6 +522,7 @@ export type __listOfTagValuePair = TagValuePair[];
 export const __listOfTagValuePair = /*@__PURE__*/ S.Array(TagValuePair);
 export type TagTarget = "S3_OBJECT" | (string & {});
 export const TagTarget = /*@__PURE__*/ S.String;
+
 export interface TagScopeTerm {
   comparator?: JobComparator;
   key?: string;
@@ -557,6 +603,7 @@ export type DayOfWeek =
   | "SATURDAY"
   | (string & {});
 export const DayOfWeek = /*@__PURE__*/ S.String;
+
 export interface WeeklySchedule {
   dayOfWeek?: DayOfWeek;
 }
@@ -631,6 +678,7 @@ export const CreateClassificationJobResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateClassificationJobResponse>;
 export type DataIdentifierSeverity = "LOW" | "MEDIUM" | "HIGH" | (string & {});
 export const DataIdentifierSeverity = /*@__PURE__*/ S.String;
+
 export interface SeverityLevel {
   occurrencesThreshold?: number;
   severity?: DataIdentifierSeverity;
@@ -688,6 +736,7 @@ export const CreateCustomDataIdentifierResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCustomDataIdentifierResponse>;
 export type FindingsFilterAction = "ARCHIVE" | "NOOP" | (string & {});
 export const FindingsFilterAction = /*@__PURE__*/ S.String;
+
 export interface CriterionAdditionalProperties {
   eq?: string[];
   eqExactMatch?: string[];
@@ -790,6 +839,7 @@ export const CreateInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateInvitationsRequest>;
 export type ErrorCode = "ClientError" | "InternalError" | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
+
 export interface UnprocessedAccount {
   accountId?: string;
   errorCode?: ErrorCode;
@@ -865,6 +915,7 @@ export type FindingType =
   | "Policy:IAMUser/S3BucketSharedWithCloudFront"
   | (string & {});
 export const FindingType = /*@__PURE__*/ S.String;
+
 export type __listOfFindingType = FindingType[];
 export const __listOfFindingType = /*@__PURE__*/ S.Array(FindingType);
 export interface CreateSampleFindingsRequest {
@@ -1067,6 +1118,7 @@ export const BucketCriteria = /*@__PURE__*/ S.Record(
 );
 export type OrderBy = "ASC" | "DESC" | (string & {});
 export const OrderBy = /*@__PURE__*/ S.String;
+
 export interface BucketSortCriteria {
   attributeName?: string;
   orderBy?: OrderBy;
@@ -1110,20 +1162,25 @@ export type AllowsUnencryptedObjectUploads =
   | "UNKNOWN"
   | (string & {});
 export const AllowsUnencryptedObjectUploads = /*@__PURE__*/ S.String;
+
 export type AutomatedDiscoveryMonitoringStatus =
   | "MONITORED"
   | "NOT_MONITORED"
   | (string & {});
 export const AutomatedDiscoveryMonitoringStatus = /*@__PURE__*/ S.String;
+
 export type BucketMetadataErrorCode =
   | "ACCESS_DENIED"
   | "BUCKET_COUNT_EXCEEDS_QUOTA"
   | (string & {});
 export const BucketMetadataErrorCode = /*@__PURE__*/ S.String;
+
 export type IsDefinedInJob = "TRUE" | "FALSE" | "UNKNOWN" | (string & {});
 export const IsDefinedInJob = /*@__PURE__*/ S.String;
+
 export type IsMonitoredByJob = "TRUE" | "FALSE" | "UNKNOWN" | (string & {});
 export const IsMonitoredByJob = /*@__PURE__*/ S.String;
+
 export interface JobDetails {
   isDefinedInJob?: IsDefinedInJob;
   isMonitoredByJob?: IsMonitoredByJob;
@@ -1164,6 +1221,7 @@ export type EffectivePermission =
   | "UNKNOWN"
   | (string & {});
 export const EffectivePermission = /*@__PURE__*/ S.String;
+
 export interface BlockPublicAccess {
   blockPublicAcls?: boolean;
   blockPublicPolicy?: boolean;
@@ -1269,6 +1327,7 @@ export type Type =
   | "aws:kms:dsse"
   | (string & {});
 export const Type = /*@__PURE__*/ S.String;
+
 export interface BucketServerSideEncryption {
   kmsMasterKeyId?: string;
   type?: Type;
@@ -1285,6 +1344,7 @@ export type SharedAccess =
   | "UNKNOWN"
   | (string & {});
 export const SharedAccess = /*@__PURE__*/ S.String;
+
 export interface KeyValuePair {
   key?: string;
   value?: string;
@@ -1416,8 +1476,10 @@ export type JobStatus =
   | "USER_PAUSED"
   | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
+
 export type LastRunErrorStatusCode = "NONE" | "ERROR" | (string & {});
 export const LastRunErrorStatusCode = /*@__PURE__*/ S.String;
+
 export interface LastRunErrorStatus {
   code?: LastRunErrorStatusCode;
 }
@@ -1661,8 +1723,10 @@ export type FindingPublishingFrequency =
   | "SIX_HOURS"
   | (string & {});
 export const FindingPublishingFrequency = /*@__PURE__*/ S.String;
+
 export type MacieStatus = "PAUSED" | "ENABLED" | (string & {});
 export const MacieStatus = /*@__PURE__*/ S.String;
+
 export interface EnableMacieRequest {
   clientToken?: string;
   findingPublishingFrequency?: FindingPublishingFrequency;
@@ -1748,6 +1812,7 @@ export type RelationshipStatus =
   | "AccountSuspended"
   | (string & {});
 export const RelationshipStatus = /*@__PURE__*/ S.String;
+
 export interface Invitation {
   accountId?: string;
   invitationId?: string;
@@ -1800,6 +1865,7 @@ export type AllowListStatusCode =
   | "UNKNOWN_ERROR"
   | (string & {});
 export const AllowListStatusCode = /*@__PURE__*/ S.String;
+
 export interface AllowListStatus {
   code?: AllowListStatusCode;
   description?: string;
@@ -1865,8 +1931,12 @@ export const GetAutomatedDiscoveryConfigurationRequest =
   }) as any as S.Schema<GetAutomatedDiscoveryConfigurationRequest>;
 export type AutoEnableMode = "ALL" | "NEW" | "NONE" | (string & {});
 export const AutoEnableMode = /*@__PURE__*/ S.String;
+
+export type ClassificationScopeId = string;
+export type SensitivityInspectionTemplateId = string;
 export type AutomatedDiscoveryStatus = "ENABLED" | "DISABLED" | (string & {});
 export const AutomatedDiscoveryStatus = /*@__PURE__*/ S.String;
+
 export interface GetAutomatedDiscoveryConfigurationResponse {
   autoEnableOrganizationMembers?: AutoEnableMode;
   classificationScopeId?: string;
@@ -2116,6 +2186,8 @@ export const GetClassificationScopeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetClassificationScopeRequest",
 }) as any as S.Schema<GetClassificationScopeRequest>;
+export type ClassificationScopeName = string;
+export type S3BucketName = string;
 export type __listOfS3BucketName = string[];
 export const __listOfS3BucketName = /*@__PURE__*/ S.Array(S.String);
 export interface S3ClassificationScopeExclusion {
@@ -2239,11 +2311,13 @@ export const GetFindingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFindingsRequest>;
 export type FindingCategory = "CLASSIFICATION" | "POLICY" | (string & {});
 export const FindingCategory = /*@__PURE__*/ S.String;
+
 export type OriginType =
   | "SENSITIVE_DATA_DISCOVERY_JOB"
   | "AUTOMATED_SENSITIVE_DATA_DISCOVERY"
   | (string & {});
 export const OriginType = /*@__PURE__*/ S.String;
+
 export interface Cell {
   cellReference?: string;
   column?: number;
@@ -2353,6 +2427,7 @@ export type SensitiveDataItemCategory =
   | "CUSTOM_IDENTIFIER"
   | (string & {});
 export const SensitiveDataItemCategory = /*@__PURE__*/ S.String;
+
 export interface DefaultDetection {
   count?: number;
   occurrences?: Occurrences;
@@ -2434,6 +2509,7 @@ export const ClassificationDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClassificationDetails>;
 export type FindingActionType = "AWS_API_CALL" | (string & {});
 export const FindingActionType = /*@__PURE__*/ S.String;
+
 export interface ApiCallDetails {
   api?: string;
   apiServiceName?: string;
@@ -2643,6 +2719,7 @@ export type UserIdentityType =
   | "AWSService"
   | (string & {});
 export const UserIdentityType = /*@__PURE__*/ S.String;
+
 export interface UserIdentity {
   assumedRole?: AssumedRole;
   awsAccount?: AwsAccount;
@@ -2693,6 +2770,7 @@ export type EncryptionType =
   | "aws:kms:dsse"
   | (string & {});
 export const EncryptionType = /*@__PURE__*/ S.String;
+
 export interface ServerSideEncryption {
   encryptionType?: EncryptionType;
   kmsMasterKeyId?: string;
@@ -2750,6 +2828,7 @@ export type StorageClass =
   | "OUTPOSTS"
   | (string & {});
 export const StorageClass = /*@__PURE__*/ S.String;
+
 export interface S3Object {
   bucketArn?: string;
   eTag?: string;
@@ -2793,6 +2872,7 @@ export const ResourcesAffected = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcesAffected>;
 export type SeverityDescription = "Low" | "Medium" | "High" | (string & {});
 export const SeverityDescription = /*@__PURE__*/ S.String;
+
 export interface Severity {
   description?: SeverityDescription;
   score?: number;
@@ -2949,11 +3029,13 @@ export type GroupBy =
   | "severity.description"
   | (string & {});
 export const GroupBy = /*@__PURE__*/ S.String;
+
 export type FindingStatisticsSortAttributeName =
   | "groupKey"
   | "count"
   | (string & {});
 export const FindingStatisticsSortAttributeName = /*@__PURE__*/ S.String;
+
 export interface FindingStatisticsSortCriteria {
   attributeName?: FindingStatisticsSortAttributeName;
   orderBy?: OrderBy;
@@ -3216,8 +3298,10 @@ export const GetRevealConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRevealConfigurationRequest",
 }) as any as S.Schema<GetRevealConfigurationRequest>;
+export type __stringMin1Max2048 = string;
 export type RevealStatus = "ENABLED" | "DISABLED" | (string & {});
 export const RevealStatus = /*@__PURE__*/ S.String;
+
 export interface RevealConfiguration {
   kmsKeyId?: string;
   status?: RevealStatus;
@@ -3235,6 +3319,8 @@ export type RetrievalMode =
   | "ASSUME_ROLE"
   | (string & {});
 export const RetrievalMode = /*@__PURE__*/ S.String;
+
+export type __stringMin1Max64PatternW = string;
 export interface RetrievalConfiguration {
   externalId?: string;
   retrievalMode?: RetrievalMode;
@@ -3280,6 +3366,7 @@ export const GetSensitiveDataOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSensitiveDataOccurrencesRequest",
 }) as any as S.Schema<GetSensitiveDataOccurrencesRequest>;
+export type __stringMin1Max128 = string;
 export interface DetectedDataDetails {
   value?: string | redacted.Redacted<string>;
 }
@@ -3304,6 +3391,7 @@ export type RevealRequestStatus =
   | "ERROR"
   | (string & {});
 export const RevealRequestStatus = /*@__PURE__*/ S.String;
+
 export interface GetSensitiveDataOccurrencesResponse {
   error?: string;
   sensitiveDataOccurrences?: {
@@ -3345,6 +3433,7 @@ export const GetSensitiveDataOccurrencesAvailabilityRequest =
   }) as any as S.Schema<GetSensitiveDataOccurrencesAvailabilityRequest>;
 export type AvailabilityCode = "AVAILABLE" | "UNAVAILABLE" | (string & {});
 export const AvailabilityCode = /*@__PURE__*/ S.String;
+
 export type UnavailabilityReasonCode =
   | "OBJECT_EXCEEDS_SIZE_QUOTA"
   | "UNSUPPORTED_OBJECT_TYPE"
@@ -3359,6 +3448,7 @@ export type UnavailabilityReasonCode =
   | "RESULT_NOT_SIGNED"
   | (string & {});
 export const UnavailabilityReasonCode = /*@__PURE__*/ S.String;
+
 export type __listOfUnavailabilityReasonCode = UnavailabilityReasonCode[];
 export const __listOfUnavailabilityReasonCode = /*@__PURE__*/ S.Array(
   UnavailabilityReasonCode,
@@ -3449,6 +3539,7 @@ export type UsageStatisticsFilterComparator =
   | "CONTAINS"
   | (string & {});
 export const UsageStatisticsFilterComparator = /*@__PURE__*/ S.String;
+
 export type UsageStatisticsFilterKey =
   | "accountId"
   | "serviceLimit"
@@ -3456,6 +3547,7 @@ export type UsageStatisticsFilterKey =
   | "total"
   | (string & {});
 export const UsageStatisticsFilterKey = /*@__PURE__*/ S.String;
+
 export interface UsageStatisticsFilter {
   comparator?: UsageStatisticsFilterComparator;
   key?: UsageStatisticsFilterKey;
@@ -3481,6 +3573,7 @@ export type UsageStatisticsSortKey =
   | "freeTrialStartDate"
   | (string & {});
 export const UsageStatisticsSortKey = /*@__PURE__*/ S.String;
+
 export interface UsageStatisticsSortBy {
   key?: UsageStatisticsSortKey;
   orderBy?: OrderBy;
@@ -3495,6 +3588,7 @@ export const UsageStatisticsSortBy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsageStatisticsSortBy>;
 export type TimeRange = "MONTH_TO_DATE" | "PAST_30_DAYS" | (string & {});
 export const TimeRange = /*@__PURE__*/ S.String;
+
 export interface GetUsageStatisticsRequest {
   filterBy?: UsageStatisticsFilter[];
   maxResults?: number;
@@ -3524,8 +3618,10 @@ export const GetUsageStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUsageStatisticsRequest>;
 export type Currency = "USD" | (string & {});
 export const Currency = /*@__PURE__*/ S.String;
+
 export type Unit = "TERABYTES" | (string & {});
 export const Unit = /*@__PURE__*/ S.String;
+
 export interface ServiceLimit {
   isServiceLimited?: boolean;
   unit?: Unit;
@@ -3545,6 +3641,7 @@ export type UsageType =
   | "AUTOMATED_OBJECT_MONITORING"
   | (string & {});
 export const UsageType = /*@__PURE__*/ S.String;
+
 export interface UsageByAccount {
   currency?: Currency;
   estimatedCost?: string;
@@ -3640,6 +3737,7 @@ export const GetUsageTotalsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetUsageTotalsResponse",
 }) as any as S.Schema<GetUsageTotalsResponse>;
+export type MaxResults = number;
 export interface ListAllowListsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -3759,6 +3857,7 @@ export type ListJobsFilterKey =
   | "name"
   | (string & {});
 export const ListJobsFilterKey = /*@__PURE__*/ S.String;
+
 export interface ListJobsFilterTerm {
   comparator?: JobComparator;
   key?: ListJobsFilterKey;
@@ -3795,6 +3894,7 @@ export type ListJobsSortAttributeName =
   | "jobType"
   | (string & {});
 export const ListJobsSortAttributeName = /*@__PURE__*/ S.String;
+
 export interface ListJobsSortCriteria {
   attributeName?: ListJobsSortAttributeName;
   orderBy?: OrderBy;
@@ -3911,6 +4011,7 @@ export type __listOfClassificationScopeSummary = ClassificationScopeSummary[];
 export const __listOfClassificationScopeSummary = /*@__PURE__*/ S.Array(
   ClassificationScopeSummary,
 );
+export type NextToken = string;
 export interface ListClassificationScopesResponse {
   classificationScopes?: ClassificationScopeSummary[];
   nextToken?: string;
@@ -4242,6 +4343,7 @@ export const ListOrganizationAdminAccountsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListOrganizationAdminAccountsRequest>;
 export type AdminStatus = "ENABLED" | "DISABLING_IN_PROGRESS" | (string & {});
 export const AdminStatus = /*@__PURE__*/ S.String;
+
 export interface AdminAccount {
   accountId?: string;
   status?: AdminStatus;
@@ -4348,6 +4450,7 @@ export const ListResourceProfileDetectionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListResourceProfileDetectionsRequest>;
 export type DataIdentifierType = "CUSTOM" | "MANAGED" | (string & {});
 export const DataIdentifierType = /*@__PURE__*/ S.String;
+
 export interface Detection {
   arn?: string;
   count?: number;
@@ -4516,6 +4619,7 @@ export const PutFindingsPublicationConfigurationResponse =
   }) as any as S.Schema<PutFindingsPublicationConfigurationResponse>;
 export type SearchResourcesComparator = "EQ" | "NE" | (string & {});
 export const SearchResourcesComparator = /*@__PURE__*/ S.String;
+
 export type SearchResourcesSimpleCriterionKey =
   | "ACCOUNT_ID"
   | "S3_BUCKET_NAME"
@@ -4524,6 +4628,7 @@ export type SearchResourcesSimpleCriterionKey =
   | "AUTOMATED_DISCOVERY_MONITORING_STATUS"
   | (string & {});
 export const SearchResourcesSimpleCriterionKey = /*@__PURE__*/ S.String;
+
 export interface SearchResourcesSimpleCriterion {
   comparator?: SearchResourcesComparator;
   key?: SearchResourcesSimpleCriterionKey;
@@ -4607,6 +4712,7 @@ export type SearchResourcesSortAttributeName =
   | "S3_CLASSIFIABLE_SIZE_IN_BYTES"
   | (string & {});
 export const SearchResourcesSortAttributeName = /*@__PURE__*/ S.String;
+
 export interface SearchResourcesSortCriteria {
   attributeName?: SearchResourcesSortAttributeName;
   orderBy?: OrderBy;
@@ -4891,6 +4997,7 @@ export type ClassificationScopeUpdateOperation =
   | "REMOVE"
   | (string & {});
 export const ClassificationScopeUpdateOperation = /*@__PURE__*/ S.String;
+
 export interface S3ClassificationScopeExclusionUpdate {
   bucketNames?: string[];
   operation?: ClassificationScopeUpdateOperation;
@@ -5206,58 +5313,6 @@ export const UpdateSensitivityInspectionTemplateResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateSensitivityInspectionTemplateResponse",
   }) as any as S.Schema<UpdateSensitivityInspectionTemplateResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class MacieNotEnabled extends S.TaggedErrorClass<MacieNotEnabled>()(
-  "MacieNotEnabled",
-  { message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "AccessDeniedException",
-    message: { matches: "Macie is(n[’']t| not) enabled" },
-  }),
-).pipe(C.withRetryableError) {}
-export class UnprocessableEntityException extends S.TaggedErrorClass<UnprocessableEntityException>()(
-  "UnprocessableEntityException",
-  { message: S.optional(S.String) },
-  T.HttpError(422),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type AcceptInvitationError =
   | AccessDeniedException
   | ConflictException
@@ -5287,8 +5342,11 @@ export const acceptInvitation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptInvitation",
 }));
+
 export type BatchGetCustomDataIdentifiersError =
   | AccessDeniedException
   | ConflictException
@@ -5318,8 +5376,11 @@ export const batchGetCustomDataIdentifiers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetCustomDataIdentifiers",
 }));
+
 export type BatchUpdateAutomatedDiscoveryAccountsError =
   | AccessDeniedException
   | ConflictException
@@ -5345,8 +5406,11 @@ export const batchUpdateAutomatedDiscoveryAccounts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateAutomatedDiscoveryAccounts",
 }));
+
 export type CreateAllowListError =
   | AccessDeniedException
   | ConflictException
@@ -5378,8 +5442,11 @@ export const createAllowList: API.OperationMethod<
     ValidationException,
     MacieNotEnabled,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAllowList",
 }));
+
 export type CreateClassificationJobError =
   | AccessDeniedException
   | ConflictException
@@ -5411,8 +5478,11 @@ export const createClassificationJob: API.OperationMethod<
     ValidationException,
     MacieNotEnabled,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateClassificationJob",
 }));
+
 export type CreateCustomDataIdentifierError =
   | AccessDeniedException
   | ConflictException
@@ -5444,8 +5514,11 @@ export const createCustomDataIdentifier: API.OperationMethod<
     ValidationException,
     MacieNotEnabled,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomDataIdentifier",
 }));
+
 export type CreateFindingsFilterError =
   | AccessDeniedException
   | ConflictException
@@ -5477,8 +5550,11 @@ export const createFindingsFilter: API.OperationMethod<
     ValidationException,
     MacieNotEnabled,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFindingsFilter",
 }));
+
 export type CreateInvitationsError =
   | AccessDeniedException
   | ConflictException
@@ -5508,8 +5584,11 @@ export const createInvitations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInvitations",
 }));
+
 export type CreateMemberError =
   | AccessDeniedException
   | ConflictException
@@ -5539,8 +5618,11 @@ export const createMember: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMember",
 }));
+
 export type CreateSampleFindingsError =
   | AccessDeniedException
   | ConflictException
@@ -5570,8 +5652,11 @@ export const createSampleFindings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSampleFindings",
 }));
+
 export type DeclineInvitationsError =
   | AccessDeniedException
   | ConflictException
@@ -5601,8 +5686,11 @@ export const declineInvitations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeclineInvitations",
 }));
+
 export type DeleteAllowListError =
   | AccessDeniedException
   | InternalServerException
@@ -5628,8 +5716,11 @@ export const deleteAllowList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAllowList",
 }));
+
 export type DeleteCustomDataIdentifierError =
   | AccessDeniedException
   | ConflictException
@@ -5659,8 +5750,11 @@ export const deleteCustomDataIdentifier: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomDataIdentifier",
 }));
+
 export type DeleteFindingsFilterError =
   | AccessDeniedException
   | ConflictException
@@ -5690,8 +5784,11 @@ export const deleteFindingsFilter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFindingsFilter",
 }));
+
 export type DeleteInvitationsError =
   | AccessDeniedException
   | ConflictException
@@ -5721,8 +5818,11 @@ export const deleteInvitations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInvitations",
 }));
+
 export type DeleteMemberError =
   | AccessDeniedException
   | ConflictException
@@ -5752,8 +5852,11 @@ export const deleteMember: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMember",
 }));
+
 export type DescribeBucketsError =
   | AccessDeniedException
   | ConflictException
@@ -5798,6 +5901,8 @@ export const describeBuckets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBuckets",
   pagination: {
     inputToken: "nextToken",
@@ -5806,6 +5911,7 @@ export const describeBuckets: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeClassificationJobError =
   | AccessDeniedException
   | ConflictException
@@ -5835,8 +5941,11 @@ export const describeClassificationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClassificationJob",
 }));
+
 export type DescribeOrganizationConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -5866,8 +5975,11 @@ export const describeOrganizationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrganizationConfiguration",
 }));
+
 export type DisableMacieError =
   | AccessDeniedException
   | ConflictException
@@ -5897,8 +6009,11 @@ export const disableMacie: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableMacie",
 }));
+
 export type DisableOrganizationAdminAccountError =
   | AccessDeniedException
   | ConflictException
@@ -5928,8 +6043,11 @@ export const disableOrganizationAdminAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableOrganizationAdminAccount",
 }));
+
 export type DisassociateFromAdministratorAccountError =
   | AccessDeniedException
   | ConflictException
@@ -5959,8 +6077,11 @@ export const disassociateFromAdministratorAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateFromAdministratorAccount",
 }));
+
 export type DisassociateFromMasterAccountError =
   | AccessDeniedException
   | ConflictException
@@ -5990,8 +6111,11 @@ export const disassociateFromMasterAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateFromMasterAccount",
 }));
+
 export type DisassociateMemberError =
   | AccessDeniedException
   | ConflictException
@@ -6021,8 +6145,11 @@ export const disassociateMember: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateMember",
 }));
+
 export type EnableMacieError =
   | AccessDeniedException
   | ConflictException
@@ -6052,8 +6179,11 @@ export const enableMacie: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableMacie",
 }));
+
 export type EnableOrganizationAdminAccountError =
   | AccessDeniedException
   | ConflictException
@@ -6083,8 +6213,11 @@ export const enableOrganizationAdminAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableOrganizationAdminAccount",
 }));
+
 export type GetAdministratorAccountError =
   | AccessDeniedException
   | ConflictException
@@ -6114,8 +6247,11 @@ export const getAdministratorAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAdministratorAccount",
 }));
+
 export type GetAllowListError =
   | AccessDeniedException
   | InternalServerException
@@ -6141,8 +6277,11 @@ export const getAllowList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAllowList",
 }));
+
 export type GetAutomatedDiscoveryConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -6166,8 +6305,11 @@ export const getAutomatedDiscoveryConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAutomatedDiscoveryConfiguration",
 }));
+
 export type GetBucketStatisticsError =
   | AccessDeniedException
   | ConflictException
@@ -6197,8 +6339,11 @@ export const getBucketStatistics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketStatistics",
 }));
+
 export type GetClassificationExportConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -6228,8 +6373,11 @@ export const getClassificationExportConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetClassificationExportConfiguration",
 }));
+
 export type GetClassificationScopeError =
   | AccessDeniedException
   | InternalServerException
@@ -6255,8 +6403,11 @@ export const getClassificationScope: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetClassificationScope",
 }));
+
 export type GetCustomDataIdentifierError =
   | AccessDeniedException
   | ConflictException
@@ -6286,8 +6437,11 @@ export const getCustomDataIdentifier: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCustomDataIdentifier",
 }));
+
 export type GetFindingsError =
   | AccessDeniedException
   | ConflictException
@@ -6317,8 +6471,11 @@ export const getFindings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFindings",
 }));
+
 export type GetFindingsFilterError =
   | AccessDeniedException
   | ConflictException
@@ -6348,8 +6505,11 @@ export const getFindingsFilter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFindingsFilter",
 }));
+
 export type GetFindingsPublicationConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -6379,8 +6539,11 @@ export const getFindingsPublicationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFindingsPublicationConfiguration",
 }));
+
 export type GetFindingStatisticsError =
   | AccessDeniedException
   | ConflictException
@@ -6410,8 +6573,11 @@ export const getFindingStatistics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFindingStatistics",
 }));
+
 export type GetInvitationsCountError =
   | AccessDeniedException
   | ConflictException
@@ -6441,8 +6607,11 @@ export const getInvitationsCount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInvitationsCount",
 }));
+
 export type GetMacieSessionError =
   | AccessDeniedException
   | ConflictException
@@ -6472,8 +6641,11 @@ export const getMacieSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMacieSession",
 }));
+
 export type GetMasterAccountError =
   | AccessDeniedException
   | ConflictException
@@ -6503,8 +6675,11 @@ export const getMasterAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMasterAccount",
 }));
+
 export type GetMemberError =
   | AccessDeniedException
   | ConflictException
@@ -6534,8 +6709,11 @@ export const getMember: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMember",
 }));
+
 export type GetResourceProfileError =
   | AccessDeniedException
   | InternalServerException
@@ -6563,8 +6741,11 @@ export const getResourceProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceProfile",
 }));
+
 export type GetRevealConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -6588,8 +6769,11 @@ export const getRevealConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRevealConfiguration",
 }));
+
 export type GetSensitiveDataOccurrencesError =
   | AccessDeniedException
   | InternalServerException
@@ -6617,8 +6801,11 @@ export const getSensitiveDataOccurrences: API.OperationMethod<
     ThrottlingException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSensitiveDataOccurrences",
 }));
+
 export type GetSensitiveDataOccurrencesAvailabilityError =
   | AccessDeniedException
   | InternalServerException
@@ -6642,8 +6829,11 @@ export const getSensitiveDataOccurrencesAvailability: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSensitiveDataOccurrencesAvailability",
 }));
+
 export type GetSensitivityInspectionTemplateError =
   | AccessDeniedException
   | InternalServerException
@@ -6669,8 +6859,11 @@ export const getSensitivityInspectionTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSensitivityInspectionTemplate",
 }));
+
 export type GetUsageStatisticsError =
   | AccessDeniedException
   | ConflictException
@@ -6715,6 +6908,8 @@ export const getUsageStatistics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUsageStatistics",
   pagination: {
     inputToken: "nextToken",
@@ -6723,6 +6918,7 @@ export const getUsageStatistics: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetUsageTotalsError =
   | AccessDeniedException
   | ConflictException
@@ -6752,8 +6948,11 @@ export const getUsageTotals: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUsageTotals",
 }));
+
 export type ListAllowListsError =
   | AccessDeniedException
   | InternalServerException
@@ -6792,6 +6991,8 @@ export const listAllowLists: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAllowLists",
   pagination: {
     inputToken: "nextToken",
@@ -6800,6 +7001,7 @@ export const listAllowLists: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAutomatedDiscoveryAccountsError =
   | AccessDeniedException
   | InternalServerException
@@ -6840,6 +7042,8 @@ export const listAutomatedDiscoveryAccounts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAutomatedDiscoveryAccounts",
   pagination: {
     inputToken: "nextToken",
@@ -6848,6 +7052,7 @@ export const listAutomatedDiscoveryAccounts: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListClassificationJobsError =
   | AccessDeniedException
   | ConflictException
@@ -6892,6 +7097,8 @@ export const listClassificationJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClassificationJobs",
   pagination: {
     inputToken: "nextToken",
@@ -6900,6 +7107,7 @@ export const listClassificationJobs: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListClassificationScopesError =
   | AccessDeniedException
   | InternalServerException
@@ -6938,6 +7146,8 @@ export const listClassificationScopes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClassificationScopes",
   pagination: {
     inputToken: "nextToken",
@@ -6945,6 +7155,7 @@ export const listClassificationScopes: API.OperationMethod<
     items: "classificationScopes",
   } as const,
 }));
+
 export type ListCustomDataIdentifiersError =
   | AccessDeniedException
   | ConflictException
@@ -6989,6 +7200,8 @@ export const listCustomDataIdentifiers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCustomDataIdentifiers",
   pagination: {
     inputToken: "nextToken",
@@ -6997,6 +7210,7 @@ export const listCustomDataIdentifiers: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListFindingsError =
   | AccessDeniedException
   | ConflictException
@@ -7041,6 +7255,8 @@ export const listFindings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFindings",
   pagination: {
     inputToken: "nextToken",
@@ -7049,6 +7265,7 @@ export const listFindings: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListFindingsFiltersError =
   | AccessDeniedException
   | ConflictException
@@ -7093,6 +7310,8 @@ export const listFindingsFilters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFindingsFilters",
   pagination: {
     inputToken: "nextToken",
@@ -7101,6 +7320,7 @@ export const listFindingsFilters: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListInvitationsError =
   | AccessDeniedException
   | ConflictException
@@ -7145,6 +7365,8 @@ export const listInvitations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInvitations",
   pagination: {
     inputToken: "nextToken",
@@ -7153,6 +7375,7 @@ export const listInvitations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListManagedDataIdentifiersError = CommonErrors;
 /**
  * Retrieves information about all the managed data identifiers that Amazon Macie currently provides.
@@ -7181,6 +7404,8 @@ export const listManagedDataIdentifiers: API.OperationMethod<
   input: ListManagedDataIdentifiersRequest,
   output: ListManagedDataIdentifiersResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListManagedDataIdentifiers",
   pagination: {
     inputToken: "nextToken",
@@ -7188,6 +7413,7 @@ export const listManagedDataIdentifiers: API.OperationMethod<
     items: "items",
   } as const,
 }));
+
 export type ListMembersError =
   | AccessDeniedException
   | ConflictException
@@ -7232,6 +7458,8 @@ export const listMembers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMembers",
   pagination: {
     inputToken: "nextToken",
@@ -7240,6 +7468,7 @@ export const listMembers: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListOrganizationAdminAccountsError =
   | AccessDeniedException
   | ConflictException
@@ -7284,6 +7513,8 @@ export const listOrganizationAdminAccounts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOrganizationAdminAccounts",
   pagination: {
     inputToken: "nextToken",
@@ -7292,6 +7523,7 @@ export const listOrganizationAdminAccounts: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListResourceProfileArtifactsError =
   | AccessDeniedException
   | InternalServerException
@@ -7332,6 +7564,8 @@ export const listResourceProfileArtifacts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceProfileArtifacts",
   pagination: {
     inputToken: "nextToken",
@@ -7339,6 +7573,7 @@ export const listResourceProfileArtifacts: API.OperationMethod<
     items: "artifacts",
   } as const,
 }));
+
 export type ListResourceProfileDetectionsError =
   | AccessDeniedException
   | InternalServerException
@@ -7381,6 +7616,8 @@ export const listResourceProfileDetections: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceProfileDetections",
   pagination: {
     inputToken: "nextToken",
@@ -7389,6 +7626,7 @@ export const listResourceProfileDetections: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSensitivityInspectionTemplatesError =
   | AccessDeniedException
   | InternalServerException
@@ -7429,6 +7667,8 @@ export const listSensitivityInspectionTemplates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSensitivityInspectionTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -7437,6 +7677,7 @@ export const listSensitivityInspectionTemplates: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError = CommonErrors;
 /**
  * Retrieves the tags (keys and values) that are associated with an Amazon Macie resource.
@@ -7450,8 +7691,11 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutClassificationExportConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -7481,8 +7725,11 @@ export const putClassificationExportConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutClassificationExportConfiguration",
 }));
+
 export type PutFindingsPublicationConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -7512,8 +7759,11 @@ export const putFindingsPublicationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutFindingsPublicationConfiguration",
 }));
+
 export type SearchResourcesError =
   | AccessDeniedException
   | ConflictException
@@ -7558,6 +7808,8 @@ export const searchResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchResources",
   pagination: {
     inputToken: "nextToken",
@@ -7566,6 +7818,7 @@ export const searchResources: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type TagResourceError = CommonErrors;
 /**
  * Adds or updates one or more tags (keys and values) that are associated with an Amazon Macie resource.
@@ -7579,8 +7832,11 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type TestCustomDataIdentifierError =
   | AccessDeniedException
   | ConflictException
@@ -7610,8 +7866,11 @@ export const testCustomDataIdentifier: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestCustomDataIdentifier",
 }));
+
 export type UntagResourceError = CommonErrors;
 /**
  * Removes one or more tags (keys and values) from an Amazon Macie resource.
@@ -7625,8 +7884,11 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAllowListError =
   | AccessDeniedException
   | InternalServerException
@@ -7652,8 +7914,11 @@ export const updateAllowList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAllowList",
 }));
+
 export type UpdateAutomatedDiscoveryConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -7677,8 +7942,11 @@ export const updateAutomatedDiscoveryConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAutomatedDiscoveryConfiguration",
 }));
+
 export type UpdateClassificationJobError =
   | AccessDeniedException
   | ConflictException
@@ -7708,8 +7976,11 @@ export const updateClassificationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateClassificationJob",
 }));
+
 export type UpdateClassificationScopeError =
   | AccessDeniedException
   | InternalServerException
@@ -7735,8 +8006,11 @@ export const updateClassificationScope: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateClassificationScope",
 }));
+
 export type UpdateFindingsFilterError =
   | AccessDeniedException
   | ConflictException
@@ -7766,8 +8040,11 @@ export const updateFindingsFilter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFindingsFilter",
 }));
+
 export type UpdateMacieSessionError =
   | AccessDeniedException
   | ConflictException
@@ -7797,8 +8074,11 @@ export const updateMacieSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMacieSession",
 }));
+
 export type UpdateMemberSessionError =
   | AccessDeniedException
   | ConflictException
@@ -7828,8 +8108,11 @@ export const updateMemberSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMemberSession",
 }));
+
 export type UpdateOrganizationConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -7859,8 +8142,11 @@ export const updateOrganizationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOrganizationConfiguration",
 }));
+
 export type UpdateResourceProfileError =
   | AccessDeniedException
   | InternalServerException
@@ -7888,8 +8174,11 @@ export const updateResourceProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResourceProfile",
 }));
+
 export type UpdateResourceProfileDetectionsError =
   | AccessDeniedException
   | InternalServerException
@@ -7917,8 +8206,11 @@ export const updateResourceProfileDetections: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResourceProfileDetections",
 }));
+
 export type UpdateRevealConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -7942,8 +8234,11 @@ export const updateRevealConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRevealConfiguration",
 }));
+
 export type UpdateSensitivityInspectionTemplateError =
   | AccessDeniedException
   | InternalServerException
@@ -7969,5 +8264,7 @@ export const updateSensitivityInspectionTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSensitivityInspectionTemplate",
 }));

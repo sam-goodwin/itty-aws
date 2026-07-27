@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -82,146 +84,55 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class DuplicateResourceException extends S.TaggedErrorClass<DuplicateResourceException>()(
+  "DuplicateResourceException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidParametersException extends S.TaggedErrorClass<InvalidParametersException>()(
+  "InvalidParametersException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
+  "InvalidStateException",
+  { Message: S.optional(S.String) },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+) {}
+export class OperationNotSupportedException extends S.TaggedErrorClass<OperationNotSupportedException>()(
+  "OperationNotSupportedException",
+  { Message: S.optional(S.String) },
+) {}
+export class ProvisionedProductNotFound extends S.TaggedErrorClass<ProvisionedProductNotFound>()(
+  "ProvisionedProductNotFound",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "Provisioned product not found" },
+  }),
+) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { Message: S.optional(S.String) },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+) {}
+export class TagOptionNotMigratedException extends S.TaggedErrorClass<TagOptionNotMigratedException>()(
+  "TagOptionNotMigratedException",
+  { Message: S.optional(S.String) },
+) {}
 export type AcceptLanguage = string;
 export type Id = string;
-export type ErrorMessage = string;
-export type BudgetName = string;
-export type PrincipalARN = string;
-export type IdempotencyToken = string;
-export type ResourceId = string;
-export type TagOptionId = string;
-export type ServiceActionAssociationErrorMessage = string;
-export type ProductArn = string;
-export type ProductViewName = string;
-export type ProvisioningArtifactPropertyValue = string;
-export type ConstraintParameters = string;
-export type ConstraintType = string;
-export type ConstraintDescription = string;
-export type AccountId = string;
-export type PortfolioDisplayName = string;
-export type PortfolioDescription = string;
-export type ProviderName = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ResourceARN = string;
-export type CreationTime = Date;
-export type OrganizationNodeValue = string;
-export type ProductViewOwner = string;
-export type ProductViewShortDescription = string;
-export type SupportDescription = string;
-export type SupportEmail = string;
-export type SupportUrl = string;
-export type ProvisioningArtifactName = string;
-export type ProvisioningArtifactDescription = string;
-export type ProvisioningArtifactInfoKey = string;
-export type ProvisioningArtifactInfoValue = string;
-export type DisableTemplateValidation = boolean;
-export type CodeStarConnectionArn = string;
-export type Repository = string;
-export type RepositoryBranch = string;
-export type RepositoryArtifactPath = string;
-export type ProductViewDistributor = string;
-export type HasDefaultPath = boolean;
-export type CreatedTime = Date;
-export type LastSyncTime = Date;
-export type LastSyncStatusMessage = string;
-export type LastSuccessfulSyncTime = Date;
-export type ProvisioningArtifactActive = boolean;
-export type SourceRevision = string;
-export type ProvisionedProductPlanName = string;
-export type NotificationArn = string;
-export type ProvisionedProductName = string;
-export type ParameterKey = string;
-export type ParameterValue = string;
-export type UsePreviousValue = boolean;
-export type ServiceActionName = string;
-export type ServiceActionDefinitionValue = string;
-export type ServiceActionDescription = string;
-export type TagOptionKey = string;
-export type TagOptionValue = string;
-export type TagOptionActive = boolean;
-export type Owner = string;
-export type IgnoreErrors = boolean;
-export type StatusDetail = string;
-export type PageToken = string;
-export type PageSizeMax100 = number;
-export type Message = string;
-export type ProvisioningArtifactCreatedTime = Date;
-export type PortfolioName = string;
-export type ProvisionedProductNameOrArn = string;
-export type ProvisionedProductType = string;
-export type ProvisionedProductId = string;
-export type ProvisionedProductStatusMessage = string;
-export type LastRequestId = string;
-export type RoleArn = string;
-export type CloudWatchDashboardName = string;
-export type PageSize = number;
-export type UpdatedTime = Date;
-export type StatusMessage = string;
-export type LogicalResourceId = string;
-export type PhysicalResourceId = string;
-export type PlanResourceType = string;
-export type PropertyName = string;
-export type CausingEntity = string;
-export type Verbose = boolean;
-export type DefaultValue = string;
-export type ParameterType = string;
-export type NoEcho = boolean;
-export type Description = string;
-export type InstructionType = string;
-export type InstructionValue = string;
-export type Region = string;
-export type ProvisioningArtifactOutputKey = string;
-export type OutputDescription = string;
-export type RecordType = string;
-export type ErrorCode = string;
-export type ErrorDescription = string;
-export type RecordTagKey = string;
-export type RecordTagValue = string;
-export type OutputKey = string;
-export type OutputValue = string;
-export type ExecutionParameterKey = string;
-export type ExecutionParameterType = string;
-export type ExecutionParameterValue = string;
-export type PhysicalId = string;
-export type AccessLevelFilterValue = string;
-export type SearchFilterKey = string;
-export type SearchFilterValue = string;
-export type ResourceType = string;
-export type ResourceDetailId = string;
-export type ResourceDetailARN = string;
-export type ResourceDetailName = string;
-export type ResourceDetailDescription = string;
-export type ResourceDetailCreatedTime = Date;
-export type EngineWorkflowToken = string;
-export type EngineWorkflowFailureReason = string;
-export type UniqueTagKey = string;
-export type UniqueTagValue = string;
-export type StackSetFailureToleranceCount = number;
-export type StackSetFailureTolerancePercentage = number;
-export type StackSetMaxConcurrencyCount = number;
-export type StackSetMaxConcurrencyPercentage = number;
-export type ProductViewFilterValue = string;
-export type ProductViewAggregationType = string;
-export type AttributeValue = string;
-export type ApproximateCount = number;
-export type ProvisionedProductViewFilterValue = string;
-export type SortField = string;
-export type SearchProvisionedProductsPageSize = number;
-export type UserArn = string;
-export type UserArnSession = string;
-export type TotalResultsCount = number;
-export type RetainPhysicalResources = boolean;
-export type PropertyValue = string;
-
-//# Schemas
 export type PortfolioShareType =
   | "IMPORTED"
   | "AWS_SERVICECATALOG"
   | "AWS_ORGANIZATIONS"
   | (string & {});
 export const PortfolioShareType = /*@__PURE__*/ S.String;
+
 export interface AcceptPortfolioShareInput {
   AcceptLanguage?: string;
   PortfolioId: string;
@@ -244,33 +155,36 @@ export const AcceptPortfolioShareOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AcceptPortfolioShareOutput",
 }) as any as S.Schema<AcceptPortfolioShareOutput>;
+export type BudgetName = string;
 export interface AssociateBudgetWithResourceInput {
   BudgetName: string;
   ResourceId: string;
 }
-export const AssociateBudgetWithResourceInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ BudgetName: S.String, ResourceId: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "AssociateBudgetWithResourceInput",
-  }) as any as S.Schema<AssociateBudgetWithResourceInput>;
+export const AssociateBudgetWithResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ BudgetName: S.String, ResourceId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "AssociateBudgetWithResourceInput",
+}) as any as S.Schema<AssociateBudgetWithResourceInput>;
 export interface AssociateBudgetWithResourceOutput {}
-export const AssociateBudgetWithResourceOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AssociateBudgetWithResourceOutput",
-  }) as any as S.Schema<AssociateBudgetWithResourceOutput>;
+export const AssociateBudgetWithResourceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AssociateBudgetWithResourceOutput",
+}) as any as S.Schema<AssociateBudgetWithResourceOutput>;
+export type PrincipalARN = string;
 export type PrincipalType = "IAM" | "IAM_PATTERN" | (string & {});
 export const PrincipalType = /*@__PURE__*/ S.String;
+
 export interface AssociatePrincipalWithPortfolioInput {
   AcceptLanguage?: string;
   PortfolioId: string;
   PrincipalARN: string;
   PrincipalType: PrincipalType;
 }
-export const AssociatePrincipalWithPortfolioInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const AssociatePrincipalWithPortfolioInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       AcceptLanguage: S.optional(S.String),
       PortfolioId: S.String,
@@ -279,38 +193,40 @@ export const AssociatePrincipalWithPortfolioInput =
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
-  ).annotate({
-    identifier: "AssociatePrincipalWithPortfolioInput",
-  }) as any as S.Schema<AssociatePrincipalWithPortfolioInput>;
+).annotate({
+  identifier: "AssociatePrincipalWithPortfolioInput",
+}) as any as S.Schema<AssociatePrincipalWithPortfolioInput>;
 export interface AssociatePrincipalWithPortfolioOutput {}
-export const AssociatePrincipalWithPortfolioOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AssociatePrincipalWithPortfolioOutput",
-  }) as any as S.Schema<AssociatePrincipalWithPortfolioOutput>;
+export const AssociatePrincipalWithPortfolioOutput = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "AssociatePrincipalWithPortfolioOutput",
+}) as any as S.Schema<AssociatePrincipalWithPortfolioOutput>;
 export interface AssociateProductWithPortfolioInput {
   AcceptLanguage?: string;
   ProductId: string;
   PortfolioId: string;
   SourcePortfolioId?: string;
 }
-export const AssociateProductWithPortfolioInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      ProductId: S.String,
-      PortfolioId: S.String,
-      SourcePortfolioId: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "AssociateProductWithPortfolioInput",
-  }) as any as S.Schema<AssociateProductWithPortfolioInput>;
+export const AssociateProductWithPortfolioInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    ProductId: S.String,
+    PortfolioId: S.String,
+    SourcePortfolioId: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "AssociateProductWithPortfolioInput",
+}) as any as S.Schema<AssociateProductWithPortfolioInput>;
 export interface AssociateProductWithPortfolioOutput {}
-export const AssociateProductWithPortfolioOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AssociateProductWithPortfolioOutput",
-  }) as any as S.Schema<AssociateProductWithPortfolioOutput>;
+export const AssociateProductWithPortfolioOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AssociateProductWithPortfolioOutput",
+}) as any as S.Schema<AssociateProductWithPortfolioOutput>;
+export type IdempotencyToken = string;
 export interface AssociateServiceActionWithProvisioningArtifactInput {
   ProductId: string;
   ProvisioningArtifactId: string;
@@ -337,23 +253,25 @@ export const AssociateServiceActionWithProvisioningArtifactOutput =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AssociateServiceActionWithProvisioningArtifactOutput",
   }) as any as S.Schema<AssociateServiceActionWithProvisioningArtifactOutput>;
+export type ResourceId = string;
+export type TagOptionId = string;
 export interface AssociateTagOptionWithResourceInput {
   ResourceId: string;
   TagOptionId: string;
 }
-export const AssociateTagOptionWithResourceInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ResourceId: S.String, TagOptionId: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "AssociateTagOptionWithResourceInput",
-  }) as any as S.Schema<AssociateTagOptionWithResourceInput>;
+export const AssociateTagOptionWithResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceId: S.String, TagOptionId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "AssociateTagOptionWithResourceInput",
+}) as any as S.Schema<AssociateTagOptionWithResourceInput>;
 export interface AssociateTagOptionWithResourceOutput {}
-export const AssociateTagOptionWithResourceOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AssociateTagOptionWithResourceOutput",
-  }) as any as S.Schema<AssociateTagOptionWithResourceOutput>;
+export const AssociateTagOptionWithResourceOutput = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "AssociateTagOptionWithResourceOutput",
+}) as any as S.Schema<AssociateTagOptionWithResourceOutput>;
 export interface ServiceActionAssociation {
   ServiceActionId: string;
   ProductId: string;
@@ -396,6 +314,8 @@ export type ServiceActionAssociationErrorCode =
   | "INVALID_PARAMETER"
   | (string & {});
 export const ServiceActionAssociationErrorCode = /*@__PURE__*/ S.String;
+
+export type ServiceActionAssociationErrorMessage = string;
 export interface FailedServiceActionAssociation {
   ServiceActionId?: string;
   ProductId?: string;
@@ -403,21 +323,21 @@ export interface FailedServiceActionAssociation {
   ErrorCode?: ServiceActionAssociationErrorCode;
   ErrorMessage?: string;
 }
-export const FailedServiceActionAssociation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ServiceActionId: S.optional(S.String),
-      ProductId: S.optional(S.String),
-      ProvisioningArtifactId: S.optional(S.String),
-      ErrorCode: S.optional(ServiceActionAssociationErrorCode),
-      ErrorMessage: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "FailedServiceActionAssociation",
-  }) as any as S.Schema<FailedServiceActionAssociation>;
+export const FailedServiceActionAssociation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ServiceActionId: S.optional(S.String),
+    ProductId: S.optional(S.String),
+    ProvisioningArtifactId: S.optional(S.String),
+    ErrorCode: S.optional(ServiceActionAssociationErrorCode),
+    ErrorMessage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FailedServiceActionAssociation",
+}) as any as S.Schema<FailedServiceActionAssociation>;
 export type FailedServiceActionAssociations = FailedServiceActionAssociation[];
-export const FailedServiceActionAssociations =
-  /*@__PURE__*/ S.Array(FailedServiceActionAssociation);
+export const FailedServiceActionAssociations = /*@__PURE__*/ S.Array(
+  FailedServiceActionAssociation,
+);
 export interface BatchAssociateServiceActionWithProvisioningArtifactOutput {
   FailedServiceActionAssociations?: FailedServiceActionAssociation[];
 }
@@ -459,23 +379,28 @@ export const BatchDisassociateServiceActionFromProvisioningArtifactOutput =
   ).annotate({
     identifier: "BatchDisassociateServiceActionFromProvisioningArtifactOutput",
   }) as any as S.Schema<BatchDisassociateServiceActionFromProvisioningArtifactOutput>;
+export type ProductArn = string;
+export type ProductViewName = string;
 export type ProvisioningArtifactPropertyName = "Id" | (string & {});
 export const ProvisioningArtifactPropertyName = /*@__PURE__*/ S.String;
+
+export type ProvisioningArtifactPropertyValue = string;
 export type SourceProvisioningArtifactPropertiesMap = {
   [key in ProvisioningArtifactPropertyName]?: string;
 };
-export const SourceProvisioningArtifactPropertiesMap =
-  /*@__PURE__*/ S.Record(
-    ProvisioningArtifactPropertyName,
-    S.String.pipe(S.optional),
-  );
+export const SourceProvisioningArtifactPropertiesMap = /*@__PURE__*/ S.Record(
+  ProvisioningArtifactPropertyName,
+  S.String.pipe(S.optional),
+);
 export type SourceProvisioningArtifactProperties = {
   [key: string]: string | undefined;
 }[];
-export const SourceProvisioningArtifactProperties =
-  /*@__PURE__*/ S.Array(SourceProvisioningArtifactPropertiesMap);
+export const SourceProvisioningArtifactProperties = /*@__PURE__*/ S.Array(
+  SourceProvisioningArtifactPropertiesMap,
+);
 export type CopyOption = "CopyTags" | (string & {});
 export const CopyOption = /*@__PURE__*/ S.String;
+
 export type CopyOptions = CopyOption[];
 export const CopyOptions = /*@__PURE__*/ S.Array(CopyOption);
 export interface CopyProductInput {
@@ -514,6 +439,9 @@ export const CopyProductOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopyProductOutput",
 }) as any as S.Schema<CopyProductOutput>;
+export type ConstraintParameters = string;
+export type ConstraintType = string;
+export type ConstraintDescription = string;
 export interface CreateConstraintInput {
   AcceptLanguage?: string;
   PortfolioId: string;
@@ -538,6 +466,7 @@ export const CreateConstraintInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConstraintInput",
 }) as any as S.Schema<CreateConstraintInput>;
+export type AccountId = string;
 export interface ConstraintDetail {
   ConstraintId?: string;
   Type?: string;
@@ -560,6 +489,7 @@ export const ConstraintDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConstraintDetail>;
 export type Status = "AVAILABLE" | "CREATING" | "FAILED" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
 export interface CreateConstraintOutput {
   ConstraintDetail?: ConstraintDetail;
   ConstraintParameters?: string;
@@ -574,6 +504,11 @@ export const CreateConstraintOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConstraintOutput",
 }) as any as S.Schema<CreateConstraintOutput>;
+export type PortfolioDisplayName = string;
+export type PortfolioDescription = string;
+export type ProviderName = string;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -605,6 +540,8 @@ export const CreatePortfolioInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePortfolioInput",
 }) as any as S.Schema<CreatePortfolioInput>;
+export type ResourceARN = string;
+export type CreationTime = Date;
 export interface PortfolioDetail {
   Id?: string;
   ARN?: string;
@@ -645,6 +582,8 @@ export type OrganizationNodeType =
   | "ACCOUNT"
   | (string & {});
 export const OrganizationNodeType = /*@__PURE__*/ S.String;
+
+export type OrganizationNodeValue = string;
 export interface OrganizationNode {
   Type?: OrganizationNodeType;
   Value?: string;
@@ -687,6 +626,11 @@ export const CreatePortfolioShareOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePortfolioShareOutput",
 }) as any as S.Schema<CreatePortfolioShareOutput>;
+export type ProductViewOwner = string;
+export type ProductViewShortDescription = string;
+export type SupportDescription = string;
+export type SupportEmail = string;
+export type SupportUrl = string;
 export type ProductType =
   | "CLOUD_FORMATION_TEMPLATE"
   | "MARKETPLACE"
@@ -695,6 +639,11 @@ export type ProductType =
   | "EXTERNAL"
   | (string & {});
 export const ProductType = /*@__PURE__*/ S.String;
+
+export type ProvisioningArtifactName = string;
+export type ProvisioningArtifactDescription = string;
+export type ProvisioningArtifactInfoKey = string;
+export type ProvisioningArtifactInfoValue = string;
 export type ProvisioningArtifactInfo = { [key: string]: string | undefined };
 export const ProvisioningArtifactInfo = /*@__PURE__*/ S.Record(
   S.String,
@@ -709,6 +658,8 @@ export type ProvisioningArtifactType =
   | "EXTERNAL"
   | (string & {});
 export const ProvisioningArtifactType = /*@__PURE__*/ S.String;
+
+export type DisableTemplateValidation = boolean;
 export interface ProvisioningArtifactProperties {
   Name?: string;
   Description?: string;
@@ -716,20 +667,24 @@ export interface ProvisioningArtifactProperties {
   Type?: ProvisioningArtifactType;
   DisableTemplateValidation?: boolean;
 }
-export const ProvisioningArtifactProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.optional(S.String),
-      Description: S.optional(S.String),
-      Info: S.optional(ProvisioningArtifactInfo),
-      Type: S.optional(ProvisioningArtifactType),
-      DisableTemplateValidation: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "ProvisioningArtifactProperties",
-  }) as any as S.Schema<ProvisioningArtifactProperties>;
+export const ProvisioningArtifactProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    Info: S.optional(ProvisioningArtifactInfo),
+    Type: S.optional(ProvisioningArtifactType),
+    DisableTemplateValidation: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ProvisioningArtifactProperties",
+}) as any as S.Schema<ProvisioningArtifactProperties>;
 export type SourceType = "CODESTAR" | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
+
+export type CodeStarConnectionArn = string;
+export type Repository = string;
+export type RepositoryBranch = string;
+export type RepositoryArtifactPath = string;
 export interface CodeStarParameters {
   ConnectionArn: string;
   Repository: string;
@@ -802,6 +757,8 @@ export const CreateProductInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProductInput",
 }) as any as S.Schema<CreateProductInput>;
+export type ProductViewDistributor = string;
+export type HasDefaultPath = boolean;
 export interface ProductViewSummary {
   Id?: string;
   ProductId?: string;
@@ -832,8 +789,13 @@ export const ProductViewSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProductViewSummary",
 }) as any as S.Schema<ProductViewSummary>;
+export type CreatedTime = Date;
+export type LastSyncTime = Date;
 export type LastSyncStatus = "SUCCEEDED" | "FAILED" | (string & {});
 export const LastSyncStatus = /*@__PURE__*/ S.String;
+
+export type LastSyncStatusMessage = string;
+export type LastSuccessfulSyncTime = Date;
 export interface LastSync {
   LastSyncTime?: Date;
   LastSyncStatus?: LastSyncStatus;
@@ -884,11 +846,14 @@ export const ProductViewDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProductViewDetail",
 }) as any as S.Schema<ProductViewDetail>;
+export type ProvisioningArtifactActive = boolean;
 export type ProvisioningArtifactGuidance =
   | "DEFAULT"
   | "DEPRECATED"
   | (string & {});
 export const ProvisioningArtifactGuidance = /*@__PURE__*/ S.String;
+
+export type SourceRevision = string;
 export interface ProvisioningArtifactDetail {
   Id?: string;
   Name?: string;
@@ -927,25 +892,31 @@ export const CreateProductOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProductOutput",
 }) as any as S.Schema<CreateProductOutput>;
+export type ProvisionedProductPlanName = string;
 export type ProvisionedProductPlanType = "CLOUDFORMATION" | (string & {});
 export const ProvisionedProductPlanType = /*@__PURE__*/ S.String;
+
+export type NotificationArn = string;
 export type NotificationArns = string[];
 export const NotificationArns = /*@__PURE__*/ S.Array(S.String);
+export type ProvisionedProductName = string;
+export type ParameterKey = string;
+export type ParameterValue = string;
+export type UsePreviousValue = boolean;
 export interface UpdateProvisioningParameter {
   Key?: string;
   Value?: string;
   UsePreviousValue?: boolean;
 }
-export const UpdateProvisioningParameter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Key: S.optional(S.String),
-      Value: S.optional(S.String),
-      UsePreviousValue: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "UpdateProvisioningParameter",
-  }) as any as S.Schema<UpdateProvisioningParameter>;
+export const UpdateProvisioningParameter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Key: S.optional(S.String),
+    Value: S.optional(S.String),
+    UsePreviousValue: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "UpdateProvisioningParameter",
+}) as any as S.Schema<UpdateProvisioningParameter>;
 export type UpdateProvisioningParameters = UpdateProvisioningParameter[];
 export const UpdateProvisioningParameters = /*@__PURE__*/ S.Array(
   UpdateProvisioningParameter,
@@ -963,26 +934,25 @@ export interface CreateProvisionedProductPlanInput {
   IdempotencyToken: string;
   Tags?: Tag[];
 }
-export const CreateProvisionedProductPlanInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      PlanName: S.String,
-      PlanType: ProvisionedProductPlanType,
-      NotificationArns: S.optional(NotificationArns),
-      PathId: S.optional(S.String),
-      ProductId: S.String,
-      ProvisionedProductName: S.String,
-      ProvisioningArtifactId: S.String,
-      ProvisioningParameters: S.optional(UpdateProvisioningParameters),
-      IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
-      Tags: S.optional(Tags),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "CreateProvisionedProductPlanInput",
-  }) as any as S.Schema<CreateProvisionedProductPlanInput>;
+export const CreateProvisionedProductPlanInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    PlanName: S.String,
+    PlanType: ProvisionedProductPlanType,
+    NotificationArns: S.optional(NotificationArns),
+    PathId: S.optional(S.String),
+    ProductId: S.String,
+    ProvisionedProductName: S.String,
+    ProvisioningArtifactId: S.String,
+    ProvisioningParameters: S.optional(UpdateProvisioningParameters),
+    IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
+    Tags: S.optional(Tags),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateProvisionedProductPlanInput",
+}) as any as S.Schema<CreateProvisionedProductPlanInput>;
 export interface CreateProvisionedProductPlanOutput {
   PlanName?: string;
   PlanId?: string;
@@ -990,54 +960,53 @@ export interface CreateProvisionedProductPlanOutput {
   ProvisionedProductName?: string;
   ProvisioningArtifactId?: string;
 }
-export const CreateProvisionedProductPlanOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PlanName: S.optional(S.String),
-      PlanId: S.optional(S.String),
-      ProvisionProductId: S.optional(S.String),
-      ProvisionedProductName: S.optional(S.String),
-      ProvisioningArtifactId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateProvisionedProductPlanOutput",
-  }) as any as S.Schema<CreateProvisionedProductPlanOutput>;
+export const CreateProvisionedProductPlanOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PlanName: S.optional(S.String),
+    PlanId: S.optional(S.String),
+    ProvisionProductId: S.optional(S.String),
+    ProvisionedProductName: S.optional(S.String),
+    ProvisioningArtifactId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateProvisionedProductPlanOutput",
+}) as any as S.Schema<CreateProvisionedProductPlanOutput>;
 export interface CreateProvisioningArtifactInput {
   AcceptLanguage?: string;
   ProductId: string;
   Parameters: ProvisioningArtifactProperties;
   IdempotencyToken: string;
 }
-export const CreateProvisioningArtifactInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      ProductId: S.String,
-      Parameters: ProvisioningArtifactProperties,
-      IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "CreateProvisioningArtifactInput",
-  }) as any as S.Schema<CreateProvisioningArtifactInput>;
+export const CreateProvisioningArtifactInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    ProductId: S.String,
+    Parameters: ProvisioningArtifactProperties,
+    IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateProvisioningArtifactInput",
+}) as any as S.Schema<CreateProvisioningArtifactInput>;
 export interface CreateProvisioningArtifactOutput {
   ProvisioningArtifactDetail?: ProvisioningArtifactDetail;
   Info?: { [key: string]: string | undefined };
   Status?: Status;
 }
-export const CreateProvisioningArtifactOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ProvisioningArtifactDetail: S.optional(ProvisioningArtifactDetail),
-      Info: S.optional(ProvisioningArtifactInfo),
-      Status: S.optional(Status),
-    }),
-  ).annotate({
-    identifier: "CreateProvisioningArtifactOutput",
-  }) as any as S.Schema<CreateProvisioningArtifactOutput>;
+export const CreateProvisioningArtifactOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProvisioningArtifactDetail: S.optional(ProvisioningArtifactDetail),
+    Info: S.optional(ProvisioningArtifactInfo),
+    Status: S.optional(Status),
+  }),
+).annotate({
+  identifier: "CreateProvisioningArtifactOutput",
+}) as any as S.Schema<CreateProvisioningArtifactOutput>;
+export type ServiceActionName = string;
 export type ServiceActionDefinitionType = "SSM_AUTOMATION" | (string & {});
 export const ServiceActionDefinitionType = /*@__PURE__*/ S.String;
+
 export type ServiceActionDefinitionKey =
   | "Name"
   | "Version"
@@ -1045,6 +1014,8 @@ export type ServiceActionDefinitionKey =
   | "Parameters"
   | (string & {});
 export const ServiceActionDefinitionKey = /*@__PURE__*/ S.String;
+
+export type ServiceActionDefinitionValue = string;
 export type ServiceActionDefinitionMap = {
   [key in ServiceActionDefinitionKey]?: string;
 };
@@ -1052,6 +1023,7 @@ export const ServiceActionDefinitionMap = /*@__PURE__*/ S.Record(
   ServiceActionDefinitionKey,
   S.String.pipe(S.optional),
 );
+export type ServiceActionDescription = string;
 export interface CreateServiceActionInput {
   Name: string;
   DefinitionType: ServiceActionDefinitionType;
@@ -1110,6 +1082,8 @@ export const CreateServiceActionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateServiceActionOutput",
 }) as any as S.Schema<CreateServiceActionOutput>;
+export type TagOptionKey = string;
+export type TagOptionValue = string;
 export interface CreateTagOptionInput {
   Key: string;
   Value: string;
@@ -1121,6 +1095,8 @@ export const CreateTagOptionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTagOptionInput",
 }) as any as S.Schema<CreateTagOptionInput>;
+export type TagOptionActive = boolean;
+export type Owner = string;
 export interface TagOptionDetail {
   Key?: string;
   Value?: string;
@@ -1224,50 +1200,51 @@ export const DeleteProductOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteProductOutput",
 }) as any as S.Schema<DeleteProductOutput>;
+export type IgnoreErrors = boolean;
 export interface DeleteProvisionedProductPlanInput {
   AcceptLanguage?: string;
   PlanId: string;
   IgnoreErrors?: boolean;
 }
-export const DeleteProvisionedProductPlanInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      PlanId: S.String,
-      IgnoreErrors: S.optional(S.Boolean),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DeleteProvisionedProductPlanInput",
-  }) as any as S.Schema<DeleteProvisionedProductPlanInput>;
+export const DeleteProvisionedProductPlanInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    PlanId: S.String,
+    IgnoreErrors: S.optional(S.Boolean),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteProvisionedProductPlanInput",
+}) as any as S.Schema<DeleteProvisionedProductPlanInput>;
 export interface DeleteProvisionedProductPlanOutput {}
-export const DeleteProvisionedProductPlanOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteProvisionedProductPlanOutput",
-  }) as any as S.Schema<DeleteProvisionedProductPlanOutput>;
+export const DeleteProvisionedProductPlanOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteProvisionedProductPlanOutput",
+}) as any as S.Schema<DeleteProvisionedProductPlanOutput>;
 export interface DeleteProvisioningArtifactInput {
   AcceptLanguage?: string;
   ProductId: string;
   ProvisioningArtifactId: string;
 }
-export const DeleteProvisioningArtifactInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      ProductId: S.String,
-      ProvisioningArtifactId: S.String,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DeleteProvisioningArtifactInput",
-  }) as any as S.Schema<DeleteProvisioningArtifactInput>;
+export const DeleteProvisioningArtifactInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    ProductId: S.String,
+    ProvisioningArtifactId: S.String,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteProvisioningArtifactInput",
+}) as any as S.Schema<DeleteProvisioningArtifactInput>;
 export interface DeleteProvisioningArtifactOutput {}
-export const DeleteProvisioningArtifactOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteProvisioningArtifactOutput",
-  }) as any as S.Schema<DeleteProvisioningArtifactOutput>;
+export const DeleteProvisioningArtifactOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteProvisioningArtifactOutput",
+}) as any as S.Schema<DeleteProvisioningArtifactOutput>;
 export interface DeleteServiceActionInput {
   Id: string;
   AcceptLanguage?: string;
@@ -1335,38 +1312,38 @@ export interface DescribeCopyProductStatusInput {
   AcceptLanguage?: string;
   CopyProductToken: string;
 }
-export const DescribeCopyProductStatusInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      CopyProductToken: S.String,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeCopyProductStatusInput",
-  }) as any as S.Schema<DescribeCopyProductStatusInput>;
+export const DescribeCopyProductStatusInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    CopyProductToken: S.String,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeCopyProductStatusInput",
+}) as any as S.Schema<DescribeCopyProductStatusInput>;
 export type CopyProductStatus =
   | "SUCCEEDED"
   | "IN_PROGRESS"
   | "FAILED"
   | (string & {});
 export const CopyProductStatus = /*@__PURE__*/ S.String;
+
+export type StatusDetail = string;
 export interface DescribeCopyProductStatusOutput {
   CopyProductStatus?: CopyProductStatus;
   TargetProductId?: string;
   StatusDetail?: string;
 }
-export const DescribeCopyProductStatusOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CopyProductStatus: S.optional(CopyProductStatus),
-      TargetProductId: S.optional(S.String),
-      StatusDetail: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DescribeCopyProductStatusOutput",
-  }) as any as S.Schema<DescribeCopyProductStatusOutput>;
+export const DescribeCopyProductStatusOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CopyProductStatus: S.optional(CopyProductStatus),
+    TargetProductId: S.optional(S.String),
+    StatusDetail: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DescribeCopyProductStatusOutput",
+}) as any as S.Schema<DescribeCopyProductStatusOutput>;
 export interface DescribePortfolioInput {
   AcceptLanguage?: string;
   Id: string;
@@ -1411,25 +1388,27 @@ export type DescribePortfolioShareType =
   | "ORGANIZATION_MEMBER_ACCOUNT"
   | (string & {});
 export const DescribePortfolioShareType = /*@__PURE__*/ S.String;
+
+export type PageToken = string;
+export type PageSizeMax100 = number;
 export interface DescribePortfolioSharesInput {
   PortfolioId: string;
   Type: DescribePortfolioShareType;
   PageToken?: string;
   PageSize?: number;
 }
-export const DescribePortfolioSharesInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PortfolioId: S.String,
-      Type: DescribePortfolioShareType,
-      PageToken: S.optional(S.String),
-      PageSize: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribePortfolioSharesInput",
-  }) as any as S.Schema<DescribePortfolioSharesInput>;
+export const DescribePortfolioSharesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PortfolioId: S.String,
+    Type: DescribePortfolioShareType,
+    PageToken: S.optional(S.String),
+    PageSize: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribePortfolioSharesInput",
+}) as any as S.Schema<DescribePortfolioSharesInput>;
 export interface PortfolioShareDetail {
   PrincipalId?: string;
   Type?: DescribePortfolioShareType;
@@ -1455,26 +1434,24 @@ export interface DescribePortfolioSharesOutput {
   NextPageToken?: string;
   PortfolioShareDetails?: PortfolioShareDetail[];
 }
-export const DescribePortfolioSharesOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextPageToken: S.optional(S.String),
-      PortfolioShareDetails: S.optional(PortfolioShareDetails),
-    }),
-  ).annotate({
-    identifier: "DescribePortfolioSharesOutput",
-  }) as any as S.Schema<DescribePortfolioSharesOutput>;
+export const DescribePortfolioSharesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextPageToken: S.optional(S.String),
+    PortfolioShareDetails: S.optional(PortfolioShareDetails),
+  }),
+).annotate({
+  identifier: "DescribePortfolioSharesOutput",
+}) as any as S.Schema<DescribePortfolioSharesOutput>;
 export interface DescribePortfolioShareStatusInput {
   PortfolioShareToken: string;
 }
-export const DescribePortfolioShareStatusInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ PortfolioShareToken: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribePortfolioShareStatusInput",
-  }) as any as S.Schema<DescribePortfolioShareStatusInput>;
+export const DescribePortfolioShareStatusInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PortfolioShareToken: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribePortfolioShareStatusInput",
+}) as any as S.Schema<DescribePortfolioShareStatusInput>;
 export type ShareStatus =
   | "NOT_STARTED"
   | "IN_PROGRESS"
@@ -1483,10 +1460,12 @@ export type ShareStatus =
   | "ERROR"
   | (string & {});
 export const ShareStatus = /*@__PURE__*/ S.String;
+
 export type SuccessfulShares = string[];
 export const SuccessfulShares = /*@__PURE__*/ S.Array(S.String);
 export type Namespaces = string[];
 export const Namespaces = /*@__PURE__*/ S.Array(S.String);
+export type Message = string;
 export interface ShareError {
   Accounts?: string[];
   Message?: string;
@@ -1518,18 +1497,17 @@ export interface DescribePortfolioShareStatusOutput {
   Status?: ShareStatus;
   ShareDetails?: ShareDetails;
 }
-export const DescribePortfolioShareStatusOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PortfolioShareToken: S.optional(S.String),
-      PortfolioId: S.optional(S.String),
-      OrganizationNodeValue: S.optional(S.String),
-      Status: S.optional(ShareStatus),
-      ShareDetails: S.optional(ShareDetails),
-    }),
-  ).annotate({
-    identifier: "DescribePortfolioShareStatusOutput",
-  }) as any as S.Schema<DescribePortfolioShareStatusOutput>;
+export const DescribePortfolioShareStatusOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PortfolioShareToken: S.optional(S.String),
+    PortfolioId: S.optional(S.String),
+    OrganizationNodeValue: S.optional(S.String),
+    Status: S.optional(ShareStatus),
+    ShareDetails: S.optional(ShareDetails),
+  }),
+).annotate({
+  identifier: "DescribePortfolioShareStatusOutput",
+}) as any as S.Schema<DescribePortfolioShareStatusOutput>;
 export interface DescribeProductInput {
   AcceptLanguage?: string;
   Id?: string;
@@ -1546,6 +1524,7 @@ export const DescribeProductInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeProductInput",
 }) as any as S.Schema<DescribeProductInput>;
+export type ProvisioningArtifactCreatedTime = Date;
 export interface ProvisioningArtifact {
   Id?: string;
   Name?: string;
@@ -1567,6 +1546,7 @@ export const ProvisioningArtifact = /*@__PURE__*/ S.suspend(() =>
 export type ProvisioningArtifacts = ProvisioningArtifact[];
 export const ProvisioningArtifacts =
   /*@__PURE__*/ S.Array(ProvisioningArtifact);
+export type PortfolioName = string;
 export interface LaunchPath {
   Id?: string;
   Name?: string;
@@ -1598,19 +1578,18 @@ export interface DescribeProductAsAdminInput {
   Name?: string;
   SourcePortfolioId?: string;
 }
-export const DescribeProductAsAdminInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      Id: S.optional(S.String),
-      Name: S.optional(S.String),
-      SourcePortfolioId: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeProductAsAdminInput",
-  }) as any as S.Schema<DescribeProductAsAdminInput>;
+export const DescribeProductAsAdminInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    Id: S.optional(S.String),
+    Name: S.optional(S.String),
+    SourcePortfolioId: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeProductAsAdminInput",
+}) as any as S.Schema<DescribeProductAsAdminInput>;
 export interface ProvisioningArtifactSummary {
   Id?: string;
   Name?: string;
@@ -1618,21 +1597,21 @@ export interface ProvisioningArtifactSummary {
   CreatedTime?: Date;
   ProvisioningArtifactMetadata?: { [key: string]: string | undefined };
 }
-export const ProvisioningArtifactSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Id: S.optional(S.String),
-      Name: S.optional(S.String),
-      Description: S.optional(S.String),
-      CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      ProvisioningArtifactMetadata: S.optional(ProvisioningArtifactInfo),
-    }),
-  ).annotate({
-    identifier: "ProvisioningArtifactSummary",
-  }) as any as S.Schema<ProvisioningArtifactSummary>;
+export const ProvisioningArtifactSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    ProvisioningArtifactMetadata: S.optional(ProvisioningArtifactInfo),
+  }),
+).annotate({
+  identifier: "ProvisioningArtifactSummary",
+}) as any as S.Schema<ProvisioningArtifactSummary>;
 export type ProvisioningArtifactSummaries = ProvisioningArtifactSummary[];
-export const ProvisioningArtifactSummaries =
-  /*@__PURE__*/ S.Array(ProvisioningArtifactSummary);
+export const ProvisioningArtifactSummaries = /*@__PURE__*/ S.Array(
+  ProvisioningArtifactSummary,
+);
 export interface DescribeProductAsAdminOutput {
   ProductViewDetail?: ProductViewDetail;
   ProvisioningArtifactSummaries?: ProvisioningArtifactSummary[];
@@ -1640,18 +1619,17 @@ export interface DescribeProductAsAdminOutput {
   TagOptions?: TagOptionDetail[];
   Budgets?: BudgetDetail[];
 }
-export const DescribeProductAsAdminOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ProductViewDetail: S.optional(ProductViewDetail),
-      ProvisioningArtifactSummaries: S.optional(ProvisioningArtifactSummaries),
-      Tags: S.optional(Tags),
-      TagOptions: S.optional(TagOptionDetails),
-      Budgets: S.optional(Budgets),
-    }),
-  ).annotate({
-    identifier: "DescribeProductAsAdminOutput",
-  }) as any as S.Schema<DescribeProductAsAdminOutput>;
+export const DescribeProductAsAdminOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProductViewDetail: S.optional(ProductViewDetail),
+    ProvisioningArtifactSummaries: S.optional(ProvisioningArtifactSummaries),
+    Tags: S.optional(Tags),
+    TagOptions: S.optional(TagOptionDetails),
+    Budgets: S.optional(Budgets),
+  }),
+).annotate({
+  identifier: "DescribeProductAsAdminOutput",
+}) as any as S.Schema<DescribeProductAsAdminOutput>;
 export interface DescribeProductViewInput {
   AcceptLanguage?: string;
   Id: string;
@@ -1680,18 +1658,20 @@ export interface DescribeProvisionedProductInput {
   Id?: string;
   Name?: string;
 }
-export const DescribeProvisionedProductInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      Id: S.optional(S.String),
-      Name: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeProvisionedProductInput",
-  }) as any as S.Schema<DescribeProvisionedProductInput>;
+export const DescribeProvisionedProductInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    Id: S.optional(S.String),
+    Name: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeProvisionedProductInput",
+}) as any as S.Schema<DescribeProvisionedProductInput>;
+export type ProvisionedProductNameOrArn = string;
+export type ProvisionedProductType = string;
+export type ProvisionedProductId = string;
 export type ProvisionedProductStatus =
   | "AVAILABLE"
   | "UNDER_CHANGE"
@@ -1700,6 +1680,10 @@ export type ProvisionedProductStatus =
   | "PLAN_IN_PROGRESS"
   | (string & {});
 export const ProvisionedProductStatus = /*@__PURE__*/ S.String;
+
+export type ProvisionedProductStatusMessage = string;
+export type LastRequestId = string;
+export type RoleArn = string;
 export interface ProvisionedProductDetail {
   Name?: string;
   Arn?: string;
@@ -1736,6 +1720,7 @@ export const ProvisionedProductDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProvisionedProductDetail",
 }) as any as S.Schema<ProvisionedProductDetail>;
+export type CloudWatchDashboardName = string;
 export interface CloudWatchDashboard {
   Name?: string;
 }
@@ -1750,34 +1735,33 @@ export interface DescribeProvisionedProductOutput {
   ProvisionedProductDetail?: ProvisionedProductDetail;
   CloudWatchDashboards?: CloudWatchDashboard[];
 }
-export const DescribeProvisionedProductOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ProvisionedProductDetail: S.optional(ProvisionedProductDetail),
-      CloudWatchDashboards: S.optional(CloudWatchDashboards),
-    }),
-  ).annotate({
-    identifier: "DescribeProvisionedProductOutput",
-  }) as any as S.Schema<DescribeProvisionedProductOutput>;
+export const DescribeProvisionedProductOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProvisionedProductDetail: S.optional(ProvisionedProductDetail),
+    CloudWatchDashboards: S.optional(CloudWatchDashboards),
+  }),
+).annotate({
+  identifier: "DescribeProvisionedProductOutput",
+}) as any as S.Schema<DescribeProvisionedProductOutput>;
+export type PageSize = number;
 export interface DescribeProvisionedProductPlanInput {
   AcceptLanguage?: string;
   PlanId: string;
   PageSize?: number;
   PageToken?: string;
 }
-export const DescribeProvisionedProductPlanInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      PlanId: S.String,
-      PageSize: S.optional(S.Number),
-      PageToken: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeProvisionedProductPlanInput",
-  }) as any as S.Schema<DescribeProvisionedProductPlanInput>;
+export const DescribeProvisionedProductPlanInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    PlanId: S.String,
+    PageSize: S.optional(S.Number),
+    PageToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeProvisionedProductPlanInput",
+}) as any as S.Schema<DescribeProvisionedProductPlanInput>;
 export type ProvisionedProductPlanStatus =
   | "CREATE_IN_PROGRESS"
   | "CREATE_SUCCESS"
@@ -1787,6 +1771,9 @@ export type ProvisionedProductPlanStatus =
   | "EXECUTE_FAILED"
   | (string & {});
 export const ProvisionedProductPlanStatus = /*@__PURE__*/ S.String;
+
+export type UpdatedTime = Date;
+export type StatusMessage = string;
 export interface ProvisionedProductPlanDetails {
   CreatedTime?: Date;
   PathId?: string;
@@ -1804,32 +1791,36 @@ export interface ProvisionedProductPlanDetails {
   Tags?: Tag[];
   StatusMessage?: string;
 }
-export const ProvisionedProductPlanDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      PathId: S.optional(S.String),
-      ProductId: S.optional(S.String),
-      PlanName: S.optional(S.String),
-      PlanId: S.optional(S.String),
-      ProvisionProductId: S.optional(S.String),
-      ProvisionProductName: S.optional(S.String),
-      PlanType: S.optional(ProvisionedProductPlanType),
-      ProvisioningArtifactId: S.optional(S.String),
-      Status: S.optional(ProvisionedProductPlanStatus),
-      UpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      NotificationArns: S.optional(NotificationArns),
-      ProvisioningParameters: S.optional(UpdateProvisioningParameters),
-      Tags: S.optional(Tags),
-      StatusMessage: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ProvisionedProductPlanDetails",
-  }) as any as S.Schema<ProvisionedProductPlanDetails>;
+export const ProvisionedProductPlanDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    PathId: S.optional(S.String),
+    ProductId: S.optional(S.String),
+    PlanName: S.optional(S.String),
+    PlanId: S.optional(S.String),
+    ProvisionProductId: S.optional(S.String),
+    ProvisionProductName: S.optional(S.String),
+    PlanType: S.optional(ProvisionedProductPlanType),
+    ProvisioningArtifactId: S.optional(S.String),
+    Status: S.optional(ProvisionedProductPlanStatus),
+    UpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    NotificationArns: S.optional(NotificationArns),
+    ProvisioningParameters: S.optional(UpdateProvisioningParameters),
+    Tags: S.optional(Tags),
+    StatusMessage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ProvisionedProductPlanDetails",
+}) as any as S.Schema<ProvisionedProductPlanDetails>;
 export type ChangeAction = "ADD" | "MODIFY" | "REMOVE" | (string & {});
 export const ChangeAction = /*@__PURE__*/ S.String;
+
+export type LogicalResourceId = string;
+export type PhysicalResourceId = string;
+export type PlanResourceType = string;
 export type Replacement = "TRUE" | "FALSE" | "CONDITIONAL" | (string & {});
 export const Replacement = /*@__PURE__*/ S.String;
+
 export type ResourceAttribute =
   | "PROPERTIES"
   | "METADATA"
@@ -1839,14 +1830,17 @@ export type ResourceAttribute =
   | "TAGS"
   | (string & {});
 export const ResourceAttribute = /*@__PURE__*/ S.String;
+
 export type Scope = ResourceAttribute[];
 export const Scope = /*@__PURE__*/ S.Array(ResourceAttribute);
+export type PropertyName = string;
 export type RequiresRecreation =
   | "NEVER"
   | "CONDITIONALLY"
   | "ALWAYS"
   | (string & {});
 export const RequiresRecreation = /*@__PURE__*/ S.String;
+
 export interface ResourceTargetDefinition {
   Attribute?: ResourceAttribute;
   Name?: string;
@@ -1863,6 +1857,8 @@ export const ResourceTargetDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceTargetDefinition>;
 export type EvaluationType = "STATIC" | "DYNAMIC" | (string & {});
 export const EvaluationType = /*@__PURE__*/ S.String;
+
+export type CausingEntity = string;
 export interface ResourceChangeDetail {
   Target?: ResourceTargetDefinition;
   Evaluation?: EvaluationType;
@@ -1907,16 +1903,17 @@ export interface DescribeProvisionedProductPlanOutput {
   ResourceChanges?: ResourceChange[];
   NextPageToken?: string;
 }
-export const DescribeProvisionedProductPlanOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeProvisionedProductPlanOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ProvisionedProductPlanDetails: S.optional(ProvisionedProductPlanDetails),
       ResourceChanges: S.optional(ResourceChanges),
       NextPageToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "DescribeProvisionedProductPlanOutput",
-  }) as any as S.Schema<DescribeProvisionedProductPlanOutput>;
+).annotate({
+  identifier: "DescribeProvisionedProductPlanOutput",
+}) as any as S.Schema<DescribeProvisionedProductPlanOutput>;
+export type Verbose = boolean;
 export interface DescribeProvisioningArtifactInput {
   AcceptLanguage?: string;
   ProvisioningArtifactId?: string;
@@ -1926,22 +1923,25 @@ export interface DescribeProvisioningArtifactInput {
   Verbose?: boolean;
   IncludeProvisioningArtifactParameters?: boolean;
 }
-export const DescribeProvisioningArtifactInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      ProvisioningArtifactId: S.optional(S.String),
-      ProductId: S.optional(S.String),
-      ProvisioningArtifactName: S.optional(S.String),
-      ProductName: S.optional(S.String),
-      Verbose: S.optional(S.Boolean),
-      IncludeProvisioningArtifactParameters: S.optional(S.Boolean),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeProvisioningArtifactInput",
-  }) as any as S.Schema<DescribeProvisioningArtifactInput>;
+export const DescribeProvisioningArtifactInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    ProvisioningArtifactId: S.optional(S.String),
+    ProductId: S.optional(S.String),
+    ProvisioningArtifactName: S.optional(S.String),
+    ProductName: S.optional(S.String),
+    Verbose: S.optional(S.Boolean),
+    IncludeProvisioningArtifactParameters: S.optional(S.Boolean),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeProvisioningArtifactInput",
+}) as any as S.Schema<DescribeProvisioningArtifactInput>;
+export type DefaultValue = string;
+export type ParameterType = string;
+export type NoEcho = boolean;
+export type Description = string;
 export type AllowedValues = string[];
 export const AllowedValues = /*@__PURE__*/ S.Array(S.String);
 export interface ParameterConstraints {
@@ -1974,41 +1974,38 @@ export interface ProvisioningArtifactParameter {
   Description?: string;
   ParameterConstraints?: ParameterConstraints;
 }
-export const ProvisioningArtifactParameter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ParameterKey: S.optional(S.String),
-      DefaultValue: S.optional(S.String),
-      ParameterType: S.optional(S.String),
-      IsNoEcho: S.optional(S.Boolean),
-      Description: S.optional(S.String),
-      ParameterConstraints: S.optional(ParameterConstraints),
-    }),
-  ).annotate({
-    identifier: "ProvisioningArtifactParameter",
-  }) as any as S.Schema<ProvisioningArtifactParameter>;
+export const ProvisioningArtifactParameter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ParameterKey: S.optional(S.String),
+    DefaultValue: S.optional(S.String),
+    ParameterType: S.optional(S.String),
+    IsNoEcho: S.optional(S.Boolean),
+    Description: S.optional(S.String),
+    ParameterConstraints: S.optional(ParameterConstraints),
+  }),
+).annotate({
+  identifier: "ProvisioningArtifactParameter",
+}) as any as S.Schema<ProvisioningArtifactParameter>;
 export type ProvisioningArtifactParameters = ProvisioningArtifactParameter[];
-export const ProvisioningArtifactParameters =
-  /*@__PURE__*/ S.Array(ProvisioningArtifactParameter);
+export const ProvisioningArtifactParameters = /*@__PURE__*/ S.Array(
+  ProvisioningArtifactParameter,
+);
 export interface DescribeProvisioningArtifactOutput {
   ProvisioningArtifactDetail?: ProvisioningArtifactDetail;
   Info?: { [key: string]: string | undefined };
   Status?: Status;
   ProvisioningArtifactParameters?: ProvisioningArtifactParameter[];
 }
-export const DescribeProvisioningArtifactOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ProvisioningArtifactDetail: S.optional(ProvisioningArtifactDetail),
-      Info: S.optional(ProvisioningArtifactInfo),
-      Status: S.optional(Status),
-      ProvisioningArtifactParameters: S.optional(
-        ProvisioningArtifactParameters,
-      ),
-    }),
-  ).annotate({
-    identifier: "DescribeProvisioningArtifactOutput",
-  }) as any as S.Schema<DescribeProvisioningArtifactOutput>;
+export const DescribeProvisioningArtifactOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProvisioningArtifactDetail: S.optional(ProvisioningArtifactDetail),
+    Info: S.optional(ProvisioningArtifactInfo),
+    Status: S.optional(Status),
+    ProvisioningArtifactParameters: S.optional(ProvisioningArtifactParameters),
+  }),
+).annotate({
+  identifier: "DescribeProvisioningArtifactOutput",
+}) as any as S.Schema<DescribeProvisioningArtifactOutput>;
 export interface DescribeProvisioningParametersInput {
   AcceptLanguage?: string;
   ProductId?: string;
@@ -2018,22 +2015,21 @@ export interface DescribeProvisioningParametersInput {
   PathId?: string;
   PathName?: string;
 }
-export const DescribeProvisioningParametersInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      ProductId: S.optional(S.String),
-      ProductName: S.optional(S.String),
-      ProvisioningArtifactId: S.optional(S.String),
-      ProvisioningArtifactName: S.optional(S.String),
-      PathId: S.optional(S.String),
-      PathName: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeProvisioningParametersInput",
-  }) as any as S.Schema<DescribeProvisioningParametersInput>;
+export const DescribeProvisioningParametersInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    ProductId: S.optional(S.String),
+    ProductName: S.optional(S.String),
+    ProvisioningArtifactId: S.optional(S.String),
+    ProvisioningArtifactName: S.optional(S.String),
+    PathId: S.optional(S.String),
+    PathName: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeProvisioningParametersInput",
+}) as any as S.Schema<DescribeProvisioningParametersInput>;
 export interface ConstraintSummary {
   Type?: string;
   Description?: string;
@@ -2045,6 +2041,8 @@ export const ConstraintSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConstraintSummary>;
 export type ConstraintSummaries = ConstraintSummary[];
 export const ConstraintSummaries = /*@__PURE__*/ S.Array(ConstraintSummary);
+export type InstructionType = string;
+export type InstructionValue = string;
 export interface UsageInstruction {
   Type?: string;
   Value?: string;
@@ -2071,21 +2069,23 @@ export type TagOptionSummaries = TagOptionSummary[];
 export const TagOptionSummaries = /*@__PURE__*/ S.Array(TagOptionSummary);
 export type StackSetAccounts = string[];
 export const StackSetAccounts = /*@__PURE__*/ S.Array(S.String);
+export type Region = string;
 export type StackSetRegions = string[];
 export const StackSetRegions = /*@__PURE__*/ S.Array(S.String);
 export interface ProvisioningArtifactPreferences {
   StackSetAccounts?: string[];
   StackSetRegions?: string[];
 }
-export const ProvisioningArtifactPreferences =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StackSetAccounts: S.optional(StackSetAccounts),
-      StackSetRegions: S.optional(StackSetRegions),
-    }),
-  ).annotate({
-    identifier: "ProvisioningArtifactPreferences",
-  }) as any as S.Schema<ProvisioningArtifactPreferences>;
+export const ProvisioningArtifactPreferences = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StackSetAccounts: S.optional(StackSetAccounts),
+    StackSetRegions: S.optional(StackSetRegions),
+  }),
+).annotate({
+  identifier: "ProvisioningArtifactPreferences",
+}) as any as S.Schema<ProvisioningArtifactPreferences>;
+export type ProvisioningArtifactOutputKey = string;
+export type OutputDescription = string;
 export interface ProvisioningArtifactOutput {
   Key?: string;
   Description?: string;
@@ -2108,8 +2108,8 @@ export interface DescribeProvisioningParametersOutput {
   ProvisioningArtifactOutputs?: ProvisioningArtifactOutput[];
   ProvisioningArtifactOutputKeys?: ProvisioningArtifactOutput[];
 }
-export const DescribeProvisioningParametersOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeProvisioningParametersOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ProvisioningArtifactParameters: S.optional(
         ProvisioningArtifactParameters,
@@ -2123,9 +2123,9 @@ export const DescribeProvisioningParametersOutput =
       ProvisioningArtifactOutputs: S.optional(ProvisioningArtifactOutputs),
       ProvisioningArtifactOutputKeys: S.optional(ProvisioningArtifactOutputs),
     }),
-  ).annotate({
-    identifier: "DescribeProvisioningParametersOutput",
-  }) as any as S.Schema<DescribeProvisioningParametersOutput>;
+).annotate({
+  identifier: "DescribeProvisioningParametersOutput",
+}) as any as S.Schema<DescribeProvisioningParametersOutput>;
 export interface DescribeRecordInput {
   AcceptLanguage?: string;
   Id: string;
@@ -2152,6 +2152,10 @@ export type RecordStatus =
   | "FAILED"
   | (string & {});
 export const RecordStatus = /*@__PURE__*/ S.String;
+
+export type RecordType = string;
+export type ErrorCode = string;
+export type ErrorDescription = string;
 export interface RecordError {
   Code?: string;
   Description?: string;
@@ -2161,6 +2165,8 @@ export const RecordError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecordError" }) as any as S.Schema<RecordError>;
 export type RecordErrors = RecordError[];
 export const RecordErrors = /*@__PURE__*/ S.Array(RecordError);
+export type RecordTagKey = string;
+export type RecordTagValue = string;
 export interface RecordTag {
   Key?: string;
   Value?: string;
@@ -2204,6 +2210,8 @@ export const RecordDetail = /*@__PURE__*/ S.suspend(() =>
     LaunchRoleArn: S.optional(S.String),
   }),
 ).annotate({ identifier: "RecordDetail" }) as any as S.Schema<RecordDetail>;
+export type OutputKey = string;
+export type OutputValue = string;
 export interface RecordOutput {
   OutputKey?: string;
   OutputValue?: string;
@@ -2246,12 +2254,11 @@ export const DescribeServiceActionInput = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeServiceActionOutput {
   ServiceActionDetail?: ServiceActionDetail;
 }
-export const DescribeServiceActionOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ServiceActionDetail: S.optional(ServiceActionDetail) }),
-  ).annotate({
-    identifier: "DescribeServiceActionOutput",
-  }) as any as S.Schema<DescribeServiceActionOutput>;
+export const DescribeServiceActionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ServiceActionDetail: S.optional(ServiceActionDetail) }),
+).annotate({
+  identifier: "DescribeServiceActionOutput",
+}) as any as S.Schema<DescribeServiceActionOutput>;
 export interface DescribeServiceActionExecutionParametersInput {
   ProvisionedProductId: string;
   ServiceActionId: string;
@@ -2269,6 +2276,9 @@ export const DescribeServiceActionExecutionParametersInput =
   ).annotate({
     identifier: "DescribeServiceActionExecutionParametersInput",
   }) as any as S.Schema<DescribeServiceActionExecutionParametersInput>;
+export type ExecutionParameterKey = string;
+export type ExecutionParameterType = string;
+export type ExecutionParameterValue = string;
 export type ExecutionParameterValueList = string[];
 export const ExecutionParameterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface ExecutionParameter {
@@ -2315,44 +2325,44 @@ export const DescribeTagOptionOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeTagOptionOutput",
 }) as any as S.Schema<DescribeTagOptionOutput>;
 export interface DisableAWSOrganizationsAccessInput {}
-export const DisableAWSOrganizationsAccessInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DisableAWSOrganizationsAccessInput",
-  }) as any as S.Schema<DisableAWSOrganizationsAccessInput>;
+export const DisableAWSOrganizationsAccessInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DisableAWSOrganizationsAccessInput",
+}) as any as S.Schema<DisableAWSOrganizationsAccessInput>;
 export interface DisableAWSOrganizationsAccessOutput {}
-export const DisableAWSOrganizationsAccessOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DisableAWSOrganizationsAccessOutput",
-  }) as any as S.Schema<DisableAWSOrganizationsAccessOutput>;
+export const DisableAWSOrganizationsAccessOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DisableAWSOrganizationsAccessOutput",
+}) as any as S.Schema<DisableAWSOrganizationsAccessOutput>;
 export interface DisassociateBudgetFromResourceInput {
   BudgetName: string;
   ResourceId: string;
 }
-export const DisassociateBudgetFromResourceInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ BudgetName: S.String, ResourceId: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DisassociateBudgetFromResourceInput",
-  }) as any as S.Schema<DisassociateBudgetFromResourceInput>;
+export const DisassociateBudgetFromResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ BudgetName: S.String, ResourceId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DisassociateBudgetFromResourceInput",
+}) as any as S.Schema<DisassociateBudgetFromResourceInput>;
 export interface DisassociateBudgetFromResourceOutput {}
-export const DisassociateBudgetFromResourceOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DisassociateBudgetFromResourceOutput",
-  }) as any as S.Schema<DisassociateBudgetFromResourceOutput>;
+export const DisassociateBudgetFromResourceOutput = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DisassociateBudgetFromResourceOutput",
+}) as any as S.Schema<DisassociateBudgetFromResourceOutput>;
 export interface DisassociatePrincipalFromPortfolioInput {
   AcceptLanguage?: string;
   PortfolioId: string;
   PrincipalARN: string;
   PrincipalType?: PrincipalType;
 }
-export const DisassociatePrincipalFromPortfolioInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const DisassociatePrincipalFromPortfolioInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       AcceptLanguage: S.optional(S.String),
       PortfolioId: S.String,
@@ -2361,21 +2371,22 @@ export const DisassociatePrincipalFromPortfolioInput =
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
-  ).annotate({
-    identifier: "DisassociatePrincipalFromPortfolioInput",
-  }) as any as S.Schema<DisassociatePrincipalFromPortfolioInput>;
+).annotate({
+  identifier: "DisassociatePrincipalFromPortfolioInput",
+}) as any as S.Schema<DisassociatePrincipalFromPortfolioInput>;
 export interface DisassociatePrincipalFromPortfolioOutput {}
-export const DisassociatePrincipalFromPortfolioOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DisassociatePrincipalFromPortfolioOutput",
-  }) as any as S.Schema<DisassociatePrincipalFromPortfolioOutput>;
+export const DisassociatePrincipalFromPortfolioOutput = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DisassociatePrincipalFromPortfolioOutput",
+}) as any as S.Schema<DisassociatePrincipalFromPortfolioOutput>;
 export interface DisassociateProductFromPortfolioInput {
   AcceptLanguage?: string;
   ProductId: string;
   PortfolioId: string;
 }
-export const DisassociateProductFromPortfolioInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const DisassociateProductFromPortfolioInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       AcceptLanguage: S.optional(S.String),
       ProductId: S.String,
@@ -2383,14 +2394,15 @@ export const DisassociateProductFromPortfolioInput =
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
-  ).annotate({
-    identifier: "DisassociateProductFromPortfolioInput",
-  }) as any as S.Schema<DisassociateProductFromPortfolioInput>;
+).annotate({
+  identifier: "DisassociateProductFromPortfolioInput",
+}) as any as S.Schema<DisassociateProductFromPortfolioInput>;
 export interface DisassociateProductFromPortfolioOutput {}
-export const DisassociateProductFromPortfolioOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DisassociateProductFromPortfolioOutput",
-  }) as any as S.Schema<DisassociateProductFromPortfolioOutput>;
+export const DisassociateProductFromPortfolioOutput = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DisassociateProductFromPortfolioOutput",
+}) as any as S.Schema<DisassociateProductFromPortfolioOutput>;
 export interface DisassociateServiceActionFromProvisioningArtifactInput {
   ProductId: string;
   ProvisioningArtifactId: string;
@@ -2421,62 +2433,61 @@ export interface DisassociateTagOptionFromResourceInput {
   ResourceId: string;
   TagOptionId: string;
 }
-export const DisassociateTagOptionFromResourceInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const DisassociateTagOptionFromResourceInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ResourceId: S.String.pipe(T.HttpQuery("resourceId")),
       TagOptionId: S.String.pipe(T.HttpQuery("tagOptionId")),
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
-  ).annotate({
-    identifier: "DisassociateTagOptionFromResourceInput",
-  }) as any as S.Schema<DisassociateTagOptionFromResourceInput>;
+).annotate({
+  identifier: "DisassociateTagOptionFromResourceInput",
+}) as any as S.Schema<DisassociateTagOptionFromResourceInput>;
 export interface DisassociateTagOptionFromResourceOutput {}
-export const DisassociateTagOptionFromResourceOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DisassociateTagOptionFromResourceOutput",
-  }) as any as S.Schema<DisassociateTagOptionFromResourceOutput>;
+export const DisassociateTagOptionFromResourceOutput = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DisassociateTagOptionFromResourceOutput",
+}) as any as S.Schema<DisassociateTagOptionFromResourceOutput>;
 export interface EnableAWSOrganizationsAccessInput {}
-export const EnableAWSOrganizationsAccessInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "EnableAWSOrganizationsAccessInput",
-  }) as any as S.Schema<EnableAWSOrganizationsAccessInput>;
+export const EnableAWSOrganizationsAccessInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "EnableAWSOrganizationsAccessInput",
+}) as any as S.Schema<EnableAWSOrganizationsAccessInput>;
 export interface EnableAWSOrganizationsAccessOutput {}
-export const EnableAWSOrganizationsAccessOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "EnableAWSOrganizationsAccessOutput",
-  }) as any as S.Schema<EnableAWSOrganizationsAccessOutput>;
+export const EnableAWSOrganizationsAccessOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "EnableAWSOrganizationsAccessOutput",
+}) as any as S.Schema<EnableAWSOrganizationsAccessOutput>;
 export interface ExecuteProvisionedProductPlanInput {
   AcceptLanguage?: string;
   PlanId: string;
   IdempotencyToken: string;
 }
-export const ExecuteProvisionedProductPlanInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      PlanId: S.String,
-      IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ExecuteProvisionedProductPlanInput",
-  }) as any as S.Schema<ExecuteProvisionedProductPlanInput>;
+export const ExecuteProvisionedProductPlanInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    PlanId: S.String,
+    IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ExecuteProvisionedProductPlanInput",
+}) as any as S.Schema<ExecuteProvisionedProductPlanInput>;
 export interface ExecuteProvisionedProductPlanOutput {
   RecordDetail?: RecordDetail;
 }
-export const ExecuteProvisionedProductPlanOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RecordDetail: S.optional(RecordDetail) }),
-  ).annotate({
-    identifier: "ExecuteProvisionedProductPlanOutput",
-  }) as any as S.Schema<ExecuteProvisionedProductPlanOutput>;
+export const ExecuteProvisionedProductPlanOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RecordDetail: S.optional(RecordDetail) }),
+).annotate({
+  identifier: "ExecuteProvisionedProductPlanOutput",
+}) as any as S.Schema<ExecuteProvisionedProductPlanOutput>;
 export type ExecutionParameterMap = { [key: string]: string[] | undefined };
 export const ExecutionParameterMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -2513,29 +2524,29 @@ export const ExecuteProvisionedProductServiceActionOutput =
     identifier: "ExecuteProvisionedProductServiceActionOutput",
   }) as any as S.Schema<ExecuteProvisionedProductServiceActionOutput>;
 export interface GetAWSOrganizationsAccessStatusInput {}
-export const GetAWSOrganizationsAccessStatusInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetAWSOrganizationsAccessStatusInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({}).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
-  ).annotate({
-    identifier: "GetAWSOrganizationsAccessStatusInput",
-  }) as any as S.Schema<GetAWSOrganizationsAccessStatusInput>;
+).annotate({
+  identifier: "GetAWSOrganizationsAccessStatusInput",
+}) as any as S.Schema<GetAWSOrganizationsAccessStatusInput>;
 export type AccessStatus =
   | "ENABLED"
   | "UNDER_CHANGE"
   | "DISABLED"
   | (string & {});
 export const AccessStatus = /*@__PURE__*/ S.String;
+
 export interface GetAWSOrganizationsAccessStatusOutput {
   AccessStatus?: AccessStatus;
 }
-export const GetAWSOrganizationsAccessStatusOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ AccessStatus: S.optional(AccessStatus) }),
-  ).annotate({
-    identifier: "GetAWSOrganizationsAccessStatusOutput",
-  }) as any as S.Schema<GetAWSOrganizationsAccessStatusOutput>;
+export const GetAWSOrganizationsAccessStatusOutput = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ AccessStatus: S.optional(AccessStatus) }),
+).annotate({
+  identifier: "GetAWSOrganizationsAccessStatusOutput",
+}) as any as S.Schema<GetAWSOrganizationsAccessStatusOutput>;
 export type OutputKeys = string[];
 export const OutputKeys = /*@__PURE__*/ S.Array(S.String);
 export interface GetProvisionedProductOutputsInput {
@@ -2546,34 +2557,33 @@ export interface GetProvisionedProductOutputsInput {
   PageSize?: number;
   PageToken?: string;
 }
-export const GetProvisionedProductOutputsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      ProvisionedProductId: S.optional(S.String),
-      ProvisionedProductName: S.optional(S.String),
-      OutputKeys: S.optional(OutputKeys),
-      PageSize: S.optional(S.Number),
-      PageToken: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "GetProvisionedProductOutputsInput",
-  }) as any as S.Schema<GetProvisionedProductOutputsInput>;
+export const GetProvisionedProductOutputsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    ProvisionedProductId: S.optional(S.String),
+    ProvisionedProductName: S.optional(S.String),
+    OutputKeys: S.optional(OutputKeys),
+    PageSize: S.optional(S.Number),
+    PageToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "GetProvisionedProductOutputsInput",
+}) as any as S.Schema<GetProvisionedProductOutputsInput>;
 export interface GetProvisionedProductOutputsOutput {
   Outputs?: RecordOutput[];
   NextPageToken?: string;
 }
-export const GetProvisionedProductOutputsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Outputs: S.optional(RecordOutputs),
-      NextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetProvisionedProductOutputsOutput",
-  }) as any as S.Schema<GetProvisionedProductOutputsOutput>;
+export const GetProvisionedProductOutputsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Outputs: S.optional(RecordOutputs),
+    NextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetProvisionedProductOutputsOutput",
+}) as any as S.Schema<GetProvisionedProductOutputsOutput>;
+export type PhysicalId = string;
 export interface ImportAsProvisionedProductInput {
   AcceptLanguage?: string;
   ProductId: string;
@@ -2582,96 +2592,90 @@ export interface ImportAsProvisionedProductInput {
   PhysicalId: string;
   IdempotencyToken: string;
 }
-export const ImportAsProvisionedProductInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      ProductId: S.String,
-      ProvisioningArtifactId: S.String,
-      ProvisionedProductName: S.String,
-      PhysicalId: S.String,
-      IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ImportAsProvisionedProductInput",
-  }) as any as S.Schema<ImportAsProvisionedProductInput>;
+export const ImportAsProvisionedProductInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    ProductId: S.String,
+    ProvisioningArtifactId: S.String,
+    ProvisionedProductName: S.String,
+    PhysicalId: S.String,
+    IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ImportAsProvisionedProductInput",
+}) as any as S.Schema<ImportAsProvisionedProductInput>;
 export interface ImportAsProvisionedProductOutput {
   RecordDetail?: RecordDetail;
 }
-export const ImportAsProvisionedProductOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RecordDetail: S.optional(RecordDetail) }),
-  ).annotate({
-    identifier: "ImportAsProvisionedProductOutput",
-  }) as any as S.Schema<ImportAsProvisionedProductOutput>;
+export const ImportAsProvisionedProductOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RecordDetail: S.optional(RecordDetail) }),
+).annotate({
+  identifier: "ImportAsProvisionedProductOutput",
+}) as any as S.Schema<ImportAsProvisionedProductOutput>;
 export interface ListAcceptedPortfolioSharesInput {
   AcceptLanguage?: string;
   PageToken?: string;
   PageSize?: number;
   PortfolioShareType?: PortfolioShareType;
 }
-export const ListAcceptedPortfolioSharesInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      PageToken: S.optional(S.String),
-      PageSize: S.optional(S.Number),
-      PortfolioShareType: S.optional(PortfolioShareType),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListAcceptedPortfolioSharesInput",
-  }) as any as S.Schema<ListAcceptedPortfolioSharesInput>;
+export const ListAcceptedPortfolioSharesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    PageToken: S.optional(S.String),
+    PageSize: S.optional(S.Number),
+    PortfolioShareType: S.optional(PortfolioShareType),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListAcceptedPortfolioSharesInput",
+}) as any as S.Schema<ListAcceptedPortfolioSharesInput>;
 export type PortfolioDetails = PortfolioDetail[];
 export const PortfolioDetails = /*@__PURE__*/ S.Array(PortfolioDetail);
 export interface ListAcceptedPortfolioSharesOutput {
   PortfolioDetails?: PortfolioDetail[];
   NextPageToken?: string;
 }
-export const ListAcceptedPortfolioSharesOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PortfolioDetails: S.optional(PortfolioDetails),
-      NextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListAcceptedPortfolioSharesOutput",
-  }) as any as S.Schema<ListAcceptedPortfolioSharesOutput>;
+export const ListAcceptedPortfolioSharesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PortfolioDetails: S.optional(PortfolioDetails),
+    NextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAcceptedPortfolioSharesOutput",
+}) as any as S.Schema<ListAcceptedPortfolioSharesOutput>;
 export interface ListBudgetsForResourceInput {
   AcceptLanguage?: string;
   ResourceId: string;
   PageSize?: number;
   PageToken?: string;
 }
-export const ListBudgetsForResourceInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      ResourceId: S.String,
-      PageSize: S.optional(S.Number),
-      PageToken: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListBudgetsForResourceInput",
-  }) as any as S.Schema<ListBudgetsForResourceInput>;
+export const ListBudgetsForResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    ResourceId: S.String,
+    PageSize: S.optional(S.Number),
+    PageToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListBudgetsForResourceInput",
+}) as any as S.Schema<ListBudgetsForResourceInput>;
 export interface ListBudgetsForResourceOutput {
   Budgets?: BudgetDetail[];
   NextPageToken?: string;
 }
-export const ListBudgetsForResourceOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Budgets: S.optional(Budgets),
-      NextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListBudgetsForResourceOutput",
-  }) as any as S.Schema<ListBudgetsForResourceOutput>;
+export const ListBudgetsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Budgets: S.optional(Budgets),
+    NextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListBudgetsForResourceOutput",
+}) as any as S.Schema<ListBudgetsForResourceOutput>;
 export interface ListConstraintsForPortfolioInput {
   AcceptLanguage?: string;
   PortfolioId: string;
@@ -2679,35 +2683,33 @@ export interface ListConstraintsForPortfolioInput {
   PageSize?: number;
   PageToken?: string;
 }
-export const ListConstraintsForPortfolioInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      PortfolioId: S.String,
-      ProductId: S.optional(S.String),
-      PageSize: S.optional(S.Number),
-      PageToken: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListConstraintsForPortfolioInput",
-  }) as any as S.Schema<ListConstraintsForPortfolioInput>;
+export const ListConstraintsForPortfolioInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    PortfolioId: S.String,
+    ProductId: S.optional(S.String),
+    PageSize: S.optional(S.Number),
+    PageToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListConstraintsForPortfolioInput",
+}) as any as S.Schema<ListConstraintsForPortfolioInput>;
 export type ConstraintDetails = ConstraintDetail[];
 export const ConstraintDetails = /*@__PURE__*/ S.Array(ConstraintDetail);
 export interface ListConstraintsForPortfolioOutput {
   ConstraintDetails?: ConstraintDetail[];
   NextPageToken?: string;
 }
-export const ListConstraintsForPortfolioOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ConstraintDetails: S.optional(ConstraintDetails),
-      NextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListConstraintsForPortfolioOutput",
-  }) as any as S.Schema<ListConstraintsForPortfolioOutput>;
+export const ListConstraintsForPortfolioOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ConstraintDetails: S.optional(ConstraintDetails),
+    NextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListConstraintsForPortfolioOutput",
+}) as any as S.Schema<ListConstraintsForPortfolioOutput>;
 export interface ListLaunchPathsInput {
   AcceptLanguage?: string;
   ProductId: string;
@@ -2763,8 +2765,8 @@ export interface ListOrganizationPortfolioAccessInput {
   PageToken?: string;
   PageSize?: number;
 }
-export const ListOrganizationPortfolioAccessInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListOrganizationPortfolioAccessInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       AcceptLanguage: S.optional(S.String),
       PortfolioId: S.String,
@@ -2774,24 +2776,24 @@ export const ListOrganizationPortfolioAccessInput =
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
-  ).annotate({
-    identifier: "ListOrganizationPortfolioAccessInput",
-  }) as any as S.Schema<ListOrganizationPortfolioAccessInput>;
+).annotate({
+  identifier: "ListOrganizationPortfolioAccessInput",
+}) as any as S.Schema<ListOrganizationPortfolioAccessInput>;
 export type OrganizationNodes = OrganizationNode[];
 export const OrganizationNodes = /*@__PURE__*/ S.Array(OrganizationNode);
 export interface ListOrganizationPortfolioAccessOutput {
   OrganizationNodes?: OrganizationNode[];
   NextPageToken?: string;
 }
-export const ListOrganizationPortfolioAccessOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListOrganizationPortfolioAccessOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       OrganizationNodes: S.optional(OrganizationNodes),
       NextPageToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListOrganizationPortfolioAccessOutput",
-  }) as any as S.Schema<ListOrganizationPortfolioAccessOutput>;
+).annotate({
+  identifier: "ListOrganizationPortfolioAccessOutput",
+}) as any as S.Schema<ListOrganizationPortfolioAccessOutput>;
 export interface ListPortfolioAccessInput {
   AcceptLanguage?: string;
   PortfolioId: string;
@@ -2860,51 +2862,48 @@ export interface ListPortfoliosForProductInput {
   PageToken?: string;
   PageSize?: number;
 }
-export const ListPortfoliosForProductInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      ProductId: S.String,
-      PageToken: S.optional(S.String),
-      PageSize: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListPortfoliosForProductInput",
-  }) as any as S.Schema<ListPortfoliosForProductInput>;
+export const ListPortfoliosForProductInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    ProductId: S.String,
+    PageToken: S.optional(S.String),
+    PageSize: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListPortfoliosForProductInput",
+}) as any as S.Schema<ListPortfoliosForProductInput>;
 export interface ListPortfoliosForProductOutput {
   PortfolioDetails?: PortfolioDetail[];
   NextPageToken?: string;
 }
-export const ListPortfoliosForProductOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PortfolioDetails: S.optional(PortfolioDetails),
-      NextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListPortfoliosForProductOutput",
-  }) as any as S.Schema<ListPortfoliosForProductOutput>;
+export const ListPortfoliosForProductOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PortfolioDetails: S.optional(PortfolioDetails),
+    NextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPortfoliosForProductOutput",
+}) as any as S.Schema<ListPortfoliosForProductOutput>;
 export interface ListPrincipalsForPortfolioInput {
   AcceptLanguage?: string;
   PortfolioId: string;
   PageSize?: number;
   PageToken?: string;
 }
-export const ListPrincipalsForPortfolioInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      PortfolioId: S.String,
-      PageSize: S.optional(S.Number),
-      PageToken: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListPrincipalsForPortfolioInput",
-  }) as any as S.Schema<ListPrincipalsForPortfolioInput>;
+export const ListPrincipalsForPortfolioInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    PortfolioId: S.String,
+    PageSize: S.optional(S.Number),
+    PageToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListPrincipalsForPortfolioInput",
+}) as any as S.Schema<ListPrincipalsForPortfolioInput>;
 export interface Principal {
   PrincipalARN?: string;
   PrincipalType?: PrincipalType;
@@ -2921,17 +2920,18 @@ export interface ListPrincipalsForPortfolioOutput {
   Principals?: Principal[];
   NextPageToken?: string;
 }
-export const ListPrincipalsForPortfolioOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Principals: S.optional(Principals),
-      NextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListPrincipalsForPortfolioOutput",
-  }) as any as S.Schema<ListPrincipalsForPortfolioOutput>;
+export const ListPrincipalsForPortfolioOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Principals: S.optional(Principals),
+    NextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPrincipalsForPortfolioOutput",
+}) as any as S.Schema<ListPrincipalsForPortfolioOutput>;
 export type AccessLevelFilterKey = "Account" | "Role" | "User" | (string & {});
 export const AccessLevelFilterKey = /*@__PURE__*/ S.String;
+
+export type AccessLevelFilterValue = string;
 export interface AccessLevelFilter {
   Key?: AccessLevelFilterKey;
   Value?: string;
@@ -2951,20 +2951,19 @@ export interface ListProvisionedProductPlansInput {
   PageToken?: string;
   AccessLevelFilter?: AccessLevelFilter;
 }
-export const ListProvisionedProductPlansInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      ProvisionProductId: S.optional(S.String),
-      PageSize: S.optional(S.Number),
-      PageToken: S.optional(S.String),
-      AccessLevelFilter: S.optional(AccessLevelFilter),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListProvisionedProductPlansInput",
-  }) as any as S.Schema<ListProvisionedProductPlansInput>;
+export const ListProvisionedProductPlansInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    ProvisionProductId: S.optional(S.String),
+    PageSize: S.optional(S.Number),
+    PageToken: S.optional(S.String),
+    AccessLevelFilter: S.optional(AccessLevelFilter),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListProvisionedProductPlansInput",
+}) as any as S.Schema<ListProvisionedProductPlansInput>;
 export interface ProvisionedProductPlanSummary {
   PlanName?: string;
   PlanId?: string;
@@ -2973,19 +2972,18 @@ export interface ProvisionedProductPlanSummary {
   PlanType?: ProvisionedProductPlanType;
   ProvisioningArtifactId?: string;
 }
-export const ProvisionedProductPlanSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PlanName: S.optional(S.String),
-      PlanId: S.optional(S.String),
-      ProvisionProductId: S.optional(S.String),
-      ProvisionProductName: S.optional(S.String),
-      PlanType: S.optional(ProvisionedProductPlanType),
-      ProvisioningArtifactId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ProvisionedProductPlanSummary",
-  }) as any as S.Schema<ProvisionedProductPlanSummary>;
+export const ProvisionedProductPlanSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PlanName: S.optional(S.String),
+    PlanId: S.optional(S.String),
+    ProvisionProductId: S.optional(S.String),
+    ProvisionProductName: S.optional(S.String),
+    PlanType: S.optional(ProvisionedProductPlanType),
+    ProvisioningArtifactId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ProvisionedProductPlanSummary",
+}) as any as S.Schema<ProvisionedProductPlanSummary>;
 export type ProvisionedProductPlans = ProvisionedProductPlanSummary[];
 export const ProvisionedProductPlans = /*@__PURE__*/ S.Array(
   ProvisionedProductPlanSummary,
@@ -2994,30 +2992,25 @@ export interface ListProvisionedProductPlansOutput {
   ProvisionedProductPlans?: ProvisionedProductPlanSummary[];
   NextPageToken?: string;
 }
-export const ListProvisionedProductPlansOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ProvisionedProductPlans: S.optional(ProvisionedProductPlans),
-      NextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListProvisionedProductPlansOutput",
-  }) as any as S.Schema<ListProvisionedProductPlansOutput>;
+export const ListProvisionedProductPlansOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProvisionedProductPlans: S.optional(ProvisionedProductPlans),
+    NextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListProvisionedProductPlansOutput",
+}) as any as S.Schema<ListProvisionedProductPlansOutput>;
 export interface ListProvisioningArtifactsInput {
   AcceptLanguage?: string;
   ProductId: string;
 }
-export const ListProvisioningArtifactsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      ProductId: S.String,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListProvisioningArtifactsInput",
-  }) as any as S.Schema<ListProvisioningArtifactsInput>;
+export const ListProvisioningArtifactsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AcceptLanguage: S.optional(S.String), ProductId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListProvisioningArtifactsInput",
+}) as any as S.Schema<ListProvisioningArtifactsInput>;
 export type ProvisioningArtifactDetails = ProvisioningArtifactDetail[];
 export const ProvisioningArtifactDetails = /*@__PURE__*/ S.Array(
   ProvisioningArtifactDetail,
@@ -3026,15 +3019,14 @@ export interface ListProvisioningArtifactsOutput {
   ProvisioningArtifactDetails?: ProvisioningArtifactDetail[];
   NextPageToken?: string;
 }
-export const ListProvisioningArtifactsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ProvisioningArtifactDetails: S.optional(ProvisioningArtifactDetails),
-      NextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListProvisioningArtifactsOutput",
-  }) as any as S.Schema<ListProvisioningArtifactsOutput>;
+export const ListProvisioningArtifactsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProvisioningArtifactDetails: S.optional(ProvisioningArtifactDetails),
+    NextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListProvisioningArtifactsOutput",
+}) as any as S.Schema<ListProvisioningArtifactsOutput>;
 export interface ListProvisioningArtifactsForServiceActionInput {
   ServiceActionId: string;
   PageSize?: number;
@@ -3083,16 +3075,17 @@ export const ListProvisioningArtifactsForServiceActionOutput =
   ).annotate({
     identifier: "ListProvisioningArtifactsForServiceActionOutput",
   }) as any as S.Schema<ListProvisioningArtifactsForServiceActionOutput>;
+export type SearchFilterKey = string;
+export type SearchFilterValue = string;
 export interface ListRecordHistorySearchFilter {
   Key?: string;
   Value?: string;
 }
-export const ListRecordHistorySearchFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ListRecordHistorySearchFilter",
-  }) as any as S.Schema<ListRecordHistorySearchFilter>;
+export const ListRecordHistorySearchFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
+).annotate({
+  identifier: "ListRecordHistorySearchFilter",
+}) as any as S.Schema<ListRecordHistorySearchFilter>;
 export interface ListRecordHistoryInput {
   AcceptLanguage?: string;
   AccessLevelFilter?: AccessLevelFilter;
@@ -3127,25 +3120,30 @@ export const ListRecordHistoryOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRecordHistoryOutput",
 }) as any as S.Schema<ListRecordHistoryOutput>;
+export type ResourceType = string;
 export interface ListResourcesForTagOptionInput {
   TagOptionId: string;
   ResourceType?: string;
   PageSize?: number;
   PageToken?: string;
 }
-export const ListResourcesForTagOptionInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TagOptionId: S.String.pipe(T.HttpQuery("tagOptionId")),
-      ResourceType: S.optional(S.String).pipe(T.HttpQuery("resourceType")),
-      PageSize: S.optional(S.Number).pipe(T.HttpQuery("pageSize")),
-      PageToken: S.optional(S.String).pipe(T.HttpQuery("pageToken")),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListResourcesForTagOptionInput",
-  }) as any as S.Schema<ListResourcesForTagOptionInput>;
+export const ListResourcesForTagOptionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TagOptionId: S.String.pipe(T.HttpQuery("tagOptionId")),
+    ResourceType: S.optional(S.String).pipe(T.HttpQuery("resourceType")),
+    PageSize: S.optional(S.Number).pipe(T.HttpQuery("pageSize")),
+    PageToken: S.optional(S.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListResourcesForTagOptionInput",
+}) as any as S.Schema<ListResourcesForTagOptionInput>;
+export type ResourceDetailId = string;
+export type ResourceDetailARN = string;
+export type ResourceDetailName = string;
+export type ResourceDetailDescription = string;
+export type ResourceDetailCreatedTime = Date;
 export interface ResourceDetail {
   Id?: string;
   ARN?: string;
@@ -3168,15 +3166,14 @@ export interface ListResourcesForTagOptionOutput {
   ResourceDetails?: ResourceDetail[];
   PageToken?: string;
 }
-export const ListResourcesForTagOptionOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ResourceDetails: S.optional(ResourceDetails),
-      PageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListResourcesForTagOptionOutput",
-  }) as any as S.Schema<ListResourcesForTagOptionOutput>;
+export const ListResourcesForTagOptionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceDetails: S.optional(ResourceDetails),
+    PageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListResourcesForTagOptionOutput",
+}) as any as S.Schema<ListResourcesForTagOptionOutput>;
 export interface ListServiceActionsInput {
   AcceptLanguage?: string;
   PageSize?: number;
@@ -3267,6 +3264,7 @@ export type StackInstanceStatus =
   | "INOPERABLE"
   | (string & {});
 export const StackInstanceStatus = /*@__PURE__*/ S.String;
+
 export interface StackInstance {
   Account?: string;
   Region?: string;
@@ -3336,27 +3334,30 @@ export const ListTagOptionsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagOptionsOutput",
 }) as any as S.Schema<ListTagOptionsOutput>;
+export type EngineWorkflowToken = string;
 export type EngineWorkflowStatus = "SUCCEEDED" | "FAILED" | (string & {});
 export const EngineWorkflowStatus = /*@__PURE__*/ S.String;
+
+export type EngineWorkflowFailureReason = string;
+export type UniqueTagKey = string;
+export type UniqueTagValue = string;
 export interface UniqueTagResourceIdentifier {
   Key?: string;
   Value?: string;
 }
-export const UniqueTagResourceIdentifier =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-  ).annotate({
-    identifier: "UniqueTagResourceIdentifier",
-  }) as any as S.Schema<UniqueTagResourceIdentifier>;
+export const UniqueTagResourceIdentifier = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
+).annotate({
+  identifier: "UniqueTagResourceIdentifier",
+}) as any as S.Schema<UniqueTagResourceIdentifier>;
 export interface EngineWorkflowResourceIdentifier {
   UniqueTag?: UniqueTagResourceIdentifier;
 }
-export const EngineWorkflowResourceIdentifier =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ UniqueTag: S.optional(UniqueTagResourceIdentifier) }),
-  ).annotate({
-    identifier: "EngineWorkflowResourceIdentifier",
-  }) as any as S.Schema<EngineWorkflowResourceIdentifier>;
+export const EngineWorkflowResourceIdentifier = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ UniqueTag: S.optional(UniqueTagResourceIdentifier) }),
+).annotate({
+  identifier: "EngineWorkflowResourceIdentifier",
+}) as any as S.Schema<EngineWorkflowResourceIdentifier>;
 export interface NotifyProvisionProductEngineWorkflowResultInput {
   WorkflowToken: string;
   RecordId: string;
@@ -3454,6 +3455,10 @@ export type ProvisioningParameters = ProvisioningParameter[];
 export const ProvisioningParameters = /*@__PURE__*/ S.Array(
   ProvisioningParameter,
 );
+export type StackSetFailureToleranceCount = number;
+export type StackSetFailureTolerancePercentage = number;
+export type StackSetMaxConcurrencyCount = number;
+export type StackSetMaxConcurrencyPercentage = number;
 export interface ProvisioningPreferences {
   StackSetAccounts?: string[];
   StackSetRegions?: string[];
@@ -3546,19 +3551,18 @@ export interface ScanProvisionedProductsInput {
   PageSize?: number;
   PageToken?: string;
 }
-export const ScanProvisionedProductsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      AccessLevelFilter: S.optional(AccessLevelFilter),
-      PageSize: S.optional(S.Number),
-      PageToken: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ScanProvisionedProductsInput",
-  }) as any as S.Schema<ScanProvisionedProductsInput>;
+export const ScanProvisionedProductsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    AccessLevelFilter: S.optional(AccessLevelFilter),
+    PageSize: S.optional(S.Number),
+    PageToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ScanProvisionedProductsInput",
+}) as any as S.Schema<ScanProvisionedProductsInput>;
 export type ProvisionedProductDetails = ProvisionedProductDetail[];
 export const ProvisionedProductDetails = /*@__PURE__*/ S.Array(
   ProvisionedProductDetail,
@@ -3567,15 +3571,14 @@ export interface ScanProvisionedProductsOutput {
   ProvisionedProducts?: ProvisionedProductDetail[];
   NextPageToken?: string;
 }
-export const ScanProvisionedProductsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ProvisionedProducts: S.optional(ProvisionedProductDetails),
-      NextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ScanProvisionedProductsOutput",
-  }) as any as S.Schema<ScanProvisionedProductsOutput>;
+export const ScanProvisionedProductsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProvisionedProducts: S.optional(ProvisionedProductDetails),
+    NextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ScanProvisionedProductsOutput",
+}) as any as S.Schema<ScanProvisionedProductsOutput>;
 export type ProductViewFilterBy =
   | "FullTextSearch"
   | "Owner"
@@ -3583,6 +3586,8 @@ export type ProductViewFilterBy =
   | "SourceProductId"
   | (string & {});
 export const ProductViewFilterBy = /*@__PURE__*/ S.String;
+
+export type ProductViewFilterValue = string;
 export type ProductViewFilterValues = string[];
 export const ProductViewFilterValues = /*@__PURE__*/ S.Array(S.String);
 export type ProductViewFilters = { [key in ProductViewFilterBy]?: string[] };
@@ -3596,8 +3601,10 @@ export type ProductViewSortBy =
   | "CreationDate"
   | (string & {});
 export const ProductViewSortBy = /*@__PURE__*/ S.String;
+
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
+
 export interface SearchProductsInput {
   AcceptLanguage?: string;
   Filters?: { [key: string]: string[] | undefined };
@@ -3622,19 +3629,21 @@ export const SearchProductsInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchProductsInput>;
 export type ProductViewSummaries = ProductViewSummary[];
 export const ProductViewSummaries = /*@__PURE__*/ S.Array(ProductViewSummary);
+export type ProductViewAggregationType = string;
+export type AttributeValue = string;
+export type ApproximateCount = number;
 export interface ProductViewAggregationValue {
   Value?: string;
   ApproximateCount?: number;
 }
-export const ProductViewAggregationValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Value: S.optional(S.String),
-      ApproximateCount: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "ProductViewAggregationValue",
-  }) as any as S.Schema<ProductViewAggregationValue>;
+export const ProductViewAggregationValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Value: S.optional(S.String),
+    ApproximateCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ProductViewAggregationValue",
+}) as any as S.Schema<ProductViewAggregationValue>;
 export type ProductViewAggregationValues = ProductViewAggregationValue[];
 export const ProductViewAggregationValues = /*@__PURE__*/ S.Array(
   ProductViewAggregationValue,
@@ -3664,6 +3673,7 @@ export const SearchProductsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchProductsOutput>;
 export type ProductSource = "ACCOUNT" | (string & {});
 export const ProductSource = /*@__PURE__*/ S.String;
+
 export interface SearchProductsAsAdminInput {
   AcceptLanguage?: string;
   PortfolioId?: string;
@@ -3696,20 +3706,22 @@ export interface SearchProductsAsAdminOutput {
   ProductViewDetails?: ProductViewDetail[];
   NextPageToken?: string;
 }
-export const SearchProductsAsAdminOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ProductViewDetails: S.optional(ProductViewDetails),
-      NextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SearchProductsAsAdminOutput",
-  }) as any as S.Schema<SearchProductsAsAdminOutput>;
+export const SearchProductsAsAdminOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProductViewDetails: S.optional(ProductViewDetails),
+    NextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchProductsAsAdminOutput",
+}) as any as S.Schema<SearchProductsAsAdminOutput>;
 export type ProvisionedProductViewFilterBy = "SearchQuery" | (string & {});
 export const ProvisionedProductViewFilterBy = /*@__PURE__*/ S.String;
+
+export type ProvisionedProductViewFilterValue = string;
 export type ProvisionedProductViewFilterValues = string[];
-export const ProvisionedProductViewFilterValues =
-  /*@__PURE__*/ S.Array(S.String);
+export const ProvisionedProductViewFilterValues = /*@__PURE__*/ S.Array(
+  S.String,
+);
 export type ProvisionedProductFilters = {
   [key in ProvisionedProductViewFilterBy]?: string[];
 };
@@ -3717,6 +3729,8 @@ export const ProvisionedProductFilters = /*@__PURE__*/ S.Record(
   ProvisionedProductViewFilterBy,
   ProvisionedProductViewFilterValues.pipe(S.optional),
 );
+export type SortField = string;
+export type SearchProvisionedProductsPageSize = number;
 export interface SearchProvisionedProductsInput {
   AcceptLanguage?: string;
   AccessLevelFilter?: AccessLevelFilter;
@@ -3726,22 +3740,23 @@ export interface SearchProvisionedProductsInput {
   PageSize?: number;
   PageToken?: string;
 }
-export const SearchProvisionedProductsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      AccessLevelFilter: S.optional(AccessLevelFilter),
-      Filters: S.optional(ProvisionedProductFilters),
-      SortBy: S.optional(S.String),
-      SortOrder: S.optional(SortOrder),
-      PageSize: S.optional(S.Number),
-      PageToken: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "SearchProvisionedProductsInput",
-  }) as any as S.Schema<SearchProvisionedProductsInput>;
+export const SearchProvisionedProductsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    AccessLevelFilter: S.optional(AccessLevelFilter),
+    Filters: S.optional(ProvisionedProductFilters),
+    SortBy: S.optional(S.String),
+    SortOrder: S.optional(SortOrder),
+    PageSize: S.optional(S.Number),
+    PageToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "SearchProvisionedProductsInput",
+}) as any as S.Schema<SearchProvisionedProductsInput>;
+export type UserArn = string;
+export type UserArnSession = string;
 export interface ProvisionedProductAttribute {
   Name?: string;
   Arn?: string;
@@ -3763,51 +3778,51 @@ export interface ProvisionedProductAttribute {
   UserArn?: string;
   UserArnSession?: string;
 }
-export const ProvisionedProductAttribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.optional(S.String),
-      Arn: S.optional(S.String),
-      Type: S.optional(S.String),
-      Id: S.optional(S.String),
-      Status: S.optional(ProvisionedProductStatus),
-      StatusMessage: S.optional(S.String),
-      CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      IdempotencyToken: S.optional(S.String),
-      LastRecordId: S.optional(S.String),
-      LastProvisioningRecordId: S.optional(S.String),
-      LastSuccessfulProvisioningRecordId: S.optional(S.String),
-      Tags: S.optional(Tags),
-      PhysicalId: S.optional(S.String),
-      ProductId: S.optional(S.String),
-      ProductName: S.optional(S.String),
-      ProvisioningArtifactId: S.optional(S.String),
-      ProvisioningArtifactName: S.optional(S.String),
-      UserArn: S.optional(S.String),
-      UserArnSession: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ProvisionedProductAttribute",
-  }) as any as S.Schema<ProvisionedProductAttribute>;
+export const ProvisionedProductAttribute = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.optional(S.String),
+    Arn: S.optional(S.String),
+    Type: S.optional(S.String),
+    Id: S.optional(S.String),
+    Status: S.optional(ProvisionedProductStatus),
+    StatusMessage: S.optional(S.String),
+    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    IdempotencyToken: S.optional(S.String),
+    LastRecordId: S.optional(S.String),
+    LastProvisioningRecordId: S.optional(S.String),
+    LastSuccessfulProvisioningRecordId: S.optional(S.String),
+    Tags: S.optional(Tags),
+    PhysicalId: S.optional(S.String),
+    ProductId: S.optional(S.String),
+    ProductName: S.optional(S.String),
+    ProvisioningArtifactId: S.optional(S.String),
+    ProvisioningArtifactName: S.optional(S.String),
+    UserArn: S.optional(S.String),
+    UserArnSession: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ProvisionedProductAttribute",
+}) as any as S.Schema<ProvisionedProductAttribute>;
 export type ProvisionedProductAttributes = ProvisionedProductAttribute[];
 export const ProvisionedProductAttributes = /*@__PURE__*/ S.Array(
   ProvisionedProductAttribute,
 );
+export type TotalResultsCount = number;
 export interface SearchProvisionedProductsOutput {
   ProvisionedProducts?: ProvisionedProductAttribute[];
   TotalResultsCount?: number;
   NextPageToken?: string;
 }
-export const SearchProvisionedProductsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ProvisionedProducts: S.optional(ProvisionedProductAttributes),
-      TotalResultsCount: S.optional(S.Number),
-      NextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SearchProvisionedProductsOutput",
-  }) as any as S.Schema<SearchProvisionedProductsOutput>;
+export const SearchProvisionedProductsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProvisionedProducts: S.optional(ProvisionedProductAttributes),
+    TotalResultsCount: S.optional(S.Number),
+    NextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchProvisionedProductsOutput",
+}) as any as S.Schema<SearchProvisionedProductsOutput>;
+export type RetainPhysicalResources = boolean;
 export interface TerminateProvisionedProductInput {
   ProvisionedProductName?: string;
   ProvisionedProductId?: string;
@@ -3816,30 +3831,28 @@ export interface TerminateProvisionedProductInput {
   AcceptLanguage?: string;
   RetainPhysicalResources?: boolean;
 }
-export const TerminateProvisionedProductInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ProvisionedProductName: S.optional(S.String),
-      ProvisionedProductId: S.optional(S.String),
-      TerminateToken: S.String.pipe(T.IdempotencyToken()),
-      IgnoreErrors: S.optional(S.Boolean),
-      AcceptLanguage: S.optional(S.String),
-      RetainPhysicalResources: S.optional(S.Boolean),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "TerminateProvisionedProductInput",
-  }) as any as S.Schema<TerminateProvisionedProductInput>;
+export const TerminateProvisionedProductInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProvisionedProductName: S.optional(S.String),
+    ProvisionedProductId: S.optional(S.String),
+    TerminateToken: S.String.pipe(T.IdempotencyToken()),
+    IgnoreErrors: S.optional(S.Boolean),
+    AcceptLanguage: S.optional(S.String),
+    RetainPhysicalResources: S.optional(S.Boolean),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "TerminateProvisionedProductInput",
+}) as any as S.Schema<TerminateProvisionedProductInput>;
 export interface TerminateProvisionedProductOutput {
   RecordDetail?: RecordDetail;
 }
-export const TerminateProvisionedProductOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RecordDetail: S.optional(RecordDetail) }),
-  ).annotate({
-    identifier: "TerminateProvisionedProductOutput",
-  }) as any as S.Schema<TerminateProvisionedProductOutput>;
+export const TerminateProvisionedProductOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RecordDetail: S.optional(RecordDetail) }),
+).annotate({
+  identifier: "TerminateProvisionedProductOutput",
+}) as any as S.Schema<TerminateProvisionedProductOutput>;
 export interface UpdateConstraintInput {
   AcceptLanguage?: string;
   Id: string;
@@ -3996,6 +4009,7 @@ export type StackSetOperationType =
   | "DELETE"
   | (string & {});
 export const StackSetOperationType = /*@__PURE__*/ S.String;
+
 export interface UpdateProvisioningPreferences {
   StackSetAccounts?: string[];
   StackSetRegions?: string[];
@@ -4005,20 +4019,19 @@ export interface UpdateProvisioningPreferences {
   StackSetMaxConcurrencyPercentage?: number;
   StackSetOperationType?: StackSetOperationType;
 }
-export const UpdateProvisioningPreferences =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StackSetAccounts: S.optional(StackSetAccounts),
-      StackSetRegions: S.optional(StackSetRegions),
-      StackSetFailureToleranceCount: S.optional(S.Number),
-      StackSetFailureTolerancePercentage: S.optional(S.Number),
-      StackSetMaxConcurrencyCount: S.optional(S.Number),
-      StackSetMaxConcurrencyPercentage: S.optional(S.Number),
-      StackSetOperationType: S.optional(StackSetOperationType),
-    }),
-  ).annotate({
-    identifier: "UpdateProvisioningPreferences",
-  }) as any as S.Schema<UpdateProvisioningPreferences>;
+export const UpdateProvisioningPreferences = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StackSetAccounts: S.optional(StackSetAccounts),
+    StackSetRegions: S.optional(StackSetRegions),
+    StackSetFailureToleranceCount: S.optional(S.Number),
+    StackSetFailureTolerancePercentage: S.optional(S.Number),
+    StackSetMaxConcurrencyCount: S.optional(S.Number),
+    StackSetMaxConcurrencyPercentage: S.optional(S.Number),
+    StackSetOperationType: S.optional(StackSetOperationType),
+  }),
+).annotate({
+  identifier: "UpdateProvisioningPreferences",
+}) as any as S.Schema<UpdateProvisioningPreferences>;
 export interface UpdateProvisionedProductInput {
   AcceptLanguage?: string;
   ProvisionedProductName?: string;
@@ -4034,50 +4047,52 @@ export interface UpdateProvisionedProductInput {
   Tags?: Tag[];
   UpdateToken: string;
 }
-export const UpdateProvisionedProductInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      ProvisionedProductName: S.optional(S.String),
-      ProvisionedProductId: S.optional(S.String),
-      ProductId: S.optional(S.String),
-      ProductName: S.optional(S.String),
-      ProvisioningArtifactId: S.optional(S.String),
-      ProvisioningArtifactName: S.optional(S.String),
-      PathId: S.optional(S.String),
-      PathName: S.optional(S.String),
-      ProvisioningParameters: S.optional(UpdateProvisioningParameters),
-      ProvisioningPreferences: S.optional(UpdateProvisioningPreferences),
-      Tags: S.optional(Tags),
-      UpdateToken: S.String.pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "UpdateProvisionedProductInput",
-  }) as any as S.Schema<UpdateProvisionedProductInput>;
+export const UpdateProvisionedProductInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    ProvisionedProductName: S.optional(S.String),
+    ProvisionedProductId: S.optional(S.String),
+    ProductId: S.optional(S.String),
+    ProductName: S.optional(S.String),
+    ProvisioningArtifactId: S.optional(S.String),
+    ProvisioningArtifactName: S.optional(S.String),
+    PathId: S.optional(S.String),
+    PathName: S.optional(S.String),
+    ProvisioningParameters: S.optional(UpdateProvisioningParameters),
+    ProvisioningPreferences: S.optional(UpdateProvisioningPreferences),
+    Tags: S.optional(Tags),
+    UpdateToken: S.String.pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "UpdateProvisionedProductInput",
+}) as any as S.Schema<UpdateProvisionedProductInput>;
 export interface UpdateProvisionedProductOutput {
   RecordDetail?: RecordDetail;
 }
-export const UpdateProvisionedProductOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RecordDetail: S.optional(RecordDetail) }),
-  ).annotate({
-    identifier: "UpdateProvisionedProductOutput",
-  }) as any as S.Schema<UpdateProvisionedProductOutput>;
+export const UpdateProvisionedProductOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RecordDetail: S.optional(RecordDetail) }),
+).annotate({
+  identifier: "UpdateProvisionedProductOutput",
+}) as any as S.Schema<UpdateProvisionedProductOutput>;
 export type PropertyKey = "OWNER" | "LAUNCH_ROLE" | (string & {});
 export const PropertyKey = /*@__PURE__*/ S.String;
+
+export type PropertyValue = string;
 export type ProvisionedProductProperties = { [key in PropertyKey]?: string };
-export const ProvisionedProductProperties =
-  /*@__PURE__*/ S.Record(PropertyKey, S.String.pipe(S.optional));
+export const ProvisionedProductProperties = /*@__PURE__*/ S.Record(
+  PropertyKey,
+  S.String.pipe(S.optional),
+);
 export interface UpdateProvisionedProductPropertiesInput {
   AcceptLanguage?: string;
   ProvisionedProductId: string;
   ProvisionedProductProperties: { [key: string]: string | undefined };
   IdempotencyToken: string;
 }
-export const UpdateProvisionedProductPropertiesInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const UpdateProvisionedProductPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       AcceptLanguage: S.optional(S.String),
       ProvisionedProductId: S.String,
@@ -4086,26 +4101,26 @@ export const UpdateProvisionedProductPropertiesInput =
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
-  ).annotate({
-    identifier: "UpdateProvisionedProductPropertiesInput",
-  }) as any as S.Schema<UpdateProvisionedProductPropertiesInput>;
+).annotate({
+  identifier: "UpdateProvisionedProductPropertiesInput",
+}) as any as S.Schema<UpdateProvisionedProductPropertiesInput>;
 export interface UpdateProvisionedProductPropertiesOutput {
   ProvisionedProductId?: string;
   ProvisionedProductProperties?: { [key: string]: string | undefined };
   RecordId?: string;
   Status?: RecordStatus;
 }
-export const UpdateProvisionedProductPropertiesOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const UpdateProvisionedProductPropertiesOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ProvisionedProductId: S.optional(S.String),
       ProvisionedProductProperties: S.optional(ProvisionedProductProperties),
       RecordId: S.optional(S.String),
       Status: S.optional(RecordStatus),
     }),
-  ).annotate({
-    identifier: "UpdateProvisionedProductPropertiesOutput",
-  }) as any as S.Schema<UpdateProvisionedProductPropertiesOutput>;
+).annotate({
+  identifier: "UpdateProvisionedProductPropertiesOutput",
+}) as any as S.Schema<UpdateProvisionedProductPropertiesOutput>;
 export interface UpdateProvisioningArtifactInput {
   AcceptLanguage?: string;
   ProductId: string;
@@ -4115,37 +4130,35 @@ export interface UpdateProvisioningArtifactInput {
   Active?: boolean;
   Guidance?: ProvisioningArtifactGuidance;
 }
-export const UpdateProvisioningArtifactInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AcceptLanguage: S.optional(S.String),
-      ProductId: S.String,
-      ProvisioningArtifactId: S.String,
-      Name: S.optional(S.String),
-      Description: S.optional(S.String),
-      Active: S.optional(S.Boolean),
-      Guidance: S.optional(ProvisioningArtifactGuidance),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "UpdateProvisioningArtifactInput",
-  }) as any as S.Schema<UpdateProvisioningArtifactInput>;
+export const UpdateProvisioningArtifactInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AcceptLanguage: S.optional(S.String),
+    ProductId: S.String,
+    ProvisioningArtifactId: S.String,
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    Active: S.optional(S.Boolean),
+    Guidance: S.optional(ProvisioningArtifactGuidance),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "UpdateProvisioningArtifactInput",
+}) as any as S.Schema<UpdateProvisioningArtifactInput>;
 export interface UpdateProvisioningArtifactOutput {
   ProvisioningArtifactDetail?: ProvisioningArtifactDetail;
   Info?: { [key: string]: string | undefined };
   Status?: Status;
 }
-export const UpdateProvisioningArtifactOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ProvisioningArtifactDetail: S.optional(ProvisioningArtifactDetail),
-      Info: S.optional(ProvisioningArtifactInfo),
-      Status: S.optional(Status),
-    }),
-  ).annotate({
-    identifier: "UpdateProvisioningArtifactOutput",
-  }) as any as S.Schema<UpdateProvisioningArtifactOutput>;
+export const UpdateProvisioningArtifactOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProvisioningArtifactDetail: S.optional(ProvisioningArtifactDetail),
+    Info: S.optional(ProvisioningArtifactInfo),
+    Status: S.optional(Status),
+  }),
+).annotate({
+  identifier: "UpdateProvisioningArtifactOutput",
+}) as any as S.Schema<UpdateProvisioningArtifactOutput>;
 export interface UpdateServiceActionInput {
   Id: string;
   Name?: string;
@@ -4198,50 +4211,7 @@ export const UpdateTagOptionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTagOptionOutput",
 }) as any as S.Schema<UpdateTagOptionOutput>;
-
-//# Errors
-export class InvalidParametersException extends S.TaggedErrorClass<InvalidParametersException>()(
-  "InvalidParametersException",
-  { Message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class DuplicateResourceException extends S.TaggedErrorClass<DuplicateResourceException>()(
-  "DuplicateResourceException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
-  "InvalidStateException",
-  { Message: S.optional(S.String) },
-) {}
-export class TagOptionNotMigratedException extends S.TaggedErrorClass<TagOptionNotMigratedException>()(
-  "TagOptionNotMigratedException",
-  { Message: S.optional(S.String) },
-) {}
-export class OperationNotSupportedException extends S.TaggedErrorClass<OperationNotSupportedException>()(
-  "OperationNotSupportedException",
-  { Message: S.optional(S.String) },
-) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { Message: S.optional(S.String) },
-) {}
-export class ProvisionedProductNotFound extends S.TaggedErrorClass<ProvisionedProductNotFound>()(
-  "ProvisionedProductNotFound",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "Provisioned product not found" },
-  }),
-) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type AcceptPortfolioShareError =
   | InvalidParametersException
   | LimitExceededException
@@ -4263,8 +4233,11 @@ export const acceptPortfolioShare: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptPortfolioShare",
 }));
+
 export type AssociateBudgetWithResourceError =
   | DuplicateResourceException
   | InvalidParametersException
@@ -4288,8 +4261,11 @@ export const associateBudgetWithResource: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateBudgetWithResource",
 }));
+
 export type AssociatePrincipalWithPortfolioError =
   | InvalidParametersException
   | LimitExceededException
@@ -4327,8 +4303,11 @@ export const associatePrincipalWithPortfolio: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociatePrincipalWithPortfolio",
 }));
+
 export type AssociateProductWithPortfolioError =
   | InvalidParametersException
   | LimitExceededException
@@ -4352,8 +4331,11 @@ export const associateProductWithPortfolio: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateProductWithPortfolio",
 }));
+
 export type AssociateServiceActionWithProvisioningArtifactError =
   | DuplicateResourceException
   | InvalidParametersException
@@ -4377,8 +4359,11 @@ export const associateServiceActionWithProvisioningArtifact: API.OperationMethod
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateServiceActionWithProvisioningArtifact",
 }));
+
 export type AssociateTagOptionWithResourceError =
   | DuplicateResourceException
   | InvalidParametersException
@@ -4406,8 +4391,11 @@ export const associateTagOptionWithResource: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateTagOptionWithResource",
 }));
+
 export type BatchAssociateServiceActionWithProvisioningArtifactError =
   | InvalidParametersException
   | CommonErrors;
@@ -4423,8 +4411,11 @@ export const batchAssociateServiceActionWithProvisioningArtifact: API.OperationM
   input: BatchAssociateServiceActionWithProvisioningArtifactInput,
   output: BatchAssociateServiceActionWithProvisioningArtifactOutput,
   errors: [InvalidParametersException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchAssociateServiceActionWithProvisioningArtifact",
 }));
+
 export type BatchDisassociateServiceActionFromProvisioningArtifactError =
   | InvalidParametersException
   | CommonErrors;
@@ -4440,8 +4431,11 @@ export const batchDisassociateServiceActionFromProvisioningArtifact: API.Operati
   input: BatchDisassociateServiceActionFromProvisioningArtifactInput,
   output: BatchDisassociateServiceActionFromProvisioningArtifactOutput,
   errors: [InvalidParametersException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDisassociateServiceActionFromProvisioningArtifact",
 }));
+
 export type CopyProductError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -4466,8 +4460,11 @@ export const copyProduct: API.OperationMethod<
   input: CopyProductInput,
   output: CopyProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyProduct",
 }));
+
 export type CreateConstraintError =
   | DuplicateResourceException
   | InvalidParametersException
@@ -4493,8 +4490,11 @@ export const createConstraint: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConstraint",
 }));
+
 export type CreatePortfolioError =
   | InvalidParametersException
   | LimitExceededException
@@ -4518,8 +4518,11 @@ export const createPortfolio: API.OperationMethod<
     LimitExceededException,
     TagOptionNotMigratedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePortfolio",
 }));
+
 export type CreatePortfolioShareError =
   | InvalidParametersException
   | InvalidStateException
@@ -4565,8 +4568,11 @@ export const createPortfolioShare: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePortfolioShare",
 }));
+
 export type CreateProductError =
   | InvalidParametersException
   | LimitExceededException
@@ -4595,8 +4601,11 @@ export const createProduct: API.OperationMethod<
     LimitExceededException,
     TagOptionNotMigratedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProduct",
 }));
+
 export type CreateProvisionedProductPlanError =
   | InvalidParametersException
   | InvalidStateException
@@ -4628,8 +4637,11 @@ export const createProvisionedProductPlan: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProvisionedProductPlan",
 }));
+
 export type CreateProvisioningArtifactError =
   | InvalidParametersException
   | LimitExceededException
@@ -4657,8 +4669,11 @@ export const createProvisioningArtifact: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProvisioningArtifact",
 }));
+
 export type CreateServiceActionError =
   | InvalidParametersException
   | LimitExceededException
@@ -4675,8 +4690,11 @@ export const createServiceAction: API.OperationMethod<
   input: CreateServiceActionInput,
   output: CreateServiceActionOutput,
   errors: [InvalidParametersException, LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateServiceAction",
 }));
+
 export type CreateTagOptionError =
   | DuplicateResourceException
   | LimitExceededException
@@ -4698,8 +4716,11 @@ export const createTagOption: API.OperationMethod<
     LimitExceededException,
     TagOptionNotMigratedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTagOption",
 }));
+
 export type DeleteConstraintError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -4718,8 +4739,11 @@ export const deleteConstraint: API.OperationMethod<
   input: DeleteConstraintInput,
   output: DeleteConstraintOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConstraint",
 }));
+
 export type DeletePortfolioError =
   | InvalidParametersException
   | ResourceInUseException
@@ -4748,8 +4772,11 @@ export const deletePortfolio: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePortfolio",
 }));
+
 export type DeletePortfolioShareError =
   | InvalidParametersException
   | InvalidStateException
@@ -4777,8 +4804,11 @@ export const deletePortfolioShare: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePortfolioShare",
 }));
+
 export type DeleteProductError =
   | InvalidParametersException
   | ResourceInUseException
@@ -4806,8 +4836,11 @@ export const deleteProduct: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProduct",
 }));
+
 export type DeleteProvisionedProductPlanError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -4824,8 +4857,11 @@ export const deleteProvisionedProductPlan: API.OperationMethod<
   input: DeleteProvisionedProductPlanInput,
   output: DeleteProvisionedProductPlanOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProvisionedProductPlan",
 }));
+
 export type DeleteProvisioningArtifactError =
   | InvalidParametersException
   | ResourceInUseException
@@ -4851,8 +4887,11 @@ export const deleteProvisioningArtifact: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProvisioningArtifact",
 }));
+
 export type DeleteServiceActionError =
   | InvalidParametersException
   | ResourceInUseException
@@ -4874,8 +4913,11 @@ export const deleteServiceAction: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteServiceAction",
 }));
+
 export type DeleteTagOptionError =
   | ResourceInUseException
   | ResourceNotFoundException
@@ -4899,8 +4941,11 @@ export const deleteTagOption: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTagOption",
 }));
+
 export type DescribeConstraintError = ResourceNotFoundException | CommonErrors;
 /**
  * Gets information about the specified constraint.
@@ -4914,8 +4959,11 @@ export const describeConstraint: API.OperationMethod<
   input: DescribeConstraintInput,
   output: DescribeConstraintOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConstraint",
 }));
+
 export type DescribeCopyProductStatusError =
   | ResourceNotFoundException
   | CommonErrors;
@@ -4931,8 +4979,11 @@ export const describeCopyProductStatus: API.OperationMethod<
   input: DescribeCopyProductStatusInput,
   output: DescribeCopyProductStatusOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCopyProductStatus",
 }));
+
 export type DescribePortfolioError = ResourceNotFoundException | CommonErrors;
 /**
  * Gets information about the specified portfolio.
@@ -4948,8 +4999,11 @@ export const describePortfolio: API.OperationMethod<
   input: DescribePortfolioInput,
   output: DescribePortfolioOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePortfolio",
 }));
+
 export type DescribePortfolioSharesError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -4987,6 +5041,8 @@ export const describePortfolioShares: API.OperationMethod<
   input: DescribePortfolioSharesInput,
   output: DescribePortfolioSharesOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePortfolioShares",
   pagination: {
     inputToken: "PageToken",
@@ -4994,6 +5050,7 @@ export const describePortfolioShares: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type DescribePortfolioShareStatusError =
   | InvalidParametersException
   | OperationNotSupportedException
@@ -5016,8 +5073,11 @@ export const describePortfolioShareStatus: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePortfolioShareStatus",
 }));
+
 export type DescribeProductError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5040,8 +5100,11 @@ export const describeProduct: API.OperationMethod<
   input: DescribeProductInput,
   output: DescribeProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProduct",
 }));
+
 export type DescribeProductAsAdminError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5058,8 +5121,11 @@ export const describeProductAsAdmin: API.OperationMethod<
   input: DescribeProductAsAdminInput,
   output: DescribeProductAsAdminOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProductAsAdmin",
 }));
+
 export type DescribeProductViewError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5076,8 +5142,11 @@ export const describeProductView: API.OperationMethod<
   input: DescribeProductViewInput,
   output: DescribeProductViewOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProductView",
 }));
+
 export type DescribeProvisionedProductError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5094,8 +5163,11 @@ export const describeProvisionedProduct: API.OperationMethod<
   input: DescribeProvisionedProductInput,
   output: DescribeProvisionedProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProvisionedProduct",
 }));
+
 export type DescribeProvisionedProductPlanError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5112,8 +5184,11 @@ export const describeProvisionedProductPlan: API.OperationMethod<
   input: DescribeProvisionedProductPlanInput,
   output: DescribeProvisionedProductPlanOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProvisionedProductPlan",
 }));
+
 export type DescribeProvisioningArtifactError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5130,8 +5205,11 @@ export const describeProvisioningArtifact: API.OperationMethod<
   input: DescribeProvisioningArtifactInput,
   output: DescribeProvisioningArtifactOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProvisioningArtifact",
 }));
+
 export type DescribeProvisioningParametersError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5156,8 +5234,11 @@ export const describeProvisioningParameters: API.OperationMethod<
   input: DescribeProvisioningParametersInput,
   output: DescribeProvisioningParametersOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProvisioningParameters",
 }));
+
 export type DescribeRecordError = ResourceNotFoundException | CommonErrors;
 /**
  * Gets information about the specified request operation.
@@ -5178,8 +5259,11 @@ export const describeRecord: API.OperationMethod<
   input: DescribeRecordInput,
   output: DescribeRecordOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRecord",
 }));
+
 export type DescribeServiceActionError =
   | ResourceNotFoundException
   | CommonErrors;
@@ -5195,8 +5279,11 @@ export const describeServiceAction: API.OperationMethod<
   input: DescribeServiceActionInput,
   output: DescribeServiceActionOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeServiceAction",
 }));
+
 export type DescribeServiceActionExecutionParametersError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5213,8 +5300,11 @@ export const describeServiceActionExecutionParameters: API.OperationMethod<
   input: DescribeServiceActionExecutionParametersInput,
   output: DescribeServiceActionExecutionParametersOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeServiceActionExecutionParameters",
 }));
+
 export type DescribeTagOptionError =
   | ResourceNotFoundException
   | TagOptionNotMigratedException
@@ -5231,8 +5321,11 @@ export const describeTagOption: API.OperationMethod<
   input: DescribeTagOptionInput,
   output: DescribeTagOptionOutput,
   errors: [ResourceNotFoundException, TagOptionNotMigratedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTagOption",
 }));
+
 export type DisableAWSOrganizationsAccessError =
   | InvalidStateException
   | OperationNotSupportedException
@@ -5267,8 +5360,11 @@ export const disableAWSOrganizationsAccess: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableAWSOrganizationsAccess",
 }));
+
 export type DisassociateBudgetFromResourceError =
   | ResourceNotFoundException
   | CommonErrors;
@@ -5284,8 +5380,11 @@ export const disassociateBudgetFromResource: API.OperationMethod<
   input: DisassociateBudgetFromResourceInput,
   output: DisassociateBudgetFromResourceOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateBudgetFromResource",
 }));
+
 export type DisassociatePrincipalFromPortfolioError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5321,8 +5420,11 @@ export const disassociatePrincipalFromPortfolio: API.OperationMethod<
   input: DisassociatePrincipalFromPortfolioInput,
   output: DisassociatePrincipalFromPortfolioOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociatePrincipalFromPortfolio",
 }));
+
 export type DisassociateProductFromPortfolioError =
   | InvalidParametersException
   | ResourceInUseException
@@ -5346,8 +5448,11 @@ export const disassociateProductFromPortfolio: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateProductFromPortfolio",
 }));
+
 export type DisassociateServiceActionFromProvisioningArtifactError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5364,8 +5469,11 @@ export const disassociateServiceActionFromProvisioningArtifact: API.OperationMet
   input: DisassociateServiceActionFromProvisioningArtifactInput,
   output: DisassociateServiceActionFromProvisioningArtifactOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateServiceActionFromProvisioningArtifact",
 }));
+
 export type DisassociateTagOptionFromResourceError =
   | ResourceNotFoundException
   | TagOptionNotMigratedException
@@ -5382,8 +5490,11 @@ export const disassociateTagOptionFromResource: API.OperationMethod<
   input: DisassociateTagOptionFromResourceInput,
   output: DisassociateTagOptionFromResourceOutput,
   errors: [ResourceNotFoundException, TagOptionNotMigratedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateTagOptionFromResource",
 }));
+
 export type EnableAWSOrganizationsAccessError =
   | InvalidStateException
   | OperationNotSupportedException
@@ -5418,8 +5529,11 @@ export const enableAWSOrganizationsAccess: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableAWSOrganizationsAccess",
 }));
+
 export type ExecuteProvisionedProductPlanError =
   | InvalidParametersException
   | InvalidStateException
@@ -5441,8 +5555,11 @@ export const executeProvisionedProductPlan: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteProvisionedProductPlan",
 }));
+
 export type ExecuteProvisionedProductServiceActionError =
   | InvalidParametersException
   | InvalidStateException
@@ -5466,8 +5583,11 @@ export const executeProvisionedProductServiceAction: API.OperationMethod<
     ResourceNotFoundException,
     ProvisionedProductNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteProvisionedProductServiceAction",
 }));
+
 export type GetAWSOrganizationsAccessStatusError =
   | OperationNotSupportedException
   | ResourceNotFoundException
@@ -5485,8 +5605,11 @@ export const getAWSOrganizationsAccessStatus: API.OperationMethod<
   input: GetAWSOrganizationsAccessStatusInput,
   output: GetAWSOrganizationsAccessStatusOutput,
   errors: [OperationNotSupportedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAWSOrganizationsAccessStatus",
 }));
+
 export type GetProvisionedProductOutputsError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5518,6 +5641,8 @@ export const getProvisionedProductOutputs: API.OperationMethod<
   input: GetProvisionedProductOutputsInput,
   output: GetProvisionedProductOutputsOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProvisionedProductOutputs",
   pagination: {
     inputToken: "PageToken",
@@ -5525,6 +5650,7 @@ export const getProvisionedProductOutputs: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ImportAsProvisionedProductError =
   | DuplicateResourceException
   | InvalidParametersException
@@ -5573,8 +5699,11 @@ export const importAsProvisionedProduct: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportAsProvisionedProduct",
 }));
+
 export type ListAcceptedPortfolioSharesError =
   | InvalidParametersException
   | OperationNotSupportedException
@@ -5608,6 +5737,8 @@ export const listAcceptedPortfolioShares: API.OperationMethod<
   input: ListAcceptedPortfolioSharesInput,
   output: ListAcceptedPortfolioSharesOutput,
   errors: [InvalidParametersException, OperationNotSupportedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAcceptedPortfolioShares",
   pagination: {
     inputToken: "PageToken",
@@ -5615,6 +5746,7 @@ export const listAcceptedPortfolioShares: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListBudgetsForResourceError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5646,6 +5778,8 @@ export const listBudgetsForResource: API.OperationMethod<
   input: ListBudgetsForResourceInput,
   output: ListBudgetsForResourceOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBudgetsForResource",
   pagination: {
     inputToken: "PageToken",
@@ -5653,6 +5787,7 @@ export const listBudgetsForResource: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListConstraintsForPortfolioError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5684,6 +5819,8 @@ export const listConstraintsForPortfolio: API.OperationMethod<
   input: ListConstraintsForPortfolioInput,
   output: ListConstraintsForPortfolioOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConstraintsForPortfolio",
   pagination: {
     inputToken: "PageToken",
@@ -5691,6 +5828,7 @@ export const listConstraintsForPortfolio: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListLaunchPathsError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5742,6 +5880,8 @@ export const listLaunchPaths: API.OperationMethod<
   input: ListLaunchPathsInput,
   output: ListLaunchPathsOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLaunchPaths",
   pagination: {
     inputToken: "PageToken",
@@ -5749,6 +5889,7 @@ export const listLaunchPaths: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListOrganizationPortfolioAccessError =
   | InvalidParametersException
   | OperationNotSupportedException
@@ -5789,6 +5930,8 @@ export const listOrganizationPortfolioAccess: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOrganizationPortfolioAccess",
   pagination: {
     inputToken: "PageToken",
@@ -5796,6 +5939,7 @@ export const listOrganizationPortfolioAccess: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListPortfolioAccessError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5829,6 +5973,8 @@ export const listPortfolioAccess: API.OperationMethod<
   input: ListPortfolioAccessInput,
   output: ListPortfolioAccessOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPortfolioAccess",
   pagination: {
     inputToken: "PageToken",
@@ -5836,6 +5982,7 @@ export const listPortfolioAccess: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListPortfoliosError = InvalidParametersException | CommonErrors;
 /**
  * Lists all portfolios in the catalog.
@@ -5864,6 +6011,8 @@ export const listPortfolios: API.OperationMethod<
   input: ListPortfoliosInput,
   output: ListPortfoliosOutput,
   errors: [InvalidParametersException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPortfolios",
   pagination: {
     inputToken: "PageToken",
@@ -5871,6 +6020,7 @@ export const listPortfolios: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListPortfoliosForProductError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5902,6 +6052,8 @@ export const listPortfoliosForProduct: API.OperationMethod<
   input: ListPortfoliosForProductInput,
   output: ListPortfoliosForProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPortfoliosForProduct",
   pagination: {
     inputToken: "PageToken",
@@ -5909,6 +6061,7 @@ export const listPortfoliosForProduct: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListPrincipalsForPortfolioError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5940,6 +6093,8 @@ export const listPrincipalsForPortfolio: API.OperationMethod<
   input: ListPrincipalsForPortfolioInput,
   output: ListPrincipalsForPortfolioOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPrincipalsForPortfolio",
   pagination: {
     inputToken: "PageToken",
@@ -5947,6 +6102,7 @@ export const listPrincipalsForPortfolio: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListProvisionedProductPlansError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5963,8 +6119,11 @@ export const listProvisionedProductPlans: API.OperationMethod<
   input: ListProvisionedProductPlansInput,
   output: ListProvisionedProductPlansOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProvisionedProductPlans",
 }));
+
 export type ListProvisioningArtifactsError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5981,8 +6140,11 @@ export const listProvisioningArtifacts: API.OperationMethod<
   input: ListProvisioningArtifactsInput,
   output: ListProvisioningArtifactsOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProvisioningArtifacts",
 }));
+
 export type ListProvisioningArtifactsForServiceActionError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6014,6 +6176,8 @@ export const listProvisioningArtifactsForServiceAction: API.OperationMethod<
   input: ListProvisioningArtifactsForServiceActionInput,
   output: ListProvisioningArtifactsForServiceActionOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProvisioningArtifactsForServiceAction",
   pagination: {
     inputToken: "PageToken",
@@ -6021,6 +6185,7 @@ export const listProvisioningArtifactsForServiceAction: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListRecordHistoryError = InvalidParametersException | CommonErrors;
 /**
  * Lists the specified requests or all performed requests.
@@ -6034,8 +6199,11 @@ export const listRecordHistory: API.OperationMethod<
   input: ListRecordHistoryInput,
   output: ListRecordHistoryOutput,
   errors: [InvalidParametersException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecordHistory",
 }));
+
 export type ListResourcesForTagOptionError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6072,6 +6240,8 @@ export const listResourcesForTagOption: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourcesForTagOption",
   pagination: {
     inputToken: "PageToken",
@@ -6079,6 +6249,7 @@ export const listResourcesForTagOption: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListServiceActionsError = InvalidParametersException | CommonErrors;
 /**
  * Lists all self-service actions.
@@ -6107,6 +6278,8 @@ export const listServiceActions: API.OperationMethod<
   input: ListServiceActionsInput,
   output: ListServiceActionsOutput,
   errors: [InvalidParametersException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServiceActions",
   pagination: {
     inputToken: "PageToken",
@@ -6114,6 +6287,7 @@ export const listServiceActions: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListServiceActionsForProvisioningArtifactError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6145,6 +6319,8 @@ export const listServiceActionsForProvisioningArtifact: API.OperationMethod<
   input: ListServiceActionsForProvisioningArtifactInput,
   output: ListServiceActionsForProvisioningArtifactOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServiceActionsForProvisioningArtifact",
   pagination: {
     inputToken: "PageToken",
@@ -6152,6 +6328,7 @@ export const listServiceActionsForProvisioningArtifact: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListStackInstancesForProvisionedProductError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6168,8 +6345,11 @@ export const listStackInstancesForProvisionedProduct: API.OperationMethod<
   input: ListStackInstancesForProvisionedProductInput,
   output: ListStackInstancesForProvisionedProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStackInstancesForProvisionedProduct",
 }));
+
 export type ListTagOptionsError =
   | InvalidParametersException
   | TagOptionNotMigratedException
@@ -6201,6 +6381,8 @@ export const listTagOptions: API.OperationMethod<
   input: ListTagOptionsInput,
   output: ListTagOptionsOutput,
   errors: [InvalidParametersException, TagOptionNotMigratedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagOptions",
   pagination: {
     inputToken: "PageToken",
@@ -6208,6 +6390,7 @@ export const listTagOptions: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type NotifyProvisionProductEngineWorkflowResultError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6225,8 +6408,11 @@ export const notifyProvisionProductEngineWorkflowResult: API.OperationMethod<
   input: NotifyProvisionProductEngineWorkflowResultInput,
   output: NotifyProvisionProductEngineWorkflowResultOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "NotifyProvisionProductEngineWorkflowResult",
 }));
+
 export type NotifyTerminateProvisionedProductEngineWorkflowResultError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6244,8 +6430,11 @@ export const notifyTerminateProvisionedProductEngineWorkflowResult: API.Operatio
   input: NotifyTerminateProvisionedProductEngineWorkflowResultInput,
   output: NotifyTerminateProvisionedProductEngineWorkflowResultOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "NotifyTerminateProvisionedProductEngineWorkflowResult",
 }));
+
 export type NotifyUpdateProvisionedProductEngineWorkflowResultError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6263,8 +6452,11 @@ export const notifyUpdateProvisionedProductEngineWorkflowResult: API.OperationMe
   input: NotifyUpdateProvisionedProductEngineWorkflowResultInput,
   output: NotifyUpdateProvisionedProductEngineWorkflowResultOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "NotifyUpdateProvisionedProductEngineWorkflowResult",
 }));
+
 export type ProvisionProductError =
   | DuplicateResourceException
   | InvalidParametersException
@@ -6315,8 +6507,11 @@ export const provisionProduct: API.OperationMethod<
     InvalidParametersException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ProvisionProduct",
 }));
+
 export type RejectPortfolioShareError =
   | ResourceNotFoundException
   | CommonErrors;
@@ -6332,8 +6527,11 @@ export const rejectPortfolioShare: API.OperationMethod<
   input: RejectPortfolioShareInput,
   output: RejectPortfolioShareOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectPortfolioShare",
 }));
+
 export type ScanProvisionedProductsError =
   | InvalidParametersException
   | CommonErrors;
@@ -6351,8 +6549,11 @@ export const scanProvisionedProducts: API.OperationMethod<
   input: ScanProvisionedProductsInput,
   output: ScanProvisionedProductsOutput,
   errors: [InvalidParametersException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ScanProvisionedProducts",
 }));
+
 export type SearchProductsError = InvalidParametersException | CommonErrors;
 /**
  * Gets information about the products to which the caller has access.
@@ -6381,6 +6582,8 @@ export const searchProducts: API.OperationMethod<
   input: SearchProductsInput,
   output: SearchProductsOutput,
   errors: [InvalidParametersException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchProducts",
   pagination: {
     inputToken: "PageToken",
@@ -6388,6 +6591,7 @@ export const searchProducts: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type SearchProductsAsAdminError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6419,6 +6623,8 @@ export const searchProductsAsAdmin: API.OperationMethod<
   input: SearchProductsAsAdminInput,
   output: SearchProductsAsAdminOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchProductsAsAdmin",
   pagination: {
     inputToken: "PageToken",
@@ -6426,6 +6632,7 @@ export const searchProductsAsAdmin: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type SearchProvisionedProductsError =
   | InvalidParametersException
   | CommonErrors;
@@ -6456,6 +6663,8 @@ export const searchProvisionedProducts: API.OperationMethod<
   input: SearchProvisionedProductsInput,
   output: SearchProvisionedProductsOutput,
   errors: [InvalidParametersException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchProvisionedProducts",
   pagination: {
     inputToken: "PageToken",
@@ -6463,6 +6672,7 @@ export const searchProvisionedProducts: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type TerminateProvisionedProductError =
   | ResourceNotFoundException
   | CommonErrors;
@@ -6482,8 +6692,11 @@ export const terminateProvisionedProduct: API.OperationMethod<
   input: TerminateProvisionedProductInput,
   output: TerminateProvisionedProductOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateProvisionedProduct",
 }));
+
 export type UpdateConstraintError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6500,8 +6713,11 @@ export const updateConstraint: API.OperationMethod<
   input: UpdateConstraintInput,
   output: UpdateConstraintOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConstraint",
 }));
+
 export type UpdatePortfolioError =
   | InvalidParametersException
   | LimitExceededException
@@ -6527,8 +6743,11 @@ export const updatePortfolio: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePortfolio",
 }));
+
 export type UpdatePortfolioShareError =
   | InvalidParametersException
   | InvalidStateException
@@ -6570,8 +6789,11 @@ export const updatePortfolioShare: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePortfolioShare",
 }));
+
 export type UpdateProductError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6593,8 +6815,11 @@ export const updateProduct: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProduct",
 }));
+
 export type UpdateProvisionedProductError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6617,8 +6842,11 @@ export const updateProvisionedProduct: API.OperationMethod<
   input: UpdateProvisionedProductInput,
   output: UpdateProvisionedProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProvisionedProduct",
 }));
+
 export type UpdateProvisionedProductPropertiesError =
   | InvalidParametersException
   | InvalidStateException
@@ -6640,8 +6868,11 @@ export const updateProvisionedProductProperties: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProvisionedProductProperties",
 }));
+
 export type UpdateProvisioningArtifactError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6660,8 +6891,11 @@ export const updateProvisioningArtifact: API.OperationMethod<
   input: UpdateProvisioningArtifactInput,
   output: UpdateProvisioningArtifactOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProvisioningArtifact",
 }));
+
 export type UpdateServiceActionError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6678,8 +6912,11 @@ export const updateServiceAction: API.OperationMethod<
   input: UpdateServiceActionInput,
   output: UpdateServiceActionOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateServiceAction",
 }));
+
 export type UpdateTagOptionError =
   | DuplicateResourceException
   | InvalidParametersException
@@ -6703,5 +6940,7 @@ export const updateTagOption: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTagOption",
 }));

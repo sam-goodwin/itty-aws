@@ -1,0 +1,149 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.posthog.quota_limits#QuotaLimitsListRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.quota_limits#QuotaLimitsResponse": {
+      "type": "structure",
+      "members": {
+        "limited": {
+          "target": "com.posthog.quota_limits#QuotaLimitsResponseLimitedMap",
+          "traits": {
+            "smithy.api#documentation": "Per-resource limit state for every `QuotaResource` value, e.g. `ai_credits`, `posthog_code_credits`.",
+            "smithy.api#required": {}
+          }
+        },
+        "code_usage_billing_active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the team's organization pays for PostHog Code usage: billing grants the `posthog_code_usage` product feature only on the Code usage product's paid plan, synced into the organization's available features. Consumers gate paid-tier Code behavior on this; an org unknown to billing reads as not paying.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.quota_limits#QuotaResourceLimit": {
+      "type": "structure",
+      "members": {
+        "limited": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True when the team is currently over its quota for this resource and limits are in effect.",
+            "smithy.api#required": {}
+          }
+        },
+        "usage": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Units of this resource the organization has used so far this billing period, in the resource's native unit (credits for credit buckets). Null when billing hasn't synced usage for the resource.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The organization's limit for this resource in the same unit. Null when unlimited or unknown.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.quota_limits#QuotaLimitsResponseLimitedMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.posthog.quota_limits#QuotaResourceLimit"
+      },
+      "traits": {
+        "smithy.api#documentation": "Per-resource limit state for every `QuotaResource` value, e.g. `ai_credits`, `posthog_code_credits`."
+      }
+    },
+    "com.posthog.quota_limits#QuotaLimitsListResponseBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.quota_limits#QuotaLimitsResponse"
+      },
+      "traits": {}
+    },
+    "com.posthog.quota_limits#QuotaLimitsListResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.posthog.quota_limits#QuotaLimitsListResponseBodyList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.posthog.quota_limits#QuotaLimitsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.quota_limits#QuotaLimitsListRequest"
+      },
+      "output": {
+        "target": "com.posthog.quota_limits#QuotaLimitsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/projects/{project_id}/quota_limits/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get a team's quota-limit state\n\nReturn the current quota-limit state for the team identified in the URL, keyed by `QuotaResource` value. Used by the LLM gateway to gate billable products on AI credits exhaustion."
+      }
+    },
+    "com.posthog.quota_limits#QuotaLimits": {
+      "type": "service",
+      "version": "1.0.0",
+      "operations": [
+        {
+          "target": "com.posthog.quota_limits#QuotaLimitsList"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "PostHog API"
+      }
+    }
+  }
+}

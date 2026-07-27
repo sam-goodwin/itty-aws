@@ -1,0 +1,68 @@
+{
+  "description": "Align logpush#JobsDeleteForAccount with distilled cloudflare/logpush deleteJobForAccount",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.logpush#JobsDeleteForAccount",
+      "path": "/shapes/com.cloudflare.logpush#DeleteJobForAccount"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.logpush#JobsDeleteForAccountRequest",
+      "path": "/shapes/com.cloudflare.logpush#DeleteJobForAccountRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.logpush#DeleteJobForAccount/input/target",
+      "value": "com.cloudflare.logpush#DeleteJobForAccountRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.logpush#JobsDeleteForAccountResponse",
+      "path": "/shapes/com.cloudflare.logpush#DeleteJobForAccountResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.logpush#DeleteJobForAccount/output/target",
+      "value": "com.cloudflare.logpush#DeleteJobForAccountResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.logpush#JobNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1000,
+              "message": {
+                "includes": "job not found"
+              }
+            },
+            {
+              "status": 404
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.logpush#DeleteJobForAccount/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.logpush#JobNotFound"
+        }
+      ]
+    }
+  ]
+}

@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials as Creds } from "../credentials.ts";
@@ -86,406 +88,920 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type ResourceId = string;
-export type TagKey = string;
-export type TagValue = string;
-export type OpsItemId = string;
-export type OpsItemRelatedItemAssociationType = string;
-export type OpsItemRelatedItemAssociationResourceType = string;
-export type OpsItemRelatedItemAssociationResourceUri = string;
-export type OpsItemRelatedItemAssociationId = string;
-export type CommandId = string;
-export type InstanceId = string;
-export type MaintenanceWindowExecutionId = string;
-export type ActivationDescription = string;
-export type DefaultInstanceName = string;
-export type IamRole = string;
-export type RegistrationLimit = number;
-export type ExpirationDate = Date;
-export type RegistrationMetadataKey = string;
-export type RegistrationMetadataValue = string;
-export type ActivationId = string;
-export type ActivationCode = string;
-export type DocumentARN = string;
-export type DocumentVersion = string;
-export type ParameterName = string;
-export type ParameterValue = string;
-export type TargetKey = string;
-export type TargetValue = string;
-export type ScheduleExpression = string;
-export type S3Region = string;
-export type S3BucketName = string;
-export type S3KeyPrefix = string;
-export type AssociationName = string;
-export type AutomationTargetParameterName = string;
-export type MaxErrors = string;
-export type MaxConcurrency = string;
-export type ApplyOnlyAtCronInterval = boolean;
-export type CalendarNameOrARN = string;
-export type Account = string;
-export type Region = string;
-export type ExecutionRoleName = string;
-export type AlarmName = string;
-export type ExcludeAccount = string;
-export type ScheduleOffset = number;
-export type Duration = number;
-export type TargetMapKey = string;
-export type TargetMapValue = string;
-export type AssociationDispatchAssumeRoleArn = string;
-export type AssociationVersion = string;
-export type StatusMessage = string;
-export type StatusAdditionalInfo = string;
-export type StatusName = string;
-export type InstanceCount = number;
-export type AssociationId = string;
-export type BatchErrorMessage = string;
-export type DocumentContent = string;
-export type RequireType = string;
-export type DocumentVersionName = string;
-export type AttachmentsSourceValue = string;
-export type AttachmentIdentifier = string;
-export type DocumentName = string;
-export type DocumentDisplayName = string;
-export type TargetType = string;
-export type DocumentSha1 = string;
-export type DocumentHash = string;
-export type DocumentOwner = string;
-export type DocumentStatusInformation = string;
-export type DescriptionInDocument = string;
-export type DocumentParameterName = string;
-export type DocumentParameterDescrption = string;
-export type DocumentParameterDefaultValue = string;
-export type DocumentSchemaVersion = string;
-export type AttachmentName = string;
-export type DocumentAuthor = string;
-export type Reviewer = string;
-export type Category = string;
-export type MaintenanceWindowName = string;
-export type MaintenanceWindowDescription = string | redacted.Redacted<string>;
-export type MaintenanceWindowStringDateTime = string;
-export type MaintenanceWindowSchedule = string;
-export type MaintenanceWindowTimezone = string;
-export type MaintenanceWindowOffset = number;
-export type MaintenanceWindowDurationHours = number;
-export type MaintenanceWindowCutoff = number;
-export type MaintenanceWindowAllowUnassociatedTargets = boolean;
-export type ClientToken = string;
-export type MaintenanceWindowId = string;
-export type OpsItemDescription = string;
-export type OpsItemType = string;
-export type OpsItemDataKey = string;
-export type OpsItemDataValueString = string;
-export type OpsItemPriority = number;
-export type OpsItemSource = string;
-export type OpsItemTitle = string;
-export type OpsItemCategory = string;
-export type OpsItemSeverity = string;
-export type OpsItemAccountId = string;
-export type OpsItemArn = string;
-export type OpsMetadataResourceId = string;
-export type MetadataKey = string;
-export type MetadataValueString = string;
-export type OpsMetadataArn = string;
-export type BaselineName = string;
-export type PatchFilterValue = string;
-export type ApproveAfterDays = number;
-export type PatchStringDateTime = string;
-export type PatchId = string;
-export type BaselineDescription = string;
-export type PatchSourceName = string;
-export type PatchSourceProduct = string;
-export type PatchSourceConfiguration = string | redacted.Redacted<string>;
-export type BaselineId = string;
-export type ResourceDataSyncName = string;
-export type ResourceDataSyncS3BucketName = string;
-export type ResourceDataSyncS3Prefix = string;
-export type ResourceDataSyncS3Region = string;
-export type ResourceDataSyncAWSKMSKeyARN = string;
-export type ResourceDataSyncDestinationDataSharingType = string;
-export type ResourceDataSyncType = string;
-export type ResourceDataSyncSourceType = string;
-export type ResourceDataSyncOrganizationSourceType = string;
-export type ResourceDataSyncOrganizationalUnitId = string;
-export type ResourceDataSyncSourceRegion = string;
-export type ResourceDataSyncIncludeFutureRegions = boolean;
-export type ResourceDataSyncEnableAllOpsDataSources = boolean;
-export type InventoryItemTypeName = string;
-export type DryRun = boolean;
-export type UUID = string;
-export type TotalCount = number;
-export type RemainingCount = number;
-export type InventoryItemSchemaVersion = string;
-export type ResourceCount = number;
-export type PSParameterName = string;
-export type ResourceArnString = string;
-export type PolicyId = string;
-export type PolicyHash = string;
-export type ManagedInstanceId = string;
-export type PatchGroup = string;
-export type MaintenanceWindowTargetId = string;
-export type MaintenanceWindowTaskId = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type RegistrationsCount = number;
-export type CreatedDate = Date;
-export type AssociationExecutionFilterValue = string;
-export type AssociationExecutionId = string;
-export type ResourceCountByStatus = string;
-export type AssociationExecutionTargetsFilterValue = string;
-export type AssociationResourceId = string;
-export type AssociationResourceType = string;
-export type OutputSourceId = string;
-export type OutputSourceType = string;
-export type AutomationExecutionFilterValue = string;
-export type AutomationExecutionId = string;
-export type AutomationParameterKey = string;
-export type AutomationParameterValue = string;
-export type TargetLocationsURL = string;
-export type ChangeRequestName = string;
-export type StepExecutionFilterValue = string;
-export type AutomationActionName = string;
-export type ValidNextStep = string;
-export type PatchOrchestratorFilterKey = string;
-export type PatchOrchestratorFilterValue = string;
-export type PatchBaselineMaxResults = number;
-export type PatchTitle = string;
-export type PatchDescription = string;
-export type PatchContentUrl = string;
-export type PatchVendor = string;
-export type PatchProductFamily = string;
-export type PatchProduct = string;
-export type PatchClassification = string;
-export type PatchMsrcSeverity = string;
-export type PatchKbNumber = string;
-export type PatchMsrcNumber = string;
-export type PatchLanguage = string;
-export type PatchAdvisoryId = string;
-export type PatchBugzillaId = string;
-export type PatchCVEId = string;
-export type PatchName = string;
-export type PatchEpoch = number;
-export type PatchVersion = string;
-export type PatchRelease = string;
-export type PatchArch = string;
-export type PatchSeverity = string;
-export type PatchRepository = string;
-export type DocumentPermissionMaxResults = number;
-export type AccountId = string;
-export type SharedDocumentVersion = string;
-export type EffectiveInstanceAssociationMaxResults = number;
-export type InstanceAssociationExecutionSummary = string;
-export type AgentErrorCode = string;
-export type Url = string;
-export type InstanceInformationFilterValue = string;
-export type InstanceInformationStringFilterKey = string;
-export type MaxResultsEC2Compatible = number;
-export type Version = string;
-export type IPAddress = string | redacted.Redacted<string>;
-export type ComputerName = string;
-export type SourceId = string;
-export type PatchComplianceMaxResults = number;
-export type PatchCVEIds = string;
-export type SnapshotId = string;
-export type InstallOverrideList = string;
-export type OwnerInformation = string | redacted.Redacted<string>;
-export type PatchInstalledCount = number;
-export type PatchInstalledOtherCount = number;
-export type PatchInstalledPendingRebootCount = number;
-export type PatchInstalledRejectedCount = number;
-export type PatchMissingCount = number;
-export type PatchFailedCount = number;
-export type PatchUnreportedNotApplicableCount = number;
-export type PatchNotApplicableCount = number;
-export type PatchAvailableSecurityUpdateCount = number;
-export type PatchCriticalNonCompliantCount = number;
-export type PatchSecurityNonCompliantCount = number;
-export type PatchOtherNonCompliantCount = number;
-export type InstancePatchStateFilterKey = string;
-export type InstancePatchStateFilterValue = string;
-export type InstancePropertyFilterValue = string;
-export type InstancePropertyStringFilterKey = string;
-export type DescribeInstancePropertiesMaxResults = number;
-export type InstanceName = string;
-export type InstanceType = string;
-export type InstanceRole = string;
-export type KeyName = string;
-export type InstanceState = string;
-export type Architecture = string;
-export type PlatformName = string;
-export type PlatformVersion = string;
-export type InventoryDeletionStartTime = Date;
-export type InventoryDeletionLastStatusMessage = string;
-export type InventoryDeletionLastStatusUpdateTime = Date;
-export type MaintenanceWindowFilterKey = string;
-export type MaintenanceWindowFilterValue = string;
-export type MaintenanceWindowMaxResults = number;
-export type MaintenanceWindowExecutionStatusDetails = string;
-export type MaintenanceWindowExecutionTaskId = string;
-export type MaintenanceWindowExecutionTaskInvocationId = string;
-export type MaintenanceWindowExecutionTaskExecutionId = string;
-export type MaintenanceWindowExecutionTaskInvocationParameters =
-  | string
-  | redacted.Redacted<string>;
-export type MaintenanceWindowTaskTargetId = string;
-export type MaintenanceWindowTaskArn = string;
-export type MaintenanceWindowEnabled = boolean;
-export type MaintenanceWindowSearchMaxResults = number;
-export type MaintenanceWindowTaskParameterName = string;
-export type MaintenanceWindowTaskParameterValue =
-  | string
-  | redacted.Redacted<string>;
-export type MaintenanceWindowTaskPriority = number;
-export type ServiceRole = string;
-export type OpsItemFilterValue = string;
-export type OpsItemMaxResults = number;
-export type ParametersFilterValue = string;
-export type ParameterStringFilterKey = string;
-export type ParameterStringQueryOption = string;
-export type ParameterStringFilterValue = string;
-export type ParameterKeyId = string;
-export type ParameterDescription = string;
-export type AllowedPattern = string;
-export type PSParameterVersion = number;
-export type ParameterDataType = string;
-export type DefaultBaseline = boolean;
-export type InstancesCount = number;
-export type AttributeName = string;
-export type AttributeValue = string;
-export type SessionMaxResults = number;
-export type SessionFilterValue = string;
-export type SessionId = string;
-export type SessionTarget = string;
-export type SessionOwner = string;
-export type SessionReason = string;
-export type SessionDetails = string;
-export type SessionManagerS3OutputUrl = string;
-export type SessionManagerCloudWatchOutputUrl = string;
-export type MaxSessionDuration = string;
-export type AccessRequestId = string;
-export type AccessKeyIdType = string;
-export type AccessKeySecretType = string | redacted.Redacted<string>;
-export type SessionTokenType = string | redacted.Redacted<string>;
-export type ISO8601String = string;
-export type CommandPluginName = string;
-export type Comment = string;
-export type ResponseCode = number;
-export type StringDateTime = string;
-export type StatusDetails = string;
-export type StandardOutputContent = string;
-export type StandardErrorContent = string;
-export type CloudWatchLogGroupName = string;
-export type CloudWatchOutputEnabled = boolean;
-export type SnapshotDownloadUrl = string;
-export type Product = string;
-export type ContentLength = number;
-export type AttachmentHash = string;
-export type AttachmentUrl = string;
-export type ExecutionPreviewId = string;
-export type InventoryFilterKey = string;
-export type InventoryFilterValue = string;
-export type InventoryAggregatorExpression = string;
-export type InventoryGroupName = string;
-export type InventoryResultEntityId = string;
-export type InventoryResultItemKey = string;
-export type InventoryItemCaptureTime = string;
-export type InventoryItemContentHash = string;
-export type InventoryItemTypeNameFilter = string;
-export type GetInventorySchemaMaxResults = number;
-export type AggregatorSchemaOnly = boolean;
-export type IsSubTypeSchema = boolean;
-export type InventoryItemAttributeName = string;
-export type InventoryTypeDisplayName = string;
-export type NotificationArn = string;
-export type TimeoutSeconds = number;
-export type MaintenanceWindowStepFunctionsInput =
-  | string
-  | redacted.Redacted<string>;
-export type MaintenanceWindowStepFunctionsName = string;
-export type MaintenanceWindowLambdaClientContext = string;
-export type MaintenanceWindowLambdaQualifier = string;
-export type MaintenanceWindowLambdaPayload =
-  | Uint8Array
-  | redacted.Redacted<Uint8Array>;
-export type GetOpsMetadataMaxResults = number;
-export type OpsFilterKey = string;
-export type OpsFilterValue = string;
-export type OpsAggregatorType = string;
-export type OpsDataTypeName = string;
-export type OpsDataAttributeName = string;
-export type OpsAggregatorValueKey = string;
-export type OpsAggregatorValue = string;
-export type OpsEntityId = string;
-export type OpsEntityItemKey = string;
-export type OpsEntityItemCaptureTime = string;
-export type PSParameterValue = string | redacted.Redacted<string>;
-export type PSParameterSelector = string;
-export type ParameterLabel = string;
-export type GetParametersByPathMaxResults = number;
-export type ResourcePolicyMaxResults = number;
-export type Policy = string;
-export type ServiceSettingId = string;
-export type ServiceSettingValue = string;
-export type AssociationFilterValue = string;
-export type CommandMaxResults = number;
-export type CommandFilterValue = string;
-export type InstanceTagName = string;
-export type InvocationTraceOutput = string;
-export type CommandPluginOutput = string;
-export type TargetCount = number;
-export type CompletedCount = number;
-export type ErrorCount = number;
-export type DeliveryTimedOutCount = number;
-export type ComplianceStringFilterKey = string;
-export type ComplianceFilterValue = string;
-export type ComplianceResourceId = string;
-export type ComplianceResourceType = string;
-export type ComplianceTypeName = string;
-export type ComplianceItemId = string;
-export type ComplianceItemTitle = string;
-export type ComplianceExecutionId = string;
-export type ComplianceExecutionType = string;
-export type ComplianceSummaryCount = number;
-export type DocumentReviewComment = string;
-export type DocumentFilterValue = string;
-export type DocumentKeyValuesFilterKey = string;
-export type DocumentKeyValuesFilterValue = string;
-export type NodeFilterValue = string;
-export type NodeCaptureTime = Date;
-export type NodeId = string;
-export type NodeAccountId = string;
-export type NodeOrganizationalUnitId = string;
-export type NodeOrganizationalUnitPath = string;
-export type NodeRegion = string;
-export type AgentType = string;
-export type AgentVersion = string;
-export type InstanceStatus = string;
-export type OpsItemEventFilterValue = string;
-export type OpsItemEventMaxResults = number;
-export type OpsItemRelatedItemsFilterValue = string;
-export type OpsItemRelatedItemsMaxResults = number;
-export type OpsMetadataFilterKey = string;
-export type OpsMetadataFilterValue = string;
-export type ListOpsMetadataMaxResults = number;
-export type ResourceDataSyncState = string;
-export type LastResourceDataSyncTime = Date;
-export type LastSuccessfulResourceDataSyncTime = Date;
-export type ResourceDataSyncLastModifiedTime = Date;
-export type ResourceDataSyncCreatedTime = Date;
-export type LastResourceDataSyncMessage = string;
-export type ComplianceItemContentHash = string;
-export type PutInventoryMessage = string;
-export type ParameterPolicies = string;
-export type TokenValue = string;
-export type StreamUrl = string;
-export type String1to256 = string;
-export type IdempotencyToken = string;
-export type ChangeDetailsValue = string;
-export type SessionManagerParameterName = string;
-export type SessionManagerParameterValue = string;
-export type DocumentVersionNumber = string;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.String },
+).pipe(C.withAuthError) {}
+export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
+  "AlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "AlreadyExistsException", httpResponseCode: 400 }),
+).pipe(C.withAlreadyExistsError) {}
+export class AssociatedInstances extends S.TaggedErrorClass<AssociatedInstances>()(
+  "AssociatedInstances",
+  {},
+  T.AwsQueryError({ code: "AssociatedInstances", httpResponseCode: 400 }),
+) {}
+export class AssociationAlreadyExists extends S.TaggedErrorClass<AssociationAlreadyExists>()(
+  "AssociationAlreadyExists",
+  {},
+  T.AwsQueryError({ code: "AssociationAlreadyExists", httpResponseCode: 400 }),
+).pipe(C.withAlreadyExistsError) {}
+export class AssociationDoesNotExist extends S.TaggedErrorClass<AssociationDoesNotExist>()(
+  "AssociationDoesNotExist",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "AssociationDoesNotExist", httpResponseCode: 404 }),
+) {}
+export class AssociationExecutionDoesNotExist extends S.TaggedErrorClass<AssociationExecutionDoesNotExist>()(
+  "AssociationExecutionDoesNotExist",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "AssociationExecutionDoesNotExist",
+    httpResponseCode: 404,
+  }),
+) {}
+export class AssociationLimitExceeded extends S.TaggedErrorClass<AssociationLimitExceeded>()(
+  "AssociationLimitExceeded",
+  {},
+  T.AwsQueryError({ code: "AssociationLimitExceeded", httpResponseCode: 400 }),
+).pipe(C.withThrottlingError) {}
+export class AssociationVersionLimitExceeded extends S.TaggedErrorClass<AssociationVersionLimitExceeded>()(
+  "AssociationVersionLimitExceeded",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "AssociationVersionLimitExceeded",
+    httpResponseCode: 400,
+  }),
+).pipe(C.withThrottlingError) {}
+export class AutomationDefinitionNotApprovedException extends S.TaggedErrorClass<AutomationDefinitionNotApprovedException>()(
+  "AutomationDefinitionNotApprovedException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "AutomationDefinitionNotApproved",
+    httpResponseCode: 400,
+  }),
+) {}
+export class AutomationDefinitionNotFoundException extends S.TaggedErrorClass<AutomationDefinitionNotFoundException>()(
+  "AutomationDefinitionNotFoundException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "AutomationDefinitionNotFound",
+    httpResponseCode: 404,
+  }),
+) {}
+export class AutomationDefinitionVersionNotFoundException extends S.TaggedErrorClass<AutomationDefinitionVersionNotFoundException>()(
+  "AutomationDefinitionVersionNotFoundException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "AutomationDefinitionVersionNotFound",
+    httpResponseCode: 404,
+  }),
+) {}
+export class AutomationExecutionLimitExceededException extends S.TaggedErrorClass<AutomationExecutionLimitExceededException>()(
+  "AutomationExecutionLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "AutomationExecutionLimitExceeded",
+    httpResponseCode: 429,
+  }),
+) {}
+export class AutomationExecutionNotFoundException extends S.TaggedErrorClass<AutomationExecutionNotFoundException>()(
+  "AutomationExecutionNotFoundException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "AutomationExecutionNotFound",
+    httpResponseCode: 404,
+  }),
+) {}
+export class AutomationStepNotFoundException extends S.TaggedErrorClass<AutomationStepNotFoundException>()(
+  "AutomationStepNotFoundException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "AutomationStepNotFoundException",
+    httpResponseCode: 404,
+  }),
+) {}
+export class ComplianceTypeCountLimitExceededException extends S.TaggedErrorClass<ComplianceTypeCountLimitExceededException>()(
+  "ComplianceTypeCountLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "ComplianceTypeCountLimitExceeded",
+    httpResponseCode: 400,
+  }),
+) {}
+export class CustomSchemaCountLimitExceededException extends S.TaggedErrorClass<CustomSchemaCountLimitExceededException>()(
+  "CustomSchemaCountLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "CustomSchemaCountLimitExceeded",
+    httpResponseCode: 400,
+  }),
+) {}
+export class DocumentAlreadyExists extends S.TaggedErrorClass<DocumentAlreadyExists>()(
+  "DocumentAlreadyExists",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "DocumentAlreadyExists", httpResponseCode: 400 }),
+).pipe(C.withAlreadyExistsError) {}
+export class DocumentLimitExceeded extends S.TaggedErrorClass<DocumentLimitExceeded>()(
+  "DocumentLimitExceeded",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "DocumentLimitExceeded", httpResponseCode: 400 }),
+).pipe(C.withThrottlingError) {}
+export class DocumentPermissionLimit extends S.TaggedErrorClass<DocumentPermissionLimit>()(
+  "DocumentPermissionLimit",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "DocumentPermissionLimit", httpResponseCode: 400 }),
+) {}
+export class DocumentVersionLimitExceeded extends S.TaggedErrorClass<DocumentVersionLimitExceeded>()(
+  "DocumentVersionLimitExceeded",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "DocumentVersionLimitExceeded",
+    httpResponseCode: 400,
+  }),
+).pipe(C.withThrottlingError) {}
+export class DoesNotExistException extends S.TaggedErrorClass<DoesNotExistException>()(
+  "DoesNotExistException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "DoesNotExistException", httpResponseCode: 404 }),
+) {}
+export class DuplicateDocumentContent extends S.TaggedErrorClass<DuplicateDocumentContent>()(
+  "DuplicateDocumentContent",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "DuplicateDocumentContent", httpResponseCode: 400 }),
+) {}
+export class DuplicateDocumentVersionName extends S.TaggedErrorClass<DuplicateDocumentVersionName>()(
+  "DuplicateDocumentVersionName",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "DuplicateDocumentVersionName",
+    httpResponseCode: 400,
+  }),
+) {}
+export class DuplicateInstanceId extends S.TaggedErrorClass<DuplicateInstanceId>()(
+  "DuplicateInstanceId",
+  {},
+  T.AwsQueryError({ code: "DuplicateInstanceId", httpResponseCode: 404 }),
+) {}
+export class FeatureNotAvailableException extends S.TaggedErrorClass<FeatureNotAvailableException>()(
+  "FeatureNotAvailableException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "FeatureNotAvailableException",
+    httpResponseCode: 400,
+  }),
+) {}
+export class HierarchyLevelLimitExceededException extends S.TaggedErrorClass<HierarchyLevelLimitExceededException>()(
+  "HierarchyLevelLimitExceededException",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "HierarchyLevelLimitExceededException",
+    httpResponseCode: 400,
+  }),
+) {}
+export class HierarchyTypeMismatchException extends S.TaggedErrorClass<HierarchyTypeMismatchException>()(
+  "HierarchyTypeMismatchException",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "HierarchyTypeMismatchException",
+    httpResponseCode: 400,
+  }),
+) {}
+export class IdempotentParameterMismatch extends S.TaggedErrorClass<IdempotentParameterMismatch>()(
+  "IdempotentParameterMismatch",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "IdempotentParameterMismatch",
+    httpResponseCode: 400,
+  }),
+).pipe(C.withConflictError) {}
+export class IncompatiblePolicyException extends S.TaggedErrorClass<IncompatiblePolicyException>()(
+  "IncompatiblePolicyException",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "IncompatiblePolicyException",
+    httpResponseCode: 400,
+  }),
+) {}
+export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
+  "InternalServerError",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InternalServerError", httpResponseCode: 500 }),
+) {}
+export class InvalidActivation extends S.TaggedErrorClass<InvalidActivation>()(
+  "InvalidActivation",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidActivation", httpResponseCode: 404 }),
+) {}
+export class InvalidActivationId extends S.TaggedErrorClass<InvalidActivationId>()(
+  "InvalidActivationId",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidActivationId", httpResponseCode: 404 }),
+) {}
+export class InvalidAggregatorException extends S.TaggedErrorClass<InvalidAggregatorException>()(
+  "InvalidAggregatorException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidAggregator", httpResponseCode: 400 }),
+) {}
+export class InvalidAllowedPatternException extends S.TaggedErrorClass<InvalidAllowedPatternException>()(
+  "InvalidAllowedPatternException",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "InvalidAllowedPatternException",
+    httpResponseCode: 400,
+  }),
+) {}
+export class InvalidAssociation extends S.TaggedErrorClass<InvalidAssociation>()(
+  "InvalidAssociation",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidAssociation", httpResponseCode: 400 }),
+) {}
+export class InvalidAssociationVersion extends S.TaggedErrorClass<InvalidAssociationVersion>()(
+  "InvalidAssociationVersion",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidAssociationVersion", httpResponseCode: 400 }),
+) {}
+export class InvalidAutomationExecutionParametersException extends S.TaggedErrorClass<InvalidAutomationExecutionParametersException>()(
+  "InvalidAutomationExecutionParametersException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "InvalidAutomationExecutionParameters",
+    httpResponseCode: 400,
+  }),
+) {}
+export class InvalidAutomationSignalException extends S.TaggedErrorClass<InvalidAutomationSignalException>()(
+  "InvalidAutomationSignalException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "InvalidAutomationSignalException",
+    httpResponseCode: 400,
+  }),
+) {}
+export class InvalidAutomationStatusUpdateException extends S.TaggedErrorClass<InvalidAutomationStatusUpdateException>()(
+  "InvalidAutomationStatusUpdateException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "InvalidAutomationStatusUpdateException",
+    httpResponseCode: 400,
+  }),
+) {}
+export class InvalidCommandId extends S.TaggedErrorClass<InvalidCommandId>()(
+  "InvalidCommandId",
+  {},
+  T.AwsQueryError({ code: "InvalidCommandId", httpResponseCode: 404 }),
+) {}
+export class InvalidDeleteInventoryParametersException extends S.TaggedErrorClass<InvalidDeleteInventoryParametersException>()(
+  "InvalidDeleteInventoryParametersException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "InvalidDeleteInventoryParameters",
+    httpResponseCode: 400,
+  }),
+) {}
+export class InvalidDeletionIdException extends S.TaggedErrorClass<InvalidDeletionIdException>()(
+  "InvalidDeletionIdException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidDeletionId", httpResponseCode: 400 }),
+) {}
+export class InvalidDocument extends S.TaggedErrorClass<InvalidDocument>()(
+  "InvalidDocument",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidDocument", httpResponseCode: 404 }),
+) {}
+export class InvalidDocumentContent extends S.TaggedErrorClass<InvalidDocumentContent>()(
+  "InvalidDocumentContent",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidDocumentContent", httpResponseCode: 400 }),
+) {}
+export class InvalidDocumentOperation extends S.TaggedErrorClass<InvalidDocumentOperation>()(
+  "InvalidDocumentOperation",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidDocumentOperation", httpResponseCode: 403 }),
+) {}
+export class InvalidDocumentSchemaVersion extends S.TaggedErrorClass<InvalidDocumentSchemaVersion>()(
+  "InvalidDocumentSchemaVersion",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "InvalidDocumentSchemaVersion",
+    httpResponseCode: 400,
+  }),
+) {}
+export class InvalidDocumentType extends S.TaggedErrorClass<InvalidDocumentType>()(
+  "InvalidDocumentType",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidDocumentType", httpResponseCode: 400 }),
+) {}
+export class InvalidDocumentVersion extends S.TaggedErrorClass<InvalidDocumentVersion>()(
+  "InvalidDocumentVersion",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidDocumentVersion", httpResponseCode: 400 }),
+) {}
+export class InvalidFilter extends S.TaggedErrorClass<InvalidFilter>()(
+  "InvalidFilter",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidFilter", httpResponseCode: 441 }),
+) {}
+export class InvalidFilterKey extends S.TaggedErrorClass<InvalidFilterKey>()(
+  "InvalidFilterKey",
+  {},
+  T.AwsQueryError({ code: "InvalidFilterKey", httpResponseCode: 400 }),
+) {}
+export class InvalidFilterOption extends S.TaggedErrorClass<InvalidFilterOption>()(
+  "InvalidFilterOption",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidFilterOption", httpResponseCode: 400 }),
+) {}
+export class InvalidFilterValue extends S.TaggedErrorClass<InvalidFilterValue>()(
+  "InvalidFilterValue",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidFilterValue", httpResponseCode: 400 }),
+) {}
+export class InvalidInstanceId extends S.TaggedErrorClass<InvalidInstanceId>()(
+  "InvalidInstanceId",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidInstanceId", httpResponseCode: 404 }),
+) {}
+export class InvalidInstanceInformationFilterValue extends S.TaggedErrorClass<InvalidInstanceInformationFilterValue>()(
+  "InvalidInstanceInformationFilterValue",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "InvalidInstanceInformationFilterValue",
+    httpResponseCode: 400,
+  }),
+) {}
+export class InvalidInstancePropertyFilterValue extends S.TaggedErrorClass<InvalidInstancePropertyFilterValue>()(
+  "InvalidInstancePropertyFilterValue",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "InvalidInstancePropertyFilterValue",
+    httpResponseCode: 400,
+  }),
+) {}
+export class InvalidInventoryGroupException extends S.TaggedErrorClass<InvalidInventoryGroupException>()(
+  "InvalidInventoryGroupException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidInventoryGroup", httpResponseCode: 400 }),
+) {}
+export class InvalidInventoryItemContextException extends S.TaggedErrorClass<InvalidInventoryItemContextException>()(
+  "InvalidInventoryItemContextException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "InvalidInventoryItemContext",
+    httpResponseCode: 400,
+  }),
+) {}
+export class InvalidInventoryRequestException extends S.TaggedErrorClass<InvalidInventoryRequestException>()(
+  "InvalidInventoryRequestException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidInventoryRequest", httpResponseCode: 400 }),
+) {}
+export class InvalidItemContentException extends S.TaggedErrorClass<InvalidItemContentException>()(
+  "InvalidItemContentException",
+  { TypeName: S.optional(S.String), Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidItemContent", httpResponseCode: 400 }),
+) {}
+export class InvalidKeyId extends S.TaggedErrorClass<InvalidKeyId>()(
+  "InvalidKeyId",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidKeyId", httpResponseCode: 400 }),
+) {}
+export class InvalidNextToken extends S.TaggedErrorClass<InvalidNextToken>()(
+  "InvalidNextToken",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidNextToken", httpResponseCode: 400 }),
+) {}
+export class InvalidNotificationConfig extends S.TaggedErrorClass<InvalidNotificationConfig>()(
+  "InvalidNotificationConfig",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidNotificationConfig", httpResponseCode: 400 }),
+) {}
+export class InvalidOptionException extends S.TaggedErrorClass<InvalidOptionException>()(
+  "InvalidOptionException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidOption", httpResponseCode: 400 }),
+) {}
+export class InvalidOutputFolder extends S.TaggedErrorClass<InvalidOutputFolder>()(
+  "InvalidOutputFolder",
+  {},
+  T.AwsQueryError({ code: "InvalidOutputFolder", httpResponseCode: 400 }),
+) {}
+export class InvalidOutputLocation extends S.TaggedErrorClass<InvalidOutputLocation>()(
+  "InvalidOutputLocation",
+  {},
+  T.AwsQueryError({ code: "InvalidOutputLocation", httpResponseCode: 400 }),
+) {}
+export class InvalidParameters extends S.TaggedErrorClass<InvalidParameters>()(
+  "InvalidParameters",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidParameters", httpResponseCode: 400 }),
+) {}
+export class InvalidPermissionType extends S.TaggedErrorClass<InvalidPermissionType>()(
+  "InvalidPermissionType",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidPermissionType", httpResponseCode: 400 }),
+) {}
+export class InvalidPluginName extends S.TaggedErrorClass<InvalidPluginName>()(
+  "InvalidPluginName",
+  {},
+  T.AwsQueryError({ code: "InvalidPluginName", httpResponseCode: 404 }),
+) {}
+export class InvalidPolicyAttributeException extends S.TaggedErrorClass<InvalidPolicyAttributeException>()(
+  "InvalidPolicyAttributeException",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "InvalidPolicyAttributeException",
+    httpResponseCode: 400,
+  }),
+) {}
+export class InvalidPolicyTypeException extends S.TaggedErrorClass<InvalidPolicyTypeException>()(
+  "InvalidPolicyTypeException",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "InvalidPolicyTypeException",
+    httpResponseCode: 400,
+  }),
+) {}
+export class InvalidResourceId extends S.TaggedErrorClass<InvalidResourceId>()(
+  "InvalidResourceId",
+  {},
+  T.AwsQueryError({ code: "InvalidResourceId", httpResponseCode: 400 }),
+) {}
+export class InvalidResourceType extends S.TaggedErrorClass<InvalidResourceType>()(
+  "InvalidResourceType",
+  {},
+  T.AwsQueryError({ code: "InvalidResourceType", httpResponseCode: 400 }),
+) {}
+export class InvalidResultAttributeException extends S.TaggedErrorClass<InvalidResultAttributeException>()(
+  "InvalidResultAttributeException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidResultAttribute", httpResponseCode: 400 }),
+) {}
+export class InvalidRole extends S.TaggedErrorClass<InvalidRole>()(
+  "InvalidRole",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidRole", httpResponseCode: 400 }),
+) {}
+export class InvalidSchedule extends S.TaggedErrorClass<InvalidSchedule>()(
+  "InvalidSchedule",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidSchedule", httpResponseCode: 400 }),
+) {}
+export class InvalidTag extends S.TaggedErrorClass<InvalidTag>()(
+  "InvalidTag",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidTag", httpResponseCode: 400 }),
+) {}
+export class InvalidTarget extends S.TaggedErrorClass<InvalidTarget>()(
+  "InvalidTarget",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidTarget", httpResponseCode: 400 }),
+) {}
+export class InvalidTargetMaps extends S.TaggedErrorClass<InvalidTargetMaps>()(
+  "InvalidTargetMaps",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidTargetMaps", httpResponseCode: 400 }),
+) {}
+export class InvalidTypeNameException extends S.TaggedErrorClass<InvalidTypeNameException>()(
+  "InvalidTypeNameException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidTypeName", httpResponseCode: 400 }),
+) {}
+export class InvalidUpdate extends S.TaggedErrorClass<InvalidUpdate>()(
+  "InvalidUpdate",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "InvalidUpdate", httpResponseCode: 400 }),
+) {}
+export class InvocationDoesNotExist extends S.TaggedErrorClass<InvocationDoesNotExist>()(
+  "InvocationDoesNotExist",
+  {},
+  T.AwsQueryError({ code: "InvocationDoesNotExist", httpResponseCode: 400 }),
+) {}
+export class ItemContentMismatchException extends S.TaggedErrorClass<ItemContentMismatchException>()(
+  "ItemContentMismatchException",
+  { TypeName: S.optional(S.String), Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "ItemContentMismatch", httpResponseCode: 400 }),
+) {}
+export class ItemSizeLimitExceededException extends S.TaggedErrorClass<ItemSizeLimitExceededException>()(
+  "ItemSizeLimitExceededException",
+  { TypeName: S.optional(S.String), Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "ItemSizeLimitExceeded", httpResponseCode: 400 }),
+) {}
+export class MalformedResourcePolicyDocumentException extends S.TaggedErrorClass<MalformedResourcePolicyDocumentException>()(
+  "MalformedResourcePolicyDocumentException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "MalformedResourcePolicyDocumentException",
+    httpResponseCode: 400,
+  }),
+) {}
+export class MaxDocumentSizeExceeded extends S.TaggedErrorClass<MaxDocumentSizeExceeded>()(
+  "MaxDocumentSizeExceeded",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "MaxDocumentSizeExceeded", httpResponseCode: 400 }),
+) {}
+export class NoLongerSupportedException extends S.TaggedErrorClass<NoLongerSupportedException>()(
+  "NoLongerSupportedException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "NoLongerSupported", httpResponseCode: 400 }),
+) {}
+export class OpsItemAccessDeniedException extends S.TaggedErrorClass<OpsItemAccessDeniedException>()(
+  "OpsItemAccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "OpsItemAccessDeniedException",
+    httpResponseCode: 403,
+  }),
+).pipe(C.withAuthError) {}
+export class OpsItemAlreadyExistsException extends S.TaggedErrorClass<OpsItemAlreadyExistsException>()(
+  "OpsItemAlreadyExistsException",
+  { Message: S.optional(S.String), OpsItemId: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "OpsItemAlreadyExistsException",
+    httpResponseCode: 400,
+  }),
+).pipe(C.withAlreadyExistsError) {}
+export class OpsItemConflictException extends S.TaggedErrorClass<OpsItemConflictException>()(
+  "OpsItemConflictException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "OpsItemConflictException", httpResponseCode: 409 }),
+) {}
+export class OpsItemInvalidParameterException extends S.TaggedErrorClass<OpsItemInvalidParameterException>()(
+  "OpsItemInvalidParameterException",
+  {
+    ParameterNames: S.optional(
+      S.suspend(() => OpsItemParameterNamesList).annotate({
+        identifier: "OpsItemParameterNamesList",
+      }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.AwsQueryError({
+    code: "OpsItemInvalidParameterException",
+    httpResponseCode: 400,
+  }),
+) {}
+export class OpsItemLimitExceededException extends S.TaggedErrorClass<OpsItemLimitExceededException>()(
+  "OpsItemLimitExceededException",
+  {
+    ResourceTypes: S.optional(
+      S.suspend(() => OpsItemParameterNamesList).annotate({
+        identifier: "OpsItemParameterNamesList",
+      }),
+    ),
+    Limit: S.optional(S.Number),
+    LimitType: S.optional(S.String),
+    Message: S.optional(S.String),
+  },
+  T.AwsQueryError({
+    code: "OpsItemLimitExceededException",
+    httpResponseCode: 400,
+  }),
+) {}
+export class OpsItemNotFoundException extends S.TaggedErrorClass<OpsItemNotFoundException>()(
+  "OpsItemNotFoundException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "OpsItemNotFoundException", httpResponseCode: 400 }),
+) {}
+export class OpsItemRelatedItemAlreadyExistsException extends S.TaggedErrorClass<OpsItemRelatedItemAlreadyExistsException>()(
+  "OpsItemRelatedItemAlreadyExistsException",
+  {
+    Message: S.optional(S.String),
+    ResourceUri: S.optional(S.String),
+    OpsItemId: S.optional(S.String),
+  },
+  T.AwsQueryError({
+    code: "OpsItemRelatedItemAlreadyExistsException",
+    httpResponseCode: 400,
+  }),
+).pipe(C.withAlreadyExistsError) {}
+export class OpsItemRelatedItemAssociationNotFoundException extends S.TaggedErrorClass<OpsItemRelatedItemAssociationNotFoundException>()(
+  "OpsItemRelatedItemAssociationNotFoundException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "OpsItemRelatedItemAssociationNotFoundException",
+    httpResponseCode: 400,
+  }),
+) {}
+export class OpsMetadataAlreadyExistsException extends S.TaggedErrorClass<OpsMetadataAlreadyExistsException>()(
+  "OpsMetadataAlreadyExistsException",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "OpsMetadataAlreadyExistsException",
+    httpResponseCode: 400,
+  }),
+).pipe(C.withAlreadyExistsError) {}
+export class OpsMetadataInvalidArgumentException extends S.TaggedErrorClass<OpsMetadataInvalidArgumentException>()(
+  "OpsMetadataInvalidArgumentException",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "OpsMetadataInvalidArgumentException",
+    httpResponseCode: 400,
+  }),
+) {}
+export class OpsMetadataKeyLimitExceededException extends S.TaggedErrorClass<OpsMetadataKeyLimitExceededException>()(
+  "OpsMetadataKeyLimitExceededException",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "OpsMetadataKeyLimitExceededException",
+    httpResponseCode: 429,
+  }),
+) {}
+export class OpsMetadataLimitExceededException extends S.TaggedErrorClass<OpsMetadataLimitExceededException>()(
+  "OpsMetadataLimitExceededException",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "OpsMetadataLimitExceededException",
+    httpResponseCode: 429,
+  }),
+) {}
+export class OpsMetadataNotFoundException extends S.TaggedErrorClass<OpsMetadataNotFoundException>()(
+  "OpsMetadataNotFoundException",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "OpsMetadataNotFoundException",
+    httpResponseCode: 404,
+  }),
+) {}
+export class OpsMetadataTooManyUpdatesException extends S.TaggedErrorClass<OpsMetadataTooManyUpdatesException>()(
+  "OpsMetadataTooManyUpdatesException",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "OpsMetadataTooManyUpdatesException",
+    httpResponseCode: 429,
+  }),
+) {}
+export class ParameterAlreadyExists extends S.TaggedErrorClass<ParameterAlreadyExists>()(
+  "ParameterAlreadyExists",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({ code: "ParameterAlreadyExists", httpResponseCode: 400 }),
+).pipe(C.withAlreadyExistsError) {}
+export class ParameterLimitExceeded extends S.TaggedErrorClass<ParameterLimitExceeded>()(
+  "ParameterLimitExceeded",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({ code: "ParameterLimitExceeded", httpResponseCode: 429 }),
+).pipe(C.withThrottlingError) {}
+export class ParameterMaxVersionLimitExceeded extends S.TaggedErrorClass<ParameterMaxVersionLimitExceeded>()(
+  "ParameterMaxVersionLimitExceeded",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "ParameterMaxVersionLimitExceeded",
+    httpResponseCode: 400,
+  }),
+).pipe(C.withThrottlingError) {}
+export class ParameterNotFound extends S.TaggedErrorClass<ParameterNotFound>()(
+  "ParameterNotFound",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({ code: "ParameterNotFound", httpResponseCode: 404 }),
+) {}
+export class ParameterPatternMismatchException extends S.TaggedErrorClass<ParameterPatternMismatchException>()(
+  "ParameterPatternMismatchException",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "ParameterPatternMismatchException",
+    httpResponseCode: 400,
+  }),
+) {}
+export class ParameterVersionLabelLimitExceeded extends S.TaggedErrorClass<ParameterVersionLabelLimitExceeded>()(
+  "ParameterVersionLabelLimitExceeded",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "ParameterVersionLabelLimitExceeded",
+    httpResponseCode: 400,
+  }),
+).pipe(C.withThrottlingError) {}
+export class ParameterVersionNotFound extends S.TaggedErrorClass<ParameterVersionNotFound>()(
+  "ParameterVersionNotFound",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({ code: "ParameterVersionNotFound", httpResponseCode: 400 }),
+) {}
+export class PoliciesLimitExceededException extends S.TaggedErrorClass<PoliciesLimitExceededException>()(
+  "PoliciesLimitExceededException",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "PoliciesLimitExceededException",
+    httpResponseCode: 400,
+  }),
+) {}
+export class ResourceDataSyncAlreadyExistsException extends S.TaggedErrorClass<ResourceDataSyncAlreadyExistsException>()(
+  "ResourceDataSyncAlreadyExistsException",
+  { SyncName: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "ResourceDataSyncAlreadyExists",
+    httpResponseCode: 400,
+  }),
+).pipe(C.withAlreadyExistsError) {}
+export class ResourceDataSyncConflictException extends S.TaggedErrorClass<ResourceDataSyncConflictException>()(
+  "ResourceDataSyncConflictException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "ResourceDataSyncConflictException",
+    httpResponseCode: 409,
+  }),
+) {}
+export class ResourceDataSyncCountExceededException extends S.TaggedErrorClass<ResourceDataSyncCountExceededException>()(
+  "ResourceDataSyncCountExceededException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "ResourceDataSyncCountExceeded",
+    httpResponseCode: 400,
+  }),
+) {}
+export class ResourceDataSyncInvalidConfigurationException extends S.TaggedErrorClass<ResourceDataSyncInvalidConfigurationException>()(
+  "ResourceDataSyncInvalidConfigurationException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "ResourceDataSyncInvalidConfiguration",
+    httpResponseCode: 400,
+  }),
+) {}
+export class ResourceDataSyncNotFoundException extends S.TaggedErrorClass<ResourceDataSyncNotFoundException>()(
+  "ResourceDataSyncNotFoundException",
+  {
+    SyncName: S.optional(S.String),
+    SyncType: S.optional(S.String),
+    Message: S.optional(S.String),
+  },
+  T.AwsQueryError({ code: "ResourceDataSyncNotFound", httpResponseCode: 404 }),
+) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "ResourceInUseException", httpResponseCode: 400 }),
+) {}
+export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
+  "ResourceLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "ResourceLimitExceededException",
+    httpResponseCode: 400,
+  }),
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "ResourceNotFoundException", httpResponseCode: 404 }),
+) {}
+export class ResourcePolicyConflictException extends S.TaggedErrorClass<ResourcePolicyConflictException>()(
+  "ResourcePolicyConflictException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "ResourcePolicyConflictException",
+    httpResponseCode: 400,
+  }),
+) {}
+export class ResourcePolicyInvalidParameterException extends S.TaggedErrorClass<ResourcePolicyInvalidParameterException>()(
+  "ResourcePolicyInvalidParameterException",
+  {
+    ParameterNames: S.optional(
+      S.suspend(() => ResourcePolicyParameterNamesList).annotate({
+        identifier: "ResourcePolicyParameterNamesList",
+      }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.AwsQueryError({
+    code: "ResourcePolicyInvalidParameterException",
+    httpResponseCode: 400,
+  }),
+) {}
+export class ResourcePolicyLimitExceededException extends S.TaggedErrorClass<ResourcePolicyLimitExceededException>()(
+  "ResourcePolicyLimitExceededException",
+  {
+    Limit: S.optional(S.Number),
+    LimitType: S.optional(S.String),
+    Message: S.optional(S.String),
+  },
+  T.AwsQueryError({
+    code: "ResourcePolicyLimitExceededException",
+    httpResponseCode: 400,
+  }),
+) {}
+export class ResourcePolicyNotFoundException extends S.TaggedErrorClass<ResourcePolicyNotFoundException>()(
+  "ResourcePolicyNotFoundException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "ResourcePolicyNotFoundException",
+    httpResponseCode: 404,
+  }),
+) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    Message: S.String,
+    ResourceId: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+    QuotaCode: S.String,
+    ServiceCode: S.String,
+  },
+) {}
+export class ServiceSettingNotFound extends S.TaggedErrorClass<ServiceSettingNotFound>()(
+  "ServiceSettingNotFound",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "ServiceSettingNotFound", httpResponseCode: 400 }),
+) {}
+export class StatusUnchanged extends S.TaggedErrorClass<StatusUnchanged>()(
+  "StatusUnchanged",
+  {},
+  T.AwsQueryError({ code: "StatusUnchanged", httpResponseCode: 400 }),
+) {}
+export class SubTypeCountLimitExceededException extends S.TaggedErrorClass<SubTypeCountLimitExceededException>()(
+  "SubTypeCountLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "SubTypeCountLimitExceeded", httpResponseCode: 400 }),
+) {}
+export class TargetInUseException extends S.TaggedErrorClass<TargetInUseException>()(
+  "TargetInUseException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "TargetInUseException", httpResponseCode: 400 }),
+) {}
+export class TargetNotConnected extends S.TaggedErrorClass<TargetNotConnected>()(
+  "TargetNotConnected",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "TargetNotConnected", httpResponseCode: 430 }),
+) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    Message: S.String,
+    QuotaCode: S.optional(S.String),
+    ServiceCode: S.optional(S.String),
+  },
+) {}
+export class TooManyTagsError extends S.TaggedErrorClass<TooManyTagsError>()(
+  "TooManyTagsError",
+  {},
+  T.AwsQueryError({ code: "TooManyTagsError", httpResponseCode: 400 }),
+) {}
+export class TooManyUpdates extends S.TaggedErrorClass<TooManyUpdates>()(
+  "TooManyUpdates",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "TooManyUpdates", httpResponseCode: 429 }),
+) {}
+export class TotalSizeLimitExceededException extends S.TaggedErrorClass<TotalSizeLimitExceededException>()(
+  "TotalSizeLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "TotalSizeLimitExceeded", httpResponseCode: 400 }),
+) {}
+export class UnsupportedCalendarException extends S.TaggedErrorClass<UnsupportedCalendarException>()(
+  "UnsupportedCalendarException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "UnsupportedCalendarException",
+    httpResponseCode: 400,
+  }),
+) {}
+export class UnsupportedFeatureRequiredException extends S.TaggedErrorClass<UnsupportedFeatureRequiredException>()(
+  "UnsupportedFeatureRequiredException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "UnsupportedFeatureRequiredException",
+    httpResponseCode: 400,
+  }),
+) {}
+export class UnsupportedInventoryItemContextException extends S.TaggedErrorClass<UnsupportedInventoryItemContextException>()(
+  "UnsupportedInventoryItemContextException",
+  { TypeName: S.optional(S.String), Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "UnsupportedInventoryItemContext",
+    httpResponseCode: 400,
+  }),
+) {}
+export class UnsupportedInventorySchemaVersionException extends S.TaggedErrorClass<UnsupportedInventorySchemaVersionException>()(
+  "UnsupportedInventorySchemaVersionException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "UnsupportedInventorySchemaVersion",
+    httpResponseCode: 400,
+  }),
+) {}
+export class UnsupportedOperatingSystem extends S.TaggedErrorClass<UnsupportedOperatingSystem>()(
+  "UnsupportedOperatingSystem",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({
+    code: "UnsupportedOperatingSystem",
+    httpResponseCode: 400,
+  }),
+) {}
+export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
+  "UnsupportedOperationException",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "UnsupportedOperation", httpResponseCode: 400 }),
+) {}
+export class UnsupportedParameterType extends S.TaggedErrorClass<UnsupportedParameterType>()(
+  "UnsupportedParameterType",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({ code: "UnsupportedParameterType", httpResponseCode: 400 }),
+) {}
+export class UnsupportedPlatformType extends S.TaggedErrorClass<UnsupportedPlatformType>()(
+  "UnsupportedPlatformType",
+  { Message: S.optional(S.String) },
+  T.AwsQueryError({ code: "UnsupportedPlatformType", httpResponseCode: 400 }),
+) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String), ReasonCode: S.optional(S.String) },
+  T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
+) {}
 export type ResourceTypeForTagging =
   | "Document"
   | "ManagedInstance"
@@ -498,6 +1014,10 @@ export type ResourceTypeForTagging =
   | "Association"
   | (string & {});
 export const ResourceTypeForTagging = /*@__PURE__*/ S.String;
+
+export type ResourceId = string;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -537,44 +1057,47 @@ export const AddTagsToResourceResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddTagsToResourceResult",
 }) as any as S.Schema<AddTagsToResourceResult>;
+export type OpsItemId = string;
+export type OpsItemRelatedItemAssociationType = string;
+export type OpsItemRelatedItemAssociationResourceType = string;
+export type OpsItemRelatedItemAssociationResourceUri = string;
 export interface AssociateOpsItemRelatedItemRequest {
   OpsItemId: string;
   AssociationType: string;
   ResourceType: string;
   ResourceUri: string;
 }
-export const AssociateOpsItemRelatedItemRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      OpsItemId: S.String,
-      AssociationType: S.String,
-      ResourceType: S.String,
-      ResourceUri: S.String,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const AssociateOpsItemRelatedItemRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OpsItemId: S.String,
+    AssociationType: S.String,
+    ResourceType: S.String,
+    ResourceUri: S.String,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "AssociateOpsItemRelatedItemRequest",
-  }) as any as S.Schema<AssociateOpsItemRelatedItemRequest>;
+  ),
+).annotate({
+  identifier: "AssociateOpsItemRelatedItemRequest",
+}) as any as S.Schema<AssociateOpsItemRelatedItemRequest>;
+export type OpsItemRelatedItemAssociationId = string;
 export interface AssociateOpsItemRelatedItemResponse {
   AssociationId?: string;
 }
-export const AssociateOpsItemRelatedItemResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ AssociationId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "AssociateOpsItemRelatedItemResponse",
-  }) as any as S.Schema<AssociateOpsItemRelatedItemResponse>;
-export type OpsItemParameterNamesList = string[];
-export const OpsItemParameterNamesList = /*@__PURE__*/ S.Array(S.String);
+export const AssociateOpsItemRelatedItemResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AssociationId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "AssociateOpsItemRelatedItemResponse",
+}) as any as S.Schema<AssociateOpsItemRelatedItemResponse>;
+export type CommandId = string;
+export type InstanceId = string;
 export type InstanceIdList = string[];
 export const InstanceIdList = /*@__PURE__*/ S.Array(S.String);
 export interface CancelCommandRequest {
@@ -605,11 +1128,12 @@ export const CancelCommandResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelCommandResult",
 }) as any as S.Schema<CancelCommandResult>;
+export type MaintenanceWindowExecutionId = string;
 export interface CancelMaintenanceWindowExecutionRequest {
   WindowExecutionId: string;
 }
-export const CancelMaintenanceWindowExecutionRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const CancelMaintenanceWindowExecutionRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ WindowExecutionId: S.String }).pipe(
       T.all(
         ns,
@@ -621,18 +1145,24 @@ export const CancelMaintenanceWindowExecutionRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "CancelMaintenanceWindowExecutionRequest",
-  }) as any as S.Schema<CancelMaintenanceWindowExecutionRequest>;
+).annotate({
+  identifier: "CancelMaintenanceWindowExecutionRequest",
+}) as any as S.Schema<CancelMaintenanceWindowExecutionRequest>;
 export interface CancelMaintenanceWindowExecutionResult {
   WindowExecutionId?: string;
 }
-export const CancelMaintenanceWindowExecutionResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ WindowExecutionId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "CancelMaintenanceWindowExecutionResult",
-  }) as any as S.Schema<CancelMaintenanceWindowExecutionResult>;
+export const CancelMaintenanceWindowExecutionResult = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ WindowExecutionId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "CancelMaintenanceWindowExecutionResult",
+}) as any as S.Schema<CancelMaintenanceWindowExecutionResult>;
+export type ActivationDescription = string;
+export type DefaultInstanceName = string;
+export type IamRole = string;
+export type RegistrationLimit = number;
+export type ExpirationDate = Date;
+export type RegistrationMetadataKey = string;
+export type RegistrationMetadataValue = string;
 export interface RegistrationMetadataItem {
   Key: string;
   Value: string;
@@ -678,6 +1208,8 @@ export const CreateActivationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateActivationRequest",
 }) as any as S.Schema<CreateActivationRequest>;
+export type ActivationId = string;
+export type ActivationCode = string;
 export interface CreateActivationResult {
   ActivationId?: string;
   ActivationCode?: string;
@@ -690,6 +1222,10 @@ export const CreateActivationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateActivationResult",
 }) as any as S.Schema<CreateActivationResult>;
+export type DocumentARN = string;
+export type DocumentVersion = string;
+export type ParameterName = string;
+export type ParameterValue = string;
 export type ParameterValueList = string[];
 export const ParameterValueList = /*@__PURE__*/ S.Array(S.String);
 export type Parameters = { [key: string]: string[] | undefined };
@@ -697,6 +1233,8 @@ export const Parameters = /*@__PURE__*/ S.Record(
   S.String,
   ParameterValueList.pipe(S.optional),
 );
+export type TargetKey = string;
+export type TargetValue = string;
 export type TargetValues = string[];
 export const TargetValues = /*@__PURE__*/ S.Array(S.String);
 export interface Target {
@@ -708,6 +1246,10 @@ export const Target = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
 export type Targets = Target[];
 export const Targets = /*@__PURE__*/ S.Array(Target);
+export type ScheduleExpression = string;
+export type S3Region = string;
+export type S3BucketName = string;
+export type S3KeyPrefix = string;
 export interface S3OutputLocation {
   OutputS3Region?: string;
   OutputS3BucketName?: string;
@@ -725,12 +1267,15 @@ export const S3OutputLocation = /*@__PURE__*/ S.suspend(() =>
 export interface InstanceAssociationOutputLocation {
   S3Location?: S3OutputLocation;
 }
-export const InstanceAssociationOutputLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ S3Location: S.optional(S3OutputLocation) }),
-  ).annotate({
-    identifier: "InstanceAssociationOutputLocation",
-  }) as any as S.Schema<InstanceAssociationOutputLocation>;
+export const InstanceAssociationOutputLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ S3Location: S.optional(S3OutputLocation) }),
+).annotate({
+  identifier: "InstanceAssociationOutputLocation",
+}) as any as S.Schema<InstanceAssociationOutputLocation>;
+export type AssociationName = string;
+export type AutomationTargetParameterName = string;
+export type MaxErrors = string;
+export type MaxConcurrency = string;
 export type AssociationComplianceSeverity =
   | "CRITICAL"
   | "HIGH"
@@ -739,14 +1284,22 @@ export type AssociationComplianceSeverity =
   | "UNSPECIFIED"
   | (string & {});
 export const AssociationComplianceSeverity = /*@__PURE__*/ S.String;
+
 export type AssociationSyncCompliance = "AUTO" | "MANUAL" | (string & {});
 export const AssociationSyncCompliance = /*@__PURE__*/ S.String;
+
+export type ApplyOnlyAtCronInterval = boolean;
+export type CalendarNameOrARN = string;
 export type CalendarNameOrARNList = string[];
 export const CalendarNameOrARNList = /*@__PURE__*/ S.Array(S.String);
+export type Account = string;
 export type Accounts = string[];
 export const Accounts = /*@__PURE__*/ S.Array(S.String);
+export type Region = string;
 export type Regions = string[];
 export const Regions = /*@__PURE__*/ S.Array(S.String);
+export type ExecutionRoleName = string;
+export type AlarmName = string;
 export interface Alarm {
   Name: string;
 }
@@ -767,6 +1320,7 @@ export const AlarmConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AlarmConfiguration",
 }) as any as S.Schema<AlarmConfiguration>;
+export type ExcludeAccount = string;
 export type ExcludeAccounts = string[];
 export const ExcludeAccounts = /*@__PURE__*/ S.Array(S.String);
 export interface TargetLocation {
@@ -799,6 +1353,10 @@ export const TargetLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TargetLocation" }) as any as S.Schema<TargetLocation>;
 export type TargetLocations = TargetLocation[];
 export const TargetLocations = /*@__PURE__*/ S.Array(TargetLocation);
+export type ScheduleOffset = number;
+export type Duration = number;
+export type TargetMapKey = string;
+export type TargetMapValue = string;
 export type TargetMapValueList = string[];
 export const TargetMapValueList = /*@__PURE__*/ S.Array(S.String);
 export type TargetMap = { [key: string]: string[] | undefined };
@@ -808,6 +1366,7 @@ export const TargetMap = /*@__PURE__*/ S.Record(
 );
 export type TargetMaps = { [key: string]: string[] | undefined }[];
 export const TargetMaps = /*@__PURE__*/ S.Array(TargetMap);
+export type AssociationDispatchAssumeRoleArn = string;
 export interface CreateAssociationRequest {
   Name: string;
   DocumentVersion?: string;
@@ -870,12 +1429,16 @@ export const CreateAssociationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAssociationRequest",
 }) as any as S.Schema<CreateAssociationRequest>;
+export type AssociationVersion = string;
 export type AssociationStatusName =
   | "Pending"
   | "Success"
   | "Failed"
   | (string & {});
 export const AssociationStatusName = /*@__PURE__*/ S.String;
+
+export type StatusMessage = string;
+export type StatusAdditionalInfo = string;
 export interface AssociationStatus {
   Date: Date;
   Name: AssociationStatusName;
@@ -892,11 +1455,15 @@ export const AssociationStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociationStatus",
 }) as any as S.Schema<AssociationStatus>;
+export type StatusName = string;
+export type InstanceCount = number;
 export type AssociationStatusAggregatedCount = {
   [key: string]: number | undefined;
 };
-export const AssociationStatusAggregatedCount =
-  /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const AssociationStatusAggregatedCount = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Number.pipe(S.optional),
+);
 export interface AssociationOverview {
   Status?: string;
   DetailedStatus?: string;
@@ -913,8 +1480,10 @@ export const AssociationOverview = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociationOverview",
 }) as any as S.Schema<AssociationOverview>;
+export type AssociationId = string;
 export type ExternalAlarmState = "UNKNOWN" | "ALARM" | (string & {});
 export const ExternalAlarmState = /*@__PURE__*/ S.String;
+
 export interface AlarmStateInformation {
   Name: string;
   State: ExternalAlarmState;
@@ -1006,9 +1575,9 @@ export interface CreateAssociationResult {
   AssociationDescription?: AssociationDescription;
 }
 export const CreateAssociationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AssociationDescription: S.optional(AssociationDescription),
-  }).pipe(ns),
+  S.Struct({ AssociationDescription: S.optional(AssociationDescription) }).pipe(
+    ns,
+  ),
 ).annotate({
   identifier: "CreateAssociationResult",
 }) as any as S.Schema<CreateAssociationResult>;
@@ -1034,72 +1603,71 @@ export interface CreateAssociationBatchRequestEntry {
   TargetMaps?: { [key: string]: string[] | undefined }[];
   AlarmConfiguration?: AlarmConfiguration;
 }
-export const CreateAssociationBatchRequestEntry =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.String,
-      InstanceId: S.optional(S.String),
-      Parameters: S.optional(Parameters),
-      AutomationTargetParameterName: S.optional(S.String),
-      DocumentVersion: S.optional(S.String),
-      Targets: S.optional(Targets),
-      ScheduleExpression: S.optional(S.String),
-      OutputLocation: S.optional(InstanceAssociationOutputLocation),
-      AssociationName: S.optional(S.String),
-      MaxErrors: S.optional(S.String),
-      MaxConcurrency: S.optional(S.String),
-      ComplianceSeverity: S.optional(AssociationComplianceSeverity),
-      SyncCompliance: S.optional(AssociationSyncCompliance),
-      ApplyOnlyAtCronInterval: S.optional(S.Boolean),
-      CalendarNames: S.optional(CalendarNameOrARNList),
-      TargetLocations: S.optional(TargetLocations),
-      ScheduleOffset: S.optional(S.Number),
-      Duration: S.optional(S.Number),
-      TargetMaps: S.optional(TargetMaps),
-      AlarmConfiguration: S.optional(AlarmConfiguration),
-    }),
-  ).annotate({
-    identifier: "CreateAssociationBatchRequestEntry",
-  }) as any as S.Schema<CreateAssociationBatchRequestEntry>;
+export const CreateAssociationBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    InstanceId: S.optional(S.String),
+    Parameters: S.optional(Parameters),
+    AutomationTargetParameterName: S.optional(S.String),
+    DocumentVersion: S.optional(S.String),
+    Targets: S.optional(Targets),
+    ScheduleExpression: S.optional(S.String),
+    OutputLocation: S.optional(InstanceAssociationOutputLocation),
+    AssociationName: S.optional(S.String),
+    MaxErrors: S.optional(S.String),
+    MaxConcurrency: S.optional(S.String),
+    ComplianceSeverity: S.optional(AssociationComplianceSeverity),
+    SyncCompliance: S.optional(AssociationSyncCompliance),
+    ApplyOnlyAtCronInterval: S.optional(S.Boolean),
+    CalendarNames: S.optional(CalendarNameOrARNList),
+    TargetLocations: S.optional(TargetLocations),
+    ScheduleOffset: S.optional(S.Number),
+    Duration: S.optional(S.Number),
+    TargetMaps: S.optional(TargetMaps),
+    AlarmConfiguration: S.optional(AlarmConfiguration),
+  }),
+).annotate({
+  identifier: "CreateAssociationBatchRequestEntry",
+}) as any as S.Schema<CreateAssociationBatchRequestEntry>;
 export type CreateAssociationBatchRequestEntries =
   CreateAssociationBatchRequestEntry[];
-export const CreateAssociationBatchRequestEntries =
-  /*@__PURE__*/ S.Array(
-    CreateAssociationBatchRequestEntry.pipe(T.XmlName("entries")).annotate({
-      identifier: "CreateAssociationBatchRequestEntry",
-    }),
-  );
+export const CreateAssociationBatchRequestEntries = /*@__PURE__*/ S.Array(
+  CreateAssociationBatchRequestEntry.pipe(T.XmlName("entries")).annotate({
+    identifier: "CreateAssociationBatchRequestEntry",
+  }),
+);
 export interface CreateAssociationBatchRequest {
   Entries: CreateAssociationBatchRequestEntry[];
   AssociationDispatchAssumeRole?: string;
 }
-export const CreateAssociationBatchRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Entries: CreateAssociationBatchRequestEntries,
-      AssociationDispatchAssumeRole: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateAssociationBatchRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Entries: CreateAssociationBatchRequestEntries,
+    AssociationDispatchAssumeRole: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateAssociationBatchRequest",
-  }) as any as S.Schema<CreateAssociationBatchRequest>;
+  ),
+).annotate({
+  identifier: "CreateAssociationBatchRequest",
+}) as any as S.Schema<CreateAssociationBatchRequest>;
 export type AssociationDescriptionList = AssociationDescription[];
 export const AssociationDescriptionList = /*@__PURE__*/ S.Array(
   AssociationDescription.pipe(T.XmlName("AssociationDescription")).annotate({
     identifier: "AssociationDescription",
   }),
 );
+export type BatchErrorMessage = string;
 export type Fault = "Client" | "Server" | "Unknown" | (string & {});
 export const Fault = /*@__PURE__*/ S.String;
+
 export interface FailedCreateAssociation {
   Entry?: CreateAssociationBatchRequestEntry;
   Message?: string;
@@ -1124,15 +1692,17 @@ export interface CreateAssociationBatchResult {
   Successful?: AssociationDescription[];
   Failed?: FailedCreateAssociation[];
 }
-export const CreateAssociationBatchResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Successful: S.optional(AssociationDescriptionList),
-      Failed: S.optional(FailedCreateAssociationList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "CreateAssociationBatchResult",
-  }) as any as S.Schema<CreateAssociationBatchResult>;
+export const CreateAssociationBatchResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Successful: S.optional(AssociationDescriptionList),
+    Failed: S.optional(FailedCreateAssociationList),
+  }).pipe(ns),
+).annotate({
+  identifier: "CreateAssociationBatchResult",
+}) as any as S.Schema<CreateAssociationBatchResult>;
+export type DocumentContent = string;
+export type RequireType = string;
+export type DocumentVersionName = string;
 export interface DocumentRequires {
   Name: string;
   Version?: string;
@@ -1157,8 +1727,11 @@ export type AttachmentsSourceKey =
   | "AttachmentReference"
   | (string & {});
 export const AttachmentsSourceKey = /*@__PURE__*/ S.String;
+
+export type AttachmentsSourceValue = string;
 export type AttachmentsSourceValues = string[];
 export const AttachmentsSourceValues = /*@__PURE__*/ S.Array(S.String);
+export type AttachmentIdentifier = string;
 export interface AttachmentsSource {
   Key?: AttachmentsSourceKey;
   Values?: string[];
@@ -1175,6 +1748,8 @@ export const AttachmentsSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AttachmentsSource>;
 export type AttachmentsSourceList = AttachmentsSource[];
 export const AttachmentsSourceList = /*@__PURE__*/ S.Array(AttachmentsSource);
+export type DocumentName = string;
+export type DocumentDisplayName = string;
 export type DocumentType =
   | "Command"
   | "Policy"
@@ -1195,8 +1770,11 @@ export type DocumentType =
   | "AutoApprovalPolicy"
   | (string & {});
 export const DocumentType = /*@__PURE__*/ S.String;
+
 export type DocumentFormat = "YAML" | "JSON" | "TEXT" | (string & {});
 export const DocumentFormat = /*@__PURE__*/ S.String;
+
+export type TargetType = string;
 export interface CreateDocumentRequest {
   Content: string;
   Requires?: DocumentRequires[];
@@ -1235,8 +1813,12 @@ export const CreateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDocumentRequest",
 }) as any as S.Schema<CreateDocumentRequest>;
+export type DocumentSha1 = string;
+export type DocumentHash = string;
 export type DocumentHashType = "Sha256" | "Sha1" | (string & {});
 export const DocumentHashType = /*@__PURE__*/ S.String;
+
+export type DocumentOwner = string;
 export type DocumentStatus =
   | "Creating"
   | "Active"
@@ -1245,8 +1827,15 @@ export type DocumentStatus =
   | "Failed"
   | (string & {});
 export const DocumentStatus = /*@__PURE__*/ S.String;
+
+export type DocumentStatusInformation = string;
+export type DescriptionInDocument = string;
+export type DocumentParameterName = string;
 export type DocumentParameterType = "String" | "StringList" | (string & {});
 export const DocumentParameterType = /*@__PURE__*/ S.String;
+
+export type DocumentParameterDescrption = string;
+export type DocumentParameterDefaultValue = string;
 export interface DocumentParameter {
   Name?: string;
   Type?: DocumentParameterType;
@@ -1271,10 +1860,13 @@ export const DocumentParameterList = /*@__PURE__*/ S.Array(
 );
 export type PlatformType = "Windows" | "Linux" | "MacOS" | (string & {});
 export const PlatformType = /*@__PURE__*/ S.String;
+
 export type PlatformTypeList = PlatformType[];
 export const PlatformTypeList = /*@__PURE__*/ S.Array(
   PlatformType.pipe(T.XmlName("PlatformType")),
 );
+export type DocumentSchemaVersion = string;
+export type AttachmentName = string;
 export interface AttachmentInformation {
   Name?: string;
 }
@@ -1289,6 +1881,7 @@ export const AttachmentInformationList = /*@__PURE__*/ S.Array(
     identifier: "AttachmentInformation",
   }),
 );
+export type DocumentAuthor = string;
 export type ReviewStatus =
   | "APPROVED"
   | "NOT_REVIEWED"
@@ -1296,6 +1889,8 @@ export type ReviewStatus =
   | "REJECTED"
   | (string & {});
 export const ReviewStatus = /*@__PURE__*/ S.String;
+
+export type Reviewer = string;
 export interface ReviewInformation {
   ReviewedTime?: Date;
   Status?: ReviewStatus;
@@ -1316,6 +1911,7 @@ export const ReviewInformationList = /*@__PURE__*/ S.Array(
     identifier: "ReviewInformation",
   }),
 );
+export type Category = string;
 export type CategoryList = string[];
 export const CategoryList = /*@__PURE__*/ S.Array(S.String);
 export type CategoryEnumList = string[];
@@ -1396,6 +1992,16 @@ export const CreateDocumentResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDocumentResult",
 }) as any as S.Schema<CreateDocumentResult>;
+export type MaintenanceWindowName = string;
+export type MaintenanceWindowDescription = string | redacted.Redacted<string>;
+export type MaintenanceWindowStringDateTime = string;
+export type MaintenanceWindowSchedule = string;
+export type MaintenanceWindowTimezone = string;
+export type MaintenanceWindowOffset = number;
+export type MaintenanceWindowDurationHours = number;
+export type MaintenanceWindowCutoff = number;
+export type MaintenanceWindowAllowUnassociatedTargets = boolean;
+export type ClientToken = string;
 export interface CreateMaintenanceWindowRequest {
   Name: string;
   Description?: string | redacted.Redacted<string>;
@@ -1410,46 +2016,50 @@ export interface CreateMaintenanceWindowRequest {
   ClientToken?: string;
   Tags?: Tag[];
 }
-export const CreateMaintenanceWindowRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.String,
-      Description: S.optional(SensitiveString),
-      StartDate: S.optional(S.String),
-      EndDate: S.optional(S.String),
-      Schedule: S.String,
-      ScheduleTimezone: S.optional(S.String),
-      ScheduleOffset: S.optional(S.Number),
-      Duration: S.Number,
-      Cutoff: S.Number,
-      AllowUnassociatedTargets: S.Boolean,
-      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      Tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateMaintenanceWindowRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    Description: S.optional(SensitiveString),
+    StartDate: S.optional(S.String),
+    EndDate: S.optional(S.String),
+    Schedule: S.String,
+    ScheduleTimezone: S.optional(S.String),
+    ScheduleOffset: S.optional(S.Number),
+    Duration: S.Number,
+    Cutoff: S.Number,
+    AllowUnassociatedTargets: S.Boolean,
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateMaintenanceWindowRequest",
-  }) as any as S.Schema<CreateMaintenanceWindowRequest>;
+  ),
+).annotate({
+  identifier: "CreateMaintenanceWindowRequest",
+}) as any as S.Schema<CreateMaintenanceWindowRequest>;
+export type MaintenanceWindowId = string;
 export interface CreateMaintenanceWindowResult {
   WindowId?: string;
 }
-export const CreateMaintenanceWindowResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ WindowId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "CreateMaintenanceWindowResult",
-  }) as any as S.Schema<CreateMaintenanceWindowResult>;
+export const CreateMaintenanceWindowResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ WindowId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "CreateMaintenanceWindowResult",
+}) as any as S.Schema<CreateMaintenanceWindowResult>;
+export type OpsItemDescription = string;
+export type OpsItemType = string;
+export type OpsItemDataKey = string;
+export type OpsItemDataValueString = string;
 export type OpsItemDataType = "SearchableString" | "String" | (string & {});
 export const OpsItemDataType = /*@__PURE__*/ S.String;
+
 export interface OpsItemDataValue {
   Value?: string;
   Type?: OpsItemDataType;
@@ -1476,6 +2086,7 @@ export const OpsItemNotification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OpsItemNotification>;
 export type OpsItemNotifications = OpsItemNotification[];
 export const OpsItemNotifications = /*@__PURE__*/ S.Array(OpsItemNotification);
+export type OpsItemPriority = number;
 export interface RelatedOpsItem {
   OpsItemId: string;
 }
@@ -1484,6 +2095,11 @@ export const RelatedOpsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RelatedOpsItem" }) as any as S.Schema<RelatedOpsItem>;
 export type RelatedOpsItems = RelatedOpsItem[];
 export const RelatedOpsItems = /*@__PURE__*/ S.Array(RelatedOpsItem);
+export type OpsItemSource = string;
+export type OpsItemTitle = string;
+export type OpsItemCategory = string;
+export type OpsItemSeverity = string;
+export type OpsItemAccountId = string;
 export interface CreateOpsItemRequest {
   Description: string;
   OpsItemType?: string;
@@ -1538,6 +2154,7 @@ export const CreateOpsItemRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateOpsItemRequest",
 }) as any as S.Schema<CreateOpsItemRequest>;
+export type OpsItemArn = string;
 export interface CreateOpsItemResponse {
   OpsItemId?: string;
   OpsItemArn?: string;
@@ -1550,6 +2167,9 @@ export const CreateOpsItemResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateOpsItemResponse",
 }) as any as S.Schema<CreateOpsItemResponse>;
+export type OpsMetadataResourceId = string;
+export type MetadataKey = string;
+export type MetadataValueString = string;
 export interface MetadataValue {
   Value?: string;
 }
@@ -1585,6 +2205,7 @@ export const CreateOpsMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateOpsMetadataRequest",
 }) as any as S.Schema<CreateOpsMetadataRequest>;
+export type OpsMetadataArn = string;
 export interface CreateOpsMetadataResult {
   OpsMetadataArn?: string;
 }
@@ -1611,6 +2232,8 @@ export type OperatingSystem =
   | "AMAZON_LINUX_2023"
   | (string & {});
 export const OperatingSystem = /*@__PURE__*/ S.String;
+
+export type BaselineName = string;
 export type PatchFilterKey =
   | "ARCH"
   | "ADVISORY_ID"
@@ -1633,6 +2256,8 @@ export type PatchFilterKey =
   | "VERSION"
   | (string & {});
 export const PatchFilterKey = /*@__PURE__*/ S.String;
+
+export type PatchFilterValue = string;
 export type PatchFilterValueList = string[];
 export const PatchFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface PatchFilter {
@@ -1661,6 +2286,9 @@ export type PatchComplianceLevel =
   | "UNSPECIFIED"
   | (string & {});
 export const PatchComplianceLevel = /*@__PURE__*/ S.String;
+
+export type ApproveAfterDays = number;
+export type PatchStringDateTime = string;
 export interface PatchRule {
   PatchFilterGroup: PatchFilterGroup;
   ComplianceLevel?: PatchComplianceLevel;
@@ -1685,12 +2313,18 @@ export interface PatchRuleGroup {
 export const PatchRuleGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PatchRules: PatchRuleList }),
 ).annotate({ identifier: "PatchRuleGroup" }) as any as S.Schema<PatchRuleGroup>;
+export type PatchId = string;
 export type PatchIdList = string[];
 export const PatchIdList = /*@__PURE__*/ S.Array(S.String);
 export type PatchAction = "ALLOW_AS_DEPENDENCY" | "BLOCK" | (string & {});
 export const PatchAction = /*@__PURE__*/ S.String;
+
+export type BaselineDescription = string;
+export type PatchSourceName = string;
+export type PatchSourceProduct = string;
 export type PatchSourceProductList = string[];
 export const PatchSourceProductList = /*@__PURE__*/ S.Array(S.String);
+export type PatchSourceConfiguration = string | redacted.Redacted<string>;
 export interface PatchSource {
   Name: string;
   Products: string[];
@@ -1710,6 +2344,7 @@ export type PatchComplianceStatus =
   | "NON_COMPLIANT"
   | (string & {});
 export const PatchComplianceStatus = /*@__PURE__*/ S.String;
+
 export interface CreatePatchBaselineRequest {
   OperatingSystem?: OperatingSystem;
   Name: string;
@@ -1756,6 +2391,7 @@ export const CreatePatchBaselineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePatchBaselineRequest",
 }) as any as S.Schema<CreatePatchBaselineRequest>;
+export type BaselineId = string;
 export interface CreatePatchBaselineResult {
   BaselineId?: string;
 }
@@ -1764,17 +2400,23 @@ export const CreatePatchBaselineResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePatchBaselineResult",
 }) as any as S.Schema<CreatePatchBaselineResult>;
+export type ResourceDataSyncName = string;
+export type ResourceDataSyncS3BucketName = string;
+export type ResourceDataSyncS3Prefix = string;
 export type ResourceDataSyncS3Format = "JsonSerDe" | (string & {});
 export const ResourceDataSyncS3Format = /*@__PURE__*/ S.String;
+
+export type ResourceDataSyncS3Region = string;
+export type ResourceDataSyncAWSKMSKeyARN = string;
+export type ResourceDataSyncDestinationDataSharingType = string;
 export interface ResourceDataSyncDestinationDataSharing {
   DestinationDataSharingType?: string;
 }
-export const ResourceDataSyncDestinationDataSharing =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DestinationDataSharingType: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ResourceDataSyncDestinationDataSharing",
-  }) as any as S.Schema<ResourceDataSyncDestinationDataSharing>;
+export const ResourceDataSyncDestinationDataSharing = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ DestinationDataSharingType: S.optional(S.String) }),
+).annotate({
+  identifier: "ResourceDataSyncDestinationDataSharing",
+}) as any as S.Schema<ResourceDataSyncDestinationDataSharing>;
 export interface ResourceDataSyncS3Destination {
   BucketName: string;
   Prefix?: string;
@@ -1783,49 +2425,53 @@ export interface ResourceDataSyncS3Destination {
   AWSKMSKeyARN?: string;
   DestinationDataSharing?: ResourceDataSyncDestinationDataSharing;
 }
-export const ResourceDataSyncS3Destination =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      BucketName: S.String,
-      Prefix: S.optional(S.String),
-      SyncFormat: ResourceDataSyncS3Format,
-      Region: S.String,
-      AWSKMSKeyARN: S.optional(S.String),
-      DestinationDataSharing: S.optional(
-        ResourceDataSyncDestinationDataSharing,
-      ),
-    }),
-  ).annotate({
-    identifier: "ResourceDataSyncS3Destination",
-  }) as any as S.Schema<ResourceDataSyncS3Destination>;
+export const ResourceDataSyncS3Destination = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BucketName: S.String,
+    Prefix: S.optional(S.String),
+    SyncFormat: ResourceDataSyncS3Format,
+    Region: S.String,
+    AWSKMSKeyARN: S.optional(S.String),
+    DestinationDataSharing: S.optional(ResourceDataSyncDestinationDataSharing),
+  }),
+).annotate({
+  identifier: "ResourceDataSyncS3Destination",
+}) as any as S.Schema<ResourceDataSyncS3Destination>;
+export type ResourceDataSyncType = string;
+export type ResourceDataSyncSourceType = string;
+export type ResourceDataSyncOrganizationSourceType = string;
+export type ResourceDataSyncOrganizationalUnitId = string;
 export interface ResourceDataSyncOrganizationalUnit {
   OrganizationalUnitId?: string;
 }
-export const ResourceDataSyncOrganizationalUnit =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ OrganizationalUnitId: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ResourceDataSyncOrganizationalUnit",
-  }) as any as S.Schema<ResourceDataSyncOrganizationalUnit>;
+export const ResourceDataSyncOrganizationalUnit = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ OrganizationalUnitId: S.optional(S.String) }),
+).annotate({
+  identifier: "ResourceDataSyncOrganizationalUnit",
+}) as any as S.Schema<ResourceDataSyncOrganizationalUnit>;
 export type ResourceDataSyncOrganizationalUnitList =
   ResourceDataSyncOrganizationalUnit[];
-export const ResourceDataSyncOrganizationalUnitList =
-  /*@__PURE__*/ S.Array(ResourceDataSyncOrganizationalUnit);
+export const ResourceDataSyncOrganizationalUnitList = /*@__PURE__*/ S.Array(
+  ResourceDataSyncOrganizationalUnit,
+);
 export interface ResourceDataSyncAwsOrganizationsSource {
   OrganizationSourceType: string;
   OrganizationalUnits?: ResourceDataSyncOrganizationalUnit[];
 }
-export const ResourceDataSyncAwsOrganizationsSource =
-  /*@__PURE__*/ S.suspend(() =>
+export const ResourceDataSyncAwsOrganizationsSource = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       OrganizationSourceType: S.String,
       OrganizationalUnits: S.optional(ResourceDataSyncOrganizationalUnitList),
     }),
-  ).annotate({
-    identifier: "ResourceDataSyncAwsOrganizationsSource",
-  }) as any as S.Schema<ResourceDataSyncAwsOrganizationsSource>;
+).annotate({
+  identifier: "ResourceDataSyncAwsOrganizationsSource",
+}) as any as S.Schema<ResourceDataSyncAwsOrganizationsSource>;
+export type ResourceDataSyncSourceRegion = string;
 export type ResourceDataSyncSourceRegionList = string[];
 export const ResourceDataSyncSourceRegionList = /*@__PURE__*/ S.Array(S.String);
+export type ResourceDataSyncIncludeFutureRegions = boolean;
+export type ResourceDataSyncEnableAllOpsDataSources = boolean;
 export interface ResourceDataSyncSource {
   SourceType: string;
   AwsOrganizationsSource?: ResourceDataSyncAwsOrganizationsSource;
@@ -1850,32 +2496,32 @@ export interface CreateResourceDataSyncRequest {
   SyncType?: string;
   SyncSource?: ResourceDataSyncSource;
 }
-export const CreateResourceDataSyncRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SyncName: S.String,
-      S3Destination: S.optional(ResourceDataSyncS3Destination),
-      SyncType: S.optional(S.String),
-      SyncSource: S.optional(ResourceDataSyncSource),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateResourceDataSyncRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SyncName: S.String,
+    S3Destination: S.optional(ResourceDataSyncS3Destination),
+    SyncType: S.optional(S.String),
+    SyncSource: S.optional(ResourceDataSyncSource),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateResourceDataSyncRequest",
-  }) as any as S.Schema<CreateResourceDataSyncRequest>;
+  ),
+).annotate({
+  identifier: "CreateResourceDataSyncRequest",
+}) as any as S.Schema<CreateResourceDataSyncRequest>;
 export interface CreateResourceDataSyncResult {}
-export const CreateResourceDataSyncResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "CreateResourceDataSyncResult",
-  }) as any as S.Schema<CreateResourceDataSyncResult>;
+export const CreateResourceDataSyncResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "CreateResourceDataSyncResult",
+}) as any as S.Schema<CreateResourceDataSyncResult>;
 export interface DeleteActivationRequest {
   ActivationId: string;
 }
@@ -1962,11 +2608,15 @@ export const DeleteDocumentResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteDocumentResult",
 }) as any as S.Schema<DeleteDocumentResult>;
+export type InventoryItemTypeName = string;
 export type InventorySchemaDeleteOption =
   | "DisableSchema"
   | "DeleteSchema"
   | (string & {});
 export const InventorySchemaDeleteOption = /*@__PURE__*/ S.String;
+
+export type DryRun = boolean;
+export type UUID = string;
 export interface DeleteInventoryRequest {
   TypeName: string;
   SchemaDeleteOption?: InventorySchemaDeleteOption;
@@ -1993,24 +2643,28 @@ export const DeleteInventoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteInventoryRequest",
 }) as any as S.Schema<DeleteInventoryRequest>;
+export type TotalCount = number;
+export type RemainingCount = number;
+export type InventoryItemSchemaVersion = string;
+export type ResourceCount = number;
 export interface InventoryDeletionSummaryItem {
   Version?: string;
   Count?: number;
   RemainingCount?: number;
 }
-export const InventoryDeletionSummaryItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Version: S.optional(S.String),
-      Count: S.optional(S.Number),
-      RemainingCount: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "InventoryDeletionSummaryItem",
-  }) as any as S.Schema<InventoryDeletionSummaryItem>;
+export const InventoryDeletionSummaryItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Version: S.optional(S.String),
+    Count: S.optional(S.Number),
+    RemainingCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "InventoryDeletionSummaryItem",
+}) as any as S.Schema<InventoryDeletionSummaryItem>;
 export type InventoryDeletionSummaryItems = InventoryDeletionSummaryItem[];
-export const InventoryDeletionSummaryItems =
-  /*@__PURE__*/ S.Array(InventoryDeletionSummaryItem);
+export const InventoryDeletionSummaryItems = /*@__PURE__*/ S.Array(
+  InventoryDeletionSummaryItem,
+);
 export interface InventoryDeletionSummary {
   TotalCount?: number;
   RemainingCount?: number;
@@ -2042,31 +2696,29 @@ export const DeleteInventoryResult = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteMaintenanceWindowRequest {
   WindowId: string;
 }
-export const DeleteMaintenanceWindowRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ WindowId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteMaintenanceWindowRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ WindowId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteMaintenanceWindowRequest",
-  }) as any as S.Schema<DeleteMaintenanceWindowRequest>;
+  ),
+).annotate({
+  identifier: "DeleteMaintenanceWindowRequest",
+}) as any as S.Schema<DeleteMaintenanceWindowRequest>;
 export interface DeleteMaintenanceWindowResult {
   WindowId?: string;
 }
-export const DeleteMaintenanceWindowResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ WindowId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "DeleteMaintenanceWindowResult",
-  }) as any as S.Schema<DeleteMaintenanceWindowResult>;
+export const DeleteMaintenanceWindowResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ WindowId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "DeleteMaintenanceWindowResult",
+}) as any as S.Schema<DeleteMaintenanceWindowResult>;
 export interface DeleteOpsItemRequest {
   OpsItemId: string;
 }
@@ -2115,6 +2767,7 @@ export const DeleteOpsMetadataResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteOpsMetadataResult",
 }) as any as S.Schema<DeleteOpsMetadataResult>;
+export type PSParameterName = string;
 export interface DeleteParameterRequest {
   Name: string;
 }
@@ -2201,83 +2854,86 @@ export interface DeleteResourceDataSyncRequest {
   SyncName: string;
   SyncType?: string;
 }
-export const DeleteResourceDataSyncRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ SyncName: S.String, SyncType: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteResourceDataSyncRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SyncName: S.String, SyncType: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteResourceDataSyncRequest",
-  }) as any as S.Schema<DeleteResourceDataSyncRequest>;
+  ),
+).annotate({
+  identifier: "DeleteResourceDataSyncRequest",
+}) as any as S.Schema<DeleteResourceDataSyncRequest>;
 export interface DeleteResourceDataSyncResult {}
-export const DeleteResourceDataSyncResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteResourceDataSyncResult",
-  }) as any as S.Schema<DeleteResourceDataSyncResult>;
+export const DeleteResourceDataSyncResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteResourceDataSyncResult",
+}) as any as S.Schema<DeleteResourceDataSyncResult>;
+export type ResourceArnString = string;
+export type PolicyId = string;
+export type PolicyHash = string;
 export interface DeleteResourcePolicyRequest {
   ResourceArn: string;
   PolicyId: string;
   PolicyHash: string;
 }
-export const DeleteResourcePolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ResourceArn: S.String,
-      PolicyId: S.String,
-      PolicyHash: S.String,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceArn: S.String,
+    PolicyId: S.String,
+    PolicyHash: S.String,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteResourcePolicyRequest",
-  }) as any as S.Schema<DeleteResourcePolicyRequest>;
+  ),
+).annotate({
+  identifier: "DeleteResourcePolicyRequest",
+}) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteResourcePolicyResponse",
-  }) as any as S.Schema<DeleteResourcePolicyResponse>;
-export type ResourcePolicyParameterNamesList = string[];
-export const ResourcePolicyParameterNamesList = /*@__PURE__*/ S.Array(S.String);
+export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteResourcePolicyResponse",
+}) as any as S.Schema<DeleteResourcePolicyResponse>;
+export type ManagedInstanceId = string;
 export interface DeregisterManagedInstanceRequest {
   InstanceId: string;
 }
-export const DeregisterManagedInstanceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ InstanceId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeregisterManagedInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ InstanceId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeregisterManagedInstanceRequest",
-  }) as any as S.Schema<DeregisterManagedInstanceRequest>;
+  ),
+).annotate({
+  identifier: "DeregisterManagedInstanceRequest",
+}) as any as S.Schema<DeregisterManagedInstanceRequest>;
 export interface DeregisterManagedInstanceResult {}
-export const DeregisterManagedInstanceResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeregisterManagedInstanceResult",
-  }) as any as S.Schema<DeregisterManagedInstanceResult>;
+export const DeregisterManagedInstanceResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeregisterManagedInstanceResult",
+}) as any as S.Schema<DeregisterManagedInstanceResult>;
+export type PatchGroup = string;
 export interface DeregisterPatchBaselineForPatchGroupRequest {
   BaselineId: string;
   PatchGroup: string;
@@ -2311,6 +2967,7 @@ export const DeregisterPatchBaselineForPatchGroupResult =
   ).annotate({
     identifier: "DeregisterPatchBaselineForPatchGroupResult",
   }) as any as S.Schema<DeregisterPatchBaselineForPatchGroupResult>;
+export type MaintenanceWindowTargetId = string;
 export interface DeregisterTargetFromMaintenanceWindowRequest {
   WindowId: string;
   WindowTargetId: string;
@@ -2349,6 +3006,7 @@ export const DeregisterTargetFromMaintenanceWindowResult =
   ).annotate({
     identifier: "DeregisterTargetFromMaintenanceWindowResult",
   }) as any as S.Schema<DeregisterTargetFromMaintenanceWindowResult>;
+export type MaintenanceWindowTaskId = string;
 export interface DeregisterTaskFromMaintenanceWindowRequest {
   WindowId: string;
   WindowTaskId: string;
@@ -2388,6 +3046,7 @@ export type DescribeActivationsFilterKeys =
   | "IamRole"
   | (string & {});
 export const DescribeActivationsFilterKeys = /*@__PURE__*/ S.String;
+
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeActivationsFilter {
@@ -2403,8 +3062,11 @@ export const DescribeActivationsFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeActivationsFilter",
 }) as any as S.Schema<DescribeActivationsFilter>;
 export type DescribeActivationsFilterList = DescribeActivationsFilter[];
-export const DescribeActivationsFilterList =
-  /*@__PURE__*/ S.Array(DescribeActivationsFilter);
+export const DescribeActivationsFilterList = /*@__PURE__*/ S.Array(
+  DescribeActivationsFilter,
+);
+export type MaxResults = number;
+export type NextToken = string;
 export interface DescribeActivationsRequest {
   Filters?: DescribeActivationsFilter[];
   MaxResults?: number;
@@ -2429,6 +3091,8 @@ export const DescribeActivationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeActivationsRequest",
 }) as any as S.Schema<DescribeActivationsRequest>;
+export type RegistrationsCount = number;
+export type CreatedDate = Date;
 export interface Activation {
   ActivationId?: string;
   Description?: string;
@@ -2499,9 +3163,9 @@ export interface DescribeAssociationResult {
   AssociationDescription?: AssociationDescription;
 }
 export const DescribeAssociationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AssociationDescription: S.optional(AssociationDescription),
-  }).pipe(ns),
+  S.Struct({ AssociationDescription: S.optional(AssociationDescription) }).pipe(
+    ns,
+  ),
 ).annotate({
   identifier: "DescribeAssociationResult",
 }) as any as S.Schema<DescribeAssociationResult>;
@@ -2511,12 +3175,15 @@ export type AssociationExecutionFilterKey =
   | "CreatedTime"
   | (string & {});
 export const AssociationExecutionFilterKey = /*@__PURE__*/ S.String;
+
+export type AssociationExecutionFilterValue = string;
 export type AssociationFilterOperatorType =
   | "EQUAL"
   | "LESS_THAN"
   | "GREATER_THAN"
   | (string & {});
 export const AssociationFilterOperatorType = /*@__PURE__*/ S.String;
+
 export interface AssociationExecutionFilter {
   Key: AssociationExecutionFilterKey;
   Value: string;
@@ -2532,20 +3199,19 @@ export const AssociationExecutionFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociationExecutionFilter",
 }) as any as S.Schema<AssociationExecutionFilter>;
 export type AssociationExecutionFilterList = AssociationExecutionFilter[];
-export const AssociationExecutionFilterList =
-  /*@__PURE__*/ S.Array(
-    AssociationExecutionFilter.pipe(
-      T.XmlName("AssociationExecutionFilter"),
-    ).annotate({ identifier: "AssociationExecutionFilter" }),
-  );
+export const AssociationExecutionFilterList = /*@__PURE__*/ S.Array(
+  AssociationExecutionFilter.pipe(
+    T.XmlName("AssociationExecutionFilter"),
+  ).annotate({ identifier: "AssociationExecutionFilter" }),
+);
 export interface DescribeAssociationExecutionsRequest {
   AssociationId: string;
   Filters?: AssociationExecutionFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeAssociationExecutionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeAssociationExecutionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       AssociationId: S.String,
       Filters: S.optional(AssociationExecutionFilterList),
@@ -2562,9 +3228,11 @@ export const DescribeAssociationExecutionsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeAssociationExecutionsRequest",
-  }) as any as S.Schema<DescribeAssociationExecutionsRequest>;
+).annotate({
+  identifier: "DescribeAssociationExecutionsRequest",
+}) as any as S.Schema<DescribeAssociationExecutionsRequest>;
+export type AssociationExecutionId = string;
+export type ResourceCountByStatus = string;
 export interface AssociationExecution {
   AssociationId?: string;
   AssociationVersion?: string;
@@ -2605,39 +3273,38 @@ export interface DescribeAssociationExecutionsResult {
   AssociationExecutions?: AssociationExecution[];
   NextToken?: string;
 }
-export const DescribeAssociationExecutionsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AssociationExecutions: S.optional(AssociationExecutionsList),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeAssociationExecutionsResult",
-  }) as any as S.Schema<DescribeAssociationExecutionsResult>;
+export const DescribeAssociationExecutionsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AssociationExecutions: S.optional(AssociationExecutionsList),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeAssociationExecutionsResult",
+}) as any as S.Schema<DescribeAssociationExecutionsResult>;
 export type AssociationExecutionTargetsFilterKey =
   | "Status"
   | "ResourceId"
   | "ResourceType"
   | (string & {});
 export const AssociationExecutionTargetsFilterKey = /*@__PURE__*/ S.String;
+
+export type AssociationExecutionTargetsFilterValue = string;
 export interface AssociationExecutionTargetsFilter {
   Key: AssociationExecutionTargetsFilterKey;
   Value: string;
 }
-export const AssociationExecutionTargetsFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Key: AssociationExecutionTargetsFilterKey, Value: S.String }),
-  ).annotate({
-    identifier: "AssociationExecutionTargetsFilter",
-  }) as any as S.Schema<AssociationExecutionTargetsFilter>;
+export const AssociationExecutionTargetsFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Key: AssociationExecutionTargetsFilterKey, Value: S.String }),
+).annotate({
+  identifier: "AssociationExecutionTargetsFilter",
+}) as any as S.Schema<AssociationExecutionTargetsFilter>;
 export type AssociationExecutionTargetsFilterList =
   AssociationExecutionTargetsFilter[];
-export const AssociationExecutionTargetsFilterList =
-  /*@__PURE__*/ S.Array(
-    AssociationExecutionTargetsFilter.pipe(
-      T.XmlName("AssociationExecutionTargetsFilter"),
-    ).annotate({ identifier: "AssociationExecutionTargetsFilter" }),
-  );
+export const AssociationExecutionTargetsFilterList = /*@__PURE__*/ S.Array(
+  AssociationExecutionTargetsFilter.pipe(
+    T.XmlName("AssociationExecutionTargetsFilter"),
+  ).annotate({ identifier: "AssociationExecutionTargetsFilter" }),
+);
 export interface DescribeAssociationExecutionTargetsRequest {
   AssociationId: string;
   ExecutionId: string;
@@ -2667,6 +3334,10 @@ export const DescribeAssociationExecutionTargetsRequest =
   ).annotate({
     identifier: "DescribeAssociationExecutionTargetsRequest",
   }) as any as S.Schema<DescribeAssociationExecutionTargetsRequest>;
+export type AssociationResourceId = string;
+export type AssociationResourceType = string;
+export type OutputSourceId = string;
+export type OutputSourceType = string;
 export interface OutputSource {
   OutputSourceId?: string;
   OutputSourceType?: string;
@@ -2706,12 +3377,11 @@ export const AssociationExecutionTarget = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociationExecutionTarget",
 }) as any as S.Schema<AssociationExecutionTarget>;
 export type AssociationExecutionTargetsList = AssociationExecutionTarget[];
-export const AssociationExecutionTargetsList =
-  /*@__PURE__*/ S.Array(
-    AssociationExecutionTarget.pipe(
-      T.XmlName("AssociationExecutionTarget"),
-    ).annotate({ identifier: "AssociationExecutionTarget" }),
-  );
+export const AssociationExecutionTargetsList = /*@__PURE__*/ S.Array(
+  AssociationExecutionTarget.pipe(
+    T.XmlName("AssociationExecutionTarget"),
+  ).annotate({ identifier: "AssociationExecutionTarget" }),
+);
 export interface DescribeAssociationExecutionTargetsResult {
   AssociationExecutionTargets?: AssociationExecutionTarget[];
   NextToken?: string;
@@ -2740,9 +3410,12 @@ export type AutomationExecutionFilterKey =
   | "OpsItemId"
   | (string & {});
 export const AutomationExecutionFilterKey = /*@__PURE__*/ S.String;
+
+export type AutomationExecutionFilterValue = string;
 export type AutomationExecutionFilterValueList = string[];
-export const AutomationExecutionFilterValueList =
-  /*@__PURE__*/ S.Array(S.String);
+export const AutomationExecutionFilterValueList = /*@__PURE__*/ S.Array(
+  S.String,
+);
 export interface AutomationExecutionFilter {
   Key: AutomationExecutionFilterKey;
   Values: string[];
@@ -2756,33 +3429,34 @@ export const AutomationExecutionFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutomationExecutionFilter",
 }) as any as S.Schema<AutomationExecutionFilter>;
 export type AutomationExecutionFilterList = AutomationExecutionFilter[];
-export const AutomationExecutionFilterList =
-  /*@__PURE__*/ S.Array(AutomationExecutionFilter);
+export const AutomationExecutionFilterList = /*@__PURE__*/ S.Array(
+  AutomationExecutionFilter,
+);
 export interface DescribeAutomationExecutionsRequest {
   Filters?: AutomationExecutionFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeAutomationExecutionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Filters: S.optional(AutomationExecutionFilterList),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeAutomationExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Filters: S.optional(AutomationExecutionFilterList),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeAutomationExecutionsRequest",
-  }) as any as S.Schema<DescribeAutomationExecutionsRequest>;
+  ),
+).annotate({
+  identifier: "DescribeAutomationExecutionsRequest",
+}) as any as S.Schema<DescribeAutomationExecutionsRequest>;
+export type AutomationExecutionId = string;
 export type AutomationExecutionStatus =
   | "Pending"
   | "InProgress"
@@ -2805,6 +3479,9 @@ export type AutomationExecutionStatus =
   | "Exited"
   | (string & {});
 export const AutomationExecutionStatus = /*@__PURE__*/ S.String;
+
+export type AutomationParameterKey = string;
+export type AutomationParameterValue = string;
 export type AutomationParameterValueList = string[];
 export const AutomationParameterValueList = /*@__PURE__*/ S.Array(S.String);
 export type AutomationParameterMap = { [key: string]: string[] | undefined };
@@ -2814,6 +3491,7 @@ export const AutomationParameterMap = /*@__PURE__*/ S.Record(
 );
 export type ExecutionMode = "Auto" | "Interactive" | (string & {});
 export const ExecutionMode = /*@__PURE__*/ S.String;
+
 export type TargetParameterList = string[];
 export const TargetParameterList = /*@__PURE__*/ S.Array(S.String);
 export interface ResolvedTargets {
@@ -2830,11 +3508,14 @@ export const ResolvedTargets = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResolvedTargets>;
 export type AutomationType = "CrossAccount" | "Local" | (string & {});
 export const AutomationType = /*@__PURE__*/ S.String;
+
+export type TargetLocationsURL = string;
 export type AutomationSubtype =
   | "ChangeRequest"
   | "AccessRequest"
   | (string & {});
 export const AutomationSubtype = /*@__PURE__*/ S.String;
+
 export interface Runbook {
   DocumentName: string;
   DocumentVersion?: string;
@@ -2861,6 +3542,7 @@ export const Runbook = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Runbook" }) as any as S.Schema<Runbook>;
 export type Runbooks = Runbook[];
 export const Runbooks = /*@__PURE__*/ S.Array(Runbook);
+export type ChangeRequestName = string;
 export interface AutomationExecutionMetadata {
   AutomationExecutionId?: string;
   DocumentName?: string;
@@ -2894,68 +3576,65 @@ export interface AutomationExecutionMetadata {
   AssociationId?: string;
   ChangeRequestName?: string;
 }
-export const AutomationExecutionMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AutomationExecutionId: S.optional(S.String),
-      DocumentName: S.optional(S.String),
-      DocumentVersion: S.optional(S.String),
-      AutomationExecutionStatus: S.optional(AutomationExecutionStatus),
-      ExecutionStartTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      ExecutionEndTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      ExecutedBy: S.optional(S.String),
-      LogFile: S.optional(S.String),
-      Outputs: S.optional(AutomationParameterMap),
-      Mode: S.optional(ExecutionMode),
-      ParentAutomationExecutionId: S.optional(S.String),
-      CurrentStepName: S.optional(S.String),
-      CurrentAction: S.optional(S.String),
-      FailureMessage: S.optional(S.String),
-      TargetParameterName: S.optional(S.String),
-      Targets: S.optional(Targets),
-      TargetMaps: S.optional(TargetMaps),
-      ResolvedTargets: S.optional(ResolvedTargets),
-      MaxConcurrency: S.optional(S.String),
-      MaxErrors: S.optional(S.String),
-      Target: S.optional(S.String),
-      AutomationType: S.optional(AutomationType),
-      AlarmConfiguration: S.optional(AlarmConfiguration),
-      TriggeredAlarms: S.optional(AlarmStateInformationList),
-      TargetLocationsURL: S.optional(S.String),
-      AutomationSubtype: S.optional(AutomationSubtype),
-      ScheduledTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      Runbooks: S.optional(Runbooks),
-      OpsItemId: S.optional(S.String),
-      AssociationId: S.optional(S.String),
-      ChangeRequestName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AutomationExecutionMetadata",
-  }) as any as S.Schema<AutomationExecutionMetadata>;
+export const AutomationExecutionMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AutomationExecutionId: S.optional(S.String),
+    DocumentName: S.optional(S.String),
+    DocumentVersion: S.optional(S.String),
+    AutomationExecutionStatus: S.optional(AutomationExecutionStatus),
+    ExecutionStartTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    ExecutionEndTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    ExecutedBy: S.optional(S.String),
+    LogFile: S.optional(S.String),
+    Outputs: S.optional(AutomationParameterMap),
+    Mode: S.optional(ExecutionMode),
+    ParentAutomationExecutionId: S.optional(S.String),
+    CurrentStepName: S.optional(S.String),
+    CurrentAction: S.optional(S.String),
+    FailureMessage: S.optional(S.String),
+    TargetParameterName: S.optional(S.String),
+    Targets: S.optional(Targets),
+    TargetMaps: S.optional(TargetMaps),
+    ResolvedTargets: S.optional(ResolvedTargets),
+    MaxConcurrency: S.optional(S.String),
+    MaxErrors: S.optional(S.String),
+    Target: S.optional(S.String),
+    AutomationType: S.optional(AutomationType),
+    AlarmConfiguration: S.optional(AlarmConfiguration),
+    TriggeredAlarms: S.optional(AlarmStateInformationList),
+    TargetLocationsURL: S.optional(S.String),
+    AutomationSubtype: S.optional(AutomationSubtype),
+    ScheduledTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    Runbooks: S.optional(Runbooks),
+    OpsItemId: S.optional(S.String),
+    AssociationId: S.optional(S.String),
+    ChangeRequestName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AutomationExecutionMetadata",
+}) as any as S.Schema<AutomationExecutionMetadata>;
 export type AutomationExecutionMetadataList = AutomationExecutionMetadata[];
-export const AutomationExecutionMetadataList =
-  /*@__PURE__*/ S.Array(AutomationExecutionMetadata);
+export const AutomationExecutionMetadataList = /*@__PURE__*/ S.Array(
+  AutomationExecutionMetadata,
+);
 export interface DescribeAutomationExecutionsResult {
   AutomationExecutionMetadataList?: AutomationExecutionMetadata[];
   NextToken?: string;
 }
-export const DescribeAutomationExecutionsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AutomationExecutionMetadataList: S.optional(
-        AutomationExecutionMetadataList,
-      ),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeAutomationExecutionsResult",
-  }) as any as S.Schema<DescribeAutomationExecutionsResult>;
+export const DescribeAutomationExecutionsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AutomationExecutionMetadataList: S.optional(
+      AutomationExecutionMetadataList,
+    ),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeAutomationExecutionsResult",
+}) as any as S.Schema<DescribeAutomationExecutionsResult>;
 export type StepExecutionFilterKey =
   | "StartTimeBefore"
   | "StartTimeAfter"
@@ -2968,6 +3647,8 @@ export type StepExecutionFilterKey =
   | "ParentStepIteratorValue"
   | (string & {});
 export const StepExecutionFilterKey = /*@__PURE__*/ S.String;
+
+export type StepExecutionFilterValue = string;
 export type StepExecutionFilterValueList = string[];
 export const StepExecutionFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface StepExecutionFilter {
@@ -2992,8 +3673,8 @@ export interface DescribeAutomationStepExecutionsRequest {
   MaxResults?: number;
   ReverseOrder?: boolean;
 }
-export const DescribeAutomationStepExecutionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeAutomationStepExecutionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       AutomationExecutionId: S.String,
       Filters: S.optional(StepExecutionFilterList),
@@ -3011,9 +3692,10 @@ export const DescribeAutomationStepExecutionsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeAutomationStepExecutionsRequest",
-  }) as any as S.Schema<DescribeAutomationStepExecutionsRequest>;
+).annotate({
+  identifier: "DescribeAutomationStepExecutionsRequest",
+}) as any as S.Schema<DescribeAutomationStepExecutionsRequest>;
+export type AutomationActionName = string;
 export type NormalStringMap = { [key: string]: string | undefined };
 export const NormalStringMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -3031,6 +3713,7 @@ export const FailureDetails = /*@__PURE__*/ S.suspend(() =>
     Details: S.optional(AutomationParameterMap),
   }),
 ).annotate({ identifier: "FailureDetails" }) as any as S.Schema<FailureDetails>;
+export type ValidNextStep = string;
 export type ValidNextStepList = string[];
 export const ValidNextStepList = /*@__PURE__*/ S.Array(S.String);
 export interface ParentStepDetails {
@@ -3115,15 +3798,17 @@ export interface DescribeAutomationStepExecutionsResult {
   StepExecutions?: StepExecution[];
   NextToken?: string;
 }
-export const DescribeAutomationStepExecutionsResult =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeAutomationStepExecutionsResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       StepExecutions: S.optional(StepExecutionList),
       NextToken: S.optional(S.String),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeAutomationStepExecutionsResult",
-  }) as any as S.Schema<DescribeAutomationStepExecutionsResult>;
+).annotate({
+  identifier: "DescribeAutomationStepExecutionsResult",
+}) as any as S.Schema<DescribeAutomationStepExecutionsResult>;
+export type PatchOrchestratorFilterKey = string;
+export type PatchOrchestratorFilterValue = string;
 export type PatchOrchestratorFilterValues = string[];
 export const PatchOrchestratorFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface PatchOrchestratorFilter {
@@ -3142,37 +3827,58 @@ export type PatchOrchestratorFilterList = PatchOrchestratorFilter[];
 export const PatchOrchestratorFilterList = /*@__PURE__*/ S.Array(
   PatchOrchestratorFilter,
 );
+export type PatchBaselineMaxResults = number;
 export interface DescribeAvailablePatchesRequest {
   Filters?: PatchOrchestratorFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeAvailablePatchesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Filters: S.optional(PatchOrchestratorFilterList),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeAvailablePatchesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Filters: S.optional(PatchOrchestratorFilterList),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeAvailablePatchesRequest",
-  }) as any as S.Schema<DescribeAvailablePatchesRequest>;
+  ),
+).annotate({
+  identifier: "DescribeAvailablePatchesRequest",
+}) as any as S.Schema<DescribeAvailablePatchesRequest>;
+export type PatchTitle = string;
+export type PatchDescription = string;
+export type PatchContentUrl = string;
+export type PatchVendor = string;
+export type PatchProductFamily = string;
+export type PatchProduct = string;
+export type PatchClassification = string;
+export type PatchMsrcSeverity = string;
+export type PatchKbNumber = string;
+export type PatchMsrcNumber = string;
+export type PatchLanguage = string;
+export type PatchAdvisoryId = string;
 export type PatchAdvisoryIdList = string[];
 export const PatchAdvisoryIdList = /*@__PURE__*/ S.Array(S.String);
+export type PatchBugzillaId = string;
 export type PatchBugzillaIdList = string[];
 export const PatchBugzillaIdList = /*@__PURE__*/ S.Array(S.String);
+export type PatchCVEId = string;
 export type PatchCVEIdList = string[];
 export const PatchCVEIdList = /*@__PURE__*/ S.Array(S.String);
+export type PatchName = string;
+export type PatchEpoch = number;
+export type PatchVersion = string;
+export type PatchRelease = string;
+export type PatchArch = string;
+export type PatchSeverity = string;
+export type PatchRepository = string;
 export interface Patch {
   Id?: string;
   ReleaseDate?: Date;
@@ -3231,15 +3937,14 @@ export interface DescribeAvailablePatchesResult {
   Patches?: Patch[];
   NextToken?: string;
 }
-export const DescribeAvailablePatchesResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Patches: S.optional(PatchList),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeAvailablePatchesResult",
-  }) as any as S.Schema<DescribeAvailablePatchesResult>;
+export const DescribeAvailablePatchesResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Patches: S.optional(PatchList),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeAvailablePatchesResult",
+}) as any as S.Schema<DescribeAvailablePatchesResult>;
 export interface DescribeDocumentRequest {
   Name: string;
   DocumentVersion?: string;
@@ -3274,37 +3979,40 @@ export const DescribeDocumentResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeDocumentResult>;
 export type DocumentPermissionType = "Share" | (string & {});
 export const DocumentPermissionType = /*@__PURE__*/ S.String;
+
+export type DocumentPermissionMaxResults = number;
 export interface DescribeDocumentPermissionRequest {
   Name: string;
   PermissionType: DocumentPermissionType;
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeDocumentPermissionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.String,
-      PermissionType: DocumentPermissionType,
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeDocumentPermissionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    PermissionType: DocumentPermissionType,
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeDocumentPermissionRequest",
-  }) as any as S.Schema<DescribeDocumentPermissionRequest>;
+  ),
+).annotate({
+  identifier: "DescribeDocumentPermissionRequest",
+}) as any as S.Schema<DescribeDocumentPermissionRequest>;
+export type AccountId = string;
 export type AccountIdList = string[];
 export const AccountIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("AccountId")),
 );
+export type SharedDocumentVersion = string;
 export interface AccountSharingInfo {
   AccountId?: string;
   SharedDocumentVersion?: string;
@@ -3328,16 +4036,16 @@ export interface DescribeDocumentPermissionResponse {
   AccountSharingInfoList?: AccountSharingInfo[];
   NextToken?: string;
 }
-export const DescribeDocumentPermissionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AccountIds: S.optional(AccountIdList),
-      AccountSharingInfoList: S.optional(AccountSharingInfoList),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeDocumentPermissionResponse",
-  }) as any as S.Schema<DescribeDocumentPermissionResponse>;
+export const DescribeDocumentPermissionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountIds: S.optional(AccountIdList),
+    AccountSharingInfoList: S.optional(AccountSharingInfoList),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeDocumentPermissionResponse",
+}) as any as S.Schema<DescribeDocumentPermissionResponse>;
+export type EffectiveInstanceAssociationMaxResults = number;
 export interface DescribeEffectiveInstanceAssociationsRequest {
   InstanceId: string;
   MaxResults?: number;
@@ -3427,6 +4135,7 @@ export type PatchDeploymentStatus =
   | "EXPLICIT_REJECTED"
   | (string & {});
 export const PatchDeploymentStatus = /*@__PURE__*/ S.String;
+
 export interface PatchStatus {
   DeploymentStatus?: PatchDeploymentStatus;
   ComplianceLevel?: PatchComplianceLevel;
@@ -3486,6 +4195,9 @@ export const DescribeInstanceAssociationsStatusRequest =
   ).annotate({
     identifier: "DescribeInstanceAssociationsStatusRequest",
   }) as any as S.Schema<DescribeInstanceAssociationsStatusRequest>;
+export type InstanceAssociationExecutionSummary = string;
+export type AgentErrorCode = string;
+export type Url = string;
 export interface S3OutputUrl {
   OutputUrl?: string;
 }
@@ -3495,12 +4207,11 @@ export const S3OutputUrl = /*@__PURE__*/ S.suspend(() =>
 export interface InstanceAssociationOutputUrl {
   S3OutputUrl?: S3OutputUrl;
 }
-export const InstanceAssociationOutputUrl =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ S3OutputUrl: S.optional(S3OutputUrl) }),
-  ).annotate({
-    identifier: "InstanceAssociationOutputUrl",
-  }) as any as S.Schema<InstanceAssociationOutputUrl>;
+export const InstanceAssociationOutputUrl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ S3OutputUrl: S.optional(S3OutputUrl) }),
+).annotate({
+  identifier: "InstanceAssociationOutputUrl",
+}) as any as S.Schema<InstanceAssociationOutputUrl>;
 export interface InstanceAssociationStatusInfo {
   AssociationId?: string;
   Name?: string;
@@ -3515,45 +4226,43 @@ export interface InstanceAssociationStatusInfo {
   OutputUrl?: InstanceAssociationOutputUrl;
   AssociationName?: string;
 }
-export const InstanceAssociationStatusInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AssociationId: S.optional(S.String),
-      Name: S.optional(S.String),
-      DocumentVersion: S.optional(S.String),
-      AssociationVersion: S.optional(S.String),
-      InstanceId: S.optional(S.String),
-      ExecutionDate: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      Status: S.optional(S.String),
-      DetailedStatus: S.optional(S.String),
-      ExecutionSummary: S.optional(S.String),
-      ErrorCode: S.optional(S.String),
-      OutputUrl: S.optional(InstanceAssociationOutputUrl),
-      AssociationName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "InstanceAssociationStatusInfo",
-  }) as any as S.Schema<InstanceAssociationStatusInfo>;
+export const InstanceAssociationStatusInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AssociationId: S.optional(S.String),
+    Name: S.optional(S.String),
+    DocumentVersion: S.optional(S.String),
+    AssociationVersion: S.optional(S.String),
+    InstanceId: S.optional(S.String),
+    ExecutionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    Status: S.optional(S.String),
+    DetailedStatus: S.optional(S.String),
+    ExecutionSummary: S.optional(S.String),
+    ErrorCode: S.optional(S.String),
+    OutputUrl: S.optional(InstanceAssociationOutputUrl),
+    AssociationName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InstanceAssociationStatusInfo",
+}) as any as S.Schema<InstanceAssociationStatusInfo>;
 export type InstanceAssociationStatusInfos = InstanceAssociationStatusInfo[];
-export const InstanceAssociationStatusInfos =
-  /*@__PURE__*/ S.Array(InstanceAssociationStatusInfo);
+export const InstanceAssociationStatusInfos = /*@__PURE__*/ S.Array(
+  InstanceAssociationStatusInfo,
+);
 export interface DescribeInstanceAssociationsStatusResult {
   InstanceAssociationStatusInfos?: InstanceAssociationStatusInfo[];
   NextToken?: string;
 }
-export const DescribeInstanceAssociationsStatusResult =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeInstanceAssociationsStatusResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       InstanceAssociationStatusInfos: S.optional(
         InstanceAssociationStatusInfos,
       ),
       NextToken: S.optional(S.String),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeInstanceAssociationsStatusResult",
-  }) as any as S.Schema<DescribeInstanceAssociationsStatusResult>;
+).annotate({
+  identifier: "DescribeInstanceAssociationsStatusResult",
+}) as any as S.Schema<DescribeInstanceAssociationsStatusResult>;
 export type InstanceInformationFilterKey =
   | "InstanceIds"
   | "AgentVersion"
@@ -3565,11 +4274,12 @@ export type InstanceInformationFilterKey =
   | "AssociationStatus"
   | (string & {});
 export const InstanceInformationFilterKey = /*@__PURE__*/ S.String;
+
+export type InstanceInformationFilterValue = string;
 export type InstanceInformationFilterValueSet = string[];
-export const InstanceInformationFilterValueSet =
-  /*@__PURE__*/ S.Array(
-    S.String.pipe(T.XmlName("InstanceInformationFilterValue")),
-  );
+export const InstanceInformationFilterValueSet = /*@__PURE__*/ S.Array(
+  S.String.pipe(T.XmlName("InstanceInformationFilterValue")),
+);
 export interface InstanceInformationFilter {
   key: InstanceInformationFilterKey;
   valueSet: string[];
@@ -3583,93 +4293,100 @@ export const InstanceInformationFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceInformationFilter",
 }) as any as S.Schema<InstanceInformationFilter>;
 export type InstanceInformationFilterList = InstanceInformationFilter[];
-export const InstanceInformationFilterList =
-  /*@__PURE__*/ S.Array(
-    InstanceInformationFilter.pipe(
-      T.XmlName("InstanceInformationFilter"),
-    ).annotate({ identifier: "InstanceInformationFilter" }),
-  );
+export const InstanceInformationFilterList = /*@__PURE__*/ S.Array(
+  InstanceInformationFilter.pipe(
+    T.XmlName("InstanceInformationFilter"),
+  ).annotate({ identifier: "InstanceInformationFilter" }),
+);
+export type InstanceInformationStringFilterKey = string;
 export interface InstanceInformationStringFilter {
   Key: string;
   Values: string[];
 }
-export const InstanceInformationStringFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Key: S.String, Values: InstanceInformationFilterValueSet }),
-  ).annotate({
-    identifier: "InstanceInformationStringFilter",
-  }) as any as S.Schema<InstanceInformationStringFilter>;
+export const InstanceInformationStringFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Key: S.String, Values: InstanceInformationFilterValueSet }),
+).annotate({
+  identifier: "InstanceInformationStringFilter",
+}) as any as S.Schema<InstanceInformationStringFilter>;
 export type InstanceInformationStringFilterList =
   InstanceInformationStringFilter[];
-export const InstanceInformationStringFilterList =
-  /*@__PURE__*/ S.Array(
-    InstanceInformationStringFilter.pipe(
-      T.XmlName("InstanceInformationStringFilter"),
-    ).annotate({ identifier: "InstanceInformationStringFilter" }),
-  );
+export const InstanceInformationStringFilterList = /*@__PURE__*/ S.Array(
+  InstanceInformationStringFilter.pipe(
+    T.XmlName("InstanceInformationStringFilter"),
+  ).annotate({ identifier: "InstanceInformationStringFilter" }),
+);
+export type MaxResultsEC2Compatible = number;
 export interface DescribeInstanceInformationRequest {
   InstanceInformationFilterList?: InstanceInformationFilter[];
   Filters?: InstanceInformationStringFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeInstanceInformationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      InstanceInformationFilterList: S.optional(InstanceInformationFilterList),
-      Filters: S.optional(InstanceInformationStringFilterList),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeInstanceInformationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InstanceInformationFilterList: S.optional(InstanceInformationFilterList),
+    Filters: S.optional(InstanceInformationStringFilterList),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeInstanceInformationRequest",
-  }) as any as S.Schema<DescribeInstanceInformationRequest>;
+  ),
+).annotate({
+  identifier: "DescribeInstanceInformationRequest",
+}) as any as S.Schema<DescribeInstanceInformationRequest>;
 export type PingStatus =
   | "Online"
   | "ConnectionLost"
   | "Inactive"
   | (string & {});
 export const PingStatus = /*@__PURE__*/ S.String;
+
+export type Version = string;
 export type ResourceType = "ManagedInstance" | "EC2Instance" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
+export type IPAddress = string | redacted.Redacted<string>;
+export type ComputerName = string;
 export type InstanceAssociationStatusAggregatedCount = {
   [key: string]: number | undefined;
 };
-export const InstanceAssociationStatusAggregatedCount =
-  /*@__PURE__*/ S.Record(S.String, S.Number.pipe(S.optional));
+export const InstanceAssociationStatusAggregatedCount = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Number.pipe(S.optional),
+);
 export interface InstanceAggregatedAssociationOverview {
   DetailedStatus?: string;
   InstanceAssociationStatusAggregatedCount?: {
     [key: string]: number | undefined;
   };
 }
-export const InstanceAggregatedAssociationOverview =
-  /*@__PURE__*/ S.suspend(() =>
+export const InstanceAggregatedAssociationOverview = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       DetailedStatus: S.optional(S.String),
       InstanceAssociationStatusAggregatedCount: S.optional(
         InstanceAssociationStatusAggregatedCount,
       ),
     }),
-  ).annotate({
-    identifier: "InstanceAggregatedAssociationOverview",
-  }) as any as S.Schema<InstanceAggregatedAssociationOverview>;
+).annotate({
+  identifier: "InstanceAggregatedAssociationOverview",
+}) as any as S.Schema<InstanceAggregatedAssociationOverview>;
+export type SourceId = string;
 export type SourceType =
   | "AWS::EC2::Instance"
   | "AWS::IoT::Thing"
   | "AWS::SSM::ManagedInstance"
   | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
+
 export interface InstanceInformation {
   InstanceId?: string;
   PingStatus?: PingStatus;
@@ -3738,42 +4455,41 @@ export interface DescribeInstanceInformationResult {
   InstanceInformationList?: InstanceInformation[];
   NextToken?: string;
 }
-export const DescribeInstanceInformationResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      InstanceInformationList: S.optional(InstanceInformationList),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeInstanceInformationResult",
-  }) as any as S.Schema<DescribeInstanceInformationResult>;
+export const DescribeInstanceInformationResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InstanceInformationList: S.optional(InstanceInformationList),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeInstanceInformationResult",
+}) as any as S.Schema<DescribeInstanceInformationResult>;
+export type PatchComplianceMaxResults = number;
 export interface DescribeInstancePatchesRequest {
   InstanceId: string;
   Filters?: PatchOrchestratorFilter[];
   NextToken?: string;
   MaxResults?: number;
 }
-export const DescribeInstancePatchesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      InstanceId: S.String,
-      Filters: S.optional(PatchOrchestratorFilterList),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeInstancePatchesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InstanceId: S.String,
+    Filters: S.optional(PatchOrchestratorFilterList),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeInstancePatchesRequest",
-  }) as any as S.Schema<DescribeInstancePatchesRequest>;
+  ),
+).annotate({
+  identifier: "DescribeInstancePatchesRequest",
+}) as any as S.Schema<DescribeInstancePatchesRequest>;
 export type PatchComplianceDataState =
   | "INSTALLED"
   | "INSTALLED_OTHER"
@@ -3785,6 +4501,8 @@ export type PatchComplianceDataState =
   | "AVAILABLE_SECURITY_UPDATE"
   | (string & {});
 export const PatchComplianceDataState = /*@__PURE__*/ S.String;
+
+export type PatchCVEIds = string;
 export interface PatchComplianceData {
   Title: string;
   KBId: string;
@@ -3814,44 +4532,59 @@ export interface DescribeInstancePatchesResult {
   Patches?: PatchComplianceData[];
   NextToken?: string;
 }
-export const DescribeInstancePatchesResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Patches: S.optional(PatchComplianceDataList),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeInstancePatchesResult",
-  }) as any as S.Schema<DescribeInstancePatchesResult>;
+export const DescribeInstancePatchesResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Patches: S.optional(PatchComplianceDataList),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeInstancePatchesResult",
+}) as any as S.Schema<DescribeInstancePatchesResult>;
 export interface DescribeInstancePatchStatesRequest {
   InstanceIds: string[];
   NextToken?: string;
   MaxResults?: number;
 }
-export const DescribeInstancePatchStatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      InstanceIds: InstanceIdList,
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeInstancePatchStatesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InstanceIds: InstanceIdList,
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeInstancePatchStatesRequest",
-  }) as any as S.Schema<DescribeInstancePatchStatesRequest>;
+  ),
+).annotate({
+  identifier: "DescribeInstancePatchStatesRequest",
+}) as any as S.Schema<DescribeInstancePatchStatesRequest>;
+export type SnapshotId = string;
+export type InstallOverrideList = string;
+export type OwnerInformation = string | redacted.Redacted<string>;
+export type PatchInstalledCount = number;
+export type PatchInstalledOtherCount = number;
+export type PatchInstalledPendingRebootCount = number;
+export type PatchInstalledRejectedCount = number;
+export type PatchMissingCount = number;
+export type PatchFailedCount = number;
+export type PatchUnreportedNotApplicableCount = number;
+export type PatchNotApplicableCount = number;
+export type PatchAvailableSecurityUpdateCount = number;
 export type PatchOperationType = "Scan" | "Install" | (string & {});
 export const PatchOperationType = /*@__PURE__*/ S.String;
+
 export type RebootOption = "RebootIfNeeded" | "NoReboot" | (string & {});
 export const RebootOption = /*@__PURE__*/ S.String;
+
+export type PatchCriticalNonCompliantCount = number;
+export type PatchSecurityNonCompliantCount = number;
+export type PatchOtherNonCompliantCount = number;
 export interface InstancePatchState {
   InstanceId: string;
   PatchGroup: string;
@@ -3914,15 +4647,16 @@ export interface DescribeInstancePatchStatesResult {
   InstancePatchStates?: InstancePatchState[];
   NextToken?: string;
 }
-export const DescribeInstancePatchStatesResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      InstancePatchStates: S.optional(InstancePatchStateList),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeInstancePatchStatesResult",
-  }) as any as S.Schema<DescribeInstancePatchStatesResult>;
+export const DescribeInstancePatchStatesResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InstancePatchStates: S.optional(InstancePatchStateList),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeInstancePatchStatesResult",
+}) as any as S.Schema<DescribeInstancePatchStatesResult>;
+export type InstancePatchStateFilterKey = string;
+export type InstancePatchStateFilterValue = string;
 export type InstancePatchStateFilterValues = string[];
 export const InstancePatchStateFilterValues = /*@__PURE__*/ S.Array(S.String);
 export type InstancePatchStateOperatorType =
@@ -3932,6 +4666,7 @@ export type InstancePatchStateOperatorType =
   | "GreaterThan"
   | (string & {});
 export const InstancePatchStateOperatorType = /*@__PURE__*/ S.String;
+
 export interface InstancePatchStateFilter {
   Key: string;
   Values: string[];
@@ -4005,11 +4740,12 @@ export type InstancePropertyFilterKey =
   | "AssociationStatus"
   | (string & {});
 export const InstancePropertyFilterKey = /*@__PURE__*/ S.String;
+
+export type InstancePropertyFilterValue = string;
 export type InstancePropertyFilterValueSet = string[];
-export const InstancePropertyFilterValueSet =
-  /*@__PURE__*/ S.Array(
-    S.String.pipe(T.XmlName("InstancePropertyFilterValue")),
-  );
+export const InstancePropertyFilterValueSet = /*@__PURE__*/ S.Array(
+  S.String.pipe(T.XmlName("InstancePropertyFilterValue")),
+);
 export interface InstancePropertyFilter {
   key: InstancePropertyFilterKey;
   valueSet: string[];
@@ -4028,6 +4764,7 @@ export const InstancePropertyFilterList = /*@__PURE__*/ S.Array(
     identifier: "InstancePropertyFilter",
   }),
 );
+export type InstancePropertyStringFilterKey = string;
 export type InstancePropertyFilterOperator =
   | "Equal"
   | "NotEqual"
@@ -4036,55 +4773,62 @@ export type InstancePropertyFilterOperator =
   | "GreaterThan"
   | (string & {});
 export const InstancePropertyFilterOperator = /*@__PURE__*/ S.String;
+
 export interface InstancePropertyStringFilter {
   Key: string;
   Values: string[];
   Operator?: InstancePropertyFilterOperator;
 }
-export const InstancePropertyStringFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Key: S.String,
-      Values: InstancePropertyFilterValueSet,
-      Operator: S.optional(InstancePropertyFilterOperator),
-    }),
-  ).annotate({
-    identifier: "InstancePropertyStringFilter",
-  }) as any as S.Schema<InstancePropertyStringFilter>;
+export const InstancePropertyStringFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Key: S.String,
+    Values: InstancePropertyFilterValueSet,
+    Operator: S.optional(InstancePropertyFilterOperator),
+  }),
+).annotate({
+  identifier: "InstancePropertyStringFilter",
+}) as any as S.Schema<InstancePropertyStringFilter>;
 export type InstancePropertyStringFilterList = InstancePropertyStringFilter[];
-export const InstancePropertyStringFilterList =
-  /*@__PURE__*/ S.Array(
-    InstancePropertyStringFilter.pipe(
-      T.XmlName("InstancePropertyStringFilter"),
-    ).annotate({ identifier: "InstancePropertyStringFilter" }),
-  );
+export const InstancePropertyStringFilterList = /*@__PURE__*/ S.Array(
+  InstancePropertyStringFilter.pipe(
+    T.XmlName("InstancePropertyStringFilter"),
+  ).annotate({ identifier: "InstancePropertyStringFilter" }),
+);
+export type DescribeInstancePropertiesMaxResults = number;
 export interface DescribeInstancePropertiesRequest {
   InstancePropertyFilterList?: InstancePropertyFilter[];
   FiltersWithOperator?: InstancePropertyStringFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeInstancePropertiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      InstancePropertyFilterList: S.optional(InstancePropertyFilterList),
-      FiltersWithOperator: S.optional(InstancePropertyStringFilterList),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeInstancePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InstancePropertyFilterList: S.optional(InstancePropertyFilterList),
+    FiltersWithOperator: S.optional(InstancePropertyStringFilterList),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeInstancePropertiesRequest",
-  }) as any as S.Schema<DescribeInstancePropertiesRequest>;
+  ),
+).annotate({
+  identifier: "DescribeInstancePropertiesRequest",
+}) as any as S.Schema<DescribeInstancePropertiesRequest>;
+export type InstanceName = string;
+export type InstanceType = string;
+export type InstanceRole = string;
+export type KeyName = string;
+export type InstanceState = string;
+export type Architecture = string;
+export type PlatformName = string;
+export type PlatformVersion = string;
 export interface InstanceProperty {
   Name?: string;
   InstanceId?: string;
@@ -4163,42 +4907,44 @@ export interface DescribeInstancePropertiesResult {
   InstanceProperties?: InstanceProperty[];
   NextToken?: string;
 }
-export const DescribeInstancePropertiesResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      InstanceProperties: S.optional(InstanceProperties),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeInstancePropertiesResult",
-  }) as any as S.Schema<DescribeInstancePropertiesResult>;
+export const DescribeInstancePropertiesResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InstanceProperties: S.optional(InstanceProperties),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeInstancePropertiesResult",
+}) as any as S.Schema<DescribeInstancePropertiesResult>;
 export interface DescribeInventoryDeletionsRequest {
   DeletionId?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-export const DescribeInventoryDeletionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DeletionId: S.optional(S.String),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeInventoryDeletionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DeletionId: S.optional(S.String),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeInventoryDeletionsRequest",
-  }) as any as S.Schema<DescribeInventoryDeletionsRequest>;
+  ),
+).annotate({
+  identifier: "DescribeInventoryDeletionsRequest",
+}) as any as S.Schema<DescribeInventoryDeletionsRequest>;
+export type InventoryDeletionStartTime = Date;
 export type InventoryDeletionStatus = "InProgress" | "Complete" | (string & {});
 export const InventoryDeletionStatus = /*@__PURE__*/ S.String;
+
+export type InventoryDeletionLastStatusMessage = string;
+export type InventoryDeletionLastStatusUpdateTime = Date;
 export interface InventoryDeletionStatusItem {
   DeletionId?: string;
   TypeName?: string;
@@ -4208,24 +4954,23 @@ export interface InventoryDeletionStatusItem {
   DeletionSummary?: InventoryDeletionSummary;
   LastStatusUpdateTime?: Date;
 }
-export const InventoryDeletionStatusItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DeletionId: S.optional(S.String),
-      TypeName: S.optional(S.String),
-      DeletionStartTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      LastStatus: S.optional(InventoryDeletionStatus),
-      LastStatusMessage: S.optional(S.String),
-      DeletionSummary: S.optional(InventoryDeletionSummary),
-      LastStatusUpdateTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier: "InventoryDeletionStatusItem",
-  }) as any as S.Schema<InventoryDeletionStatusItem>;
+export const InventoryDeletionStatusItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DeletionId: S.optional(S.String),
+    TypeName: S.optional(S.String),
+    DeletionStartTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    LastStatus: S.optional(InventoryDeletionStatus),
+    LastStatusMessage: S.optional(S.String),
+    DeletionSummary: S.optional(InventoryDeletionSummary),
+    LastStatusUpdateTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }),
+).annotate({
+  identifier: "InventoryDeletionStatusItem",
+}) as any as S.Schema<InventoryDeletionStatusItem>;
 export type InventoryDeletionsList = InventoryDeletionStatusItem[];
 export const InventoryDeletionsList = /*@__PURE__*/ S.Array(
   InventoryDeletionStatusItem,
@@ -4234,15 +4979,16 @@ export interface DescribeInventoryDeletionsResult {
   InventoryDeletions?: InventoryDeletionStatusItem[];
   NextToken?: string;
 }
-export const DescribeInventoryDeletionsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      InventoryDeletions: S.optional(InventoryDeletionsList),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeInventoryDeletionsResult",
-  }) as any as S.Schema<DescribeInventoryDeletionsResult>;
+export const DescribeInventoryDeletionsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InventoryDeletions: S.optional(InventoryDeletionsList),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeInventoryDeletionsResult",
+}) as any as S.Schema<DescribeInventoryDeletionsResult>;
+export type MaintenanceWindowFilterKey = string;
+export type MaintenanceWindowFilterValue = string;
 export type MaintenanceWindowFilterValues = string[];
 export const MaintenanceWindowFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface MaintenanceWindowFilter {
@@ -4261,6 +5007,7 @@ export type MaintenanceWindowFilterList = MaintenanceWindowFilter[];
 export const MaintenanceWindowFilterList = /*@__PURE__*/ S.Array(
   MaintenanceWindowFilter,
 );
+export type MaintenanceWindowMaxResults = number;
 export interface DescribeMaintenanceWindowExecutionsRequest {
   WindowId: string;
   Filters?: MaintenanceWindowFilter[];
@@ -4299,6 +5046,8 @@ export type MaintenanceWindowExecutionStatus =
   | "SKIPPED_OVERLAPPING"
   | (string & {});
 export const MaintenanceWindowExecutionStatus = /*@__PURE__*/ S.String;
+
+export type MaintenanceWindowExecutionStatusDetails = string;
 export interface MaintenanceWindowExecution {
   WindowId?: string;
   WindowExecutionId?: string;
@@ -4320,8 +5069,9 @@ export const MaintenanceWindowExecution = /*@__PURE__*/ S.suspend(() =>
   identifier: "MaintenanceWindowExecution",
 }) as any as S.Schema<MaintenanceWindowExecution>;
 export type MaintenanceWindowExecutionList = MaintenanceWindowExecution[];
-export const MaintenanceWindowExecutionList =
-  /*@__PURE__*/ S.Array(MaintenanceWindowExecution);
+export const MaintenanceWindowExecutionList = /*@__PURE__*/ S.Array(
+  MaintenanceWindowExecution,
+);
 export interface DescribeMaintenanceWindowExecutionsResult {
   WindowExecutions?: MaintenanceWindowExecution[];
   NextToken?: string;
@@ -4335,6 +5085,7 @@ export const DescribeMaintenanceWindowExecutionsResult =
   ).annotate({
     identifier: "DescribeMaintenanceWindowExecutionsResult",
   }) as any as S.Schema<DescribeMaintenanceWindowExecutionsResult>;
+export type MaintenanceWindowExecutionTaskId = string;
 export interface DescribeMaintenanceWindowExecutionTaskInvocationsRequest {
   WindowExecutionId: string;
   TaskId: string;
@@ -4364,6 +5115,8 @@ export const DescribeMaintenanceWindowExecutionTaskInvocationsRequest =
   ).annotate({
     identifier: "DescribeMaintenanceWindowExecutionTaskInvocationsRequest",
   }) as any as S.Schema<DescribeMaintenanceWindowExecutionTaskInvocationsRequest>;
+export type MaintenanceWindowExecutionTaskInvocationId = string;
+export type MaintenanceWindowExecutionTaskExecutionId = string;
 export type MaintenanceWindowTaskType =
   | "RUN_COMMAND"
   | "AUTOMATION"
@@ -4371,6 +5124,11 @@ export type MaintenanceWindowTaskType =
   | "LAMBDA"
   | (string & {});
 export const MaintenanceWindowTaskType = /*@__PURE__*/ S.String;
+
+export type MaintenanceWindowExecutionTaskInvocationParameters =
+  | string
+  | redacted.Redacted<string>;
+export type MaintenanceWindowTaskTargetId = string;
 export interface MaintenanceWindowExecutionTaskInvocationIdentity {
   WindowExecutionId?: string;
   TaskExecutionId?: string;
@@ -4450,6 +5208,7 @@ export const DescribeMaintenanceWindowExecutionTasksRequest =
   ).annotate({
     identifier: "DescribeMaintenanceWindowExecutionTasksRequest",
   }) as any as S.Schema<DescribeMaintenanceWindowExecutionTasksRequest>;
+export type MaintenanceWindowTaskArn = string;
 export interface MaintenanceWindowExecutionTaskIdentity {
   WindowExecutionId?: string;
   TaskExecutionId?: string;
@@ -4462,8 +5221,8 @@ export interface MaintenanceWindowExecutionTaskIdentity {
   AlarmConfiguration?: AlarmConfiguration;
   TriggeredAlarms?: AlarmStateInformation[];
 }
-export const MaintenanceWindowExecutionTaskIdentity =
-  /*@__PURE__*/ S.suspend(() =>
+export const MaintenanceWindowExecutionTaskIdentity = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       WindowExecutionId: S.optional(S.String),
       TaskExecutionId: S.optional(S.String),
@@ -4476,13 +5235,14 @@ export const MaintenanceWindowExecutionTaskIdentity =
       AlarmConfiguration: S.optional(AlarmConfiguration),
       TriggeredAlarms: S.optional(AlarmStateInformationList),
     }),
-  ).annotate({
-    identifier: "MaintenanceWindowExecutionTaskIdentity",
-  }) as any as S.Schema<MaintenanceWindowExecutionTaskIdentity>;
+).annotate({
+  identifier: "MaintenanceWindowExecutionTaskIdentity",
+}) as any as S.Schema<MaintenanceWindowExecutionTaskIdentity>;
 export type MaintenanceWindowExecutionTaskIdentityList =
   MaintenanceWindowExecutionTaskIdentity[];
-export const MaintenanceWindowExecutionTaskIdentityList =
-  /*@__PURE__*/ S.Array(MaintenanceWindowExecutionTaskIdentity);
+export const MaintenanceWindowExecutionTaskIdentityList = /*@__PURE__*/ S.Array(
+  MaintenanceWindowExecutionTaskIdentity,
+);
 export interface DescribeMaintenanceWindowExecutionTasksResult {
   WindowExecutionTaskIdentities?: MaintenanceWindowExecutionTaskIdentity[];
   NextToken?: string;
@@ -4503,26 +5263,26 @@ export interface DescribeMaintenanceWindowsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeMaintenanceWindowsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Filters: S.optional(MaintenanceWindowFilterList),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeMaintenanceWindowsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Filters: S.optional(MaintenanceWindowFilterList),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeMaintenanceWindowsRequest",
-  }) as any as S.Schema<DescribeMaintenanceWindowsRequest>;
+  ),
+).annotate({
+  identifier: "DescribeMaintenanceWindowsRequest",
+}) as any as S.Schema<DescribeMaintenanceWindowsRequest>;
+export type MaintenanceWindowEnabled = boolean;
 export interface MaintenanceWindowIdentity {
   WindowId?: string;
   Name?: string;
@@ -4556,26 +5316,28 @@ export const MaintenanceWindowIdentity = /*@__PURE__*/ S.suspend(() =>
   identifier: "MaintenanceWindowIdentity",
 }) as any as S.Schema<MaintenanceWindowIdentity>;
 export type MaintenanceWindowIdentityList = MaintenanceWindowIdentity[];
-export const MaintenanceWindowIdentityList =
-  /*@__PURE__*/ S.Array(MaintenanceWindowIdentity);
+export const MaintenanceWindowIdentityList = /*@__PURE__*/ S.Array(
+  MaintenanceWindowIdentity,
+);
 export interface DescribeMaintenanceWindowsResult {
   WindowIdentities?: MaintenanceWindowIdentity[];
   NextToken?: string;
 }
-export const DescribeMaintenanceWindowsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      WindowIdentities: S.optional(MaintenanceWindowIdentityList),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeMaintenanceWindowsResult",
-  }) as any as S.Schema<DescribeMaintenanceWindowsResult>;
+export const DescribeMaintenanceWindowsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WindowIdentities: S.optional(MaintenanceWindowIdentityList),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeMaintenanceWindowsResult",
+}) as any as S.Schema<DescribeMaintenanceWindowsResult>;
 export type MaintenanceWindowResourceType =
   | "INSTANCE"
   | "RESOURCE_GROUP"
   | (string & {});
 export const MaintenanceWindowResourceType = /*@__PURE__*/ S.String;
+
+export type MaintenanceWindowSearchMaxResults = number;
 export interface DescribeMaintenanceWindowScheduleRequest {
   WindowId?: string;
   Targets?: Target[];
@@ -4584,8 +5346,8 @@ export interface DescribeMaintenanceWindowScheduleRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeMaintenanceWindowScheduleRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeMaintenanceWindowScheduleRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       WindowId: S.optional(S.String),
       Targets: S.optional(Targets),
@@ -4604,9 +5366,9 @@ export const DescribeMaintenanceWindowScheduleRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeMaintenanceWindowScheduleRequest",
-  }) as any as S.Schema<DescribeMaintenanceWindowScheduleRequest>;
+).annotate({
+  identifier: "DescribeMaintenanceWindowScheduleRequest",
+}) as any as S.Schema<DescribeMaintenanceWindowScheduleRequest>;
 export interface ScheduledWindowExecution {
   WindowId?: string;
   Name?: string;
@@ -4629,15 +5391,15 @@ export interface DescribeMaintenanceWindowScheduleResult {
   ScheduledWindowExecutions?: ScheduledWindowExecution[];
   NextToken?: string;
 }
-export const DescribeMaintenanceWindowScheduleResult =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeMaintenanceWindowScheduleResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ScheduledWindowExecutions: S.optional(ScheduledWindowExecutionList),
       NextToken: S.optional(S.String),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeMaintenanceWindowScheduleResult",
-  }) as any as S.Schema<DescribeMaintenanceWindowScheduleResult>;
+).annotate({
+  identifier: "DescribeMaintenanceWindowScheduleResult",
+}) as any as S.Schema<DescribeMaintenanceWindowScheduleResult>;
 export interface DescribeMaintenanceWindowsForTargetRequest {
   Targets: Target[];
   ResourceType: MaintenanceWindowResourceType;
@@ -4669,16 +5431,16 @@ export interface MaintenanceWindowIdentityForTarget {
   WindowId?: string;
   Name?: string;
 }
-export const MaintenanceWindowIdentityForTarget =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ WindowId: S.optional(S.String), Name: S.optional(S.String) }),
-  ).annotate({
-    identifier: "MaintenanceWindowIdentityForTarget",
-  }) as any as S.Schema<MaintenanceWindowIdentityForTarget>;
+export const MaintenanceWindowIdentityForTarget = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ WindowId: S.optional(S.String), Name: S.optional(S.String) }),
+).annotate({
+  identifier: "MaintenanceWindowIdentityForTarget",
+}) as any as S.Schema<MaintenanceWindowIdentityForTarget>;
 export type MaintenanceWindowsForTargetList =
   MaintenanceWindowIdentityForTarget[];
-export const MaintenanceWindowsForTargetList =
-  /*@__PURE__*/ S.Array(MaintenanceWindowIdentityForTarget);
+export const MaintenanceWindowsForTargetList = /*@__PURE__*/ S.Array(
+  MaintenanceWindowIdentityForTarget,
+);
 export interface DescribeMaintenanceWindowsForTargetResult {
   WindowIdentities?: MaintenanceWindowIdentityForTarget[];
   NextToken?: string;
@@ -4698,8 +5460,8 @@ export interface DescribeMaintenanceWindowTargetsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeMaintenanceWindowTargetsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeMaintenanceWindowTargetsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       WindowId: S.String,
       Filters: S.optional(MaintenanceWindowFilterList),
@@ -4716,9 +5478,9 @@ export const DescribeMaintenanceWindowTargetsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeMaintenanceWindowTargetsRequest",
-  }) as any as S.Schema<DescribeMaintenanceWindowTargetsRequest>;
+).annotate({
+  identifier: "DescribeMaintenanceWindowTargetsRequest",
+}) as any as S.Schema<DescribeMaintenanceWindowTargetsRequest>;
 export interface MaintenanceWindowTarget {
   WindowId?: string;
   WindowTargetId?: string;
@@ -4749,23 +5511,23 @@ export interface DescribeMaintenanceWindowTargetsResult {
   Targets?: MaintenanceWindowTarget[];
   NextToken?: string;
 }
-export const DescribeMaintenanceWindowTargetsResult =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeMaintenanceWindowTargetsResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Targets: S.optional(MaintenanceWindowTargetList),
       NextToken: S.optional(S.String),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeMaintenanceWindowTargetsResult",
-  }) as any as S.Schema<DescribeMaintenanceWindowTargetsResult>;
+).annotate({
+  identifier: "DescribeMaintenanceWindowTargetsResult",
+}) as any as S.Schema<DescribeMaintenanceWindowTargetsResult>;
 export interface DescribeMaintenanceWindowTasksRequest {
   WindowId: string;
   Filters?: MaintenanceWindowFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeMaintenanceWindowTasksRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeMaintenanceWindowTasksRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       WindowId: S.String,
       Filters: S.optional(MaintenanceWindowFilterList),
@@ -4782,16 +5544,21 @@ export const DescribeMaintenanceWindowTasksRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeMaintenanceWindowTasksRequest",
-  }) as any as S.Schema<DescribeMaintenanceWindowTasksRequest>;
-export type MaintenanceWindowTaskParameterValueList =
+).annotate({
+  identifier: "DescribeMaintenanceWindowTasksRequest",
+}) as any as S.Schema<DescribeMaintenanceWindowTasksRequest>;
+export type MaintenanceWindowTaskParameterName = string;
+export type MaintenanceWindowTaskParameterValue =
   | string
-  | redacted.Redacted<string>[];
+  | redacted.Redacted<string>;
+export type MaintenanceWindowTaskParameterValueList = (
+  | string
+  | redacted.Redacted<string>
+)[];
 export const MaintenanceWindowTaskParameterValueList =
   /*@__PURE__*/ S.Array(SensitiveString);
 export interface MaintenanceWindowTaskParameterValueExpression {
-  Values?: string | redacted.Redacted<string>[];
+  Values?: (string | redacted.Redacted<string>)[];
 }
 export const MaintenanceWindowTaskParameterValueExpression =
   /*@__PURE__*/ S.suspend(() =>
@@ -4802,11 +5569,11 @@ export const MaintenanceWindowTaskParameterValueExpression =
 export type MaintenanceWindowTaskParameters = {
   [key: string]: MaintenanceWindowTaskParameterValueExpression | undefined;
 };
-export const MaintenanceWindowTaskParameters =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    MaintenanceWindowTaskParameterValueExpression.pipe(S.optional),
-  );
+export const MaintenanceWindowTaskParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  MaintenanceWindowTaskParameterValueExpression.pipe(S.optional),
+);
+export type MaintenanceWindowTaskPriority = number;
 export interface LoggingInfo {
   S3BucketName: string;
   S3KeyPrefix?: string;
@@ -4819,11 +5586,13 @@ export const LoggingInfo = /*@__PURE__*/ S.suspend(() =>
     S3Region: S.String,
   }),
 ).annotate({ identifier: "LoggingInfo" }) as any as S.Schema<LoggingInfo>;
+export type ServiceRole = string;
 export type MaintenanceWindowTaskCutoffBehavior =
   | "CONTINUE_TASK"
   | "CANCEL_TASK"
   | (string & {});
 export const MaintenanceWindowTaskCutoffBehavior = /*@__PURE__*/ S.String;
+
 export interface MaintenanceWindowTask {
   WindowId?: string;
   WindowTaskId?: string;
@@ -4872,15 +5641,15 @@ export interface DescribeMaintenanceWindowTasksResult {
   Tasks?: MaintenanceWindowTask[];
   NextToken?: string;
 }
-export const DescribeMaintenanceWindowTasksResult =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeMaintenanceWindowTasksResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Tasks: S.optional(MaintenanceWindowTaskList),
       NextToken: S.optional(S.String),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeMaintenanceWindowTasksResult",
-  }) as any as S.Schema<DescribeMaintenanceWindowTasksResult>;
+).annotate({
+  identifier: "DescribeMaintenanceWindowTasksResult",
+}) as any as S.Schema<DescribeMaintenanceWindowTasksResult>;
 export type OpsItemFilterKey =
   | "Status"
   | "CreatedBy"
@@ -4921,6 +5690,8 @@ export type OpsItemFilterKey =
   | "AccountId"
   | (string & {});
 export const OpsItemFilterKey = /*@__PURE__*/ S.String;
+
+export type OpsItemFilterValue = string;
 export type OpsItemFilterValues = string[];
 export const OpsItemFilterValues = /*@__PURE__*/ S.Array(S.String);
 export type OpsItemFilterOperator =
@@ -4930,6 +5701,7 @@ export type OpsItemFilterOperator =
   | "LessThan"
   | (string & {});
 export const OpsItemFilterOperator = /*@__PURE__*/ S.String;
+
 export interface OpsItemFilter {
   Key: OpsItemFilterKey;
   Values: string[];
@@ -4944,6 +5716,7 @@ export const OpsItemFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OpsItemFilter" }) as any as S.Schema<OpsItemFilter>;
 export type OpsItemFilters = OpsItemFilter[];
 export const OpsItemFilters = /*@__PURE__*/ S.Array(OpsItemFilter);
+export type OpsItemMaxResults = number;
 export interface DescribeOpsItemsRequest {
   OpsItemFilters?: OpsItemFilter[];
   MaxResults?: number;
@@ -4991,6 +5764,7 @@ export type OpsItemStatus =
   | "Closed"
   | (string & {});
 export const OpsItemStatus = /*@__PURE__*/ S.String;
+
 export interface OpsItemSummary {
   CreatedBy?: string;
   CreatedTime?: Date;
@@ -5053,6 +5827,8 @@ export const DescribeOpsItemsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeOpsItemsResponse>;
 export type ParametersFilterKey = "Name" | "Type" | "KeyId" | (string & {});
 export const ParametersFilterKey = /*@__PURE__*/ S.String;
+
+export type ParametersFilterValue = string;
 export type ParametersFilterValueList = string[];
 export const ParametersFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface ParametersFilter {
@@ -5066,6 +5842,9 @@ export const ParametersFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ParametersFilter>;
 export type ParametersFilterList = ParametersFilter[];
 export const ParametersFilterList = /*@__PURE__*/ S.Array(ParametersFilter);
+export type ParameterStringFilterKey = string;
+export type ParameterStringQueryOption = string;
+export type ParameterStringFilterValue = string;
 export type ParameterStringFilterValueList = string[];
 export const ParameterStringFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface ParameterStringFilter {
@@ -5120,12 +5899,18 @@ export type ParameterType =
   | "SecureString"
   | (string & {});
 export const ParameterType = /*@__PURE__*/ S.String;
+
+export type ParameterKeyId = string;
+export type ParameterDescription = string;
+export type AllowedPattern = string;
+export type PSParameterVersion = number;
 export type ParameterTier =
   | "Standard"
   | "Advanced"
   | "Intelligent-Tiering"
   | (string & {});
 export const ParameterTier = /*@__PURE__*/ S.String;
+
 export interface ParameterInlinePolicy {
   PolicyText?: string;
   PolicyType?: string;
@@ -5142,6 +5927,7 @@ export const ParameterInlinePolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ParameterInlinePolicy>;
 export type ParameterPolicyList = ParameterInlinePolicy[];
 export const ParameterPolicyList = /*@__PURE__*/ S.Array(ParameterInlinePolicy);
+export type ParameterDataType = string;
 export interface ParameterMetadata {
   Name?: string;
   ARN?: string;
@@ -5195,26 +5981,26 @@ export interface DescribePatchBaselinesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribePatchBaselinesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Filters: S.optional(PatchOrchestratorFilterList),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribePatchBaselinesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Filters: S.optional(PatchOrchestratorFilterList),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribePatchBaselinesRequest",
-  }) as any as S.Schema<DescribePatchBaselinesRequest>;
+  ),
+).annotate({
+  identifier: "DescribePatchBaselinesRequest",
+}) as any as S.Schema<DescribePatchBaselinesRequest>;
+export type DefaultBaseline = boolean;
 export interface PatchBaselineIdentity {
   BaselineId?: string;
   BaselineName?: string;
@@ -5241,15 +6027,14 @@ export interface DescribePatchBaselinesResult {
   BaselineIdentities?: PatchBaselineIdentity[];
   NextToken?: string;
 }
-export const DescribePatchBaselinesResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      BaselineIdentities: S.optional(PatchBaselineIdentityList),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribePatchBaselinesResult",
-  }) as any as S.Schema<DescribePatchBaselinesResult>;
+export const DescribePatchBaselinesResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BaselineIdentities: S.optional(PatchBaselineIdentityList),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribePatchBaselinesResult",
+}) as any as S.Schema<DescribePatchBaselinesResult>;
 export interface DescribePatchGroupsRequest {
   MaxResults?: number;
   Filters?: PatchOrchestratorFilter[];
@@ -5278,19 +6063,19 @@ export interface PatchGroupPatchBaselineMapping {
   PatchGroup?: string;
   BaselineIdentity?: PatchBaselineIdentity;
 }
-export const PatchGroupPatchBaselineMapping =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PatchGroup: S.optional(S.String),
-      BaselineIdentity: S.optional(PatchBaselineIdentity),
-    }),
-  ).annotate({
-    identifier: "PatchGroupPatchBaselineMapping",
-  }) as any as S.Schema<PatchGroupPatchBaselineMapping>;
+export const PatchGroupPatchBaselineMapping = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PatchGroup: S.optional(S.String),
+    BaselineIdentity: S.optional(PatchBaselineIdentity),
+  }),
+).annotate({
+  identifier: "PatchGroupPatchBaselineMapping",
+}) as any as S.Schema<PatchGroupPatchBaselineMapping>;
 export type PatchGroupPatchBaselineMappingList =
   PatchGroupPatchBaselineMapping[];
-export const PatchGroupPatchBaselineMappingList =
-  /*@__PURE__*/ S.Array(PatchGroupPatchBaselineMapping);
+export const PatchGroupPatchBaselineMappingList = /*@__PURE__*/ S.Array(
+  PatchGroupPatchBaselineMapping,
+);
 export interface DescribePatchGroupsResult {
   Mappings?: PatchGroupPatchBaselineMapping[];
   NextToken?: string;
@@ -5306,22 +6091,22 @@ export const DescribePatchGroupsResult = /*@__PURE__*/ S.suspend(() =>
 export interface DescribePatchGroupStateRequest {
   PatchGroup: string;
 }
-export const DescribePatchGroupStateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ PatchGroup: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribePatchGroupStateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PatchGroup: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribePatchGroupStateRequest",
-  }) as any as S.Schema<DescribePatchGroupStateRequest>;
+  ),
+).annotate({
+  identifier: "DescribePatchGroupStateRequest",
+}) as any as S.Schema<DescribePatchGroupStateRequest>;
+export type InstancesCount = number;
 export interface DescribePatchGroupStateResult {
   Instances?: number;
   InstancesWithInstalledPatches?: number;
@@ -5337,26 +6122,25 @@ export interface DescribePatchGroupStateResult {
   InstancesWithOtherNonCompliantPatches?: number;
   InstancesWithAvailableSecurityUpdates?: number;
 }
-export const DescribePatchGroupStateResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Instances: S.optional(S.Number),
-      InstancesWithInstalledPatches: S.optional(S.Number),
-      InstancesWithInstalledOtherPatches: S.optional(S.Number),
-      InstancesWithInstalledPendingRebootPatches: S.optional(S.Number),
-      InstancesWithInstalledRejectedPatches: S.optional(S.Number),
-      InstancesWithMissingPatches: S.optional(S.Number),
-      InstancesWithFailedPatches: S.optional(S.Number),
-      InstancesWithNotApplicablePatches: S.optional(S.Number),
-      InstancesWithUnreportedNotApplicablePatches: S.optional(S.Number),
-      InstancesWithCriticalNonCompliantPatches: S.optional(S.Number),
-      InstancesWithSecurityNonCompliantPatches: S.optional(S.Number),
-      InstancesWithOtherNonCompliantPatches: S.optional(S.Number),
-      InstancesWithAvailableSecurityUpdates: S.optional(S.Number),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribePatchGroupStateResult",
-  }) as any as S.Schema<DescribePatchGroupStateResult>;
+export const DescribePatchGroupStateResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Instances: S.optional(S.Number),
+    InstancesWithInstalledPatches: S.optional(S.Number),
+    InstancesWithInstalledOtherPatches: S.optional(S.Number),
+    InstancesWithInstalledPendingRebootPatches: S.optional(S.Number),
+    InstancesWithInstalledRejectedPatches: S.optional(S.Number),
+    InstancesWithMissingPatches: S.optional(S.Number),
+    InstancesWithFailedPatches: S.optional(S.Number),
+    InstancesWithNotApplicablePatches: S.optional(S.Number),
+    InstancesWithUnreportedNotApplicablePatches: S.optional(S.Number),
+    InstancesWithCriticalNonCompliantPatches: S.optional(S.Number),
+    InstancesWithSecurityNonCompliantPatches: S.optional(S.Number),
+    InstancesWithOtherNonCompliantPatches: S.optional(S.Number),
+    InstancesWithAvailableSecurityUpdates: S.optional(S.Number),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribePatchGroupStateResult",
+}) as any as S.Schema<DescribePatchGroupStateResult>;
 export type PatchProperty =
   | "PRODUCT"
   | "PRODUCT_FAMILY"
@@ -5366,8 +6150,10 @@ export type PatchProperty =
   | "SEVERITY"
   | (string & {});
 export const PatchProperty = /*@__PURE__*/ S.String;
+
 export type PatchSet = "OS" | "APPLICATION" | (string & {});
 export const PatchSet = /*@__PURE__*/ S.String;
+
 export interface DescribePatchPropertiesRequest {
   OperatingSystem: OperatingSystem;
   Property: PatchProperty;
@@ -5375,28 +6161,29 @@ export interface DescribePatchPropertiesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribePatchPropertiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      OperatingSystem: OperatingSystem,
-      Property: PatchProperty,
-      PatchSet: S.optional(PatchSet),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribePatchPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OperatingSystem: OperatingSystem,
+    Property: PatchProperty,
+    PatchSet: S.optional(PatchSet),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribePatchPropertiesRequest",
-  }) as any as S.Schema<DescribePatchPropertiesRequest>;
+  ),
+).annotate({
+  identifier: "DescribePatchPropertiesRequest",
+}) as any as S.Schema<DescribePatchPropertiesRequest>;
+export type AttributeName = string;
+export type AttributeValue = string;
 export type PatchPropertyEntry = { [key: string]: string | undefined };
 export const PatchPropertyEntry = /*@__PURE__*/ S.Record(
   S.String,
@@ -5408,17 +6195,18 @@ export interface DescribePatchPropertiesResult {
   Properties?: { [key: string]: string | undefined }[];
   NextToken?: string;
 }
-export const DescribePatchPropertiesResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Properties: S.optional(PatchPropertiesList),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribePatchPropertiesResult",
-  }) as any as S.Schema<DescribePatchPropertiesResult>;
+export const DescribePatchPropertiesResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Properties: S.optional(PatchPropertiesList),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribePatchPropertiesResult",
+}) as any as S.Schema<DescribePatchPropertiesResult>;
 export type SessionState = "Active" | "History" | (string & {});
 export const SessionState = /*@__PURE__*/ S.String;
+
+export type SessionMaxResults = number;
 export type SessionFilterKey =
   | "InvokedAfter"
   | "InvokedBefore"
@@ -5429,6 +6217,8 @@ export type SessionFilterKey =
   | "AccessType"
   | (string & {});
 export const SessionFilterKey = /*@__PURE__*/ S.String;
+
+export type SessionFilterValue = string;
 export interface SessionFilter {
   key: SessionFilterKey;
   value: string;
@@ -5464,6 +6254,8 @@ export const DescribeSessionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSessionsRequest",
 }) as any as S.Schema<DescribeSessionsRequest>;
+export type SessionId = string;
+export type SessionTarget = string;
 export type SessionStatus =
   | "Connected"
   | "Connecting"
@@ -5473,6 +6265,12 @@ export type SessionStatus =
   | "Failed"
   | (string & {});
 export const SessionStatus = /*@__PURE__*/ S.String;
+
+export type SessionOwner = string;
+export type SessionReason = string;
+export type SessionDetails = string;
+export type SessionManagerS3OutputUrl = string;
+export type SessionManagerCloudWatchOutputUrl = string;
 export interface SessionManagerOutputUrl {
   S3OutputUrl?: string;
   CloudWatchOutputUrl?: string;
@@ -5485,8 +6283,10 @@ export const SessionManagerOutputUrl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SessionManagerOutputUrl",
 }) as any as S.Schema<SessionManagerOutputUrl>;
+export type MaxSessionDuration = string;
 export type AccessType = "Standard" | "JustInTime" | (string & {});
 export const AccessType = /*@__PURE__*/ S.String;
+
 export interface Session {
   SessionId?: string;
   Target?: string;
@@ -5535,8 +6335,8 @@ export interface DisassociateOpsItemRelatedItemRequest {
   OpsItemId: string;
   AssociationId: string;
 }
-export const DisassociateOpsItemRelatedItemRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DisassociateOpsItemRelatedItemRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ OpsItemId: S.String, AssociationId: S.String }).pipe(
       T.all(
         ns,
@@ -5548,14 +6348,16 @@ export const DisassociateOpsItemRelatedItemRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DisassociateOpsItemRelatedItemRequest",
-  }) as any as S.Schema<DisassociateOpsItemRelatedItemRequest>;
+).annotate({
+  identifier: "DisassociateOpsItemRelatedItemRequest",
+}) as any as S.Schema<DisassociateOpsItemRelatedItemRequest>;
 export interface DisassociateOpsItemRelatedItemResponse {}
-export const DisassociateOpsItemRelatedItemResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DisassociateOpsItemRelatedItemResponse",
-  }) as any as S.Schema<DisassociateOpsItemRelatedItemResponse>;
+export const DisassociateOpsItemRelatedItemResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DisassociateOpsItemRelatedItemResponse",
+}) as any as S.Schema<DisassociateOpsItemRelatedItemResponse>;
+export type AccessRequestId = string;
 export interface GetAccessTokenRequest {
   AccessRequestId: string;
 }
@@ -5574,6 +6376,9 @@ export const GetAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccessTokenRequest",
 }) as any as S.Schema<GetAccessTokenRequest>;
+export type AccessKeyIdType = string;
+export type AccessKeySecretType = string | redacted.Redacted<string>;
+export type SessionTokenType = string | redacted.Redacted<string>;
 export interface Credentials {
   AccessKeyId: string;
   SecretAccessKey: string | redacted.Redacted<string>;
@@ -5596,6 +6401,7 @@ export type AccessRequestStatus =
   | "Pending"
   | (string & {});
 export const AccessRequestStatus = /*@__PURE__*/ S.String;
+
 export interface GetAccessTokenResponse {
   Credentials?: Credentials;
   AccessRequestStatus?: AccessRequestStatus;
@@ -5611,22 +6417,21 @@ export const GetAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetAutomationExecutionRequest {
   AutomationExecutionId: string;
 }
-export const GetAutomationExecutionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ AutomationExecutionId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetAutomationExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AutomationExecutionId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetAutomationExecutionRequest",
-  }) as any as S.Schema<GetAutomationExecutionRequest>;
+  ),
+).annotate({
+  identifier: "GetAutomationExecutionRequest",
+}) as any as S.Schema<GetAutomationExecutionRequest>;
 export interface ProgressCounters {
   TotalSteps?: number;
   SuccessSteps?: number;
@@ -5730,12 +6535,12 @@ export const AutomationExecution = /*@__PURE__*/ S.suspend(() =>
 export interface GetAutomationExecutionResult {
   AutomationExecution?: AutomationExecution;
 }
-export const GetAutomationExecutionResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ AutomationExecution: S.optional(AutomationExecution) }).pipe(ns),
-  ).annotate({
-    identifier: "GetAutomationExecutionResult",
-  }) as any as S.Schema<GetAutomationExecutionResult>;
+export const GetAutomationExecutionResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AutomationExecution: S.optional(AutomationExecution) }).pipe(ns),
+).annotate({
+  identifier: "GetAutomationExecutionResult",
+}) as any as S.Schema<GetAutomationExecutionResult>;
+export type ISO8601String = string;
 export interface GetCalendarStateRequest {
   CalendarNames: string[];
   AtTime?: string;
@@ -5760,6 +6565,7 @@ export const GetCalendarStateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCalendarStateRequest>;
 export type CalendarState = "OPEN" | "CLOSED" | (string & {});
 export const CalendarState = /*@__PURE__*/ S.String;
+
 export interface GetCalendarStateResponse {
   State?: CalendarState;
   AtTime?: string;
@@ -5774,31 +6580,34 @@ export const GetCalendarStateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCalendarStateResponse",
 }) as any as S.Schema<GetCalendarStateResponse>;
+export type CommandPluginName = string;
 export interface GetCommandInvocationRequest {
   CommandId: string;
   InstanceId: string;
   PluginName?: string;
 }
-export const GetCommandInvocationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CommandId: S.String,
-      InstanceId: S.String,
-      PluginName: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetCommandInvocationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CommandId: S.String,
+    InstanceId: S.String,
+    PluginName: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetCommandInvocationRequest",
-  }) as any as S.Schema<GetCommandInvocationRequest>;
+  ),
+).annotate({
+  identifier: "GetCommandInvocationRequest",
+}) as any as S.Schema<GetCommandInvocationRequest>;
+export type Comment = string;
+export type ResponseCode = number;
+export type StringDateTime = string;
 export type CommandInvocationStatus =
   | "Pending"
   | "InProgress"
@@ -5810,6 +6619,12 @@ export type CommandInvocationStatus =
   | "Cancelling"
   | (string & {});
 export const CommandInvocationStatus = /*@__PURE__*/ S.String;
+
+export type StatusDetails = string;
+export type StandardOutputContent = string;
+export type StandardErrorContent = string;
+export type CloudWatchLogGroupName = string;
+export type CloudWatchOutputEnabled = boolean;
 export interface CloudWatchOutputConfig {
   CloudWatchLogGroupName?: string;
   CloudWatchOutputEnabled?: boolean;
@@ -5884,51 +6699,49 @@ export const GetConnectionStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetConnectionStatusRequest>;
 export type ConnectionStatus = "connected" | "notconnected" | (string & {});
 export const ConnectionStatus = /*@__PURE__*/ S.String;
+
 export interface GetConnectionStatusResponse {
   Target?: string;
   Status?: ConnectionStatus;
 }
-export const GetConnectionStatusResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Target: S.optional(S.String),
-      Status: S.optional(ConnectionStatus),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "GetConnectionStatusResponse",
-  }) as any as S.Schema<GetConnectionStatusResponse>;
+export const GetConnectionStatusResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Target: S.optional(S.String),
+    Status: S.optional(ConnectionStatus),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetConnectionStatusResponse",
+}) as any as S.Schema<GetConnectionStatusResponse>;
 export interface GetDefaultPatchBaselineRequest {
   OperatingSystem?: OperatingSystem;
 }
-export const GetDefaultPatchBaselineRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ OperatingSystem: S.optional(OperatingSystem) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetDefaultPatchBaselineRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ OperatingSystem: S.optional(OperatingSystem) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetDefaultPatchBaselineRequest",
-  }) as any as S.Schema<GetDefaultPatchBaselineRequest>;
+  ),
+).annotate({
+  identifier: "GetDefaultPatchBaselineRequest",
+}) as any as S.Schema<GetDefaultPatchBaselineRequest>;
 export interface GetDefaultPatchBaselineResult {
   BaselineId?: string;
   OperatingSystem?: OperatingSystem;
 }
-export const GetDefaultPatchBaselineResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      BaselineId: S.optional(S.String),
-      OperatingSystem: S.optional(OperatingSystem),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "GetDefaultPatchBaselineResult",
-  }) as any as S.Schema<GetDefaultPatchBaselineResult>;
+export const GetDefaultPatchBaselineResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BaselineId: S.optional(S.String),
+    OperatingSystem: S.optional(OperatingSystem),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetDefaultPatchBaselineResult",
+}) as any as S.Schema<GetDefaultPatchBaselineResult>;
 export interface BaselineOverride {
   OperatingSystem?: OperatingSystem;
   GlobalFilters?: PatchFilterGroup;
@@ -5984,6 +6797,8 @@ export const GetDeployablePatchSnapshotForInstanceRequest =
   ).annotate({
     identifier: "GetDeployablePatchSnapshotForInstanceRequest",
   }) as any as S.Schema<GetDeployablePatchSnapshotForInstanceRequest>;
+export type SnapshotDownloadUrl = string;
+export type Product = string;
 export interface GetDeployablePatchSnapshotForInstanceResult {
   InstanceId?: string;
   SnapshotId?: string;
@@ -6027,8 +6842,12 @@ export const GetDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDocumentRequest",
 }) as any as S.Schema<GetDocumentRequest>;
+export type ContentLength = number;
+export type AttachmentHash = string;
 export type AttachmentHashType = "Sha256" | (string & {});
 export const AttachmentHashType = /*@__PURE__*/ S.String;
+
+export type AttachmentUrl = string;
 export interface AttachmentContent {
   Name?: string;
   Size?: number;
@@ -6087,6 +6906,7 @@ export const GetDocumentResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDocumentResult",
 }) as any as S.Schema<GetDocumentResult>;
+export type ExecutionPreviewId = string;
 export interface GetExecutionPreviewRequest {
   ExecutionPreviewId: string;
 }
@@ -6112,12 +6932,14 @@ export type ExecutionPreviewStatus =
   | "Failed"
   | (string & {});
 export const ExecutionPreviewStatus = /*@__PURE__*/ S.String;
+
 export type ImpactType =
   | "Mutating"
   | "NonMutating"
   | "Undetermined"
   | (string & {});
 export const ImpactType = /*@__PURE__*/ S.String;
+
 export type StepPreviewMap = { [key in ImpactType]?: number };
 export const StepPreviewMap = /*@__PURE__*/ S.Record(
   ImpactType,
@@ -6161,18 +6983,19 @@ export interface GetExecutionPreviewResponse {
   StatusMessage?: string;
   ExecutionPreview?: ExecutionPreview;
 }
-export const GetExecutionPreviewResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ExecutionPreviewId: S.optional(S.String),
-      EndedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      Status: S.optional(ExecutionPreviewStatus),
-      StatusMessage: S.optional(S.String),
-      ExecutionPreview: S.optional(ExecutionPreview),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "GetExecutionPreviewResponse",
-  }) as any as S.Schema<GetExecutionPreviewResponse>;
+export const GetExecutionPreviewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ExecutionPreviewId: S.optional(S.String),
+    EndedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    Status: S.optional(ExecutionPreviewStatus),
+    StatusMessage: S.optional(S.String),
+    ExecutionPreview: S.optional(ExecutionPreview),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetExecutionPreviewResponse",
+}) as any as S.Schema<GetExecutionPreviewResponse>;
+export type InventoryFilterKey = string;
+export type InventoryFilterValue = string;
 export type InventoryFilterValueList = string[];
 export const InventoryFilterValueList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("FilterValue")),
@@ -6186,6 +7009,7 @@ export type InventoryQueryOperatorType =
   | "Exists"
   | (string & {});
 export const InventoryQueryOperatorType = /*@__PURE__*/ S.String;
+
 export interface InventoryFilter {
   Key: string;
   Values: string[];
@@ -6206,6 +7030,8 @@ export const InventoryFilterList = /*@__PURE__*/ S.Array(
     identifier: "InventoryFilter",
   }),
 );
+export type InventoryAggregatorExpression = string;
+export type InventoryGroupName = string;
 export interface InventoryGroup {
   Name: string;
   Filters: InventoryFilter[];
@@ -6286,6 +7112,10 @@ export const GetInventoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetInventoryRequest",
 }) as any as S.Schema<GetInventoryRequest>;
+export type InventoryResultEntityId = string;
+export type InventoryResultItemKey = string;
+export type InventoryItemCaptureTime = string;
+export type InventoryItemContentHash = string;
 export type InventoryItemEntry = { [key: string]: string | undefined };
 export const InventoryItemEntry = /*@__PURE__*/ S.Record(
   S.String,
@@ -6348,6 +7178,10 @@ export const GetInventoryResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetInventoryResult",
 }) as any as S.Schema<GetInventoryResult>;
+export type InventoryItemTypeNameFilter = string;
+export type GetInventorySchemaMaxResults = number;
+export type AggregatorSchemaOnly = boolean;
+export type IsSubTypeSchema = boolean;
 export interface GetInventorySchemaRequest {
   TypeName?: string;
   NextToken?: string;
@@ -6376,8 +7210,10 @@ export const GetInventorySchemaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetInventorySchemaRequest",
 }) as any as S.Schema<GetInventorySchemaRequest>;
+export type InventoryItemAttributeName = string;
 export type InventoryAttributeDataType = "string" | "number" | (string & {});
 export const InventoryAttributeDataType = /*@__PURE__*/ S.String;
+
 export interface InventoryItemAttribute {
   Name: string;
   DataType: InventoryAttributeDataType;
@@ -6393,6 +7229,7 @@ export const InventoryItemAttributeList = /*@__PURE__*/ S.Array(
     identifier: "InventoryItemAttribute",
   }),
 );
+export type InventoryTypeDisplayName = string;
 export interface InventoryItemSchema {
   TypeName: string;
   Version?: string;
@@ -6427,22 +7264,21 @@ export const GetInventorySchemaResult = /*@__PURE__*/ S.suspend(() =>
 export interface GetMaintenanceWindowRequest {
   WindowId: string;
 }
-export const GetMaintenanceWindowRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ WindowId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetMaintenanceWindowRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ WindowId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetMaintenanceWindowRequest",
-  }) as any as S.Schema<GetMaintenanceWindowRequest>;
+  ),
+).annotate({
+  identifier: "GetMaintenanceWindowRequest",
+}) as any as S.Schema<GetMaintenanceWindowRequest>;
 export interface GetMaintenanceWindowResult {
   WindowId?: string;
   Name?: string;
@@ -6484,8 +7320,8 @@ export const GetMaintenanceWindowResult = /*@__PURE__*/ S.suspend(() =>
 export interface GetMaintenanceWindowExecutionRequest {
   WindowExecutionId: string;
 }
-export const GetMaintenanceWindowExecutionRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetMaintenanceWindowExecutionRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ WindowExecutionId: S.String }).pipe(
       T.all(
         ns,
@@ -6497,12 +7333,13 @@ export const GetMaintenanceWindowExecutionRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetMaintenanceWindowExecutionRequest",
-  }) as any as S.Schema<GetMaintenanceWindowExecutionRequest>;
+).annotate({
+  identifier: "GetMaintenanceWindowExecutionRequest",
+}) as any as S.Schema<GetMaintenanceWindowExecutionRequest>;
 export type MaintenanceWindowExecutionTaskIdList = string[];
-export const MaintenanceWindowExecutionTaskIdList =
-  /*@__PURE__*/ S.Array(S.String);
+export const MaintenanceWindowExecutionTaskIdList = /*@__PURE__*/ S.Array(
+  S.String,
+);
 export interface GetMaintenanceWindowExecutionResult {
   WindowExecutionId?: string;
   TaskIds?: string[];
@@ -6511,25 +7348,24 @@ export interface GetMaintenanceWindowExecutionResult {
   StartTime?: Date;
   EndTime?: Date;
 }
-export const GetMaintenanceWindowExecutionResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      WindowExecutionId: S.optional(S.String),
-      TaskIds: S.optional(MaintenanceWindowExecutionTaskIdList),
-      Status: S.optional(MaintenanceWindowExecutionStatus),
-      StatusDetails: S.optional(S.String),
-      StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "GetMaintenanceWindowExecutionResult",
-  }) as any as S.Schema<GetMaintenanceWindowExecutionResult>;
+export const GetMaintenanceWindowExecutionResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WindowExecutionId: S.optional(S.String),
+    TaskIds: S.optional(MaintenanceWindowExecutionTaskIdList),
+    Status: S.optional(MaintenanceWindowExecutionStatus),
+    StatusDetails: S.optional(S.String),
+    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetMaintenanceWindowExecutionResult",
+}) as any as S.Schema<GetMaintenanceWindowExecutionResult>;
 export interface GetMaintenanceWindowExecutionTaskRequest {
   WindowExecutionId: string;
   TaskId: string;
 }
-export const GetMaintenanceWindowExecutionTaskRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetMaintenanceWindowExecutionTaskRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ WindowExecutionId: S.String, TaskId: S.String }).pipe(
       T.all(
         ns,
@@ -6541,14 +7377,15 @@ export const GetMaintenanceWindowExecutionTaskRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetMaintenanceWindowExecutionTaskRequest",
-  }) as any as S.Schema<GetMaintenanceWindowExecutionTaskRequest>;
+).annotate({
+  identifier: "GetMaintenanceWindowExecutionTaskRequest",
+}) as any as S.Schema<GetMaintenanceWindowExecutionTaskRequest>;
 export type MaintenanceWindowTaskParametersList = {
   [key: string]: MaintenanceWindowTaskParameterValueExpression | undefined;
 }[];
-export const MaintenanceWindowTaskParametersList =
-  /*@__PURE__*/ S.Array(MaintenanceWindowTaskParameters);
+export const MaintenanceWindowTaskParametersList = /*@__PURE__*/ S.Array(
+  MaintenanceWindowTaskParameters,
+);
 export interface GetMaintenanceWindowExecutionTaskResult {
   WindowExecutionId?: string;
   TaskExecutionId?: string;
@@ -6568,8 +7405,8 @@ export interface GetMaintenanceWindowExecutionTaskResult {
   AlarmConfiguration?: AlarmConfiguration;
   TriggeredAlarms?: AlarmStateInformation[];
 }
-export const GetMaintenanceWindowExecutionTaskResult =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetMaintenanceWindowExecutionTaskResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       WindowExecutionId: S.optional(S.String),
       TaskExecutionId: S.optional(S.String),
@@ -6587,9 +7424,9 @@ export const GetMaintenanceWindowExecutionTaskResult =
       AlarmConfiguration: S.optional(AlarmConfiguration),
       TriggeredAlarms: S.optional(AlarmStateInformationList),
     }).pipe(ns),
-  ).annotate({
-    identifier: "GetMaintenanceWindowExecutionTaskResult",
-  }) as any as S.Schema<GetMaintenanceWindowExecutionTaskResult>;
+).annotate({
+  identifier: "GetMaintenanceWindowExecutionTaskResult",
+}) as any as S.Schema<GetMaintenanceWindowExecutionTaskResult>;
 export interface GetMaintenanceWindowExecutionTaskInvocationRequest {
   WindowExecutionId: string;
   TaskId: string;
@@ -6652,22 +7489,22 @@ export interface GetMaintenanceWindowTaskRequest {
   WindowId: string;
   WindowTaskId: string;
 }
-export const GetMaintenanceWindowTaskRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ WindowId: S.String, WindowTaskId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetMaintenanceWindowTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ WindowId: S.String, WindowTaskId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetMaintenanceWindowTaskRequest",
-  }) as any as S.Schema<GetMaintenanceWindowTaskRequest>;
+  ),
+).annotate({
+  identifier: "GetMaintenanceWindowTaskRequest",
+}) as any as S.Schema<GetMaintenanceWindowTaskRequest>;
+export type NotificationArn = string;
 export type NotificationEvent =
   | "All"
   | "InProgress"
@@ -6677,10 +7514,12 @@ export type NotificationEvent =
   | "Failed"
   | (string & {});
 export const NotificationEvent = /*@__PURE__*/ S.String;
+
 export type NotificationEventList = NotificationEvent[];
 export const NotificationEventList = /*@__PURE__*/ S.Array(NotificationEvent);
 export type NotificationType = "Command" | "Invocation" | (string & {});
 export const NotificationType = /*@__PURE__*/ S.String;
+
 export interface NotificationConfig {
   NotificationArn?: string;
   NotificationEvents?: NotificationEvent[];
@@ -6695,6 +7534,7 @@ export const NotificationConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NotificationConfig",
 }) as any as S.Schema<NotificationConfig>;
+export type TimeoutSeconds = number;
 export interface MaintenanceWindowRunCommandParameters {
   Comment?: string;
   CloudWatchOutputConfig?: CloudWatchOutputConfig;
@@ -6708,8 +7548,8 @@ export interface MaintenanceWindowRunCommandParameters {
   ServiceRoleArn?: string;
   TimeoutSeconds?: number;
 }
-export const MaintenanceWindowRunCommandParameters =
-  /*@__PURE__*/ S.suspend(() =>
+export const MaintenanceWindowRunCommandParameters = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Comment: S.optional(S.String),
       CloudWatchOutputConfig: S.optional(CloudWatchOutputConfig),
@@ -6723,50 +7563,58 @@ export const MaintenanceWindowRunCommandParameters =
       ServiceRoleArn: S.optional(S.String),
       TimeoutSeconds: S.optional(S.Number),
     }),
-  ).annotate({
-    identifier: "MaintenanceWindowRunCommandParameters",
-  }) as any as S.Schema<MaintenanceWindowRunCommandParameters>;
+).annotate({
+  identifier: "MaintenanceWindowRunCommandParameters",
+}) as any as S.Schema<MaintenanceWindowRunCommandParameters>;
 export interface MaintenanceWindowAutomationParameters {
   DocumentVersion?: string;
   Parameters?: { [key: string]: string[] | undefined };
 }
-export const MaintenanceWindowAutomationParameters =
-  /*@__PURE__*/ S.suspend(() =>
+export const MaintenanceWindowAutomationParameters = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       DocumentVersion: S.optional(S.String),
       Parameters: S.optional(AutomationParameterMap),
     }),
-  ).annotate({
-    identifier: "MaintenanceWindowAutomationParameters",
-  }) as any as S.Schema<MaintenanceWindowAutomationParameters>;
+).annotate({
+  identifier: "MaintenanceWindowAutomationParameters",
+}) as any as S.Schema<MaintenanceWindowAutomationParameters>;
+export type MaintenanceWindowStepFunctionsInput =
+  | string
+  | redacted.Redacted<string>;
+export type MaintenanceWindowStepFunctionsName = string;
 export interface MaintenanceWindowStepFunctionsParameters {
   Input?: string | redacted.Redacted<string>;
   Name?: string;
 }
-export const MaintenanceWindowStepFunctionsParameters =
-  /*@__PURE__*/ S.suspend(() =>
+export const MaintenanceWindowStepFunctionsParameters = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Input: S.optional(SensitiveString),
       Name: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "MaintenanceWindowStepFunctionsParameters",
-  }) as any as S.Schema<MaintenanceWindowStepFunctionsParameters>;
+).annotate({
+  identifier: "MaintenanceWindowStepFunctionsParameters",
+}) as any as S.Schema<MaintenanceWindowStepFunctionsParameters>;
+export type MaintenanceWindowLambdaClientContext = string;
+export type MaintenanceWindowLambdaQualifier = string;
+export type MaintenanceWindowLambdaPayload =
+  | Uint8Array
+  | redacted.Redacted<Uint8Array>;
 export interface MaintenanceWindowLambdaParameters {
   ClientContext?: string;
   Qualifier?: string;
   Payload?: Uint8Array | redacted.Redacted<Uint8Array>;
 }
-export const MaintenanceWindowLambdaParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClientContext: S.optional(S.String),
-      Qualifier: S.optional(S.String),
-      Payload: S.optional(SensitiveBlob),
-    }),
-  ).annotate({
-    identifier: "MaintenanceWindowLambdaParameters",
-  }) as any as S.Schema<MaintenanceWindowLambdaParameters>;
+export const MaintenanceWindowLambdaParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClientContext: S.optional(S.String),
+    Qualifier: S.optional(S.String),
+    Payload: S.optional(SensitiveBlob),
+  }),
+).annotate({
+  identifier: "MaintenanceWindowLambdaParameters",
+}) as any as S.Schema<MaintenanceWindowLambdaParameters>;
 export interface MaintenanceWindowTaskInvocationParameters {
   RunCommand?: MaintenanceWindowRunCommandParameters;
   Automation?: MaintenanceWindowAutomationParameters;
@@ -6804,31 +7652,30 @@ export interface GetMaintenanceWindowTaskResult {
   CutoffBehavior?: MaintenanceWindowTaskCutoffBehavior;
   AlarmConfiguration?: AlarmConfiguration;
 }
-export const GetMaintenanceWindowTaskResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      WindowId: S.optional(S.String),
-      WindowTaskId: S.optional(S.String),
-      Targets: S.optional(Targets),
-      TaskArn: S.optional(S.String),
-      ServiceRoleArn: S.optional(S.String),
-      TaskType: S.optional(MaintenanceWindowTaskType),
-      TaskParameters: S.optional(MaintenanceWindowTaskParameters),
-      TaskInvocationParameters: S.optional(
-        MaintenanceWindowTaskInvocationParameters,
-      ),
-      Priority: S.optional(S.Number),
-      MaxConcurrency: S.optional(S.String),
-      MaxErrors: S.optional(S.String),
-      LoggingInfo: S.optional(LoggingInfo),
-      Name: S.optional(S.String),
-      Description: S.optional(SensitiveString),
-      CutoffBehavior: S.optional(MaintenanceWindowTaskCutoffBehavior),
-      AlarmConfiguration: S.optional(AlarmConfiguration),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "GetMaintenanceWindowTaskResult",
-  }) as any as S.Schema<GetMaintenanceWindowTaskResult>;
+export const GetMaintenanceWindowTaskResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WindowId: S.optional(S.String),
+    WindowTaskId: S.optional(S.String),
+    Targets: S.optional(Targets),
+    TaskArn: S.optional(S.String),
+    ServiceRoleArn: S.optional(S.String),
+    TaskType: S.optional(MaintenanceWindowTaskType),
+    TaskParameters: S.optional(MaintenanceWindowTaskParameters),
+    TaskInvocationParameters: S.optional(
+      MaintenanceWindowTaskInvocationParameters,
+    ),
+    Priority: S.optional(S.Number),
+    MaxConcurrency: S.optional(S.String),
+    MaxErrors: S.optional(S.String),
+    LoggingInfo: S.optional(LoggingInfo),
+    Name: S.optional(S.String),
+    Description: S.optional(SensitiveString),
+    CutoffBehavior: S.optional(MaintenanceWindowTaskCutoffBehavior),
+    AlarmConfiguration: S.optional(AlarmConfiguration),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetMaintenanceWindowTaskResult",
+}) as any as S.Schema<GetMaintenanceWindowTaskResult>;
 export interface GetOpsItemRequest {
   OpsItemId: string;
   OpsItemArn?: string;
@@ -6912,6 +7759,7 @@ export const GetOpsItemResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetOpsItemResponse",
 }) as any as S.Schema<GetOpsItemResponse>;
+export type GetOpsMetadataMaxResults = number;
 export interface GetOpsMetadataRequest {
   OpsMetadataArn: string;
   MaxResults?: number;
@@ -6950,6 +7798,8 @@ export const GetOpsMetadataResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetOpsMetadataResult",
 }) as any as S.Schema<GetOpsMetadataResult>;
+export type OpsFilterKey = string;
+export type OpsFilterValue = string;
 export type OpsFilterValueList = string[];
 export const OpsFilterValueList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("FilterValue")),
@@ -6963,6 +7813,7 @@ export type OpsFilterOperatorType =
   | "Exists"
   | (string & {});
 export const OpsFilterOperatorType = /*@__PURE__*/ S.String;
+
 export interface OpsFilter {
   Key: string;
   Values: string[];
@@ -6979,6 +7830,11 @@ export type OpsFilterList = OpsFilter[];
 export const OpsFilterList = /*@__PURE__*/ S.Array(
   OpsFilter.pipe(T.XmlName("OpsFilter")).annotate({ identifier: "OpsFilter" }),
 );
+export type OpsAggregatorType = string;
+export type OpsDataTypeName = string;
+export type OpsDataAttributeName = string;
+export type OpsAggregatorValueKey = string;
+export type OpsAggregatorValue = string;
 export type OpsAggregatorValueMap = { [key: string]: string | undefined };
 export const OpsAggregatorValueMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -7057,6 +7913,9 @@ export const GetOpsSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetOpsSummaryRequest",
 }) as any as S.Schema<GetOpsSummaryRequest>;
+export type OpsEntityId = string;
+export type OpsEntityItemKey = string;
+export type OpsEntityItemCaptureTime = string;
 export type OpsEntityItemEntry = { [key: string]: string | undefined };
 export const OpsEntityItemEntry = /*@__PURE__*/ S.Record(
   S.String,
@@ -7121,6 +7980,8 @@ export const GetParameterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetParameterRequest",
 }) as any as S.Schema<GetParameterRequest>;
+export type PSParameterValue = string | redacted.Redacted<string>;
+export type PSParameterSelector = string;
 export interface Parameter {
   Name?: string;
   Type?: ParameterType;
@@ -7181,6 +8042,7 @@ export const GetParameterHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetParameterHistoryRequest",
 }) as any as S.Schema<GetParameterHistoryRequest>;
+export type ParameterLabel = string;
 export type ParameterLabelList = string[];
 export const ParameterLabelList = /*@__PURE__*/ S.Array(S.String);
 export interface ParameterHistory {
@@ -7269,6 +8131,7 @@ export const GetParametersResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetParametersResult",
 }) as any as S.Schema<GetParametersResult>;
+export type GetParametersByPathMaxResults = number;
 export interface GetParametersByPathRequest {
   Path: string;
   Recursive?: boolean;
@@ -7375,8 +8238,8 @@ export interface GetPatchBaselineForPatchGroupRequest {
   PatchGroup: string;
   OperatingSystem?: OperatingSystem;
 }
-export const GetPatchBaselineForPatchGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetPatchBaselineForPatchGroupRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       PatchGroup: S.String,
       OperatingSystem: S.optional(OperatingSystem),
@@ -7391,24 +8254,24 @@ export const GetPatchBaselineForPatchGroupRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetPatchBaselineForPatchGroupRequest",
-  }) as any as S.Schema<GetPatchBaselineForPatchGroupRequest>;
+).annotate({
+  identifier: "GetPatchBaselineForPatchGroupRequest",
+}) as any as S.Schema<GetPatchBaselineForPatchGroupRequest>;
 export interface GetPatchBaselineForPatchGroupResult {
   BaselineId?: string;
   PatchGroup?: string;
   OperatingSystem?: OperatingSystem;
 }
-export const GetPatchBaselineForPatchGroupResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      BaselineId: S.optional(S.String),
-      PatchGroup: S.optional(S.String),
-      OperatingSystem: S.optional(OperatingSystem),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "GetPatchBaselineForPatchGroupResult",
-  }) as any as S.Schema<GetPatchBaselineForPatchGroupResult>;
+export const GetPatchBaselineForPatchGroupResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BaselineId: S.optional(S.String),
+    PatchGroup: S.optional(S.String),
+    OperatingSystem: S.optional(OperatingSystem),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetPatchBaselineForPatchGroupResult",
+}) as any as S.Schema<GetPatchBaselineForPatchGroupResult>;
+export type ResourcePolicyMaxResults = number;
 export interface GetResourcePoliciesRequest {
   ResourceArn: string;
   NextToken?: string;
@@ -7433,38 +8296,39 @@ export const GetResourcePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourcePoliciesRequest",
 }) as any as S.Schema<GetResourcePoliciesRequest>;
+export type Policy = string;
 export interface GetResourcePoliciesResponseEntry {
   PolicyId?: string;
   PolicyHash?: string;
   Policy?: string;
 }
-export const GetResourcePoliciesResponseEntry =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PolicyId: S.optional(S.String),
-      PolicyHash: S.optional(S.String),
-      Policy: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetResourcePoliciesResponseEntry",
-  }) as any as S.Schema<GetResourcePoliciesResponseEntry>;
+export const GetResourcePoliciesResponseEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PolicyId: S.optional(S.String),
+    PolicyHash: S.optional(S.String),
+    Policy: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetResourcePoliciesResponseEntry",
+}) as any as S.Schema<GetResourcePoliciesResponseEntry>;
 export type GetResourcePoliciesResponseEntries =
   GetResourcePoliciesResponseEntry[];
-export const GetResourcePoliciesResponseEntries =
-  /*@__PURE__*/ S.Array(GetResourcePoliciesResponseEntry);
+export const GetResourcePoliciesResponseEntries = /*@__PURE__*/ S.Array(
+  GetResourcePoliciesResponseEntry,
+);
 export interface GetResourcePoliciesResponse {
   NextToken?: string;
   Policies?: GetResourcePoliciesResponseEntry[];
 }
-export const GetResourcePoliciesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      Policies: S.optional(GetResourcePoliciesResponseEntries),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "GetResourcePoliciesResponse",
-  }) as any as S.Schema<GetResourcePoliciesResponse>;
+export const GetResourcePoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    Policies: S.optional(GetResourcePoliciesResponseEntries),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetResourcePoliciesResponse",
+}) as any as S.Schema<GetResourcePoliciesResponse>;
+export type ServiceSettingId = string;
 export interface GetServiceSettingRequest {
   SettingId: string;
 }
@@ -7483,6 +8347,7 @@ export const GetServiceSettingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetServiceSettingRequest",
 }) as any as S.Schema<GetServiceSettingRequest>;
+export type ServiceSettingValue = string;
 export interface ServiceSetting {
   SettingId?: string;
   SettingValue?: string;
@@ -7516,39 +8381,37 @@ export interface LabelParameterVersionRequest {
   ParameterVersion?: number;
   Labels: string[];
 }
-export const LabelParameterVersionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.String,
-      ParameterVersion: S.optional(S.Number),
-      Labels: ParameterLabelList,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const LabelParameterVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    ParameterVersion: S.optional(S.Number),
+    Labels: ParameterLabelList,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "LabelParameterVersionRequest",
-  }) as any as S.Schema<LabelParameterVersionRequest>;
+  ),
+).annotate({
+  identifier: "LabelParameterVersionRequest",
+}) as any as S.Schema<LabelParameterVersionRequest>;
 export interface LabelParameterVersionResult {
   InvalidLabels?: string[];
   ParameterVersion?: number;
 }
-export const LabelParameterVersionResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      InvalidLabels: S.optional(ParameterLabelList),
-      ParameterVersion: S.optional(S.Number),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "LabelParameterVersionResult",
-  }) as any as S.Schema<LabelParameterVersionResult>;
+export const LabelParameterVersionResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InvalidLabels: S.optional(ParameterLabelList),
+    ParameterVersion: S.optional(S.Number),
+  }).pipe(ns),
+).annotate({
+  identifier: "LabelParameterVersionResult",
+}) as any as S.Schema<LabelParameterVersionResult>;
 export type AssociationFilterKey =
   | "InstanceId"
   | "Name"
@@ -7560,6 +8423,8 @@ export type AssociationFilterKey =
   | "ResourceGroupName"
   | (string & {});
 export const AssociationFilterKey = /*@__PURE__*/ S.String;
+
+export type AssociationFilterValue = string;
 export interface AssociationFilter {
   key: AssociationFilterKey;
   value: string;
@@ -7656,26 +8521,25 @@ export interface ListAssociationVersionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListAssociationVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AssociationId: S.String,
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListAssociationVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AssociationId: S.String,
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListAssociationVersionsRequest",
-  }) as any as S.Schema<ListAssociationVersionsRequest>;
+  ),
+).annotate({
+  identifier: "ListAssociationVersionsRequest",
+}) as any as S.Schema<ListAssociationVersionsRequest>;
 export interface AssociationVersionInfo {
   AssociationId?: string;
   AssociationVersion?: string;
@@ -7734,15 +8598,15 @@ export interface ListAssociationVersionsResult {
   AssociationVersions?: AssociationVersionInfo[];
   NextToken?: string;
 }
-export const ListAssociationVersionsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AssociationVersions: S.optional(AssociationVersionList),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListAssociationVersionsResult",
-  }) as any as S.Schema<ListAssociationVersionsResult>;
+export const ListAssociationVersionsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AssociationVersions: S.optional(AssociationVersionList),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListAssociationVersionsResult",
+}) as any as S.Schema<ListAssociationVersionsResult>;
+export type CommandMaxResults = number;
 export type CommandFilterKey =
   | "InvokedAfter"
   | "InvokedBefore"
@@ -7751,6 +8615,8 @@ export type CommandFilterKey =
   | "DocumentName"
   | (string & {});
 export const CommandFilterKey = /*@__PURE__*/ S.String;
+
+export type CommandFilterValue = string;
 export interface CommandFilter {
   key: CommandFilterKey;
   value: string;
@@ -7768,29 +8634,30 @@ export interface ListCommandInvocationsRequest {
   Filters?: CommandFilter[];
   Details?: boolean;
 }
-export const ListCommandInvocationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CommandId: S.optional(S.String),
-      InstanceId: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-      Filters: S.optional(CommandFilterList),
-      Details: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListCommandInvocationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CommandId: S.optional(S.String),
+    InstanceId: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+    Filters: S.optional(CommandFilterList),
+    Details: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListCommandInvocationsRequest",
-  }) as any as S.Schema<ListCommandInvocationsRequest>;
+  ),
+).annotate({
+  identifier: "ListCommandInvocationsRequest",
+}) as any as S.Schema<ListCommandInvocationsRequest>;
+export type InstanceTagName = string;
+export type InvocationTraceOutput = string;
 export type CommandPluginStatus =
   | "Pending"
   | "InProgress"
@@ -7800,6 +8667,8 @@ export type CommandPluginStatus =
   | "Failed"
   | (string & {});
 export const CommandPluginStatus = /*@__PURE__*/ S.String;
+
+export type CommandPluginOutput = string;
 export interface CommandPlugin {
   Name?: string;
   Status?: CommandPluginStatus;
@@ -7884,15 +8753,14 @@ export interface ListCommandInvocationsResult {
   CommandInvocations?: CommandInvocation[];
   NextToken?: string;
 }
-export const ListCommandInvocationsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CommandInvocations: S.optional(CommandInvocationList),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListCommandInvocationsResult",
-  }) as any as S.Schema<ListCommandInvocationsResult>;
+export const ListCommandInvocationsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CommandInvocations: S.optional(CommandInvocationList),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListCommandInvocationsResult",
+}) as any as S.Schema<ListCommandInvocationsResult>;
 export interface ListCommandsRequest {
   CommandId?: string;
   InstanceId?: string;
@@ -7931,6 +8799,11 @@ export type CommandStatus =
   | "Cancelling"
   | (string & {});
 export const CommandStatus = /*@__PURE__*/ S.String;
+
+export type TargetCount = number;
+export type CompletedCount = number;
+export type ErrorCount = number;
+export type DeliveryTimedOutCount = number;
 export interface Command {
   CommandId?: string;
   DocumentName?: string;
@@ -8005,9 +8878,12 @@ export const ListCommandsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCommandsResult",
 }) as any as S.Schema<ListCommandsResult>;
+export type ComplianceStringFilterKey = string;
+export type ComplianceFilterValue = string;
 export type ComplianceStringFilterValueList = string[];
-export const ComplianceStringFilterValueList =
-  /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("FilterValue")));
+export const ComplianceStringFilterValueList = /*@__PURE__*/ S.Array(
+  S.String.pipe(T.XmlName("FilterValue")),
+);
 export type ComplianceQueryOperatorType =
   | "EQUAL"
   | "NOT_EQUAL"
@@ -8016,6 +8892,7 @@ export type ComplianceQueryOperatorType =
   | "GREATER_THAN"
   | (string & {});
 export const ComplianceQueryOperatorType = /*@__PURE__*/ S.String;
+
 export interface ComplianceStringFilter {
   Key?: string;
   Values?: string[];
@@ -8036,8 +8913,10 @@ export const ComplianceStringFilterList = /*@__PURE__*/ S.Array(
     identifier: "ComplianceStringFilter",
   }),
 );
+export type ComplianceResourceId = string;
 export type ComplianceResourceIdList = string[];
 export const ComplianceResourceIdList = /*@__PURE__*/ S.Array(S.String);
+export type ComplianceResourceType = string;
 export type ComplianceResourceTypeList = string[];
 export const ComplianceResourceTypeList = /*@__PURE__*/ S.Array(S.String);
 export interface ListComplianceItemsRequest {
@@ -8068,8 +8947,12 @@ export const ListComplianceItemsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListComplianceItemsRequest",
 }) as any as S.Schema<ListComplianceItemsRequest>;
+export type ComplianceTypeName = string;
+export type ComplianceItemId = string;
+export type ComplianceItemTitle = string;
 export type ComplianceStatus = "COMPLIANT" | "NON_COMPLIANT" | (string & {});
 export const ComplianceStatus = /*@__PURE__*/ S.String;
+
 export type ComplianceSeverity =
   | "CRITICAL"
   | "HIGH"
@@ -8079,6 +8962,9 @@ export type ComplianceSeverity =
   | "UNSPECIFIED"
   | (string & {});
 export const ComplianceSeverity = /*@__PURE__*/ S.String;
+
+export type ComplianceExecutionId = string;
+export type ComplianceExecutionType = string;
 export interface ComplianceExecutionSummary {
   ExecutionTime: Date;
   ExecutionId?: string;
@@ -8145,26 +9031,26 @@ export interface ListComplianceSummariesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListComplianceSummariesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Filters: S.optional(ComplianceStringFilterList),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListComplianceSummariesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Filters: S.optional(ComplianceStringFilterList),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListComplianceSummariesRequest",
-  }) as any as S.Schema<ListComplianceSummariesRequest>;
+  ),
+).annotate({
+  identifier: "ListComplianceSummariesRequest",
+}) as any as S.Schema<ListComplianceSummariesRequest>;
+export type ComplianceSummaryCount = number;
 export interface SeveritySummary {
   CriticalCount?: number;
   HighCount?: number;
@@ -8233,17 +9119,17 @@ export interface ListComplianceSummariesResult {
   ComplianceSummaryItems?: ComplianceSummaryItem[];
   NextToken?: string;
 }
-export const ListComplianceSummariesResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ComplianceSummaryItems: S.optional(ComplianceSummaryItemList),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListComplianceSummariesResult",
-  }) as any as S.Schema<ListComplianceSummariesResult>;
+export const ListComplianceSummariesResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ComplianceSummaryItems: S.optional(ComplianceSummaryItemList),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListComplianceSummariesResult",
+}) as any as S.Schema<ListComplianceSummariesResult>;
 export type DocumentMetadataEnum = "DocumentReviews" | (string & {});
 export const DocumentMetadataEnum = /*@__PURE__*/ S.String;
+
 export interface ListDocumentMetadataHistoryRequest {
   Name: string;
   DocumentVersion?: string;
@@ -8251,43 +9137,43 @@ export interface ListDocumentMetadataHistoryRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListDocumentMetadataHistoryRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.String,
-      DocumentVersion: S.optional(S.String),
-      Metadata: DocumentMetadataEnum,
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListDocumentMetadataHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    DocumentVersion: S.optional(S.String),
+    Metadata: DocumentMetadataEnum,
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListDocumentMetadataHistoryRequest",
-  }) as any as S.Schema<ListDocumentMetadataHistoryRequest>;
+  ),
+).annotate({
+  identifier: "ListDocumentMetadataHistoryRequest",
+}) as any as S.Schema<ListDocumentMetadataHistoryRequest>;
 export type DocumentReviewCommentType = "Comment" | (string & {});
 export const DocumentReviewCommentType = /*@__PURE__*/ S.String;
+
+export type DocumentReviewComment = string;
 export interface DocumentReviewCommentSource {
   Type?: DocumentReviewCommentType;
   Content?: string;
 }
-export const DocumentReviewCommentSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Type: S.optional(DocumentReviewCommentType),
-      Content: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DocumentReviewCommentSource",
-  }) as any as S.Schema<DocumentReviewCommentSource>;
+export const DocumentReviewCommentSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Type: S.optional(DocumentReviewCommentType),
+    Content: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DocumentReviewCommentSource",
+}) as any as S.Schema<DocumentReviewCommentSource>;
 export type DocumentReviewCommentList = DocumentReviewCommentSource[];
 export const DocumentReviewCommentList = /*@__PURE__*/ S.Array(
   DocumentReviewCommentSource,
@@ -8299,18 +9185,17 @@ export interface DocumentReviewerResponseSource {
   Comment?: DocumentReviewCommentSource[];
   Reviewer?: string;
 }
-export const DocumentReviewerResponseSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      UpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      ReviewStatus: S.optional(ReviewStatus),
-      Comment: S.optional(DocumentReviewCommentList),
-      Reviewer: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DocumentReviewerResponseSource",
-  }) as any as S.Schema<DocumentReviewerResponseSource>;
+export const DocumentReviewerResponseSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    ReviewStatus: S.optional(ReviewStatus),
+    Comment: S.optional(DocumentReviewCommentList),
+    Reviewer: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DocumentReviewerResponseSource",
+}) as any as S.Schema<DocumentReviewerResponseSource>;
 export type DocumentReviewerResponseList = DocumentReviewerResponseSource[];
 export const DocumentReviewerResponseList = /*@__PURE__*/ S.Array(
   DocumentReviewerResponseSource,
@@ -8318,12 +9203,11 @@ export const DocumentReviewerResponseList = /*@__PURE__*/ S.Array(
 export interface DocumentMetadataResponseInfo {
   ReviewerResponse?: DocumentReviewerResponseSource[];
 }
-export const DocumentMetadataResponseInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReviewerResponse: S.optional(DocumentReviewerResponseList) }),
-  ).annotate({
-    identifier: "DocumentMetadataResponseInfo",
-  }) as any as S.Schema<DocumentMetadataResponseInfo>;
+export const DocumentMetadataResponseInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReviewerResponse: S.optional(DocumentReviewerResponseList) }),
+).annotate({
+  identifier: "DocumentMetadataResponseInfo",
+}) as any as S.Schema<DocumentMetadataResponseInfo>;
 export interface ListDocumentMetadataHistoryResponse {
   Name?: string;
   DocumentVersion?: string;
@@ -8331,18 +9215,17 @@ export interface ListDocumentMetadataHistoryResponse {
   Metadata?: DocumentMetadataResponseInfo;
   NextToken?: string;
 }
-export const ListDocumentMetadataHistoryResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.optional(S.String),
-      DocumentVersion: S.optional(S.String),
-      Author: S.optional(S.String),
-      Metadata: S.optional(DocumentMetadataResponseInfo),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListDocumentMetadataHistoryResponse",
-  }) as any as S.Schema<ListDocumentMetadataHistoryResponse>;
+export const ListDocumentMetadataHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.optional(S.String),
+    DocumentVersion: S.optional(S.String),
+    Author: S.optional(S.String),
+    Metadata: S.optional(DocumentMetadataResponseInfo),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListDocumentMetadataHistoryResponse",
+}) as any as S.Schema<ListDocumentMetadataHistoryResponse>;
 export type DocumentFilterKey =
   | "Name"
   | "Owner"
@@ -8350,6 +9233,8 @@ export type DocumentFilterKey =
   | "DocumentType"
   | (string & {});
 export const DocumentFilterKey = /*@__PURE__*/ S.String;
+
+export type DocumentFilterValue = string;
 export interface DocumentFilter {
   key: DocumentFilterKey;
   value: string;
@@ -8363,6 +9248,8 @@ export const DocumentFilterList = /*@__PURE__*/ S.Array(
     identifier: "DocumentFilter",
   }),
 );
+export type DocumentKeyValuesFilterKey = string;
+export type DocumentKeyValuesFilterValue = string;
 export type DocumentKeyValuesFilterValues = string[];
 export const DocumentKeyValuesFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface DocumentKeyValuesFilter {
@@ -8468,26 +9355,25 @@ export interface ListDocumentVersionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListDocumentVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.String,
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListDocumentVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListDocumentVersionsRequest",
-  }) as any as S.Schema<ListDocumentVersionsRequest>;
+  ),
+).annotate({
+  identifier: "ListDocumentVersionsRequest",
+}) as any as S.Schema<ListDocumentVersionsRequest>;
 export interface DocumentVersionInfo {
   Name?: string;
   DisplayName?: string;
@@ -8537,28 +9423,27 @@ export interface ListInventoryEntriesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListInventoryEntriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      InstanceId: S.String,
-      TypeName: S.String,
-      Filters: S.optional(InventoryFilterList),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListInventoryEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InstanceId: S.String,
+    TypeName: S.String,
+    Filters: S.optional(InventoryFilterList),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListInventoryEntriesRequest",
-  }) as any as S.Schema<ListInventoryEntriesRequest>;
+  ),
+).annotate({
+  identifier: "ListInventoryEntriesRequest",
+}) as any as S.Schema<ListInventoryEntriesRequest>;
 export interface ListInventoryEntriesResult {
   TypeName?: string;
   InstanceId?: string;
@@ -8597,6 +9482,8 @@ export type NodeFilterKey =
   | "AccountId"
   | (string & {});
 export const NodeFilterKey = /*@__PURE__*/ S.String;
+
+export type NodeFilterValue = string;
 export type NodeFilterValueList = string[];
 export const NodeFilterValueList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("FilterValue")),
@@ -8607,6 +9494,7 @@ export type NodeFilterOperatorType =
   | "BeginWith"
   | (string & {});
 export const NodeFilterOperatorType = /*@__PURE__*/ S.String;
+
 export interface NodeFilter {
   Key: NodeFilterKey;
   Values: string[];
@@ -8651,6 +9539,11 @@ export const ListNodesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListNodesRequest",
 }) as any as S.Schema<ListNodesRequest>;
+export type NodeCaptureTime = Date;
+export type NodeId = string;
+export type NodeAccountId = string;
+export type NodeOrganizationalUnitId = string;
+export type NodeOrganizationalUnitPath = string;
 export interface NodeOwnerInfo {
   AccountId?: string;
   OrganizationalUnitId?: string;
@@ -8663,8 +9556,13 @@ export const NodeOwnerInfo = /*@__PURE__*/ S.suspend(() =>
     OrganizationalUnitPath: S.optional(S.String),
   }),
 ).annotate({ identifier: "NodeOwnerInfo" }) as any as S.Schema<NodeOwnerInfo>;
+export type NodeRegion = string;
+export type AgentType = string;
+export type AgentVersion = string;
+export type InstanceStatus = string;
 export type ManagedStatus = "All" | "Managed" | "Unmanaged" | (string & {});
 export const ManagedStatus = /*@__PURE__*/ S.String;
+
 export interface InstanceInfo {
   AgentType?: string;
   AgentVersion?: string;
@@ -8727,8 +9625,10 @@ export const ListNodesResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListNodesResult>;
 export type NodeAggregatorType = "Count" | (string & {});
 export const NodeAggregatorType = /*@__PURE__*/ S.String;
+
 export type NodeTypeName = "Instance" | (string & {});
 export const NodeTypeName = /*@__PURE__*/ S.String;
+
 export type NodeAttributeName =
   | "AgentVersion"
   | "PlatformName"
@@ -8738,6 +9638,7 @@ export type NodeAttributeName =
   | "ResourceType"
   | (string & {});
 export const NodeAttributeName = /*@__PURE__*/ S.String;
+
 export interface NodeAggregator {
   AggregatorType: NodeAggregatorType;
   TypeName: NodeTypeName;
@@ -8812,10 +9713,13 @@ export const ListNodesSummaryResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListNodesSummaryResult>;
 export type OpsItemEventFilterKey = "OpsItemId" | (string & {});
 export const OpsItemEventFilterKey = /*@__PURE__*/ S.String;
+
+export type OpsItemEventFilterValue = string;
 export type OpsItemEventFilterValues = string[];
 export const OpsItemEventFilterValues = /*@__PURE__*/ S.Array(S.String);
 export type OpsItemEventFilterOperator = "Equal" | (string & {});
 export const OpsItemEventFilterOperator = /*@__PURE__*/ S.String;
+
 export interface OpsItemEventFilter {
   Key: OpsItemEventFilterKey;
   Values: string[];
@@ -8832,6 +9736,7 @@ export const OpsItemEventFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OpsItemEventFilter>;
 export type OpsItemEventFilters = OpsItemEventFilter[];
 export const OpsItemEventFilters = /*@__PURE__*/ S.Array(OpsItemEventFilter);
+export type OpsItemEventMaxResults = number;
 export interface ListOpsItemEventsRequest {
   Filters?: OpsItemEventFilter[];
   MaxResults?: number;
@@ -8906,10 +9811,13 @@ export type OpsItemRelatedItemsFilterKey =
   | "ResourceUri"
   | (string & {});
 export const OpsItemRelatedItemsFilterKey = /*@__PURE__*/ S.String;
+
+export type OpsItemRelatedItemsFilterValue = string;
 export type OpsItemRelatedItemsFilterValues = string[];
 export const OpsItemRelatedItemsFilterValues = /*@__PURE__*/ S.Array(S.String);
 export type OpsItemRelatedItemsFilterOperator = "Equal" | (string & {});
 export const OpsItemRelatedItemsFilterOperator = /*@__PURE__*/ S.String;
+
 export interface OpsItemRelatedItemsFilter {
   Key: OpsItemRelatedItemsFilterKey;
   Values: string[];
@@ -8928,33 +9836,33 @@ export type OpsItemRelatedItemsFilters = OpsItemRelatedItemsFilter[];
 export const OpsItemRelatedItemsFilters = /*@__PURE__*/ S.Array(
   OpsItemRelatedItemsFilter,
 );
+export type OpsItemRelatedItemsMaxResults = number;
 export interface ListOpsItemRelatedItemsRequest {
   OpsItemId?: string;
   Filters?: OpsItemRelatedItemsFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListOpsItemRelatedItemsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      OpsItemId: S.optional(S.String),
-      Filters: S.optional(OpsItemRelatedItemsFilters),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListOpsItemRelatedItemsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OpsItemId: S.optional(S.String),
+    Filters: S.optional(OpsItemRelatedItemsFilters),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListOpsItemRelatedItemsRequest",
-  }) as any as S.Schema<ListOpsItemRelatedItemsRequest>;
+  ),
+).annotate({
+  identifier: "ListOpsItemRelatedItemsRequest",
+}) as any as S.Schema<ListOpsItemRelatedItemsRequest>;
 export interface OpsItemRelatedItemSummary {
   OpsItemId?: string;
   AssociationId?: string;
@@ -8991,15 +9899,16 @@ export interface ListOpsItemRelatedItemsResponse {
   NextToken?: string;
   Summaries?: OpsItemRelatedItemSummary[];
 }
-export const ListOpsItemRelatedItemsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      Summaries: S.optional(OpsItemRelatedItemSummaries),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListOpsItemRelatedItemsResponse",
-  }) as any as S.Schema<ListOpsItemRelatedItemsResponse>;
+export const ListOpsItemRelatedItemsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    Summaries: S.optional(OpsItemRelatedItemSummaries),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListOpsItemRelatedItemsResponse",
+}) as any as S.Schema<ListOpsItemRelatedItemsResponse>;
+export type OpsMetadataFilterKey = string;
+export type OpsMetadataFilterValue = string;
 export type OpsMetadataFilterValueList = string[];
 export const OpsMetadataFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface OpsMetadataFilter {
@@ -9013,6 +9922,7 @@ export const OpsMetadataFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OpsMetadataFilter>;
 export type OpsMetadataFilterList = OpsMetadataFilter[];
 export const OpsMetadataFilterList = /*@__PURE__*/ S.Array(OpsMetadataFilter);
+export type ListOpsMetadataMaxResults = number;
 export interface ListOpsMetadataRequest {
   Filters?: OpsMetadataFilter[];
   MaxResults?: number;
@@ -9074,8 +9984,8 @@ export interface ListResourceComplianceSummariesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListResourceComplianceSummariesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListResourceComplianceSummariesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Filters: S.optional(ComplianceStringFilterList),
       NextToken: S.optional(S.String),
@@ -9091,9 +10001,9 @@ export const ListResourceComplianceSummariesRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListResourceComplianceSummariesRequest",
-  }) as any as S.Schema<ListResourceComplianceSummariesRequest>;
+).annotate({
+  identifier: "ListResourceComplianceSummariesRequest",
+}) as any as S.Schema<ListResourceComplianceSummariesRequest>;
 export interface ResourceComplianceSummaryItem {
   ComplianceType?: string;
   ResourceType?: string;
@@ -9104,68 +10014,66 @@ export interface ResourceComplianceSummaryItem {
   CompliantSummary?: CompliantSummary;
   NonCompliantSummary?: NonCompliantSummary;
 }
-export const ResourceComplianceSummaryItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ComplianceType: S.optional(S.String),
-      ResourceType: S.optional(S.String),
-      ResourceId: S.optional(S.String),
-      Status: S.optional(ComplianceStatus),
-      OverallSeverity: S.optional(ComplianceSeverity),
-      ExecutionSummary: S.optional(ComplianceExecutionSummary),
-      CompliantSummary: S.optional(CompliantSummary),
-      NonCompliantSummary: S.optional(NonCompliantSummary),
-    }),
-  ).annotate({
-    identifier: "ResourceComplianceSummaryItem",
-  }) as any as S.Schema<ResourceComplianceSummaryItem>;
+export const ResourceComplianceSummaryItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ComplianceType: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+    ResourceId: S.optional(S.String),
+    Status: S.optional(ComplianceStatus),
+    OverallSeverity: S.optional(ComplianceSeverity),
+    ExecutionSummary: S.optional(ComplianceExecutionSummary),
+    CompliantSummary: S.optional(CompliantSummary),
+    NonCompliantSummary: S.optional(NonCompliantSummary),
+  }),
+).annotate({
+  identifier: "ResourceComplianceSummaryItem",
+}) as any as S.Schema<ResourceComplianceSummaryItem>;
 export type ResourceComplianceSummaryItemList = ResourceComplianceSummaryItem[];
-export const ResourceComplianceSummaryItemList =
-  /*@__PURE__*/ S.Array(
-    ResourceComplianceSummaryItem.pipe(T.XmlName("Item")).annotate({
-      identifier: "ResourceComplianceSummaryItem",
-    }),
-  );
+export const ResourceComplianceSummaryItemList = /*@__PURE__*/ S.Array(
+  ResourceComplianceSummaryItem.pipe(T.XmlName("Item")).annotate({
+    identifier: "ResourceComplianceSummaryItem",
+  }),
+);
 export interface ListResourceComplianceSummariesResult {
   ResourceComplianceSummaryItems?: ResourceComplianceSummaryItem[];
   NextToken?: string;
 }
-export const ListResourceComplianceSummariesResult =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListResourceComplianceSummariesResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ResourceComplianceSummaryItems: S.optional(
         ResourceComplianceSummaryItemList,
       ),
       NextToken: S.optional(S.String),
     }).pipe(ns),
-  ).annotate({
-    identifier: "ListResourceComplianceSummariesResult",
-  }) as any as S.Schema<ListResourceComplianceSummariesResult>;
+).annotate({
+  identifier: "ListResourceComplianceSummariesResult",
+}) as any as S.Schema<ListResourceComplianceSummariesResult>;
 export interface ListResourceDataSyncRequest {
   SyncType?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListResourceDataSyncRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SyncType: S.optional(S.String),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListResourceDataSyncRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SyncType: S.optional(S.String),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListResourceDataSyncRequest",
-  }) as any as S.Schema<ListResourceDataSyncRequest>;
+  ),
+).annotate({
+  identifier: "ListResourceDataSyncRequest",
+}) as any as S.Schema<ListResourceDataSyncRequest>;
+export type ResourceDataSyncState = string;
 export interface ResourceDataSyncSourceWithState {
   SourceType?: string;
   AwsOrganizationsSource?: ResourceDataSyncAwsOrganizationsSource;
@@ -9174,27 +10082,30 @@ export interface ResourceDataSyncSourceWithState {
   State?: string;
   EnableAllOpsDataSources?: boolean;
 }
-export const ResourceDataSyncSourceWithState =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SourceType: S.optional(S.String),
-      AwsOrganizationsSource: S.optional(
-        ResourceDataSyncAwsOrganizationsSource,
-      ),
-      SourceRegions: S.optional(ResourceDataSyncSourceRegionList),
-      IncludeFutureRegions: S.optional(S.Boolean),
-      State: S.optional(S.String),
-      EnableAllOpsDataSources: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "ResourceDataSyncSourceWithState",
-  }) as any as S.Schema<ResourceDataSyncSourceWithState>;
+export const ResourceDataSyncSourceWithState = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SourceType: S.optional(S.String),
+    AwsOrganizationsSource: S.optional(ResourceDataSyncAwsOrganizationsSource),
+    SourceRegions: S.optional(ResourceDataSyncSourceRegionList),
+    IncludeFutureRegions: S.optional(S.Boolean),
+    State: S.optional(S.String),
+    EnableAllOpsDataSources: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ResourceDataSyncSourceWithState",
+}) as any as S.Schema<ResourceDataSyncSourceWithState>;
+export type LastResourceDataSyncTime = Date;
+export type LastSuccessfulResourceDataSyncTime = Date;
+export type ResourceDataSyncLastModifiedTime = Date;
 export type LastResourceDataSyncStatus =
   | "Successful"
   | "Failed"
   | "InProgress"
   | (string & {});
 export const LastResourceDataSyncStatus = /*@__PURE__*/ S.String;
+
+export type ResourceDataSyncCreatedTime = Date;
+export type LastResourceDataSyncMessage = string;
 export interface ResourceDataSyncItem {
   SyncName?: string;
   SyncType?: string;
@@ -9249,10 +10160,7 @@ export interface ListTagsForResourceRequest {
   ResourceId: string;
 }
 export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceType: ResourceTypeForTagging,
-    ResourceId: S.String,
-  }).pipe(
+  S.Struct({ ResourceType: ResourceTypeForTagging, ResourceId: S.String }).pipe(
     T.all(
       ns,
       T.Http({ method: "POST", uri: "/" }),
@@ -9281,33 +10189,33 @@ export interface ModifyDocumentPermissionRequest {
   AccountIdsToRemove?: string[];
   SharedDocumentVersion?: string;
 }
-export const ModifyDocumentPermissionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.String,
-      PermissionType: DocumentPermissionType,
-      AccountIdsToAdd: S.optional(AccountIdList),
-      AccountIdsToRemove: S.optional(AccountIdList),
-      SharedDocumentVersion: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ModifyDocumentPermissionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    PermissionType: DocumentPermissionType,
+    AccountIdsToAdd: S.optional(AccountIdList),
+    AccountIdsToRemove: S.optional(AccountIdList),
+    SharedDocumentVersion: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ModifyDocumentPermissionRequest",
-  }) as any as S.Schema<ModifyDocumentPermissionRequest>;
+  ),
+).annotate({
+  identifier: "ModifyDocumentPermissionRequest",
+}) as any as S.Schema<ModifyDocumentPermissionRequest>;
 export interface ModifyDocumentPermissionResponse {}
-export const ModifyDocumentPermissionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "ModifyDocumentPermissionResponse",
-  }) as any as S.Schema<ModifyDocumentPermissionResponse>;
+export const ModifyDocumentPermissionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "ModifyDocumentPermissionResponse",
+}) as any as S.Schema<ModifyDocumentPermissionResponse>;
 export interface ComplianceItemEntry {
   Id?: string;
   Title?: string;
@@ -9329,8 +10237,10 @@ export const ComplianceItemEntry = /*@__PURE__*/ S.suspend(() =>
 export type ComplianceItemEntryList = ComplianceItemEntry[];
 export const ComplianceItemEntryList =
   /*@__PURE__*/ S.Array(ComplianceItemEntry);
+export type ComplianceItemContentHash = string;
 export type ComplianceUploadType = "COMPLETE" | "PARTIAL" | (string & {});
 export const ComplianceUploadType = /*@__PURE__*/ S.String;
+
 export interface PutComplianceItemsRequest {
   ResourceId: string;
   ResourceType: string;
@@ -9417,6 +10327,7 @@ export const PutInventoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutInventoryRequest",
 }) as any as S.Schema<PutInventoryRequest>;
+export type PutInventoryMessage = string;
 export interface PutInventoryResult {
   Message?: string;
 }
@@ -9425,6 +10336,7 @@ export const PutInventoryResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutInventoryResult",
 }) as any as S.Schema<PutInventoryResult>;
+export type ParameterPolicies = string;
 export interface PutParameterRequest {
   Name: string;
   Description?: string;
@@ -9518,31 +10430,29 @@ export const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 export interface RegisterDefaultPatchBaselineRequest {
   BaselineId: string;
 }
-export const RegisterDefaultPatchBaselineRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ BaselineId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RegisterDefaultPatchBaselineRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ BaselineId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RegisterDefaultPatchBaselineRequest",
-  }) as any as S.Schema<RegisterDefaultPatchBaselineRequest>;
+  ),
+).annotate({
+  identifier: "RegisterDefaultPatchBaselineRequest",
+}) as any as S.Schema<RegisterDefaultPatchBaselineRequest>;
 export interface RegisterDefaultPatchBaselineResult {
   BaselineId?: string;
 }
-export const RegisterDefaultPatchBaselineResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ BaselineId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "RegisterDefaultPatchBaselineResult",
-  }) as any as S.Schema<RegisterDefaultPatchBaselineResult>;
+export const RegisterDefaultPatchBaselineResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ BaselineId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "RegisterDefaultPatchBaselineResult",
+}) as any as S.Schema<RegisterDefaultPatchBaselineResult>;
 export interface RegisterPatchBaselineForPatchGroupRequest {
   BaselineId: string;
   PatchGroup: string;
@@ -9567,15 +10477,15 @@ export interface RegisterPatchBaselineForPatchGroupResult {
   BaselineId?: string;
   PatchGroup?: string;
 }
-export const RegisterPatchBaselineForPatchGroupResult =
-  /*@__PURE__*/ S.suspend(() =>
+export const RegisterPatchBaselineForPatchGroupResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       BaselineId: S.optional(S.String),
       PatchGroup: S.optional(S.String),
     }).pipe(ns),
-  ).annotate({
-    identifier: "RegisterPatchBaselineForPatchGroupResult",
-  }) as any as S.Schema<RegisterPatchBaselineForPatchGroupResult>;
+).annotate({
+  identifier: "RegisterPatchBaselineForPatchGroupResult",
+}) as any as S.Schema<RegisterPatchBaselineForPatchGroupResult>;
 export interface RegisterTargetWithMaintenanceWindowRequest {
   WindowId: string;
   ResourceType: MaintenanceWindowResourceType;
@@ -9638,8 +10548,8 @@ export interface RegisterTaskWithMaintenanceWindowRequest {
   CutoffBehavior?: MaintenanceWindowTaskCutoffBehavior;
   AlarmConfiguration?: AlarmConfiguration;
 }
-export const RegisterTaskWithMaintenanceWindowRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const RegisterTaskWithMaintenanceWindowRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       WindowId: S.String,
       Targets: S.optional(Targets),
@@ -9670,18 +10580,17 @@ export const RegisterTaskWithMaintenanceWindowRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "RegisterTaskWithMaintenanceWindowRequest",
-  }) as any as S.Schema<RegisterTaskWithMaintenanceWindowRequest>;
+).annotate({
+  identifier: "RegisterTaskWithMaintenanceWindowRequest",
+}) as any as S.Schema<RegisterTaskWithMaintenanceWindowRequest>;
 export interface RegisterTaskWithMaintenanceWindowResult {
   WindowTaskId?: string;
 }
-export const RegisterTaskWithMaintenanceWindowResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ WindowTaskId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "RegisterTaskWithMaintenanceWindowResult",
-  }) as any as S.Schema<RegisterTaskWithMaintenanceWindowResult>;
+export const RegisterTaskWithMaintenanceWindowResult = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ WindowTaskId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "RegisterTaskWithMaintenanceWindowResult",
+}) as any as S.Schema<RegisterTaskWithMaintenanceWindowResult>;
 export type KeyList = string[];
 export const KeyList = /*@__PURE__*/ S.Array(S.String);
 export interface RemoveTagsFromResourceRequest {
@@ -9689,31 +10598,31 @@ export interface RemoveTagsFromResourceRequest {
   ResourceId: string;
   TagKeys: string[];
 }
-export const RemoveTagsFromResourceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ResourceType: ResourceTypeForTagging,
-      ResourceId: S.String,
-      TagKeys: KeyList,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RemoveTagsFromResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceType: ResourceTypeForTagging,
+    ResourceId: S.String,
+    TagKeys: KeyList,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RemoveTagsFromResourceRequest",
-  }) as any as S.Schema<RemoveTagsFromResourceRequest>;
+  ),
+).annotate({
+  identifier: "RemoveTagsFromResourceRequest",
+}) as any as S.Schema<RemoveTagsFromResourceRequest>;
 export interface RemoveTagsFromResourceResult {}
-export const RemoveTagsFromResourceResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "RemoveTagsFromResourceResult",
-  }) as any as S.Schema<RemoveTagsFromResourceResult>;
+export const RemoveTagsFromResourceResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "RemoveTagsFromResourceResult",
+}) as any as S.Schema<RemoveTagsFromResourceResult>;
 export interface ResetServiceSettingRequest {
   SettingId: string;
 }
@@ -9758,6 +10667,8 @@ export const ResumeSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResumeSessionRequest",
 }) as any as S.Schema<ResumeSessionRequest>;
+export type TokenValue = string;
+export type StreamUrl = string;
 export interface ResumeSessionResponse {
   SessionId?: string;
   TokenValue?: string;
@@ -9781,31 +10692,31 @@ export type SignalType =
   | "Revoke"
   | (string & {});
 export const SignalType = /*@__PURE__*/ S.String;
+
 export interface SendAutomationSignalRequest {
   AutomationExecutionId: string;
   SignalType: SignalType;
   Payload?: { [key: string]: string[] | undefined };
 }
-export const SendAutomationSignalRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AutomationExecutionId: S.String,
-      SignalType: SignalType,
-      Payload: S.optional(AutomationParameterMap),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const SendAutomationSignalRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AutomationExecutionId: S.String,
+    SignalType: SignalType,
+    Payload: S.optional(AutomationParameterMap),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "SendAutomationSignalRequest",
-  }) as any as S.Schema<SendAutomationSignalRequest>;
+  ),
+).annotate({
+  identifier: "SendAutomationSignalRequest",
+}) as any as S.Schema<SendAutomationSignalRequest>;
 export interface SendAutomationSignalResult {}
 export const SendAutomationSignalResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
@@ -9874,6 +10785,7 @@ export const SendCommandResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SendCommandResult",
 }) as any as S.Schema<SendCommandResult>;
+export type String1to256 = string;
 export interface StartAccessRequestRequest {
   Reason: string;
   Targets: Target[];
@@ -9911,27 +10823,28 @@ export const AssociationIdList = /*@__PURE__*/ S.Array(S.String);
 export interface StartAssociationsOnceRequest {
   AssociationIds: string[];
 }
-export const StartAssociationsOnceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ AssociationIds: AssociationIdList }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartAssociationsOnceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AssociationIds: AssociationIdList }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartAssociationsOnceRequest",
-  }) as any as S.Schema<StartAssociationsOnceRequest>;
+  ),
+).annotate({
+  identifier: "StartAssociationsOnceRequest",
+}) as any as S.Schema<StartAssociationsOnceRequest>;
 export interface StartAssociationsOnceResult {}
-export const StartAssociationsOnceResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "StartAssociationsOnceResult",
-  }) as any as S.Schema<StartAssociationsOnceResult>;
+export const StartAssociationsOnceResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "StartAssociationsOnceResult",
+}) as any as S.Schema<StartAssociationsOnceResult>;
+export type IdempotencyToken = string;
 export interface StartAutomationExecutionRequest {
   DocumentName: string;
   DocumentVersion?: string;
@@ -9948,46 +10861,45 @@ export interface StartAutomationExecutionRequest {
   AlarmConfiguration?: AlarmConfiguration;
   TargetLocationsURL?: string;
 }
-export const StartAutomationExecutionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DocumentName: S.String,
-      DocumentVersion: S.optional(S.String),
-      Parameters: S.optional(AutomationParameterMap),
-      ClientToken: S.optional(S.String),
-      Mode: S.optional(ExecutionMode),
-      TargetParameterName: S.optional(S.String),
-      Targets: S.optional(Targets),
-      TargetMaps: S.optional(TargetMaps),
-      MaxConcurrency: S.optional(S.String),
-      MaxErrors: S.optional(S.String),
-      TargetLocations: S.optional(TargetLocations),
-      Tags: S.optional(TagList),
-      AlarmConfiguration: S.optional(AlarmConfiguration),
-      TargetLocationsURL: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartAutomationExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DocumentName: S.String,
+    DocumentVersion: S.optional(S.String),
+    Parameters: S.optional(AutomationParameterMap),
+    ClientToken: S.optional(S.String),
+    Mode: S.optional(ExecutionMode),
+    TargetParameterName: S.optional(S.String),
+    Targets: S.optional(Targets),
+    TargetMaps: S.optional(TargetMaps),
+    MaxConcurrency: S.optional(S.String),
+    MaxErrors: S.optional(S.String),
+    TargetLocations: S.optional(TargetLocations),
+    Tags: S.optional(TagList),
+    AlarmConfiguration: S.optional(AlarmConfiguration),
+    TargetLocationsURL: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartAutomationExecutionRequest",
-  }) as any as S.Schema<StartAutomationExecutionRequest>;
+  ),
+).annotate({
+  identifier: "StartAutomationExecutionRequest",
+}) as any as S.Schema<StartAutomationExecutionRequest>;
 export interface StartAutomationExecutionResult {
   AutomationExecutionId?: string;
 }
-export const StartAutomationExecutionResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ AutomationExecutionId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "StartAutomationExecutionResult",
-  }) as any as S.Schema<StartAutomationExecutionResult>;
+export const StartAutomationExecutionResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AutomationExecutionId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "StartAutomationExecutionResult",
+}) as any as S.Schema<StartAutomationExecutionResult>;
+export type ChangeDetailsValue = string;
 export interface StartChangeRequestExecutionRequest {
   ScheduledTime?: Date;
   DocumentName: string;
@@ -10001,47 +10913,43 @@ export interface StartChangeRequestExecutionRequest {
   ScheduledEndTime?: Date;
   ChangeDetails?: string;
 }
-export const StartChangeRequestExecutionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ScheduledTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      DocumentName: S.String,
-      DocumentVersion: S.optional(S.String),
-      Parameters: S.optional(AutomationParameterMap),
-      ChangeRequestName: S.optional(S.String),
-      ClientToken: S.optional(S.String),
-      AutoApprove: S.optional(S.Boolean),
-      Runbooks: Runbooks,
-      Tags: S.optional(TagList),
-      ScheduledEndTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      ChangeDetails: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartChangeRequestExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ScheduledTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    DocumentName: S.String,
+    DocumentVersion: S.optional(S.String),
+    Parameters: S.optional(AutomationParameterMap),
+    ChangeRequestName: S.optional(S.String),
+    ClientToken: S.optional(S.String),
+    AutoApprove: S.optional(S.Boolean),
+    Runbooks: Runbooks,
+    Tags: S.optional(TagList),
+    ScheduledEndTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     ),
-  ).annotate({
-    identifier: "StartChangeRequestExecutionRequest",
-  }) as any as S.Schema<StartChangeRequestExecutionRequest>;
+    ChangeDetails: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "StartChangeRequestExecutionRequest",
+}) as any as S.Schema<StartChangeRequestExecutionRequest>;
 export interface StartChangeRequestExecutionResult {
   AutomationExecutionId?: string;
 }
-export const StartChangeRequestExecutionResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ AutomationExecutionId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "StartChangeRequestExecutionResult",
-  }) as any as S.Schema<StartChangeRequestExecutionResult>;
+export const StartChangeRequestExecutionResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AutomationExecutionId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "StartChangeRequestExecutionResult",
+}) as any as S.Schema<StartChangeRequestExecutionResult>;
 export interface AutomationExecutionInputs {
   Parameters?: { [key: string]: string[] | undefined };
   TargetParameterName?: string;
@@ -10071,35 +10979,35 @@ export interface StartExecutionPreviewRequest {
   DocumentVersion?: string;
   ExecutionInputs?: ExecutionInputs;
 }
-export const StartExecutionPreviewRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DocumentName: S.String,
-      DocumentVersion: S.optional(S.String),
-      ExecutionInputs: S.optional(ExecutionInputs),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartExecutionPreviewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DocumentName: S.String,
+    DocumentVersion: S.optional(S.String),
+    ExecutionInputs: S.optional(ExecutionInputs),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartExecutionPreviewRequest",
-  }) as any as S.Schema<StartExecutionPreviewRequest>;
+  ),
+).annotate({
+  identifier: "StartExecutionPreviewRequest",
+}) as any as S.Schema<StartExecutionPreviewRequest>;
 export interface StartExecutionPreviewResponse {
   ExecutionPreviewId?: string;
 }
-export const StartExecutionPreviewResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ExecutionPreviewId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "StartExecutionPreviewResponse",
-  }) as any as S.Schema<StartExecutionPreviewResponse>;
+export const StartExecutionPreviewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ExecutionPreviewId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "StartExecutionPreviewResponse",
+}) as any as S.Schema<StartExecutionPreviewResponse>;
+export type SessionManagerParameterName = string;
+export type SessionManagerParameterValue = string;
 export type SessionManagerParameterValueList = string[];
 export const SessionManagerParameterValueList = /*@__PURE__*/ S.Array(S.String);
 export type SessionManagerParameters = { [key: string]: string[] | undefined };
@@ -10149,34 +11057,35 @@ export const StartSessionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartSessionResponse>;
 export type StopType = "Complete" | "Cancel" | (string & {});
 export const StopType = /*@__PURE__*/ S.String;
+
 export interface StopAutomationExecutionRequest {
   AutomationExecutionId: string;
   Type?: StopType;
 }
-export const StopAutomationExecutionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AutomationExecutionId: S.String,
-      Type: S.optional(StopType),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StopAutomationExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AutomationExecutionId: S.String,
+    Type: S.optional(StopType),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StopAutomationExecutionRequest",
-  }) as any as S.Schema<StopAutomationExecutionRequest>;
+  ),
+).annotate({
+  identifier: "StopAutomationExecutionRequest",
+}) as any as S.Schema<StopAutomationExecutionRequest>;
 export interface StopAutomationExecutionResult {}
-export const StopAutomationExecutionResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "StopAutomationExecutionResult",
-  }) as any as S.Schema<StopAutomationExecutionResult>;
+export const StopAutomationExecutionResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "StopAutomationExecutionResult",
+}) as any as S.Schema<StopAutomationExecutionResult>;
 export interface TerminateSessionRequest {
   SessionId: string;
 }
@@ -10208,39 +11117,37 @@ export interface UnlabelParameterVersionRequest {
   ParameterVersion: number;
   Labels: string[];
 }
-export const UnlabelParameterVersionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.String,
-      ParameterVersion: S.Number,
-      Labels: ParameterLabelList,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UnlabelParameterVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    ParameterVersion: S.Number,
+    Labels: ParameterLabelList,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UnlabelParameterVersionRequest",
-  }) as any as S.Schema<UnlabelParameterVersionRequest>;
+  ),
+).annotate({
+  identifier: "UnlabelParameterVersionRequest",
+}) as any as S.Schema<UnlabelParameterVersionRequest>;
 export interface UnlabelParameterVersionResult {
   RemovedLabels?: string[];
   InvalidLabels?: string[];
 }
-export const UnlabelParameterVersionResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RemovedLabels: S.optional(ParameterLabelList),
-      InvalidLabels: S.optional(ParameterLabelList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "UnlabelParameterVersionResult",
-  }) as any as S.Schema<UnlabelParameterVersionResult>;
+export const UnlabelParameterVersionResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RemovedLabels: S.optional(ParameterLabelList),
+    InvalidLabels: S.optional(ParameterLabelList),
+  }).pipe(ns),
+).annotate({
+  identifier: "UnlabelParameterVersionResult",
+}) as any as S.Schema<UnlabelParameterVersionResult>;
 export interface UpdateAssociationRequest {
   AssociationId: string;
   Parameters?: { [key: string]: string[] | undefined };
@@ -10307,9 +11214,9 @@ export interface UpdateAssociationResult {
   AssociationDescription?: AssociationDescription;
 }
 export const UpdateAssociationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AssociationDescription: S.optional(AssociationDescription),
-  }).pipe(ns),
+  S.Struct({ AssociationDescription: S.optional(AssociationDescription) }).pipe(
+    ns,
+  ),
 ).annotate({
   identifier: "UpdateAssociationResult",
 }) as any as S.Schema<UpdateAssociationResult>;
@@ -10318,37 +11225,35 @@ export interface UpdateAssociationStatusRequest {
   InstanceId: string;
   AssociationStatus: AssociationStatus;
 }
-export const UpdateAssociationStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.String,
-      InstanceId: S.String,
-      AssociationStatus: AssociationStatus,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateAssociationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    InstanceId: S.String,
+    AssociationStatus: AssociationStatus,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateAssociationStatusRequest",
-  }) as any as S.Schema<UpdateAssociationStatusRequest>;
+  ),
+).annotate({
+  identifier: "UpdateAssociationStatusRequest",
+}) as any as S.Schema<UpdateAssociationStatusRequest>;
 export interface UpdateAssociationStatusResult {
   AssociationDescription?: AssociationDescription;
 }
-export const UpdateAssociationStatusResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AssociationDescription: S.optional(AssociationDescription),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateAssociationStatusResult",
-  }) as any as S.Schema<UpdateAssociationStatusResult>;
+export const UpdateAssociationStatusResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AssociationDescription: S.optional(AssociationDescription) }).pipe(
+    ns,
+  ),
+).annotate({
+  identifier: "UpdateAssociationStatusResult",
+}) as any as S.Schema<UpdateAssociationStatusResult>;
 export interface UpdateDocumentRequest {
   Content: string;
   Attachments?: AttachmentsSource[];
@@ -10391,52 +11296,50 @@ export const UpdateDocumentResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateDocumentResult",
 }) as any as S.Schema<UpdateDocumentResult>;
+export type DocumentVersionNumber = string;
 export interface UpdateDocumentDefaultVersionRequest {
   Name: string;
   DocumentVersion: string;
 }
-export const UpdateDocumentDefaultVersionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Name: S.String, DocumentVersion: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateDocumentDefaultVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String, DocumentVersion: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateDocumentDefaultVersionRequest",
-  }) as any as S.Schema<UpdateDocumentDefaultVersionRequest>;
+  ),
+).annotate({
+  identifier: "UpdateDocumentDefaultVersionRequest",
+}) as any as S.Schema<UpdateDocumentDefaultVersionRequest>;
 export interface DocumentDefaultVersionDescription {
   Name?: string;
   DefaultVersion?: string;
   DefaultVersionName?: string;
 }
-export const DocumentDefaultVersionDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.optional(S.String),
-      DefaultVersion: S.optional(S.String),
-      DefaultVersionName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DocumentDefaultVersionDescription",
-  }) as any as S.Schema<DocumentDefaultVersionDescription>;
+export const DocumentDefaultVersionDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.optional(S.String),
+    DefaultVersion: S.optional(S.String),
+    DefaultVersionName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DocumentDefaultVersionDescription",
+}) as any as S.Schema<DocumentDefaultVersionDescription>;
 export interface UpdateDocumentDefaultVersionResult {
   Description?: DocumentDefaultVersionDescription;
 }
-export const UpdateDocumentDefaultVersionResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Description: S.optional(DocumentDefaultVersionDescription),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateDocumentDefaultVersionResult",
-  }) as any as S.Schema<UpdateDocumentDefaultVersionResult>;
+export const UpdateDocumentDefaultVersionResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Description: S.optional(DocumentDefaultVersionDescription) }).pipe(
+    ns,
+  ),
+).annotate({
+  identifier: "UpdateDocumentDefaultVersionResult",
+}) as any as S.Schema<UpdateDocumentDefaultVersionResult>;
 export type DocumentReviewAction =
   | "SendForReview"
   | "UpdateReview"
@@ -10444,6 +11347,7 @@ export type DocumentReviewAction =
   | "Reject"
   | (string & {});
 export const DocumentReviewAction = /*@__PURE__*/ S.String;
+
 export interface DocumentReviews {
   Action: DocumentReviewAction;
   Comment?: DocumentReviewCommentSource[];
@@ -10461,31 +11365,31 @@ export interface UpdateDocumentMetadataRequest {
   DocumentVersion?: string;
   DocumentReviews: DocumentReviews;
 }
-export const UpdateDocumentMetadataRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.String,
-      DocumentVersion: S.optional(S.String),
-      DocumentReviews: DocumentReviews,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateDocumentMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    DocumentVersion: S.optional(S.String),
+    DocumentReviews: DocumentReviews,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateDocumentMetadataRequest",
-  }) as any as S.Schema<UpdateDocumentMetadataRequest>;
+  ),
+).annotate({
+  identifier: "UpdateDocumentMetadataRequest",
+}) as any as S.Schema<UpdateDocumentMetadataRequest>;
 export interface UpdateDocumentMetadataResponse {}
-export const UpdateDocumentMetadataResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "UpdateDocumentMetadataResponse",
-  }) as any as S.Schema<UpdateDocumentMetadataResponse>;
+export const UpdateDocumentMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "UpdateDocumentMetadataResponse",
+}) as any as S.Schema<UpdateDocumentMetadataResponse>;
 export interface UpdateMaintenanceWindowRequest {
   WindowId: string;
   Name?: string;
@@ -10501,36 +11405,35 @@ export interface UpdateMaintenanceWindowRequest {
   Enabled?: boolean;
   Replace?: boolean;
 }
-export const UpdateMaintenanceWindowRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      WindowId: S.String,
-      Name: S.optional(S.String),
-      Description: S.optional(SensitiveString),
-      StartDate: S.optional(S.String),
-      EndDate: S.optional(S.String),
-      Schedule: S.optional(S.String),
-      ScheduleTimezone: S.optional(S.String),
-      ScheduleOffset: S.optional(S.Number),
-      Duration: S.optional(S.Number),
-      Cutoff: S.optional(S.Number),
-      AllowUnassociatedTargets: S.optional(S.Boolean),
-      Enabled: S.optional(S.Boolean),
-      Replace: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateMaintenanceWindowRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WindowId: S.String,
+    Name: S.optional(S.String),
+    Description: S.optional(SensitiveString),
+    StartDate: S.optional(S.String),
+    EndDate: S.optional(S.String),
+    Schedule: S.optional(S.String),
+    ScheduleTimezone: S.optional(S.String),
+    ScheduleOffset: S.optional(S.Number),
+    Duration: S.optional(S.Number),
+    Cutoff: S.optional(S.Number),
+    AllowUnassociatedTargets: S.optional(S.Boolean),
+    Enabled: S.optional(S.Boolean),
+    Replace: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateMaintenanceWindowRequest",
-  }) as any as S.Schema<UpdateMaintenanceWindowRequest>;
+  ),
+).annotate({
+  identifier: "UpdateMaintenanceWindowRequest",
+}) as any as S.Schema<UpdateMaintenanceWindowRequest>;
 export interface UpdateMaintenanceWindowResult {
   WindowId?: string;
   Name?: string;
@@ -10545,25 +11448,24 @@ export interface UpdateMaintenanceWindowResult {
   AllowUnassociatedTargets?: boolean;
   Enabled?: boolean;
 }
-export const UpdateMaintenanceWindowResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      WindowId: S.optional(S.String),
-      Name: S.optional(S.String),
-      Description: S.optional(SensitiveString),
-      StartDate: S.optional(S.String),
-      EndDate: S.optional(S.String),
-      Schedule: S.optional(S.String),
-      ScheduleTimezone: S.optional(S.String),
-      ScheduleOffset: S.optional(S.Number),
-      Duration: S.optional(S.Number),
-      Cutoff: S.optional(S.Number),
-      AllowUnassociatedTargets: S.optional(S.Boolean),
-      Enabled: S.optional(S.Boolean),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateMaintenanceWindowResult",
-  }) as any as S.Schema<UpdateMaintenanceWindowResult>;
+export const UpdateMaintenanceWindowResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WindowId: S.optional(S.String),
+    Name: S.optional(S.String),
+    Description: S.optional(SensitiveString),
+    StartDate: S.optional(S.String),
+    EndDate: S.optional(S.String),
+    Schedule: S.optional(S.String),
+    ScheduleTimezone: S.optional(S.String),
+    ScheduleOffset: S.optional(S.Number),
+    Duration: S.optional(S.Number),
+    Cutoff: S.optional(S.Number),
+    AllowUnassociatedTargets: S.optional(S.Boolean),
+    Enabled: S.optional(S.Boolean),
+  }).pipe(ns),
+).annotate({
+  identifier: "UpdateMaintenanceWindowResult",
+}) as any as S.Schema<UpdateMaintenanceWindowResult>;
 export interface UpdateMaintenanceWindowTargetRequest {
   WindowId: string;
   WindowTargetId: string;
@@ -10573,8 +11475,8 @@ export interface UpdateMaintenanceWindowTargetRequest {
   Description?: string | redacted.Redacted<string>;
   Replace?: boolean;
 }
-export const UpdateMaintenanceWindowTargetRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const UpdateMaintenanceWindowTargetRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       WindowId: S.String,
       WindowTargetId: S.String,
@@ -10594,9 +11496,9 @@ export const UpdateMaintenanceWindowTargetRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "UpdateMaintenanceWindowTargetRequest",
-  }) as any as S.Schema<UpdateMaintenanceWindowTargetRequest>;
+).annotate({
+  identifier: "UpdateMaintenanceWindowTargetRequest",
+}) as any as S.Schema<UpdateMaintenanceWindowTargetRequest>;
 export interface UpdateMaintenanceWindowTargetResult {
   WindowId?: string;
   WindowTargetId?: string;
@@ -10605,19 +11507,18 @@ export interface UpdateMaintenanceWindowTargetResult {
   Name?: string;
   Description?: string | redacted.Redacted<string>;
 }
-export const UpdateMaintenanceWindowTargetResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      WindowId: S.optional(S.String),
-      WindowTargetId: S.optional(S.String),
-      Targets: S.optional(Targets),
-      OwnerInformation: S.optional(SensitiveString),
-      Name: S.optional(S.String),
-      Description: S.optional(SensitiveString),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateMaintenanceWindowTargetResult",
-  }) as any as S.Schema<UpdateMaintenanceWindowTargetResult>;
+export const UpdateMaintenanceWindowTargetResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WindowId: S.optional(S.String),
+    WindowTargetId: S.optional(S.String),
+    Targets: S.optional(Targets),
+    OwnerInformation: S.optional(SensitiveString),
+    Name: S.optional(S.String),
+    Description: S.optional(SensitiveString),
+  }).pipe(ns),
+).annotate({
+  identifier: "UpdateMaintenanceWindowTargetResult",
+}) as any as S.Schema<UpdateMaintenanceWindowTargetResult>;
 export interface UpdateMaintenanceWindowTaskRequest {
   WindowId: string;
   WindowTaskId: string;
@@ -10638,41 +11539,40 @@ export interface UpdateMaintenanceWindowTaskRequest {
   CutoffBehavior?: MaintenanceWindowTaskCutoffBehavior;
   AlarmConfiguration?: AlarmConfiguration;
 }
-export const UpdateMaintenanceWindowTaskRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      WindowId: S.String,
-      WindowTaskId: S.String,
-      Targets: S.optional(Targets),
-      TaskArn: S.optional(S.String),
-      ServiceRoleArn: S.optional(S.String),
-      TaskParameters: S.optional(MaintenanceWindowTaskParameters),
-      TaskInvocationParameters: S.optional(
-        MaintenanceWindowTaskInvocationParameters,
-      ),
-      Priority: S.optional(S.Number),
-      MaxConcurrency: S.optional(S.String),
-      MaxErrors: S.optional(S.String),
-      LoggingInfo: S.optional(LoggingInfo),
-      Name: S.optional(S.String),
-      Description: S.optional(SensitiveString),
-      Replace: S.optional(S.Boolean),
-      CutoffBehavior: S.optional(MaintenanceWindowTaskCutoffBehavior),
-      AlarmConfiguration: S.optional(AlarmConfiguration),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateMaintenanceWindowTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WindowId: S.String,
+    WindowTaskId: S.String,
+    Targets: S.optional(Targets),
+    TaskArn: S.optional(S.String),
+    ServiceRoleArn: S.optional(S.String),
+    TaskParameters: S.optional(MaintenanceWindowTaskParameters),
+    TaskInvocationParameters: S.optional(
+      MaintenanceWindowTaskInvocationParameters,
     ),
-  ).annotate({
-    identifier: "UpdateMaintenanceWindowTaskRequest",
-  }) as any as S.Schema<UpdateMaintenanceWindowTaskRequest>;
+    Priority: S.optional(S.Number),
+    MaxConcurrency: S.optional(S.String),
+    MaxErrors: S.optional(S.String),
+    LoggingInfo: S.optional(LoggingInfo),
+    Name: S.optional(S.String),
+    Description: S.optional(SensitiveString),
+    Replace: S.optional(S.Boolean),
+    CutoffBehavior: S.optional(MaintenanceWindowTaskCutoffBehavior),
+    AlarmConfiguration: S.optional(AlarmConfiguration),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateMaintenanceWindowTaskRequest",
+}) as any as S.Schema<UpdateMaintenanceWindowTaskRequest>;
 export interface UpdateMaintenanceWindowTaskResult {
   WindowId?: string;
   WindowTaskId?: string;
@@ -10692,55 +11592,54 @@ export interface UpdateMaintenanceWindowTaskResult {
   CutoffBehavior?: MaintenanceWindowTaskCutoffBehavior;
   AlarmConfiguration?: AlarmConfiguration;
 }
-export const UpdateMaintenanceWindowTaskResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      WindowId: S.optional(S.String),
-      WindowTaskId: S.optional(S.String),
-      Targets: S.optional(Targets),
-      TaskArn: S.optional(S.String),
-      ServiceRoleArn: S.optional(S.String),
-      TaskParameters: S.optional(MaintenanceWindowTaskParameters),
-      TaskInvocationParameters: S.optional(
-        MaintenanceWindowTaskInvocationParameters,
-      ),
-      Priority: S.optional(S.Number),
-      MaxConcurrency: S.optional(S.String),
-      MaxErrors: S.optional(S.String),
-      LoggingInfo: S.optional(LoggingInfo),
-      Name: S.optional(S.String),
-      Description: S.optional(SensitiveString),
-      CutoffBehavior: S.optional(MaintenanceWindowTaskCutoffBehavior),
-      AlarmConfiguration: S.optional(AlarmConfiguration),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateMaintenanceWindowTaskResult",
-  }) as any as S.Schema<UpdateMaintenanceWindowTaskResult>;
+export const UpdateMaintenanceWindowTaskResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WindowId: S.optional(S.String),
+    WindowTaskId: S.optional(S.String),
+    Targets: S.optional(Targets),
+    TaskArn: S.optional(S.String),
+    ServiceRoleArn: S.optional(S.String),
+    TaskParameters: S.optional(MaintenanceWindowTaskParameters),
+    TaskInvocationParameters: S.optional(
+      MaintenanceWindowTaskInvocationParameters,
+    ),
+    Priority: S.optional(S.Number),
+    MaxConcurrency: S.optional(S.String),
+    MaxErrors: S.optional(S.String),
+    LoggingInfo: S.optional(LoggingInfo),
+    Name: S.optional(S.String),
+    Description: S.optional(SensitiveString),
+    CutoffBehavior: S.optional(MaintenanceWindowTaskCutoffBehavior),
+    AlarmConfiguration: S.optional(AlarmConfiguration),
+  }).pipe(ns),
+).annotate({
+  identifier: "UpdateMaintenanceWindowTaskResult",
+}) as any as S.Schema<UpdateMaintenanceWindowTaskResult>;
 export interface UpdateManagedInstanceRoleRequest {
   InstanceId: string;
   IamRole: string;
 }
-export const UpdateManagedInstanceRoleRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ InstanceId: S.String, IamRole: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateManagedInstanceRoleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ InstanceId: S.String, IamRole: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateManagedInstanceRoleRequest",
-  }) as any as S.Schema<UpdateManagedInstanceRoleRequest>;
+  ),
+).annotate({
+  identifier: "UpdateManagedInstanceRoleRequest",
+}) as any as S.Schema<UpdateManagedInstanceRoleRequest>;
 export interface UpdateManagedInstanceRoleResult {}
-export const UpdateManagedInstanceRoleResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "UpdateManagedInstanceRoleResult",
-  }) as any as S.Schema<UpdateManagedInstanceRoleResult>;
+export const UpdateManagedInstanceRoleResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "UpdateManagedInstanceRoleResult",
+}) as any as S.Schema<UpdateManagedInstanceRoleResult>;
 export type OpsItemOpsDataKeysList = string[];
 export const OpsItemOpsDataKeysList = /*@__PURE__*/ S.Array(S.String);
 export interface UpdateOpsItemRequest {
@@ -10924,963 +11823,60 @@ export interface UpdateResourceDataSyncRequest {
   SyncType: string;
   SyncSource: ResourceDataSyncSource;
 }
-export const UpdateResourceDataSyncRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SyncName: S.String,
-      SyncType: S.String,
-      SyncSource: ResourceDataSyncSource,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateResourceDataSyncRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SyncName: S.String,
+    SyncType: S.String,
+    SyncSource: ResourceDataSyncSource,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateResourceDataSyncRequest",
-  }) as any as S.Schema<UpdateResourceDataSyncRequest>;
+  ),
+).annotate({
+  identifier: "UpdateResourceDataSyncRequest",
+}) as any as S.Schema<UpdateResourceDataSyncRequest>;
 export interface UpdateResourceDataSyncResult {}
-export const UpdateResourceDataSyncResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "UpdateResourceDataSyncResult",
-  }) as any as S.Schema<UpdateResourceDataSyncResult>;
+export const UpdateResourceDataSyncResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "UpdateResourceDataSyncResult",
+}) as any as S.Schema<UpdateResourceDataSyncResult>;
 export interface UpdateServiceSettingRequest {
   SettingId: string;
   SettingValue: string;
 }
-export const UpdateServiceSettingRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ SettingId: S.String, SettingValue: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateServiceSettingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SettingId: S.String, SettingValue: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateServiceSettingRequest",
-  }) as any as S.Schema<UpdateServiceSettingRequest>;
+  ),
+).annotate({
+  identifier: "UpdateServiceSettingRequest",
+}) as any as S.Schema<UpdateServiceSettingRequest>;
 export interface UpdateServiceSettingResult {}
 export const UpdateServiceSettingResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "UpdateServiceSettingResult",
 }) as any as S.Schema<UpdateServiceSettingResult>;
-
-//# Errors
-export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InternalServerError", httpResponseCode: 500 }),
-) {}
-export class InvalidResourceId extends S.TaggedErrorClass<InvalidResourceId>()(
-  "InvalidResourceId",
-  {},
-  T.AwsQueryError({ code: "InvalidResourceId", httpResponseCode: 400 }),
-) {}
-export class InvalidResourceType extends S.TaggedErrorClass<InvalidResourceType>()(
-  "InvalidResourceType",
-  {},
-  T.AwsQueryError({ code: "InvalidResourceType", httpResponseCode: 400 }),
-) {}
-export class TooManyTagsError extends S.TaggedErrorClass<TooManyTagsError>()(
-  "TooManyTagsError",
-  {},
-  T.AwsQueryError({ code: "TooManyTagsError", httpResponseCode: 400 }),
-) {}
-export class TooManyUpdates extends S.TaggedErrorClass<TooManyUpdates>()(
-  "TooManyUpdates",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "TooManyUpdates", httpResponseCode: 429 }),
-) {}
-export class OpsItemConflictException extends S.TaggedErrorClass<OpsItemConflictException>()(
-  "OpsItemConflictException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "OpsItemConflictException", httpResponseCode: 409 }),
-) {}
-export class OpsItemInvalidParameterException extends S.TaggedErrorClass<OpsItemInvalidParameterException>()(
-  "OpsItemInvalidParameterException",
-  {
-    ParameterNames: S.optional(OpsItemParameterNamesList),
-    Message: S.optional(S.String),
-  },
-  T.AwsQueryError({
-    code: "OpsItemInvalidParameterException",
-    httpResponseCode: 400,
-  }),
-) {}
-export class OpsItemLimitExceededException extends S.TaggedErrorClass<OpsItemLimitExceededException>()(
-  "OpsItemLimitExceededException",
-  {
-    ResourceTypes: S.optional(OpsItemParameterNamesList),
-    Limit: S.optional(S.Number),
-    LimitType: S.optional(S.String),
-    Message: S.optional(S.String),
-  },
-  T.AwsQueryError({
-    code: "OpsItemLimitExceededException",
-    httpResponseCode: 400,
-  }),
-) {}
-export class OpsItemNotFoundException extends S.TaggedErrorClass<OpsItemNotFoundException>()(
-  "OpsItemNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "OpsItemNotFoundException", httpResponseCode: 400 }),
-) {}
-export class OpsItemRelatedItemAlreadyExistsException extends S.TaggedErrorClass<OpsItemRelatedItemAlreadyExistsException>()(
-  "OpsItemRelatedItemAlreadyExistsException",
-  {
-    Message: S.optional(S.String),
-    ResourceUri: S.optional(S.String),
-    OpsItemId: S.optional(S.String),
-  },
-  T.AwsQueryError({
-    code: "OpsItemRelatedItemAlreadyExistsException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withAlreadyExistsError) {}
-export class DuplicateInstanceId extends S.TaggedErrorClass<DuplicateInstanceId>()(
-  "DuplicateInstanceId",
-  {},
-  T.AwsQueryError({ code: "DuplicateInstanceId", httpResponseCode: 404 }),
-) {}
-export class InvalidCommandId extends S.TaggedErrorClass<InvalidCommandId>()(
-  "InvalidCommandId",
-  {},
-  T.AwsQueryError({ code: "InvalidCommandId", httpResponseCode: 404 }),
-) {}
-export class InvalidInstanceId extends S.TaggedErrorClass<InvalidInstanceId>()(
-  "InvalidInstanceId",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidInstanceId", httpResponseCode: 404 }),
-) {}
-export class DoesNotExistException extends S.TaggedErrorClass<DoesNotExistException>()(
-  "DoesNotExistException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "DoesNotExistException", httpResponseCode: 404 }),
-) {}
-export class InvalidParameters extends S.TaggedErrorClass<InvalidParameters>()(
-  "InvalidParameters",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidParameters", httpResponseCode: 400 }),
-) {}
-export class AssociationAlreadyExists extends S.TaggedErrorClass<AssociationAlreadyExists>()(
-  "AssociationAlreadyExists",
-  {},
-  T.AwsQueryError({ code: "AssociationAlreadyExists", httpResponseCode: 400 }),
-).pipe(C.withAlreadyExistsError) {}
-export class AssociationLimitExceeded extends S.TaggedErrorClass<AssociationLimitExceeded>()(
-  "AssociationLimitExceeded",
-  {},
-  T.AwsQueryError({ code: "AssociationLimitExceeded", httpResponseCode: 400 }),
-).pipe(C.withThrottlingError) {}
-export class InvalidDocument extends S.TaggedErrorClass<InvalidDocument>()(
-  "InvalidDocument",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidDocument", httpResponseCode: 404 }),
-) {}
-export class InvalidDocumentVersion extends S.TaggedErrorClass<InvalidDocumentVersion>()(
-  "InvalidDocumentVersion",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidDocumentVersion", httpResponseCode: 400 }),
-) {}
-export class InvalidOutputLocation extends S.TaggedErrorClass<InvalidOutputLocation>()(
-  "InvalidOutputLocation",
-  {},
-  T.AwsQueryError({ code: "InvalidOutputLocation", httpResponseCode: 400 }),
-) {}
-export class InvalidSchedule extends S.TaggedErrorClass<InvalidSchedule>()(
-  "InvalidSchedule",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidSchedule", httpResponseCode: 400 }),
-) {}
-export class InvalidTag extends S.TaggedErrorClass<InvalidTag>()(
-  "InvalidTag",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidTag", httpResponseCode: 400 }),
-) {}
-export class InvalidTarget extends S.TaggedErrorClass<InvalidTarget>()(
-  "InvalidTarget",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidTarget", httpResponseCode: 400 }),
-) {}
-export class InvalidTargetMaps extends S.TaggedErrorClass<InvalidTargetMaps>()(
-  "InvalidTargetMaps",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidTargetMaps", httpResponseCode: 400 }),
-) {}
-export class UnsupportedPlatformType extends S.TaggedErrorClass<UnsupportedPlatformType>()(
-  "UnsupportedPlatformType",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "UnsupportedPlatformType", httpResponseCode: 400 }),
-) {}
-export class DocumentAlreadyExists extends S.TaggedErrorClass<DocumentAlreadyExists>()(
-  "DocumentAlreadyExists",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "DocumentAlreadyExists", httpResponseCode: 400 }),
-).pipe(C.withAlreadyExistsError) {}
-export class DocumentLimitExceeded extends S.TaggedErrorClass<DocumentLimitExceeded>()(
-  "DocumentLimitExceeded",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "DocumentLimitExceeded", httpResponseCode: 400 }),
-).pipe(C.withThrottlingError) {}
-export class InvalidDocumentContent extends S.TaggedErrorClass<InvalidDocumentContent>()(
-  "InvalidDocumentContent",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidDocumentContent", httpResponseCode: 400 }),
-) {}
-export class InvalidDocumentSchemaVersion extends S.TaggedErrorClass<InvalidDocumentSchemaVersion>()(
-  "InvalidDocumentSchemaVersion",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidDocumentSchemaVersion",
-    httpResponseCode: 400,
-  }),
-) {}
-export class MaxDocumentSizeExceeded extends S.TaggedErrorClass<MaxDocumentSizeExceeded>()(
-  "MaxDocumentSizeExceeded",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "MaxDocumentSizeExceeded", httpResponseCode: 400 }),
-) {}
-export class NoLongerSupportedException extends S.TaggedErrorClass<NoLongerSupportedException>()(
-  "NoLongerSupportedException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "NoLongerSupported", httpResponseCode: 400 }),
-) {}
-export class IdempotentParameterMismatch extends S.TaggedErrorClass<IdempotentParameterMismatch>()(
-  "IdempotentParameterMismatch",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "IdempotentParameterMismatch",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withConflictError) {}
-export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
-  "ResourceLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ResourceLimitExceededException",
-    httpResponseCode: 400,
-  }),
-) {}
-export class OpsItemAccessDeniedException extends S.TaggedErrorClass<OpsItemAccessDeniedException>()(
-  "OpsItemAccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "OpsItemAccessDeniedException",
-    httpResponseCode: 403,
-  }),
-).pipe(C.withAuthError) {}
-export class OpsItemAlreadyExistsException extends S.TaggedErrorClass<OpsItemAlreadyExistsException>()(
-  "OpsItemAlreadyExistsException",
-  { Message: S.optional(S.String), OpsItemId: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "OpsItemAlreadyExistsException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withAlreadyExistsError) {}
-export class OpsMetadataAlreadyExistsException extends S.TaggedErrorClass<OpsMetadataAlreadyExistsException>()(
-  "OpsMetadataAlreadyExistsException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "OpsMetadataAlreadyExistsException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withAlreadyExistsError) {}
-export class OpsMetadataInvalidArgumentException extends S.TaggedErrorClass<OpsMetadataInvalidArgumentException>()(
-  "OpsMetadataInvalidArgumentException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "OpsMetadataInvalidArgumentException",
-    httpResponseCode: 400,
-  }),
-) {}
-export class OpsMetadataLimitExceededException extends S.TaggedErrorClass<OpsMetadataLimitExceededException>()(
-  "OpsMetadataLimitExceededException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "OpsMetadataLimitExceededException",
-    httpResponseCode: 429,
-  }),
-) {}
-export class OpsMetadataTooManyUpdatesException extends S.TaggedErrorClass<OpsMetadataTooManyUpdatesException>()(
-  "OpsMetadataTooManyUpdatesException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "OpsMetadataTooManyUpdatesException",
-    httpResponseCode: 429,
-  }),
-) {}
-export class ResourceDataSyncAlreadyExistsException extends S.TaggedErrorClass<ResourceDataSyncAlreadyExistsException>()(
-  "ResourceDataSyncAlreadyExistsException",
-  { SyncName: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ResourceDataSyncAlreadyExists",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withAlreadyExistsError) {}
-export class ResourceDataSyncCountExceededException extends S.TaggedErrorClass<ResourceDataSyncCountExceededException>()(
-  "ResourceDataSyncCountExceededException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ResourceDataSyncCountExceeded",
-    httpResponseCode: 400,
-  }),
-) {}
-export class ResourceDataSyncInvalidConfigurationException extends S.TaggedErrorClass<ResourceDataSyncInvalidConfigurationException>()(
-  "ResourceDataSyncInvalidConfigurationException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ResourceDataSyncInvalidConfiguration",
-    httpResponseCode: 400,
-  }),
-) {}
-export class InvalidActivation extends S.TaggedErrorClass<InvalidActivation>()(
-  "InvalidActivation",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidActivation", httpResponseCode: 404 }),
-) {}
-export class InvalidActivationId extends S.TaggedErrorClass<InvalidActivationId>()(
-  "InvalidActivationId",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidActivationId", httpResponseCode: 404 }),
-) {}
-export class AssociationDoesNotExist extends S.TaggedErrorClass<AssociationDoesNotExist>()(
-  "AssociationDoesNotExist",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "AssociationDoesNotExist", httpResponseCode: 404 }),
-) {}
-export class AssociatedInstances extends S.TaggedErrorClass<AssociatedInstances>()(
-  "AssociatedInstances",
-  {},
-  T.AwsQueryError({ code: "AssociatedInstances", httpResponseCode: 400 }),
-) {}
-export class InvalidDocumentOperation extends S.TaggedErrorClass<InvalidDocumentOperation>()(
-  "InvalidDocumentOperation",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidDocumentOperation", httpResponseCode: 403 }),
-) {}
-export class InvalidDeleteInventoryParametersException extends S.TaggedErrorClass<InvalidDeleteInventoryParametersException>()(
-  "InvalidDeleteInventoryParametersException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidDeleteInventoryParameters",
-    httpResponseCode: 400,
-  }),
-) {}
-export class InvalidInventoryRequestException extends S.TaggedErrorClass<InvalidInventoryRequestException>()(
-  "InvalidInventoryRequestException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidInventoryRequest", httpResponseCode: 400 }),
-) {}
-export class InvalidOptionException extends S.TaggedErrorClass<InvalidOptionException>()(
-  "InvalidOptionException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidOption", httpResponseCode: 400 }),
-) {}
-export class InvalidTypeNameException extends S.TaggedErrorClass<InvalidTypeNameException>()(
-  "InvalidTypeNameException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidTypeName", httpResponseCode: 400 }),
-) {}
-export class OpsMetadataNotFoundException extends S.TaggedErrorClass<OpsMetadataNotFoundException>()(
-  "OpsMetadataNotFoundException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "OpsMetadataNotFoundException",
-    httpResponseCode: 404,
-  }),
-) {}
-export class ParameterNotFound extends S.TaggedErrorClass<ParameterNotFound>()(
-  "ParameterNotFound",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ParameterNotFound", httpResponseCode: 404 }),
-) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ResourceInUseException", httpResponseCode: 400 }),
-) {}
-export class ResourceDataSyncNotFoundException extends S.TaggedErrorClass<ResourceDataSyncNotFoundException>()(
-  "ResourceDataSyncNotFoundException",
-  {
-    SyncName: S.optional(S.String),
-    SyncType: S.optional(S.String),
-    Message: S.optional(S.String),
-  },
-  T.AwsQueryError({ code: "ResourceDataSyncNotFound", httpResponseCode: 404 }),
-) {}
-export class MalformedResourcePolicyDocumentException extends S.TaggedErrorClass<MalformedResourcePolicyDocumentException>()(
-  "MalformedResourcePolicyDocumentException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "MalformedResourcePolicyDocumentException",
-    httpResponseCode: 400,
-  }),
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ResourceNotFoundException", httpResponseCode: 404 }),
-) {}
-export class ResourcePolicyConflictException extends S.TaggedErrorClass<ResourcePolicyConflictException>()(
-  "ResourcePolicyConflictException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ResourcePolicyConflictException",
-    httpResponseCode: 400,
-  }),
-) {}
-export class ResourcePolicyInvalidParameterException extends S.TaggedErrorClass<ResourcePolicyInvalidParameterException>()(
-  "ResourcePolicyInvalidParameterException",
-  {
-    ParameterNames: S.optional(ResourcePolicyParameterNamesList),
-    Message: S.optional(S.String),
-  },
-  T.AwsQueryError({
-    code: "ResourcePolicyInvalidParameterException",
-    httpResponseCode: 400,
-  }),
-) {}
-export class ResourcePolicyNotFoundException extends S.TaggedErrorClass<ResourcePolicyNotFoundException>()(
-  "ResourcePolicyNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ResourcePolicyNotFoundException",
-    httpResponseCode: 404,
-  }),
-) {}
-export class TargetInUseException extends S.TaggedErrorClass<TargetInUseException>()(
-  "TargetInUseException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "TargetInUseException", httpResponseCode: 400 }),
-) {}
-export class InvalidFilter extends S.TaggedErrorClass<InvalidFilter>()(
-  "InvalidFilter",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidFilter", httpResponseCode: 441 }),
-) {}
-export class InvalidNextToken extends S.TaggedErrorClass<InvalidNextToken>()(
-  "InvalidNextToken",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidNextToken", httpResponseCode: 400 }),
-) {}
-export class InvalidAssociationVersion extends S.TaggedErrorClass<InvalidAssociationVersion>()(
-  "InvalidAssociationVersion",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidAssociationVersion", httpResponseCode: 400 }),
-) {}
-export class AssociationExecutionDoesNotExist extends S.TaggedErrorClass<AssociationExecutionDoesNotExist>()(
-  "AssociationExecutionDoesNotExist",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "AssociationExecutionDoesNotExist",
-    httpResponseCode: 404,
-  }),
-) {}
-export class InvalidFilterKey extends S.TaggedErrorClass<InvalidFilterKey>()(
-  "InvalidFilterKey",
-  {},
-  T.AwsQueryError({ code: "InvalidFilterKey", httpResponseCode: 400 }),
-) {}
-export class InvalidFilterValue extends S.TaggedErrorClass<InvalidFilterValue>()(
-  "InvalidFilterValue",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidFilterValue", httpResponseCode: 400 }),
-) {}
-export class AutomationExecutionNotFoundException extends S.TaggedErrorClass<AutomationExecutionNotFoundException>()(
-  "AutomationExecutionNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "AutomationExecutionNotFound",
-    httpResponseCode: 404,
-  }),
-) {}
-export class InvalidPermissionType extends S.TaggedErrorClass<InvalidPermissionType>()(
-  "InvalidPermissionType",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidPermissionType", httpResponseCode: 400 }),
-) {}
-export class UnsupportedOperatingSystem extends S.TaggedErrorClass<UnsupportedOperatingSystem>()(
-  "UnsupportedOperatingSystem",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "UnsupportedOperatingSystem",
-    httpResponseCode: 400,
-  }),
-) {}
-export class InvalidInstanceInformationFilterValue extends S.TaggedErrorClass<InvalidInstanceInformationFilterValue>()(
-  "InvalidInstanceInformationFilterValue",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidInstanceInformationFilterValue",
-    httpResponseCode: 400,
-  }),
-) {}
-export class InvalidInstancePropertyFilterValue extends S.TaggedErrorClass<InvalidInstancePropertyFilterValue>()(
-  "InvalidInstancePropertyFilterValue",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidInstancePropertyFilterValue",
-    httpResponseCode: 400,
-  }),
-) {}
-export class InvalidDeletionIdException extends S.TaggedErrorClass<InvalidDeletionIdException>()(
-  "InvalidDeletionIdException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidDeletionId", httpResponseCode: 400 }),
-) {}
-export class InvalidFilterOption extends S.TaggedErrorClass<InvalidFilterOption>()(
-  "InvalidFilterOption",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidFilterOption", httpResponseCode: 400 }),
-) {}
-export class OpsItemRelatedItemAssociationNotFoundException extends S.TaggedErrorClass<OpsItemRelatedItemAssociationNotFoundException>()(
-  "OpsItemRelatedItemAssociationNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "OpsItemRelatedItemAssociationNotFoundException",
-    httpResponseCode: 400,
-  }),
-) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.String },
-).pipe(C.withAuthError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    Message: S.String,
-    QuotaCode: S.optional(S.String),
-    ServiceCode: S.optional(S.String),
-  },
-) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String), ReasonCode: S.optional(S.String) },
-  T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
-) {}
-export class InvalidDocumentType extends S.TaggedErrorClass<InvalidDocumentType>()(
-  "InvalidDocumentType",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidDocumentType", httpResponseCode: 400 }),
-) {}
-export class UnsupportedCalendarException extends S.TaggedErrorClass<UnsupportedCalendarException>()(
-  "UnsupportedCalendarException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "UnsupportedCalendarException",
-    httpResponseCode: 400,
-  }),
-) {}
-export class InvalidPluginName extends S.TaggedErrorClass<InvalidPluginName>()(
-  "InvalidPluginName",
-  {},
-  T.AwsQueryError({ code: "InvalidPluginName", httpResponseCode: 404 }),
-) {}
-export class InvocationDoesNotExist extends S.TaggedErrorClass<InvocationDoesNotExist>()(
-  "InvocationDoesNotExist",
-  {},
-  T.AwsQueryError({ code: "InvocationDoesNotExist", httpResponseCode: 400 }),
-) {}
-export class UnsupportedFeatureRequiredException extends S.TaggedErrorClass<UnsupportedFeatureRequiredException>()(
-  "UnsupportedFeatureRequiredException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "UnsupportedFeatureRequiredException",
-    httpResponseCode: 400,
-  }),
-) {}
-export class InvalidAggregatorException extends S.TaggedErrorClass<InvalidAggregatorException>()(
-  "InvalidAggregatorException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidAggregator", httpResponseCode: 400 }),
-) {}
-export class InvalidInventoryGroupException extends S.TaggedErrorClass<InvalidInventoryGroupException>()(
-  "InvalidInventoryGroupException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidInventoryGroup", httpResponseCode: 400 }),
-) {}
-export class InvalidResultAttributeException extends S.TaggedErrorClass<InvalidResultAttributeException>()(
-  "InvalidResultAttributeException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidResultAttribute", httpResponseCode: 400 }),
-) {}
-export class InvalidKeyId extends S.TaggedErrorClass<InvalidKeyId>()(
-  "InvalidKeyId",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidKeyId", httpResponseCode: 400 }),
-) {}
-export class ParameterVersionNotFound extends S.TaggedErrorClass<ParameterVersionNotFound>()(
-  "ParameterVersionNotFound",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ParameterVersionNotFound", httpResponseCode: 400 }),
-) {}
-export class ServiceSettingNotFound extends S.TaggedErrorClass<ServiceSettingNotFound>()(
-  "ServiceSettingNotFound",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ServiceSettingNotFound", httpResponseCode: 400 }),
-) {}
-export class ParameterVersionLabelLimitExceeded extends S.TaggedErrorClass<ParameterVersionLabelLimitExceeded>()(
-  "ParameterVersionLabelLimitExceeded",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ParameterVersionLabelLimitExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withThrottlingError) {}
-export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
-  "UnsupportedOperationException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "UnsupportedOperation", httpResponseCode: 400 }),
-) {}
-export class DocumentPermissionLimit extends S.TaggedErrorClass<DocumentPermissionLimit>()(
-  "DocumentPermissionLimit",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "DocumentPermissionLimit", httpResponseCode: 400 }),
-) {}
-export class ComplianceTypeCountLimitExceededException extends S.TaggedErrorClass<ComplianceTypeCountLimitExceededException>()(
-  "ComplianceTypeCountLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ComplianceTypeCountLimitExceeded",
-    httpResponseCode: 400,
-  }),
-) {}
-export class InvalidItemContentException extends S.TaggedErrorClass<InvalidItemContentException>()(
-  "InvalidItemContentException",
-  { TypeName: S.optional(S.String), Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidItemContent", httpResponseCode: 400 }),
-) {}
-export class ItemSizeLimitExceededException extends S.TaggedErrorClass<ItemSizeLimitExceededException>()(
-  "ItemSizeLimitExceededException",
-  { TypeName: S.optional(S.String), Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ItemSizeLimitExceeded", httpResponseCode: 400 }),
-) {}
-export class TotalSizeLimitExceededException extends S.TaggedErrorClass<TotalSizeLimitExceededException>()(
-  "TotalSizeLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "TotalSizeLimitExceeded", httpResponseCode: 400 }),
-) {}
-export class CustomSchemaCountLimitExceededException extends S.TaggedErrorClass<CustomSchemaCountLimitExceededException>()(
-  "CustomSchemaCountLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "CustomSchemaCountLimitExceeded",
-    httpResponseCode: 400,
-  }),
-) {}
-export class InvalidInventoryItemContextException extends S.TaggedErrorClass<InvalidInventoryItemContextException>()(
-  "InvalidInventoryItemContextException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidInventoryItemContext",
-    httpResponseCode: 400,
-  }),
-) {}
-export class ItemContentMismatchException extends S.TaggedErrorClass<ItemContentMismatchException>()(
-  "ItemContentMismatchException",
-  { TypeName: S.optional(S.String), Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ItemContentMismatch", httpResponseCode: 400 }),
-) {}
-export class SubTypeCountLimitExceededException extends S.TaggedErrorClass<SubTypeCountLimitExceededException>()(
-  "SubTypeCountLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SubTypeCountLimitExceeded", httpResponseCode: 400 }),
-) {}
-export class UnsupportedInventoryItemContextException extends S.TaggedErrorClass<UnsupportedInventoryItemContextException>()(
-  "UnsupportedInventoryItemContextException",
-  { TypeName: S.optional(S.String), Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "UnsupportedInventoryItemContext",
-    httpResponseCode: 400,
-  }),
-) {}
-export class UnsupportedInventorySchemaVersionException extends S.TaggedErrorClass<UnsupportedInventorySchemaVersionException>()(
-  "UnsupportedInventorySchemaVersionException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "UnsupportedInventorySchemaVersion",
-    httpResponseCode: 400,
-  }),
-) {}
-export class HierarchyLevelLimitExceededException extends S.TaggedErrorClass<HierarchyLevelLimitExceededException>()(
-  "HierarchyLevelLimitExceededException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "HierarchyLevelLimitExceededException",
-    httpResponseCode: 400,
-  }),
-) {}
-export class HierarchyTypeMismatchException extends S.TaggedErrorClass<HierarchyTypeMismatchException>()(
-  "HierarchyTypeMismatchException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "HierarchyTypeMismatchException",
-    httpResponseCode: 400,
-  }),
-) {}
-export class IncompatiblePolicyException extends S.TaggedErrorClass<IncompatiblePolicyException>()(
-  "IncompatiblePolicyException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "IncompatiblePolicyException",
-    httpResponseCode: 400,
-  }),
-) {}
-export class InvalidAllowedPatternException extends S.TaggedErrorClass<InvalidAllowedPatternException>()(
-  "InvalidAllowedPatternException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidAllowedPatternException",
-    httpResponseCode: 400,
-  }),
-) {}
-export class InvalidPolicyAttributeException extends S.TaggedErrorClass<InvalidPolicyAttributeException>()(
-  "InvalidPolicyAttributeException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidPolicyAttributeException",
-    httpResponseCode: 400,
-  }),
-) {}
-export class InvalidPolicyTypeException extends S.TaggedErrorClass<InvalidPolicyTypeException>()(
-  "InvalidPolicyTypeException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidPolicyTypeException",
-    httpResponseCode: 400,
-  }),
-) {}
-export class ParameterAlreadyExists extends S.TaggedErrorClass<ParameterAlreadyExists>()(
-  "ParameterAlreadyExists",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ParameterAlreadyExists", httpResponseCode: 400 }),
-).pipe(C.withAlreadyExistsError) {}
-export class ParameterLimitExceeded extends S.TaggedErrorClass<ParameterLimitExceeded>()(
-  "ParameterLimitExceeded",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ParameterLimitExceeded", httpResponseCode: 429 }),
-).pipe(C.withThrottlingError) {}
-export class ParameterMaxVersionLimitExceeded extends S.TaggedErrorClass<ParameterMaxVersionLimitExceeded>()(
-  "ParameterMaxVersionLimitExceeded",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ParameterMaxVersionLimitExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withThrottlingError) {}
-export class ParameterPatternMismatchException extends S.TaggedErrorClass<ParameterPatternMismatchException>()(
-  "ParameterPatternMismatchException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ParameterPatternMismatchException",
-    httpResponseCode: 400,
-  }),
-) {}
-export class PoliciesLimitExceededException extends S.TaggedErrorClass<PoliciesLimitExceededException>()(
-  "PoliciesLimitExceededException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "PoliciesLimitExceededException",
-    httpResponseCode: 400,
-  }),
-) {}
-export class UnsupportedParameterType extends S.TaggedErrorClass<UnsupportedParameterType>()(
-  "UnsupportedParameterType",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "UnsupportedParameterType", httpResponseCode: 400 }),
-) {}
-export class ResourcePolicyLimitExceededException extends S.TaggedErrorClass<ResourcePolicyLimitExceededException>()(
-  "ResourcePolicyLimitExceededException",
-  {
-    Limit: S.optional(S.Number),
-    LimitType: S.optional(S.String),
-    Message: S.optional(S.String),
-  },
-  T.AwsQueryError({
-    code: "ResourcePolicyLimitExceededException",
-    httpResponseCode: 400,
-  }),
-) {}
-export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
-  "AlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "AlreadyExistsException", httpResponseCode: 400 }),
-).pipe(C.withAlreadyExistsError) {}
-export class FeatureNotAvailableException extends S.TaggedErrorClass<FeatureNotAvailableException>()(
-  "FeatureNotAvailableException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "FeatureNotAvailableException",
-    httpResponseCode: 400,
-  }),
-) {}
-export class AutomationStepNotFoundException extends S.TaggedErrorClass<AutomationStepNotFoundException>()(
-  "AutomationStepNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "AutomationStepNotFoundException",
-    httpResponseCode: 404,
-  }),
-) {}
-export class InvalidAutomationSignalException extends S.TaggedErrorClass<InvalidAutomationSignalException>()(
-  "InvalidAutomationSignalException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidAutomationSignalException",
-    httpResponseCode: 400,
-  }),
-) {}
-export class InvalidNotificationConfig extends S.TaggedErrorClass<InvalidNotificationConfig>()(
-  "InvalidNotificationConfig",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidNotificationConfig", httpResponseCode: 400 }),
-) {}
-export class InvalidOutputFolder extends S.TaggedErrorClass<InvalidOutputFolder>()(
-  "InvalidOutputFolder",
-  {},
-  T.AwsQueryError({ code: "InvalidOutputFolder", httpResponseCode: 400 }),
-) {}
-export class InvalidRole extends S.TaggedErrorClass<InvalidRole>()(
-  "InvalidRole",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidRole", httpResponseCode: 400 }),
-) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    Message: S.String,
-    ResourceId: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    QuotaCode: S.String,
-    ServiceCode: S.String,
-  },
-) {}
-export class InvalidAssociation extends S.TaggedErrorClass<InvalidAssociation>()(
-  "InvalidAssociation",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidAssociation", httpResponseCode: 400 }),
-) {}
-export class AutomationDefinitionNotFoundException extends S.TaggedErrorClass<AutomationDefinitionNotFoundException>()(
-  "AutomationDefinitionNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "AutomationDefinitionNotFound",
-    httpResponseCode: 404,
-  }),
-) {}
-export class AutomationDefinitionVersionNotFoundException extends S.TaggedErrorClass<AutomationDefinitionVersionNotFoundException>()(
-  "AutomationDefinitionVersionNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "AutomationDefinitionVersionNotFound",
-    httpResponseCode: 404,
-  }),
-) {}
-export class AutomationExecutionLimitExceededException extends S.TaggedErrorClass<AutomationExecutionLimitExceededException>()(
-  "AutomationExecutionLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "AutomationExecutionLimitExceeded",
-    httpResponseCode: 429,
-  }),
-) {}
-export class InvalidAutomationExecutionParametersException extends S.TaggedErrorClass<InvalidAutomationExecutionParametersException>()(
-  "InvalidAutomationExecutionParametersException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidAutomationExecutionParameters",
-    httpResponseCode: 400,
-  }),
-) {}
-export class AutomationDefinitionNotApprovedException extends S.TaggedErrorClass<AutomationDefinitionNotApprovedException>()(
-  "AutomationDefinitionNotApprovedException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "AutomationDefinitionNotApproved",
-    httpResponseCode: 400,
-  }),
-) {}
-export class TargetNotConnected extends S.TaggedErrorClass<TargetNotConnected>()(
-  "TargetNotConnected",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "TargetNotConnected", httpResponseCode: 430 }),
-) {}
-export class InvalidAutomationStatusUpdateException extends S.TaggedErrorClass<InvalidAutomationStatusUpdateException>()(
-  "InvalidAutomationStatusUpdateException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidAutomationStatusUpdateException",
-    httpResponseCode: 400,
-  }),
-) {}
-export class AssociationVersionLimitExceeded extends S.TaggedErrorClass<AssociationVersionLimitExceeded>()(
-  "AssociationVersionLimitExceeded",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "AssociationVersionLimitExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withThrottlingError) {}
-export class InvalidUpdate extends S.TaggedErrorClass<InvalidUpdate>()(
-  "InvalidUpdate",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidUpdate", httpResponseCode: 400 }),
-) {}
-export class StatusUnchanged extends S.TaggedErrorClass<StatusUnchanged>()(
-  "StatusUnchanged",
-  {},
-  T.AwsQueryError({ code: "StatusUnchanged", httpResponseCode: 400 }),
-) {}
-export class DocumentVersionLimitExceeded extends S.TaggedErrorClass<DocumentVersionLimitExceeded>()(
-  "DocumentVersionLimitExceeded",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "DocumentVersionLimitExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withThrottlingError) {}
-export class DuplicateDocumentContent extends S.TaggedErrorClass<DuplicateDocumentContent>()(
-  "DuplicateDocumentContent",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "DuplicateDocumentContent", httpResponseCode: 400 }),
-) {}
-export class DuplicateDocumentVersionName extends S.TaggedErrorClass<DuplicateDocumentVersionName>()(
-  "DuplicateDocumentVersionName",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "DuplicateDocumentVersionName",
-    httpResponseCode: 400,
-  }),
-) {}
-export class OpsMetadataKeyLimitExceededException extends S.TaggedErrorClass<OpsMetadataKeyLimitExceededException>()(
-  "OpsMetadataKeyLimitExceededException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "OpsMetadataKeyLimitExceededException",
-    httpResponseCode: 429,
-  }),
-) {}
-export class ResourceDataSyncConflictException extends S.TaggedErrorClass<ResourceDataSyncConflictException>()(
-  "ResourceDataSyncConflictException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ResourceDataSyncConflictException",
-    httpResponseCode: 409,
-  }),
-) {}
-
-//# Operations
+export type OpsItemParameterNamesList = string[];
+export const OpsItemParameterNamesList = /*@__PURE__*/ S.Array(S.String);
+export type ResourcePolicyParameterNamesList = string[];
+export const ResourcePolicyParameterNamesList = /*@__PURE__*/ S.Array(S.String);
 export type AddTagsToResourceError =
   | InternalServerError
   | InvalidResourceId
@@ -11935,8 +11931,11 @@ export const addTagsToResource: API.OperationMethod<
     TooManyTagsError,
     TooManyUpdates,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTagsToResource",
 }));
+
 export type AssociateOpsItemRelatedItemError =
   | InternalServerError
   | OpsItemConflictException
@@ -11966,8 +11965,11 @@ export const associateOpsItemRelatedItem: API.OperationMethod<
     OpsItemNotFoundException,
     OpsItemRelatedItemAlreadyExistsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateOpsItemRelatedItem",
 }));
+
 export type CancelCommandError =
   | DuplicateInstanceId
   | InternalServerError
@@ -11992,8 +11994,11 @@ export const cancelCommand: API.OperationMethod<
     InvalidCommandId,
     InvalidInstanceId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelCommand",
 }));
+
 export type CancelMaintenanceWindowExecutionError =
   | DoesNotExistException
   | InternalServerError
@@ -12012,8 +12017,11 @@ export const cancelMaintenanceWindowExecution: API.OperationMethod<
   input: CancelMaintenanceWindowExecutionRequest,
   output: CancelMaintenanceWindowExecutionResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelMaintenanceWindowExecution",
 }));
+
 export type CreateActivationError =
   | InternalServerError
   | InvalidParameters
@@ -12038,8 +12046,11 @@ export const createActivation: API.OperationMethod<
   input: CreateActivationRequest,
   output: CreateActivationResult,
   errors: [InternalServerError, InvalidParameters],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateActivation",
 }));
+
 export type CreateAssociationError =
   | AssociationAlreadyExists
   | AssociationLimitExceeded
@@ -12090,8 +12101,11 @@ export const createAssociation: API.OperationMethod<
     InvalidTargetMaps,
     UnsupportedPlatformType,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAssociation",
 }));
+
 export type CreateAssociationBatchError =
   | AssociationLimitExceeded
   | DuplicateInstanceId
@@ -12139,8 +12153,11 @@ export const createAssociationBatch: API.OperationMethod<
     InvalidTargetMaps,
     UnsupportedPlatformType,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAssociationBatch",
 }));
+
 export type CreateDocumentError =
   | DocumentAlreadyExists
   | DocumentLimitExceeded
@@ -12175,8 +12192,11 @@ export const createDocument: API.OperationMethod<
     NoLongerSupportedException,
     TooManyUpdates,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDocument",
 }));
+
 export type CreateMaintenanceWindowError =
   | IdempotentParameterMismatch
   | InternalServerError
@@ -12205,8 +12225,11 @@ export const createMaintenanceWindow: API.OperationMethod<
     InternalServerError,
     ResourceLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMaintenanceWindow",
 }));
+
 export type CreateOpsItemError =
   | InternalServerError
   | OpsItemAccessDeniedException
@@ -12238,8 +12261,11 @@ export const createOpsItem: API.OperationMethod<
     OpsItemInvalidParameterException,
     OpsItemLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOpsItem",
 }));
+
 export type CreateOpsMetadataError =
   | InternalServerError
   | OpsMetadataAlreadyExistsException
@@ -12266,8 +12292,11 @@ export const createOpsMetadata: API.OperationMethod<
     OpsMetadataLimitExceededException,
     OpsMetadataTooManyUpdatesException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOpsMetadata",
 }));
+
 export type CreatePatchBaselineError =
   | IdempotentParameterMismatch
   | InternalServerError
@@ -12292,8 +12321,11 @@ export const createPatchBaseline: API.OperationMethod<
     InternalServerError,
     ResourceLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePatchBaseline",
 }));
+
 export type CreateResourceDataSyncError =
   | InternalServerError
   | ResourceDataSyncAlreadyExistsException
@@ -12339,8 +12371,11 @@ export const createResourceDataSync: API.OperationMethod<
     ResourceDataSyncCountExceededException,
     ResourceDataSyncInvalidConfigurationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResourceDataSync",
 }));
+
 export type DeleteActivationError =
   | InternalServerError
   | InvalidActivation
@@ -12366,8 +12401,11 @@ export const deleteActivation: API.OperationMethod<
     InvalidActivationId,
     TooManyUpdates,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteActivation",
 }));
+
 export type DeleteAssociationError =
   | AssociationDoesNotExist
   | InternalServerError
@@ -12400,8 +12438,11 @@ export const deleteAssociation: API.OperationMethod<
     InvalidInstanceId,
     TooManyUpdates,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssociation",
 }));
+
 export type DeleteDocumentError =
   | AssociatedInstances
   | InternalServerError
@@ -12430,8 +12471,11 @@ export const deleteDocument: API.OperationMethod<
     InvalidDocumentOperation,
     TooManyUpdates,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDocument",
 }));
+
 export type DeleteInventoryError =
   | InternalServerError
   | InvalidDeleteInventoryParametersException
@@ -12458,8 +12502,11 @@ export const deleteInventory: API.OperationMethod<
     InvalidOptionException,
     InvalidTypeNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInventory",
 }));
+
 export type DeleteMaintenanceWindowError = InternalServerError | CommonErrors;
 /**
  * Deletes a maintenance window.
@@ -12473,8 +12520,11 @@ export const deleteMaintenanceWindow: API.OperationMethod<
   input: DeleteMaintenanceWindowRequest,
   output: DeleteMaintenanceWindowResult,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMaintenanceWindow",
 }));
+
 export type DeleteOpsItemError =
   | InternalServerError
   | OpsItemInvalidParameterException
@@ -12511,8 +12561,11 @@ export const deleteOpsItem: API.OperationMethod<
   input: DeleteOpsItemRequest,
   output: DeleteOpsItemResponse,
   errors: [InternalServerError, OpsItemInvalidParameterException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOpsItem",
 }));
+
 export type DeleteOpsMetadataError =
   | InternalServerError
   | OpsMetadataInvalidArgumentException
@@ -12534,8 +12587,11 @@ export const deleteOpsMetadata: API.OperationMethod<
     OpsMetadataInvalidArgumentException,
     OpsMetadataNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOpsMetadata",
 }));
+
 export type DeleteParameterError =
   | InternalServerError
   | ParameterNotFound
@@ -12553,8 +12609,11 @@ export const deleteParameter: API.OperationMethod<
   input: DeleteParameterRequest,
   output: DeleteParameterResult,
   errors: [InternalServerError, ParameterNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteParameter",
 }));
+
 export type DeleteParametersError = InternalServerError | CommonErrors;
 /**
  * Delete a list of parameters. After deleting a parameter, wait for at least 30 seconds to
@@ -12569,8 +12628,11 @@ export const deleteParameters: API.OperationMethod<
   input: DeleteParametersRequest,
   output: DeleteParametersResult,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteParameters",
 }));
+
 export type DeletePatchBaselineError =
   | InternalServerError
   | ResourceInUseException
@@ -12587,8 +12649,11 @@ export const deletePatchBaseline: API.OperationMethod<
   input: DeletePatchBaselineRequest,
   output: DeletePatchBaselineResult,
   errors: [InternalServerError, ResourceInUseException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePatchBaseline",
 }));
+
 export type DeleteResourceDataSyncError =
   | InternalServerError
   | ResourceDataSyncInvalidConfigurationException
@@ -12612,8 +12677,11 @@ export const deleteResourceDataSync: API.OperationMethod<
     ResourceDataSyncInvalidConfigurationException,
     ResourceDataSyncNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourceDataSync",
 }));
+
 export type DeleteResourcePolicyError =
   | InternalServerError
   | MalformedResourcePolicyDocumentException
@@ -12650,8 +12718,11 @@ export const deleteResourcePolicy: API.OperationMethod<
     ResourcePolicyInvalidParameterException,
     ResourcePolicyNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DeregisterManagedInstanceError =
   | InternalServerError
   | InvalidInstanceId
@@ -12675,8 +12746,11 @@ export const deregisterManagedInstance: API.OperationMethod<
   input: DeregisterManagedInstanceRequest,
   output: DeregisterManagedInstanceResult,
   errors: [InternalServerError, InvalidInstanceId],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterManagedInstance",
 }));
+
 export type DeregisterPatchBaselineForPatchGroupError =
   | InternalServerError
   | InvalidResourceId
@@ -12693,8 +12767,11 @@ export const deregisterPatchBaselineForPatchGroup: API.OperationMethod<
   input: DeregisterPatchBaselineForPatchGroupRequest,
   output: DeregisterPatchBaselineForPatchGroupResult,
   errors: [InternalServerError, InvalidResourceId],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterPatchBaselineForPatchGroup",
 }));
+
 export type DeregisterTargetFromMaintenanceWindowError =
   | DoesNotExistException
   | InternalServerError
@@ -12712,8 +12789,11 @@ export const deregisterTargetFromMaintenanceWindow: API.OperationMethod<
   input: DeregisterTargetFromMaintenanceWindowRequest,
   output: DeregisterTargetFromMaintenanceWindowResult,
   errors: [DoesNotExistException, InternalServerError, TargetInUseException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterTargetFromMaintenanceWindow",
 }));
+
 export type DeregisterTaskFromMaintenanceWindowError =
   | DoesNotExistException
   | InternalServerError
@@ -12730,8 +12810,11 @@ export const deregisterTaskFromMaintenanceWindow: API.OperationMethod<
   input: DeregisterTaskFromMaintenanceWindowRequest,
   output: DeregisterTaskFromMaintenanceWindowResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterTaskFromMaintenanceWindow",
 }));
+
 export type DescribeActivationsError =
   | InternalServerError
   | InvalidFilter
@@ -12767,6 +12850,8 @@ export const describeActivations: API.OperationMethod<
   input: DescribeActivationsRequest,
   output: DescribeActivationsResult,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeActivations",
   pagination: {
     inputToken: "NextToken",
@@ -12775,6 +12860,7 @@ export const describeActivations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeAssociationError =
   | AssociationDoesNotExist
   | InternalServerError
@@ -12802,8 +12888,11 @@ export const describeAssociation: API.OperationMethod<
     InvalidDocument,
     InvalidInstanceId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAssociation",
 }));
+
 export type DescribeAssociationExecutionsError =
   | AssociationDoesNotExist
   | InternalServerError
@@ -12836,6 +12925,8 @@ export const describeAssociationExecutions: API.OperationMethod<
   input: DescribeAssociationExecutionsRequest,
   output: DescribeAssociationExecutionsResult,
   errors: [AssociationDoesNotExist, InternalServerError, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAssociationExecutions",
   pagination: {
     inputToken: "NextToken",
@@ -12844,6 +12935,7 @@ export const describeAssociationExecutions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeAssociationExecutionTargetsError =
   | AssociationDoesNotExist
   | AssociationExecutionDoesNotExist
@@ -12882,6 +12974,8 @@ export const describeAssociationExecutionTargets: API.OperationMethod<
     InternalServerError,
     InvalidNextToken,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAssociationExecutionTargets",
   pagination: {
     inputToken: "NextToken",
@@ -12890,6 +12984,7 @@ export const describeAssociationExecutionTargets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeAutomationExecutionsError =
   | InternalServerError
   | InvalidFilterKey
@@ -12928,6 +13023,8 @@ export const describeAutomationExecutions: API.OperationMethod<
     InvalidFilterValue,
     InvalidNextToken,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAutomationExecutions",
   pagination: {
     inputToken: "NextToken",
@@ -12936,6 +13033,7 @@ export const describeAutomationExecutions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeAutomationStepExecutionsError =
   | AutomationExecutionNotFoundException
   | InternalServerError
@@ -12977,6 +13075,8 @@ export const describeAutomationStepExecutions: API.OperationMethod<
     InvalidFilterValue,
     InvalidNextToken,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAutomationStepExecutions",
   pagination: {
     inputToken: "NextToken",
@@ -12985,6 +13085,7 @@ export const describeAutomationStepExecutions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeAvailablePatchesError = InternalServerError | CommonErrors;
 /**
  * Lists all patches eligible to be included in a patch baseline.
@@ -13016,6 +13117,8 @@ export const describeAvailablePatches: API.OperationMethod<
   input: DescribeAvailablePatchesRequest,
   output: DescribeAvailablePatchesResult,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAvailablePatches",
   pagination: {
     inputToken: "NextToken",
@@ -13024,6 +13127,7 @@ export const describeAvailablePatches: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeDocumentError =
   | InternalServerError
   | InvalidDocument
@@ -13041,8 +13145,11 @@ export const describeDocument: API.OperationMethod<
   input: DescribeDocumentRequest,
   output: DescribeDocumentResult,
   errors: [InternalServerError, InvalidDocument, InvalidDocumentVersion],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDocument",
 }));
+
 export type DescribeDocumentPermissionError =
   | InternalServerError
   | InvalidDocument
@@ -13070,8 +13177,11 @@ export const describeDocumentPermission: API.OperationMethod<
     InvalidNextToken,
     InvalidPermissionType,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDocumentPermission",
 }));
+
 export type DescribeEffectiveInstanceAssociationsError =
   | InternalServerError
   | InvalidInstanceId
@@ -13104,6 +13214,8 @@ export const describeEffectiveInstanceAssociations: API.OperationMethod<
   input: DescribeEffectiveInstanceAssociationsRequest,
   output: DescribeEffectiveInstanceAssociationsResult,
   errors: [InternalServerError, InvalidInstanceId, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEffectiveInstanceAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -13112,6 +13224,7 @@ export const describeEffectiveInstanceAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeEffectivePatchesForPatchBaselineError =
   | DoesNotExistException
   | InternalServerError
@@ -13151,6 +13264,8 @@ export const describeEffectivePatchesForPatchBaseline: API.OperationMethod<
     InvalidResourceId,
     UnsupportedOperatingSystem,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEffectivePatchesForPatchBaseline",
   pagination: {
     inputToken: "NextToken",
@@ -13159,6 +13274,7 @@ export const describeEffectivePatchesForPatchBaseline: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeInstanceAssociationsStatusError =
   | InternalServerError
   | InvalidInstanceId
@@ -13191,6 +13307,8 @@ export const describeInstanceAssociationsStatus: API.OperationMethod<
   input: DescribeInstanceAssociationsStatusRequest,
   output: DescribeInstanceAssociationsStatusResult,
   errors: [InternalServerError, InvalidInstanceId, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceAssociationsStatus",
   pagination: {
     inputToken: "NextToken",
@@ -13199,6 +13317,7 @@ export const describeInstanceAssociationsStatus: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeInstanceInformationError =
   | InternalServerError
   | InvalidFilterKey
@@ -13249,6 +13368,8 @@ export const describeInstanceInformation: API.OperationMethod<
     InvalidInstanceInformationFilterValue,
     InvalidNextToken,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceInformation",
   pagination: {
     inputToken: "NextToken",
@@ -13257,6 +13378,7 @@ export const describeInstanceInformation: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeInstancePatchesError =
   | InternalServerError
   | InvalidFilter
@@ -13296,6 +13418,8 @@ export const describeInstancePatches: API.OperationMethod<
     InvalidInstanceId,
     InvalidNextToken,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstancePatches",
   pagination: {
     inputToken: "NextToken",
@@ -13304,6 +13428,7 @@ export const describeInstancePatches: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeInstancePatchStatesError =
   | InternalServerError
   | InvalidNextToken
@@ -13335,6 +13460,8 @@ export const describeInstancePatchStates: API.OperationMethod<
   input: DescribeInstancePatchStatesRequest,
   output: DescribeInstancePatchStatesResult,
   errors: [InternalServerError, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstancePatchStates",
   pagination: {
     inputToken: "NextToken",
@@ -13343,6 +13470,7 @@ export const describeInstancePatchStates: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeInstancePatchStatesForPatchGroupError =
   | InternalServerError
   | InvalidFilter
@@ -13376,6 +13504,8 @@ export const describeInstancePatchStatesForPatchGroup: API.OperationMethod<
   input: DescribeInstancePatchStatesForPatchGroupRequest,
   output: DescribeInstancePatchStatesForPatchGroupResult,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstancePatchStatesForPatchGroup",
   pagination: {
     inputToken: "NextToken",
@@ -13384,6 +13514,7 @@ export const describeInstancePatchStatesForPatchGroup: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeInstancePropertiesError =
   | InternalServerError
   | InvalidActivationId
@@ -13429,6 +13560,8 @@ export const describeInstanceProperties: API.OperationMethod<
     InvalidInstancePropertyFilterValue,
     InvalidNextToken,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceProperties",
   pagination: {
     inputToken: "NextToken",
@@ -13437,6 +13570,7 @@ export const describeInstanceProperties: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeInventoryDeletionsError =
   | InternalServerError
   | InvalidDeletionIdException
@@ -13469,6 +13603,8 @@ export const describeInventoryDeletions: API.OperationMethod<
   input: DescribeInventoryDeletionsRequest,
   output: DescribeInventoryDeletionsResult,
   errors: [InternalServerError, InvalidDeletionIdException, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInventoryDeletions",
   pagination: {
     inputToken: "NextToken",
@@ -13477,6 +13613,7 @@ export const describeInventoryDeletions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeMaintenanceWindowExecutionsError =
   | InternalServerError
   | CommonErrors;
@@ -13509,6 +13646,8 @@ export const describeMaintenanceWindowExecutions: API.OperationMethod<
   input: DescribeMaintenanceWindowExecutionsRequest,
   output: DescribeMaintenanceWindowExecutionsResult,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMaintenanceWindowExecutions",
   pagination: {
     inputToken: "NextToken",
@@ -13517,6 +13656,7 @@ export const describeMaintenanceWindowExecutions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeMaintenanceWindowExecutionTaskInvocationsError =
   | DoesNotExistException
   | InternalServerError
@@ -13549,6 +13689,8 @@ export const describeMaintenanceWindowExecutionTaskInvocations: API.OperationMet
   input: DescribeMaintenanceWindowExecutionTaskInvocationsRequest,
   output: DescribeMaintenanceWindowExecutionTaskInvocationsResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMaintenanceWindowExecutionTaskInvocations",
   pagination: {
     inputToken: "NextToken",
@@ -13557,6 +13699,7 @@ export const describeMaintenanceWindowExecutionTaskInvocations: API.OperationMet
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeMaintenanceWindowExecutionTasksError =
   | DoesNotExistException
   | InternalServerError
@@ -13588,6 +13731,8 @@ export const describeMaintenanceWindowExecutionTasks: API.OperationMethod<
   input: DescribeMaintenanceWindowExecutionTasksRequest,
   output: DescribeMaintenanceWindowExecutionTasksResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMaintenanceWindowExecutionTasks",
   pagination: {
     inputToken: "NextToken",
@@ -13596,6 +13741,7 @@ export const describeMaintenanceWindowExecutionTasks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeMaintenanceWindowsError =
   | InternalServerError
   | CommonErrors;
@@ -13626,6 +13772,8 @@ export const describeMaintenanceWindows: API.OperationMethod<
   input: DescribeMaintenanceWindowsRequest,
   output: DescribeMaintenanceWindowsResult,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMaintenanceWindows",
   pagination: {
     inputToken: "NextToken",
@@ -13634,6 +13782,7 @@ export const describeMaintenanceWindows: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeMaintenanceWindowScheduleError =
   | DoesNotExistException
   | InternalServerError
@@ -13665,6 +13814,8 @@ export const describeMaintenanceWindowSchedule: API.OperationMethod<
   input: DescribeMaintenanceWindowScheduleRequest,
   output: DescribeMaintenanceWindowScheduleResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMaintenanceWindowSchedule",
   pagination: {
     inputToken: "NextToken",
@@ -13673,6 +13824,7 @@ export const describeMaintenanceWindowSchedule: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeMaintenanceWindowsForTargetError =
   | InternalServerError
   | CommonErrors;
@@ -13704,6 +13856,8 @@ export const describeMaintenanceWindowsForTarget: API.OperationMethod<
   input: DescribeMaintenanceWindowsForTargetRequest,
   output: DescribeMaintenanceWindowsForTargetResult,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMaintenanceWindowsForTarget",
   pagination: {
     inputToken: "NextToken",
@@ -13712,6 +13866,7 @@ export const describeMaintenanceWindowsForTarget: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeMaintenanceWindowTargetsError =
   | DoesNotExistException
   | InternalServerError
@@ -13743,6 +13898,8 @@ export const describeMaintenanceWindowTargets: API.OperationMethod<
   input: DescribeMaintenanceWindowTargetsRequest,
   output: DescribeMaintenanceWindowTargetsResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMaintenanceWindowTargets",
   pagination: {
     inputToken: "NextToken",
@@ -13751,6 +13908,7 @@ export const describeMaintenanceWindowTargets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeMaintenanceWindowTasksError =
   | DoesNotExistException
   | InternalServerError
@@ -13787,6 +13945,8 @@ export const describeMaintenanceWindowTasks: API.OperationMethod<
   input: DescribeMaintenanceWindowTasksRequest,
   output: DescribeMaintenanceWindowTasksResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMaintenanceWindowTasks",
   pagination: {
     inputToken: "NextToken",
@@ -13795,6 +13955,7 @@ export const describeMaintenanceWindowTasks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeOpsItemsError = InternalServerError | CommonErrors;
 /**
  * Query a set of OpsItems. You must have permission in Identity and Access Management (IAM) to query a list of OpsItems. For more information, see Set up OpsCenter in the
@@ -13829,6 +13990,8 @@ export const describeOpsItems: API.OperationMethod<
   input: DescribeOpsItemsRequest,
   output: DescribeOpsItemsResponse,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOpsItems",
   pagination: {
     inputToken: "NextToken",
@@ -13837,6 +14000,7 @@ export const describeOpsItems: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeParametersError =
   | InternalServerError
   | InvalidFilterKey
@@ -13894,6 +14058,8 @@ export const describeParameters: API.OperationMethod<
     InvalidFilterValue,
     InvalidNextToken,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeParameters",
   pagination: {
     inputToken: "NextToken",
@@ -13901,6 +14067,7 @@ export const describeParameters: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribePatchBaselinesError = InternalServerError | CommonErrors;
 /**
  * Lists the patch baselines in your Amazon Web Services account.
@@ -13929,6 +14096,8 @@ export const describePatchBaselines: API.OperationMethod<
   input: DescribePatchBaselinesRequest,
   output: DescribePatchBaselinesResult,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePatchBaselines",
   pagination: {
     inputToken: "NextToken",
@@ -13937,6 +14106,7 @@ export const describePatchBaselines: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribePatchGroupsError = InternalServerError | CommonErrors;
 /**
  * Lists all patch groups that have been registered with patch baselines.
@@ -13965,6 +14135,8 @@ export const describePatchGroups: API.OperationMethod<
   input: DescribePatchGroupsRequest,
   output: DescribePatchGroupsResult,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePatchGroups",
   pagination: {
     inputToken: "NextToken",
@@ -13973,6 +14145,7 @@ export const describePatchGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribePatchGroupStateError =
   | InternalServerError
   | InvalidNextToken
@@ -13989,8 +14162,11 @@ export const describePatchGroupState: API.OperationMethod<
   input: DescribePatchGroupStateRequest,
   output: DescribePatchGroupStateResult,
   errors: [InternalServerError, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePatchGroupState",
 }));
+
 export type DescribePatchPropertiesError = InternalServerError | CommonErrors;
 /**
  * Lists the properties of available patches organized by product, product family,
@@ -14076,6 +14252,8 @@ export const describePatchProperties: API.OperationMethod<
   input: DescribePatchPropertiesRequest,
   output: DescribePatchPropertiesResult,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePatchProperties",
   pagination: {
     inputToken: "NextToken",
@@ -14084,6 +14262,7 @@ export const describePatchProperties: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeSessionsError =
   | InternalServerError
   | InvalidFilterKey
@@ -14117,6 +14296,8 @@ export const describeSessions: API.OperationMethod<
   input: DescribeSessionsRequest,
   output: DescribeSessionsResponse,
   errors: [InternalServerError, InvalidFilterKey, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSessions",
   pagination: {
     inputToken: "NextToken",
@@ -14125,6 +14306,7 @@ export const describeSessions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DisassociateOpsItemRelatedItemError =
   | InternalServerError
   | OpsItemConflictException
@@ -14152,8 +14334,11 @@ export const disassociateOpsItemRelatedItem: API.OperationMethod<
     OpsItemNotFoundException,
     OpsItemRelatedItemAssociationNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateOpsItemRelatedItem",
 }));
+
 export type GetAccessTokenError =
   | AccessDeniedException
   | InternalServerError
@@ -14179,8 +14364,11 @@ export const getAccessToken: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessToken",
 }));
+
 export type GetAutomationExecutionError =
   | AutomationExecutionNotFoundException
   | InternalServerError
@@ -14197,8 +14385,11 @@ export const getAutomationExecution: API.OperationMethod<
   input: GetAutomationExecutionRequest,
   output: GetAutomationExecutionResult,
   errors: [AutomationExecutionNotFoundException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAutomationExecution",
 }));
+
 export type GetCalendarStateError =
   | InternalServerError
   | InvalidDocument
@@ -14232,8 +14423,11 @@ export const getCalendarState: API.OperationMethod<
     InvalidDocumentType,
     UnsupportedCalendarException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCalendarState",
 }));
+
 export type GetCommandInvocationError =
   | InternalServerError
   | InvalidCommandId
@@ -14268,8 +14462,11 @@ export const getCommandInvocation: API.OperationMethod<
     InvalidPluginName,
     InvocationDoesNotExist,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCommandInvocation",
 }));
+
 export type GetConnectionStatusError = InternalServerError | CommonErrors;
 /**
  * Retrieves the Session Manager connection status for a managed node to determine whether it is running
@@ -14284,8 +14481,11 @@ export const getConnectionStatus: API.OperationMethod<
   input: GetConnectionStatusRequest,
   output: GetConnectionStatusResponse,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnectionStatus",
 }));
+
 export type GetDefaultPatchBaselineError = InternalServerError | CommonErrors;
 /**
  * Retrieves the default patch baseline. Amazon Web Services Systems Manager supports creating multiple default patch
@@ -14303,8 +14503,11 @@ export const getDefaultPatchBaseline: API.OperationMethod<
   input: GetDefaultPatchBaselineRequest,
   output: GetDefaultPatchBaselineResult,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDefaultPatchBaseline",
 }));
+
 export type GetDeployablePatchSnapshotForInstanceError =
   | InternalServerError
   | UnsupportedFeatureRequiredException
@@ -14333,8 +14536,11 @@ export const getDeployablePatchSnapshotForInstance: API.OperationMethod<
     UnsupportedFeatureRequiredException,
     UnsupportedOperatingSystem,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeployablePatchSnapshotForInstance",
 }));
+
 export type GetDocumentError =
   | InternalServerError
   | InvalidDocument
@@ -14352,8 +14558,11 @@ export const getDocument: API.OperationMethod<
   input: GetDocumentRequest,
   output: GetDocumentResult,
   errors: [InternalServerError, InvalidDocument, InvalidDocumentVersion],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDocument",
 }));
+
 export type GetExecutionPreviewError =
   | InternalServerError
   | ResourceNotFoundException
@@ -14371,8 +14580,11 @@ export const getExecutionPreview: API.OperationMethod<
   input: GetExecutionPreviewRequest,
   output: GetExecutionPreviewResponse,
   errors: [InternalServerError, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExecutionPreview",
 }));
+
 export type GetInventoryError =
   | InternalServerError
   | InvalidAggregatorException
@@ -14418,6 +14630,8 @@ export const getInventory: API.OperationMethod<
     InvalidResultAttributeException,
     InvalidTypeNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInventory",
   pagination: {
     inputToken: "NextToken",
@@ -14426,6 +14640,7 @@ export const getInventory: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetInventorySchemaError =
   | InternalServerError
   | InvalidNextToken
@@ -14459,6 +14674,8 @@ export const getInventorySchema: API.OperationMethod<
   input: GetInventorySchemaRequest,
   output: GetInventorySchemaResult,
   errors: [InternalServerError, InvalidNextToken, InvalidTypeNameException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInventorySchema",
   pagination: {
     inputToken: "NextToken",
@@ -14467,6 +14684,7 @@ export const getInventorySchema: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetMaintenanceWindowError =
   | DoesNotExistException
   | InternalServerError
@@ -14483,8 +14701,11 @@ export const getMaintenanceWindow: API.OperationMethod<
   input: GetMaintenanceWindowRequest,
   output: GetMaintenanceWindowResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMaintenanceWindow",
 }));
+
 export type GetMaintenanceWindowExecutionError =
   | DoesNotExistException
   | InternalServerError
@@ -14501,8 +14722,11 @@ export const getMaintenanceWindowExecution: API.OperationMethod<
   input: GetMaintenanceWindowExecutionRequest,
   output: GetMaintenanceWindowExecutionResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMaintenanceWindowExecution",
 }));
+
 export type GetMaintenanceWindowExecutionTaskError =
   | DoesNotExistException
   | InternalServerError
@@ -14520,8 +14744,11 @@ export const getMaintenanceWindowExecutionTask: API.OperationMethod<
   input: GetMaintenanceWindowExecutionTaskRequest,
   output: GetMaintenanceWindowExecutionTaskResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMaintenanceWindowExecutionTask",
 }));
+
 export type GetMaintenanceWindowExecutionTaskInvocationError =
   | DoesNotExistException
   | InternalServerError
@@ -14538,8 +14765,11 @@ export const getMaintenanceWindowExecutionTaskInvocation: API.OperationMethod<
   input: GetMaintenanceWindowExecutionTaskInvocationRequest,
   output: GetMaintenanceWindowExecutionTaskInvocationResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMaintenanceWindowExecutionTaskInvocation",
 }));
+
 export type GetMaintenanceWindowTaskError =
   | DoesNotExistException
   | InternalServerError
@@ -14563,8 +14793,11 @@ export const getMaintenanceWindowTask: API.OperationMethod<
   input: GetMaintenanceWindowTaskRequest,
   output: GetMaintenanceWindowTaskResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMaintenanceWindowTask",
 }));
+
 export type GetOpsItemError =
   | InternalServerError
   | OpsItemAccessDeniedException
@@ -14593,8 +14826,11 @@ export const getOpsItem: API.OperationMethod<
     OpsItemAccessDeniedException,
     OpsItemNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOpsItem",
 }));
+
 export type GetOpsMetadataError =
   | InternalServerError
   | OpsMetadataInvalidArgumentException
@@ -14616,8 +14852,11 @@ export const getOpsMetadata: API.OperationMethod<
     OpsMetadataInvalidArgumentException,
     OpsMetadataNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOpsMetadata",
 }));
+
 export type GetOpsSummaryError =
   | InternalServerError
   | InvalidAggregatorException
@@ -14663,6 +14902,8 @@ export const getOpsSummary: API.OperationMethod<
     InvalidTypeNameException,
     ResourceDataSyncNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOpsSummary",
   pagination: {
     inputToken: "NextToken",
@@ -14671,6 +14912,7 @@ export const getOpsSummary: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetParameterError =
   | InternalServerError
   | InvalidKeyId
@@ -14700,8 +14942,11 @@ export const getParameter: API.OperationMethod<
     ParameterNotFound,
     ParameterVersionNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetParameter",
 }));
+
 export type GetParameterHistoryError =
   | InternalServerError
   | InvalidKeyId
@@ -14749,6 +14994,8 @@ export const getParameterHistory: API.OperationMethod<
     InvalidNextToken,
     ParameterNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetParameterHistory",
   pagination: {
     inputToken: "NextToken",
@@ -14756,6 +15003,7 @@ export const getParameterHistory: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetParametersError =
   | InternalServerError
   | InvalidKeyId
@@ -14779,8 +15027,11 @@ export const getParameters: API.OperationMethod<
   input: GetParametersRequest,
   output: GetParametersResult,
   errors: [InternalServerError, InvalidKeyId],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetParameters",
 }));
+
 export type GetParametersByPathError =
   | InternalServerError
   | InvalidFilterKey
@@ -14834,6 +15085,8 @@ export const getParametersByPath: API.OperationMethod<
     InvalidKeyId,
     InvalidNextToken,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetParametersByPath",
   pagination: {
     inputToken: "NextToken",
@@ -14841,6 +15094,7 @@ export const getParametersByPath: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetPatchBaselineError =
   | DoesNotExistException
   | InternalServerError
@@ -14858,8 +15112,11 @@ export const getPatchBaseline: API.OperationMethod<
   input: GetPatchBaselineRequest,
   output: GetPatchBaselineResult,
   errors: [DoesNotExistException, InternalServerError, InvalidResourceId],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPatchBaseline",
 }));
+
 export type GetPatchBaselineForPatchGroupError =
   | InternalServerError
   | CommonErrors;
@@ -14875,8 +15132,11 @@ export const getPatchBaselineForPatchGroup: API.OperationMethod<
   input: GetPatchBaselineForPatchGroupRequest,
   output: GetPatchBaselineForPatchGroupResult,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPatchBaselineForPatchGroup",
 }));
+
 export type GetResourcePoliciesError =
   | InternalServerError
   | ResourceNotFoundException
@@ -14913,6 +15173,8 @@ export const getResourcePolicies: API.OperationMethod<
     ResourceNotFoundException,
     ResourcePolicyInvalidParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicies",
   pagination: {
     inputToken: "NextToken",
@@ -14921,6 +15183,7 @@ export const getResourcePolicies: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetServiceSettingError =
   | InternalServerError
   | ServiceSettingNotFound
@@ -14951,8 +15214,11 @@ export const getServiceSetting: API.OperationMethod<
   input: GetServiceSettingRequest,
   output: GetServiceSettingResult,
   errors: [InternalServerError, ServiceSettingNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServiceSetting",
 }));
+
 export type LabelParameterVersionError =
   | InternalServerError
   | ParameterNotFound
@@ -15009,8 +15275,11 @@ export const labelParameterVersion: API.OperationMethod<
     ParameterVersionNotFound,
     TooManyUpdates,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "LabelParameterVersion",
 }));
+
 export type ListAssociationsError =
   | InternalServerError
   | InvalidNextToken
@@ -15044,6 +15313,8 @@ export const listAssociations: API.OperationMethod<
   input: ListAssociationsRequest,
   output: ListAssociationsResult,
   errors: [InternalServerError, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -15052,6 +15323,7 @@ export const listAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAssociationVersionsError =
   | AssociationDoesNotExist
   | InternalServerError
@@ -15084,6 +15356,8 @@ export const listAssociationVersions: API.OperationMethod<
   input: ListAssociationVersionsRequest,
   output: ListAssociationVersionsResult,
   errors: [AssociationDoesNotExist, InternalServerError, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssociationVersions",
   pagination: {
     inputToken: "NextToken",
@@ -15092,6 +15366,7 @@ export const listAssociationVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCommandInvocationsError =
   | InternalServerError
   | InvalidCommandId
@@ -15136,6 +15411,8 @@ export const listCommandInvocations: API.OperationMethod<
     InvalidInstanceId,
     InvalidNextToken,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCommandInvocations",
   pagination: {
     inputToken: "NextToken",
@@ -15144,6 +15421,7 @@ export const listCommandInvocations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCommandsError =
   | InternalServerError
   | InvalidCommandId
@@ -15184,6 +15462,8 @@ export const listCommands: API.OperationMethod<
     InvalidInstanceId,
     InvalidNextToken,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCommands",
   pagination: {
     inputToken: "NextToken",
@@ -15192,6 +15472,7 @@ export const listCommands: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListComplianceItemsError =
   | InternalServerError
   | InvalidFilter
@@ -15234,6 +15515,8 @@ export const listComplianceItems: API.OperationMethod<
     InvalidResourceId,
     InvalidResourceType,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComplianceItems",
   pagination: {
     inputToken: "NextToken",
@@ -15242,6 +15525,7 @@ export const listComplianceItems: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListComplianceSummariesError =
   | InternalServerError
   | InvalidFilter
@@ -15276,6 +15560,8 @@ export const listComplianceSummaries: API.OperationMethod<
   input: ListComplianceSummariesRequest,
   output: ListComplianceSummariesResult,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComplianceSummaries",
   pagination: {
     inputToken: "NextToken",
@@ -15284,6 +15570,7 @@ export const listComplianceSummaries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDocumentMetadataHistoryError =
   | InternalServerError
   | InvalidDocument
@@ -15311,8 +15598,11 @@ export const listDocumentMetadataHistory: API.OperationMethod<
     InvalidDocumentVersion,
     InvalidNextToken,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDocumentMetadataHistory",
 }));
+
 export type ListDocumentsError =
   | InternalServerError
   | InvalidFilterKey
@@ -15346,6 +15636,8 @@ export const listDocuments: API.OperationMethod<
   input: ListDocumentsRequest,
   output: ListDocumentsResult,
   errors: [InternalServerError, InvalidFilterKey, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDocuments",
   pagination: {
     inputToken: "NextToken",
@@ -15354,6 +15646,7 @@ export const listDocuments: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDocumentVersionsError =
   | InternalServerError
   | InvalidDocument
@@ -15386,6 +15679,8 @@ export const listDocumentVersions: API.OperationMethod<
   input: ListDocumentVersionsRequest,
   output: ListDocumentVersionsResult,
   errors: [InternalServerError, InvalidDocument, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDocumentVersions",
   pagination: {
     inputToken: "NextToken",
@@ -15394,6 +15689,7 @@ export const listDocumentVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListInventoryEntriesError =
   | InternalServerError
   | InvalidFilter
@@ -15419,8 +15715,11 @@ export const listInventoryEntries: API.OperationMethod<
     InvalidNextToken,
     InvalidTypeNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInventoryEntries",
 }));
+
 export type ListNodesError =
   | InternalServerError
   | InvalidFilter
@@ -15457,6 +15756,8 @@ export const listNodes: API.OperationMethod<
     ResourceDataSyncNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNodes",
   pagination: {
     inputToken: "NextToken",
@@ -15465,6 +15766,7 @@ export const listNodes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListNodesSummaryError =
   | InternalServerError
   | InvalidAggregatorException
@@ -15508,6 +15810,8 @@ export const listNodesSummary: API.OperationMethod<
     ResourceDataSyncNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNodesSummary",
   pagination: {
     inputToken: "NextToken",
@@ -15516,6 +15820,7 @@ export const listNodesSummary: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOpsItemEventsError =
   | InternalServerError
   | OpsItemInvalidParameterException
@@ -15555,6 +15860,8 @@ export const listOpsItemEvents: API.OperationMethod<
     OpsItemLimitExceededException,
     OpsItemNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOpsItemEvents",
   pagination: {
     inputToken: "NextToken",
@@ -15563,6 +15870,7 @@ export const listOpsItemEvents: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOpsItemRelatedItemsError =
   | InternalServerError
   | OpsItemInvalidParameterException
@@ -15595,6 +15903,8 @@ export const listOpsItemRelatedItems: API.OperationMethod<
   input: ListOpsItemRelatedItemsRequest,
   output: ListOpsItemRelatedItemsResponse,
   errors: [InternalServerError, OpsItemInvalidParameterException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOpsItemRelatedItems",
   pagination: {
     inputToken: "NextToken",
@@ -15603,6 +15913,7 @@ export const listOpsItemRelatedItems: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOpsMetadataError =
   | InternalServerError
   | OpsMetadataInvalidArgumentException
@@ -15635,6 +15946,8 @@ export const listOpsMetadata: API.OperationMethod<
   input: ListOpsMetadataRequest,
   output: ListOpsMetadataResult,
   errors: [InternalServerError, OpsMetadataInvalidArgumentException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOpsMetadata",
   pagination: {
     inputToken: "NextToken",
@@ -15643,6 +15956,7 @@ export const listOpsMetadata: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResourceComplianceSummariesError =
   | InternalServerError
   | InvalidFilter
@@ -15677,6 +15991,8 @@ export const listResourceComplianceSummaries: API.OperationMethod<
   input: ListResourceComplianceSummariesRequest,
   output: ListResourceComplianceSummariesResult,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceComplianceSummaries",
   pagination: {
     inputToken: "NextToken",
@@ -15685,6 +16001,7 @@ export const listResourceComplianceSummaries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResourceDataSyncError =
   | InternalServerError
   | InvalidNextToken
@@ -15730,6 +16047,8 @@ export const listResourceDataSync: API.OperationMethod<
     InvalidNextToken,
     ResourceDataSyncInvalidConfigurationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceDataSync",
   pagination: {
     inputToken: "NextToken",
@@ -15738,6 +16057,7 @@ export const listResourceDataSync: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerError
   | InvalidResourceId
@@ -15757,8 +16077,11 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
   errors: [InternalServerError, InvalidResourceId, InvalidResourceType],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ModifyDocumentPermissionError =
   | DocumentLimitExceeded
   | DocumentPermissionLimit
@@ -15787,8 +16110,11 @@ export const modifyDocumentPermission: API.OperationMethod<
     InvalidDocument,
     InvalidPermissionType,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyDocumentPermission",
 }));
+
 export type PutComplianceItemsError =
   | ComplianceTypeCountLimitExceededException
   | InternalServerError
@@ -15864,8 +16190,11 @@ export const putComplianceItems: API.OperationMethod<
     ItemSizeLimitExceededException,
     TotalSizeLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutComplianceItems",
 }));
+
 export type PutInventoryError =
   | CustomSchemaCountLimitExceededException
   | InternalServerError
@@ -15907,8 +16236,11 @@ export const putInventory: API.OperationMethod<
     UnsupportedInventoryItemContextException,
     UnsupportedInventorySchemaVersionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutInventory",
 }));
+
 export type PutParameterError =
   | HierarchyLevelLimitExceededException
   | HierarchyTypeMismatchException
@@ -15954,8 +16286,11 @@ export const putParameter: API.OperationMethod<
     TooManyUpdates,
     UnsupportedParameterType,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutParameter",
 }));
+
 export type PutResourcePolicyError =
   | InternalServerError
   | MalformedResourcePolicyDocumentException
@@ -16011,8 +16346,11 @@ export const putResourcePolicy: API.OperationMethod<
     ResourcePolicyLimitExceededException,
     ResourcePolicyNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type RegisterDefaultPatchBaselineError =
   | DoesNotExistException
   | InternalServerError
@@ -16035,8 +16373,11 @@ export const registerDefaultPatchBaseline: API.OperationMethod<
   input: RegisterDefaultPatchBaselineRequest,
   output: RegisterDefaultPatchBaselineResult,
   errors: [DoesNotExistException, InternalServerError, InvalidResourceId],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterDefaultPatchBaseline",
 }));
+
 export type RegisterPatchBaselineForPatchGroupError =
   | AlreadyExistsException
   | DoesNotExistException
@@ -16062,8 +16403,11 @@ export const registerPatchBaselineForPatchGroup: API.OperationMethod<
     InvalidResourceId,
     ResourceLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterPatchBaselineForPatchGroup",
 }));
+
 export type RegisterTargetWithMaintenanceWindowError =
   | DoesNotExistException
   | IdempotentParameterMismatch
@@ -16087,8 +16431,11 @@ export const registerTargetWithMaintenanceWindow: API.OperationMethod<
     InternalServerError,
     ResourceLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterTargetWithMaintenanceWindow",
 }));
+
 export type RegisterTaskWithMaintenanceWindowError =
   | DoesNotExistException
   | FeatureNotAvailableException
@@ -16114,8 +16461,11 @@ export const registerTaskWithMaintenanceWindow: API.OperationMethod<
     InternalServerError,
     ResourceLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterTaskWithMaintenanceWindow",
 }));
+
 export type RemoveTagsFromResourceError =
   | InternalServerError
   | InvalidResourceId
@@ -16139,8 +16489,11 @@ export const removeTagsFromResource: API.OperationMethod<
     InvalidResourceType,
     TooManyUpdates,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTagsFromResource",
 }));
+
 export type ResetServiceSettingError =
   | InternalServerError
   | ServiceSettingNotFound
@@ -16173,8 +16526,11 @@ export const resetServiceSetting: API.OperationMethod<
   input: ResetServiceSettingRequest,
   output: ResetServiceSettingResult,
   errors: [InternalServerError, ServiceSettingNotFound, TooManyUpdates],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetServiceSetting",
 }));
+
 export type ResumeSessionError =
   | DoesNotExistException
   | InternalServerError
@@ -16195,8 +16551,11 @@ export const resumeSession: API.OperationMethod<
   input: ResumeSessionRequest,
   output: ResumeSessionResponse,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResumeSession",
 }));
+
 export type SendAutomationSignalError =
   | AutomationExecutionNotFoundException
   | AutomationStepNotFoundException
@@ -16221,8 +16580,11 @@ export const sendAutomationSignal: API.OperationMethod<
     InternalServerError,
     InvalidAutomationSignalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendAutomationSignal",
 }));
+
 export type SendCommandError =
   | DuplicateInstanceId
   | InternalServerError
@@ -16260,8 +16622,11 @@ export const sendCommand: API.OperationMethod<
     MaxDocumentSizeExceeded,
     UnsupportedPlatformType,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendCommand",
 }));
+
 export type StartAccessRequestError =
   | AccessDeniedException
   | InternalServerError
@@ -16289,8 +16654,11 @@ export const startAccessRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAccessRequest",
 }));
+
 export type StartAssociationsOnceError =
   | AssociationDoesNotExist
   | InvalidAssociation
@@ -16308,8 +16676,11 @@ export const startAssociationsOnce: API.OperationMethod<
   input: StartAssociationsOnceRequest,
   output: StartAssociationsOnceResult,
   errors: [AssociationDoesNotExist, InvalidAssociation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAssociationsOnce",
 }));
+
 export type StartAutomationExecutionError =
   | AutomationDefinitionNotFoundException
   | AutomationDefinitionVersionNotFoundException
@@ -16339,8 +16710,11 @@ export const startAutomationExecution: API.OperationMethod<
     InvalidAutomationExecutionParametersException,
     InvalidTarget,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAutomationExecution",
 }));
+
 export type StartChangeRequestExecutionError =
   | AutomationDefinitionNotApprovedException
   | AutomationDefinitionNotFoundException
@@ -16378,8 +16752,11 @@ export const startChangeRequestExecution: API.OperationMethod<
     InvalidAutomationExecutionParametersException,
     NoLongerSupportedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartChangeRequestExecution",
 }));
+
 export type StartExecutionPreviewError =
   | InternalServerError
   | ValidationException
@@ -16397,8 +16774,11 @@ export const startExecutionPreview: API.OperationMethod<
   input: StartExecutionPreviewRequest,
   output: StartExecutionPreviewResponse,
   errors: [InternalServerError, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartExecutionPreview",
 }));
+
 export type StartSessionError =
   | InternalServerError
   | InvalidDocument
@@ -16425,8 +16805,11 @@ export const startSession: API.OperationMethod<
   input: StartSessionRequest,
   output: StartSessionResponse,
   errors: [InternalServerError, InvalidDocument, TargetNotConnected],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSession",
 }));
+
 export type StopAutomationExecutionError =
   | AutomationExecutionNotFoundException
   | InternalServerError
@@ -16448,8 +16831,11 @@ export const stopAutomationExecution: API.OperationMethod<
     InternalServerError,
     InvalidAutomationStatusUpdateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopAutomationExecution",
 }));
+
 export type TerminateSessionError = InternalServerError | CommonErrors;
 /**
  * Permanently ends a session and closes the data connection between the Session Manager client and
@@ -16464,8 +16850,11 @@ export const terminateSession: API.OperationMethod<
   input: TerminateSessionRequest,
   output: TerminateSessionResponse,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateSession",
 }));
+
 export type UnlabelParameterVersionError =
   | InternalServerError
   | ParameterNotFound
@@ -16493,8 +16882,11 @@ export const unlabelParameterVersion: API.OperationMethod<
     ParameterVersionNotFound,
     TooManyUpdates,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnlabelParameterVersion",
 }));
+
 export type UpdateAssociationError =
   | AssociationDoesNotExist
   | AssociationVersionLimitExceeded
@@ -16553,8 +16945,11 @@ export const updateAssociation: API.OperationMethod<
     InvalidUpdate,
     TooManyUpdates,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAssociation",
 }));
+
 export type UpdateAssociationStatusError =
   | AssociationDoesNotExist
   | InternalServerError
@@ -16587,8 +16982,11 @@ export const updateAssociationStatus: API.OperationMethod<
     StatusUnchanged,
     TooManyUpdates,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAssociationStatus",
 }));
+
 export type UpdateDocumentError =
   | DocumentVersionLimitExceeded
   | DuplicateDocumentContent
@@ -16624,8 +17022,11 @@ export const updateDocument: API.OperationMethod<
     InvalidDocumentVersion,
     MaxDocumentSizeExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDocument",
 }));
+
 export type UpdateDocumentDefaultVersionError =
   | InternalServerError
   | InvalidDocument
@@ -16653,8 +17054,11 @@ export const updateDocumentDefaultVersion: API.OperationMethod<
     InvalidDocumentSchemaVersion,
     InvalidDocumentVersion,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDocumentDefaultVersion",
 }));
+
 export type UpdateDocumentMetadataError =
   | InternalServerError
   | InvalidDocument
@@ -16685,8 +17089,11 @@ export const updateDocumentMetadata: API.OperationMethod<
     InvalidDocumentVersion,
     TooManyUpdates,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDocumentMetadata",
 }));
+
 export type UpdateMaintenanceWindowError =
   | DoesNotExistException
   | InternalServerError
@@ -16710,8 +17117,11 @@ export const updateMaintenanceWindow: API.OperationMethod<
   input: UpdateMaintenanceWindowRequest,
   output: UpdateMaintenanceWindowResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMaintenanceWindow",
 }));
+
 export type UpdateMaintenanceWindowTargetError =
   | DoesNotExistException
   | InternalServerError
@@ -16744,8 +17154,11 @@ export const updateMaintenanceWindowTarget: API.OperationMethod<
   input: UpdateMaintenanceWindowTargetRequest,
   output: UpdateMaintenanceWindowTargetResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMaintenanceWindowTarget",
 }));
+
 export type UpdateMaintenanceWindowTaskError =
   | DoesNotExistException
   | InternalServerError
@@ -16797,8 +17210,11 @@ export const updateMaintenanceWindowTask: API.OperationMethod<
   input: UpdateMaintenanceWindowTaskRequest,
   output: UpdateMaintenanceWindowTaskResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMaintenanceWindowTask",
 }));
+
 export type UpdateManagedInstanceRoleError =
   | InternalServerError
   | InvalidInstanceId
@@ -16817,8 +17233,11 @@ export const updateManagedInstanceRole: API.OperationMethod<
   input: UpdateManagedInstanceRoleRequest,
   output: UpdateManagedInstanceRoleResult,
   errors: [InternalServerError, InvalidInstanceId],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateManagedInstanceRole",
 }));
+
 export type UpdateOpsItemError =
   | InternalServerError
   | OpsItemAccessDeniedException
@@ -16854,8 +17273,11 @@ export const updateOpsItem: API.OperationMethod<
     OpsItemLimitExceededException,
     OpsItemNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOpsItem",
 }));
+
 export type UpdateOpsMetadataError =
   | InternalServerError
   | OpsMetadataInvalidArgumentException
@@ -16881,8 +17303,11 @@ export const updateOpsMetadata: API.OperationMethod<
     OpsMetadataNotFoundException,
     OpsMetadataTooManyUpdatesException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOpsMetadata",
 }));
+
 export type UpdatePatchBaselineError =
   | DoesNotExistException
   | InternalServerError
@@ -16903,8 +17328,11 @@ export const updatePatchBaseline: API.OperationMethod<
   input: UpdatePatchBaselineRequest,
   output: UpdatePatchBaselineResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePatchBaseline",
 }));
+
 export type UpdateResourceDataSyncError =
   | InternalServerError
   | ResourceDataSyncConflictException
@@ -16936,8 +17364,11 @@ export const updateResourceDataSync: API.OperationMethod<
     ResourceDataSyncInvalidConfigurationException,
     ResourceDataSyncNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResourceDataSync",
 }));
+
 export type UpdateServiceSettingError =
   | InternalServerError
   | ServiceSettingNotFound
@@ -16969,5 +17400,7 @@ export const updateServiceSetting: API.OperationMethod<
   input: UpdateServiceSettingRequest,
   output: UpdateServiceSettingResult,
   errors: [InternalServerError, ServiceSettingNotFound, TooManyUpdates],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateServiceSetting",
 }));

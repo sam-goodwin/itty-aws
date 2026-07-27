@@ -1,8 +1,149 @@
 {
-  "errors": {
-    "WorkerNotFound": [{ "code": 10007 }],
-    "RouteNotFound": [{ "code": 10009 }, { "status": 404 }],
-    "InvalidRoute": [{ "code": 7003 }],
-    "Forbidden": [{ "status": 403 }]
-  }
+  "description": "Align workers#RoutesGet with distilled cloudflare/workers getRoute",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#RoutesGet",
+      "path": "/shapes/com.cloudflare.workers#GetRoute"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#RoutesGetRequest",
+      "path": "/shapes/com.cloudflare.workers#GetRouteRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workers#GetRoute/input/target",
+      "value": "com.cloudflare.workers#GetRouteRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#RoutesGetResponse",
+      "path": "/shapes/com.cloudflare.workers#GetRouteResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workers#GetRoute/output/target",
+      "value": "com.cloudflare.workers#GetRouteResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#WorkerNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10007
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#RouteNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10009
+            },
+            {
+              "status": 404
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            },
+            {
+              "code": 7003,
+              "message": {
+                "includes": "Could not route"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#GetRoute/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.workers#WorkerNotFound"
+        },
+        {
+          "target": "com.cloudflare.workers#RouteNotFound"
+        },
+        {
+          "target": "com.cloudflare.workers#InvalidRoute"
+        },
+        {
+          "target": "com.cloudflare.workers#Forbidden"
+        }
+      ]
+    }
+  ]
 }

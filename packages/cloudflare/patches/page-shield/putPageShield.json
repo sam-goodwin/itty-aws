@@ -1,8 +1,0 @@
-{
-  "errors": {
-    "NotEntitled": [
-      { "status": 403, "message": { "includes": "not entitled" } }
-    ],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

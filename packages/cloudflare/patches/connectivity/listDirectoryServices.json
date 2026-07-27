@@ -1,80 +1,73 @@
 {
-  "response": {
-    "properties": {
-      "result_info": {
-        "optional": true
-      },
-      "result[].tcp_port": {
-        "optional": true,
-        "definition": {
-          "kind": "union",
-          "values": [
+  "description": "Align connectivity#DirectoryServicesList with distilled cloudflare/connectivity listDirectoryServices",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.connectivity#DirectoryServicesList",
+      "path": "/shapes/com.cloudflare.connectivity#ListDirectoryServices"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.connectivity#DirectoryServicesListRequest",
+      "path": "/shapes/com.cloudflare.connectivity#ListDirectoryServicesRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.connectivity#ListDirectoryServices/input/target",
+      "value": "com.cloudflare.connectivity#ListDirectoryServicesRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.connectivity#DirectoryServicesListResponse",
+      "path": "/shapes/com.cloudflare.connectivity#ListDirectoryServicesResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.connectivity#ListDirectoryServices/output/target",
+      "value": "com.cloudflare.connectivity#ListDirectoryServicesResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.connectivity#ListDirectoryServices/traits/smithy.api#paginated",
+      "value": {
+        "mode": "page",
+        "inputToken": "page",
+        "outputToken": "resultInfo.page",
+        "items": "result",
+        "pageSize": "perPage"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.connectivity#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
             {
-              "kind": "primitive",
-              "value": "number"
-            },
-            {
-              "kind": "null"
-            }
-          ]
-        }
-      },
-      "result[].app_protocol": {
-        "optional": true,
-        "definition": {
-          "kind": "union",
-          "values": [
-            {
-              "kind": "literal",
-              "value": "postgresql"
-            },
-            {
-              "kind": "literal",
-              "value": "mysql"
-            },
-            {
-              "kind": "null"
-            }
-          ]
-        }
-      },
-      "result[].http_port": {
-        "optional": true,
-        "definition": {
-          "kind": "union",
-          "values": [
-            {
-              "kind": "primitive",
-              "value": "number"
-            },
-            {
-              "kind": "null"
-            }
-          ]
-        }
-      },
-      "result[].https_port": {
-        "optional": true,
-        "definition": {
-          "kind": "union",
-          "values": [
-            {
-              "kind": "primitive",
-              "value": "number"
-            },
-            {
-              "kind": "null"
+              "status": 403
             }
           ]
         }
       }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.connectivity#ListDirectoryServices/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.connectivity#Forbidden"
+        }
+      ]
     }
-  },
-  "errors": {
-    "Forbidden": [
-      {
-        "status": 403
-      }
-    ]
-  }
+  ]
 }

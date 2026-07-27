@@ -5,9 +5,7 @@
         {
           "name": "ModelAlreadyExists",
           "from": "ValidationException",
-          "message": {
-            "includes": "Cannot create already existing model"
-          }
+          "message": { "includes": "Cannot create already existing model" }
         }
       ]
     },
@@ -16,9 +14,7 @@
         {
           "name": "ModelNotFound",
           "from": "ValidationException",
-          "message": {
-            "includes": "Could not find model"
-          }
+          "message": { "includes": "Could not find model" }
         }
       ]
     },
@@ -27,9 +23,7 @@
         {
           "name": "ModelNotFound",
           "from": "ValidationException",
-          "message": {
-            "includes": "Could not find model"
-          }
+          "message": { "includes": "Could not find model" }
         }
       ]
     },
@@ -49,9 +43,7 @@
         {
           "name": "EndpointConfigNotFound",
           "from": "ValidationException",
-          "message": {
-            "includes": "Could not find endpoint configuration"
-          }
+          "message": { "includes": "Could not find endpoint configuration" }
         }
       ]
     },
@@ -60,9 +52,7 @@
         {
           "name": "EndpointConfigNotFound",
           "from": "ValidationException",
-          "message": {
-            "includes": "Could not find endpoint configuration"
-          }
+          "message": { "includes": "Could not find endpoint configuration" }
         }
       ]
     },
@@ -71,16 +61,12 @@
         {
           "name": "EndpointConfigNotFound",
           "from": "ValidationException",
-          "message": {
-            "includes": "Could not find endpoint configuration"
-          }
+          "message": { "includes": "Could not find endpoint configuration" }
         },
         {
           "name": "EndpointAlreadyExists",
           "from": "ValidationException",
-          "message": {
-            "includes": "Cannot create already existing endpoint"
-          }
+          "message": { "includes": "Cannot create already existing endpoint" }
         }
       ]
     },
@@ -89,9 +75,7 @@
         {
           "name": "EndpointNotFound",
           "from": "ValidationException",
-          "message": {
-            "includes": "Could not find endpoint \""
-          }
+          "message": { "includes": "Could not find endpoint \"" }
         }
       ]
     },
@@ -100,9 +84,7 @@
         {
           "name": "EndpointNotFound",
           "from": "ValidationException",
-          "message": {
-            "includes": "Could not find endpoint \""
-          }
+          "message": { "includes": "Could not find endpoint \"" }
         }
       ]
     },
@@ -111,52 +93,22 @@
         {
           "name": "EndpointConfigNotFound",
           "from": "ValidationException",
-          "message": {
-            "includes": "Could not find endpoint configuration"
-          }
+          "message": { "includes": "Could not find endpoint configuration" }
         },
         {
           "name": "EndpointNotFound",
           "from": "ValidationException",
-          "message": {
-            "includes": "Could not find endpoint \""
-          }
-        }
-      ]
-    },
-    "createClusterSchedulerConfig": {
-      "syntheticErrors": [
-        {
-          "name": "ClusterSchedulerConfigAlreadyExists",
-          "from": "ValidationException",
-          "message": {
-            "includes": "ClusterSchedulerConfig record already exists"
-          }
+          "message": { "includes": "Could not find endpoint \"" }
         }
       ]
     }
   },
   "errorCategories": {
-    "ModelNotFound": [
-      "NotFoundError"
-    ],
-    "ModelAlreadyExists": [
-      "AlreadyExistsError",
-      "ConflictError"
-    ],
-    "EndpointConfigNotFound": [
-      "NotFoundError"
-    ],
-    "EndpointConfigAlreadyExists": [
-      "AlreadyExistsError",
-      "ConflictError"
-    ],
-    "EndpointNotFound": [
-      "NotFoundError"
-    ],
-    "EndpointAlreadyExists": [
-      "AlreadyExistsError",
-      "ConflictError"
-    ]
+    "ModelNotFound": ["NotFoundError"],
+    "ModelAlreadyExists": ["AlreadyExistsError", "ConflictError"],
+    "EndpointConfigNotFound": ["NotFoundError"],
+    "EndpointConfigAlreadyExists": ["AlreadyExistsError", "ConflictError"],
+    "EndpointNotFound": ["NotFoundError"],
+    "EndpointAlreadyExists": ["AlreadyExistsError", "ConflictError"]
   }
 }

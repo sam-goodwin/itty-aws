@@ -80,9 +80,7 @@
   },
   "operations": {
     "cancelJob": {
-      "errors": [
-        "ResourceNotFoundException"
-      ]
+      "errors": ["ResourceNotFoundException"]
     }
   }
 }

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,76 +85,70 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ConnectorFailureException extends S.TaggedErrorClass<ConnectorFailureException>()(
+  "ConnectorFailureException",
+  { message: S.optional(S.String) },
+  T.HttpError(424),
+) {}
+export class ConnectorTimeoutException extends S.TaggedErrorClass<ConnectorTimeoutException>()(
+  "ConnectorTimeoutException",
+  { message: S.optional(S.String) },
+  T.HttpError(424),
+) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class QueryTimeoutException extends S.TaggedErrorClass<QueryTimeoutException>()(
+  "QueryTimeoutException",
+  { message: S.optional(S.String) },
+  T.all(T.HttpError(400), T.Retryable()),
+).pipe(C.withBadRequestError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type Id = string;
 export type Name = string;
 export type ComponentPath = string;
-export type EntityId = string;
-export type Expression = string;
-export type ErrorMessage = string;
-export type TwinMakerArn = string;
-export type MetadataTransferJobState = string;
-export type ErrorCode = string;
-export type ComponentTypeId = string;
-export type Description = string;
-export type Type = string;
-export type Value = string;
-export type PropertyDisplayName = string;
-export type Scope = string;
-export type LambdaArn = string;
-export type TagKey = string;
-export type TagValue = string;
-export type GroupType = string;
-export type ComponentTypeName = string;
-export type State = string;
-export type EntityName = string;
-export type PropertyUpdateType = string;
-export type PropertyGroupUpdateType = string;
-export type ParentEntityId = string;
-export type SourceType = string;
-export type S3SourceLocation = string;
-export type Uuid = string;
-export type SiteWiseExternalId = string;
-export type DestinationType = string;
-export type S3DestinationLocation = string;
-export type S3Url = string;
-export type SceneCapability = string;
-export type SceneMetadataValue = string;
-export type SyncSource = string;
-export type RoleArn = string;
-export type SyncJobState = string;
-export type S3Location = string;
-export type WorkspaceDeleteMessage = string;
-export type QueryStatement = string;
-export type QueryServiceMaxResults = number;
-export type NextToken = string;
-export type ColumnName = string;
-export type ColumnType = string;
-export type QueryResultValue = unknown;
-export type BundleName = string;
-export type PricingTier = string;
-export type PricingMode = string;
-export type UpdateReason = string;
-export type MaxResults = number;
-export type Order = string;
-export type InterpolationType = string;
-export type IntervalInSeconds = number;
-export type OrderByTime = string;
-export type SceneErrorCode = string;
-export type IdOrArn = string;
-export type LinkedService = string;
-export type SyncResourceState = string;
-export type SyncResourceType = string;
-export type ExceptionMessage = string;
-export type ComponentUpdateType = string;
-export type ParentEntityUpdateType = string;
-
-//# Schemas
 export type ExternalIdProperty = { [key: string]: string | undefined };
 export const ExternalIdProperty = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type EntityId = string;
 export interface EntityPropertyReference {
   componentName?: string;
   componentPath?: string;
@@ -196,6 +192,7 @@ export const RelationshipValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RelationshipValue",
 }) as any as S.Schema<RelationshipValue>;
+export type Expression = string;
 export interface DataValue {
   booleanValue?: boolean;
   doubleValue?: number;
@@ -256,27 +253,26 @@ export interface BatchPutPropertyValuesRequest {
   workspaceId: string;
   entries: PropertyValueEntry[];
 }
-export const BatchPutPropertyValuesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
-      entries: Entries,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/workspaces/{workspaceId}/entity-properties",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchPutPropertyValuesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
+    entries: Entries,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/workspaces/{workspaceId}/entity-properties",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "BatchPutPropertyValuesRequest",
-  }) as any as S.Schema<BatchPutPropertyValuesRequest>;
+  ),
+).annotate({
+  identifier: "BatchPutPropertyValuesRequest",
+}) as any as S.Schema<BatchPutPropertyValuesRequest>;
 export interface BatchPutPropertyError {
   errorCode: string;
   errorMessage: string;
@@ -306,37 +302,37 @@ export const ErrorEntries = /*@__PURE__*/ S.Array(BatchPutPropertyErrorEntry);
 export interface BatchPutPropertyValuesResponse {
   errorEntries: BatchPutPropertyErrorEntry[];
 }
-export const BatchPutPropertyValuesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ errorEntries: ErrorEntries }),
-  ).annotate({
-    identifier: "BatchPutPropertyValuesResponse",
-  }) as any as S.Schema<BatchPutPropertyValuesResponse>;
+export const BatchPutPropertyValuesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ errorEntries: ErrorEntries }),
+).annotate({
+  identifier: "BatchPutPropertyValuesResponse",
+}) as any as S.Schema<BatchPutPropertyValuesResponse>;
 export interface CancelMetadataTransferJobRequest {
   metadataTransferJobId: string;
 }
-export const CancelMetadataTransferJobRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metadataTransferJobId: S.String.pipe(
-        T.HttpLabel("metadataTransferJobId"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/metadata-transfer-jobs/{metadataTransferJobId}/cancel",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CancelMetadataTransferJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metadataTransferJobId: S.String.pipe(T.HttpLabel("metadataTransferJobId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/metadata-transfer-jobs/{metadataTransferJobId}/cancel",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CancelMetadataTransferJobRequest",
-  }) as any as S.Schema<CancelMetadataTransferJobRequest>;
+  ),
+).annotate({
+  identifier: "CancelMetadataTransferJobRequest",
+}) as any as S.Schema<CancelMetadataTransferJobRequest>;
+export type TwinMakerArn = string;
+export type MetadataTransferJobState = string;
+export type ErrorCode = string;
+export type ErrorMessage = string;
 export interface ErrorDetails {
   code?: string;
   message?: string;
@@ -364,17 +360,16 @@ export interface MetadataTransferJobProgress {
   skippedCount?: number;
   failedCount?: number;
 }
-export const MetadataTransferJobProgress =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      totalCount: S.optional(S.Number),
-      succeededCount: S.optional(S.Number),
-      skippedCount: S.optional(S.Number),
-      failedCount: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "MetadataTransferJobProgress",
-  }) as any as S.Schema<MetadataTransferJobProgress>;
+export const MetadataTransferJobProgress = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    totalCount: S.optional(S.Number),
+    succeededCount: S.optional(S.Number),
+    skippedCount: S.optional(S.Number),
+    failedCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "MetadataTransferJobProgress",
+}) as any as S.Schema<MetadataTransferJobProgress>;
 export interface CancelMetadataTransferJobResponse {
   metadataTransferJobId: string;
   arn: string;
@@ -382,18 +377,20 @@ export interface CancelMetadataTransferJobResponse {
   status: MetadataTransferJobStatus;
   progress?: MetadataTransferJobProgress;
 }
-export const CancelMetadataTransferJobResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metadataTransferJobId: S.String,
-      arn: S.String,
-      updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      status: MetadataTransferJobStatus,
-      progress: S.optional(MetadataTransferJobProgress),
-    }),
-  ).annotate({
-    identifier: "CancelMetadataTransferJobResponse",
-  }) as any as S.Schema<CancelMetadataTransferJobResponse>;
+export const CancelMetadataTransferJobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metadataTransferJobId: S.String,
+    arn: S.String,
+    updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    status: MetadataTransferJobStatus,
+    progress: S.optional(MetadataTransferJobProgress),
+  }),
+).annotate({
+  identifier: "CancelMetadataTransferJobResponse",
+}) as any as S.Schema<CancelMetadataTransferJobResponse>;
+export type ComponentTypeId = string;
+export type Description = string;
+export type Type = string;
 export interface Relationship {
   targetComponentTypeId?: string;
   relationshipType?: string;
@@ -426,11 +423,13 @@ export const DataType = /*@__PURE__*/ S.suspend(() =>
     relationship: S.optional(Relationship),
   }),
 ).annotate({ identifier: "DataType" }) as any as S.Schema<DataType>;
+export type Value = string;
 export type Configuration = { [key: string]: string | undefined };
 export const Configuration = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type PropertyDisplayName = string;
 export interface PropertyDefinitionRequest {
   dataType?: DataType;
   isRequiredInEntity?: boolean;
@@ -466,6 +465,8 @@ export type ExtendsFrom = string[];
 export const ExtendsFrom = /*@__PURE__*/ S.Array(S.String);
 export type RequiredProperties = string[];
 export const RequiredProperties = /*@__PURE__*/ S.Array(S.String);
+export type Scope = string;
+export type LambdaArn = string;
 export interface LambdaFunction {
   arn: string;
 }
@@ -501,11 +502,14 @@ export const FunctionsRequest = /*@__PURE__*/ S.Record(
   S.String,
   FunctionRequest.pipe(S.optional),
 );
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type GroupType = string;
 export type PropertyNames = string[];
 export const PropertyNames = /*@__PURE__*/ S.Array(S.String);
 export interface PropertyGroupRequest {
@@ -527,23 +531,22 @@ export const PropertyGroupsRequest = /*@__PURE__*/ S.Record(
   S.String,
   PropertyGroupRequest.pipe(S.optional),
 );
+export type ComponentTypeName = string;
 export interface CompositeComponentTypeRequest {
   componentTypeId?: string;
 }
-export const CompositeComponentTypeRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ componentTypeId: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CompositeComponentTypeRequest",
-  }) as any as S.Schema<CompositeComponentTypeRequest>;
+export const CompositeComponentTypeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ componentTypeId: S.optional(S.String) }),
+).annotate({
+  identifier: "CompositeComponentTypeRequest",
+}) as any as S.Schema<CompositeComponentTypeRequest>;
 export type CompositeComponentTypesRequest = {
   [key: string]: CompositeComponentTypeRequest | undefined;
 };
-export const CompositeComponentTypesRequest =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    CompositeComponentTypeRequest.pipe(S.optional),
-  );
+export const CompositeComponentTypesRequest = /*@__PURE__*/ S.Record(
+  S.String,
+  CompositeComponentTypeRequest.pipe(S.optional),
+);
 export interface CreateComponentTypeRequest {
   workspaceId: string;
   isSingleton?: boolean;
@@ -590,21 +593,23 @@ export const CreateComponentTypeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateComponentTypeRequest",
 }) as any as S.Schema<CreateComponentTypeRequest>;
+export type State = string;
 export interface CreateComponentTypeResponse {
   arn: string;
   creationDateTime: Date;
   state: string;
 }
-export const CreateComponentTypeResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      arn: S.String,
-      creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      state: S.String,
-    }),
-  ).annotate({
-    identifier: "CreateComponentTypeResponse",
-  }) as any as S.Schema<CreateComponentTypeResponse>;
+export const CreateComponentTypeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String,
+    creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    state: S.String,
+  }),
+).annotate({
+  identifier: "CreateComponentTypeResponse",
+}) as any as S.Schema<CreateComponentTypeResponse>;
+export type EntityName = string;
+export type PropertyUpdateType = string;
 export interface PropertyRequest {
   definition?: PropertyDefinitionRequest;
   value?: DataValue;
@@ -624,29 +629,28 @@ export const PropertyRequests = /*@__PURE__*/ S.Record(
   S.String,
   PropertyRequest.pipe(S.optional),
 );
+export type PropertyGroupUpdateType = string;
 export interface ComponentPropertyGroupRequest {
   groupType?: string;
   propertyNames?: string[];
   updateType?: string;
 }
-export const ComponentPropertyGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      groupType: S.optional(S.String),
-      propertyNames: S.optional(PropertyNames),
-      updateType: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ComponentPropertyGroupRequest",
-  }) as any as S.Schema<ComponentPropertyGroupRequest>;
+export const ComponentPropertyGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupType: S.optional(S.String),
+    propertyNames: S.optional(PropertyNames),
+    updateType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ComponentPropertyGroupRequest",
+}) as any as S.Schema<ComponentPropertyGroupRequest>;
 export type ComponentPropertyGroupRequests = {
   [key: string]: ComponentPropertyGroupRequest | undefined;
 };
-export const ComponentPropertyGroupRequests =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ComponentPropertyGroupRequest.pipe(S.optional),
-  );
+export const ComponentPropertyGroupRequests = /*@__PURE__*/ S.Record(
+  S.String,
+  ComponentPropertyGroupRequest.pipe(S.optional),
+);
 export interface ComponentRequest {
   description?: string;
   componentTypeId?: string;
@@ -687,8 +691,11 @@ export const CompositeComponentRequest = /*@__PURE__*/ S.suspend(() =>
 export type CompositeComponentsMapRequest = {
   [key: string]: CompositeComponentRequest | undefined;
 };
-export const CompositeComponentsMapRequest =
-  /*@__PURE__*/ S.Record(S.String, CompositeComponentRequest.pipe(S.optional));
+export const CompositeComponentsMapRequest = /*@__PURE__*/ S.Record(
+  S.String,
+  CompositeComponentRequest.pipe(S.optional),
+);
+export type ParentEntityId = string;
 export interface CreateEntityRequest {
   workspaceId: string;
   entityId?: string;
@@ -740,6 +747,8 @@ export const CreateEntityResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEntityResponse",
 }) as any as S.Schema<CreateEntityResponse>;
+export type SourceType = string;
+export type S3SourceLocation = string;
 export interface S3SourceConfiguration {
   location: string;
 }
@@ -748,6 +757,8 @@ export const S3SourceConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3SourceConfiguration",
 }) as any as S.Schema<S3SourceConfiguration>;
+export type Uuid = string;
+export type SiteWiseExternalId = string;
 export interface FilterByAssetModel {
   assetModelId?: string;
   assetModelExternalId?: string;
@@ -781,24 +792,23 @@ export const FilterByAsset = /*@__PURE__*/ S.suspend(() =>
 export type IotSiteWiseSourceConfigurationFilter =
   | { filterByAssetModel: FilterByAssetModel; filterByAsset?: never }
   | { filterByAssetModel?: never; filterByAsset: FilterByAsset };
-export const IotSiteWiseSourceConfigurationFilter =
-  /*@__PURE__*/ S.Union([
-    S.Struct({ filterByAssetModel: FilterByAssetModel }),
-    S.Struct({ filterByAsset: FilterByAsset }),
-  ]);
+export const IotSiteWiseSourceConfigurationFilter = /*@__PURE__*/ S.Union([
+  S.Struct({ filterByAssetModel: FilterByAssetModel }),
+  S.Struct({ filterByAsset: FilterByAsset }),
+]);
 export type IotSiteWiseSourceConfigurationFilters =
   IotSiteWiseSourceConfigurationFilter[];
-export const IotSiteWiseSourceConfigurationFilters =
-  /*@__PURE__*/ S.Array(IotSiteWiseSourceConfigurationFilter);
+export const IotSiteWiseSourceConfigurationFilters = /*@__PURE__*/ S.Array(
+  IotSiteWiseSourceConfigurationFilter,
+);
 export interface IotSiteWiseSourceConfiguration {
   filters?: IotSiteWiseSourceConfigurationFilter[];
 }
-export const IotSiteWiseSourceConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ filters: S.optional(IotSiteWiseSourceConfigurationFilters) }),
-  ).annotate({
-    identifier: "IotSiteWiseSourceConfiguration",
-  }) as any as S.Schema<IotSiteWiseSourceConfiguration>;
+export const IotSiteWiseSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ filters: S.optional(IotSiteWiseSourceConfigurationFilters) }),
+).annotate({
+  identifier: "IotSiteWiseSourceConfiguration",
+}) as any as S.Schema<IotSiteWiseSourceConfiguration>;
 export interface FilterByComponentType {
   componentTypeId: string;
 }
@@ -816,28 +826,27 @@ export const FilterByEntity = /*@__PURE__*/ S.suspend(() =>
 export type IotTwinMakerSourceConfigurationFilter =
   | { filterByComponentType: FilterByComponentType; filterByEntity?: never }
   | { filterByComponentType?: never; filterByEntity: FilterByEntity };
-export const IotTwinMakerSourceConfigurationFilter =
-  /*@__PURE__*/ S.Union([
-    S.Struct({ filterByComponentType: FilterByComponentType }),
-    S.Struct({ filterByEntity: FilterByEntity }),
-  ]);
+export const IotTwinMakerSourceConfigurationFilter = /*@__PURE__*/ S.Union([
+  S.Struct({ filterByComponentType: FilterByComponentType }),
+  S.Struct({ filterByEntity: FilterByEntity }),
+]);
 export type IotTwinMakerSourceConfigurationFilters =
   IotTwinMakerSourceConfigurationFilter[];
-export const IotTwinMakerSourceConfigurationFilters =
-  /*@__PURE__*/ S.Array(IotTwinMakerSourceConfigurationFilter);
+export const IotTwinMakerSourceConfigurationFilters = /*@__PURE__*/ S.Array(
+  IotTwinMakerSourceConfigurationFilter,
+);
 export interface IotTwinMakerSourceConfiguration {
   workspace: string;
   filters?: IotTwinMakerSourceConfigurationFilter[];
 }
-export const IotTwinMakerSourceConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workspace: S.String,
-      filters: S.optional(IotTwinMakerSourceConfigurationFilters),
-    }),
-  ).annotate({
-    identifier: "IotTwinMakerSourceConfiguration",
-  }) as any as S.Schema<IotTwinMakerSourceConfiguration>;
+export const IotTwinMakerSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workspace: S.String,
+    filters: S.optional(IotTwinMakerSourceConfigurationFilters),
+  }),
+).annotate({
+  identifier: "IotTwinMakerSourceConfiguration",
+}) as any as S.Schema<IotTwinMakerSourceConfiguration>;
 export interface SourceConfiguration {
   type: string;
   s3Configuration?: S3SourceConfiguration;
@@ -856,6 +865,8 @@ export const SourceConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SourceConfiguration>;
 export type SourceConfigurations = SourceConfiguration[];
 export const SourceConfigurations = /*@__PURE__*/ S.Array(SourceConfiguration);
+export type DestinationType = string;
+export type S3DestinationLocation = string;
 export interface S3DestinationConfiguration {
   location: string;
 }
@@ -867,10 +878,11 @@ export const S3DestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface IotTwinMakerDestinationConfiguration {
   workspace: string;
 }
-export const IotTwinMakerDestinationConfiguration =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ workspace: S.String })).annotate({
-    identifier: "IotTwinMakerDestinationConfiguration",
-  }) as any as S.Schema<IotTwinMakerDestinationConfiguration>;
+export const IotTwinMakerDestinationConfiguration = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ workspace: S.String }),
+).annotate({
+  identifier: "IotTwinMakerDestinationConfiguration",
+}) as any as S.Schema<IotTwinMakerDestinationConfiguration>;
 export interface DestinationConfiguration {
   type: string;
   s3Configuration?: S3DestinationConfiguration;
@@ -891,45 +903,46 @@ export interface CreateMetadataTransferJobRequest {
   sources: SourceConfiguration[];
   destination: DestinationConfiguration;
 }
-export const CreateMetadataTransferJobRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metadataTransferJobId: S.optional(S.String),
-      description: S.optional(S.String),
-      sources: SourceConfigurations,
-      destination: DestinationConfiguration,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/metadata-transfer-jobs" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateMetadataTransferJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metadataTransferJobId: S.optional(S.String),
+    description: S.optional(S.String),
+    sources: SourceConfigurations,
+    destination: DestinationConfiguration,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/metadata-transfer-jobs" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateMetadataTransferJobRequest",
-  }) as any as S.Schema<CreateMetadataTransferJobRequest>;
+  ),
+).annotate({
+  identifier: "CreateMetadataTransferJobRequest",
+}) as any as S.Schema<CreateMetadataTransferJobRequest>;
 export interface CreateMetadataTransferJobResponse {
   metadataTransferJobId: string;
   arn: string;
   creationDateTime: Date;
   status: MetadataTransferJobStatus;
 }
-export const CreateMetadataTransferJobResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metadataTransferJobId: S.String,
-      arn: S.String,
-      creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      status: MetadataTransferJobStatus,
-    }),
-  ).annotate({
-    identifier: "CreateMetadataTransferJobResponse",
-  }) as any as S.Schema<CreateMetadataTransferJobResponse>;
+export const CreateMetadataTransferJobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metadataTransferJobId: S.String,
+    arn: S.String,
+    creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    status: MetadataTransferJobStatus,
+  }),
+).annotate({
+  identifier: "CreateMetadataTransferJobResponse",
+}) as any as S.Schema<CreateMetadataTransferJobResponse>;
+export type S3Url = string;
+export type SceneCapability = string;
 export type SceneCapabilities = string[];
 export const SceneCapabilities = /*@__PURE__*/ S.Array(S.String);
+export type SceneMetadataValue = string;
 export type SceneMetadataMap = { [key: string]: string | undefined };
 export const SceneMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -978,6 +991,8 @@ export const CreateSceneResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSceneResponse",
 }) as any as S.Schema<CreateSceneResponse>;
+export type SyncSource = string;
+export type RoleArn = string;
 export interface CreateSyncJobRequest {
   workspaceId: string;
   syncSource: string;
@@ -1006,6 +1021,7 @@ export const CreateSyncJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSyncJobRequest",
 }) as any as S.Schema<CreateSyncJobRequest>;
+export type SyncJobState = string;
 export interface CreateSyncJobResponse {
   arn: string;
   creationDateTime: Date;
@@ -1020,6 +1036,7 @@ export const CreateSyncJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSyncJobResponse",
 }) as any as S.Schema<CreateSyncJobResponse>;
+export type S3Location = string;
 export interface CreateWorkspaceRequest {
   workspaceId: string;
   description?: string;
@@ -1086,10 +1103,11 @@ export const DeleteComponentTypeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteComponentTypeResponse {
   state: string;
 }
-export const DeleteComponentTypeResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ state: S.String })).annotate({
-    identifier: "DeleteComponentTypeResponse",
-  }) as any as S.Schema<DeleteComponentTypeResponse>;
+export const DeleteComponentTypeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ state: S.String }),
+).annotate({
+  identifier: "DeleteComponentTypeResponse",
+}) as any as S.Schema<DeleteComponentTypeResponse>;
 export interface DeleteEntityRequest {
   workspaceId: string;
   entityId: string;
@@ -1203,6 +1221,7 @@ export const DeleteWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteWorkspaceRequest",
 }) as any as S.Schema<DeleteWorkspaceRequest>;
+export type WorkspaceDeleteMessage = string;
 export interface DeleteWorkspaceResponse {
   message?: string;
 }
@@ -1211,6 +1230,9 @@ export const DeleteWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteWorkspaceResponse",
 }) as any as S.Schema<DeleteWorkspaceResponse>;
+export type QueryStatement = string;
+export type QueryServiceMaxResults = number;
+export type NextToken = string;
 export interface ExecuteQueryRequest {
   workspaceId: string;
   queryStatement: string;
@@ -1236,6 +1258,8 @@ export const ExecuteQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExecuteQueryRequest",
 }) as any as S.Schema<ExecuteQueryRequest>;
+export type ColumnName = string;
+export type ColumnType = string;
 export interface ColumnDescription {
   name?: string;
   type?: string;
@@ -1247,6 +1271,7 @@ export const ColumnDescription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ColumnDescription>;
 export type ColumnDescriptions = ColumnDescription[];
 export const ColumnDescriptions = /*@__PURE__*/ S.Array(ColumnDescription);
+export type QueryResultValue = unknown;
 export type RowData = any[];
 export const RowData = /*@__PURE__*/ S.Array(S.Any);
 export interface Row {
@@ -1385,23 +1410,21 @@ export interface CompositeComponentTypeResponse {
   componentTypeId?: string;
   isInherited?: boolean;
 }
-export const CompositeComponentTypeResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      componentTypeId: S.optional(S.String),
-      isInherited: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "CompositeComponentTypeResponse",
-  }) as any as S.Schema<CompositeComponentTypeResponse>;
+export const CompositeComponentTypeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    componentTypeId: S.optional(S.String),
+    isInherited: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CompositeComponentTypeResponse",
+}) as any as S.Schema<CompositeComponentTypeResponse>;
 export type CompositeComponentTypesResponse = {
   [key: string]: CompositeComponentTypeResponse | undefined;
 };
-export const CompositeComponentTypesResponse =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    CompositeComponentTypeResponse.pipe(S.optional),
-  );
+export const CompositeComponentTypesResponse = /*@__PURE__*/ S.Record(
+  S.String,
+  CompositeComponentTypeResponse.pipe(S.optional),
+);
 export interface GetComponentTypeResponse {
   workspaceId: string;
   isSingleton?: boolean;
@@ -1496,24 +1519,22 @@ export interface ComponentPropertyGroupResponse {
   propertyNames: string[];
   isInherited: boolean;
 }
-export const ComponentPropertyGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      groupType: S.String,
-      propertyNames: PropertyNames,
-      isInherited: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "ComponentPropertyGroupResponse",
-  }) as any as S.Schema<ComponentPropertyGroupResponse>;
+export const ComponentPropertyGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupType: S.String,
+    propertyNames: PropertyNames,
+    isInherited: S.Boolean,
+  }),
+).annotate({
+  identifier: "ComponentPropertyGroupResponse",
+}) as any as S.Schema<ComponentPropertyGroupResponse>;
 export type ComponentPropertyGroupResponses = {
   [key: string]: ComponentPropertyGroupResponse | undefined;
 };
-export const ComponentPropertyGroupResponses =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ComponentPropertyGroupResponse.pipe(S.optional),
-  );
+export const ComponentPropertyGroupResponses = /*@__PURE__*/ S.Record(
+  S.String,
+  ComponentPropertyGroupResponse.pipe(S.optional),
+);
 export interface ComponentSummary {
   componentName: string;
   componentTypeId: string;
@@ -1621,28 +1642,25 @@ export const GetEntityResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetMetadataTransferJobRequest {
   metadataTransferJobId: string;
 }
-export const GetMetadataTransferJobRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metadataTransferJobId: S.String.pipe(
-        T.HttpLabel("metadataTransferJobId"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/metadata-transfer-jobs/{metadataTransferJobId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetMetadataTransferJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metadataTransferJobId: S.String.pipe(T.HttpLabel("metadataTransferJobId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/metadata-transfer-jobs/{metadataTransferJobId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetMetadataTransferJobRequest",
-  }) as any as S.Schema<GetMetadataTransferJobRequest>;
+  ),
+).annotate({
+  identifier: "GetMetadataTransferJobRequest",
+}) as any as S.Schema<GetMetadataTransferJobRequest>;
 export interface GetMetadataTransferJobResponse {
   metadataTransferJobId: string;
   arn: string;
@@ -1656,24 +1674,23 @@ export interface GetMetadataTransferJobResponse {
   status: MetadataTransferJobStatus;
   progress?: MetadataTransferJobProgress;
 }
-export const GetMetadataTransferJobResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metadataTransferJobId: S.String,
-      arn: S.String,
-      description: S.optional(S.String),
-      sources: SourceConfigurations,
-      destination: DestinationConfiguration,
-      metadataTransferJobRole: S.String,
-      reportUrl: S.optional(S.String),
-      creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      status: MetadataTransferJobStatus,
-      progress: S.optional(MetadataTransferJobProgress),
-    }),
-  ).annotate({
-    identifier: "GetMetadataTransferJobResponse",
-  }) as any as S.Schema<GetMetadataTransferJobResponse>;
+export const GetMetadataTransferJobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metadataTransferJobId: S.String,
+    arn: S.String,
+    description: S.optional(S.String),
+    sources: SourceConfigurations,
+    destination: DestinationConfiguration,
+    metadataTransferJobRole: S.String,
+    reportUrl: S.optional(S.String),
+    creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    status: MetadataTransferJobStatus,
+    progress: S.optional(MetadataTransferJobProgress),
+  }),
+).annotate({
+  identifier: "GetMetadataTransferJobResponse",
+}) as any as S.Schema<GetMetadataTransferJobResponse>;
 export interface GetPricingPlanRequest {}
 export const GetPricingPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -1689,8 +1706,10 @@ export const GetPricingPlanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPricingPlanRequest",
 }) as any as S.Schema<GetPricingPlanRequest>;
+export type BundleName = string;
 export type PricingBundles = string[];
 export const PricingBundles = /*@__PURE__*/ S.Array(S.String);
+export type PricingTier = string;
 export interface BundleInformation {
   bundleNames: string[];
   pricingTier?: string;
@@ -1700,6 +1719,8 @@ export const BundleInformation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BundleInformation",
 }) as any as S.Schema<BundleInformation>;
+export type PricingMode = string;
+export type UpdateReason = string;
 export interface PricingPlan {
   billableEntityCount?: number;
   bundleInformation?: BundleInformation;
@@ -1732,6 +1753,8 @@ export const GetPricingPlanResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPricingPlanResponse>;
 export type SelectedPropertyList = string[];
 export const SelectedPropertyList = /*@__PURE__*/ S.Array(S.String);
+export type MaxResults = number;
+export type Order = string;
 export interface OrderBy {
   order?: string;
   propertyName: string;
@@ -1854,6 +1877,8 @@ export const GetPropertyValueResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPropertyValueResponse",
 }) as any as S.Schema<GetPropertyValueResponse>;
+export type InterpolationType = string;
+export type IntervalInSeconds = number;
 export interface InterpolationParameters {
   interpolationType?: string;
   intervalInSeconds?: number;
@@ -1866,6 +1891,7 @@ export const InterpolationParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InterpolationParameters",
 }) as any as S.Schema<InterpolationParameters>;
+export type OrderByTime = string;
 export interface GetPropertyValueHistoryRequest {
   workspaceId: string;
   entityId?: string;
@@ -1883,42 +1909,39 @@ export interface GetPropertyValueHistoryRequest {
   startTime?: string;
   endTime?: string;
 }
-export const GetPropertyValueHistoryRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
-      entityId: S.optional(S.String),
-      componentName: S.optional(S.String),
-      componentPath: S.optional(S.String),
-      componentTypeId: S.optional(S.String),
-      selectedProperties: SelectedPropertyList,
-      propertyFilters: S.optional(PropertyFilters),
-      startDateTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      endDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      interpolation: S.optional(InterpolationParameters),
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-      orderByTime: S.optional(S.String),
-      startTime: S.optional(S.String),
-      endTime: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/workspaces/{workspaceId}/entity-properties/history",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetPropertyValueHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
+    entityId: S.optional(S.String),
+    componentName: S.optional(S.String),
+    componentPath: S.optional(S.String),
+    componentTypeId: S.optional(S.String),
+    selectedProperties: SelectedPropertyList,
+    propertyFilters: S.optional(PropertyFilters),
+    startDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    endDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    interpolation: S.optional(InterpolationParameters),
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+    orderByTime: S.optional(S.String),
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/workspaces/{workspaceId}/entity-properties/history",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetPropertyValueHistoryRequest",
-  }) as any as S.Schema<GetPropertyValueHistoryRequest>;
+  ),
+).annotate({
+  identifier: "GetPropertyValueHistoryRequest",
+}) as any as S.Schema<GetPropertyValueHistoryRequest>;
 export type Values = PropertyValue[];
 export const Values = /*@__PURE__*/ S.Array(PropertyValue);
 export interface PropertyValueHistory {
@@ -1939,15 +1962,14 @@ export interface GetPropertyValueHistoryResponse {
   propertyValues: PropertyValueHistory[];
   nextToken?: string;
 }
-export const GetPropertyValueHistoryResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      propertyValues: PropertyValueList,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetPropertyValueHistoryResponse",
-  }) as any as S.Schema<GetPropertyValueHistoryResponse>;
+export const GetPropertyValueHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    propertyValues: PropertyValueList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetPropertyValueHistoryResponse",
+}) as any as S.Schema<GetPropertyValueHistoryResponse>;
 export interface GetSceneRequest {
   workspaceId: string;
   sceneId: string;
@@ -1977,6 +1999,7 @@ export const GeneratedSceneMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type SceneErrorCode = string;
 export interface SceneError {
   code?: string;
   message?: string;
@@ -2064,6 +2087,7 @@ export const GetSyncJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSyncJobResponse",
 }) as any as S.Schema<GetSyncJobResponse>;
+export type IdOrArn = string;
 export interface GetWorkspaceRequest {
   workspaceId: string;
 }
@@ -2081,6 +2105,7 @@ export const GetWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetWorkspaceRequest",
 }) as any as S.Schema<GetWorkspaceRequest>;
+export type LinkedService = string;
 export type LinkedServices = string[];
 export const LinkedServices = /*@__PURE__*/ S.Array(S.String);
 export interface GetWorkspaceResponse {
@@ -2313,14 +2338,14 @@ export const ListEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListMetadataTransferJobsFilter =
   | { workspaceId: string; state?: never }
   | { workspaceId?: never; state: string };
-export const ListMetadataTransferJobsFilter =
-  /*@__PURE__*/ S.Union([
-    S.Struct({ workspaceId: S.String }),
-    S.Struct({ state: S.String }),
-  ]);
+export const ListMetadataTransferJobsFilter = /*@__PURE__*/ S.Union([
+  S.Struct({ workspaceId: S.String }),
+  S.Struct({ state: S.String }),
+]);
 export type ListMetadataTransferJobsFilters = ListMetadataTransferJobsFilter[];
-export const ListMetadataTransferJobsFilters =
-  /*@__PURE__*/ S.Array(ListMetadataTransferJobsFilter);
+export const ListMetadataTransferJobsFilters = /*@__PURE__*/ S.Array(
+  ListMetadataTransferJobsFilter,
+);
 export interface ListMetadataTransferJobsRequest {
   sourceType: string;
   destinationType: string;
@@ -2328,27 +2353,26 @@ export interface ListMetadataTransferJobsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListMetadataTransferJobsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sourceType: S.String,
-      destinationType: S.String,
-      filters: S.optional(ListMetadataTransferJobsFilters),
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/metadata-transfer-jobs-list" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListMetadataTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceType: S.String,
+    destinationType: S.String,
+    filters: S.optional(ListMetadataTransferJobsFilters),
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/metadata-transfer-jobs-list" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListMetadataTransferJobsRequest",
-  }) as any as S.Schema<ListMetadataTransferJobsRequest>;
+  ),
+).annotate({
+  identifier: "ListMetadataTransferJobsRequest",
+}) as any as S.Schema<ListMetadataTransferJobsRequest>;
 export interface MetadataTransferJobSummary {
   metadataTransferJobId: string;
   arn: string;
@@ -2377,15 +2401,14 @@ export interface ListMetadataTransferJobsResponse {
   metadataTransferJobSummaries: MetadataTransferJobSummary[];
   nextToken?: string;
 }
-export const ListMetadataTransferJobsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metadataTransferJobSummaries: MetadataTransferJobSummaries,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListMetadataTransferJobsResponse",
-  }) as any as S.Schema<ListMetadataTransferJobsResponse>;
+export const ListMetadataTransferJobsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metadataTransferJobSummaries: MetadataTransferJobSummaries,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListMetadataTransferJobsResponse",
+}) as any as S.Schema<ListMetadataTransferJobsResponse>;
 export interface ListPropertiesRequest {
   workspaceId: string;
   componentName?: string;
@@ -2563,6 +2586,8 @@ export const ListSyncJobsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSyncJobsResponse",
 }) as any as S.Schema<ListSyncJobsResponse>;
+export type SyncResourceState = string;
+export type SyncResourceType = string;
 export type SyncResourceFilter =
   | {
       state: string;
@@ -2694,12 +2719,11 @@ export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
   nextToken?: string;
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(TagMap), nextToken: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagMap), nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListWorkspacesRequest {
   maxResults?: number;
   nextToken?: string;
@@ -2858,17 +2882,17 @@ export interface UpdateComponentTypeResponse {
   componentTypeId: string;
   state: string;
 }
-export const UpdateComponentTypeResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workspaceId: S.String,
-      arn: S.String,
-      componentTypeId: S.String,
-      state: S.String,
-    }),
-  ).annotate({
-    identifier: "UpdateComponentTypeResponse",
-  }) as any as S.Schema<UpdateComponentTypeResponse>;
+export const UpdateComponentTypeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workspaceId: S.String,
+    arn: S.String,
+    componentTypeId: S.String,
+    state: S.String,
+  }),
+).annotate({
+  identifier: "UpdateComponentTypeResponse",
+}) as any as S.Schema<UpdateComponentTypeResponse>;
+export type ComponentUpdateType = string;
 export interface ComponentUpdateRequest {
   updateType?: string;
   description?: string;
@@ -2904,25 +2928,24 @@ export interface CompositeComponentUpdateRequest {
     [key: string]: ComponentPropertyGroupRequest | undefined;
   };
 }
-export const CompositeComponentUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateType: S.optional(S.String),
-      description: S.optional(S.String),
-      propertyUpdates: S.optional(PropertyRequests),
-      propertyGroupUpdates: S.optional(ComponentPropertyGroupRequests),
-    }),
-  ).annotate({
-    identifier: "CompositeComponentUpdateRequest",
-  }) as any as S.Schema<CompositeComponentUpdateRequest>;
+export const CompositeComponentUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateType: S.optional(S.String),
+    description: S.optional(S.String),
+    propertyUpdates: S.optional(PropertyRequests),
+    propertyGroupUpdates: S.optional(ComponentPropertyGroupRequests),
+  }),
+).annotate({
+  identifier: "CompositeComponentUpdateRequest",
+}) as any as S.Schema<CompositeComponentUpdateRequest>;
 export type CompositeComponentUpdatesMapRequest = {
   [key: string]: CompositeComponentUpdateRequest | undefined;
 };
-export const CompositeComponentUpdatesMapRequest =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    CompositeComponentUpdateRequest.pipe(S.optional),
-  );
+export const CompositeComponentUpdatesMapRequest = /*@__PURE__*/ S.Record(
+  S.String,
+  CompositeComponentUpdateRequest.pipe(S.optional),
+);
+export type ParentEntityUpdateType = string;
 export interface ParentEntityUpdateRequest {
   updateType: string;
   parentEntityId?: string;
@@ -3082,61 +3105,11 @@ export interface UpdateWorkspaceResponse {
   updateDateTime: Date;
 }
 export const UpdateWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
+  S.Struct({ updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }),
 ).annotate({
   identifier: "UpdateWorkspaceResponse",
 }) as any as S.Schema<UpdateWorkspaceResponse>;
-
-//# Errors
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-).pipe(C.withQuotaError) {}
-export class QueryTimeoutException extends S.TaggedErrorClass<QueryTimeoutException>()(
-  "QueryTimeoutException",
-  { message: S.optional(S.String) },
-  T.Retryable(),
-).pipe(C.withBadRequestError, C.withRetryableError) {}
-export class ConnectorFailureException extends S.TaggedErrorClass<ConnectorFailureException>()(
-  "ConnectorFailureException",
-  { message: S.optional(S.String) },
-) {}
-export class ConnectorTimeoutException extends S.TaggedErrorClass<ConnectorTimeoutException>()(
-  "ConnectorTimeoutException",
-  { message: S.optional(S.String) },
-) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ExceptionMessage = string;
 export type BatchPutPropertyValuesError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3160,8 +3133,12 @@ export const batchPutPropertyValues: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchPutPropertyValues",
+  endpointHostPrefix: "data.",
 }));
+
 export type CancelMetadataTransferJobError =
   | AccessDeniedException
   | ConflictException
@@ -3189,8 +3166,12 @@ export const cancelMetadataTransferJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelMetadataTransferJob",
+  endpointHostPrefix: "api.",
 }));
+
 export type CreateComponentTypeError =
   | AccessDeniedException
   | ConflictException
@@ -3218,8 +3199,12 @@ export const createComponentType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateComponentType",
+  endpointHostPrefix: "api.",
 }));
+
 export type CreateEntityError =
   | AccessDeniedException
   | ConflictException
@@ -3247,8 +3232,12 @@ export const createEntity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEntity",
+  endpointHostPrefix: "api.",
 }));
+
 export type CreateMetadataTransferJobError =
   | AccessDeniedException
   | ConflictException
@@ -3278,8 +3267,12 @@ export const createMetadataTransferJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMetadataTransferJob",
+  endpointHostPrefix: "api.",
 }));
+
 export type CreateSceneError =
   | AccessDeniedException
   | ConflictException
@@ -3307,8 +3300,12 @@ export const createScene: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateScene",
+  endpointHostPrefix: "api.",
 }));
+
 export type CreateSyncJobError =
   | AccessDeniedException
   | ConflictException
@@ -3336,8 +3333,12 @@ export const createSyncJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSyncJob",
+  endpointHostPrefix: "api.",
 }));
+
 export type CreateWorkspaceError =
   | AccessDeniedException
   | ConflictException
@@ -3365,8 +3366,12 @@ export const createWorkspace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkspace",
+  endpointHostPrefix: "api.",
 }));
+
 export type DeleteComponentTypeError =
   | AccessDeniedException
   | InternalServerException
@@ -3392,8 +3397,12 @@ export const deleteComponentType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteComponentType",
+  endpointHostPrefix: "api.",
 }));
+
 export type DeleteEntityError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3419,8 +3428,12 @@ export const deleteEntity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEntity",
+  endpointHostPrefix: "api.",
 }));
+
 export type DeleteSceneError =
   | AccessDeniedException
   | InternalServerException
@@ -3446,8 +3459,12 @@ export const deleteScene: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteScene",
+  endpointHostPrefix: "api.",
 }));
+
 export type DeleteSyncJobError =
   | AccessDeniedException
   | InternalServerException
@@ -3475,8 +3492,12 @@ export const deleteSyncJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSyncJob",
+  endpointHostPrefix: "api.",
 }));
+
 export type DeleteWorkspaceError =
   | AccessDeniedException
   | InternalServerException
@@ -3502,8 +3523,12 @@ export const deleteWorkspace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkspace",
+  endpointHostPrefix: "api.",
 }));
+
 export type ExecuteQueryError =
   | AccessDeniedException
   | InternalServerException
@@ -3550,13 +3575,17 @@ export const executeQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteQuery",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetComponentTypeError =
   | AccessDeniedException
   | InternalServerException
@@ -3582,8 +3611,12 @@ export const getComponentType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComponentType",
+  endpointHostPrefix: "api.",
 }));
+
 export type GetEntityError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3609,8 +3642,12 @@ export const getEntity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEntity",
+  endpointHostPrefix: "api.",
 }));
+
 export type GetMetadataTransferJobError =
   | AccessDeniedException
   | InternalServerException
@@ -3636,8 +3673,12 @@ export const getMetadataTransferJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMetadataTransferJob",
+  endpointHostPrefix: "api.",
 }));
+
 export type GetPricingPlanError =
   | AccessDeniedException
   | InternalServerException
@@ -3661,8 +3702,12 @@ export const getPricingPlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPricingPlan",
+  endpointHostPrefix: "api.",
 }));
+
 export type GetPropertyValueError =
   | AccessDeniedException
   | ConnectorFailureException
@@ -3710,13 +3755,17 @@ export const getPropertyValue: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPropertyValue",
+  endpointHostPrefix: "data.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetPropertyValueHistoryError =
   | AccessDeniedException
   | ConnectorFailureException
@@ -3766,13 +3815,17 @@ export const getPropertyValueHistory: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPropertyValueHistory",
+  endpointHostPrefix: "data.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetSceneError =
   | AccessDeniedException
   | InternalServerException
@@ -3798,8 +3851,12 @@ export const getScene: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetScene",
+  endpointHostPrefix: "api.",
 }));
+
 export type GetSyncJobError =
   | AccessDeniedException
   | InternalServerException
@@ -3827,8 +3884,12 @@ export const getSyncJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSyncJob",
+  endpointHostPrefix: "api.",
 }));
+
 export type GetWorkspaceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3854,8 +3915,12 @@ export const getWorkspace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkspace",
+  endpointHostPrefix: "api.",
 }));
+
 export type ListComponentsError =
   | AccessDeniedException
   | InternalServerException
@@ -3896,13 +3961,17 @@ export const listComponents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComponents",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListComponentTypesError =
   | AccessDeniedException
   | InternalServerException
@@ -3941,13 +4010,17 @@ export const listComponentTypes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComponentTypes",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListEntitiesError =
   | InternalServerException
   | ServiceQuotaExceededException
@@ -3986,13 +4059,17 @@ export const listEntities: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEntities",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListMetadataTransferJobsError =
   | AccessDeniedException
   | InternalServerException
@@ -4031,13 +4108,17 @@ export const listMetadataTransferJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMetadataTransferJobs",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPropertiesError =
   | AccessDeniedException
   | InternalServerException
@@ -4078,13 +4159,17 @@ export const listProperties: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProperties",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListScenesError =
   | AccessDeniedException
   | InternalServerException
@@ -4123,13 +4208,17 @@ export const listScenes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListScenes",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSyncJobsError =
   | AccessDeniedException
   | InternalServerException
@@ -4170,13 +4259,17 @@ export const listSyncJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSyncJobs",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSyncResourcesError =
   | AccessDeniedException
   | InternalServerException
@@ -4217,13 +4310,17 @@ export const listSyncResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSyncResources",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -4240,8 +4337,12 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
+  endpointHostPrefix: "api.",
 }));
+
 export type ListWorkspacesError =
   | InternalServerException
   | ServiceQuotaExceededException
@@ -4280,13 +4381,17 @@ export const listWorkspaces: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkspaces",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -4308,8 +4413,12 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
+  endpointHostPrefix: "api.",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -4326,8 +4435,12 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
+  endpointHostPrefix: "api.",
 }));
+
 export type UpdateComponentTypeError =
   | AccessDeniedException
   | InternalServerException
@@ -4355,8 +4468,12 @@ export const updateComponentType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateComponentType",
+  endpointHostPrefix: "api.",
 }));
+
 export type UpdateEntityError =
   | AccessDeniedException
   | ConflictException
@@ -4386,8 +4503,12 @@ export const updateEntity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEntity",
+  endpointHostPrefix: "api.",
 }));
+
 export type UpdatePricingPlanError =
   | AccessDeniedException
   | InternalServerException
@@ -4411,8 +4532,12 @@ export const updatePricingPlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePricingPlan",
+  endpointHostPrefix: "api.",
 }));
+
 export type UpdateSceneError =
   | AccessDeniedException
   | InternalServerException
@@ -4438,8 +4563,12 @@ export const updateScene: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateScene",
+  endpointHostPrefix: "api.",
 }));
+
 export type UpdateWorkspaceError =
   | AccessDeniedException
   | InternalServerException
@@ -4467,5 +4596,8 @@ export const updateWorkspace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkspace",
+  endpointHostPrefix: "api.",
 }));

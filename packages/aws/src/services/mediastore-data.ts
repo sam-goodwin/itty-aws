@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -86,23 +88,26 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ContainerNotFoundException extends S.TaggedErrorClass<ContainerNotFoundException>()(
+  "ContainerNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
+  "InternalServerError",
+  { Message: S.optional(S.String) },
+) {}
+export class ObjectNotFoundException extends S.TaggedErrorClass<ObjectNotFoundException>()(
+  "ObjectNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class RequestedRangeNotSatisfiableException extends S.TaggedErrorClass<RequestedRangeNotSatisfiableException>()(
+  "RequestedRangeNotSatisfiableException",
+  { Message: S.optional(S.String) },
+  T.HttpError(416),
+) {}
 export type PathNaming = string;
-export type ErrorMessage = string;
-export type ETag = string;
-export type ContentType = string;
-export type NonNegativeLong = number;
-export type StringPrimitive = string;
-export type RangePattern = string;
-export type ContentRangePattern = string;
-export type StatusCode = number;
-export type ListPathNaming = string;
-export type ListLimit = number;
-export type PaginationToken = string;
-export type ItemName = string;
-export type SHA256Hash = string;
-
-//# Schemas
 export interface DeleteObjectRequest {
   Path: string;
 }
@@ -145,6 +150,10 @@ export const DescribeObjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeObjectRequest",
 }) as any as S.Schema<DescribeObjectRequest>;
+export type ETag = string;
+export type ContentType = string;
+export type NonNegativeLong = number;
+export type StringPrimitive = string;
 export interface DescribeObjectResponse {
   ETag?: string;
   ContentType?: string;
@@ -165,6 +174,7 @@ export const DescribeObjectResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeObjectResponse",
 }) as any as S.Schema<DescribeObjectResponse>;
+export type RangePattern = string;
 export interface GetObjectRequest {
   Path: string;
   Range?: string;
@@ -187,6 +197,8 @@ export const GetObjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetObjectRequest",
 }) as any as S.Schema<GetObjectRequest>;
+export type ContentRangePattern = string;
+export type StatusCode = number;
 export interface GetObjectResponse {
   Body?: T.StreamingOutputBody;
   CacheControl?: string;
@@ -213,6 +225,9 @@ export const GetObjectResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetObjectResponse",
 }) as any as S.Schema<GetObjectResponse>;
+export type ListPathNaming = string;
+export type ListLimit = number;
+export type PaginationToken = string;
 export interface ListItemsRequest {
   Path?: string;
   MaxResults?: number;
@@ -237,8 +252,10 @@ export const ListItemsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListItemsRequest",
 }) as any as S.Schema<ListItemsRequest>;
+export type ItemName = string;
 export type ItemType = "OBJECT" | "FOLDER" | (string & {});
 export const ItemType = /*@__PURE__*/ S.String;
+
 export interface Item {
   Name?: string;
   Type?: ItemType;
@@ -273,8 +290,10 @@ export const ListItemsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListItemsResponse>;
 export type StorageClass = "TEMPORAL" | (string & {});
 export const StorageClass = /*@__PURE__*/ S.String;
+
 export type UploadAvailability = "STANDARD" | "STREAMING" | (string & {});
 export const UploadAvailability = /*@__PURE__*/ S.String;
+
 export interface PutObjectRequest {
   Body: T.StreamingInputBody;
   Path: string;
@@ -309,6 +328,7 @@ export const PutObjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutObjectRequest",
 }) as any as S.Schema<PutObjectRequest>;
+export type SHA256Hash = string;
 export interface PutObjectResponse {
   ContentSHA256?: string;
   ETag?: string;
@@ -323,26 +343,7 @@ export const PutObjectResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutObjectResponse",
 }) as any as S.Schema<PutObjectResponse>;
-
-//# Errors
-export class ContainerNotFoundException extends S.TaggedErrorClass<ContainerNotFoundException>()(
-  "ContainerNotFoundException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  { Message: S.optional(S.String) },
-) {}
-export class ObjectNotFoundException extends S.TaggedErrorClass<ObjectNotFoundException>()(
-  "ObjectNotFoundException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class RequestedRangeNotSatisfiableException extends S.TaggedErrorClass<RequestedRangeNotSatisfiableException>()(
-  "RequestedRangeNotSatisfiableException",
-  { Message: S.optional(S.String) },
-) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type DeleteObjectError =
   | ContainerNotFoundException
   | InternalServerError
@@ -364,8 +365,11 @@ export const deleteObject: API.OperationMethod<
     InternalServerError,
     ObjectNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteObject",
 }));
+
 export type DescribeObjectError =
   | ContainerNotFoundException
   | InternalServerError
@@ -387,8 +391,11 @@ export const describeObject: API.OperationMethod<
     InternalServerError,
     ObjectNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeObject",
 }));
+
 export type GetObjectError =
   | ContainerNotFoundException
   | InternalServerError
@@ -412,8 +419,11 @@ export const getObject: API.OperationMethod<
     ObjectNotFoundException,
     RequestedRangeNotSatisfiableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetObject",
 }));
+
 export type ListItemsError =
   | ContainerNotFoundException
   | InternalServerError
@@ -446,6 +456,8 @@ export const listItems: API.OperationMethod<
   input: ListItemsRequest,
   output: ListItemsResponse,
   errors: [ContainerNotFoundException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListItems",
   pagination: {
     inputToken: "NextToken",
@@ -453,6 +465,7 @@ export const listItems: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PutObjectError =
   | ContainerNotFoundException
   | InternalServerError
@@ -469,5 +482,7 @@ export const putObject: API.OperationMethod<
   input: PutObjectRequest,
   output: PutObjectResponse,
   errors: [ContainerNotFoundException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutObject",
 }));

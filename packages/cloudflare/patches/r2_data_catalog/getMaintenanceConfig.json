@@ -1,0 +1,114 @@
+{
+  "description": "Align r2_data_catalog#MaintenanceConfigsGet with distilled cloudflare/r2-data-catalog getMaintenanceConfig",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2_data_catalog#MaintenanceConfigsGet",
+      "path": "/shapes/com.cloudflare.r2_data_catalog#GetMaintenanceConfig"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2_data_catalog#MaintenanceConfigsGetRequest",
+      "path": "/shapes/com.cloudflare.r2_data_catalog#GetMaintenanceConfigRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.r2_data_catalog#GetMaintenanceConfig/input/target",
+      "value": "com.cloudflare.r2_data_catalog#GetMaintenanceConfigRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2_data_catalog#MaintenanceConfigsGetResponse",
+      "path": "/shapes/com.cloudflare.r2_data_catalog#GetMaintenanceConfigResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.r2_data_catalog#GetMaintenanceConfig/output/target",
+      "value": "com.cloudflare.r2_data_catalog#GetMaintenanceConfigResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.r2_data_catalog#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.r2_data_catalog#WarehouseInactive",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 40402
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.r2_data_catalog#WarehouseNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 40401
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.r2_data_catalog#GetMaintenanceConfig/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.r2_data_catalog#InvalidRoute"
+        },
+        {
+          "target": "com.cloudflare.r2_data_catalog#WarehouseInactive"
+        },
+        {
+          "target": "com.cloudflare.r2_data_catalog#WarehouseNotFound"
+        }
+      ]
+    }
+  ]
+}

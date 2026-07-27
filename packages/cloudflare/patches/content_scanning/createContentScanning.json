@@ -1,0 +1,91 @@
+{
+  "description": "Align content_scanning#Create with distilled cloudflare/content-scanning createContentScanning",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.content_scanning#Create",
+      "path": "/shapes/com.cloudflare.content_scanning#CreateContentScanning"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.content_scanning#CreateRequest",
+      "path": "/shapes/com.cloudflare.content_scanning#CreateContentScanningRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.content_scanning#CreateContentScanning/input/target",
+      "value": "com.cloudflare.content_scanning#CreateContentScanningRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.content_scanning#CreateResponse",
+      "path": "/shapes/com.cloudflare.content_scanning#CreateContentScanningResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.content_scanning#CreateContentScanning/output/target",
+      "value": "com.cloudflare.content_scanning#CreateContentScanningResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.content_scanning#ContentScanningNotEntitled",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 400,
+              "message": {
+                "includes": "not entitled"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.content_scanning#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.content_scanning#CreateContentScanning/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.content_scanning#ContentScanningNotEntitled"
+        },
+        {
+          "target": "com.cloudflare.content_scanning#Forbidden"
+        }
+      ]
+    }
+  ]
+}

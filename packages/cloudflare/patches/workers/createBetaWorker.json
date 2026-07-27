@@ -1,5 +1,68 @@
 {
-  "errors": {
-    "InvalidRoute": [{ "code": 7003 }]
-  }
+  "description": "Align workers#BetaWorkersCreate with distilled cloudflare/workers createBetaWorker",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#BetaWorkersCreate",
+      "path": "/shapes/com.cloudflare.workers#CreateBetaWorker"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#BetaWorkersCreateRequest",
+      "path": "/shapes/com.cloudflare.workers#CreateBetaWorkerRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workers#CreateBetaWorker/input/target",
+      "value": "com.cloudflare.workers#CreateBetaWorkerRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#BetaWorkersCreateResponse",
+      "path": "/shapes/com.cloudflare.workers#CreateBetaWorkerResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workers#CreateBetaWorker/output/target",
+      "value": "com.cloudflare.workers#CreateBetaWorkerResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            },
+            {
+              "code": 7003,
+              "message": {
+                "includes": "Could not route"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#CreateBetaWorker/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.workers#InvalidRoute"
+        }
+      ]
+    }
+  ]
 }

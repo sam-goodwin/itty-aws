@@ -1,4 +1,13 @@
-import { ConfigError } from "@distilled.cloud/core/errors";
+/**
+ * Cloudflare credentials — hand-written.
+ *
+ * API-compatible port of the distilled repo's cloudflare credentials module:
+ * the `Credentials` service holds an *effect* that resolves the current
+ * credentials (apiToken / apiKey+email / OAuth with refresh) on every
+ * request, so rotating or refreshing tokens Just Works. The protocol layer
+ * resolves it per request and formats the auth headers via
+ * {@link formatHeaders}.
+ */
 import * as Config from "effect/Config";
 import * as Context from "effect/Context";
 import * as Data from "effect/Data";
@@ -6,6 +15,7 @@ import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Option from "effect/Option";
 import * as Redacted from "effect/Redacted";
+import { ConfigError } from "@distilled.cloud/core/errors";
 
 export const DEFAULT_API_BASE_URL = "https://api.cloudflare.com/client/v4";
 
@@ -267,3 +277,13 @@ export const formatHeaders = (
       };
   }
 };
+
+/**
+ * Convenience layer from a plain token + optional base URL (kept for local
+ * tests; distilled's equivalent is `fromApiToken`).
+ */
+export const credentials = (config: {
+  readonly apiToken: string;
+  readonly baseUrl?: string;
+}): Layer.Layer<Credentials> =>
+  fromApiToken({ apiToken: config.apiToken, apiBaseUrl: config.baseUrl });

@@ -1,6 +1,88 @@
 {
-  "errors": {
-    "InvalidQueueId": [{ "code": 10107 }],
-    "InvalidRoute": [{ "code": 7003 }]
-  }
+  "description": "Align queues#PurgeStart with distilled cloudflare/queues startPurge",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.queues#PurgeStart",
+      "path": "/shapes/com.cloudflare.queues#StartPurge"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.queues#PurgeStartRequest",
+      "path": "/shapes/com.cloudflare.queues#StartPurgeRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.queues#StartPurge/input/target",
+      "value": "com.cloudflare.queues#StartPurgeRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.queues#PurgeStartResponse",
+      "path": "/shapes/com.cloudflare.queues#StartPurgeResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.queues#StartPurge/output/target",
+      "value": "com.cloudflare.queues#StartPurgeResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#InvalidQueueId",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10107
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#StartPurge/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.queues#InvalidQueueId"
+        },
+        {
+          "target": "com.cloudflare.queues#InvalidRoute"
+        }
+      ]
+    }
+  ]
 }

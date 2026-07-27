@@ -1,8 +1,91 @@
 {
-  "errors": {
-    "Web3HostnameNotEntitled": [
-      { "code": 1010, "message": { "includes": "not entitled" } }
-    ],
-    "Forbidden": [{ "status": 403 }]
-  }
+  "description": "Align web3#HostnamesCreate with distilled cloudflare/web3 createHostname",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.web3#HostnamesCreate",
+      "path": "/shapes/com.cloudflare.web3#CreateHostname"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.web3#HostnamesCreateRequest",
+      "path": "/shapes/com.cloudflare.web3#CreateHostnameRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.web3#CreateHostname/input/target",
+      "value": "com.cloudflare.web3#CreateHostnameRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.web3#HostnamesCreateResponse",
+      "path": "/shapes/com.cloudflare.web3#CreateHostnameResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.web3#CreateHostname/output/target",
+      "value": "com.cloudflare.web3#CreateHostnameResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.web3#Web3HostnameNotEntitled",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1010,
+              "message": {
+                "includes": "not entitled"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.web3#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.web3#CreateHostname/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.web3#Web3HostnameNotEntitled"
+        },
+        {
+          "target": "com.cloudflare.web3#Forbidden"
+        }
+      ]
+    }
+  ]
 }

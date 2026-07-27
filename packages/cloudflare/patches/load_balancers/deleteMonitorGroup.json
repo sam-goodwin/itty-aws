@@ -1,0 +1,117 @@
+{
+  "description": "Align load_balancers#MonitorGroupsDelete with distilled cloudflare/load-balancers deleteMonitorGroup",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.load_balancers#MonitorGroupsDelete",
+      "path": "/shapes/com.cloudflare.load_balancers#DeleteMonitorGroup"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.load_balancers#MonitorGroupsDeleteRequest",
+      "path": "/shapes/com.cloudflare.load_balancers#DeleteMonitorGroupRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.load_balancers#DeleteMonitorGroup/input/target",
+      "value": "com.cloudflare.load_balancers#DeleteMonitorGroupRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.load_balancers#MonitorGroupsDeleteResponse",
+      "path": "/shapes/com.cloudflare.load_balancers#DeleteMonitorGroupResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.load_balancers#DeleteMonitorGroup/output/target",
+      "value": "com.cloudflare.load_balancers#DeleteMonitorGroupResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.load_balancers#MonitorGroupNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1001
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.load_balancers#MonitorGroupInUse",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1002,
+              "message": {
+                "includes": "still referenced"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.load_balancers#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.load_balancers#DeleteMonitorGroup/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.load_balancers#MonitorGroupNotFound"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#MonitorGroupInUse"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#Forbidden"
+        }
+      ]
+    }
+  ]
+}

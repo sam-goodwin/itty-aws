@@ -1,6 +1,0 @@
-{
-  "errors": {
-    "InvalidZoneIdentifier": [{ "code": 7003 }],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

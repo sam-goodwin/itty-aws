@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -121,42 +123,63 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  {
+    Message: S.optional(S.String),
+    ErrorCode: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    ErrorCodeReason: S.optional(S.String),
+    SubErrorCode: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    SubErrorCodeReason: S.optional(S.String),
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    Message: S.optional(S.String),
+    Resources: S.optional(
+      S.suspend(() => ResourceList).annotate({ identifier: "ResourceList" }),
+    ),
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    Message: S.optional(S.String),
+    ErrorCode: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    ErrorCodeReason: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type GraphArn = string;
-export type ErrorMessage = string;
-export type ErrorCodeReason = string;
-export type AccountId = string;
-export type UnprocessedReason = string;
-export type TagKey = string;
-export type TagValue = string;
-export type Resource = string;
-export type EmailMessage = string | redacted.Redacted<string>;
-export type EmailAddress = string | redacted.Redacted<string>;
-export type ByteValue = number;
-export type Percentage = number;
-export type InvestigationId = string;
-export type EntityArn = string;
-export type PaginationToken = string;
-export type MemberResultsLimit = number;
-export type AiPaginationToken = string;
-export type MaxResults = number;
-export type Tactic = string;
-export type Technique = string;
-export type Procedure = string;
-export type IpAddress = string;
-export type APIName = string;
-export type APISuccessCount = number;
-export type APIFailureCount = number;
-export type Location = string;
-export type HourlyTimeDelta = number;
-export type IsNewForEntireAccount = boolean;
-export type Aso = string;
-export type UserAgent = string;
-export type Type = string;
-export type Id = string;
-export type Value = string;
-
-//# Schemas
 export interface AcceptInvitationRequest {
   GraphArn: string;
 }
@@ -180,20 +203,15 @@ export const AcceptInvitationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AcceptInvitationResponse",
 }) as any as S.Schema<AcceptInvitationResponse>;
-export type ErrorCode =
-  | "INVALID_GRAPH_ARN"
-  | "INVALID_REQUEST_BODY"
-  | "INTERNAL_ERROR"
-  | (string & {});
-export const ErrorCode = /*@__PURE__*/ S.String;
+export type AccountId = string;
 export type AccountIdExtendedList = string[];
 export const AccountIdExtendedList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetGraphMemberDatasourcesRequest {
   GraphArn: string;
   AccountIds: string[];
 }
-export const BatchGetGraphMemberDatasourcesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const BatchGetGraphMemberDatasourcesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ GraphArn: S.String, AccountIds: AccountIdExtendedList }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/graph/datasources/get" }),
@@ -204,21 +222,23 @@ export const BatchGetGraphMemberDatasourcesRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "BatchGetGraphMemberDatasourcesRequest",
-  }) as any as S.Schema<BatchGetGraphMemberDatasourcesRequest>;
+).annotate({
+  identifier: "BatchGetGraphMemberDatasourcesRequest",
+}) as any as S.Schema<BatchGetGraphMemberDatasourcesRequest>;
 export type DatasourcePackage =
   | "DETECTIVE_CORE"
   | "EKS_AUDIT"
   | "ASFF_SECURITYHUB_FINDING"
   | (string & {});
 export const DatasourcePackage = /*@__PURE__*/ S.String;
+
 export type DatasourcePackageIngestState =
   | "STARTED"
   | "STOPPED"
   | "DISABLED"
   | (string & {});
 export const DatasourcePackageIngestState = /*@__PURE__*/ S.String;
+
 export interface TimestampForCollection {
   Timestamp?: Date;
 }
@@ -243,11 +263,10 @@ export type DatasourcePackageIngestHistory = {
     [key: string]: TimestampForCollection | undefined;
   };
 };
-export const DatasourcePackageIngestHistory =
-  /*@__PURE__*/ S.Record(
-    DatasourcePackage,
-    LastIngestStateChangeDates.pipe(S.optional),
-  );
+export const DatasourcePackageIngestHistory = /*@__PURE__*/ S.Record(
+  DatasourcePackage,
+  LastIngestStateChangeDates.pipe(S.optional),
+);
 export interface MembershipDatasources {
   AccountId?: string;
   GraphArn?: string;
@@ -270,6 +289,7 @@ export type MembershipDatasourcesList = MembershipDatasources[];
 export const MembershipDatasourcesList = /*@__PURE__*/ S.Array(
   MembershipDatasources,
 );
+export type UnprocessedReason = string;
 export interface UnprocessedAccount {
   AccountId?: string;
   Reason?: string;
@@ -285,22 +305,22 @@ export interface BatchGetGraphMemberDatasourcesResponse {
   MemberDatasources?: MembershipDatasources[];
   UnprocessedAccounts?: UnprocessedAccount[];
 }
-export const BatchGetGraphMemberDatasourcesResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const BatchGetGraphMemberDatasourcesResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       MemberDatasources: S.optional(MembershipDatasourcesList),
       UnprocessedAccounts: S.optional(UnprocessedAccountList),
     }),
-  ).annotate({
-    identifier: "BatchGetGraphMemberDatasourcesResponse",
-  }) as any as S.Schema<BatchGetGraphMemberDatasourcesResponse>;
+).annotate({
+  identifier: "BatchGetGraphMemberDatasourcesResponse",
+}) as any as S.Schema<BatchGetGraphMemberDatasourcesResponse>;
 export type GraphArnList = string[];
 export const GraphArnList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetMembershipDatasourcesRequest {
   GraphArns: string[];
 }
-export const BatchGetMembershipDatasourcesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const BatchGetMembershipDatasourcesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ GraphArns: GraphArnList }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/membership/datasources/get" }),
@@ -311,9 +331,9 @@ export const BatchGetMembershipDatasourcesRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "BatchGetMembershipDatasourcesRequest",
-  }) as any as S.Schema<BatchGetMembershipDatasourcesRequest>;
+).annotate({
+  identifier: "BatchGetMembershipDatasourcesRequest",
+}) as any as S.Schema<BatchGetMembershipDatasourcesRequest>;
 export interface UnprocessedGraph {
   GraphArn?: string;
   Reason?: string;
@@ -329,15 +349,17 @@ export interface BatchGetMembershipDatasourcesResponse {
   MembershipDatasources?: MembershipDatasources[];
   UnprocessedGraphs?: UnprocessedGraph[];
 }
-export const BatchGetMembershipDatasourcesResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const BatchGetMembershipDatasourcesResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       MembershipDatasources: S.optional(MembershipDatasourcesList),
       UnprocessedGraphs: S.optional(UnprocessedGraphList),
     }),
-  ).annotate({
-    identifier: "BatchGetMembershipDatasourcesResponse",
-  }) as any as S.Schema<BatchGetMembershipDatasourcesResponse>;
+).annotate({
+  identifier: "BatchGetMembershipDatasourcesResponse",
+}) as any as S.Schema<BatchGetMembershipDatasourcesResponse>;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -368,8 +390,8 @@ export const CreateGraphResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGraphResponse",
 }) as any as S.Schema<CreateGraphResponse>;
-export type ResourceList = string[];
-export const ResourceList = /*@__PURE__*/ S.Array(S.String);
+export type EmailMessage = string | redacted.Redacted<string>;
+export type EmailAddress = string | redacted.Redacted<string>;
 export interface Account {
   AccountId: string;
   EmailAddress: string | redacted.Redacted<string>;
@@ -412,13 +434,18 @@ export type MemberStatus =
   | "ACCEPTED_BUT_DISABLED"
   | (string & {});
 export const MemberStatus = /*@__PURE__*/ S.String;
+
 export type MemberDisabledReason =
   | "VOLUME_TOO_HIGH"
   | "VOLUME_UNKNOWN"
   | (string & {});
 export const MemberDisabledReason = /*@__PURE__*/ S.String;
+
+export type ByteValue = number;
+export type Percentage = number;
 export type InvitationType = "INVITATION" | "ORGANIZATION" | (string & {});
 export const InvitationType = /*@__PURE__*/ S.String;
+
 export interface DatasourcePackageUsageInfo {
   VolumeUsageInBytes?: number;
   VolumeUsageUpdateTime?: Date;
@@ -436,19 +463,17 @@ export const DatasourcePackageUsageInfo = /*@__PURE__*/ S.suspend(() =>
 export type VolumeUsageByDatasourcePackage = {
   [key in DatasourcePackage]?: DatasourcePackageUsageInfo;
 };
-export const VolumeUsageByDatasourcePackage =
-  /*@__PURE__*/ S.Record(
-    DatasourcePackage,
-    DatasourcePackageUsageInfo.pipe(S.optional),
-  );
+export const VolumeUsageByDatasourcePackage = /*@__PURE__*/ S.Record(
+  DatasourcePackage,
+  DatasourcePackageUsageInfo.pipe(S.optional),
+);
 export type DatasourcePackageIngestStates = {
   [key in DatasourcePackage]?: DatasourcePackageIngestState;
 };
-export const DatasourcePackageIngestStates =
-  /*@__PURE__*/ S.Record(
-    DatasourcePackage,
-    DatasourcePackageIngestState.pipe(S.optional),
-  );
+export const DatasourcePackageIngestStates = /*@__PURE__*/ S.Record(
+  DatasourcePackage,
+  DatasourcePackageIngestState.pipe(S.optional),
+);
 export interface MemberDetail {
   AccountId?: string;
   EmailAddress?: string | redacted.Redacted<string>;
@@ -571,8 +596,8 @@ export const DeleteMembersResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeOrganizationConfigurationRequest {
   GraphArn: string;
 }
-export const DescribeOrganizationConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeOrganizationConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ GraphArn: S.String }).pipe(
       T.all(
         T.Http({
@@ -586,9 +611,9 @@ export const DescribeOrganizationConfigurationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeOrganizationConfigurationRequest",
-  }) as any as S.Schema<DescribeOrganizationConfigurationRequest>;
+).annotate({
+  identifier: "DescribeOrganizationConfigurationRequest",
+}) as any as S.Schema<DescribeOrganizationConfigurationRequest>;
 export interface DescribeOrganizationConfigurationResponse {
   AutoEnable?: boolean;
 }
@@ -599,27 +624,11 @@ export const DescribeOrganizationConfigurationResponse =
     identifier: "DescribeOrganizationConfigurationResponse",
   }) as any as S.Schema<DescribeOrganizationConfigurationResponse>;
 export interface DisableOrganizationAdminAccountRequest {}
-export const DisableOrganizationAdminAccountRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DisableOrganizationAdminAccountRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DisableOrganizationAdminAccountRequest",
-  }) as any as S.Schema<DisableOrganizationAdminAccountRequest>;
-export interface DisableOrganizationAdminAccountResponse {}
-export const DisableOrganizationAdminAccountResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DisableOrganizationAdminAccountResponse",
-  }) as any as S.Schema<DisableOrganizationAdminAccountResponse>;
-export interface DisassociateMembershipRequest {
-  GraphArn: string;
-}
-export const DisassociateMembershipRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ GraphArn: S.String }).pipe(
       T.all(
-        T.Http({ method: "POST", uri: "/membership/removal" }),
+        T.Http({ method: "POST", uri: "/orgs/disableAdminAccount" }),
         svc,
         auth,
         proto,
@@ -627,19 +636,43 @@ export const DisassociateMembershipRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DisassociateMembershipRequest",
-  }) as any as S.Schema<DisassociateMembershipRequest>;
+).annotate({
+  identifier: "DisableOrganizationAdminAccountRequest",
+}) as any as S.Schema<DisableOrganizationAdminAccountRequest>;
+export interface DisableOrganizationAdminAccountResponse {}
+export const DisableOrganizationAdminAccountResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DisableOrganizationAdminAccountResponse",
+}) as any as S.Schema<DisableOrganizationAdminAccountResponse>;
+export interface DisassociateMembershipRequest {
+  GraphArn: string;
+}
+export const DisassociateMembershipRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ GraphArn: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/membership/removal" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DisassociateMembershipRequest",
+}) as any as S.Schema<DisassociateMembershipRequest>;
 export interface DisassociateMembershipResponse {}
-export const DisassociateMembershipResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DisassociateMembershipResponse",
-  }) as any as S.Schema<DisassociateMembershipResponse>;
+export const DisassociateMembershipResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DisassociateMembershipResponse",
+}) as any as S.Schema<DisassociateMembershipResponse>;
 export interface EnableOrganizationAdminAccountRequest {
   AccountId: string;
 }
-export const EnableOrganizationAdminAccountRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const EnableOrganizationAdminAccountRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ AccountId: S.String }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/orgs/enableAdminAccount" }),
@@ -650,14 +683,16 @@ export const EnableOrganizationAdminAccountRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "EnableOrganizationAdminAccountRequest",
-  }) as any as S.Schema<EnableOrganizationAdminAccountRequest>;
+).annotate({
+  identifier: "EnableOrganizationAdminAccountRequest",
+}) as any as S.Schema<EnableOrganizationAdminAccountRequest>;
 export interface EnableOrganizationAdminAccountResponse {}
-export const EnableOrganizationAdminAccountResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "EnableOrganizationAdminAccountResponse",
-  }) as any as S.Schema<EnableOrganizationAdminAccountResponse>;
+export const EnableOrganizationAdminAccountResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "EnableOrganizationAdminAccountResponse",
+}) as any as S.Schema<EnableOrganizationAdminAccountResponse>;
+export type InvestigationId = string;
 export interface GetInvestigationRequest {
   GraphArn: string;
   InvestigationId: string;
@@ -676,10 +711,13 @@ export const GetInvestigationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetInvestigationRequest",
 }) as any as S.Schema<GetInvestigationRequest>;
+export type EntityArn = string;
 export type EntityType = "IAM_ROLE" | "IAM_USER" | (string & {});
 export const EntityType = /*@__PURE__*/ S.String;
+
 export type Status = "RUNNING" | "FAILED" | "SUCCESSFUL" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
 export type Severity =
   | "INFORMATIONAL"
   | "LOW"
@@ -688,8 +726,10 @@ export type Severity =
   | "CRITICAL"
   | (string & {});
 export const Severity = /*@__PURE__*/ S.String;
+
 export type State = "ACTIVE" | "ARCHIVED" | (string & {});
 export const State = /*@__PURE__*/ S.String;
+
 export interface GetInvestigationResponse {
   GraphArn?: string;
   InvestigationId?: string;
@@ -754,66 +794,64 @@ export const GetMembersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMembersResponse",
 }) as any as S.Schema<GetMembersResponse>;
+export type PaginationToken = string;
+export type MemberResultsLimit = number;
 export interface ListDatasourcePackagesRequest {
   GraphArn: string;
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListDatasourcePackagesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      GraphArn: S.String,
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/graph/datasources/list" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListDatasourcePackagesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    GraphArn: S.String,
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/graph/datasources/list" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListDatasourcePackagesRequest",
-  }) as any as S.Schema<ListDatasourcePackagesRequest>;
+  ),
+).annotate({
+  identifier: "ListDatasourcePackagesRequest",
+}) as any as S.Schema<ListDatasourcePackagesRequest>;
 export interface DatasourcePackageIngestDetail {
   DatasourcePackageIngestState?: DatasourcePackageIngestState;
   LastIngestStateChange?: { [key: string]: TimestampForCollection | undefined };
 }
-export const DatasourcePackageIngestDetail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DatasourcePackageIngestState: S.optional(DatasourcePackageIngestState),
-      LastIngestStateChange: S.optional(LastIngestStateChangeDates),
-    }),
-  ).annotate({
-    identifier: "DatasourcePackageIngestDetail",
-  }) as any as S.Schema<DatasourcePackageIngestDetail>;
+export const DatasourcePackageIngestDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DatasourcePackageIngestState: S.optional(DatasourcePackageIngestState),
+    LastIngestStateChange: S.optional(LastIngestStateChangeDates),
+  }),
+).annotate({
+  identifier: "DatasourcePackageIngestDetail",
+}) as any as S.Schema<DatasourcePackageIngestDetail>;
 export type DatasourcePackageIngestDetails = {
   [key in DatasourcePackage]?: DatasourcePackageIngestDetail;
 };
-export const DatasourcePackageIngestDetails =
-  /*@__PURE__*/ S.Record(
-    DatasourcePackage,
-    DatasourcePackageIngestDetail.pipe(S.optional),
-  );
+export const DatasourcePackageIngestDetails = /*@__PURE__*/ S.Record(
+  DatasourcePackage,
+  DatasourcePackageIngestDetail.pipe(S.optional),
+);
 export interface ListDatasourcePackagesResponse {
   DatasourcePackages?: {
     [key: string]: DatasourcePackageIngestDetail | undefined;
   };
   NextToken?: string;
 }
-export const ListDatasourcePackagesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DatasourcePackages: S.optional(DatasourcePackageIngestDetails),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListDatasourcePackagesResponse",
-  }) as any as S.Schema<ListDatasourcePackagesResponse>;
+export const ListDatasourcePackagesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DatasourcePackages: S.optional(DatasourcePackageIngestDetails),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDatasourcePackagesResponse",
+}) as any as S.Schema<ListDatasourcePackagesResponse>;
 export interface ListGraphsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -872,6 +910,9 @@ export type IndicatorType =
   | "RELATED_FINDING_GROUP"
   | (string & {});
 export const IndicatorType = /*@__PURE__*/ S.String;
+
+export type AiPaginationToken = string;
+export type MaxResults = number;
 export interface ListIndicatorsRequest {
   GraphArn: string;
   InvestigationId: string;
@@ -899,6 +940,13 @@ export const ListIndicatorsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListIndicatorsRequest",
 }) as any as S.Schema<ListIndicatorsRequest>;
+export type Tactic = string;
+export type Technique = string;
+export type Procedure = string;
+export type IpAddress = string;
+export type APIName = string;
+export type APISuccessCount = number;
+export type APIFailureCount = number;
 export interface TTPsObservedDetail {
   Tactic?: string;
   Technique?: string;
@@ -921,6 +969,8 @@ export const TTPsObservedDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TTPsObservedDetail",
 }) as any as S.Schema<TTPsObservedDetail>;
+export type Location = string;
+export type HourlyTimeDelta = number;
 export interface ImpossibleTravelDetail {
   StartingIpAddress?: string;
   EndingIpAddress?: string;
@@ -941,6 +991,7 @@ export const ImpossibleTravelDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImpossibleTravelDetail>;
 export type Reason = "AWS_THREAT_INTELLIGENCE" | (string & {});
 export const Reason = /*@__PURE__*/ S.String;
+
 export interface FlaggedIpAddressDetail {
   IpAddress?: string;
   Reason?: Reason;
@@ -950,6 +1001,7 @@ export const FlaggedIpAddressDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FlaggedIpAddressDetail",
 }) as any as S.Schema<FlaggedIpAddressDetail>;
+export type IsNewForEntireAccount = boolean;
 export interface NewGeolocationDetail {
   Location?: string;
   IpAddress?: string;
@@ -964,6 +1016,7 @@ export const NewGeolocationDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NewGeolocationDetail",
 }) as any as S.Schema<NewGeolocationDetail>;
+export type Aso = string;
 export interface NewAsoDetail {
   Aso?: string;
   IsNewForEntireAccount?: boolean;
@@ -974,6 +1027,7 @@ export const NewAsoDetail = /*@__PURE__*/ S.suspend(() =>
     IsNewForEntireAccount: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "NewAsoDetail" }) as any as S.Schema<NewAsoDetail>;
+export type UserAgent = string;
 export interface NewUserAgentDetail {
   UserAgent?: string;
   IsNewForEntireAccount?: boolean;
@@ -986,6 +1040,7 @@ export const NewUserAgentDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NewUserAgentDetail",
 }) as any as S.Schema<NewUserAgentDetail>;
+export type Type = string;
 export interface RelatedFindingDetail {
   Arn?: string;
   Type?: string;
@@ -1000,6 +1055,7 @@ export const RelatedFindingDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RelatedFindingDetail",
 }) as any as S.Schema<RelatedFindingDetail>;
+export type Id = string;
 export interface RelatedFindingGroupDetail {
   Id?: string;
 }
@@ -1060,6 +1116,7 @@ export const ListIndicatorsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListIndicatorsResponse",
 }) as any as S.Schema<ListIndicatorsResponse>;
+export type Value = string;
 export interface StringFilter {
   Value: string;
 }
@@ -1094,8 +1151,10 @@ export const FilterCriteria = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FilterCriteria" }) as any as S.Schema<FilterCriteria>;
 export type Field = "SEVERITY" | "STATUS" | "CREATED_TIME" | (string & {});
 export const Field = /*@__PURE__*/ S.String;
+
 export type SortOrder = "ASC" | "DESC" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
+
 export interface SortCriteria {
   Field?: Field;
   SortOrder?: SortOrder;
@@ -1240,8 +1299,8 @@ export interface ListOrganizationAdminAccountsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListOrganizationAdminAccountsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListOrganizationAdminAccountsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       NextToken: S.optional(S.String),
       MaxResults: S.optional(S.Number),
@@ -1255,9 +1314,9 @@ export const ListOrganizationAdminAccountsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListOrganizationAdminAccountsRequest",
-  }) as any as S.Schema<ListOrganizationAdminAccountsRequest>;
+).annotate({
+  identifier: "ListOrganizationAdminAccountsRequest",
+}) as any as S.Schema<ListOrganizationAdminAccountsRequest>;
 export interface Administrator {
   AccountId?: string;
   GraphArn?: string;
@@ -1278,15 +1337,15 @@ export interface ListOrganizationAdminAccountsResponse {
   Administrators?: Administrator[];
   NextToken?: string;
 }
-export const ListOrganizationAdminAccountsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListOrganizationAdminAccountsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Administrators: S.optional(AdministratorList),
       NextToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListOrganizationAdminAccountsResponse",
-  }) as any as S.Schema<ListOrganizationAdminAccountsResponse>;
+).annotate({
+  identifier: "ListOrganizationAdminAccountsResponse",
+}) as any as S.Schema<ListOrganizationAdminAccountsResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
@@ -1307,12 +1366,11 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Tags: S.optional(TagMap) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(TagMap) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface RejectInvitationRequest {
   GraphArn: string;
 }
@@ -1373,26 +1431,26 @@ export interface StartMonitoringMemberRequest {
   GraphArn: string;
   AccountId: string;
 }
-export const StartMonitoringMemberRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ GraphArn: S.String, AccountId: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/graph/member/monitoringstate" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartMonitoringMemberRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ GraphArn: S.String, AccountId: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/graph/member/monitoringstate" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartMonitoringMemberRequest",
-  }) as any as S.Schema<StartMonitoringMemberRequest>;
+  ),
+).annotate({
+  identifier: "StartMonitoringMemberRequest",
+}) as any as S.Schema<StartMonitoringMemberRequest>;
 export interface StartMonitoringMemberResponse {}
-export const StartMonitoringMemberResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "StartMonitoringMemberResponse",
-  }) as any as S.Schema<StartMonitoringMemberResponse>;
+export const StartMonitoringMemberResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "StartMonitoringMemberResponse",
+}) as any as S.Schema<StartMonitoringMemberResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
@@ -1455,67 +1513,67 @@ export interface UpdateDatasourcePackagesRequest {
   GraphArn: string;
   DatasourcePackages: DatasourcePackage[];
 }
-export const UpdateDatasourcePackagesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      GraphArn: S.String,
-      DatasourcePackages: DatasourcePackageList,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/graph/datasources/update" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateDatasourcePackagesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    GraphArn: S.String,
+    DatasourcePackages: DatasourcePackageList,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/graph/datasources/update" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateDatasourcePackagesRequest",
-  }) as any as S.Schema<UpdateDatasourcePackagesRequest>;
+  ),
+).annotate({
+  identifier: "UpdateDatasourcePackagesRequest",
+}) as any as S.Schema<UpdateDatasourcePackagesRequest>;
 export interface UpdateDatasourcePackagesResponse {}
-export const UpdateDatasourcePackagesResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateDatasourcePackagesResponse",
-  }) as any as S.Schema<UpdateDatasourcePackagesResponse>;
+export const UpdateDatasourcePackagesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateDatasourcePackagesResponse",
+}) as any as S.Schema<UpdateDatasourcePackagesResponse>;
 export interface UpdateInvestigationStateRequest {
   GraphArn: string;
   InvestigationId: string;
   State: State;
 }
-export const UpdateInvestigationStateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      GraphArn: S.String,
-      InvestigationId: S.String,
-      State: State,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/investigations/updateInvestigationState",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateInvestigationStateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    GraphArn: S.String,
+    InvestigationId: S.String,
+    State: State,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/investigations/updateInvestigationState",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateInvestigationStateRequest",
-  }) as any as S.Schema<UpdateInvestigationStateRequest>;
+  ),
+).annotate({
+  identifier: "UpdateInvestigationStateRequest",
+}) as any as S.Schema<UpdateInvestigationStateRequest>;
 export interface UpdateInvestigationStateResponse {}
-export const UpdateInvestigationStateResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateInvestigationStateResponse",
-  }) as any as S.Schema<UpdateInvestigationStateResponse>;
+export const UpdateInvestigationStateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateInvestigationStateResponse",
+}) as any as S.Schema<UpdateInvestigationStateResponse>;
 export interface UpdateOrganizationConfigurationRequest {
   GraphArn: string;
   AutoEnable?: boolean;
 }
-export const UpdateOrganizationConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const UpdateOrganizationConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ GraphArn: S.String, AutoEnable: S.optional(S.Boolean) }).pipe(
       T.all(
         T.Http({
@@ -1529,56 +1587,27 @@ export const UpdateOrganizationConfigurationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "UpdateOrganizationConfigurationRequest",
-  }) as any as S.Schema<UpdateOrganizationConfigurationRequest>;
+).annotate({
+  identifier: "UpdateOrganizationConfigurationRequest",
+}) as any as S.Schema<UpdateOrganizationConfigurationRequest>;
 export interface UpdateOrganizationConfigurationResponse {}
-export const UpdateOrganizationConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateOrganizationConfigurationResponse",
-  }) as any as S.Schema<UpdateOrganizationConfigurationResponse>;
+export const UpdateOrganizationConfigurationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "UpdateOrganizationConfigurationResponse",
+}) as any as S.Schema<UpdateOrganizationConfigurationResponse>;
+export type ErrorMessage = string;
+export type ErrorCode =
+  | "INVALID_GRAPH_ARN"
+  | "INVALID_REQUEST_BODY"
+  | "INTERNAL_ERROR"
+  | (string & {});
+export const ErrorCode = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  {
-    Message: S.optional(S.String),
-    ErrorCode: S.optional(ErrorCode),
-    ErrorCodeReason: S.optional(S.String),
-    SubErrorCode: S.optional(ErrorCode),
-    SubErrorCodeReason: S.optional(S.String),
-  },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    Message: S.optional(S.String),
-    ErrorCode: S.optional(ErrorCode),
-    ErrorCodeReason: S.optional(S.String),
-  },
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String), Resources: S.optional(ResourceList) },
-).pipe(C.withQuotaError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { Message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-
-//# Operations
+export type ErrorCodeReason = string;
+export type Resource = string;
+export type ResourceList = string[];
+export const ResourceList = /*@__PURE__*/ S.Array(S.String);
 export type AcceptInvitationError =
   | AccessDeniedException
   | ConflictException
@@ -1609,8 +1638,11 @@ export const acceptInvitation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptInvitation",
 }));
+
 export type BatchGetGraphMemberDatasourcesError =
   | AccessDeniedException
   | InternalServerException
@@ -1634,8 +1666,11 @@ export const batchGetGraphMemberDatasources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetGraphMemberDatasources",
 }));
+
 export type BatchGetMembershipDatasourcesError =
   | AccessDeniedException
   | InternalServerException
@@ -1659,8 +1694,11 @@ export const batchGetMembershipDatasources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetMembershipDatasources",
 }));
+
 export type CreateGraphError =
   | AccessDeniedException
   | ConflictException
@@ -1695,8 +1733,11 @@ export const createGraph: API.OperationMethod<
     InternalServerException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGraph",
 }));
+
 export type CreateMembersError =
   | AccessDeniedException
   | InternalServerException
@@ -1752,8 +1793,11 @@ export const createMembers: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMembers",
 }));
+
 export type DeleteGraphError =
   | AccessDeniedException
   | InternalServerException
@@ -1781,8 +1825,11 @@ export const deleteGraph: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGraph",
 }));
+
 export type DeleteMembersError =
   | AccessDeniedException
   | ConflictException
@@ -1823,8 +1870,11 @@ export const deleteMembers: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMembers",
 }));
+
 export type DescribeOrganizationConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -1852,8 +1902,11 @@ export const describeOrganizationConfiguration: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrganizationConfiguration",
 }));
+
 export type DisableOrganizationAdminAccountError =
   | AccessDeniedException
   | InternalServerException
@@ -1885,8 +1938,11 @@ export const disableOrganizationAdminAccount: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableOrganizationAdminAccount",
 }));
+
 export type DisassociateMembershipError =
   | AccessDeniedException
   | ConflictException
@@ -1918,8 +1974,11 @@ export const disassociateMembership: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateMembership",
 }));
+
 export type EnableOrganizationAdminAccountError =
   | AccessDeniedException
   | InternalServerException
@@ -1958,8 +2017,11 @@ export const enableOrganizationAdminAccount: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableOrganizationAdminAccount",
 }));
+
 export type GetInvestigationError =
   | AccessDeniedException
   | InternalServerException
@@ -1985,8 +2047,11 @@ export const getInvestigation: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInvestigation",
 }));
+
 export type GetMembersError =
   | AccessDeniedException
   | InternalServerException
@@ -2011,8 +2076,11 @@ export const getMembers: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMembers",
 }));
+
 export type ListDatasourcePackagesError =
   | AccessDeniedException
   | InternalServerException
@@ -2051,6 +2119,8 @@ export const listDatasourcePackages: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatasourcePackages",
   pagination: {
     inputToken: "NextToken",
@@ -2058,6 +2128,7 @@ export const listDatasourcePackages: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListGraphsError =
   | AccessDeniedException
   | InternalServerException
@@ -2094,6 +2165,8 @@ export const listGraphs: API.OperationMethod<
   input: ListGraphsRequest,
   output: ListGraphsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGraphs",
   pagination: {
     inputToken: "NextToken",
@@ -2101,6 +2174,7 @@ export const listGraphs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListIndicatorsError =
   | AccessDeniedException
   | InternalServerException
@@ -2126,8 +2200,11 @@ export const listIndicators: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIndicators",
 }));
+
 export type ListInvestigationsError =
   | AccessDeniedException
   | InternalServerException
@@ -2158,8 +2235,11 @@ export const listInvestigations: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInvestigations",
 }));
+
 export type ListInvitationsError =
   | AccessDeniedException
   | InternalServerException
@@ -2199,6 +2279,8 @@ export const listInvitations: API.OperationMethod<
   input: ListInvitationsRequest,
   output: ListInvitationsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInvitations",
   pagination: {
     inputToken: "NextToken",
@@ -2206,6 +2288,7 @@ export const listInvitations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMembersError =
   | AccessDeniedException
   | InternalServerException
@@ -2251,6 +2334,8 @@ export const listMembers: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMembers",
   pagination: {
     inputToken: "NextToken",
@@ -2258,6 +2343,7 @@ export const listMembers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOrganizationAdminAccountsError =
   | AccessDeniedException
   | InternalServerException
@@ -2297,6 +2383,8 @@ export const listOrganizationAdminAccounts: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOrganizationAdminAccounts",
   pagination: {
     inputToken: "NextToken",
@@ -2304,6 +2392,7 @@ export const listOrganizationAdminAccounts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -2327,8 +2416,11 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type RejectInvitationError =
   | AccessDeniedException
   | ConflictException
@@ -2360,8 +2452,11 @@ export const rejectInvitation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectInvitation",
 }));
+
 export type StartInvestigationError =
   | AccessDeniedException
   | InternalServerException
@@ -2387,8 +2482,11 @@ export const startInvestigation: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartInvestigation",
 }));
+
 export type StartMonitoringMemberError =
   | AccessDeniedException
   | ConflictException
@@ -2425,8 +2523,11 @@ export const startMonitoringMember: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMonitoringMember",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -2450,8 +2551,11 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -2475,8 +2579,11 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateDatasourcePackagesError =
   | AccessDeniedException
   | InternalServerException
@@ -2502,8 +2609,11 @@ export const updateDatasourcePackages: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDatasourcePackages",
 }));
+
 export type UpdateInvestigationStateError =
   | AccessDeniedException
   | InternalServerException
@@ -2529,8 +2639,11 @@ export const updateInvestigationState: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInvestigationState",
 }));
+
 export type UpdateOrganizationConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -2556,5 +2669,7 @@ export const updateOrganizationConfiguration: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOrganizationConfiguration",
 }));

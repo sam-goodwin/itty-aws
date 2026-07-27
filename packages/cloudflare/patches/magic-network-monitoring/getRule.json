@@ -1,6 +1,0 @@
-{
-  "errors": {
-    "MnmRuleNotFound": [{ "code": 1009 }],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

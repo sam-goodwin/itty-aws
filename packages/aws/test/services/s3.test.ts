@@ -608,7 +608,9 @@ test(
         }).pipe(
           Effect.retry({
             while: (err) => err === "not ready yet",
-            schedule: Schedule.max([Schedule.spaced("500 millis"), Schedule.recurs(10)]),
+            schedule: Schedule.spaced("500 millis").pipe(
+              Schedule.both(Schedule.recurs(10)),
+            ),
           }),
         );
 
@@ -775,13 +777,13 @@ test(
         Effect.map(() => "not yet deleted" as const),
         Effect.catch(() => Effect.succeed("deleted" as const)),
         Effect.flatMap((r) =>
-          r === "not yet deleted"
-            ? Effect.fail(r)
-            : Effect.succeed(r),
+          r === "not yet deleted" ? Effect.fail(r) : Effect.succeed(r),
         ),
         Effect.retry({
           while: (err) => err === "not yet deleted",
-          schedule: Schedule.max([Schedule.spaced("1 second"), Schedule.recurs(10)]),
+          schedule: Schedule.spaced("1 second").pipe(
+            Schedule.both(Schedule.recurs(10)),
+          ),
         }),
         Effect.catch(() => Effect.succeed("deleted" as const)),
       );
@@ -847,13 +849,13 @@ test(
         Effect.map(() => "not yet deleted" as const),
         Effect.catch(() => Effect.succeed("deleted" as const)),
         Effect.flatMap((r) =>
-          r === "not yet deleted"
-            ? Effect.fail(r)
-            : Effect.succeed(r),
+          r === "not yet deleted" ? Effect.fail(r) : Effect.succeed(r),
         ),
         Effect.retry({
           while: (err) => err === "not yet deleted",
-          schedule: Schedule.max([Schedule.spaced("1 second"), Schedule.recurs(10)]),
+          schedule: Schedule.spaced("1 second").pipe(
+            Schedule.both(Schedule.recurs(10)),
+          ),
         }),
         Effect.catch(() => Effect.succeed("deleted" as const)),
       );
@@ -934,7 +936,9 @@ test(
         ),
         Effect.retry({
           while: (err) => err === "not ready yet",
-          schedule: Schedule.max([Schedule.spaced("1 second"), Schedule.recurs(10)]),
+          schedule: Schedule.spaced("1 second").pipe(
+            Schedule.both(Schedule.recurs(10)),
+          ),
         }),
       );
       expect(enabledAccelerate.Status).toEqual("Enabled");
@@ -958,7 +962,9 @@ test(
         ),
         Effect.retry({
           while: (err) => err === "not ready yet",
-          schedule: Schedule.max([Schedule.spaced("1 second"), Schedule.recurs(10)]),
+          schedule: Schedule.spaced("1 second").pipe(
+            Schedule.both(Schedule.recurs(10)),
+          ),
         }),
       );
       expect(suspendedAccelerate.Status).toEqual("Suspended");

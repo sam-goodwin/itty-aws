@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -62,18 +64,67 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type FilterValue = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type AccountId = string;
-export type NextStep = string;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "BCMRecommendedActionsAccessDenied",
+      httpResponseCode: 403,
+    }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "BCMRecommendedActionsInternalServer",
+      httpResponseCode: 500,
+    }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "BCMRecommendedActionsThrottling",
+      httpResponseCode: 429,
+    }),
+    T.HttpError(429),
+  ),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: S.suspend(() => ValidationExceptionReason).annotate({
+      identifier: "ValidationExceptionReason",
+    }),
+    fieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.all(
+    T.AwsQueryError({
+      code: "BCMRecommendedActionsValidation",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
 export type FilterName = "FEATURE" | "SEVERITY" | "TYPE" | (string & {});
 export const FilterName = /*@__PURE__*/ S.String;
+
 export type MatchOption = "EQUALS" | "NOT_EQUALS" | (string & {});
 export const MatchOption = /*@__PURE__*/ S.String;
+
+export type FilterValue = string;
 export type FilterValues = string[];
 export const FilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface ActionFilter {
@@ -92,23 +143,24 @@ export interface RequestFilter {
 export const RequestFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ actions: S.optional(ActionFilterList) }),
 ).annotate({ identifier: "RequestFilter" }) as any as S.Schema<RequestFilter>;
+export type MaxResults = number;
+export type NextToken = string;
 export interface ListRecommendedActionsRequest {
   filter?: RequestFilter;
   maxResults?: number;
   nextToken?: string;
 }
-export const ListRecommendedActionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filter: S.optional(RequestFilter),
-      maxResults: S.optional(S.Number),
-      nextToken: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListRecommendedActionsRequest",
-  }) as any as S.Schema<ListRecommendedActionsRequest>;
+export const ListRecommendedActionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filter: S.optional(RequestFilter),
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListRecommendedActionsRequest",
+}) as any as S.Schema<ListRecommendedActionsRequest>;
 export type ActionType =
   | "ADD_ALTERNATE_BILLING_CONTACT"
   | "CREATE_ANOMALY_MONITOR"
@@ -132,8 +184,11 @@ export type ActionType =
   | "UPDATE_TAX_REGISTRATION_NUMBER"
   | (string & {});
 export const ActionType = /*@__PURE__*/ S.String;
+
+export type AccountId = string;
 export type Severity = "INFO" | "WARNING" | "CRITICAL" | (string & {});
 export const Severity = /*@__PURE__*/ S.String;
+
 export type Feature =
   | "ACCOUNT"
   | "BUDGETS"
@@ -147,11 +202,13 @@ export type Feature =
   | "TAX_SETTINGS"
   | (string & {});
 export const Feature = /*@__PURE__*/ S.String;
+
 export type Context = { [key: string]: string | undefined };
 export const Context = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type NextStep = string;
 export type NextSteps = string[];
 export const NextSteps = /*@__PURE__*/ S.Array(S.String);
 export interface RecommendedAction {
@@ -184,15 +241,14 @@ export interface ListRecommendedActionsResponse {
   recommendedActions: RecommendedAction[];
   nextToken?: string;
 }
-export const ListRecommendedActionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      recommendedActions: RecommendedActions,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListRecommendedActionsResponse",
-  }) as any as S.Schema<ListRecommendedActionsResponse>;
+export const ListRecommendedActionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    recommendedActions: RecommendedActions,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListRecommendedActionsResponse",
+}) as any as S.Schema<ListRecommendedActionsResponse>;
 export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
@@ -200,6 +256,7 @@ export type ValidationExceptionReason =
   | "other"
   | (string & {});
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+
 export interface ValidationExceptionField {
   name: string;
   message: string;
@@ -213,46 +270,6 @@ export type ValidationExceptionFieldList = ValidationExceptionField[];
 export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
   ValidationExceptionField,
 );
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.AwsQueryError({
-    code: "BCMRecommendedActionsAccessDenied",
-    httpResponseCode: 403,
-  }),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.String },
-  T.AwsQueryError({
-    code: "BCMRecommendedActionsInternalServer",
-    httpResponseCode: 500,
-  }),
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.String },
-  T.AwsQueryError({
-    code: "BCMRecommendedActionsThrottling",
-    httpResponseCode: 429,
-  }),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.String,
-    reason: ValidationExceptionReason,
-    fieldList: S.optional(ValidationExceptionFieldList),
-  },
-  T.AwsQueryError({
-    code: "BCMRecommendedActionsValidation",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type ListRecommendedActionsError =
   | AccessDeniedException
   | InternalServerException
@@ -291,6 +308,8 @@ export const listRecommendedActions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecommendedActions",
   pagination: {
     inputToken: "nextToken",

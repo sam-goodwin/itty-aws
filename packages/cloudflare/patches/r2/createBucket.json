@@ -1,14 +1,119 @@
 {
-  "errors": {
-    "InvalidBucketName": [{ "code": 10005 }],
-    "BucketAlreadyExists": [{ "code": 10004 }],
-    "InvalidRoute": [{ "code": 7003 }]
-  },
-  "response": {
-    "properties": {
-      "location": {
-        "addValues": ["APAC", "EEUR", "ENAM", "WEUR", "WNAM", "OC"]
+  "description": "Align r2#BucketsCreate with distilled cloudflare/r2 createBucket",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#BucketsCreate",
+      "path": "/shapes/com.cloudflare.r2#CreateBucket"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#BucketsCreateRequest",
+      "path": "/shapes/com.cloudflare.r2#CreateBucketRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.r2#CreateBucket/input/target",
+      "value": "com.cloudflare.r2#CreateBucketRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#BucketsCreateResponse",
+      "path": "/shapes/com.cloudflare.r2#CreateBucketResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.r2#CreateBucket/output/target",
+      "value": "com.cloudflare.r2#CreateBucketResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.r2#InvalidBucketName",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10005
+            }
+          ]
+        }
       }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.r2#BucketAlreadyExists",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10004
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.r2#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.r2#CreateBucket/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.r2#InvalidBucketName"
+        },
+        {
+          "target": "com.cloudflare.r2#BucketAlreadyExists"
+        },
+        {
+          "target": "com.cloudflare.r2#InvalidRoute"
+        }
+      ]
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#CreateBucketRequest/members/cf_r2_jurisdiction",
+      "path": "/shapes/com.cloudflare.r2#CreateBucketRequest/members/jurisdiction"
     }
-  }
+  ]
 }

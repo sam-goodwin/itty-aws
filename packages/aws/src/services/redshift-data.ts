@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,29 +85,59 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ActiveSessionsExceededException extends S.TaggedErrorClass<ActiveSessionsExceededException>()(
+  "ActiveSessionsExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ActiveStatementsExceededException extends S.TaggedErrorClass<ActiveStatementsExceededException>()(
+  "ActiveStatementsExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class BatchExecuteStatementException extends S.TaggedErrorClass<BatchExecuteStatementException>()(
+  "BatchExecuteStatementException",
+  { Message: S.String, StatementId: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class DatabaseConnectionException extends S.TaggedErrorClass<DatabaseConnectionException>()(
+  "DatabaseConnectionException",
+  { Message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ExecuteStatementException extends S.TaggedErrorClass<ExecuteStatementException>()(
+  "ExecuteStatementException",
+  { Message: S.String, StatementId: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class QueryTimeoutException extends S.TaggedErrorClass<QueryTimeoutException>()(
+  "QueryTimeoutException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.String, ResourceId: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type StatementString = string;
+export type SqlList = string[];
+export const SqlList = /*@__PURE__*/ S.Array(S.String);
 export type ClusterIdentifierString = string;
 export type SecretArn = string;
 export type StatementNameString = string;
 export type ParameterName = string;
 export type ParameterValue = string;
-export type WorkgroupNameString = string;
-export type ClientToken = string;
-export type ResultFormatString = string;
-export type SessionAliveSeconds = number;
-export type UUID = string;
-export type StatusString = string;
-export type StatementStatusString = string;
-export type PageSize = number;
-export type BoxedBoolean = boolean;
-export type BoxedLong = number;
-export type BoxedDouble = number;
-export type ListStatementsLimit = number;
-
-//# Schemas
-export type SqlList = string[];
-export const SqlList = /*@__PURE__*/ S.Array(S.String);
 export interface SqlParameter {
   name: string;
   value: string;
@@ -115,6 +147,11 @@ export const SqlParameter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SqlParameter" }) as any as S.Schema<SqlParameter>;
 export type SqlParametersList = SqlParameter[];
 export const SqlParametersList = /*@__PURE__*/ S.Array(SqlParameter);
+export type WorkgroupNameString = string;
+export type ClientToken = string;
+export type ResultFormatString = string;
+export type SessionAliveSeconds = number;
+export type UUID = string;
 export interface BatchExecuteStatementInput {
   Sqls: string[];
   ClusterIdentifier?: string;
@@ -164,22 +201,21 @@ export interface BatchExecuteStatementOutput {
   WorkgroupName?: string;
   SessionId?: string;
 }
-export const BatchExecuteStatementOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Id: S.optional(S.String),
-      CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      ClusterIdentifier: S.optional(S.String),
-      DbUser: S.optional(S.String),
-      DbGroups: S.optional(DbGroupList),
-      Database: S.optional(S.String),
-      SecretArn: S.optional(S.String),
-      WorkgroupName: S.optional(S.String),
-      SessionId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BatchExecuteStatementOutput",
-  }) as any as S.Schema<BatchExecuteStatementOutput>;
+export const BatchExecuteStatementOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    ClusterIdentifier: S.optional(S.String),
+    DbUser: S.optional(S.String),
+    DbGroups: S.optional(DbGroupList),
+    Database: S.optional(S.String),
+    SecretArn: S.optional(S.String),
+    WorkgroupName: S.optional(S.String),
+    SessionId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchExecuteStatementOutput",
+}) as any as S.Schema<BatchExecuteStatementOutput>;
 export interface CancelStatementRequest {
   Id: string;
 }
@@ -208,6 +244,8 @@ export const DescribeStatementRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeStatementRequest",
 }) as any as S.Schema<DescribeStatementRequest>;
+export type StatusString = string;
+export type StatementStatusString = string;
 export interface SubStatementData {
   Id: string;
   Duration?: number;
@@ -290,6 +328,7 @@ export const DescribeStatementResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeStatementResponse",
 }) as any as S.Schema<DescribeStatementResponse>;
+export type PageSize = number;
 export interface DescribeTableRequest {
   ClusterIdentifier?: string;
   SecretArn?: string;
@@ -441,6 +480,9 @@ export const GetStatementResultRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetStatementResultRequest",
 }) as any as S.Schema<GetStatementResultRequest>;
+export type BoxedBoolean = boolean;
+export type BoxedLong = number;
+export type BoxedDouble = number;
 export type Field =
   | {
       isNull: boolean;
@@ -524,14 +566,13 @@ export interface GetStatementResultV2Request {
   Id: string;
   NextToken?: string;
 }
-export const GetStatementResultV2Request =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Id: S.String, NextToken: S.optional(S.String) }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "GetStatementResultV2Request",
-  }) as any as S.Schema<GetStatementResultV2Request>;
+export const GetStatementResultV2Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String, NextToken: S.optional(S.String) }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "GetStatementResultV2Request",
+}) as any as S.Schema<GetStatementResultV2Request>;
 export type QueryRecords = { CSVRecords: string };
 export const QueryRecords = /*@__PURE__*/ S.Union([
   S.Struct({ CSVRecords: S.String }),
@@ -545,18 +586,17 @@ export interface GetStatementResultV2Response {
   ResultFormat?: string;
   NextToken?: string;
 }
-export const GetStatementResultV2Response =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Records: FormattedSqlRecords,
-      ColumnMetadata: S.optional(ColumnMetadataList),
-      TotalNumRows: S.optional(S.Number),
-      ResultFormat: S.optional(S.String),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetStatementResultV2Response",
-  }) as any as S.Schema<GetStatementResultV2Response>;
+export const GetStatementResultV2Response = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Records: FormattedSqlRecords,
+    ColumnMetadata: S.optional(ColumnMetadataList),
+    TotalNumRows: S.optional(S.Number),
+    ResultFormat: S.optional(S.String),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetStatementResultV2Response",
+}) as any as S.Schema<GetStatementResultV2Response>;
 export interface ListDatabasesRequest {
   ClusterIdentifier?: string;
   Database: string;
@@ -637,6 +677,7 @@ export const ListSchemasResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSchemasResponse",
 }) as any as S.Schema<ListSchemasResponse>;
+export type ListStatementsLimit = number;
 export interface ListStatementsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -759,46 +800,6 @@ export const ListTablesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTablesResponse",
 }) as any as S.Schema<ListTablesResponse>;
-
-//# Errors
-export class ActiveSessionsExceededException extends S.TaggedErrorClass<ActiveSessionsExceededException>()(
-  "ActiveSessionsExceededException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ActiveStatementsExceededException extends S.TaggedErrorClass<ActiveStatementsExceededException>()(
-  "ActiveStatementsExceededException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class BatchExecuteStatementException extends S.TaggedErrorClass<BatchExecuteStatementException>()(
-  "BatchExecuteStatementException",
-  { Message: S.String, StatementId: S.String },
-).pipe(C.withServerError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.String },
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.String, ResourceId: S.String },
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class DatabaseConnectionException extends S.TaggedErrorClass<DatabaseConnectionException>()(
-  "DatabaseConnectionException",
-  { Message: S.String },
-).pipe(C.withServerError) {}
-export class QueryTimeoutException extends S.TaggedErrorClass<QueryTimeoutException>()(
-  "QueryTimeoutException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ExecuteStatementException extends S.TaggedErrorClass<ExecuteStatementException>()(
-  "ExecuteStatementException",
-  { Message: S.String, StatementId: S.String },
-).pipe(C.withServerError) {}
-
-//# Operations
 export type BatchExecuteStatementError =
   | ActiveSessionsExceededException
   | ActiveStatementsExceededException
@@ -838,8 +839,11 @@ export const batchExecuteStatement: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchExecuteStatement",
 }));
+
 export type CancelStatementError =
   | DatabaseConnectionException
   | InternalServerException
@@ -867,8 +871,11 @@ export const cancelStatement: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelStatement",
 }));
+
 export type DescribeStatementError =
   | InternalServerException
   | ResourceNotFoundException
@@ -892,8 +899,11 @@ export const describeStatement: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStatement",
 }));
+
 export type DescribeTableError =
   | DatabaseConnectionException
   | InternalServerException
@@ -946,6 +956,8 @@ export const describeTable: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTable",
   pagination: {
     inputToken: "NextToken",
@@ -954,6 +966,7 @@ export const describeTable: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ExecuteStatementError =
   | ActiveSessionsExceededException
   | ActiveStatementsExceededException
@@ -993,8 +1006,11 @@ export const executeStatement: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteStatement",
 }));
+
 export type GetStatementResultError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1033,6 +1049,8 @@ export const getStatementResult: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStatementResult",
   pagination: {
     inputToken: "NextToken",
@@ -1040,6 +1058,7 @@ export const getStatementResult: API.OperationMethod<
     items: "Records",
   } as const,
 }));
+
 export type GetStatementResultV2Error =
   | InternalServerException
   | ResourceNotFoundException
@@ -1078,6 +1097,8 @@ export const getStatementResultV2: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStatementResultV2",
   pagination: {
     inputToken: "NextToken",
@@ -1085,6 +1106,7 @@ export const getStatementResultV2: API.OperationMethod<
     items: "Records",
   } as const,
 }));
+
 export type ListDatabasesError =
   | DatabaseConnectionException
   | InternalServerException
@@ -1137,6 +1159,8 @@ export const listDatabases: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatabases",
   pagination: {
     inputToken: "NextToken",
@@ -1145,6 +1169,7 @@ export const listDatabases: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSchemasError =
   | DatabaseConnectionException
   | InternalServerException
@@ -1197,6 +1222,8 @@ export const listSchemas: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSchemas",
   pagination: {
     inputToken: "NextToken",
@@ -1205,6 +1232,7 @@ export const listSchemas: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListStatementsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1245,6 +1273,8 @@ export const listStatements: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStatements",
   pagination: {
     inputToken: "NextToken",
@@ -1253,6 +1283,7 @@ export const listStatements: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTablesError =
   | DatabaseConnectionException
   | InternalServerException
@@ -1305,6 +1336,8 @@ export const listTables: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTables",
   pagination: {
     inputToken: "NextToken",

@@ -1,7 +1,0 @@
-{
-  "errors": {
-    "CertificateAlreadyExists": [
-      { "code": 1471, "message": { "includes": "already exists" } }
-    ]
-  }
-}

@@ -1,18 +1,114 @@
 {
-  "errors": {
-    "ProjectNotFound": [{ "code": 8000007 }],
-    "PagesDomainNotFound": [{ "code": 8000021 }],
-    "Forbidden": [{ "status": 403 }]
-  },
-  "response": {
-    "properties": {
-      "certificate_authority": { "optional": true, "nullable": true },
-      "zone_tag": { "optional": true, "nullable": true },
-      "validation_data": { "optional": true, "nullable": true },
-      "validation_data.method": { "optional": true, "nullable": true },
-      "validation_data.status": { "optional": true, "nullable": true },
-      "verification_data": { "optional": true, "nullable": true },
-      "verification_data.status": { "optional": true, "nullable": true }
+  "description": "Align pages#ProjectsDomainsEdit with distilled cloudflare/pages patchProjectDomain",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.pages#ProjectsDomainsEdit",
+      "path": "/shapes/com.cloudflare.pages#PatchProjectDomain"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.pages#ProjectsDomainsEditRequest",
+      "path": "/shapes/com.cloudflare.pages#PatchProjectDomainRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.pages#PatchProjectDomain/input/target",
+      "value": "com.cloudflare.pages#PatchProjectDomainRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.pages#ProjectsDomainsEditResponse",
+      "path": "/shapes/com.cloudflare.pages#PatchProjectDomainResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.pages#PatchProjectDomain/output/target",
+      "value": "com.cloudflare.pages#PatchProjectDomainResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.pages#ProjectNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 8000007
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.pages#PagesDomainNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 8000021
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.pages#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.pages#PatchProjectDomain/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.pages#ProjectNotFound"
+        },
+        {
+          "target": "com.cloudflare.pages#PagesDomainNotFound"
+        },
+        {
+          "target": "com.cloudflare.pages#Forbidden"
+        }
+      ]
     }
-  }
+  ]
 }

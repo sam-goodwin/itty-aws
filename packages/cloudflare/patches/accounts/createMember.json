@@ -1,9 +1,117 @@
 {
-  "errors": {
-    "InvalidRoute": [{ "code": 7003 }],
-    "ValidationError": [{ "code": 1001 }],
-    "AccountMemberAlreadyExists": [
-      { "status": 400, "message": { "includes": "already exists" } }
-    ]
-  }
+  "description": "Align accounts#MembersCreate with distilled cloudflare/accounts createMember",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.accounts#MembersCreate",
+      "path": "/shapes/com.cloudflare.accounts#CreateMember"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.accounts#MembersCreateRequest",
+      "path": "/shapes/com.cloudflare.accounts#CreateMemberRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.accounts#CreateMember/input/target",
+      "value": "com.cloudflare.accounts#CreateMemberRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.accounts#MembersCreateResponse",
+      "path": "/shapes/com.cloudflare.accounts#CreateMemberResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.accounts#CreateMember/output/target",
+      "value": "com.cloudflare.accounts#CreateMemberResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#ValidationError",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1001
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#AccountMemberAlreadyExists",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 400,
+              "message": {
+                "includes": "already exists"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#CreateMember/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.accounts#InvalidRoute"
+        },
+        {
+          "target": "com.cloudflare.accounts#ValidationError"
+        },
+        {
+          "target": "com.cloudflare.accounts#AccountMemberAlreadyExists"
+        }
+      ]
+    }
+  ]
 }

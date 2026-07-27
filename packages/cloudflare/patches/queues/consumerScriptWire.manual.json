@@ -1,0 +1,55 @@
+{
+  "description": "Docs bug: queue consumer RESPONSES carry the worker script under `script` on the wire, but the docs document `script_name` (which is only correct for create/update request bodies). Wire name transcribed from the distilled SDK (scriptName: \"script\").",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#GetConsumerResponse/members/script_name/traits/smithy.api#jsonName",
+      "value": "script"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#CreateConsumerResponse/members/script_name/traits/smithy.api#jsonName",
+      "value": "script"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#UpdateConsumerResponse/members/script_name/traits/smithy.api#jsonName",
+      "value": "script"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#ConsumersListResultItem/members/script_name/traits/smithy.api#jsonName",
+      "value": "script"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#CreateResponseConsumersItem/members/script_name/traits/smithy.api#jsonName",
+      "value": "script"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#EditResponseConsumersItem/members/script_name/traits/smithy.api#jsonName",
+      "value": "script"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#GetResponseConsumersItem/members/script_name/traits/smithy.api#jsonName",
+      "value": "script"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#ListResultItemConsumersItem/members/script_name/traits/smithy.api#jsonName",
+      "value": "script"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#UpdateResponseConsumersItem/members/script_name/traits/smithy.api#jsonName",
+      "value": "script"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#PurgeStartResponseConsumersItem/members/script_name/traits/smithy.api#jsonName",
+      "value": "script"
+    }
+  ]
+}

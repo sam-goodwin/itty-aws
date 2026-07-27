@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -85,42 +87,45 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
+  "InvalidInputException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  "ResourceAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError, C.withAlreadyExistsError) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
 export type Name = string;
 export type ForecastType = string;
-export type Frequency = string;
-export type Arn = string;
-export type Value = string;
-export type KMSKeyArn = string;
-export type TagKey = string | redacted.Redacted<string>;
-export type TagValue = string | redacted.Redacted<string>;
-export type DayOfMonth = number;
-export type Hour = number;
-export type ErrorMessage = string;
-export type S3Path = string;
-export type TimestampFormat = string;
-export type TimeZone = string;
-export type UseGeolocationForTimeZone = boolean;
-export type GeolocationFormat = string;
-export type Format = string;
-export type LocalDateTime = string;
-export type ParameterKey = string;
-export type ParameterValue = string;
-export type AttributeValue = string;
-export type LongArn = string;
-export type Status = string;
-export type Message = string;
-export type EvaluationState = string;
-export type NextToken = string;
-export type MaxResults = number;
-export type Detail = string;
-export type MetricName = string;
-
-//# Schemas
 export type ForecastTypes = string[];
 export const ForecastTypes = /*@__PURE__*/ S.Array(S.String);
 export type ForecastDimensions = string[];
 export const ForecastDimensions = /*@__PURE__*/ S.Array(S.String);
+export type Frequency = string;
+export type Arn = string;
+export type Value = string;
 export type Transformations = { [key: string]: string | undefined };
 export const Transformations = /*@__PURE__*/ S.Record(
   S.String,
@@ -167,6 +172,7 @@ export const DataConfig = /*@__PURE__*/ S.suspend(() =>
     AdditionalDatasets: S.optional(AdditionalDatasets),
   }),
 ).annotate({ identifier: "DataConfig" }) as any as S.Schema<DataConfig>;
+export type KMSKeyArn = string;
 export interface EncryptionConfig {
   RoleArn: string;
   KMSKeyArn: string;
@@ -184,6 +190,9 @@ export type OptimizationMetric =
   | "MAPE"
   | (string & {});
 export const OptimizationMetric = /*@__PURE__*/ S.String;
+
+export type TagKey = string | redacted.Redacted<string>;
+export type TagValue = string | redacted.Redacted<string>;
 export interface Tag {
   Key: string | redacted.Redacted<string>;
   Value: string | redacted.Redacted<string>;
@@ -214,6 +223,8 @@ export type Month =
   | "DECEMBER"
   | (string & {});
 export const Month = /*@__PURE__*/ S.String;
+
+export type DayOfMonth = number;
 export type DayOfWeek =
   | "MONDAY"
   | "TUESDAY"
@@ -224,6 +235,8 @@ export type DayOfWeek =
   | "SUNDAY"
   | (string & {});
 export const DayOfWeek = /*@__PURE__*/ S.String;
+
+export type Hour = number;
 export interface TimeAlignmentBoundary {
   Month?: Month;
   DayOfMonth?: number;
@@ -279,12 +292,11 @@ export const CreateAutoPredictorRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateAutoPredictorResponse {
   PredictorArn?: string;
 }
-export const CreateAutoPredictorResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ PredictorArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreateAutoPredictorResponse",
-  }) as any as S.Schema<CreateAutoPredictorResponse>;
+export const CreateAutoPredictorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PredictorArn: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateAutoPredictorResponse",
+}) as any as S.Schema<CreateAutoPredictorResponse>;
 export type Domain =
   | "RETAIL"
   | "CUSTOM"
@@ -295,12 +307,14 @@ export type Domain =
   | "METRICS"
   | (string & {});
 export const Domain = /*@__PURE__*/ S.String;
+
 export type DatasetType =
   | "TARGET_TIME_SERIES"
   | "RELATED_TIME_SERIES"
   | "ITEM_METADATA"
   | (string & {});
 export const DatasetType = /*@__PURE__*/ S.String;
+
 export type AttributeType =
   | "string"
   | "integer"
@@ -309,6 +323,7 @@ export type AttributeType =
   | "geolocation"
   | (string & {});
 export const AttributeType = /*@__PURE__*/ S.String;
+
 export interface SchemaAttribute {
   AttributeName?: string;
   AttributeType?: AttributeType;
@@ -389,6 +404,7 @@ export const CreateDatasetGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDatasetGroupResponse",
 }) as any as S.Schema<CreateDatasetGroupResponse>;
+export type S3Path = string;
 export interface S3Config {
   Path: string;
   RoleArn: string;
@@ -407,8 +423,14 @@ export interface DataSource {
 export const DataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3Config: S3Config }),
 ).annotate({ identifier: "DataSource" }) as any as S.Schema<DataSource>;
+export type TimestampFormat = string;
+export type TimeZone = string;
+export type UseGeolocationForTimeZone = boolean;
+export type GeolocationFormat = string;
+export type Format = string;
 export type ImportMode = "FULL" | "INCREMENTAL" | (string & {});
 export const ImportMode = /*@__PURE__*/ S.String;
+
 export interface CreateDatasetImportJobRequest {
   DatasetImportJobName: string;
   DatasetArn: string;
@@ -421,38 +443,38 @@ export interface CreateDatasetImportJobRequest {
   Format?: string;
   ImportMode?: ImportMode;
 }
-export const CreateDatasetImportJobRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DatasetImportJobName: S.String,
-      DatasetArn: S.String,
-      DataSource: DataSource,
-      TimestampFormat: S.optional(S.String),
-      TimeZone: S.optional(S.String),
-      UseGeolocationForTimeZone: S.optional(S.Boolean),
-      GeolocationFormat: S.optional(S.String),
-      Tags: S.optional(Tags),
-      Format: S.optional(S.String),
-      ImportMode: S.optional(ImportMode),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "CreateDatasetImportJobRequest",
-  }) as any as S.Schema<CreateDatasetImportJobRequest>;
+export const CreateDatasetImportJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DatasetImportJobName: S.String,
+    DatasetArn: S.String,
+    DataSource: DataSource,
+    TimestampFormat: S.optional(S.String),
+    TimeZone: S.optional(S.String),
+    UseGeolocationForTimeZone: S.optional(S.Boolean),
+    GeolocationFormat: S.optional(S.String),
+    Tags: S.optional(Tags),
+    Format: S.optional(S.String),
+    ImportMode: S.optional(ImportMode),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateDatasetImportJobRequest",
+}) as any as S.Schema<CreateDatasetImportJobRequest>;
 export interface CreateDatasetImportJobResponse {
   DatasetImportJobArn?: string;
 }
-export const CreateDatasetImportJobResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DatasetImportJobArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreateDatasetImportJobResponse",
-  }) as any as S.Schema<CreateDatasetImportJobResponse>;
+export const CreateDatasetImportJobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DatasetImportJobArn: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateDatasetImportJobResponse",
+}) as any as S.Schema<CreateDatasetImportJobResponse>;
 export type TimeSeriesGranularity = "ALL" | "SPECIFIC" | (string & {});
 export const TimeSeriesGranularity = /*@__PURE__*/ S.String;
+
 export type TimePointGranularity = "ALL" | "SPECIFIC" | (string & {});
 export const TimePointGranularity = /*@__PURE__*/ S.String;
+
 export interface ExplainabilityConfig {
   TimeSeriesGranularity: TimeSeriesGranularity;
   TimePointGranularity: TimePointGranularity;
@@ -465,6 +487,7 @@ export const ExplainabilityConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExplainabilityConfig",
 }) as any as S.Schema<ExplainabilityConfig>;
+export type LocalDateTime = string;
 export interface CreateExplainabilityRequest {
   ExplainabilityName: string;
   ResourceArn: string;
@@ -476,33 +499,31 @@ export interface CreateExplainabilityRequest {
   EndDateTime?: string;
   Tags?: Tag[];
 }
-export const CreateExplainabilityRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ExplainabilityName: S.String,
-      ResourceArn: S.String,
-      ExplainabilityConfig: ExplainabilityConfig,
-      DataSource: S.optional(DataSource),
-      Schema: S.optional(Schema),
-      EnableVisualization: S.optional(S.Boolean),
-      StartDateTime: S.optional(S.String),
-      EndDateTime: S.optional(S.String),
-      Tags: S.optional(Tags),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "CreateExplainabilityRequest",
-  }) as any as S.Schema<CreateExplainabilityRequest>;
+export const CreateExplainabilityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ExplainabilityName: S.String,
+    ResourceArn: S.String,
+    ExplainabilityConfig: ExplainabilityConfig,
+    DataSource: S.optional(DataSource),
+    Schema: S.optional(Schema),
+    EnableVisualization: S.optional(S.Boolean),
+    StartDateTime: S.optional(S.String),
+    EndDateTime: S.optional(S.String),
+    Tags: S.optional(Tags),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateExplainabilityRequest",
+}) as any as S.Schema<CreateExplainabilityRequest>;
 export interface CreateExplainabilityResponse {
   ExplainabilityArn?: string;
 }
-export const CreateExplainabilityResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ExplainabilityArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreateExplainabilityResponse",
-  }) as any as S.Schema<CreateExplainabilityResponse>;
+export const CreateExplainabilityResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ExplainabilityArn: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateExplainabilityResponse",
+}) as any as S.Schema<CreateExplainabilityResponse>;
 export interface DataDestination {
   S3Config: S3Config;
 }
@@ -518,29 +539,27 @@ export interface CreateExplainabilityExportRequest {
   Tags?: Tag[];
   Format?: string;
 }
-export const CreateExplainabilityExportRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ExplainabilityExportName: S.String,
-      ExplainabilityArn: S.String,
-      Destination: DataDestination,
-      Tags: S.optional(Tags),
-      Format: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "CreateExplainabilityExportRequest",
-  }) as any as S.Schema<CreateExplainabilityExportRequest>;
+export const CreateExplainabilityExportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ExplainabilityExportName: S.String,
+    ExplainabilityArn: S.String,
+    Destination: DataDestination,
+    Tags: S.optional(Tags),
+    Format: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateExplainabilityExportRequest",
+}) as any as S.Schema<CreateExplainabilityExportRequest>;
 export interface CreateExplainabilityExportResponse {
   ExplainabilityExportArn?: string;
 }
-export const CreateExplainabilityExportResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ExplainabilityExportArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreateExplainabilityExportResponse",
-  }) as any as S.Schema<CreateExplainabilityExportResponse>;
+export const CreateExplainabilityExportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ExplainabilityExportArn: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateExplainabilityExportResponse",
+}) as any as S.Schema<CreateExplainabilityExportResponse>;
 export interface TimeSeriesIdentifiers {
   DataSource?: DataSource;
   Schema?: Schema;
@@ -598,29 +617,27 @@ export interface CreateForecastExportJobRequest {
   Tags?: Tag[];
   Format?: string;
 }
-export const CreateForecastExportJobRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ForecastExportJobName: S.String,
-      ForecastArn: S.String,
-      Destination: DataDestination,
-      Tags: S.optional(Tags),
-      Format: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "CreateForecastExportJobRequest",
-  }) as any as S.Schema<CreateForecastExportJobRequest>;
+export const CreateForecastExportJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ForecastExportJobName: S.String,
+    ForecastArn: S.String,
+    Destination: DataDestination,
+    Tags: S.optional(Tags),
+    Format: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateForecastExportJobRequest",
+}) as any as S.Schema<CreateForecastExportJobRequest>;
 export interface CreateForecastExportJobResponse {
   ForecastExportJobArn?: string;
 }
-export const CreateForecastExportJobResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ForecastExportJobArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreateForecastExportJobResponse",
-  }) as any as S.Schema<CreateForecastExportJobResponse>;
+export const CreateForecastExportJobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ForecastExportJobArn: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateForecastExportJobResponse",
+}) as any as S.Schema<CreateForecastExportJobResponse>;
 export interface CreateMonitorRequest {
   MonitorName: string;
   ResourceArn: string;
@@ -650,6 +667,9 @@ export type AutoMLOverrideStrategy =
   | "AccuracyOptimized"
   | (string & {});
 export const AutoMLOverrideStrategy = /*@__PURE__*/ S.String;
+
+export type ParameterKey = string;
+export type ParameterValue = string;
 export type TrainingParameters = { [key: string]: string | undefined };
 export const TrainingParameters = /*@__PURE__*/ S.Record(
   S.String,
@@ -687,6 +707,7 @@ export type ScalingType =
   | "ReverseLogarithmic"
   | (string & {});
 export const ScalingType = /*@__PURE__*/ S.String;
+
 export interface ContinuousParameterRange {
   Name: string;
   MaxValue: number;
@@ -744,12 +765,11 @@ export const ParameterRanges = /*@__PURE__*/ S.suspend(() =>
 export interface HyperParameterTuningJobConfig {
   ParameterRanges?: ParameterRanges;
 }
-export const HyperParameterTuningJobConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ParameterRanges: S.optional(ParameterRanges) }),
-  ).annotate({
-    identifier: "HyperParameterTuningJobConfig",
-  }) as any as S.Schema<HyperParameterTuningJobConfig>;
+export const HyperParameterTuningJobConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ParameterRanges: S.optional(ParameterRanges) }),
+).annotate({
+  identifier: "HyperParameterTuningJobConfig",
+}) as any as S.Schema<HyperParameterTuningJobConfig>;
 export interface SupplementaryFeature {
   Name: string;
   Value: string;
@@ -776,11 +796,14 @@ export const InputDataConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InputDataConfig>;
 export type FeaturizationMethodName = "filling" | (string & {});
 export const FeaturizationMethodName = /*@__PURE__*/ S.String;
+
 export type FeaturizationMethodParameters = {
   [key: string]: string | undefined;
 };
-export const FeaturizationMethodParameters =
-  /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const FeaturizationMethodParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
 export interface FeaturizationMethod {
   FeaturizationMethodName: FeaturizationMethodName;
   FeaturizationMethodParameters?: { [key: string]: string | undefined };
@@ -876,8 +899,8 @@ export interface CreatePredictorBacktestExportJobRequest {
   Tags?: Tag[];
   Format?: string;
 }
-export const CreatePredictorBacktestExportJobRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreatePredictorBacktestExportJobRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       PredictorBacktestExportJobName: S.String,
       PredictorArn: S.String,
@@ -887,46 +910,43 @@ export const CreatePredictorBacktestExportJobRequest =
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
-  ).annotate({
-    identifier: "CreatePredictorBacktestExportJobRequest",
-  }) as any as S.Schema<CreatePredictorBacktestExportJobRequest>;
+).annotate({
+  identifier: "CreatePredictorBacktestExportJobRequest",
+}) as any as S.Schema<CreatePredictorBacktestExportJobRequest>;
 export interface CreatePredictorBacktestExportJobResponse {
   PredictorBacktestExportJobArn?: string;
 }
-export const CreatePredictorBacktestExportJobResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ PredictorBacktestExportJobArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreatePredictorBacktestExportJobResponse",
-  }) as any as S.Schema<CreatePredictorBacktestExportJobResponse>;
+export const CreatePredictorBacktestExportJobResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ PredictorBacktestExportJobArn: S.optional(S.String) }),
+).annotate({
+  identifier: "CreatePredictorBacktestExportJobResponse",
+}) as any as S.Schema<CreatePredictorBacktestExportJobResponse>;
 export interface CreateWhatIfAnalysisRequest {
   WhatIfAnalysisName: string;
   ForecastArn: string;
   TimeSeriesSelector?: TimeSeriesSelector;
   Tags?: Tag[];
 }
-export const CreateWhatIfAnalysisRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      WhatIfAnalysisName: S.String,
-      ForecastArn: S.String,
-      TimeSeriesSelector: S.optional(TimeSeriesSelector),
-      Tags: S.optional(Tags),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "CreateWhatIfAnalysisRequest",
-  }) as any as S.Schema<CreateWhatIfAnalysisRequest>;
+export const CreateWhatIfAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WhatIfAnalysisName: S.String,
+    ForecastArn: S.String,
+    TimeSeriesSelector: S.optional(TimeSeriesSelector),
+    Tags: S.optional(Tags),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateWhatIfAnalysisRequest",
+}) as any as S.Schema<CreateWhatIfAnalysisRequest>;
 export interface CreateWhatIfAnalysisResponse {
   WhatIfAnalysisArn?: string;
 }
-export const CreateWhatIfAnalysisResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ WhatIfAnalysisArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreateWhatIfAnalysisResponse",
-  }) as any as S.Schema<CreateWhatIfAnalysisResponse>;
+export const CreateWhatIfAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ WhatIfAnalysisArn: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateWhatIfAnalysisResponse",
+}) as any as S.Schema<CreateWhatIfAnalysisResponse>;
 export type Operation =
   | "ADD"
   | "SUBTRACT"
@@ -934,6 +954,7 @@ export type Operation =
   | "DIVIDE"
   | (string & {});
 export const Operation = /*@__PURE__*/ S.String;
+
 export interface Action {
   AttributeName: string;
   Operation: Operation;
@@ -942,6 +963,7 @@ export interface Action {
 export const Action = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AttributeName: S.String, Operation: Operation, Value: S.Number }),
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
+export type AttributeValue = string;
 export type Condition =
   | "EQUALS"
   | "NOT_EQUALS"
@@ -949,6 +971,7 @@ export type Condition =
   | "GREATER_THAN"
   | (string & {});
 export const Condition = /*@__PURE__*/ S.String;
+
 export interface TimeSeriesCondition {
   AttributeName: string;
   AttributeValue: string;
@@ -987,17 +1010,16 @@ export interface TimeSeriesReplacementsDataSource {
   Format?: string;
   TimestampFormat?: string;
 }
-export const TimeSeriesReplacementsDataSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      S3Config: S3Config,
-      Schema: Schema,
-      Format: S.optional(S.String),
-      TimestampFormat: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TimeSeriesReplacementsDataSource",
-  }) as any as S.Schema<TimeSeriesReplacementsDataSource>;
+export const TimeSeriesReplacementsDataSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    S3Config: S3Config,
+    Schema: Schema,
+    Format: S.optional(S.String),
+    TimestampFormat: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TimeSeriesReplacementsDataSource",
+}) as any as S.Schema<TimeSeriesReplacementsDataSource>;
 export interface CreateWhatIfForecastRequest {
   WhatIfForecastName: string;
   WhatIfAnalysisArn: string;
@@ -1005,31 +1027,30 @@ export interface CreateWhatIfForecastRequest {
   TimeSeriesReplacementsDataSource?: TimeSeriesReplacementsDataSource;
   Tags?: Tag[];
 }
-export const CreateWhatIfForecastRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      WhatIfForecastName: S.String,
-      WhatIfAnalysisArn: S.String,
-      TimeSeriesTransformations: S.optional(TimeSeriesTransformations),
-      TimeSeriesReplacementsDataSource: S.optional(
-        TimeSeriesReplacementsDataSource,
-      ),
-      Tags: S.optional(Tags),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+export const CreateWhatIfForecastRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WhatIfForecastName: S.String,
+    WhatIfAnalysisArn: S.String,
+    TimeSeriesTransformations: S.optional(TimeSeriesTransformations),
+    TimeSeriesReplacementsDataSource: S.optional(
+      TimeSeriesReplacementsDataSource,
     ),
-  ).annotate({
-    identifier: "CreateWhatIfForecastRequest",
-  }) as any as S.Schema<CreateWhatIfForecastRequest>;
+    Tags: S.optional(Tags),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateWhatIfForecastRequest",
+}) as any as S.Schema<CreateWhatIfForecastRequest>;
+export type LongArn = string;
 export interface CreateWhatIfForecastResponse {
   WhatIfForecastArn?: string;
 }
-export const CreateWhatIfForecastResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ WhatIfForecastArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreateWhatIfForecastResponse",
-  }) as any as S.Schema<CreateWhatIfForecastResponse>;
+export const CreateWhatIfForecastResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ WhatIfForecastArn: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateWhatIfForecastResponse",
+}) as any as S.Schema<CreateWhatIfForecastResponse>;
 export type WhatIfForecastArnListForExport = string[];
 export const WhatIfForecastArnListForExport = /*@__PURE__*/ S.Array(S.String);
 export interface CreateWhatIfForecastExportRequest {
@@ -1039,29 +1060,27 @@ export interface CreateWhatIfForecastExportRequest {
   Tags?: Tag[];
   Format?: string;
 }
-export const CreateWhatIfForecastExportRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      WhatIfForecastExportName: S.String,
-      WhatIfForecastArns: WhatIfForecastArnListForExport,
-      Destination: DataDestination,
-      Tags: S.optional(Tags),
-      Format: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "CreateWhatIfForecastExportRequest",
-  }) as any as S.Schema<CreateWhatIfForecastExportRequest>;
+export const CreateWhatIfForecastExportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WhatIfForecastExportName: S.String,
+    WhatIfForecastArns: WhatIfForecastArnListForExport,
+    Destination: DataDestination,
+    Tags: S.optional(Tags),
+    Format: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateWhatIfForecastExportRequest",
+}) as any as S.Schema<CreateWhatIfForecastExportRequest>;
 export interface CreateWhatIfForecastExportResponse {
   WhatIfForecastExportArn?: string;
 }
-export const CreateWhatIfForecastExportResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ WhatIfForecastExportArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreateWhatIfForecastExportResponse",
-  }) as any as S.Schema<CreateWhatIfForecastExportResponse>;
+export const CreateWhatIfForecastExportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ WhatIfForecastExportArn: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateWhatIfForecastExportResponse",
+}) as any as S.Schema<CreateWhatIfForecastExportResponse>;
 export interface DeleteDatasetRequest {
   DatasetArn: string;
 }
@@ -1097,51 +1116,51 @@ export const DeleteDatasetGroupResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDatasetImportJobRequest {
   DatasetImportJobArn: string;
 }
-export const DeleteDatasetImportJobRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DatasetImportJobArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DeleteDatasetImportJobRequest",
-  }) as any as S.Schema<DeleteDatasetImportJobRequest>;
+export const DeleteDatasetImportJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DatasetImportJobArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteDatasetImportJobRequest",
+}) as any as S.Schema<DeleteDatasetImportJobRequest>;
 export interface DeleteDatasetImportJobResponse {}
-export const DeleteDatasetImportJobResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteDatasetImportJobResponse",
-  }) as any as S.Schema<DeleteDatasetImportJobResponse>;
+export const DeleteDatasetImportJobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteDatasetImportJobResponse",
+}) as any as S.Schema<DeleteDatasetImportJobResponse>;
 export interface DeleteExplainabilityRequest {
   ExplainabilityArn: string;
 }
-export const DeleteExplainabilityRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ExplainabilityArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DeleteExplainabilityRequest",
-  }) as any as S.Schema<DeleteExplainabilityRequest>;
+export const DeleteExplainabilityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ExplainabilityArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteExplainabilityRequest",
+}) as any as S.Schema<DeleteExplainabilityRequest>;
 export interface DeleteExplainabilityResponse {}
-export const DeleteExplainabilityResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteExplainabilityResponse",
-  }) as any as S.Schema<DeleteExplainabilityResponse>;
+export const DeleteExplainabilityResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteExplainabilityResponse",
+}) as any as S.Schema<DeleteExplainabilityResponse>;
 export interface DeleteExplainabilityExportRequest {
   ExplainabilityExportArn: string;
 }
-export const DeleteExplainabilityExportRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ExplainabilityExportArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DeleteExplainabilityExportRequest",
-  }) as any as S.Schema<DeleteExplainabilityExportRequest>;
+export const DeleteExplainabilityExportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ExplainabilityExportArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteExplainabilityExportRequest",
+}) as any as S.Schema<DeleteExplainabilityExportRequest>;
 export interface DeleteExplainabilityExportResponse {}
-export const DeleteExplainabilityExportResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteExplainabilityExportResponse",
-  }) as any as S.Schema<DeleteExplainabilityExportResponse>;
+export const DeleteExplainabilityExportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteExplainabilityExportResponse",
+}) as any as S.Schema<DeleteExplainabilityExportResponse>;
 export interface DeleteForecastRequest {
   ForecastArn: string;
 }
@@ -1161,19 +1180,19 @@ export const DeleteForecastResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteForecastExportJobRequest {
   ForecastExportJobArn: string;
 }
-export const DeleteForecastExportJobRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ForecastExportJobArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DeleteForecastExportJobRequest",
-  }) as any as S.Schema<DeleteForecastExportJobRequest>;
+export const DeleteForecastExportJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ForecastExportJobArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteForecastExportJobRequest",
+}) as any as S.Schema<DeleteForecastExportJobRequest>;
 export interface DeleteForecastExportJobResponse {}
-export const DeleteForecastExportJobResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteForecastExportJobResponse",
-  }) as any as S.Schema<DeleteForecastExportJobResponse>;
+export const DeleteForecastExportJobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteForecastExportJobResponse",
+}) as any as S.Schema<DeleteForecastExportJobResponse>;
 export interface DeleteMonitorRequest {
   MonitorArn: string;
 }
@@ -1209,19 +1228,20 @@ export const DeletePredictorResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeletePredictorBacktestExportJobRequest {
   PredictorBacktestExportJobArn: string;
 }
-export const DeletePredictorBacktestExportJobRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DeletePredictorBacktestExportJobRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ PredictorBacktestExportJobArn: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
-  ).annotate({
-    identifier: "DeletePredictorBacktestExportJobRequest",
-  }) as any as S.Schema<DeletePredictorBacktestExportJobRequest>;
+).annotate({
+  identifier: "DeletePredictorBacktestExportJobRequest",
+}) as any as S.Schema<DeletePredictorBacktestExportJobRequest>;
 export interface DeletePredictorBacktestExportJobResponse {}
-export const DeletePredictorBacktestExportJobResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeletePredictorBacktestExportJobResponse",
-  }) as any as S.Schema<DeletePredictorBacktestExportJobResponse>;
+export const DeletePredictorBacktestExportJobResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeletePredictorBacktestExportJobResponse",
+}) as any as S.Schema<DeletePredictorBacktestExportJobResponse>;
 export interface DeleteResourceTreeRequest {
   ResourceArn: string;
 }
@@ -1241,64 +1261,64 @@ export const DeleteResourceTreeResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteWhatIfAnalysisRequest {
   WhatIfAnalysisArn: string;
 }
-export const DeleteWhatIfAnalysisRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ WhatIfAnalysisArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DeleteWhatIfAnalysisRequest",
-  }) as any as S.Schema<DeleteWhatIfAnalysisRequest>;
+export const DeleteWhatIfAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ WhatIfAnalysisArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteWhatIfAnalysisRequest",
+}) as any as S.Schema<DeleteWhatIfAnalysisRequest>;
 export interface DeleteWhatIfAnalysisResponse {}
-export const DeleteWhatIfAnalysisResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteWhatIfAnalysisResponse",
-  }) as any as S.Schema<DeleteWhatIfAnalysisResponse>;
+export const DeleteWhatIfAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteWhatIfAnalysisResponse",
+}) as any as S.Schema<DeleteWhatIfAnalysisResponse>;
 export interface DeleteWhatIfForecastRequest {
   WhatIfForecastArn: string;
 }
-export const DeleteWhatIfForecastRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ WhatIfForecastArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DeleteWhatIfForecastRequest",
-  }) as any as S.Schema<DeleteWhatIfForecastRequest>;
+export const DeleteWhatIfForecastRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ WhatIfForecastArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteWhatIfForecastRequest",
+}) as any as S.Schema<DeleteWhatIfForecastRequest>;
 export interface DeleteWhatIfForecastResponse {}
-export const DeleteWhatIfForecastResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteWhatIfForecastResponse",
-  }) as any as S.Schema<DeleteWhatIfForecastResponse>;
+export const DeleteWhatIfForecastResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteWhatIfForecastResponse",
+}) as any as S.Schema<DeleteWhatIfForecastResponse>;
 export interface DeleteWhatIfForecastExportRequest {
   WhatIfForecastExportArn: string;
 }
-export const DeleteWhatIfForecastExportRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ WhatIfForecastExportArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DeleteWhatIfForecastExportRequest",
-  }) as any as S.Schema<DeleteWhatIfForecastExportRequest>;
+export const DeleteWhatIfForecastExportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ WhatIfForecastExportArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteWhatIfForecastExportRequest",
+}) as any as S.Schema<DeleteWhatIfForecastExportRequest>;
 export interface DeleteWhatIfForecastExportResponse {}
-export const DeleteWhatIfForecastExportResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteWhatIfForecastExportResponse",
-  }) as any as S.Schema<DeleteWhatIfForecastExportResponse>;
+export const DeleteWhatIfForecastExportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteWhatIfForecastExportResponse",
+}) as any as S.Schema<DeleteWhatIfForecastExportResponse>;
 export interface DescribeAutoPredictorRequest {
   PredictorArn: string;
 }
-export const DescribeAutoPredictorRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ PredictorArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeAutoPredictorRequest",
-  }) as any as S.Schema<DescribeAutoPredictorRequest>;
+export const DescribeAutoPredictorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PredictorArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeAutoPredictorRequest",
+}) as any as S.Schema<DescribeAutoPredictorRequest>;
 export type State = "Active" | "Deleted" | (string & {});
 export const State = /*@__PURE__*/ S.String;
+
 export interface ReferencePredictorSummary {
   Arn?: string;
   State?: State;
@@ -1308,6 +1328,8 @@ export const ReferencePredictorSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ReferencePredictorSummary",
 }) as any as S.Schema<ReferencePredictorSummary>;
+export type Status = string;
+export type Message = string;
 export interface ExplainabilityInfo {
   ExplainabilityArn?: string;
   Status?: string;
@@ -1348,34 +1370,33 @@ export interface DescribeAutoPredictorResponse {
   MonitorInfo?: MonitorInfo;
   TimeAlignmentBoundary?: TimeAlignmentBoundary;
 }
-export const DescribeAutoPredictorResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PredictorArn: S.optional(S.String),
-      PredictorName: S.optional(S.String),
-      ForecastHorizon: S.optional(S.Number),
-      ForecastTypes: S.optional(ForecastTypes),
-      ForecastFrequency: S.optional(S.String),
-      ForecastDimensions: S.optional(ForecastDimensions),
-      DatasetImportJobArns: S.optional(ArnList),
-      DataConfig: S.optional(DataConfig),
-      EncryptionConfig: S.optional(EncryptionConfig),
-      ReferencePredictorSummary: S.optional(ReferencePredictorSummary),
-      EstimatedTimeRemainingInMinutes: S.optional(S.Number),
-      Status: S.optional(S.String),
-      Message: S.optional(S.String),
-      CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      LastModificationTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      OptimizationMetric: S.optional(OptimizationMetric),
-      ExplainabilityInfo: S.optional(ExplainabilityInfo),
-      MonitorInfo: S.optional(MonitorInfo),
-      TimeAlignmentBoundary: S.optional(TimeAlignmentBoundary),
-    }),
-  ).annotate({
-    identifier: "DescribeAutoPredictorResponse",
-  }) as any as S.Schema<DescribeAutoPredictorResponse>;
+export const DescribeAutoPredictorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PredictorArn: S.optional(S.String),
+    PredictorName: S.optional(S.String),
+    ForecastHorizon: S.optional(S.Number),
+    ForecastTypes: S.optional(ForecastTypes),
+    ForecastFrequency: S.optional(S.String),
+    ForecastDimensions: S.optional(ForecastDimensions),
+    DatasetImportJobArns: S.optional(ArnList),
+    DataConfig: S.optional(DataConfig),
+    EncryptionConfig: S.optional(EncryptionConfig),
+    ReferencePredictorSummary: S.optional(ReferencePredictorSummary),
+    EstimatedTimeRemainingInMinutes: S.optional(S.Number),
+    Status: S.optional(S.String),
+    Message: S.optional(S.String),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastModificationTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    OptimizationMetric: S.optional(OptimizationMetric),
+    ExplainabilityInfo: S.optional(ExplainabilityInfo),
+    MonitorInfo: S.optional(MonitorInfo),
+    TimeAlignmentBoundary: S.optional(TimeAlignmentBoundary),
+  }),
+).annotate({
+  identifier: "DescribeAutoPredictorResponse",
+}) as any as S.Schema<DescribeAutoPredictorResponse>;
 export interface DescribeDatasetRequest {
   DatasetArn: string;
 }
@@ -1419,14 +1440,13 @@ export const DescribeDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeDatasetGroupRequest {
   DatasetGroupArn: string;
 }
-export const DescribeDatasetGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DatasetGroupArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeDatasetGroupRequest",
-  }) as any as S.Schema<DescribeDatasetGroupRequest>;
+export const DescribeDatasetGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DatasetGroupArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeDatasetGroupRequest",
+}) as any as S.Schema<DescribeDatasetGroupRequest>;
 export interface DescribeDatasetGroupResponse {
   DatasetGroupName?: string;
   DatasetGroupArn?: string;
@@ -1436,33 +1456,31 @@ export interface DescribeDatasetGroupResponse {
   CreationTime?: Date;
   LastModificationTime?: Date;
 }
-export const DescribeDatasetGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DatasetGroupName: S.optional(S.String),
-      DatasetGroupArn: S.optional(S.String),
-      DatasetArns: S.optional(ArnList),
-      Domain: S.optional(Domain),
-      Status: S.optional(S.String),
-      CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      LastModificationTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier: "DescribeDatasetGroupResponse",
-  }) as any as S.Schema<DescribeDatasetGroupResponse>;
+export const DescribeDatasetGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DatasetGroupName: S.optional(S.String),
+    DatasetGroupArn: S.optional(S.String),
+    DatasetArns: S.optional(ArnList),
+    Domain: S.optional(Domain),
+    Status: S.optional(S.String),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastModificationTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }),
+).annotate({
+  identifier: "DescribeDatasetGroupResponse",
+}) as any as S.Schema<DescribeDatasetGroupResponse>;
 export interface DescribeDatasetImportJobRequest {
   DatasetImportJobArn: string;
 }
-export const DescribeDatasetImportJobRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DatasetImportJobArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeDatasetImportJobRequest",
-  }) as any as S.Schema<DescribeDatasetImportJobRequest>;
+export const DescribeDatasetImportJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DatasetImportJobArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeDatasetImportJobRequest",
+}) as any as S.Schema<DescribeDatasetImportJobRequest>;
 export interface Statistics {
   Count?: number;
   CountDistinct?: number;
@@ -1517,43 +1535,41 @@ export interface DescribeDatasetImportJobResponse {
   Format?: string;
   ImportMode?: ImportMode;
 }
-export const DescribeDatasetImportJobResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DatasetImportJobName: S.optional(S.String),
-      DatasetImportJobArn: S.optional(S.String),
-      DatasetArn: S.optional(S.String),
-      TimestampFormat: S.optional(S.String),
-      TimeZone: S.optional(S.String),
-      UseGeolocationForTimeZone: S.optional(S.Boolean),
-      GeolocationFormat: S.optional(S.String),
-      DataSource: S.optional(DataSource),
-      EstimatedTimeRemainingInMinutes: S.optional(S.Number),
-      FieldStatistics: S.optional(FieldStatistics),
-      DataSize: S.optional(S.Number),
-      Status: S.optional(S.String),
-      Message: S.optional(S.String),
-      CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      LastModificationTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      Format: S.optional(S.String),
-      ImportMode: S.optional(ImportMode),
-    }),
-  ).annotate({
-    identifier: "DescribeDatasetImportJobResponse",
-  }) as any as S.Schema<DescribeDatasetImportJobResponse>;
+export const DescribeDatasetImportJobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DatasetImportJobName: S.optional(S.String),
+    DatasetImportJobArn: S.optional(S.String),
+    DatasetArn: S.optional(S.String),
+    TimestampFormat: S.optional(S.String),
+    TimeZone: S.optional(S.String),
+    UseGeolocationForTimeZone: S.optional(S.Boolean),
+    GeolocationFormat: S.optional(S.String),
+    DataSource: S.optional(DataSource),
+    EstimatedTimeRemainingInMinutes: S.optional(S.Number),
+    FieldStatistics: S.optional(FieldStatistics),
+    DataSize: S.optional(S.Number),
+    Status: S.optional(S.String),
+    Message: S.optional(S.String),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastModificationTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    Format: S.optional(S.String),
+    ImportMode: S.optional(ImportMode),
+  }),
+).annotate({
+  identifier: "DescribeDatasetImportJobResponse",
+}) as any as S.Schema<DescribeDatasetImportJobResponse>;
 export interface DescribeExplainabilityRequest {
   ExplainabilityArn: string;
 }
-export const DescribeExplainabilityRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ExplainabilityArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeExplainabilityRequest",
-  }) as any as S.Schema<DescribeExplainabilityRequest>;
+export const DescribeExplainabilityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ExplainabilityArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeExplainabilityRequest",
+}) as any as S.Schema<DescribeExplainabilityRequest>;
 export interface DescribeExplainabilityResponse {
   ExplainabilityArn?: string;
   ExplainabilityName?: string;
@@ -1570,40 +1586,38 @@ export interface DescribeExplainabilityResponse {
   CreationTime?: Date;
   LastModificationTime?: Date;
 }
-export const DescribeExplainabilityResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ExplainabilityArn: S.optional(S.String),
-      ExplainabilityName: S.optional(S.String),
-      ResourceArn: S.optional(S.String),
-      ExplainabilityConfig: S.optional(ExplainabilityConfig),
-      EnableVisualization: S.optional(S.Boolean),
-      DataSource: S.optional(DataSource),
-      Schema: S.optional(Schema),
-      StartDateTime: S.optional(S.String),
-      EndDateTime: S.optional(S.String),
-      EstimatedTimeRemainingInMinutes: S.optional(S.Number),
-      Message: S.optional(S.String),
-      Status: S.optional(S.String),
-      CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      LastModificationTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier: "DescribeExplainabilityResponse",
-  }) as any as S.Schema<DescribeExplainabilityResponse>;
+export const DescribeExplainabilityResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ExplainabilityArn: S.optional(S.String),
+    ExplainabilityName: S.optional(S.String),
+    ResourceArn: S.optional(S.String),
+    ExplainabilityConfig: S.optional(ExplainabilityConfig),
+    EnableVisualization: S.optional(S.Boolean),
+    DataSource: S.optional(DataSource),
+    Schema: S.optional(Schema),
+    StartDateTime: S.optional(S.String),
+    EndDateTime: S.optional(S.String),
+    EstimatedTimeRemainingInMinutes: S.optional(S.Number),
+    Message: S.optional(S.String),
+    Status: S.optional(S.String),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastModificationTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }),
+).annotate({
+  identifier: "DescribeExplainabilityResponse",
+}) as any as S.Schema<DescribeExplainabilityResponse>;
 export interface DescribeExplainabilityExportRequest {
   ExplainabilityExportArn: string;
 }
-export const DescribeExplainabilityExportRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ExplainabilityExportArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeExplainabilityExportRequest",
-  }) as any as S.Schema<DescribeExplainabilityExportRequest>;
+export const DescribeExplainabilityExportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ExplainabilityExportArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeExplainabilityExportRequest",
+}) as any as S.Schema<DescribeExplainabilityExportRequest>;
 export interface DescribeExplainabilityExportResponse {
   ExplainabilityExportArn?: string;
   ExplainabilityExportName?: string;
@@ -1615,8 +1629,8 @@ export interface DescribeExplainabilityExportResponse {
   LastModificationTime?: Date;
   Format?: string;
 }
-export const DescribeExplainabilityExportResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeExplainabilityExportResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ExplainabilityExportArn: S.optional(S.String),
       ExplainabilityExportName: S.optional(S.String),
@@ -1630,9 +1644,9 @@ export const DescribeExplainabilityExportResponse =
       ),
       Format: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "DescribeExplainabilityExportResponse",
-  }) as any as S.Schema<DescribeExplainabilityExportResponse>;
+).annotate({
+  identifier: "DescribeExplainabilityExportResponse",
+}) as any as S.Schema<DescribeExplainabilityExportResponse>;
 export interface DescribeForecastRequest {
   ForecastArn: string;
 }
@@ -1643,6 +1657,7 @@ export const DescribeForecastRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeForecastRequest",
 }) as any as S.Schema<DescribeForecastRequest>;
+export type ErrorMessage = string;
 export interface DescribeForecastResponse {
   ForecastArn?: string;
   ForecastName?: string;
@@ -1678,14 +1693,13 @@ export const DescribeForecastResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeForecastExportJobRequest {
   ForecastExportJobArn: string;
 }
-export const DescribeForecastExportJobRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ForecastExportJobArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeForecastExportJobRequest",
-  }) as any as S.Schema<DescribeForecastExportJobRequest>;
+export const DescribeForecastExportJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ForecastExportJobArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeForecastExportJobRequest",
+}) as any as S.Schema<DescribeForecastExportJobRequest>;
 export interface DescribeForecastExportJobResponse {
   ForecastExportJobArn?: string;
   ForecastExportJobName?: string;
@@ -1697,24 +1711,23 @@ export interface DescribeForecastExportJobResponse {
   LastModificationTime?: Date;
   Format?: string;
 }
-export const DescribeForecastExportJobResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ForecastExportJobArn: S.optional(S.String),
-      ForecastExportJobName: S.optional(S.String),
-      ForecastArn: S.optional(S.String),
-      Destination: S.optional(DataDestination),
-      Message: S.optional(S.String),
-      Status: S.optional(S.String),
-      CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      LastModificationTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      Format: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DescribeForecastExportJobResponse",
-  }) as any as S.Schema<DescribeForecastExportJobResponse>;
+export const DescribeForecastExportJobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ForecastExportJobArn: S.optional(S.String),
+    ForecastExportJobName: S.optional(S.String),
+    ForecastArn: S.optional(S.String),
+    Destination: S.optional(DataDestination),
+    Message: S.optional(S.String),
+    Status: S.optional(S.String),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastModificationTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    Format: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DescribeForecastExportJobResponse",
+}) as any as S.Schema<DescribeForecastExportJobResponse>;
 export interface DescribeMonitorRequest {
   MonitorArn: string;
 }
@@ -1725,6 +1738,7 @@ export const DescribeMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeMonitorRequest",
 }) as any as S.Schema<DescribeMonitorRequest>;
+export type EvaluationState = string;
 export interface BaselineMetric {
   Name?: string;
   Value?: number;
@@ -1935,14 +1949,13 @@ export const DescribePredictorBacktestExportJobResponse =
 export interface DescribeWhatIfAnalysisRequest {
   WhatIfAnalysisArn: string;
 }
-export const DescribeWhatIfAnalysisRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ WhatIfAnalysisArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeWhatIfAnalysisRequest",
-  }) as any as S.Schema<DescribeWhatIfAnalysisRequest>;
+export const DescribeWhatIfAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ WhatIfAnalysisArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeWhatIfAnalysisRequest",
+}) as any as S.Schema<DescribeWhatIfAnalysisRequest>;
 export interface DescribeWhatIfAnalysisResponse {
   WhatIfAnalysisName?: string;
   WhatIfAnalysisArn?: string;
@@ -1954,35 +1967,33 @@ export interface DescribeWhatIfAnalysisResponse {
   LastModificationTime?: Date;
   TimeSeriesSelector?: TimeSeriesSelector;
 }
-export const DescribeWhatIfAnalysisResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      WhatIfAnalysisName: S.optional(S.String),
-      WhatIfAnalysisArn: S.optional(S.String),
-      ForecastArn: S.optional(S.String),
-      EstimatedTimeRemainingInMinutes: S.optional(S.Number),
-      Status: S.optional(S.String),
-      Message: S.optional(S.String),
-      CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      LastModificationTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      TimeSeriesSelector: S.optional(TimeSeriesSelector),
-    }),
-  ).annotate({
-    identifier: "DescribeWhatIfAnalysisResponse",
-  }) as any as S.Schema<DescribeWhatIfAnalysisResponse>;
+export const DescribeWhatIfAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WhatIfAnalysisName: S.optional(S.String),
+    WhatIfAnalysisArn: S.optional(S.String),
+    ForecastArn: S.optional(S.String),
+    EstimatedTimeRemainingInMinutes: S.optional(S.Number),
+    Status: S.optional(S.String),
+    Message: S.optional(S.String),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastModificationTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    TimeSeriesSelector: S.optional(TimeSeriesSelector),
+  }),
+).annotate({
+  identifier: "DescribeWhatIfAnalysisResponse",
+}) as any as S.Schema<DescribeWhatIfAnalysisResponse>;
 export interface DescribeWhatIfForecastRequest {
   WhatIfForecastArn: string;
 }
-export const DescribeWhatIfForecastRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ WhatIfForecastArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeWhatIfForecastRequest",
-  }) as any as S.Schema<DescribeWhatIfForecastRequest>;
+export const DescribeWhatIfForecastRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ WhatIfForecastArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeWhatIfForecastRequest",
+}) as any as S.Schema<DescribeWhatIfForecastRequest>;
 export interface DescribeWhatIfForecastResponse {
   WhatIfForecastName?: string;
   WhatIfForecastArn?: string;
@@ -1996,39 +2007,37 @@ export interface DescribeWhatIfForecastResponse {
   TimeSeriesReplacementsDataSource?: TimeSeriesReplacementsDataSource;
   ForecastTypes?: string[];
 }
-export const DescribeWhatIfForecastResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      WhatIfForecastName: S.optional(S.String),
-      WhatIfForecastArn: S.optional(S.String),
-      WhatIfAnalysisArn: S.optional(S.String),
-      EstimatedTimeRemainingInMinutes: S.optional(S.Number),
-      Status: S.optional(S.String),
-      Message: S.optional(S.String),
-      CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      LastModificationTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      TimeSeriesTransformations: S.optional(TimeSeriesTransformations),
-      TimeSeriesReplacementsDataSource: S.optional(
-        TimeSeriesReplacementsDataSource,
-      ),
-      ForecastTypes: S.optional(ForecastTypes),
-    }),
-  ).annotate({
-    identifier: "DescribeWhatIfForecastResponse",
-  }) as any as S.Schema<DescribeWhatIfForecastResponse>;
+export const DescribeWhatIfForecastResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WhatIfForecastName: S.optional(S.String),
+    WhatIfForecastArn: S.optional(S.String),
+    WhatIfAnalysisArn: S.optional(S.String),
+    EstimatedTimeRemainingInMinutes: S.optional(S.Number),
+    Status: S.optional(S.String),
+    Message: S.optional(S.String),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastModificationTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    TimeSeriesTransformations: S.optional(TimeSeriesTransformations),
+    TimeSeriesReplacementsDataSource: S.optional(
+      TimeSeriesReplacementsDataSource,
+    ),
+    ForecastTypes: S.optional(ForecastTypes),
+  }),
+).annotate({
+  identifier: "DescribeWhatIfForecastResponse",
+}) as any as S.Schema<DescribeWhatIfForecastResponse>;
 export interface DescribeWhatIfForecastExportRequest {
   WhatIfForecastExportArn: string;
 }
-export const DescribeWhatIfForecastExportRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ WhatIfForecastExportArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeWhatIfForecastExportRequest",
-  }) as any as S.Schema<DescribeWhatIfForecastExportRequest>;
+export const DescribeWhatIfForecastExportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ WhatIfForecastExportArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeWhatIfForecastExportRequest",
+}) as any as S.Schema<DescribeWhatIfForecastExportRequest>;
 export type LongArnList = string[];
 export const LongArnList = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeWhatIfForecastExportResponse {
@@ -2043,8 +2052,8 @@ export interface DescribeWhatIfForecastExportResponse {
   LastModificationTime?: Date;
   Format?: string;
 }
-export const DescribeWhatIfForecastExportResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeWhatIfForecastExportResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       WhatIfForecastExportArn: S.optional(S.String),
       WhatIfForecastExportName: S.optional(S.String),
@@ -2059,9 +2068,9 @@ export const DescribeWhatIfForecastExportResponse =
       ),
       Format: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "DescribeWhatIfForecastExportResponse",
-  }) as any as S.Schema<DescribeWhatIfForecastExportResponse>;
+).annotate({
+  identifier: "DescribeWhatIfForecastExportResponse",
+}) as any as S.Schema<DescribeWhatIfForecastExportResponse>;
 export interface GetAccuracyMetricsRequest {
   PredictorArn: string;
 }
@@ -2074,6 +2083,7 @@ export const GetAccuracyMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAccuracyMetricsRequest>;
 export type EvaluationType = "SUMMARY" | "COMPUTED" | (string & {});
 export const EvaluationType = /*@__PURE__*/ S.String;
+
 export interface WeightedQuantileLoss {
   Quantile?: number;
   LossValue?: number;
@@ -2169,6 +2179,8 @@ export const GetAccuracyMetricsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccuracyMetricsResponse",
 }) as any as S.Schema<GetAccuracyMetricsResponse>;
+export type NextToken = string;
+export type MaxResults = number;
 export interface ListDatasetGroupsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -2217,6 +2229,7 @@ export const ListDatasetGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDatasetGroupsResponse>;
 export type FilterConditionString = "IS" | "IS_NOT" | (string & {});
 export const FilterConditionString = /*@__PURE__*/ S.String;
+
 export interface Filter {
   Key: string;
   Value: string;
@@ -2236,18 +2249,17 @@ export interface ListDatasetImportJobsRequest {
   MaxResults?: number;
   Filters?: Filter[];
 }
-export const ListDatasetImportJobsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      Filters: S.optional(Filters),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListDatasetImportJobsRequest",
-  }) as any as S.Schema<ListDatasetImportJobsRequest>;
+export const ListDatasetImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    Filters: S.optional(Filters),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListDatasetImportJobsRequest",
+}) as any as S.Schema<ListDatasetImportJobsRequest>;
 export interface DatasetImportJobSummary {
   DatasetImportJobArn?: string;
   DatasetImportJobName?: string;
@@ -2280,15 +2292,14 @@ export interface ListDatasetImportJobsResponse {
   DatasetImportJobs?: DatasetImportJobSummary[];
   NextToken?: string;
 }
-export const ListDatasetImportJobsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DatasetImportJobs: S.optional(DatasetImportJobs),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListDatasetImportJobsResponse",
-  }) as any as S.Schema<ListDatasetImportJobsResponse>;
+export const ListDatasetImportJobsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DatasetImportJobs: S.optional(DatasetImportJobs),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDatasetImportJobsResponse",
+}) as any as S.Schema<ListDatasetImportJobsResponse>;
 export interface ListDatasetsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -2339,18 +2350,17 @@ export interface ListExplainabilitiesRequest {
   MaxResults?: number;
   Filters?: Filter[];
 }
-export const ListExplainabilitiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      Filters: S.optional(Filters),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListExplainabilitiesRequest",
-  }) as any as S.Schema<ListExplainabilitiesRequest>;
+export const ListExplainabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    Filters: S.optional(Filters),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListExplainabilitiesRequest",
+}) as any as S.Schema<ListExplainabilitiesRequest>;
 export interface ExplainabilitySummary {
   ExplainabilityArn?: string;
   ExplainabilityName?: string;
@@ -2383,32 +2393,30 @@ export interface ListExplainabilitiesResponse {
   Explainabilities?: ExplainabilitySummary[];
   NextToken?: string;
 }
-export const ListExplainabilitiesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Explainabilities: S.optional(Explainabilities),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListExplainabilitiesResponse",
-  }) as any as S.Schema<ListExplainabilitiesResponse>;
+export const ListExplainabilitiesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Explainabilities: S.optional(Explainabilities),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListExplainabilitiesResponse",
+}) as any as S.Schema<ListExplainabilitiesResponse>;
 export interface ListExplainabilityExportsRequest {
   NextToken?: string;
   MaxResults?: number;
   Filters?: Filter[];
 }
-export const ListExplainabilityExportsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      Filters: S.optional(Filters),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListExplainabilityExportsRequest",
-  }) as any as S.Schema<ListExplainabilityExportsRequest>;
+export const ListExplainabilityExportsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    Filters: S.optional(Filters),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListExplainabilityExportsRequest",
+}) as any as S.Schema<ListExplainabilityExportsRequest>;
 export interface ExplainabilityExportSummary {
   ExplainabilityExportArn?: string;
   ExplainabilityExportName?: string;
@@ -2418,22 +2426,21 @@ export interface ExplainabilityExportSummary {
   CreationTime?: Date;
   LastModificationTime?: Date;
 }
-export const ExplainabilityExportSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ExplainabilityExportArn: S.optional(S.String),
-      ExplainabilityExportName: S.optional(S.String),
-      Destination: S.optional(DataDestination),
-      Status: S.optional(S.String),
-      Message: S.optional(S.String),
-      CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      LastModificationTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier: "ExplainabilityExportSummary",
-  }) as any as S.Schema<ExplainabilityExportSummary>;
+export const ExplainabilityExportSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ExplainabilityExportArn: S.optional(S.String),
+    ExplainabilityExportName: S.optional(S.String),
+    Destination: S.optional(DataDestination),
+    Status: S.optional(S.String),
+    Message: S.optional(S.String),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastModificationTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }),
+).annotate({
+  identifier: "ExplainabilityExportSummary",
+}) as any as S.Schema<ExplainabilityExportSummary>;
 export type ExplainabilityExports = ExplainabilityExportSummary[];
 export const ExplainabilityExports = /*@__PURE__*/ S.Array(
   ExplainabilityExportSummary,
@@ -2442,32 +2449,30 @@ export interface ListExplainabilityExportsResponse {
   ExplainabilityExports?: ExplainabilityExportSummary[];
   NextToken?: string;
 }
-export const ListExplainabilityExportsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ExplainabilityExports: S.optional(ExplainabilityExports),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListExplainabilityExportsResponse",
-  }) as any as S.Schema<ListExplainabilityExportsResponse>;
+export const ListExplainabilityExportsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ExplainabilityExports: S.optional(ExplainabilityExports),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListExplainabilityExportsResponse",
+}) as any as S.Schema<ListExplainabilityExportsResponse>;
 export interface ListForecastExportJobsRequest {
   NextToken?: string;
   MaxResults?: number;
   Filters?: Filter[];
 }
-export const ListForecastExportJobsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      Filters: S.optional(Filters),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListForecastExportJobsRequest",
-  }) as any as S.Schema<ListForecastExportJobsRequest>;
+export const ListForecastExportJobsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    Filters: S.optional(Filters),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListForecastExportJobsRequest",
+}) as any as S.Schema<ListForecastExportJobsRequest>;
 export interface ForecastExportJobSummary {
   ForecastExportJobArn?: string;
   ForecastExportJobName?: string;
@@ -2500,15 +2505,14 @@ export interface ListForecastExportJobsResponse {
   ForecastExportJobs?: ForecastExportJobSummary[];
   NextToken?: string;
 }
-export const ListForecastExportJobsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ForecastExportJobs: S.optional(ForecastExportJobs),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListForecastExportJobsResponse",
-  }) as any as S.Schema<ListForecastExportJobsResponse>;
+export const ListForecastExportJobsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ForecastExportJobs: S.optional(ForecastExportJobs),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListForecastExportJobsResponse",
+}) as any as S.Schema<ListForecastExportJobsResponse>;
 export interface ListForecastsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -2573,19 +2577,19 @@ export interface ListMonitorEvaluationsRequest {
   MonitorArn: string;
   Filters?: Filter[];
 }
-export const ListMonitorEvaluationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      MonitorArn: S.String,
-      Filters: S.optional(Filters),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListMonitorEvaluationsRequest",
-  }) as any as S.Schema<ListMonitorEvaluationsRequest>;
+export const ListMonitorEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    MonitorArn: S.String,
+    Filters: S.optional(Filters),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListMonitorEvaluationsRequest",
+}) as any as S.Schema<ListMonitorEvaluationsRequest>;
+export type Detail = string;
 export interface PredictorEvent {
   Detail?: string;
   Datetime?: Date;
@@ -2610,6 +2614,7 @@ export const MonitorDataSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MonitorDataSource",
 }) as any as S.Schema<MonitorDataSource>;
+export type MetricName = string;
 export interface MetricResult {
   MetricName?: string;
   MetricValue?: number;
@@ -2664,15 +2669,14 @@ export interface ListMonitorEvaluationsResponse {
   NextToken?: string;
   PredictorMonitorEvaluations?: PredictorMonitorEvaluation[];
 }
-export const ListMonitorEvaluationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      PredictorMonitorEvaluations: S.optional(PredictorMonitorEvaluations),
-    }),
-  ).annotate({
-    identifier: "ListMonitorEvaluationsResponse",
-  }) as any as S.Schema<ListMonitorEvaluationsResponse>;
+export const ListMonitorEvaluationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    PredictorMonitorEvaluations: S.optional(PredictorMonitorEvaluations),
+  }),
+).annotate({
+  identifier: "ListMonitorEvaluationsResponse",
+}) as any as S.Schema<ListMonitorEvaluationsResponse>;
 export interface ListMonitorsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -2725,8 +2729,8 @@ export interface ListPredictorBacktestExportJobsRequest {
   MaxResults?: number;
   Filters?: Filter[];
 }
-export const ListPredictorBacktestExportJobsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListPredictorBacktestExportJobsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       NextToken: S.optional(S.String),
       MaxResults: S.optional(S.Number),
@@ -2734,9 +2738,9 @@ export const ListPredictorBacktestExportJobsRequest =
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
-  ).annotate({
-    identifier: "ListPredictorBacktestExportJobsRequest",
-  }) as any as S.Schema<ListPredictorBacktestExportJobsRequest>;
+).annotate({
+  identifier: "ListPredictorBacktestExportJobsRequest",
+}) as any as S.Schema<ListPredictorBacktestExportJobsRequest>;
 export interface PredictorBacktestExportJobSummary {
   PredictorBacktestExportJobArn?: string;
   PredictorBacktestExportJobName?: string;
@@ -2746,22 +2750,21 @@ export interface PredictorBacktestExportJobSummary {
   CreationTime?: Date;
   LastModificationTime?: Date;
 }
-export const PredictorBacktestExportJobSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PredictorBacktestExportJobArn: S.optional(S.String),
-      PredictorBacktestExportJobName: S.optional(S.String),
-      Destination: S.optional(DataDestination),
-      Status: S.optional(S.String),
-      Message: S.optional(S.String),
-      CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      LastModificationTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier: "PredictorBacktestExportJobSummary",
-  }) as any as S.Schema<PredictorBacktestExportJobSummary>;
+export const PredictorBacktestExportJobSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PredictorBacktestExportJobArn: S.optional(S.String),
+    PredictorBacktestExportJobName: S.optional(S.String),
+    Destination: S.optional(DataDestination),
+    Status: S.optional(S.String),
+    Message: S.optional(S.String),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastModificationTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }),
+).annotate({
+  identifier: "PredictorBacktestExportJobSummary",
+}) as any as S.Schema<PredictorBacktestExportJobSummary>;
 export type PredictorBacktestExportJobs = PredictorBacktestExportJobSummary[];
 export const PredictorBacktestExportJobs = /*@__PURE__*/ S.Array(
   PredictorBacktestExportJobSummary,
@@ -2770,15 +2773,15 @@ export interface ListPredictorBacktestExportJobsResponse {
   PredictorBacktestExportJobs?: PredictorBacktestExportJobSummary[];
   NextToken?: string;
 }
-export const ListPredictorBacktestExportJobsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListPredictorBacktestExportJobsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       PredictorBacktestExportJobs: S.optional(PredictorBacktestExportJobs),
       NextToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListPredictorBacktestExportJobsResponse",
-  }) as any as S.Schema<ListPredictorBacktestExportJobsResponse>;
+).annotate({
+  identifier: "ListPredictorBacktestExportJobsResponse",
+}) as any as S.Schema<ListPredictorBacktestExportJobsResponse>;
 export interface ListPredictorsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -2850,10 +2853,11 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ Tags: S.optional(Tags) })).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(Tags) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListWhatIfAnalysesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -2913,18 +2917,17 @@ export interface ListWhatIfForecastExportsRequest {
   MaxResults?: number;
   Filters?: Filter[];
 }
-export const ListWhatIfForecastExportsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      Filters: S.optional(Filters),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListWhatIfForecastExportsRequest",
-  }) as any as S.Schema<ListWhatIfForecastExportsRequest>;
+export const ListWhatIfForecastExportsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    Filters: S.optional(Filters),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListWhatIfForecastExportsRequest",
+}) as any as S.Schema<ListWhatIfForecastExportsRequest>;
 export interface WhatIfForecastExportSummary {
   WhatIfForecastExportArn?: string;
   WhatIfForecastArns?: string[];
@@ -2935,23 +2938,22 @@ export interface WhatIfForecastExportSummary {
   CreationTime?: Date;
   LastModificationTime?: Date;
 }
-export const WhatIfForecastExportSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      WhatIfForecastExportArn: S.optional(S.String),
-      WhatIfForecastArns: S.optional(WhatIfForecastArnListForExport),
-      WhatIfForecastExportName: S.optional(S.String),
-      Destination: S.optional(DataDestination),
-      Status: S.optional(S.String),
-      Message: S.optional(S.String),
-      CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      LastModificationTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier: "WhatIfForecastExportSummary",
-  }) as any as S.Schema<WhatIfForecastExportSummary>;
+export const WhatIfForecastExportSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WhatIfForecastExportArn: S.optional(S.String),
+    WhatIfForecastArns: S.optional(WhatIfForecastArnListForExport),
+    WhatIfForecastExportName: S.optional(S.String),
+    Destination: S.optional(DataDestination),
+    Status: S.optional(S.String),
+    Message: S.optional(S.String),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastModificationTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }),
+).annotate({
+  identifier: "WhatIfForecastExportSummary",
+}) as any as S.Schema<WhatIfForecastExportSummary>;
 export type WhatIfForecastExports = WhatIfForecastExportSummary[];
 export const WhatIfForecastExports = /*@__PURE__*/ S.Array(
   WhatIfForecastExportSummary,
@@ -2960,15 +2962,14 @@ export interface ListWhatIfForecastExportsResponse {
   WhatIfForecastExports?: WhatIfForecastExportSummary[];
   NextToken?: string;
 }
-export const ListWhatIfForecastExportsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      WhatIfForecastExports: S.optional(WhatIfForecastExports),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListWhatIfForecastExportsResponse",
-  }) as any as S.Schema<ListWhatIfForecastExportsResponse>;
+export const ListWhatIfForecastExportsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WhatIfForecastExports: S.optional(WhatIfForecastExports),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListWhatIfForecastExportsResponse",
+}) as any as S.Schema<ListWhatIfForecastExportsResponse>;
 export interface ListWhatIfForecastsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -3015,15 +3016,14 @@ export interface ListWhatIfForecastsResponse {
   WhatIfForecasts?: WhatIfForecastSummary[];
   NextToken?: string;
 }
-export const ListWhatIfForecastsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      WhatIfForecasts: S.optional(WhatIfForecasts),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListWhatIfForecastsResponse",
-  }) as any as S.Schema<ListWhatIfForecastsResponse>;
+export const ListWhatIfForecastsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WhatIfForecasts: S.optional(WhatIfForecasts),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListWhatIfForecastsResponse",
+}) as any as S.Schema<ListWhatIfForecastsResponse>;
 export interface ResumeResourceRequest {
   ResourceArn: string;
 }
@@ -3073,11 +3073,11 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
-export type TagKeys = string | redacted.Redacted<string>[];
+export type TagKeys = (string | redacted.Redacted<string>)[];
 export const TagKeys = /*@__PURE__*/ S.Array(SensitiveString);
 export interface UntagResourceRequest {
   ResourceArn: string;
-  TagKeys: string | redacted.Redacted<string>[];
+  TagKeys: (string | redacted.Redacted<string>)[];
 }
 export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String, TagKeys: TagKeys }).pipe(
@@ -3109,34 +3109,6 @@ export const UpdateDatasetGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateDatasetGroupResponse",
 }) as any as S.Schema<UpdateDatasetGroupResponse>;
-
-//# Errors
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAuthError, C.withAlreadyExistsError) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { Message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CreateAutoPredictorError =
   | InvalidInputException
   | LimitExceededException
@@ -3197,8 +3169,11 @@ export const createAutoPredictor: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAutoPredictor",
 }));
+
 export type CreateDatasetError =
   | InvalidInputException
   | LimitExceededException
@@ -3255,8 +3230,11 @@ export const createDataset: API.OperationMethod<
     LimitExceededException,
     ResourceAlreadyExistsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataset",
 }));
+
 export type CreateDatasetGroupError =
   | InvalidInputException
   | LimitExceededException
@@ -3292,8 +3270,11 @@ export const createDatasetGroup: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDatasetGroup",
 }));
+
 export type CreateDatasetImportJobError =
   | InvalidInputException
   | LimitExceededException
@@ -3340,8 +3321,11 @@ export const createDatasetImportJob: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDatasetImportJob",
 }));
+
 export type CreateExplainabilityError =
   | InvalidInputException
   | LimitExceededException
@@ -3446,8 +3430,11 @@ export const createExplainability: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateExplainability",
 }));
+
 export type CreateExplainabilityExportError =
   | InvalidInputException
   | LimitExceededException
@@ -3481,8 +3468,11 @@ export const createExplainabilityExport: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateExplainabilityExport",
 }));
+
 export type CreateForecastError =
   | InvalidInputException
   | LimitExceededException
@@ -3530,8 +3520,11 @@ export const createForecast: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateForecast",
 }));
+
 export type CreateForecastExportJobError =
   | InvalidInputException
   | LimitExceededException
@@ -3574,8 +3567,11 @@ export const createForecastExportJob: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateForecastExportJob",
 }));
+
 export type CreateMonitorError =
   | InvalidInputException
   | LimitExceededException
@@ -3602,8 +3598,11 @@ export const createMonitor: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMonitor",
 }));
+
 export type CreatePredictorError =
   | InvalidInputException
   | LimitExceededException
@@ -3680,8 +3679,11 @@ export const createPredictor: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePredictor",
 }));
+
 export type CreatePredictorBacktestExportJobError =
   | InvalidInputException
   | LimitExceededException
@@ -3722,8 +3724,11 @@ export const createPredictorBacktestExportJob: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePredictorBacktestExportJob",
 }));
+
 export type CreateWhatIfAnalysisError =
   | InvalidInputException
   | LimitExceededException
@@ -3765,8 +3770,11 @@ export const createWhatIfAnalysis: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWhatIfAnalysis",
 }));
+
 export type CreateWhatIfForecastError =
   | InvalidInputException
   | LimitExceededException
@@ -3793,8 +3801,11 @@ export const createWhatIfForecast: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWhatIfForecast",
 }));
+
 export type CreateWhatIfForecastExportError =
   | InvalidInputException
   | LimitExceededException
@@ -3838,8 +3849,11 @@ export const createWhatIfForecastExport: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWhatIfForecastExport",
 }));
+
 export type DeleteDatasetError =
   | InvalidInputException
   | ResourceInUseException
@@ -3867,8 +3881,11 @@ export const deleteDataset: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataset",
 }));
+
 export type DeleteDatasetGroupError =
   | InvalidInputException
   | ResourceInUseException
@@ -3894,8 +3911,11 @@ export const deleteDatasetGroup: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDatasetGroup",
 }));
+
 export type DeleteDatasetImportJobError =
   | InvalidInputException
   | ResourceInUseException
@@ -3920,8 +3940,11 @@ export const deleteDatasetImportJob: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDatasetImportJob",
 }));
+
 export type DeleteExplainabilityError =
   | InvalidInputException
   | ResourceInUseException
@@ -3946,8 +3969,11 @@ export const deleteExplainability: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteExplainability",
 }));
+
 export type DeleteExplainabilityExportError =
   | InvalidInputException
   | ResourceInUseException
@@ -3969,8 +3995,11 @@ export const deleteExplainabilityExport: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteExplainabilityExport",
 }));
+
 export type DeleteForecastError =
   | InvalidInputException
   | ResourceInUseException
@@ -3997,8 +4026,11 @@ export const deleteForecast: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteForecast",
 }));
+
 export type DeleteForecastExportJobError =
   | InvalidInputException
   | ResourceInUseException
@@ -4022,8 +4054,11 @@ export const deleteForecastExportJob: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteForecastExportJob",
 }));
+
 export type DeleteMonitorError =
   | InvalidInputException
   | ResourceInUseException
@@ -4045,8 +4080,11 @@ export const deleteMonitor: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMonitor",
 }));
+
 export type DeletePredictorError =
   | InvalidInputException
   | ResourceInUseException
@@ -4069,8 +4107,11 @@ export const deletePredictor: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePredictor",
 }));
+
 export type DeletePredictorBacktestExportJobError =
   | InvalidInputException
   | ResourceInUseException
@@ -4092,8 +4133,11 @@ export const deletePredictorBacktestExportJob: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePredictorBacktestExportJob",
 }));
+
 export type DeleteResourceTreeError =
   | InvalidInputException
   | ResourceInUseException
@@ -4135,8 +4179,11 @@ export const deleteResourceTree: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourceTree",
 }));
+
 export type DeleteWhatIfAnalysisError =
   | InvalidInputException
   | ResourceInUseException
@@ -4161,8 +4208,11 @@ export const deleteWhatIfAnalysis: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWhatIfAnalysis",
 }));
+
 export type DeleteWhatIfForecastError =
   | InvalidInputException
   | ResourceInUseException
@@ -4187,8 +4237,11 @@ export const deleteWhatIfForecast: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWhatIfForecast",
 }));
+
 export type DeleteWhatIfForecastExportError =
   | InvalidInputException
   | ResourceInUseException
@@ -4211,8 +4264,11 @@ export const deleteWhatIfForecastExport: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWhatIfForecastExport",
 }));
+
 export type DescribeAutoPredictorError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4229,8 +4285,11 @@ export const describeAutoPredictor: API.OperationMethod<
   input: DescribeAutoPredictorRequest,
   output: DescribeAutoPredictorResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAutoPredictor",
 }));
+
 export type DescribeDatasetError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4256,8 +4315,11 @@ export const describeDataset: API.OperationMethod<
   input: DescribeDatasetRequest,
   output: DescribeDatasetResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataset",
 }));
+
 export type DescribeDatasetGroupError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4286,8 +4348,11 @@ export const describeDatasetGroup: API.OperationMethod<
   input: DescribeDatasetGroupRequest,
   output: DescribeDatasetGroupResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDatasetGroup",
 }));
+
 export type DescribeDatasetImportJobError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4320,8 +4385,11 @@ export const describeDatasetImportJob: API.OperationMethod<
   input: DescribeDatasetImportJobRequest,
   output: DescribeDatasetImportJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDatasetImportJob",
 }));
+
 export type DescribeExplainabilityError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4338,8 +4406,11 @@ export const describeExplainability: API.OperationMethod<
   input: DescribeExplainabilityRequest,
   output: DescribeExplainabilityResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExplainability",
 }));
+
 export type DescribeExplainabilityExportError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4356,8 +4427,11 @@ export const describeExplainabilityExport: API.OperationMethod<
   input: DescribeExplainabilityExportRequest,
   output: DescribeExplainabilityExportResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExplainabilityExport",
 }));
+
 export type DescribeForecastError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4388,8 +4462,11 @@ export const describeForecast: API.OperationMethod<
   input: DescribeForecastRequest,
   output: DescribeForecastResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeForecast",
 }));
+
 export type DescribeForecastExportJobError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4418,8 +4495,11 @@ export const describeForecastExportJob: API.OperationMethod<
   input: DescribeForecastExportJobRequest,
   output: DescribeForecastExportJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeForecastExportJob",
 }));
+
 export type DescribeMonitorError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4450,8 +4530,11 @@ export const describeMonitor: API.OperationMethod<
   input: DescribeMonitorRequest,
   output: DescribeMonitorResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMonitor",
 }));
+
 export type DescribePredictorError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4489,8 +4572,11 @@ export const describePredictor: API.OperationMethod<
   input: DescribePredictorRequest,
   output: DescribePredictorResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePredictor",
 }));
+
 export type DescribePredictorBacktestExportJobError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4519,8 +4605,11 @@ export const describePredictorBacktestExportJob: API.OperationMethod<
   input: DescribePredictorBacktestExportJobRequest,
   output: DescribePredictorBacktestExportJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePredictorBacktestExportJob",
 }));
+
 export type DescribeWhatIfAnalysisError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4547,8 +4636,11 @@ export const describeWhatIfAnalysis: API.OperationMethod<
   input: DescribeWhatIfAnalysisRequest,
   output: DescribeWhatIfAnalysisResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWhatIfAnalysis",
 }));
+
 export type DescribeWhatIfForecastError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4575,8 +4667,11 @@ export const describeWhatIfForecast: API.OperationMethod<
   input: DescribeWhatIfForecastRequest,
   output: DescribeWhatIfForecastResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWhatIfForecast",
 }));
+
 export type DescribeWhatIfForecastExportError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4603,8 +4698,11 @@ export const describeWhatIfForecastExport: API.OperationMethod<
   input: DescribeWhatIfForecastExportRequest,
   output: DescribeWhatIfForecastExportResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWhatIfForecastExport",
 }));
+
 export type GetAccuracyMetricsError =
   | InvalidInputException
   | ResourceInUseException
@@ -4643,8 +4741,11 @@ export const getAccuracyMetrics: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccuracyMetrics",
 }));
+
 export type ListDatasetGroupsError = InvalidNextTokenException | CommonErrors;
 /**
  * Returns a list of dataset groups created using the CreateDatasetGroup operation.
@@ -4677,6 +4778,8 @@ export const listDatasetGroups: API.OperationMethod<
   input: ListDatasetGroupsRequest,
   output: ListDatasetGroupsResponse,
   errors: [InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatasetGroups",
   pagination: {
     inputToken: "NextToken",
@@ -4685,6 +4788,7 @@ export const listDatasetGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDatasetImportJobsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -4720,6 +4824,8 @@ export const listDatasetImportJobs: API.OperationMethod<
   input: ListDatasetImportJobsRequest,
   output: ListDatasetImportJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatasetImportJobs",
   pagination: {
     inputToken: "NextToken",
@@ -4728,6 +4834,7 @@ export const listDatasetImportJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDatasetsError = InvalidNextTokenException | CommonErrors;
 /**
  * Returns a list of datasets created using the CreateDataset operation. For each
@@ -4758,6 +4865,8 @@ export const listDatasets: API.OperationMethod<
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatasets",
   pagination: {
     inputToken: "NextToken",
@@ -4766,6 +4875,7 @@ export const listDatasets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListExplainabilitiesError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -4802,6 +4912,8 @@ export const listExplainabilities: API.OperationMethod<
   input: ListExplainabilitiesRequest,
   output: ListExplainabilitiesResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExplainabilities",
   pagination: {
     inputToken: "NextToken",
@@ -4810,6 +4922,7 @@ export const listExplainabilities: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListExplainabilityExportsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -4845,6 +4958,8 @@ export const listExplainabilityExports: API.OperationMethod<
   input: ListExplainabilityExportsRequest,
   output: ListExplainabilityExportsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExplainabilityExports",
   pagination: {
     inputToken: "NextToken",
@@ -4853,6 +4968,7 @@ export const listExplainabilityExports: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListForecastExportJobsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -4887,6 +5003,8 @@ export const listForecastExportJobs: API.OperationMethod<
   input: ListForecastExportJobsRequest,
   output: ListForecastExportJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListForecastExportJobs",
   pagination: {
     inputToken: "NextToken",
@@ -4895,6 +5013,7 @@ export const listForecastExportJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListForecastsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -4930,6 +5049,8 @@ export const listForecasts: API.OperationMethod<
   input: ListForecastsRequest,
   output: ListForecastsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListForecasts",
   pagination: {
     inputToken: "NextToken",
@@ -4938,6 +5059,7 @@ export const listForecasts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMonitorEvaluationsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -4978,6 +5100,8 @@ export const listMonitorEvaluations: API.OperationMethod<
     InvalidNextTokenException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMonitorEvaluations",
   pagination: {
     inputToken: "NextToken",
@@ -4986,6 +5110,7 @@ export const listMonitorEvaluations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMonitorsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5018,6 +5143,8 @@ export const listMonitors: API.OperationMethod<
   input: ListMonitorsRequest,
   output: ListMonitorsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMonitors",
   pagination: {
     inputToken: "NextToken",
@@ -5026,6 +5153,7 @@ export const listMonitors: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPredictorBacktestExportJobsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5061,6 +5189,8 @@ export const listPredictorBacktestExportJobs: API.OperationMethod<
   input: ListPredictorBacktestExportJobsRequest,
   output: ListPredictorBacktestExportJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPredictorBacktestExportJobs",
   pagination: {
     inputToken: "NextToken",
@@ -5069,6 +5199,7 @@ export const listPredictorBacktestExportJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPredictorsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5105,6 +5236,8 @@ export const listPredictors: API.OperationMethod<
   input: ListPredictorsRequest,
   output: ListPredictorsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPredictors",
   pagination: {
     inputToken: "NextToken",
@@ -5113,6 +5246,7 @@ export const listPredictors: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -5129,8 +5263,11 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListWhatIfAnalysesError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5162,6 +5299,8 @@ export const listWhatIfAnalyses: API.OperationMethod<
   input: ListWhatIfAnalysesRequest,
   output: ListWhatIfAnalysesResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWhatIfAnalyses",
   pagination: {
     inputToken: "NextToken",
@@ -5170,6 +5309,7 @@ export const listWhatIfAnalyses: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListWhatIfForecastExportsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5201,6 +5341,8 @@ export const listWhatIfForecastExports: API.OperationMethod<
   input: ListWhatIfForecastExportsRequest,
   output: ListWhatIfForecastExportsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWhatIfForecastExports",
   pagination: {
     inputToken: "NextToken",
@@ -5209,6 +5351,7 @@ export const listWhatIfForecastExports: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListWhatIfForecastsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5240,6 +5383,8 @@ export const listWhatIfForecasts: API.OperationMethod<
   input: ListWhatIfForecastsRequest,
   output: ListWhatIfForecastsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWhatIfForecasts",
   pagination: {
     inputToken: "NextToken",
@@ -5248,6 +5393,7 @@ export const listWhatIfForecasts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ResumeResourceError =
   | InvalidInputException
   | LimitExceededException
@@ -5271,8 +5417,11 @@ export const resumeResource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResumeResource",
 }));
+
 export type StopResourceError =
   | InvalidInputException
   | LimitExceededException
@@ -5315,8 +5464,11 @@ export const stopResource: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopResource",
 }));
+
 export type TagResourceError =
   | InvalidInputException
   | LimitExceededException
@@ -5341,8 +5493,11 @@ export const tagResource: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -5359,8 +5514,11 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateDatasetGroupError =
   | InvalidInputException
   | ResourceInUseException
@@ -5386,5 +5544,7 @@ export const updateDatasetGroup: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDatasetGroup",
 }));

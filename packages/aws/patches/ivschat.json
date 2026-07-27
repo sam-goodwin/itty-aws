@@ -1,69 +1,43 @@
 {
   "operations": {
     "createLoggingConfiguration": {
-      "errors": [
-        "ThrottlingException"
-      ]
+      "errors": ["ThrottlingException"]
     },
     "createRoom": {
-      "errors": [
-        "ThrottlingException"
-      ]
+      "errors": ["ThrottlingException"]
     },
     "deleteLoggingConfiguration": {
-      "errors": [
-        "ThrottlingException"
-      ]
+      "errors": ["ThrottlingException"]
     },
     "deleteRoom": {
-      "errors": [
-        "ThrottlingException"
-      ]
+      "errors": ["ThrottlingException"]
     },
     "getLoggingConfiguration": {
-      "errors": [
-        "ThrottlingException"
-      ]
+      "errors": ["ThrottlingException"]
     },
     "getRoom": {
-      "errors": [
-        "ThrottlingException"
-      ]
+      "errors": ["ThrottlingException"]
     },
     "listLoggingConfigurations": {
-      "errors": [
-        "ThrottlingException"
-      ]
+      "errors": ["ThrottlingException"]
     },
     "listRooms": {
-      "errors": [
-        "ThrottlingException"
-      ]
+      "errors": ["ThrottlingException"]
     },
     "listTagsForResource": {
-      "errors": [
-        "ThrottlingException"
-      ]
+      "errors": ["ThrottlingException"]
     },
     "tagResource": {
-      "errors": [
-        "ThrottlingException"
-      ]
+      "errors": ["ThrottlingException"]
     },
     "untagResource": {
-      "errors": [
-        "ThrottlingException"
-      ]
+      "errors": ["ThrottlingException"]
     },
     "updateLoggingConfiguration": {
-      "errors": [
-        "ThrottlingException"
-      ]
+      "errors": ["ThrottlingException"]
     },
     "updateRoom": {
-      "errors": [
-        "ThrottlingException"
-      ]
+      "errors": ["ThrottlingException"]
     }
   },
   "structures": {

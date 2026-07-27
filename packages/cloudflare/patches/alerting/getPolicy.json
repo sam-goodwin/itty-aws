@@ -1,8 +1,91 @@
 {
-  "errors": {
-    "InvalidRoute": [{ "code": 7003 }],
-    "PolicyNotFound": [
-      { "code": 0, "message": { "includes": "Policy not found" } }
-    ]
-  }
+  "description": "Align alerting#PoliciesGet with distilled cloudflare/alerting getPolicy",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.alerting#PoliciesGet",
+      "path": "/shapes/com.cloudflare.alerting#GetPolicy"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.alerting#PoliciesGetRequest",
+      "path": "/shapes/com.cloudflare.alerting#GetPolicyRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.alerting#GetPolicy/input/target",
+      "value": "com.cloudflare.alerting#GetPolicyRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.alerting#PoliciesGetResponse",
+      "path": "/shapes/com.cloudflare.alerting#GetPolicyResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.alerting#GetPolicy/output/target",
+      "value": "com.cloudflare.alerting#GetPolicyResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.alerting#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.alerting#PolicyNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 0,
+              "message": {
+                "includes": "Policy not found"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.alerting#GetPolicy/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.alerting#InvalidRoute"
+        },
+        {
+          "target": "com.cloudflare.alerting#PolicyNotFound"
+        }
+      ]
+    }
+  ]
 }

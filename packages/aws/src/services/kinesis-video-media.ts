@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -82,15 +84,38 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ClientLimitExceededException extends S.TaggedErrorClass<ClientLimitExceededException>()(
+  "ClientLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConnectionLimitExceededException extends S.TaggedErrorClass<ConnectionLimitExceededException>()(
+  "ConnectionLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
+  "InvalidArgumentException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidEndpointException extends S.TaggedErrorClass<InvalidEndpointException>()(
+  "InvalidEndpointException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NotAuthorizedException extends S.TaggedErrorClass<NotAuthorizedException>()(
+  "NotAuthorizedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
 export type StreamName = string;
 export type ResourceARN = string;
-export type FragmentNumberString = string;
-export type ContinuationToken = string;
-export type ContentType = string;
-export type ErrorMessage = string;
-
-//# Schemas
 export type StartSelectorType =
   | "FRAGMENT_NUMBER"
   | "SERVER_TIMESTAMP"
@@ -100,6 +125,9 @@ export type StartSelectorType =
   | "CONTINUATION_TOKEN"
   | (string & {});
 export const StartSelectorType = /*@__PURE__*/ S.String;
+
+export type FragmentNumberString = string;
+export type ContinuationToken = string;
 export interface StartSelector {
   StartSelectorType: StartSelectorType;
   AfterFragmentNumber?: string;
@@ -135,6 +163,7 @@ export const GetMediaInput = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "GetMediaInput" }) as any as S.Schema<GetMediaInput>;
+export type ContentType = string;
 export interface GetMediaOutput {
   ContentType?: string;
   Payload?: T.StreamingOutputBody;
@@ -145,34 +174,7 @@ export const GetMediaOutput = /*@__PURE__*/ S.suspend(() =>
     Payload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
   }),
 ).annotate({ identifier: "GetMediaOutput" }) as any as S.Schema<GetMediaOutput>;
-
-//# Errors
-export class ClientLimitExceededException extends S.TaggedErrorClass<ClientLimitExceededException>()(
-  "ClientLimitExceededException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ConnectionLimitExceededException extends S.TaggedErrorClass<ConnectionLimitExceededException>()(
-  "ConnectionLimitExceededException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
-  "InvalidArgumentException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InvalidEndpointException extends S.TaggedErrorClass<InvalidEndpointException>()(
-  "InvalidEndpointException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class NotAuthorizedException extends S.TaggedErrorClass<NotAuthorizedException>()(
-  "NotAuthorizedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type GetMediaError =
   | ClientLimitExceededException
   | ConnectionLimitExceededException
@@ -234,5 +236,7 @@ export const getMedia: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMedia",
 }));

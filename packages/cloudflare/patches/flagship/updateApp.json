@@ -1,7 +1,65 @@
 {
-  "errors": {
-    "FlagshipAppNotFound": [
-      { "status": 404, "message": { "includes": "App not found" } }
-    ]
-  }
+  "description": "Align flagship#AppsUpdate with distilled cloudflare/flagship updateApp",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.flagship#AppsUpdate",
+      "path": "/shapes/com.cloudflare.flagship#UpdateApp"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.flagship#AppsUpdateRequest",
+      "path": "/shapes/com.cloudflare.flagship#UpdateAppRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.flagship#UpdateApp/input/target",
+      "value": "com.cloudflare.flagship#UpdateAppRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.flagship#AppsUpdateResponse",
+      "path": "/shapes/com.cloudflare.flagship#UpdateAppResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.flagship#UpdateApp/output/target",
+      "value": "com.cloudflare.flagship#UpdateAppResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.flagship#FlagshipAppNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 404,
+              "message": {
+                "includes": "App not found"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.flagship#UpdateApp/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.flagship#FlagshipAppNotFound"
+        }
+      ]
+    }
+  ]
 }

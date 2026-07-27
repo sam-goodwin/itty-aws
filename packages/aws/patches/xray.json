@@ -67,19 +67,9 @@
     }
   },
   "errorCategories": {
-    "GroupNotFound": [
-      "NotFoundError"
-    ],
-    "GroupAlreadyExists": [
-      "AlreadyExistsError",
-      "ConflictError"
-    ],
-    "SamplingRuleNotFound": [
-      "NotFoundError"
-    ],
-    "SamplingRuleAlreadyExists": [
-      "AlreadyExistsError",
-      "ConflictError"
-    ]
+    "GroupNotFound": ["NotFoundError"],
+    "GroupAlreadyExists": ["AlreadyExistsError", "ConflictError"],
+    "SamplingRuleNotFound": ["NotFoundError"],
+    "SamplingRuleAlreadyExists": ["AlreadyExistsError", "ConflictError"]
   }
 }

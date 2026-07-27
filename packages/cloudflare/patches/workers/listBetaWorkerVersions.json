@@ -1,49 +1,73 @@
 {
-  "errors": {
-    "WorkerNotFound": [{ "code": 10007 }]
-  },
-  "response": {
-    "properties": {
-      "result[].bindings[].json": { "type": "unknown" },
-      "result[].bindings[]": {
-        "appendUnion": [
-          {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "name",
-                "required": true,
-                "type": { "kind": "primitive", "value": "string" }
-              },
-              {
-                "name": "type",
-                "required": true,
-                "type": { "kind": "literal", "value": "worker_loader" }
-              }
-            ]
-          },
-          {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "name",
-                "required": true,
-                "type": { "kind": "primitive", "value": "string" }
-              },
-              {
-                "name": "type",
-                "required": true,
-                "type": { "kind": "literal", "value": "artifacts" }
-              },
-              {
-                "name": "namespace",
-                "required": true,
-                "type": { "kind": "primitive", "value": "string" }
-              }
-            ]
-          }
-        ]
+  "description": "Align workers#BetaWorkersVersionsList with distilled cloudflare/workers listBetaWorkerVersions",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#BetaWorkersVersionsList",
+      "path": "/shapes/com.cloudflare.workers#ListBetaWorkerVersions"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#BetaWorkersVersionsListRequest",
+      "path": "/shapes/com.cloudflare.workers#ListBetaWorkerVersionsRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workers#ListBetaWorkerVersions/input/target",
+      "value": "com.cloudflare.workers#ListBetaWorkerVersionsRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#BetaWorkersVersionsListResponse",
+      "path": "/shapes/com.cloudflare.workers#ListBetaWorkerVersionsResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workers#ListBetaWorkerVersions/output/target",
+      "value": "com.cloudflare.workers#ListBetaWorkerVersionsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#ListBetaWorkerVersions/traits/smithy.api#paginated",
+      "value": {
+        "mode": "page",
+        "inputToken": "page",
+        "outputToken": "resultInfo.page",
+        "items": "result",
+        "pageSize": "perPage"
       }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#WorkerNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10007
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#ListBetaWorkerVersions/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.workers#WorkerNotFound"
+        }
+      ]
     }
-  }
+  ]
 }

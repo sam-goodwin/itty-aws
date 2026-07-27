@@ -38,7 +38,10 @@ import { test, testRunId } from "../test.ts";
 // Skip all tests in LocalStack - AppSync is not supported in community edition
 const isLocalStack = process.env.LOCAL === "true" || process.env.LOCAL === "1";
 
-const retrySchedule = Schedule.max([Schedule.recurs(10), Schedule.spaced("1 second")]);
+const retrySchedule = Schedule.both(
+  Schedule.recurs(10),
+  Schedule.spaced("1 second"),
+);
 
 // Simple GraphQL schema for testing
 const TEST_SCHEMA = `
@@ -254,7 +257,9 @@ const withDataSource = <A, E, R>(
         const result = yield* getGraphqlApi({ apiId });
 
         expect(result.graphqlApi).toBeDefined();
-        expect(result.graphqlApi?.name).toEqual(`distilled-appsync-lifecycle-${testRunId}`);
+        expect(result.graphqlApi?.name).toEqual(
+          `distilled-appsync-lifecycle-${testRunId}`,
+        );
         expect(result.graphqlApi?.authenticationType).toEqual("API_KEY");
 
         // List APIs and verify our API is included

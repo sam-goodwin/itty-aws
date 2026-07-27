@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -82,70 +84,67 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type Arn = string;
-export type ApplicationId = string;
-export type SsmSapArn = string;
-export type AppRegistryArn = string;
-export type ComponentId = string;
-export type TagKey = string;
-export type TagValue = string;
-export type SID = string;
-export type SAPInstanceNumber = string;
-export type DatabaseId = string;
-export type OperationId = string;
-export type DatabaseName = string;
-export type SecretId = string | redacted.Redacted<string>;
-export type OperationType = string;
-export type ResourceType = string;
-export type ResourceId = string;
-export type NextToken = string;
-export type MaxResults = number;
-export type FilterName = string;
-export type FilterValue = string;
-export type OperationEventResourceType = string;
-export type SubCheckResultId = string;
-export type RuleResultId = string;
-export type RuleResultMetadataKey = string;
-export type RuleResultMetadataValue = string;
-export type InstanceId = string;
-
-//# Schemas
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type PermissionActionType = "RESTORE" | (string & {});
 export const PermissionActionType = /*@__PURE__*/ S.String;
+
+export type Arn = string;
 export interface DeleteResourcePermissionInput {
   ActionType?: PermissionActionType;
   SourceResourceArn?: string;
   ResourceArn: string;
 }
-export const DeleteResourcePermissionInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ActionType: S.optional(PermissionActionType),
-      SourceResourceArn: S.optional(S.String),
-      ResourceArn: S.String,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/delete-resource-permission" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteResourcePermissionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ActionType: S.optional(PermissionActionType),
+    SourceResourceArn: S.optional(S.String),
+    ResourceArn: S.String,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/delete-resource-permission" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteResourcePermissionInput",
-  }) as any as S.Schema<DeleteResourcePermissionInput>;
+  ),
+).annotate({
+  identifier: "DeleteResourcePermissionInput",
+}) as any as S.Schema<DeleteResourcePermissionInput>;
 export interface DeleteResourcePermissionOutput {
   Policy?: string;
 }
-export const DeleteResourcePermissionOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Policy: S.optional(S.String) }),
-  ).annotate({
-    identifier: "DeleteResourcePermissionOutput",
-  }) as any as S.Schema<DeleteResourcePermissionOutput>;
+export const DeleteResourcePermissionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Policy: S.optional(S.String) }),
+).annotate({
+  identifier: "DeleteResourcePermissionOutput",
+}) as any as S.Schema<DeleteResourcePermissionOutput>;
+export type ApplicationId = string;
 export interface DeregisterApplicationInput {
   ApplicationId: string;
 }
@@ -164,10 +163,13 @@ export const DeregisterApplicationInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeregisterApplicationInput",
 }) as any as S.Schema<DeregisterApplicationInput>;
 export interface DeregisterApplicationOutput {}
-export const DeregisterApplicationOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeregisterApplicationOutput",
-  }) as any as S.Schema<DeregisterApplicationOutput>;
+export const DeregisterApplicationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeregisterApplicationOutput",
+}) as any as S.Schema<DeregisterApplicationOutput>;
+export type SsmSapArn = string;
+export type AppRegistryArn = string;
 export interface GetApplicationInput {
   ApplicationId?: string;
   ApplicationArn?: string;
@@ -193,6 +195,7 @@ export const GetApplicationInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetApplicationInput>;
 export type ApplicationType = "HANA" | "SAP_ABAP" | (string & {});
 export const ApplicationType = /*@__PURE__*/ S.String;
+
 export type ApplicationStatus =
   | "ACTIVATED"
   | "STARTING"
@@ -204,6 +207,7 @@ export type ApplicationStatus =
   | "UNKNOWN"
   | (string & {});
 export const ApplicationStatus = /*@__PURE__*/ S.String;
+
 export type ApplicationDiscoveryStatus =
   | "SUCCESS"
   | "REGISTRATION_FAILED"
@@ -212,6 +216,8 @@ export type ApplicationDiscoveryStatus =
   | "DELETING"
   | (string & {});
 export const ApplicationDiscoveryStatus = /*@__PURE__*/ S.String;
+
+export type ComponentId = string;
 export type ComponentIdList = string[];
 export const ComponentIdList = /*@__PURE__*/ S.Array(S.String);
 export type ApplicationArnList = string[];
@@ -242,6 +248,8 @@ export const Application = /*@__PURE__*/ S.suspend(() =>
     AssociatedApplicationArns: S.optional(ApplicationArnList),
   }),
 ).annotate({ identifier: "Application" }) as any as S.Schema<Application>;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -274,6 +282,8 @@ export const GetComponentInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetComponentInput",
 }) as any as S.Schema<GetComponentInput>;
+export type SID = string;
+export type SAPInstanceNumber = string;
 export type ComponentType =
   | "HANA"
   | "HANA_NODE"
@@ -285,6 +295,7 @@ export type ComponentType =
   | "ERS"
   | (string & {});
 export const ComponentType = /*@__PURE__*/ S.String;
+
 export type ComponentStatus =
   | "ACTIVATED"
   | "STARTING"
@@ -295,6 +306,7 @@ export type ComponentStatus =
   | "UNDEFINED"
   | (string & {});
 export const ComponentStatus = /*@__PURE__*/ S.String;
+
 export type ReplicationMode =
   | "PRIMARY"
   | "NONE"
@@ -303,6 +315,7 @@ export type ReplicationMode =
   | "ASYNC"
   | (string & {});
 export const ReplicationMode = /*@__PURE__*/ S.String;
+
 export type OperationMode =
   | "PRIMARY"
   | "LOGREPLAY"
@@ -311,6 +324,7 @@ export type OperationMode =
   | "NONE"
   | (string & {});
 export const OperationMode = /*@__PURE__*/ S.String;
+
 export type ClusterStatus =
   | "ONLINE"
   | "STANDBY"
@@ -319,6 +333,7 @@ export type ClusterStatus =
   | "NONE"
   | (string & {});
 export const ClusterStatus = /*@__PURE__*/ S.String;
+
 export interface Resilience {
   HsrTier?: string;
   HsrReplicationMode?: ReplicationMode;
@@ -342,6 +357,7 @@ export type AllocationType =
   | "UNKNOWN"
   | (string & {});
 export const AllocationType = /*@__PURE__*/ S.String;
+
 export interface IpAddressMember {
   IpAddress?: string;
   Primary?: boolean;
@@ -372,6 +388,7 @@ export const AssociatedHost = /*@__PURE__*/ S.suspend(() =>
     OsVersion: S.optional(S.String),
   }),
 ).annotate({ identifier: "AssociatedHost" }) as any as S.Schema<AssociatedHost>;
+export type DatabaseId = string;
 export type DatabaseIdList = string[];
 export const DatabaseIdList = /*@__PURE__*/ S.Array(S.String);
 export type HostRole =
@@ -381,6 +398,7 @@ export type HostRole =
   | "UNKNOWN"
   | (string & {});
 export const HostRole = /*@__PURE__*/ S.String;
+
 export interface Host {
   HostName?: string;
   HostIp?: string;
@@ -403,6 +421,7 @@ export type HostList = Host[];
 export const HostList = /*@__PURE__*/ S.Array(Host);
 export type DatabaseConnectionMethod = "DIRECT" | "OVERLAY" | (string & {});
 export const DatabaseConnectionMethod = /*@__PURE__*/ S.String;
+
 export interface DatabaseConnection {
   DatabaseConnectionMethod?: DatabaseConnectionMethod;
   DatabaseArn?: string;
@@ -472,36 +491,38 @@ export const GetComponentOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetComponentOutput",
 }) as any as S.Schema<GetComponentOutput>;
+export type OperationId = string;
 export interface GetConfigurationCheckOperationInput {
   OperationId: string;
 }
-export const GetConfigurationCheckOperationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ OperationId: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/get-configuration-check-operation" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetConfigurationCheckOperationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ OperationId: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/get-configuration-check-operation" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetConfigurationCheckOperationInput",
-  }) as any as S.Schema<GetConfigurationCheckOperationInput>;
+  ),
+).annotate({
+  identifier: "GetConfigurationCheckOperationInput",
+}) as any as S.Schema<GetConfigurationCheckOperationInput>;
 export type OperationStatus =
   | "INPROGRESS"
   | "SUCCESS"
   | "ERROR"
   | (string & {});
 export const OperationStatus = /*@__PURE__*/ S.String;
+
 export type ConfigurationCheckType =
   | "SAP_CHECK_01"
   | "SAP_CHECK_02"
   | "SAP_CHECK_03"
   | (string & {});
 export const ConfigurationCheckType = /*@__PURE__*/ S.String;
+
 export interface RuleStatusCounts {
   Failed?: number;
   Warning?: number;
@@ -532,34 +553,33 @@ export interface ConfigurationCheckOperation {
   EndTime?: Date;
   RuleStatusCounts?: RuleStatusCounts;
 }
-export const ConfigurationCheckOperation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Id: S.optional(S.String),
-      ApplicationId: S.optional(S.String),
-      Status: S.optional(OperationStatus),
-      StatusMessage: S.optional(S.String),
-      ConfigurationCheckId: S.optional(ConfigurationCheckType),
-      ConfigurationCheckName: S.optional(S.String),
-      ConfigurationCheckDescription: S.optional(S.String),
-      StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      RuleStatusCounts: S.optional(RuleStatusCounts),
-    }),
-  ).annotate({
-    identifier: "ConfigurationCheckOperation",
-  }) as any as S.Schema<ConfigurationCheckOperation>;
+export const ConfigurationCheckOperation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    ApplicationId: S.optional(S.String),
+    Status: S.optional(OperationStatus),
+    StatusMessage: S.optional(S.String),
+    ConfigurationCheckId: S.optional(ConfigurationCheckType),
+    ConfigurationCheckName: S.optional(S.String),
+    ConfigurationCheckDescription: S.optional(S.String),
+    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    RuleStatusCounts: S.optional(RuleStatusCounts),
+  }),
+).annotate({
+  identifier: "ConfigurationCheckOperation",
+}) as any as S.Schema<ConfigurationCheckOperation>;
 export interface GetConfigurationCheckOperationOutput {
   ConfigurationCheckOperation?: ConfigurationCheckOperation;
 }
-export const GetConfigurationCheckOperationOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetConfigurationCheckOperationOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ConfigurationCheckOperation: S.optional(ConfigurationCheckOperation),
     }),
-  ).annotate({
-    identifier: "GetConfigurationCheckOperationOutput",
-  }) as any as S.Schema<GetConfigurationCheckOperationOutput>;
+).annotate({
+  identifier: "GetConfigurationCheckOperationOutput",
+}) as any as S.Schema<GetConfigurationCheckOperationOutput>;
 export interface GetDatabaseInput {
   ApplicationId?: string;
   ComponentId?: string;
@@ -585,8 +605,11 @@ export const GetDatabaseInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDatabaseInput",
 }) as any as S.Schema<GetDatabaseInput>;
+export type DatabaseName = string;
 export type CredentialType = "ADMIN" | (string & {});
 export const CredentialType = /*@__PURE__*/ S.String;
+
+export type SecretId = string | redacted.Redacted<string>;
 export interface ApplicationCredential {
   DatabaseName: string;
   CredentialType: CredentialType;
@@ -607,6 +630,7 @@ export const ApplicationCredentialList = /*@__PURE__*/ S.Array(
 );
 export type DatabaseType = "SYSTEM" | "TENANT" | (string & {});
 export const DatabaseType = /*@__PURE__*/ S.String;
+
 export type DatabaseStatus =
   | "RUNNING"
   | "STARTING"
@@ -617,6 +641,7 @@ export type DatabaseStatus =
   | "STOPPING"
   | (string & {});
 export const DatabaseStatus = /*@__PURE__*/ S.String;
+
 export type ComponentArnList = string[];
 export const ComponentArnList = /*@__PURE__*/ S.Array(S.String);
 export interface Database {
@@ -675,11 +700,14 @@ export const GetOperationInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetOperationInput",
 }) as any as S.Schema<GetOperationInput>;
+export type OperationType = string;
 export type OperationProperties = { [key: string]: string | undefined };
 export const OperationProperties = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 ).pipe(T.Sparse());
+export type ResourceType = string;
+export type ResourceId = string;
 export interface Operation {
   Id?: string;
   Type?: string;
@@ -742,18 +770,22 @@ export const GetResourcePermissionInput = /*@__PURE__*/ S.suspend(() =>
 export interface GetResourcePermissionOutput {
   Policy?: string;
 }
-export const GetResourcePermissionOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Policy: S.optional(S.String) }),
-  ).annotate({
-    identifier: "GetResourcePermissionOutput",
-  }) as any as S.Schema<GetResourcePermissionOutput>;
+export const GetResourcePermissionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Policy: S.optional(S.String) }),
+).annotate({
+  identifier: "GetResourcePermissionOutput",
+}) as any as S.Schema<GetResourcePermissionOutput>;
+export type NextToken = string;
+export type MaxResults = number;
+export type FilterName = string;
+export type FilterValue = string;
 export type FilterOperator =
   | "Equals"
   | "GreaterThanOrEquals"
   | "LessThanOrEquals"
   | (string & {});
 export const FilterOperator = /*@__PURE__*/ S.String;
+
 export interface Filter {
   Name: string;
   Value: string;
@@ -878,8 +910,8 @@ export interface ListConfigurationCheckDefinitionsInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListConfigurationCheckDefinitionsInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListConfigurationCheckDefinitionsInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       MaxResults: S.optional(S.Number),
       NextToken: S.optional(S.String),
@@ -896,9 +928,9 @@ export const ListConfigurationCheckDefinitionsInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListConfigurationCheckDefinitionsInput",
-  }) as any as S.Schema<ListConfigurationCheckDefinitionsInput>;
+).annotate({
+  identifier: "ListConfigurationCheckDefinitionsInput",
+}) as any as S.Schema<ListConfigurationCheckDefinitionsInput>;
 export type ApplicationTypeList = ApplicationType[];
 export const ApplicationTypeList = /*@__PURE__*/ S.Array(ApplicationType);
 export interface ConfigurationCheckDefinition {
@@ -907,38 +939,39 @@ export interface ConfigurationCheckDefinition {
   Description?: string;
   ApplicableApplicationTypes?: ApplicationType[];
 }
-export const ConfigurationCheckDefinition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Id: S.optional(ConfigurationCheckType),
-      Name: S.optional(S.String),
-      Description: S.optional(S.String),
-      ApplicableApplicationTypes: S.optional(ApplicationTypeList),
-    }),
-  ).annotate({
-    identifier: "ConfigurationCheckDefinition",
-  }) as any as S.Schema<ConfigurationCheckDefinition>;
+export const ConfigurationCheckDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(ConfigurationCheckType),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    ApplicableApplicationTypes: S.optional(ApplicationTypeList),
+  }),
+).annotate({
+  identifier: "ConfigurationCheckDefinition",
+}) as any as S.Schema<ConfigurationCheckDefinition>;
 export type ConfigurationCheckDefinitionList = ConfigurationCheckDefinition[];
-export const ConfigurationCheckDefinitionList =
-  /*@__PURE__*/ S.Array(ConfigurationCheckDefinition);
+export const ConfigurationCheckDefinitionList = /*@__PURE__*/ S.Array(
+  ConfigurationCheckDefinition,
+);
 export interface ListConfigurationCheckDefinitionsOutput {
   ConfigurationChecks?: ConfigurationCheckDefinition[];
   NextToken?: string;
 }
-export const ListConfigurationCheckDefinitionsOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListConfigurationCheckDefinitionsOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ConfigurationChecks: S.optional(ConfigurationCheckDefinitionList),
       NextToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListConfigurationCheckDefinitionsOutput",
-  }) as any as S.Schema<ListConfigurationCheckDefinitionsOutput>;
+).annotate({
+  identifier: "ListConfigurationCheckDefinitionsOutput",
+}) as any as S.Schema<ListConfigurationCheckDefinitionsOutput>;
 export type ConfigurationCheckOperationListingMode =
   | "ALL_OPERATIONS"
   | "LATEST_PER_CHECK"
   | (string & {});
 export const ConfigurationCheckOperationListingMode = /*@__PURE__*/ S.String;
+
 export interface ListConfigurationCheckOperationsInput {
   ApplicationId: string;
   ListMode?: ConfigurationCheckOperationListingMode;
@@ -946,8 +979,8 @@ export interface ListConfigurationCheckOperationsInput {
   NextToken?: string;
   Filters?: Filter[];
 }
-export const ListConfigurationCheckOperationsInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListConfigurationCheckOperationsInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ApplicationId: S.String,
       ListMode: S.optional(ConfigurationCheckOperationListingMode),
@@ -964,25 +997,26 @@ export const ListConfigurationCheckOperationsInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListConfigurationCheckOperationsInput",
-  }) as any as S.Schema<ListConfigurationCheckOperationsInput>;
+).annotate({
+  identifier: "ListConfigurationCheckOperationsInput",
+}) as any as S.Schema<ListConfigurationCheckOperationsInput>;
 export type ConfigurationCheckOperationList = ConfigurationCheckOperation[];
-export const ConfigurationCheckOperationList =
-  /*@__PURE__*/ S.Array(ConfigurationCheckOperation);
+export const ConfigurationCheckOperationList = /*@__PURE__*/ S.Array(
+  ConfigurationCheckOperation,
+);
 export interface ListConfigurationCheckOperationsOutput {
   ConfigurationCheckOperations?: ConfigurationCheckOperation[];
   NextToken?: string;
 }
-export const ListConfigurationCheckOperationsOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListConfigurationCheckOperationsOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ConfigurationCheckOperations: S.optional(ConfigurationCheckOperationList),
       NextToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListConfigurationCheckOperationsOutput",
-  }) as any as S.Schema<ListConfigurationCheckOperationsOutput>;
+).annotate({
+  identifier: "ListConfigurationCheckOperationsOutput",
+}) as any as S.Schema<ListConfigurationCheckOperationsOutput>;
 export interface ListDatabasesInput {
   ApplicationId?: string;
   ComponentId?: string;
@@ -1067,6 +1101,7 @@ export const ListOperationEventsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListOperationEventsInput",
 }) as any as S.Schema<ListOperationEventsInput>;
+export type OperationEventResourceType = string;
 export interface Resource {
   ResourceArn?: string;
   ResourceType?: string;
@@ -1083,6 +1118,7 @@ export type OperationEventStatus =
   | "FAILED"
   | (string & {});
 export const OperationEventStatus = /*@__PURE__*/ S.String;
+
 export interface OperationEvent {
   Description?: string;
   Resource?: Resource;
@@ -1175,6 +1211,7 @@ export const ListSubCheckResultsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSubCheckResultsInput",
 }) as any as S.Schema<ListSubCheckResultsInput>;
+export type SubCheckResultId = string;
 export type SubCheckReferencesList = string[];
 export const SubCheckReferencesList = /*@__PURE__*/ S.Array(S.String);
 export interface SubCheckResult {
@@ -1210,25 +1247,25 @@ export interface ListSubCheckRuleResultsInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListSubCheckRuleResultsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SubCheckResultId: S.String,
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/list-sub-check-rule-results" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListSubCheckRuleResultsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SubCheckResultId: S.String,
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/list-sub-check-rule-results" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListSubCheckRuleResultsInput",
-  }) as any as S.Schema<ListSubCheckRuleResultsInput>;
+  ),
+).annotate({
+  identifier: "ListSubCheckRuleResultsInput",
+}) as any as S.Schema<ListSubCheckRuleResultsInput>;
+export type RuleResultId = string;
 export type RuleResultStatus =
   | "PASSED"
   | "FAILED"
@@ -1237,6 +1274,9 @@ export type RuleResultStatus =
   | "UNKNOWN"
   | (string & {});
 export const RuleResultStatus = /*@__PURE__*/ S.String;
+
+export type RuleResultMetadataKey = string;
+export type RuleResultMetadataValue = string;
 export type RuleResultMetadata = { [key: string]: string | undefined };
 export const RuleResultMetadata = /*@__PURE__*/ S.Record(
   S.String,
@@ -1264,15 +1304,14 @@ export interface ListSubCheckRuleResultsOutput {
   RuleResults?: RuleResult[];
   NextToken?: string;
 }
-export const ListSubCheckRuleResultsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RuleResults: S.optional(RuleResultList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListSubCheckRuleResultsOutput",
-  }) as any as S.Schema<ListSubCheckRuleResultsOutput>;
+export const ListSubCheckRuleResultsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RuleResults: S.optional(RuleResultList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListSubCheckRuleResultsOutput",
+}) as any as S.Schema<ListSubCheckRuleResultsOutput>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -1293,12 +1332,11 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(TagMap) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagMap) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutResourcePermissionInput {
   ActionType: PermissionActionType;
   SourceResourceArn: string;
@@ -1325,12 +1363,12 @@ export const PutResourcePermissionInput = /*@__PURE__*/ S.suspend(() =>
 export interface PutResourcePermissionOutput {
   Policy?: string;
 }
-export const PutResourcePermissionOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Policy: S.optional(S.String) }),
-  ).annotate({
-    identifier: "PutResourcePermissionOutput",
-  }) as any as S.Schema<PutResourcePermissionOutput>;
+export const PutResourcePermissionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Policy: S.optional(S.String) }),
+).annotate({
+  identifier: "PutResourcePermissionOutput",
+}) as any as S.Schema<PutResourcePermissionOutput>;
+export type InstanceId = string;
 export type InstanceList = string[];
 export const InstanceList = /*@__PURE__*/ S.Array(S.String);
 export interface ComponentInfo {
@@ -1422,30 +1460,28 @@ export const StartApplicationOutput = /*@__PURE__*/ S.suspend(() =>
 export interface StartApplicationRefreshInput {
   ApplicationId: string;
 }
-export const StartApplicationRefreshInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ApplicationId: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/start-application-refresh" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartApplicationRefreshInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ApplicationId: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/start-application-refresh" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartApplicationRefreshInput",
-  }) as any as S.Schema<StartApplicationRefreshInput>;
+  ),
+).annotate({
+  identifier: "StartApplicationRefreshInput",
+}) as any as S.Schema<StartApplicationRefreshInput>;
 export interface StartApplicationRefreshOutput {
   OperationId?: string;
 }
-export const StartApplicationRefreshOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ OperationId: S.optional(S.String) }),
-  ).annotate({
-    identifier: "StartApplicationRefreshOutput",
-  }) as any as S.Schema<StartApplicationRefreshOutput>;
+export const StartApplicationRefreshOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ OperationId: S.optional(S.String) }),
+).annotate({
+  identifier: "StartApplicationRefreshOutput",
+}) as any as S.Schema<StartApplicationRefreshOutput>;
 export type ConfigurationCheckTypeList = ConfigurationCheckType[];
 export const ConfigurationCheckTypeList = /*@__PURE__*/ S.Array(
   ConfigurationCheckType,
@@ -1454,37 +1490,36 @@ export interface StartConfigurationChecksInput {
   ApplicationId: string;
   ConfigurationCheckIds?: ConfigurationCheckType[];
 }
-export const StartConfigurationChecksInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String,
-      ConfigurationCheckIds: S.optional(ConfigurationCheckTypeList),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/start-configuration-checks" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartConfigurationChecksInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.String,
+    ConfigurationCheckIds: S.optional(ConfigurationCheckTypeList),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/start-configuration-checks" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartConfigurationChecksInput",
-  }) as any as S.Schema<StartConfigurationChecksInput>;
+  ),
+).annotate({
+  identifier: "StartConfigurationChecksInput",
+}) as any as S.Schema<StartConfigurationChecksInput>;
 export interface StartConfigurationChecksOutput {
   ConfigurationCheckOperations?: ConfigurationCheckOperation[];
 }
-export const StartConfigurationChecksOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ConfigurationCheckOperations: S.optional(ConfigurationCheckOperationList),
-    }),
-  ).annotate({
-    identifier: "StartConfigurationChecksOutput",
-  }) as any as S.Schema<StartConfigurationChecksOutput>;
+export const StartConfigurationChecksOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ConfigurationCheckOperations: S.optional(ConfigurationCheckOperationList),
+  }),
+).annotate({
+  identifier: "StartConfigurationChecksOutput",
+}) as any as S.Schema<StartConfigurationChecksOutput>;
 export type ConnectedEntityType = "DBMS" | (string & {});
 export const ConnectedEntityType = /*@__PURE__*/ S.String;
+
 export interface StopApplicationInput {
   ApplicationId: string;
   StopConnectedEntity?: ConnectedEntityType;
@@ -1574,6 +1609,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UntagResourceResponse>;
 export type BackintMode = "AWSBackup" | (string & {});
 export const BackintMode = /*@__PURE__*/ S.String;
+
 export interface BackintConfig {
   BackintMode: BackintMode;
   EnsureNoBackupInProcess: boolean;
@@ -1588,66 +1624,40 @@ export interface UpdateApplicationSettingsInput {
   Backint?: BackintConfig;
   DatabaseArn?: string;
 }
-export const UpdateApplicationSettingsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String,
-      CredentialsToAddOrUpdate: S.optional(ApplicationCredentialList),
-      CredentialsToRemove: S.optional(ApplicationCredentialList),
-      Backint: S.optional(BackintConfig),
-      DatabaseArn: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/update-application-settings" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateApplicationSettingsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.String,
+    CredentialsToAddOrUpdate: S.optional(ApplicationCredentialList),
+    CredentialsToRemove: S.optional(ApplicationCredentialList),
+    Backint: S.optional(BackintConfig),
+    DatabaseArn: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/update-application-settings" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateApplicationSettingsInput",
-  }) as any as S.Schema<UpdateApplicationSettingsInput>;
+  ),
+).annotate({
+  identifier: "UpdateApplicationSettingsInput",
+}) as any as S.Schema<UpdateApplicationSettingsInput>;
 export type OperationIdList = string[];
 export const OperationIdList = /*@__PURE__*/ S.Array(S.String);
 export interface UpdateApplicationSettingsOutput {
   Message?: string;
   OperationIds?: string[];
 }
-export const UpdateApplicationSettingsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Message: S.optional(S.String),
-      OperationIds: S.optional(OperationIdList),
-    }),
-  ).annotate({
-    identifier: "UpdateApplicationSettingsOutput",
-  }) as any as S.Schema<UpdateApplicationSettingsOutput>;
-
-//# Errors
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-
-//# Operations
+export const UpdateApplicationSettingsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Message: S.optional(S.String),
+    OperationIds: S.optional(OperationIdList),
+  }),
+).annotate({
+  identifier: "UpdateApplicationSettingsOutput",
+}) as any as S.Schema<UpdateApplicationSettingsOutput>;
 export type DeleteResourcePermissionError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1669,8 +1679,11 @@ export const deleteResourcePermission: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePermission",
 }));
+
 export type DeregisterApplicationError =
   | InternalServerException
   | UnauthorizedException
@@ -1688,8 +1701,11 @@ export const deregisterApplication: API.OperationMethod<
   input: DeregisterApplicationInput,
   output: DeregisterApplicationOutput,
   errors: [InternalServerException, UnauthorizedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterApplication",
 }));
+
 export type GetApplicationError =
   | InternalServerException
   | ValidationException
@@ -1706,8 +1722,11 @@ export const getApplication: API.OperationMethod<
   input: GetApplicationInput,
   output: GetApplicationOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplication",
 }));
+
 export type GetComponentError =
   | InternalServerException
   | UnauthorizedException
@@ -1725,8 +1744,11 @@ export const getComponent: API.OperationMethod<
   input: GetComponentInput,
   output: GetComponentOutput,
   errors: [InternalServerException, UnauthorizedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComponent",
 }));
+
 export type GetConfigurationCheckOperationError =
   | InternalServerException
   | ValidationException
@@ -1743,8 +1765,11 @@ export const getConfigurationCheckOperation: API.OperationMethod<
   input: GetConfigurationCheckOperationInput,
   output: GetConfigurationCheckOperationOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfigurationCheckOperation",
 }));
+
 export type GetDatabaseError =
   | InternalServerException
   | ValidationException
@@ -1761,8 +1786,11 @@ export const getDatabase: API.OperationMethod<
   input: GetDatabaseInput,
   output: GetDatabaseOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDatabase",
 }));
+
 export type GetOperationError =
   | InternalServerException
   | ValidationException
@@ -1779,8 +1807,11 @@ export const getOperation: API.OperationMethod<
   input: GetOperationInput,
   output: GetOperationOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOperation",
 }));
+
 export type GetResourcePermissionError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1802,8 +1833,11 @@ export const getResourcePermission: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePermission",
 }));
+
 export type ListApplicationsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1840,6 +1874,8 @@ export const listApplications: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplications",
   pagination: {
     inputToken: "NextToken",
@@ -1848,6 +1884,7 @@ export const listApplications: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListComponentsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1886,6 +1923,8 @@ export const listComponents: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComponents",
   pagination: {
     inputToken: "NextToken",
@@ -1894,6 +1933,7 @@ export const listComponents: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListConfigurationCheckDefinitionsError =
   | InternalServerException
   | ValidationException
@@ -1925,6 +1965,8 @@ export const listConfigurationCheckDefinitions: API.OperationMethod<
   input: ListConfigurationCheckDefinitionsInput,
   output: ListConfigurationCheckDefinitionsOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurationCheckDefinitions",
   pagination: {
     inputToken: "NextToken",
@@ -1933,6 +1975,7 @@ export const listConfigurationCheckDefinitions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListConfigurationCheckOperationsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1969,6 +2012,8 @@ export const listConfigurationCheckOperations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurationCheckOperations",
   pagination: {
     inputToken: "NextToken",
@@ -1977,6 +2022,7 @@ export const listConfigurationCheckOperations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDatabasesError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2013,6 +2059,8 @@ export const listDatabases: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatabases",
   pagination: {
     inputToken: "NextToken",
@@ -2021,6 +2069,7 @@ export const listDatabases: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOperationEventsError =
   | InternalServerException
   | ValidationException
@@ -2054,6 +2103,8 @@ export const listOperationEvents: API.OperationMethod<
   input: ListOperationEventsInput,
   output: ListOperationEventsOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOperationEvents",
   pagination: {
     inputToken: "NextToken",
@@ -2062,6 +2113,7 @@ export const listOperationEvents: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOperationsError =
   | InternalServerException
   | ValidationException
@@ -2093,6 +2145,8 @@ export const listOperations: API.OperationMethod<
   input: ListOperationsInput,
   output: ListOperationsOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOperations",
   pagination: {
     inputToken: "NextToken",
@@ -2101,6 +2155,7 @@ export const listOperations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSubCheckResultsError =
   | InternalServerException
   | ValidationException
@@ -2132,6 +2187,8 @@ export const listSubCheckResults: API.OperationMethod<
   input: ListSubCheckResultsInput,
   output: ListSubCheckResultsOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSubCheckResults",
   pagination: {
     inputToken: "NextToken",
@@ -2140,6 +2197,7 @@ export const listSubCheckResults: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSubCheckRuleResultsError =
   | InternalServerException
   | ValidationException
@@ -2171,6 +2229,8 @@ export const listSubCheckRuleResults: API.OperationMethod<
   input: ListSubCheckRuleResultsInput,
   output: ListSubCheckRuleResultsOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSubCheckRuleResults",
   pagination: {
     inputToken: "NextToken",
@@ -2179,6 +2239,7 @@ export const listSubCheckRuleResults: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | ConflictException
   | ResourceNotFoundException
@@ -2196,8 +2257,11 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutResourcePermissionError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2219,8 +2283,11 @@ export const putResourcePermission: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePermission",
 }));
+
 export type RegisterApplicationError =
   | ConflictException
   | InternalServerException
@@ -2250,8 +2317,11 @@ export const registerApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterApplication",
 }));
+
 export type StartApplicationError =
   | ConflictException
   | InternalServerException
@@ -2277,8 +2347,11 @@ export const startApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartApplication",
 }));
+
 export type StartApplicationRefreshError =
   | ConflictException
   | InternalServerException
@@ -2304,8 +2377,11 @@ export const startApplicationRefresh: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartApplicationRefresh",
 }));
+
 export type StartConfigurationChecksError =
   | ConflictException
   | InternalServerException
@@ -2329,8 +2405,11 @@ export const startConfigurationChecks: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartConfigurationChecks",
 }));
+
 export type StopApplicationError =
   | ConflictException
   | InternalServerException
@@ -2356,8 +2435,11 @@ export const stopApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopApplication",
 }));
+
 export type TagResourceError =
   | ConflictException
   | ResourceNotFoundException
@@ -2375,8 +2457,11 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | ConflictException
   | ResourceNotFoundException
@@ -2394,8 +2479,11 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateApplicationSettingsError =
   | ConflictException
   | InternalServerException
@@ -2421,5 +2509,7 @@ export const updateApplicationSettings: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplicationSettings",
 }));

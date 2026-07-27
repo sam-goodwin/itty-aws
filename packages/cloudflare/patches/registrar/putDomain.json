@@ -1,13 +1,118 @@
 {
-  "errors": {
-    "RegistrarDomainNotOwned": [
-      {
-        "code": 10000,
-        "status": 403,
-        "message": { "includes": "Domain doesn't belong to the user" }
+  "description": "Align registrar#DomainsUpdate with distilled cloudflare/registrar putDomain",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.registrar#DomainsUpdate",
+      "path": "/shapes/com.cloudflare.registrar#PutDomain"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.registrar#DomainsUpdateRequest",
+      "path": "/shapes/com.cloudflare.registrar#PutDomainRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.registrar#PutDomain/input/target",
+      "value": "com.cloudflare.registrar#PutDomainRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.registrar#DomainsUpdateResponse",
+      "path": "/shapes/com.cloudflare.registrar#PutDomainResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.registrar#PutDomain/output/target",
+      "value": "com.cloudflare.registrar#PutDomainResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.registrar#RegistrarDomainNotOwned",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10000,
+              "status": 403,
+              "message": {
+                "includes": "Domain doesn't belong to the user"
+              }
+            }
+          ]
+        }
       }
-    ],
-    "RegistrarUpdateNotAllowed": [{ "status": 422 }],
-    "Forbidden": [{ "status": 403 }]
-  }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.registrar#RegistrarUpdateNotAllowed",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 422
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.registrar#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.registrar#PutDomain/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.registrar#RegistrarDomainNotOwned"
+        },
+        {
+          "target": "com.cloudflare.registrar#RegistrarUpdateNotAllowed"
+        },
+        {
+          "target": "com.cloudflare.registrar#Forbidden"
+        }
+      ]
+    }
+  ]
 }

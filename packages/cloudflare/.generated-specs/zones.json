@@ -1,0 +1,5695 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.cloudflare.zones#CreateRequestAccount": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#CreateRequest": {
+      "type": "structure",
+      "members": {
+        "account": {
+          "target": "com.cloudflare.zones#CreateRequestAccount",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment (\"label\") not exceeding 63 characters.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#CreateResponseAccount": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the account."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#CreateResponseMeta": {
+      "type": "structure",
+      "members": {
+        "cdn_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The zone is only configured for CDN."
+          }
+        },
+        "custom_certificate_quota": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of Custom Certificates the zone can have."
+          }
+        },
+        "dns_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The zone is only configured for DNS."
+          }
+        },
+        "foundation_dns": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The zone is setup with Foundation DNS."
+          }
+        },
+        "page_rule_quota": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of Page Rules a zone can have."
+          }
+        },
+        "phishing_detected": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The zone has been flagged for phishing."
+          }
+        },
+        "step": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.zones#CreateResponseNameServersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#CreateResponseOriginalNameServersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#CreateResponseOwner": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the owner."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of owner."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#CreateResponsePlan": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "can_subscribe": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "States if the subscription can be activated."
+          }
+        },
+        "currency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The denomination of the customer."
+          }
+        },
+        "externally_managed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If this Zone is managed by another company."
+          }
+        },
+        "frequency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "How often the customer is billed."
+          }
+        },
+        "is_subscribed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "States if the subscription active."
+          }
+        },
+        "legacy_discount": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If the legacy discount applies to this Zone."
+          }
+        },
+        "legacy_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The legacy name of the plan."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the owner."
+          }
+        },
+        "price": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "How much the customer is paying."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#CreateResponsePermissionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#CreateResponseStatus": {
+      "type": "enum",
+      "members": {
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "MOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "moved"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#CreateResponseTenant": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the Tenant account."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#CreateResponseTenantUnit": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#CreateResponseVanityNameServersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#CreateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#required": {}
+          }
+        },
+        "account": {
+          "target": "com.cloudflare.zones#CreateResponseAccount",
+          "traits": {
+            "smithy.api#documentation": "The account the zone belongs to.",
+            "smithy.api#required": {}
+          }
+        },
+        "activated_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time proof of ownership was detected and the zone was made",
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the zone was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "development_mode": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The interval (in seconds) from when development mode expires",
+            "smithy.api#required": {}
+          }
+        },
+        "meta": {
+          "target": "com.cloudflare.zones#CreateResponseMeta",
+          "traits": {
+            "smithy.api#documentation": "Metadata about the zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the zone was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment (\"label\") not exceeding 63 characters.",
+            "smithy.api#required": {}
+          }
+        },
+        "name_servers": {
+          "target": "com.cloudflare.zones#CreateResponseNameServersList",
+          "traits": {
+            "smithy.api#documentation": "The name servers Cloudflare assigns to a zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "original_dnshost": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DNS host at the time of switching to Cloudflare.",
+            "smithy.api#required": {}
+          }
+        },
+        "original_name_servers": {
+          "target": "com.cloudflare.zones#CreateResponseOriginalNameServersList",
+          "traits": {
+            "smithy.api#documentation": "Original name servers before moving to Cloudflare.",
+            "smithy.api#required": {}
+          }
+        },
+        "original_registrar": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Registrar for the domain at the time of switching to Cloudflare.",
+            "smithy.api#required": {}
+          }
+        },
+        "owner": {
+          "target": "com.cloudflare.zones#CreateResponseOwner",
+          "traits": {
+            "smithy.api#documentation": "The owner of the zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "plan": {
+          "target": "com.cloudflare.zones#CreateResponsePlan",
+          "traits": {
+            "smithy.api#documentation": "A Zones subscription information.",
+            "smithy.api#required": {}
+          }
+        },
+        "cname_suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Allows the customer to use a custom apex."
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the zone is only using Cloudflare DNS services. A"
+          }
+        },
+        "permissions": {
+          "target": "com.cloudflare.zones#CreateResponsePermissionsList",
+          "traits": {
+            "smithy.api#documentation": "Legacy permissions based on legacy user membership information."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.zones#CreateResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "The zone status on Cloudflare."
+          }
+        },
+        "tenant": {
+          "target": "com.cloudflare.zones#CreateResponseTenant",
+          "traits": {
+            "smithy.api#documentation": "The root organizational unit that this zone belongs to (such as a tenant or organization)."
+          }
+        },
+        "tenant_unit": {
+          "target": "com.cloudflare.zones#CreateResponseTenantUnit",
+          "traits": {
+            "smithy.api#documentation": "The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization)."
+          }
+        },
+        "type": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is"
+          }
+        },
+        "vanity_name_servers": {
+          "target": "com.cloudflare.zones#CreateResponseVanityNameServersList",
+          "traits": {
+            "smithy.api#documentation": "An array of domains used for custom name servers. This is only available for Business and Enterprise plans."
+          }
+        },
+        "verification_key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Verification key for partial zone setup."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#Create": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#CreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#CreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create Zone"
+      }
+    },
+    "com.cloudflare.zones#DeleteRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#DeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#Delete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#DeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#DeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/zones/{zone_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Deletes an existing zone.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.zones#EditRequestType": {
+      "type": "enum",
+      "members": {
+        "FULL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "full"
+          }
+        },
+        "PARTIAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "partial"
+          }
+        },
+        "SECONDARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary"
+          }
+        },
+        "INTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "internal"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#EditRequestVanityNameServersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#EditRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the zone is only using Cloudflare DNS services. A"
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.zones#EditRequestType",
+          "traits": {
+            "smithy.api#documentation": "A full zone implies that DNS is hosted with Cloudflare. A partial"
+          }
+        },
+        "vanity_name_servers": {
+          "target": "com.cloudflare.zones#EditRequestVanityNameServersList",
+          "traits": {
+            "smithy.api#documentation": "An array of domains used for custom name servers. This is only"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#EditResponseAccount": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the account."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#EditResponseMeta": {
+      "type": "structure",
+      "members": {
+        "cdn_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The zone is only configured for CDN."
+          }
+        },
+        "custom_certificate_quota": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of Custom Certificates the zone can have."
+          }
+        },
+        "dns_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The zone is only configured for DNS."
+          }
+        },
+        "foundation_dns": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The zone is setup with Foundation DNS."
+          }
+        },
+        "page_rule_quota": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of Page Rules a zone can have."
+          }
+        },
+        "phishing_detected": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The zone has been flagged for phishing."
+          }
+        },
+        "step": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.zones#EditResponseNameServersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#EditResponseOriginalNameServersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#EditResponseOwner": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the owner."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of owner."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#EditResponsePlan": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "can_subscribe": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "States if the subscription can be activated."
+          }
+        },
+        "currency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The denomination of the customer."
+          }
+        },
+        "externally_managed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If this Zone is managed by another company."
+          }
+        },
+        "frequency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "How often the customer is billed."
+          }
+        },
+        "is_subscribed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "States if the subscription active."
+          }
+        },
+        "legacy_discount": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If the legacy discount applies to this Zone."
+          }
+        },
+        "legacy_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The legacy name of the plan."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the owner."
+          }
+        },
+        "price": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "How much the customer is paying."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#EditResponsePermissionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#EditResponseStatus": {
+      "type": "enum",
+      "members": {
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "MOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "moved"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#EditResponseTenant": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the Tenant account."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#EditResponseTenantUnit": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#EditResponseVanityNameServersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#EditResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#required": {}
+          }
+        },
+        "account": {
+          "target": "com.cloudflare.zones#EditResponseAccount",
+          "traits": {
+            "smithy.api#documentation": "The account the zone belongs to.",
+            "smithy.api#required": {}
+          }
+        },
+        "activated_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time proof of ownership was detected and the zone was made",
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the zone was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "development_mode": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The interval (in seconds) from when development mode expires",
+            "smithy.api#required": {}
+          }
+        },
+        "meta": {
+          "target": "com.cloudflare.zones#EditResponseMeta",
+          "traits": {
+            "smithy.api#documentation": "Metadata about the zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the zone was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment (\"label\") not exceeding 63 characters.",
+            "smithy.api#required": {}
+          }
+        },
+        "name_servers": {
+          "target": "com.cloudflare.zones#EditResponseNameServersList",
+          "traits": {
+            "smithy.api#documentation": "The name servers Cloudflare assigns to a zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "original_dnshost": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DNS host at the time of switching to Cloudflare.",
+            "smithy.api#required": {}
+          }
+        },
+        "original_name_servers": {
+          "target": "com.cloudflare.zones#EditResponseOriginalNameServersList",
+          "traits": {
+            "smithy.api#documentation": "Original name servers before moving to Cloudflare.",
+            "smithy.api#required": {}
+          }
+        },
+        "original_registrar": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Registrar for the domain at the time of switching to Cloudflare.",
+            "smithy.api#required": {}
+          }
+        },
+        "owner": {
+          "target": "com.cloudflare.zones#EditResponseOwner",
+          "traits": {
+            "smithy.api#documentation": "The owner of the zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "plan": {
+          "target": "com.cloudflare.zones#EditResponsePlan",
+          "traits": {
+            "smithy.api#documentation": "A Zones subscription information.",
+            "smithy.api#required": {}
+          }
+        },
+        "cname_suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Allows the customer to use a custom apex."
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the zone is only using Cloudflare DNS services. A"
+          }
+        },
+        "permissions": {
+          "target": "com.cloudflare.zones#EditResponsePermissionsList",
+          "traits": {
+            "smithy.api#documentation": "Legacy permissions based on legacy user membership information."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.zones#EditResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "The zone status on Cloudflare."
+          }
+        },
+        "tenant": {
+          "target": "com.cloudflare.zones#EditResponseTenant",
+          "traits": {
+            "smithy.api#documentation": "The root organizational unit that this zone belongs to (such as a tenant or organization)."
+          }
+        },
+        "tenant_unit": {
+          "target": "com.cloudflare.zones#EditResponseTenantUnit",
+          "traits": {
+            "smithy.api#documentation": "The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization)."
+          }
+        },
+        "type": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is"
+          }
+        },
+        "vanity_name_servers": {
+          "target": "com.cloudflare.zones#EditResponseVanityNameServersList",
+          "traits": {
+            "smithy.api#documentation": "An array of domains used for custom name servers. This is only available for Business and Enterprise plans."
+          }
+        },
+        "verification_key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Verification key for partial zone setup."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#Edit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#EditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#EditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/zones/{zone_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Edits a zone. Only one zone property can be changed at a time."
+      }
+    },
+    "com.cloudflare.zones#GetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#GetResponseAccount": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the account."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#GetResponseMeta": {
+      "type": "structure",
+      "members": {
+        "cdn_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The zone is only configured for CDN."
+          }
+        },
+        "custom_certificate_quota": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of Custom Certificates the zone can have."
+          }
+        },
+        "dns_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The zone is only configured for DNS."
+          }
+        },
+        "foundation_dns": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The zone is setup with Foundation DNS."
+          }
+        },
+        "page_rule_quota": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of Page Rules a zone can have."
+          }
+        },
+        "phishing_detected": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The zone has been flagged for phishing."
+          }
+        },
+        "step": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.zones#GetResponseNameServersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#GetResponseOriginalNameServersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#GetResponseOwner": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the owner."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of owner."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#GetResponsePlan": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "can_subscribe": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "States if the subscription can be activated."
+          }
+        },
+        "currency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The denomination of the customer."
+          }
+        },
+        "externally_managed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If this Zone is managed by another company."
+          }
+        },
+        "frequency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "How often the customer is billed."
+          }
+        },
+        "is_subscribed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "States if the subscription active."
+          }
+        },
+        "legacy_discount": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If the legacy discount applies to this Zone."
+          }
+        },
+        "legacy_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The legacy name of the plan."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the owner."
+          }
+        },
+        "price": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "How much the customer is paying."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#GetResponsePermissionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#GetResponseStatus": {
+      "type": "enum",
+      "members": {
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "MOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "moved"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#GetResponseTenant": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the Tenant account."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#GetResponseTenantUnit": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#GetResponseVanityNameServersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#GetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#required": {}
+          }
+        },
+        "account": {
+          "target": "com.cloudflare.zones#GetResponseAccount",
+          "traits": {
+            "smithy.api#documentation": "The account the zone belongs to.",
+            "smithy.api#required": {}
+          }
+        },
+        "activated_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time proof of ownership was detected and the zone was made",
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the zone was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "development_mode": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The interval (in seconds) from when development mode expires",
+            "smithy.api#required": {}
+          }
+        },
+        "meta": {
+          "target": "com.cloudflare.zones#GetResponseMeta",
+          "traits": {
+            "smithy.api#documentation": "Metadata about the zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the zone was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment (\"label\") not exceeding 63 characters.",
+            "smithy.api#required": {}
+          }
+        },
+        "name_servers": {
+          "target": "com.cloudflare.zones#GetResponseNameServersList",
+          "traits": {
+            "smithy.api#documentation": "The name servers Cloudflare assigns to a zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "original_dnshost": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DNS host at the time of switching to Cloudflare.",
+            "smithy.api#required": {}
+          }
+        },
+        "original_name_servers": {
+          "target": "com.cloudflare.zones#GetResponseOriginalNameServersList",
+          "traits": {
+            "smithy.api#documentation": "Original name servers before moving to Cloudflare.",
+            "smithy.api#required": {}
+          }
+        },
+        "original_registrar": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Registrar for the domain at the time of switching to Cloudflare.",
+            "smithy.api#required": {}
+          }
+        },
+        "owner": {
+          "target": "com.cloudflare.zones#GetResponseOwner",
+          "traits": {
+            "smithy.api#documentation": "The owner of the zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "plan": {
+          "target": "com.cloudflare.zones#GetResponsePlan",
+          "traits": {
+            "smithy.api#documentation": "A Zones subscription information.",
+            "smithy.api#required": {}
+          }
+        },
+        "cname_suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Allows the customer to use a custom apex."
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the zone is only using Cloudflare DNS services. A"
+          }
+        },
+        "permissions": {
+          "target": "com.cloudflare.zones#GetResponsePermissionsList",
+          "traits": {
+            "smithy.api#documentation": "Legacy permissions based on legacy user membership information."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.zones#GetResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "The zone status on Cloudflare."
+          }
+        },
+        "tenant": {
+          "target": "com.cloudflare.zones#GetResponseTenant",
+          "traits": {
+            "smithy.api#documentation": "The root organizational unit that this zone belongs to (such as a tenant or organization)."
+          }
+        },
+        "tenant_unit": {
+          "target": "com.cloudflare.zones#GetResponseTenantUnit",
+          "traits": {
+            "smithy.api#documentation": "The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization)."
+          }
+        },
+        "type": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is"
+          }
+        },
+        "vanity_name_servers": {
+          "target": "com.cloudflare.zones#GetResponseVanityNameServersList",
+          "traits": {
+            "smithy.api#documentation": "An array of domains used for custom name servers. This is only available for Business and Enterprise plans."
+          }
+        },
+        "verification_key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Verification key for partial zone setup."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#Get": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#GetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#GetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Zone Details",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zones#ListRequestDirection": {
+      "type": "enum",
+      "members": {
+        "ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asc"
+          }
+        },
+        "DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "desc"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#ListRequestMatch": {
+      "type": "enum",
+      "members": {
+        "ANY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "any"
+          }
+        },
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#ListRequestOrder": {
+      "type": "enum",
+      "members": {
+        "NAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "name"
+          }
+        },
+        "STATUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "status"
+          }
+        },
+        "ACCOUNT_ID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "account.id"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#ListRequestStatus": {
+      "type": "enum",
+      "members": {
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "MOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "moved"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#ListRequestType": {
+      "type": "enum",
+      "members": {
+        "FULL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "full"
+          }
+        },
+        "PARTIAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "partial"
+          }
+        },
+        "SECONDARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary"
+          }
+        },
+        "INTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "internal"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#ListRequestTypeList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zones#ListRequestType"
+      }
+    },
+    "com.cloudflare.zones#ListRequest": {
+      "type": "structure",
+      "members": {
+        "account": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "account"
+          }
+        },
+        "direction": {
+          "target": "com.cloudflare.zones#ListRequestDirection",
+          "traits": {
+            "smithy.api#documentation": "Direction to order zones.",
+            "smithy.api#httpQuery": "direction"
+          }
+        },
+        "match": {
+          "target": "com.cloudflare.zones#ListRequestMatch",
+          "traits": {
+            "smithy.api#documentation": "Whether to match all search requirements or at least one (any).",
+            "smithy.api#httpQuery": "match"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A domain name. Optional filter operators can be provided to extend refine the search:",
+            "smithy.api#httpQuery": "name"
+          }
+        },
+        "order": {
+          "target": "com.cloudflare.zones#ListRequestOrder",
+          "traits": {
+            "smithy.api#documentation": "Field to order zones by.",
+            "smithy.api#httpQuery": "order"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Page number of paginated results.",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of zones per page.",
+            "smithy.api#httpQuery": "per_page"
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.zones#ListRequestStatus",
+          "traits": {
+            "smithy.api#documentation": "Specify a zone status to filter by.",
+            "smithy.api#httpQuery": "status"
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.zones#ListRequestTypeList",
+          "traits": {
+            "smithy.api#documentation": "Zone types to filter by. Multiple types can be specified as a comma-separated list (e.g., ?type=full,partial,secondary). When this parameter is not provided, zones with type \"internal\" are excluded from the results.",
+            "smithy.api#httpQuery": "type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#ListResultItemAccount": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the account."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#ListResultItemMeta": {
+      "type": "structure",
+      "members": {
+        "cdn_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The zone is only configured for CDN."
+          }
+        },
+        "custom_certificate_quota": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of Custom Certificates the zone can have."
+          }
+        },
+        "dns_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The zone is only configured for DNS."
+          }
+        },
+        "foundation_dns": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The zone is setup with Foundation DNS."
+          }
+        },
+        "page_rule_quota": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of Page Rules a zone can have."
+          }
+        },
+        "phishing_detected": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The zone has been flagged for phishing."
+          }
+        },
+        "step": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.zones#ListResultItemNameServersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#ListResultItemOriginalNameServersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#ListResultItemOwner": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the owner."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of owner."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#ListResultItemPlan": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "can_subscribe": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "States if the subscription can be activated."
+          }
+        },
+        "currency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The denomination of the customer."
+          }
+        },
+        "externally_managed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If this Zone is managed by another company."
+          }
+        },
+        "frequency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "How often the customer is billed."
+          }
+        },
+        "is_subscribed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "States if the subscription active."
+          }
+        },
+        "legacy_discount": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If the legacy discount applies to this Zone."
+          }
+        },
+        "legacy_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The legacy name of the plan."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the owner."
+          }
+        },
+        "price": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "How much the customer is paying."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#ListResultItemPermissionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#ListResultItemStatus": {
+      "type": "enum",
+      "members": {
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "MOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "moved"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#ListResultItemTenant": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the Tenant account."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#ListResultItemTenantUnit": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#ListResultItemVanityNameServersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#ListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#required": {}
+          }
+        },
+        "account": {
+          "target": "com.cloudflare.zones#ListResultItemAccount",
+          "traits": {
+            "smithy.api#documentation": "The account the zone belongs to.",
+            "smithy.api#required": {}
+          }
+        },
+        "activated_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time proof of ownership was detected and the zone was made",
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the zone was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "development_mode": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The interval (in seconds) from when development mode expires",
+            "smithy.api#required": {}
+          }
+        },
+        "meta": {
+          "target": "com.cloudflare.zones#ListResultItemMeta",
+          "traits": {
+            "smithy.api#documentation": "Metadata about the zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the zone was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment (\"label\") not exceeding 63 characters.",
+            "smithy.api#required": {}
+          }
+        },
+        "name_servers": {
+          "target": "com.cloudflare.zones#ListResultItemNameServersList",
+          "traits": {
+            "smithy.api#documentation": "The name servers Cloudflare assigns to a zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "original_dnshost": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DNS host at the time of switching to Cloudflare.",
+            "smithy.api#required": {}
+          }
+        },
+        "original_name_servers": {
+          "target": "com.cloudflare.zones#ListResultItemOriginalNameServersList",
+          "traits": {
+            "smithy.api#documentation": "Original name servers before moving to Cloudflare.",
+            "smithy.api#required": {}
+          }
+        },
+        "original_registrar": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Registrar for the domain at the time of switching to Cloudflare.",
+            "smithy.api#required": {}
+          }
+        },
+        "owner": {
+          "target": "com.cloudflare.zones#ListResultItemOwner",
+          "traits": {
+            "smithy.api#documentation": "The owner of the zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "plan": {
+          "target": "com.cloudflare.zones#ListResultItemPlan",
+          "traits": {
+            "smithy.api#documentation": "A Zones subscription information.",
+            "smithy.api#required": {}
+          }
+        },
+        "cname_suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Allows the customer to use a custom apex."
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the zone is only using Cloudflare DNS services. A"
+          }
+        },
+        "permissions": {
+          "target": "com.cloudflare.zones#ListResultItemPermissionsList",
+          "traits": {
+            "smithy.api#documentation": "Legacy permissions based on legacy user membership information."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.zones#ListResultItemStatus",
+          "traits": {
+            "smithy.api#documentation": "The zone status on Cloudflare."
+          }
+        },
+        "tenant": {
+          "target": "com.cloudflare.zones#ListResultItemTenant",
+          "traits": {
+            "smithy.api#documentation": "The root organizational unit that this zone belongs to (such as a tenant or organization)."
+          }
+        },
+        "tenant_unit": {
+          "target": "com.cloudflare.zones#ListResultItemTenantUnit",
+          "traits": {
+            "smithy.api#documentation": "The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization)."
+          }
+        },
+        "type": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is"
+          }
+        },
+        "vanity_name_servers": {
+          "target": "com.cloudflare.zones#ListResultItemVanityNameServersList",
+          "traits": {
+            "smithy.api#documentation": "An array of domains used for custom name servers. This is only available for Business and Enterprise plans."
+          }
+        },
+        "verification_key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Verification key for partial zone setup."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#ListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zones#ListResultItem"
+      }
+    },
+    "com.cloudflare.zones#ListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.zones#ListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.zones#List": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#ListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#ListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones",
+          "code": 200
+        },
+        "smithy.api#documentation": "Lists, searches, sorts, and filters your zones. Listing zones across more than 500 accounts is currently not allowed.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zones#ActivationCheckTriggerRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#ActivationCheckTriggerResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#ActivationCheckTrigger": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#ActivationCheckTriggerRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#ActivationCheckTriggerResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/zones/{zone_id}/activation_check",
+          "code": 200
+        },
+        "smithy.api#documentation": "Triggeres a new activation check for a PENDING Zone. This can be triggered every 5 min for paygo/ent customers, every hour for FREE Zones.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.zones#CtAlertingEditRequestEmailsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#CtAlertingEditRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether CT alerting is enabled for the zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "emails": {
+          "target": "com.cloudflare.zones#CtAlertingEditRequestEmailsList",
+          "traits": {
+            "smithy.api#documentation": "Email addresses that receive CT alert notifications. Only present and configurable for Business and Enterprise zones. Maximum of 10 addresses. For Free and Pro zones, notifications are sent to all users with SSL permissions on the zone."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#CtAlertingEditResponseEmailsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#CtAlertingEditResponse": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether CT alerting is enabled for the zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "emails": {
+          "target": "com.cloudflare.zones#CtAlertingEditResponseEmailsList",
+          "traits": {
+            "smithy.api#documentation": "Email addresses that receive CT alert notifications. Only present and configurable for Business and Enterprise zones. Maximum of 10 addresses. For Free and Pro zones, notifications are sent to all users with SSL permissions on the zone."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#CtAlertingEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#CtAlertingEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#CtAlertingEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/zones/{zone_id}/ct/alerting",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create or update the Certificate Transparency alerting subscription for a zone. Enables or disables email notifications when certificates are issued for the zone's domains. For Free and Pro zones, the subscription is toggled on or off using the enabled field. Notification emails are sent to all users with SSL permissions on the zone. For Business and Enterprise zones, the emails field is required and controls which addresses receive alerts. Setting emails to an empty list disables the subscription regardless of the enabled field. A maximum of 10 email addresses may be configured."
+      }
+    },
+    "com.cloudflare.zones#CtAlertingGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#CtAlertingGetResponseEmailsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#CtAlertingGetResponse": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether CT alerting is enabled for the zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "emails": {
+          "target": "com.cloudflare.zones#CtAlertingGetResponseEmailsList",
+          "traits": {
+            "smithy.api#documentation": "Email addresses that receive CT alert notifications. Only present and configurable for Business and Enterprise zones. Maximum of 10 addresses. For Free and Pro zones, notifications are sent to all users with SSL permissions on the zone."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#CtAlertingGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#CtAlertingGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#CtAlertingGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/ct/alerting",
+          "code": 200
+        },
+        "smithy.api#documentation": "Retrieve the Certificate Transparency alerting subscription settings for a zone. Returns whether CT monitoring is enabled and, for Business and Enterprise zones, the list of email addresses that receive alerts.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zones#CustomNameserversGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#CustomNameserversGetResponse": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether zone uses account-level custom nameservers."
+          }
+        },
+        "ns_set": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of the name server set to assign to the zone."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
+    "com.cloudflare.zones#CustomNameserversGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#CustomNameserversGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#CustomNameserversGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/custom_ns",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get metadata for account-level custom nameservers on a zone. Deprecated in favor of [Show DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-a-zone-list-dns-settings).",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zones#CustomNameserversUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether zone uses account-level custom nameservers."
+          }
+        },
+        "ns_set": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of the name server set to assign to the zone."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#CustomNameserversUpdateResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#CustomNameserversUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.zones#CustomNameserversUpdateResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.zones#CustomNameserversUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#CustomNameserversUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#CustomNameserversUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/zones/{zone_id}/custom_ns",
+          "code": 200
+        },
+        "smithy.api#documentation": "Set metadata for account-level custom nameservers on a zone. If you would like new zones in the account to use account custom nameservers by default, use PUT /accounts/:identifier to set the account setting use_account_custom_ns_by_default to true. Deprecated in favor of [Update DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-a-zone-update-dns-settings).",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsCreateRequestEnvironmentsItemPosition": {
+      "type": "structure",
+      "members": {
+        "after": {
+          "target": "smithy.api#String"
+        },
+        "before": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsCreateRequestEnvironmentsItem": {
+      "type": "structure",
+      "members": {
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "locked_on_deployment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "position": {
+          "target": "com.cloudflare.zones#EnvironmentsCreateRequestEnvironmentsItemPosition",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ref": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "http_application_id": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsCreateRequestEnvironmentsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zones#EnvironmentsCreateRequestEnvironmentsItem"
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "environments": {
+          "target": "com.cloudflare.zones#EnvironmentsCreateRequestEnvironmentsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsCreateResponseEnvironmentsItemPosition": {
+      "type": "structure",
+      "members": {
+        "after": {
+          "target": "smithy.api#String"
+        },
+        "before": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsCreateResponseEnvironmentsItem": {
+      "type": "structure",
+      "members": {
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "locked_on_deployment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "position": {
+          "target": "com.cloudflare.zones#EnvironmentsCreateResponseEnvironmentsItemPosition",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ref": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "http_application_id": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsCreateResponseEnvironmentsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zones#EnvironmentsCreateResponseEnvironmentsItem"
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "environments": {
+          "target": "com.cloudflare.zones#EnvironmentsCreateResponseEnvironmentsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#EnvironmentsCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#EnvironmentsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/environments",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create zone environments"
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "environment_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsDeleteResponseEnvironmentsItemPosition": {
+      "type": "structure",
+      "members": {
+        "after": {
+          "target": "smithy.api#String"
+        },
+        "before": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsDeleteResponseEnvironmentsItem": {
+      "type": "structure",
+      "members": {
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "locked_on_deployment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "position": {
+          "target": "com.cloudflare.zones#EnvironmentsDeleteResponseEnvironmentsItemPosition",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ref": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "http_application_id": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsDeleteResponseEnvironmentsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zones#EnvironmentsDeleteResponseEnvironmentsItem"
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "environments": {
+          "target": "com.cloudflare.zones#EnvironmentsDeleteResponseEnvironmentsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#EnvironmentsDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#EnvironmentsDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/zones/{zone_id}/environments/{environment_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete zone environment",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsEditRequestEnvironmentsItemPosition": {
+      "type": "structure",
+      "members": {
+        "after": {
+          "target": "smithy.api#String"
+        },
+        "before": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsEditRequestEnvironmentsItem": {
+      "type": "structure",
+      "members": {
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "locked_on_deployment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "position": {
+          "target": "com.cloudflare.zones#EnvironmentsEditRequestEnvironmentsItemPosition",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ref": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "http_application_id": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsEditRequestEnvironmentsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zones#EnvironmentsEditRequestEnvironmentsItem"
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsEditRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "environments": {
+          "target": "com.cloudflare.zones#EnvironmentsEditRequestEnvironmentsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsEditResponseEnvironmentsItemPosition": {
+      "type": "structure",
+      "members": {
+        "after": {
+          "target": "smithy.api#String"
+        },
+        "before": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsEditResponseEnvironmentsItem": {
+      "type": "structure",
+      "members": {
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "locked_on_deployment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "position": {
+          "target": "com.cloudflare.zones#EnvironmentsEditResponseEnvironmentsItemPosition",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ref": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "http_application_id": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsEditResponseEnvironmentsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zones#EnvironmentsEditResponseEnvironmentsItem"
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsEditResponse": {
+      "type": "structure",
+      "members": {
+        "environments": {
+          "target": "com.cloudflare.zones#EnvironmentsEditResponseEnvironmentsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#EnvironmentsEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#EnvironmentsEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/zones/{zone_id}/environments",
+          "code": 200
+        },
+        "smithy.api#documentation": "Partially update zone environments"
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsListRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsListResponseEnvironmentsItemPosition": {
+      "type": "structure",
+      "members": {
+        "after": {
+          "target": "smithy.api#String"
+        },
+        "before": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsListResponseEnvironmentsItem": {
+      "type": "structure",
+      "members": {
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "locked_on_deployment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "position": {
+          "target": "com.cloudflare.zones#EnvironmentsListResponseEnvironmentsItemPosition",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ref": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "http_application_id": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsListResponseEnvironmentsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zones#EnvironmentsListResponseEnvironmentsItem"
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsListResponse": {
+      "type": "structure",
+      "members": {
+        "environments": {
+          "target": "com.cloudflare.zones#EnvironmentsListResponseEnvironmentsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#EnvironmentsListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#EnvironmentsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/environments",
+          "code": 200
+        },
+        "smithy.api#documentation": "List zone environments",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsRollbackRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "environment_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsRollbackResponseEnvironmentsItemPosition": {
+      "type": "structure",
+      "members": {
+        "after": {
+          "target": "smithy.api#String"
+        },
+        "before": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsRollbackResponseEnvironmentsItem": {
+      "type": "structure",
+      "members": {
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "locked_on_deployment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "position": {
+          "target": "com.cloudflare.zones#EnvironmentsRollbackResponseEnvironmentsItemPosition",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ref": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "http_application_id": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsRollbackResponseEnvironmentsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zones#EnvironmentsRollbackResponseEnvironmentsItem"
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsRollbackResponse": {
+      "type": "structure",
+      "members": {
+        "environments": {
+          "target": "com.cloudflare.zones#EnvironmentsRollbackResponseEnvironmentsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsRollback": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#EnvironmentsRollbackRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#EnvironmentsRollbackResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/environments/{environment_id}/rollback",
+          "code": 200
+        },
+        "smithy.api#documentation": "Roll back zone environment"
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsUpdateRequestEnvironmentsItemPosition": {
+      "type": "structure",
+      "members": {
+        "after": {
+          "target": "smithy.api#String"
+        },
+        "before": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsUpdateRequestEnvironmentsItem": {
+      "type": "structure",
+      "members": {
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "locked_on_deployment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "position": {
+          "target": "com.cloudflare.zones#EnvironmentsUpdateRequestEnvironmentsItemPosition",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ref": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "http_application_id": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsUpdateRequestEnvironmentsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zones#EnvironmentsUpdateRequestEnvironmentsItem"
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "environments": {
+          "target": "com.cloudflare.zones#EnvironmentsUpdateRequestEnvironmentsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsUpdateResponseEnvironmentsItemPosition": {
+      "type": "structure",
+      "members": {
+        "after": {
+          "target": "smithy.api#String"
+        },
+        "before": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsUpdateResponseEnvironmentsItem": {
+      "type": "structure",
+      "members": {
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "locked_on_deployment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "position": {
+          "target": "com.cloudflare.zones#EnvironmentsUpdateResponseEnvironmentsItemPosition",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ref": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "http_application_id": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsUpdateResponseEnvironmentsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zones#EnvironmentsUpdateResponseEnvironmentsItem"
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "environments": {
+          "target": "com.cloudflare.zones#EnvironmentsUpdateResponseEnvironmentsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#EnvironmentsUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#EnvironmentsUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#EnvironmentsUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/zones/{zone_id}/environments",
+          "code": 200
+        },
+        "smithy.api#documentation": "Upsert zone environments",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.zones#HoldsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "include_subdomains": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If provided, the zone hold will extend to block any subdomain of the given zone, as well",
+            "smithy.api#httpQuery": "include_subdomains"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#HoldsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "hold": {
+          "target": "smithy.api#Boolean"
+        },
+        "hold_after": {
+          "target": "smithy.api#String"
+        },
+        "include_subdomains": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#HoldsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#HoldsCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#HoldsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/hold",
+          "code": 200
+        },
+        "smithy.api#documentation": "Enforce a zone hold on the zone, blocking the creation and activation of zones with this zone's hostname. Zone holds cannot be enabled on CDN-only zones."
+      }
+    },
+    "com.cloudflare.zones#HoldsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "hold_after": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If `hold_after` is provided, the hold will be temporarily disabled,",
+            "smithy.api#httpQuery": "hold_after"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#HoldsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "hold": {
+          "target": "smithy.api#Boolean"
+        },
+        "hold_after": {
+          "target": "smithy.api#String"
+        },
+        "include_subdomains": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#HoldsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#HoldsDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#HoldsDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/zones/{zone_id}/hold",
+          "code": 200
+        },
+        "smithy.api#documentation": "Stop enforcement of a zone hold on the zone, permanently or temporarily, allowing the creation and activation of zones with this zone's hostname. Existing zone holds can be removed from CDN-only zones when `hold_after` is not provided. Active holds are automatically disabled when a zone transitions to CDN-only mode.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.zones#HoldsEditRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "hold_after": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If `hold_after` is provided and future-dated, the hold will be temporarily disabled,"
+          }
+        },
+        "include_subdomains": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If `true`, the zone hold will extend to block any subdomain of the given zone, as well"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#HoldsEditResponse": {
+      "type": "structure",
+      "members": {
+        "hold": {
+          "target": "smithy.api#Boolean"
+        },
+        "hold_after": {
+          "target": "smithy.api#String"
+        },
+        "include_subdomains": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#HoldsEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#HoldsEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#HoldsEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/zones/{zone_id}/hold",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update the `hold_after` and/or `include_subdomains` values on an existing zone hold. The hold is enabled if the `hold_after` date-time value is in the past. Existing zone holds can be removed from CDN-only zones by setting `hold_after` to `null`. Other zone hold updates cannot be made on CDN-only zones. Active holds are automatically disabled when a zone transitions to CDN-only mode."
+      }
+    },
+    "com.cloudflare.zones#HoldsGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#HoldsGetResponse": {
+      "type": "structure",
+      "members": {
+        "hold": {
+          "target": "smithy.api#Boolean"
+        },
+        "hold_after": {
+          "target": "smithy.api#String"
+        },
+        "include_subdomains": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#HoldsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#HoldsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#HoldsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/hold",
+          "code": 200
+        },
+        "smithy.api#documentation": "Retrieve whether the zone is subject to a zone hold, and metadata about the hold.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zones#PlansGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "plan_identifier": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#PlansGetResponseFrequency": {
+      "type": "enum",
+      "members": {
+        "WEEKLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "weekly"
+          }
+        },
+        "MONTHLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "monthly"
+          }
+        },
+        "QUARTERLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "quarterly"
+          }
+        },
+        "YEARLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yearly"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#PlansGetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "can_subscribe": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether you can subscribe to this plan."
+          }
+        },
+        "currency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The monetary unit in which pricing information is displayed."
+          }
+        },
+        "externally_managed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether this plan is managed externally."
+          }
+        },
+        "frequency": {
+          "target": "com.cloudflare.zones#PlansGetResponseFrequency",
+          "traits": {
+            "smithy.api#documentation": "The frequency at which you will be billed for this plan."
+          }
+        },
+        "is_subscribed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether you are currently subscribed to this plan."
+          }
+        },
+        "legacy_discount": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether this plan has a legacy discount applied."
+          }
+        },
+        "legacy_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The legacy identifier for this rate plan, if any."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The plan name."
+          }
+        },
+        "price": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The amount you will be billed for this plan."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#PlansGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#PlansGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#PlansGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/available_plans/{plan_identifier}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Details of the available plan that the zone can subscribe to.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zones#PlansListRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#PlansListResultItemFrequency": {
+      "type": "enum",
+      "members": {
+        "WEEKLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "weekly"
+          }
+        },
+        "MONTHLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "monthly"
+          }
+        },
+        "QUARTERLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "quarterly"
+          }
+        },
+        "YEARLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yearly"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#PlansListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "can_subscribe": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether you can subscribe to this plan."
+          }
+        },
+        "currency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The monetary unit in which pricing information is displayed."
+          }
+        },
+        "externally_managed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether this plan is managed externally."
+          }
+        },
+        "frequency": {
+          "target": "com.cloudflare.zones#PlansListResultItemFrequency",
+          "traits": {
+            "smithy.api#documentation": "The frequency at which you will be billed for this plan."
+          }
+        },
+        "is_subscribed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether you are currently subscribed to this plan."
+          }
+        },
+        "legacy_discount": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether this plan has a legacy discount applied."
+          }
+        },
+        "legacy_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The legacy identifier for this rate plan, if any."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The plan name."
+          }
+        },
+        "price": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The amount you will be billed for this plan."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#PlansListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zones#PlansListResultItem"
+      }
+    },
+    "com.cloudflare.zones#PlansListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.zones#PlansListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.zones#PlansList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#PlansListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#PlansListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/available_plans",
+          "code": 200
+        },
+        "smithy.api#documentation": "Lists available plans the zone can subscribe to.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zones#RatePlansGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#RatePlansGetResultItemComponentsItemName": {
+      "type": "enum",
+      "members": {
+        "ZONES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zones"
+          }
+        },
+        "PAGE_RULES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "page_rules"
+          }
+        },
+        "DEDICATED_CERTIFICATES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dedicated_certificates"
+          }
+        },
+        "DEDICATED_CERTIFICATES_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dedicated_certificates_custom"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#RatePlansGetResultItemComponentsItem": {
+      "type": "structure",
+      "members": {
+        "default": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The default amount allocated."
+          }
+        },
+        "name": {
+          "target": "com.cloudflare.zones#RatePlansGetResultItemComponentsItemName",
+          "traits": {
+            "smithy.api#documentation": "The unique component."
+          }
+        },
+        "unit_price": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The unit price of the addon."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#RatePlansGetResultItemComponentsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zones#RatePlansGetResultItemComponentsItem"
+      }
+    },
+    "com.cloudflare.zones#RatePlansGetResultItemFrequency": {
+      "type": "enum",
+      "members": {
+        "WEEKLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "weekly"
+          }
+        },
+        "MONTHLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "monthly"
+          }
+        },
+        "QUARTERLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "quarterly"
+          }
+        },
+        "YEARLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yearly"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#RatePlansGetResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Plan identifier tag."
+          }
+        },
+        "components": {
+          "target": "com.cloudflare.zones#RatePlansGetResultItemComponentsList",
+          "traits": {
+            "smithy.api#documentation": "Array of available components values for the plan."
+          }
+        },
+        "currency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The monetary unit in which pricing information is displayed."
+          }
+        },
+        "duration": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The duration of the plan subscription."
+          }
+        },
+        "frequency": {
+          "target": "com.cloudflare.zones#RatePlansGetResultItemFrequency",
+          "traits": {
+            "smithy.api#documentation": "The frequency at which you will be billed for this plan."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The plan name."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#RatePlansGetResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zones#RatePlansGetResultItem"
+      }
+    },
+    "com.cloudflare.zones#RatePlansGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.zones#RatePlansGetResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.zones#RatePlansGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#RatePlansGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#RatePlansGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/available_rate_plans",
+          "code": 200
+        },
+        "smithy.api#documentation": "Lists all rate plans the zone can subscribe to.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zones#SettingsBulkEditRequestBodyItemId": {
+      "type": "enum",
+      "members": {
+        "_0RTT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "0rtt"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsBulkEditRequestBodyItemValue": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsBulkEditRequestBodyItemEditable": {
+      "type": "structure",
+      "members": {
+        "true": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "false": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsBulkEditRequestBodyItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.zones#SettingsBulkEditRequestBodyItemId",
+          "traits": {
+            "smithy.api#documentation": "ID of the zone setting."
+          }
+        },
+        "value": {
+          "target": "com.cloudflare.zones#SettingsBulkEditRequestBodyItemValue",
+          "traits": {
+            "smithy.api#documentation": "Current value of the zone setting."
+          }
+        },
+        "editable": {
+          "target": "com.cloudflare.zones#SettingsBulkEditRequestBodyItemEditable",
+          "traits": {
+            "smithy.api#documentation": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "last time this setting was modified."
+          }
+        },
+        "time_remaining": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value of the zone setting."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "ssl-recommender enrollment setting."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsBulkEditRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zones#SettingsBulkEditRequestBodyItem"
+      }
+    },
+    "com.cloudflare.zones#SettingsBulkEditRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "com.cloudflare.zones#SettingsBulkEditRequestBodyList",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#SettingsBulkEditResultItemId": {
+      "type": "enum",
+      "members": {
+        "_0RTT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "0rtt"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsBulkEditResultItemValue": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsBulkEditResultItemEditable": {
+      "type": "structure",
+      "members": {
+        "true": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "false": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsBulkEditResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.zones#SettingsBulkEditResultItemId",
+          "traits": {
+            "smithy.api#documentation": "ID of the zone setting."
+          }
+        },
+        "value": {
+          "target": "com.cloudflare.zones#SettingsBulkEditResultItemValue",
+          "traits": {
+            "smithy.api#documentation": "Current value of the zone setting."
+          }
+        },
+        "editable": {
+          "target": "com.cloudflare.zones#SettingsBulkEditResultItemEditable",
+          "traits": {
+            "smithy.api#documentation": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "last time this setting was modified."
+          }
+        },
+        "time_remaining": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value of the zone setting."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "ssl-recommender enrollment setting."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsBulkEditResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zones#SettingsBulkEditResultItem"
+      }
+    },
+    "com.cloudflare.zones#SettingsBulkEditResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.zones#SettingsBulkEditResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.zones#SettingsBulkEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#SettingsBulkEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#SettingsBulkEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/zones/{zone_id}/settings",
+          "code": 200
+        },
+        "smithy.api#documentation": "Edit settings for a zone."
+      }
+    },
+    "com.cloudflare.zones#SettingsEditRequestBodyEnabled": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "ssl-recommender enrollment setting."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsEditRequestBodyValueValueZonesCiphersValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#SettingsEditRequestBodyValueValueHostnamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#SettingsEditRequestBodyValueValueStrictTransportSecurity": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not strict transport security is enabled."
+          }
+        },
+        "include_subdomains": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Include all subdomains for strict transport security."
+          }
+        },
+        "max_age": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Max age in seconds of the strict transport security."
+          }
+        },
+        "nosniff": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not to include 'X-Content-Type-Options: nosniff' header."
+          }
+        },
+        "preload": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable automatic preload of the HSTS configuration."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsEditRequestBodyValueValue": {
+      "type": "structure",
+      "members": {
+        "unknown": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the feature is enabled or not."
+          }
+        },
+        "pool_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin."
+          }
+        },
+        "ZonesCiphersValue": {
+          "target": "com.cloudflare.zones#SettingsEditRequestBodyValueValueZonesCiphersValueList",
+          "traits": {
+            "smithy.api#documentation": "Value of the zone setting.",
+            "smithy.api#required": {}
+          }
+        },
+        "ZonesProxyReadTimeoutValue": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value of the zone setting.",
+            "smithy.api#required": {}
+          }
+        },
+        "cache_by_device_type": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether or not [cache by device type](https://developers.cloudflare.com/automatic-platform-optimization/reference/cache-device-type/) is enabled."
+          }
+        },
+        "cf": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether or not Cloudflare proxy is enabled."
+          }
+        },
+        "hostnames": {
+          "target": "com.cloudflare.zones#SettingsEditRequestBodyValueValueHostnamesList",
+          "traits": {
+            "smithy.api#documentation": "An array of hostnames where Automatic Platform Optimization for WordPress is activated."
+          }
+        },
+        "wordpress": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether or not site is powered by WordPress."
+          }
+        },
+        "wp_plugin": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether or not [Cloudflare for WordPress plugin](https://wordpress.org/plugins/cloudflare/) is installed."
+          }
+        },
+        "strict_transport_security": {
+          "target": "com.cloudflare.zones#SettingsEditRequestBodyValueValueStrictTransportSecurity",
+          "traits": {
+            "smithy.api#documentation": "Strict Transport Security."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsEditRequestBodyValue": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.cloudflare.zones#SettingsEditRequestBodyValueValue",
+          "traits": {
+            "smithy.api#documentation": "Value of the zone setting."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsEditRequestBody": {
+      "type": "union",
+      "members": {
+        "Enabled": {
+          "target": "com.cloudflare.zones#SettingsEditRequestBodyEnabled"
+        },
+        "Value": {
+          "target": "com.cloudflare.zones#SettingsEditRequestBodyValue"
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsEditRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "setting_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Setting name",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "com.cloudflare.zones#SettingsEditRequestBody",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#SettingsEditResponseId": {
+      "type": "enum",
+      "members": {
+        "_0RTT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "0rtt"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsEditResponseValue": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsEditResponseEditable": {
+      "type": "structure",
+      "members": {
+        "true": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "false": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsEditResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.zones#SettingsEditResponseId",
+          "traits": {
+            "smithy.api#documentation": "ID of the zone setting."
+          }
+        },
+        "value": {
+          "target": "com.cloudflare.zones#SettingsEditResponseValue",
+          "traits": {
+            "smithy.api#documentation": "Current value of the zone setting."
+          }
+        },
+        "editable": {
+          "target": "com.cloudflare.zones#SettingsEditResponseEditable",
+          "traits": {
+            "smithy.api#documentation": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "last time this setting was modified."
+          }
+        },
+        "time_remaining": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value of the zone setting."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "ssl-recommender enrollment setting."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#SettingsEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#SettingsEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#SettingsEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/zones/{zone_id}/settings/{setting_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates a single zone setting by the identifier"
+      }
+    },
+    "com.cloudflare.zones#SettingsGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "setting_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Setting name",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#SettingsGetResponseId": {
+      "type": "enum",
+      "members": {
+        "_0RTT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "0rtt"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsGetResponseValue": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsGetResponseEditable": {
+      "type": "structure",
+      "members": {
+        "true": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "false": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsGetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.zones#SettingsGetResponseId",
+          "traits": {
+            "smithy.api#documentation": "ID of the zone setting."
+          }
+        },
+        "value": {
+          "target": "com.cloudflare.zones#SettingsGetResponseValue",
+          "traits": {
+            "smithy.api#documentation": "Current value of the zone setting."
+          }
+        },
+        "editable": {
+          "target": "com.cloudflare.zones#SettingsGetResponseEditable",
+          "traits": {
+            "smithy.api#documentation": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "last time this setting was modified."
+          }
+        },
+        "time_remaining": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value of the zone setting."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "ssl-recommender enrollment setting."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#SettingsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#SettingsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#SettingsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/settings/{setting_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetch a single zone setting by name",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zones#SettingsListRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#SettingsListResultItemId": {
+      "type": "enum",
+      "members": {
+        "_0RTT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "0rtt"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsListResultItemValue": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsListResultItemEditable": {
+      "type": "structure",
+      "members": {
+        "true": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "false": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.zones#SettingsListResultItemId",
+          "traits": {
+            "smithy.api#documentation": "ID of the zone setting."
+          }
+        },
+        "value": {
+          "target": "com.cloudflare.zones#SettingsListResultItemValue",
+          "traits": {
+            "smithy.api#documentation": "Current value of the zone setting."
+          }
+        },
+        "editable": {
+          "target": "com.cloudflare.zones#SettingsListResultItemEditable",
+          "traits": {
+            "smithy.api#documentation": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "last time this setting was modified."
+          }
+        },
+        "time_remaining": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value of the zone setting."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "ssl-recommender enrollment setting."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zones#SettingsListResultItem"
+      }
+    },
+    "com.cloudflare.zones#SettingsListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.zones#SettingsListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.zones#SettingsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#SettingsListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#SettingsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/settings",
+          "code": 200
+        },
+        "smithy.api#documentation": "Available settings for your user in relation to a zone.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsCreateRequestFrequency": {
+      "type": "enum",
+      "members": {
+        "WEEKLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "weekly"
+          }
+        },
+        "MONTHLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "monthly"
+          }
+        },
+        "QUARTERLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "quarterly"
+          }
+        },
+        "YEARLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yearly"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsCreateRequestRatePlanId": {
+      "type": "enum",
+      "members": {
+        "FREE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "free"
+          }
+        },
+        "LITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lite"
+          }
+        },
+        "PRO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pro"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsCreateRequestRatePlanSetsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsCreateRequestRatePlan": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.zones#SubscriptionsCreateRequestRatePlanId",
+          "traits": {
+            "smithy.api#documentation": "The ID of the rate plan."
+          }
+        },
+        "currency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The currency applied to the rate plan subscription."
+          }
+        },
+        "externally_managed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this rate plan is managed externally from Cloudflare."
+          }
+        },
+        "is_contract": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether a rate plan is enterprise-based (or newly adopted term contract)."
+          }
+        },
+        "public_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The full name of the rate plan."
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The scope that this rate plan applies to."
+          }
+        },
+        "sets": {
+          "target": "com.cloudflare.zones#SubscriptionsCreateRequestRatePlanSetsList",
+          "traits": {
+            "smithy.api#documentation": "The list of sets this rate plan applies to. Returns array of strings."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "frequency": {
+          "target": "com.cloudflare.zones#SubscriptionsCreateRequestFrequency",
+          "traits": {
+            "smithy.api#documentation": "How often the subscription is renewed automatically."
+          }
+        },
+        "rate_plan": {
+          "target": "com.cloudflare.zones#SubscriptionsCreateRequestRatePlan",
+          "traits": {
+            "smithy.api#documentation": "The rate plan applied to the subscription."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsCreateResponseFrequency": {
+      "type": "enum",
+      "members": {
+        "WEEKLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "weekly"
+          }
+        },
+        "MONTHLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "monthly"
+          }
+        },
+        "QUARTERLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "quarterly"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsCreateResponseRatePlanId": {
+      "type": "enum",
+      "members": {
+        "FREE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "free"
+          }
+        },
+        "LITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lite"
+          }
+        },
+        "PRO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pro"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsCreateResponseRatePlanSetsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsCreateResponseRatePlan": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.zones#SubscriptionsCreateResponseRatePlanId",
+          "traits": {
+            "smithy.api#documentation": "The ID of the rate plan."
+          }
+        },
+        "currency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The currency applied to the rate plan subscription."
+          }
+        },
+        "externally_managed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this rate plan is managed externally from Cloudflare."
+          }
+        },
+        "is_contract": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether a rate plan is enterprise-based (or newly adopted term contract)."
+          }
+        },
+        "public_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The full name of the rate plan."
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The scope that this rate plan applies to."
+          }
+        },
+        "sets": {
+          "target": "com.cloudflare.zones#SubscriptionsCreateResponseRatePlanSetsList",
+          "traits": {
+            "smithy.api#documentation": "The list of sets this rate plan applies to. Returns array of strings."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsCreateResponseState": {
+      "type": "enum",
+      "members": {
+        "TRIAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Trial"
+          }
+        },
+        "PROVISIONED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Provisioned"
+          }
+        },
+        "PAID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Paid"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Subscription identifier tag."
+          }
+        },
+        "currency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The monetary unit in which pricing information is displayed."
+          }
+        },
+        "current_period_end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end of the current period and also when the next billing is due."
+          }
+        },
+        "current_period_start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the current billing period started. May match initial_period_start if this is the first period."
+          }
+        },
+        "frequency": {
+          "target": "com.cloudflare.zones#SubscriptionsCreateResponseFrequency",
+          "traits": {
+            "smithy.api#documentation": "How often the subscription is renewed automatically."
+          }
+        },
+        "price": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The price of the subscription that will be billed, in US dollars."
+          }
+        },
+        "rate_plan": {
+          "target": "com.cloudflare.zones#SubscriptionsCreateResponseRatePlan",
+          "traits": {
+            "smithy.api#documentation": "The rate plan applied to the subscription."
+          }
+        },
+        "state": {
+          "target": "com.cloudflare.zones#SubscriptionsCreateResponseState",
+          "traits": {
+            "smithy.api#documentation": "The state that the subscription is in."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#SubscriptionsCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#SubscriptionsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/subscription",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a zone subscription, either plan or add-ons."
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsGetResponseFrequency": {
+      "type": "enum",
+      "members": {
+        "WEEKLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "weekly"
+          }
+        },
+        "MONTHLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "monthly"
+          }
+        },
+        "QUARTERLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "quarterly"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsGetResponseRatePlanId": {
+      "type": "enum",
+      "members": {
+        "FREE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "free"
+          }
+        },
+        "LITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lite"
+          }
+        },
+        "PRO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pro"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsGetResponseRatePlanSetsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsGetResponseRatePlan": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.zones#SubscriptionsGetResponseRatePlanId",
+          "traits": {
+            "smithy.api#documentation": "The ID of the rate plan."
+          }
+        },
+        "currency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The currency applied to the rate plan subscription."
+          }
+        },
+        "externally_managed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this rate plan is managed externally from Cloudflare."
+          }
+        },
+        "is_contract": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether a rate plan is enterprise-based (or newly adopted term contract)."
+          }
+        },
+        "public_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The full name of the rate plan."
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The scope that this rate plan applies to."
+          }
+        },
+        "sets": {
+          "target": "com.cloudflare.zones#SubscriptionsGetResponseRatePlanSetsList",
+          "traits": {
+            "smithy.api#documentation": "The list of sets this rate plan applies to. Returns array of strings."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsGetResponseState": {
+      "type": "enum",
+      "members": {
+        "TRIAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Trial"
+          }
+        },
+        "PROVISIONED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Provisioned"
+          }
+        },
+        "PAID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Paid"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsGetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Subscription identifier tag."
+          }
+        },
+        "currency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The monetary unit in which pricing information is displayed."
+          }
+        },
+        "current_period_end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end of the current period and also when the next billing is due."
+          }
+        },
+        "current_period_start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the current billing period started. May match initial_period_start if this is the first period."
+          }
+        },
+        "frequency": {
+          "target": "com.cloudflare.zones#SubscriptionsGetResponseFrequency",
+          "traits": {
+            "smithy.api#documentation": "How often the subscription is renewed automatically."
+          }
+        },
+        "price": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The price of the subscription that will be billed, in US dollars."
+          }
+        },
+        "rate_plan": {
+          "target": "com.cloudflare.zones#SubscriptionsGetResponseRatePlan",
+          "traits": {
+            "smithy.api#documentation": "The rate plan applied to the subscription."
+          }
+        },
+        "state": {
+          "target": "com.cloudflare.zones#SubscriptionsGetResponseState",
+          "traits": {
+            "smithy.api#documentation": "The state that the subscription is in."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#SubscriptionsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#SubscriptionsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/subscription",
+          "code": 200
+        },
+        "smithy.api#documentation": "Lists zone subscription details.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsUpdateRequestFrequency": {
+      "type": "enum",
+      "members": {
+        "WEEKLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "weekly"
+          }
+        },
+        "MONTHLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "monthly"
+          }
+        },
+        "QUARTERLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "quarterly"
+          }
+        },
+        "YEARLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yearly"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsUpdateRequestRatePlanId": {
+      "type": "enum",
+      "members": {
+        "FREE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "free"
+          }
+        },
+        "LITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lite"
+          }
+        },
+        "PRO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pro"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsUpdateRequestRatePlanSetsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsUpdateRequestRatePlan": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.zones#SubscriptionsUpdateRequestRatePlanId",
+          "traits": {
+            "smithy.api#documentation": "The ID of the rate plan."
+          }
+        },
+        "currency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The currency applied to the rate plan subscription."
+          }
+        },
+        "externally_managed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this rate plan is managed externally from Cloudflare."
+          }
+        },
+        "is_contract": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether a rate plan is enterprise-based (or newly adopted term contract)."
+          }
+        },
+        "public_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The full name of the rate plan."
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The scope that this rate plan applies to."
+          }
+        },
+        "sets": {
+          "target": "com.cloudflare.zones#SubscriptionsUpdateRequestRatePlanSetsList",
+          "traits": {
+            "smithy.api#documentation": "The list of sets this rate plan applies to. Returns array of strings."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "frequency": {
+          "target": "com.cloudflare.zones#SubscriptionsUpdateRequestFrequency",
+          "traits": {
+            "smithy.api#documentation": "How often the subscription is renewed automatically."
+          }
+        },
+        "rate_plan": {
+          "target": "com.cloudflare.zones#SubscriptionsUpdateRequestRatePlan",
+          "traits": {
+            "smithy.api#documentation": "The rate plan applied to the subscription."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsUpdateResponseFrequency": {
+      "type": "enum",
+      "members": {
+        "WEEKLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "weekly"
+          }
+        },
+        "MONTHLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "monthly"
+          }
+        },
+        "QUARTERLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "quarterly"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsUpdateResponseRatePlanId": {
+      "type": "enum",
+      "members": {
+        "FREE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "free"
+          }
+        },
+        "LITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lite"
+          }
+        },
+        "PRO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pro"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsUpdateResponseRatePlanSetsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsUpdateResponseRatePlan": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.zones#SubscriptionsUpdateResponseRatePlanId",
+          "traits": {
+            "smithy.api#documentation": "The ID of the rate plan."
+          }
+        },
+        "currency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The currency applied to the rate plan subscription."
+          }
+        },
+        "externally_managed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this rate plan is managed externally from Cloudflare."
+          }
+        },
+        "is_contract": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether a rate plan is enterprise-based (or newly adopted term contract)."
+          }
+        },
+        "public_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The full name of the rate plan."
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The scope that this rate plan applies to."
+          }
+        },
+        "sets": {
+          "target": "com.cloudflare.zones#SubscriptionsUpdateResponseRatePlanSetsList",
+          "traits": {
+            "smithy.api#documentation": "The list of sets this rate plan applies to. Returns array of strings."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsUpdateResponseState": {
+      "type": "enum",
+      "members": {
+        "TRIAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Trial"
+          }
+        },
+        "PROVISIONED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Provisioned"
+          }
+        },
+        "PAID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Paid"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Subscription identifier tag."
+          }
+        },
+        "currency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The monetary unit in which pricing information is displayed."
+          }
+        },
+        "current_period_end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end of the current period and also when the next billing is due."
+          }
+        },
+        "current_period_start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the current billing period started. May match initial_period_start if this is the first period."
+          }
+        },
+        "frequency": {
+          "target": "com.cloudflare.zones#SubscriptionsUpdateResponseFrequency",
+          "traits": {
+            "smithy.api#documentation": "How often the subscription is renewed automatically."
+          }
+        },
+        "price": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The price of the subscription that will be billed, in US dollars."
+          }
+        },
+        "rate_plan": {
+          "target": "com.cloudflare.zones#SubscriptionsUpdateResponseRatePlan",
+          "traits": {
+            "smithy.api#documentation": "The rate plan applied to the subscription."
+          }
+        },
+        "state": {
+          "target": "com.cloudflare.zones#SubscriptionsUpdateResponseState",
+          "traits": {
+            "smithy.api#documentation": "The state that the subscription is in."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zones#SubscriptionsUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zones#SubscriptionsUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zones#SubscriptionsUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/zones/{zone_id}/subscription",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates zone subscriptions, either plan or add-ons.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.zones#Zones": {
+      "type": "service",
+      "version": "4.0",
+      "operations": [
+        {
+          "target": "com.cloudflare.zones#Create"
+        },
+        {
+          "target": "com.cloudflare.zones#Delete"
+        },
+        {
+          "target": "com.cloudflare.zones#Edit"
+        },
+        {
+          "target": "com.cloudflare.zones#Get"
+        },
+        {
+          "target": "com.cloudflare.zones#List"
+        },
+        {
+          "target": "com.cloudflare.zones#ActivationCheckTrigger"
+        },
+        {
+          "target": "com.cloudflare.zones#CtAlertingEdit"
+        },
+        {
+          "target": "com.cloudflare.zones#CtAlertingGet"
+        },
+        {
+          "target": "com.cloudflare.zones#CustomNameserversGet"
+        },
+        {
+          "target": "com.cloudflare.zones#CustomNameserversUpdate"
+        },
+        {
+          "target": "com.cloudflare.zones#EnvironmentsCreate"
+        },
+        {
+          "target": "com.cloudflare.zones#EnvironmentsDelete"
+        },
+        {
+          "target": "com.cloudflare.zones#EnvironmentsEdit"
+        },
+        {
+          "target": "com.cloudflare.zones#EnvironmentsList"
+        },
+        {
+          "target": "com.cloudflare.zones#EnvironmentsRollback"
+        },
+        {
+          "target": "com.cloudflare.zones#EnvironmentsUpdate"
+        },
+        {
+          "target": "com.cloudflare.zones#HoldsCreate"
+        },
+        {
+          "target": "com.cloudflare.zones#HoldsDelete"
+        },
+        {
+          "target": "com.cloudflare.zones#HoldsEdit"
+        },
+        {
+          "target": "com.cloudflare.zones#HoldsGet"
+        },
+        {
+          "target": "com.cloudflare.zones#PlansGet"
+        },
+        {
+          "target": "com.cloudflare.zones#PlansList"
+        },
+        {
+          "target": "com.cloudflare.zones#RatePlansGet"
+        },
+        {
+          "target": "com.cloudflare.zones#SettingsBulkEdit"
+        },
+        {
+          "target": "com.cloudflare.zones#SettingsEdit"
+        },
+        {
+          "target": "com.cloudflare.zones#SettingsGet"
+        },
+        {
+          "target": "com.cloudflare.zones#SettingsList"
+        },
+        {
+          "target": "com.cloudflare.zones#SubscriptionsCreate"
+        },
+        {
+          "target": "com.cloudflare.zones#SubscriptionsGet"
+        },
+        {
+          "target": "com.cloudflare.zones#SubscriptionsUpdate"
+        }
+      ],
+      "traits": {
+        "com.cloudflare.protocols#v4Json": {},
+        "smithy.api#title": "Cloudflare Zones",
+        "smithy.api#documentation": "Cloudflare API — zones resource. Speaks the v4 JSON envelope protocol; operation outputs describe the unwrapped `result` payload."
+      }
+    }
+  }
+}

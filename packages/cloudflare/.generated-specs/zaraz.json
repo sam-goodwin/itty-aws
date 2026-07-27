@@ -1,0 +1,2869 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.cloudflare.zaraz#UpdateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "workflow": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Zaraz workflow.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zaraz#UpdateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.zaraz#Update": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zaraz#UpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zaraz#UpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/zones/{zone_id}/settings/zaraz/workflow",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates Zaraz workflow for a zone.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.zaraz#ConfigGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zaraz#ConfigGetResponseSettingsContextEnricher": {
+      "type": "structure",
+      "members": {
+        "escapedWorkerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "workerTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#ConfigGetResponseSettings": {
+      "type": "structure",
+      "members": {
+        "autoInjectScript": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Automatic injection of Zaraz scripts enabled.",
+            "smithy.api#required": {}
+          }
+        },
+        "contextEnricher": {
+          "target": "com.cloudflare.zaraz#ConfigGetResponseSettingsContextEnricher",
+          "traits": {
+            "smithy.api#documentation": "Details of the worker that receives and edits Zaraz Context object."
+          }
+        },
+        "cookieDomain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The domain Zaraz will use for writing and reading its cookies."
+          }
+        },
+        "ecommerce": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Ecommerce API enabled."
+          }
+        },
+        "eventsApiPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for server-side track events."
+          }
+        },
+        "hideExternalReferer": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Hiding external referrer URL enabled."
+          }
+        },
+        "hideIPAddress": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Trimming IP address enabled."
+          }
+        },
+        "hideQueryParams": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Removing URL query params enabled."
+          }
+        },
+        "hideUserAgent": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Removing sensitive data from User Agent string enabled."
+          }
+        },
+        "initPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for Zaraz init script."
+          }
+        },
+        "injectIframes": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Injection of Zaraz scripts into iframes enabled."
+          }
+        },
+        "mcRootPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom path for Managed Components server functionalities."
+          }
+        },
+        "scriptPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for Zaraz main script."
+          }
+        },
+        "trackPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for Zaraz tracking requests."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#ConfigGetResponseToolsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigGetResponseTriggersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigGetResponseVariablesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigGetResponseAnalytics": {
+      "type": "structure",
+      "members": {
+        "defaultPurpose": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Consent purpose assigned to Monitoring."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether Advanced Monitoring reports are enabled."
+          }
+        },
+        "sessionExpTime": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Session expiration time (seconds)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#ConfigGetResponseConsentButtonTextTranslationsAcceptAllMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigGetResponseConsentButtonTextTranslationsRejectAllMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigGetResponseConsentButtonTextTranslations": {
+      "type": "structure",
+      "members": {
+        "accept_all": {
+          "target": "com.cloudflare.zaraz#ConfigGetResponseConsentButtonTextTranslationsAcceptAllMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "confirm_my_choices": {
+          "target": "com.cloudflare.zaraz#ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "reject_all": {
+          "target": "com.cloudflare.zaraz#ConfigGetResponseConsentButtonTextTranslationsRejectAllMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#ConfigGetResponseConsentConsentModalIntroHTMLWithTranslationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigGetResponseConsentPurposesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigGetResponseConsentPurposesWithTranslationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigGetResponseConsent": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "buttonTextTranslations": {
+          "target": "com.cloudflare.zaraz#ConfigGetResponseConsentButtonTextTranslations"
+        },
+        "companyEmail": {
+          "target": "smithy.api#String"
+        },
+        "companyName": {
+          "target": "smithy.api#String"
+        },
+        "companyStreetAddress": {
+          "target": "smithy.api#String"
+        },
+        "consentModalIntroHTML": {
+          "target": "smithy.api#String"
+        },
+        "consentModalIntroHTMLWithTranslations": {
+          "target": "com.cloudflare.zaraz#ConfigGetResponseConsentConsentModalIntroHTMLWithTranslationsMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes."
+          }
+        },
+        "cookieName": {
+          "target": "smithy.api#String"
+        },
+        "customCSS": {
+          "target": "smithy.api#String"
+        },
+        "customIntroDisclaimerDismissed": {
+          "target": "smithy.api#Boolean"
+        },
+        "defaultLanguage": {
+          "target": "smithy.api#String"
+        },
+        "hideModal": {
+          "target": "smithy.api#Boolean"
+        },
+        "purposes": {
+          "target": "com.cloudflare.zaraz#ConfigGetResponseConsentPurposesMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are purpose alpha-numeric IDs."
+          }
+        },
+        "purposesWithTranslations": {
+          "target": "com.cloudflare.zaraz#ConfigGetResponseConsentPurposesWithTranslationsMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are purpose alpha-numeric IDs."
+          }
+        },
+        "tcfCompliant": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.zaraz#ConfigGetResponse": {
+      "type": "structure",
+      "members": {
+        "dataLayer": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Data layer compatibility mode enabled.",
+            "smithy.api#required": {}
+          }
+        },
+        "debugKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key for Zaraz debug mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "settings": {
+          "target": "com.cloudflare.zaraz#ConfigGetResponseSettings",
+          "traits": {
+            "smithy.api#documentation": "General Zaraz settings.",
+            "smithy.api#required": {}
+          }
+        },
+        "tools": {
+          "target": "com.cloudflare.zaraz#ConfigGetResponseToolsMap",
+          "traits": {
+            "smithy.api#documentation": "Tools set up under Zaraz configuration, where key is the alpha-numeric tool ID and value is the tool configuration object.",
+            "smithy.api#required": {}
+          }
+        },
+        "triggers": {
+          "target": "com.cloudflare.zaraz#ConfigGetResponseTriggersMap",
+          "traits": {
+            "smithy.api#documentation": "Triggers set up under Zaraz configuration, where key is the trigger alpha-numeric ID and value is the trigger configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "variables": {
+          "target": "com.cloudflare.zaraz#ConfigGetResponseVariablesMap",
+          "traits": {
+            "smithy.api#documentation": "Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included.",
+            "smithy.api#required": {}
+          }
+        },
+        "zarazVersion": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Zaraz internal version of the config.",
+            "smithy.api#required": {}
+          }
+        },
+        "analytics": {
+          "target": "com.cloudflare.zaraz#ConfigGetResponseAnalytics",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare Monitoring settings."
+          }
+        },
+        "consent": {
+          "target": "com.cloudflare.zaraz#ConfigGetResponseConsent",
+          "traits": {
+            "smithy.api#documentation": "Consent management configuration."
+          }
+        },
+        "historyChange": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Single Page Application support enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zaraz#ConfigGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zaraz#ConfigGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zaraz#ConfigGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/settings/zaraz/config",
+          "code": 200
+        },
+        "smithy.api#documentation": "Gets latest Zaraz configuration for a zone. It can be preview or published configuration, whichever was the last updated. Secret variables values will not be included.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateRequestSettingsContextEnricher": {
+      "type": "structure",
+      "members": {
+        "escapedWorkerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "workerTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateRequestSettings": {
+      "type": "structure",
+      "members": {
+        "autoInjectScript": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Automatic injection of Zaraz scripts enabled.",
+            "smithy.api#required": {}
+          }
+        },
+        "contextEnricher": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateRequestSettingsContextEnricher",
+          "traits": {
+            "smithy.api#documentation": "Details of the worker that receives and edits Zaraz Context object."
+          }
+        },
+        "cookieDomain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The domain Zaraz will use for writing and reading its cookies."
+          }
+        },
+        "ecommerce": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Ecommerce API enabled."
+          }
+        },
+        "eventsApiPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for server-side track events."
+          }
+        },
+        "hideExternalReferer": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Hiding external referrer URL enabled."
+          }
+        },
+        "hideIPAddress": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Trimming IP address enabled."
+          }
+        },
+        "hideQueryParams": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Removing URL query params enabled."
+          }
+        },
+        "hideUserAgent": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Removing sensitive data from User Agent string enabled."
+          }
+        },
+        "initPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for Zaraz init script."
+          }
+        },
+        "injectIframes": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Injection of Zaraz scripts into iframes enabled."
+          }
+        },
+        "mcRootPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom path for Managed Components server functionalities."
+          }
+        },
+        "scriptPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for Zaraz main script."
+          }
+        },
+        "trackPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for Zaraz tracking requests."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateRequestToolsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateRequestTriggersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateRequestVariablesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateRequestAnalytics": {
+      "type": "structure",
+      "members": {
+        "defaultPurpose": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Consent purpose assigned to Monitoring."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether Advanced Monitoring reports are enabled."
+          }
+        },
+        "sessionExpTime": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Session expiration time (seconds)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateRequestConsentButtonTextTranslationsAcceptAllMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateRequestConsentButtonTextTranslationsConfirmMyChoicesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateRequestConsentButtonTextTranslationsRejectAllMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateRequestConsentButtonTextTranslations": {
+      "type": "structure",
+      "members": {
+        "accept_all": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateRequestConsentButtonTextTranslationsAcceptAllMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "confirm_my_choices": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateRequestConsentButtonTextTranslationsConfirmMyChoicesMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "reject_all": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateRequestConsentButtonTextTranslationsRejectAllMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateRequestConsentConsentModalIntroHTMLWithTranslationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateRequestConsentPurposesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateRequestConsentPurposesWithTranslationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateRequestConsent": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "buttonTextTranslations": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateRequestConsentButtonTextTranslations"
+        },
+        "companyEmail": {
+          "target": "smithy.api#String"
+        },
+        "companyName": {
+          "target": "smithy.api#String"
+        },
+        "companyStreetAddress": {
+          "target": "smithy.api#String"
+        },
+        "consentModalIntroHTML": {
+          "target": "smithy.api#String"
+        },
+        "consentModalIntroHTMLWithTranslations": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateRequestConsentConsentModalIntroHTMLWithTranslationsMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes."
+          }
+        },
+        "cookieName": {
+          "target": "smithy.api#String"
+        },
+        "customCSS": {
+          "target": "smithy.api#String"
+        },
+        "customIntroDisclaimerDismissed": {
+          "target": "smithy.api#Boolean"
+        },
+        "defaultLanguage": {
+          "target": "smithy.api#String"
+        },
+        "hideModal": {
+          "target": "smithy.api#Boolean"
+        },
+        "purposes": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateRequestConsentPurposesMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are purpose alpha-numeric IDs."
+          }
+        },
+        "purposesWithTranslations": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateRequestConsentPurposesWithTranslationsMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are purpose alpha-numeric IDs."
+          }
+        },
+        "tcfCompliant": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "dataLayer": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Data layer compatibility mode enabled.",
+            "smithy.api#required": {}
+          }
+        },
+        "debugKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key for Zaraz debug mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "settings": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateRequestSettings",
+          "traits": {
+            "smithy.api#documentation": "General Zaraz settings.",
+            "smithy.api#required": {}
+          }
+        },
+        "tools": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateRequestToolsMap",
+          "traits": {
+            "smithy.api#documentation": "Tools set up under Zaraz configuration, where key is the alpha-numeric tool ID and value is the tool configuration object.",
+            "smithy.api#required": {}
+          }
+        },
+        "triggers": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateRequestTriggersMap",
+          "traits": {
+            "smithy.api#documentation": "Triggers set up under Zaraz configuration, where key is the trigger alpha-numeric ID and value is the trigger configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "variables": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateRequestVariablesMap",
+          "traits": {
+            "smithy.api#documentation": "Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included.",
+            "smithy.api#required": {}
+          }
+        },
+        "zarazVersion": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Zaraz internal version of the config.",
+            "smithy.api#required": {}
+          }
+        },
+        "analytics": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateRequestAnalytics",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare Monitoring settings."
+          }
+        },
+        "consent": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateRequestConsent",
+          "traits": {
+            "smithy.api#documentation": "Consent management configuration."
+          }
+        },
+        "historyChange": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Single Page Application support enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateResponseSettingsContextEnricher": {
+      "type": "structure",
+      "members": {
+        "escapedWorkerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "workerTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateResponseSettings": {
+      "type": "structure",
+      "members": {
+        "autoInjectScript": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Automatic injection of Zaraz scripts enabled.",
+            "smithy.api#required": {}
+          }
+        },
+        "contextEnricher": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateResponseSettingsContextEnricher",
+          "traits": {
+            "smithy.api#documentation": "Details of the worker that receives and edits Zaraz Context object."
+          }
+        },
+        "cookieDomain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The domain Zaraz will use for writing and reading its cookies."
+          }
+        },
+        "ecommerce": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Ecommerce API enabled."
+          }
+        },
+        "eventsApiPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for server-side track events."
+          }
+        },
+        "hideExternalReferer": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Hiding external referrer URL enabled."
+          }
+        },
+        "hideIPAddress": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Trimming IP address enabled."
+          }
+        },
+        "hideQueryParams": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Removing URL query params enabled."
+          }
+        },
+        "hideUserAgent": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Removing sensitive data from User Agent string enabled."
+          }
+        },
+        "initPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for Zaraz init script."
+          }
+        },
+        "injectIframes": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Injection of Zaraz scripts into iframes enabled."
+          }
+        },
+        "mcRootPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom path for Managed Components server functionalities."
+          }
+        },
+        "scriptPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for Zaraz main script."
+          }
+        },
+        "trackPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for Zaraz tracking requests."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateResponseToolsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateResponseTriggersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateResponseVariablesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateResponseAnalytics": {
+      "type": "structure",
+      "members": {
+        "defaultPurpose": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Consent purpose assigned to Monitoring."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether Advanced Monitoring reports are enabled."
+          }
+        },
+        "sessionExpTime": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Session expiration time (seconds)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateResponseConsentButtonTextTranslationsAcceptAllMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateResponseConsentButtonTextTranslationsRejectAllMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateResponseConsentButtonTextTranslations": {
+      "type": "structure",
+      "members": {
+        "accept_all": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateResponseConsentButtonTextTranslationsAcceptAllMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "confirm_my_choices": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "reject_all": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateResponseConsentButtonTextTranslationsRejectAllMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateResponseConsentPurposesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateResponseConsentPurposesWithTranslationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateResponseConsent": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "buttonTextTranslations": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateResponseConsentButtonTextTranslations"
+        },
+        "companyEmail": {
+          "target": "smithy.api#String"
+        },
+        "companyName": {
+          "target": "smithy.api#String"
+        },
+        "companyStreetAddress": {
+          "target": "smithy.api#String"
+        },
+        "consentModalIntroHTML": {
+          "target": "smithy.api#String"
+        },
+        "consentModalIntroHTMLWithTranslations": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes."
+          }
+        },
+        "cookieName": {
+          "target": "smithy.api#String"
+        },
+        "customCSS": {
+          "target": "smithy.api#String"
+        },
+        "customIntroDisclaimerDismissed": {
+          "target": "smithy.api#Boolean"
+        },
+        "defaultLanguage": {
+          "target": "smithy.api#String"
+        },
+        "hideModal": {
+          "target": "smithy.api#Boolean"
+        },
+        "purposes": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateResponseConsentPurposesMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are purpose alpha-numeric IDs."
+          }
+        },
+        "purposesWithTranslations": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateResponseConsentPurposesWithTranslationsMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are purpose alpha-numeric IDs."
+          }
+        },
+        "tcfCompliant": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "dataLayer": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Data layer compatibility mode enabled.",
+            "smithy.api#required": {}
+          }
+        },
+        "debugKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key for Zaraz debug mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "settings": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateResponseSettings",
+          "traits": {
+            "smithy.api#documentation": "General Zaraz settings.",
+            "smithy.api#required": {}
+          }
+        },
+        "tools": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateResponseToolsMap",
+          "traits": {
+            "smithy.api#documentation": "Tools set up under Zaraz configuration, where key is the alpha-numeric tool ID and value is the tool configuration object.",
+            "smithy.api#required": {}
+          }
+        },
+        "triggers": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateResponseTriggersMap",
+          "traits": {
+            "smithy.api#documentation": "Triggers set up under Zaraz configuration, where key is the trigger alpha-numeric ID and value is the trigger configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "variables": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateResponseVariablesMap",
+          "traits": {
+            "smithy.api#documentation": "Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included.",
+            "smithy.api#required": {}
+          }
+        },
+        "zarazVersion": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Zaraz internal version of the config.",
+            "smithy.api#required": {}
+          }
+        },
+        "analytics": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateResponseAnalytics",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare Monitoring settings."
+          }
+        },
+        "consent": {
+          "target": "com.cloudflare.zaraz#ConfigUpdateResponseConsent",
+          "traits": {
+            "smithy.api#documentation": "Consent management configuration."
+          }
+        },
+        "historyChange": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Single Page Application support enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zaraz#ConfigUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zaraz#ConfigUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zaraz#ConfigUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/zones/{zone_id}/settings/zaraz/config",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates Zaraz configuration for a zone.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.zaraz#DefaultGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zaraz#DefaultGetResponseSettingsContextEnricher": {
+      "type": "structure",
+      "members": {
+        "escapedWorkerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "workerTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#DefaultGetResponseSettings": {
+      "type": "structure",
+      "members": {
+        "autoInjectScript": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Automatic injection of Zaraz scripts enabled.",
+            "smithy.api#required": {}
+          }
+        },
+        "contextEnricher": {
+          "target": "com.cloudflare.zaraz#DefaultGetResponseSettingsContextEnricher",
+          "traits": {
+            "smithy.api#documentation": "Details of the worker that receives and edits Zaraz Context object."
+          }
+        },
+        "cookieDomain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The domain Zaraz will use for writing and reading its cookies."
+          }
+        },
+        "ecommerce": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Ecommerce API enabled."
+          }
+        },
+        "eventsApiPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for server-side track events."
+          }
+        },
+        "hideExternalReferer": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Hiding external referrer URL enabled."
+          }
+        },
+        "hideIPAddress": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Trimming IP address enabled."
+          }
+        },
+        "hideQueryParams": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Removing URL query params enabled."
+          }
+        },
+        "hideUserAgent": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Removing sensitive data from User Agent string enabled."
+          }
+        },
+        "initPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for Zaraz init script."
+          }
+        },
+        "injectIframes": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Injection of Zaraz scripts into iframes enabled."
+          }
+        },
+        "mcRootPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom path for Managed Components server functionalities."
+          }
+        },
+        "scriptPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for Zaraz main script."
+          }
+        },
+        "trackPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for Zaraz tracking requests."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#DefaultGetResponseToolsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#DefaultGetResponseTriggersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#DefaultGetResponseVariablesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#DefaultGetResponseAnalytics": {
+      "type": "structure",
+      "members": {
+        "defaultPurpose": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Consent purpose assigned to Monitoring."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether Advanced Monitoring reports are enabled."
+          }
+        },
+        "sessionExpTime": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Session expiration time (seconds)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#DefaultGetResponseConsentButtonTextTranslationsAcceptAllMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#DefaultGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#DefaultGetResponseConsentButtonTextTranslationsRejectAllMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#DefaultGetResponseConsentButtonTextTranslations": {
+      "type": "structure",
+      "members": {
+        "accept_all": {
+          "target": "com.cloudflare.zaraz#DefaultGetResponseConsentButtonTextTranslationsAcceptAllMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "confirm_my_choices": {
+          "target": "com.cloudflare.zaraz#DefaultGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "reject_all": {
+          "target": "com.cloudflare.zaraz#DefaultGetResponseConsentButtonTextTranslationsRejectAllMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#DefaultGetResponseConsentPurposesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#DefaultGetResponseConsentPurposesWithTranslationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#DefaultGetResponseConsent": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "buttonTextTranslations": {
+          "target": "com.cloudflare.zaraz#DefaultGetResponseConsentButtonTextTranslations"
+        },
+        "companyEmail": {
+          "target": "smithy.api#String"
+        },
+        "companyName": {
+          "target": "smithy.api#String"
+        },
+        "companyStreetAddress": {
+          "target": "smithy.api#String"
+        },
+        "consentModalIntroHTML": {
+          "target": "smithy.api#String"
+        },
+        "consentModalIntroHTMLWithTranslations": {
+          "target": "com.cloudflare.zaraz#DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes."
+          }
+        },
+        "cookieName": {
+          "target": "smithy.api#String"
+        },
+        "customCSS": {
+          "target": "smithy.api#String"
+        },
+        "customIntroDisclaimerDismissed": {
+          "target": "smithy.api#Boolean"
+        },
+        "defaultLanguage": {
+          "target": "smithy.api#String"
+        },
+        "hideModal": {
+          "target": "smithy.api#Boolean"
+        },
+        "purposes": {
+          "target": "com.cloudflare.zaraz#DefaultGetResponseConsentPurposesMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are purpose alpha-numeric IDs."
+          }
+        },
+        "purposesWithTranslations": {
+          "target": "com.cloudflare.zaraz#DefaultGetResponseConsentPurposesWithTranslationsMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are purpose alpha-numeric IDs."
+          }
+        },
+        "tcfCompliant": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.zaraz#DefaultGetResponse": {
+      "type": "structure",
+      "members": {
+        "dataLayer": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Data layer compatibility mode enabled.",
+            "smithy.api#required": {}
+          }
+        },
+        "debugKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key for Zaraz debug mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "settings": {
+          "target": "com.cloudflare.zaraz#DefaultGetResponseSettings",
+          "traits": {
+            "smithy.api#documentation": "General Zaraz settings.",
+            "smithy.api#required": {}
+          }
+        },
+        "tools": {
+          "target": "com.cloudflare.zaraz#DefaultGetResponseToolsMap",
+          "traits": {
+            "smithy.api#documentation": "Tools set up under Zaraz configuration, where key is the alpha-numeric tool ID and value is the tool configuration object.",
+            "smithy.api#required": {}
+          }
+        },
+        "triggers": {
+          "target": "com.cloudflare.zaraz#DefaultGetResponseTriggersMap",
+          "traits": {
+            "smithy.api#documentation": "Triggers set up under Zaraz configuration, where key is the trigger alpha-numeric ID and value is the trigger configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "variables": {
+          "target": "com.cloudflare.zaraz#DefaultGetResponseVariablesMap",
+          "traits": {
+            "smithy.api#documentation": "Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included.",
+            "smithy.api#required": {}
+          }
+        },
+        "zarazVersion": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Zaraz internal version of the config.",
+            "smithy.api#required": {}
+          }
+        },
+        "analytics": {
+          "target": "com.cloudflare.zaraz#DefaultGetResponseAnalytics",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare Monitoring settings."
+          }
+        },
+        "consent": {
+          "target": "com.cloudflare.zaraz#DefaultGetResponseConsent",
+          "traits": {
+            "smithy.api#documentation": "Consent management configuration."
+          }
+        },
+        "historyChange": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Single Page Application support enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zaraz#DefaultGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zaraz#DefaultGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zaraz#DefaultGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/settings/zaraz/default",
+          "code": 200
+        },
+        "smithy.api#documentation": "Gets default Zaraz configuration for a zone.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zaraz#ExportGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zaraz#ExportGetResponseSettingsContextEnricher": {
+      "type": "structure",
+      "members": {
+        "escapedWorkerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "workerTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#ExportGetResponseSettings": {
+      "type": "structure",
+      "members": {
+        "autoInjectScript": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Automatic injection of Zaraz scripts enabled.",
+            "smithy.api#required": {}
+          }
+        },
+        "contextEnricher": {
+          "target": "com.cloudflare.zaraz#ExportGetResponseSettingsContextEnricher",
+          "traits": {
+            "smithy.api#documentation": "Details of the worker that receives and edits Zaraz Context object."
+          }
+        },
+        "cookieDomain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The domain Zaraz will use for writing and reading its cookies."
+          }
+        },
+        "ecommerce": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Ecommerce API enabled."
+          }
+        },
+        "eventsApiPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for server-side track events."
+          }
+        },
+        "hideExternalReferer": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Hiding external referrer URL enabled."
+          }
+        },
+        "hideIPAddress": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Trimming IP address enabled."
+          }
+        },
+        "hideQueryParams": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Removing URL query params enabled."
+          }
+        },
+        "hideUserAgent": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Removing sensitive data from User Agent string enabled."
+          }
+        },
+        "initPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for Zaraz init script."
+          }
+        },
+        "injectIframes": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Injection of Zaraz scripts into iframes enabled."
+          }
+        },
+        "mcRootPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom path for Managed Components server functionalities."
+          }
+        },
+        "scriptPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for Zaraz main script."
+          }
+        },
+        "trackPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for Zaraz tracking requests."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#ExportGetResponseToolsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ExportGetResponseTriggersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ExportGetResponseVariablesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ExportGetResponseAnalytics": {
+      "type": "structure",
+      "members": {
+        "defaultPurpose": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Consent purpose assigned to Monitoring."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether Advanced Monitoring reports are enabled."
+          }
+        },
+        "sessionExpTime": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Session expiration time (seconds)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#ExportGetResponseConsentButtonTextTranslationsAcceptAllMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ExportGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ExportGetResponseConsentButtonTextTranslationsRejectAllMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ExportGetResponseConsentButtonTextTranslations": {
+      "type": "structure",
+      "members": {
+        "accept_all": {
+          "target": "com.cloudflare.zaraz#ExportGetResponseConsentButtonTextTranslationsAcceptAllMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "confirm_my_choices": {
+          "target": "com.cloudflare.zaraz#ExportGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "reject_all": {
+          "target": "com.cloudflare.zaraz#ExportGetResponseConsentButtonTextTranslationsRejectAllMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#ExportGetResponseConsentConsentModalIntroHTMLWithTranslationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ExportGetResponseConsentPurposesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ExportGetResponseConsentPurposesWithTranslationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#ExportGetResponseConsent": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "buttonTextTranslations": {
+          "target": "com.cloudflare.zaraz#ExportGetResponseConsentButtonTextTranslations"
+        },
+        "companyEmail": {
+          "target": "smithy.api#String"
+        },
+        "companyName": {
+          "target": "smithy.api#String"
+        },
+        "companyStreetAddress": {
+          "target": "smithy.api#String"
+        },
+        "consentModalIntroHTML": {
+          "target": "smithy.api#String"
+        },
+        "consentModalIntroHTMLWithTranslations": {
+          "target": "com.cloudflare.zaraz#ExportGetResponseConsentConsentModalIntroHTMLWithTranslationsMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes."
+          }
+        },
+        "cookieName": {
+          "target": "smithy.api#String"
+        },
+        "customCSS": {
+          "target": "smithy.api#String"
+        },
+        "customIntroDisclaimerDismissed": {
+          "target": "smithy.api#Boolean"
+        },
+        "defaultLanguage": {
+          "target": "smithy.api#String"
+        },
+        "hideModal": {
+          "target": "smithy.api#Boolean"
+        },
+        "purposes": {
+          "target": "com.cloudflare.zaraz#ExportGetResponseConsentPurposesMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are purpose alpha-numeric IDs."
+          }
+        },
+        "purposesWithTranslations": {
+          "target": "com.cloudflare.zaraz#ExportGetResponseConsentPurposesWithTranslationsMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are purpose alpha-numeric IDs."
+          }
+        },
+        "tcfCompliant": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.zaraz#ExportGetResponse": {
+      "type": "structure",
+      "members": {
+        "dataLayer": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Data layer compatibility mode enabled."
+          }
+        },
+        "debugKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key for Zaraz debug mode."
+          }
+        },
+        "settings": {
+          "target": "com.cloudflare.zaraz#ExportGetResponseSettings",
+          "traits": {
+            "smithy.api#documentation": "General Zaraz settings."
+          }
+        },
+        "tools": {
+          "target": "com.cloudflare.zaraz#ExportGetResponseToolsMap",
+          "traits": {
+            "smithy.api#documentation": "Tools set up under Zaraz configuration, where key is the alpha-numeric tool ID and value is the tool configuration object."
+          }
+        },
+        "triggers": {
+          "target": "com.cloudflare.zaraz#ExportGetResponseTriggersMap",
+          "traits": {
+            "smithy.api#documentation": "Triggers set up under Zaraz configuration, where key is the trigger alpha-numeric ID and value is the trigger configuration."
+          }
+        },
+        "variables": {
+          "target": "com.cloudflare.zaraz#ExportGetResponseVariablesMap",
+          "traits": {
+            "smithy.api#documentation": "Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included."
+          }
+        },
+        "zarazVersion": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Zaraz internal version of the config."
+          }
+        },
+        "analytics": {
+          "target": "com.cloudflare.zaraz#ExportGetResponseAnalytics",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare Monitoring settings."
+          }
+        },
+        "consent": {
+          "target": "com.cloudflare.zaraz#ExportGetResponseConsent",
+          "traits": {
+            "smithy.api#documentation": "Consent management configuration."
+          }
+        },
+        "historyChange": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Single Page Application support enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
+    "com.cloudflare.zaraz#ExportGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zaraz#ExportGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zaraz#ExportGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/settings/zaraz/export",
+          "code": 200
+        },
+        "smithy.api#documentation": "Exports full current published Zaraz configuration for a zone, secret variables included.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zaraz#HistoryListRequestSortField": {
+      "type": "enum",
+      "members": {
+        "ID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "id"
+          }
+        },
+        "USER_ID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "user_id"
+          }
+        },
+        "DESCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "description"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#HistoryListRequestSortOrder": {
+      "type": "enum",
+      "members": {
+        "DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DESC"
+          }
+        },
+        "ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ASC"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#HistoryListRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Maximum amount of results to list. Default value is 10.",
+            "smithy.api#httpQuery": "limit"
+          }
+        },
+        "offset": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Ordinal number to start listing the results with. Default value is 0.",
+            "smithy.api#httpQuery": "offset"
+          }
+        },
+        "sortField": {
+          "target": "com.cloudflare.zaraz#HistoryListRequestSortField",
+          "traits": {
+            "smithy.api#documentation": "The field to sort by. Default is updated_at.",
+            "smithy.api#httpQuery": "sortField"
+          }
+        },
+        "sortOrder": {
+          "target": "com.cloudflare.zaraz#HistoryListRequestSortOrder",
+          "traits": {
+            "smithy.api#documentation": "Sorting order. Default is DESC.",
+            "smithy.api#httpQuery": "sortOrder"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zaraz#HistoryListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "ID of the configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time the configuration was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Configuration description provided by the user who published this configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time the configuration was last updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Alpha-numeric ID of the account user who published the configuration.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#HistoryListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zaraz#HistoryListResultItem"
+      }
+    },
+    "com.cloudflare.zaraz#HistoryListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.zaraz#HistoryListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.zaraz#HistoryList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zaraz#HistoryListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zaraz#HistoryListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/settings/zaraz/history",
+          "code": 200
+        },
+        "smithy.api#documentation": "Lists a history of published Zaraz configuration records for a zone.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zaraz#HistoryUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "ID of the Zaraz configuration to restore.",
+            "smithy.api#required": {},
+            "smithy.api#httpPayload": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zaraz#HistoryUpdateResponseSettingsContextEnricher": {
+      "type": "structure",
+      "members": {
+        "escapedWorkerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "workerTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#HistoryUpdateResponseSettings": {
+      "type": "structure",
+      "members": {
+        "autoInjectScript": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Automatic injection of Zaraz scripts enabled.",
+            "smithy.api#required": {}
+          }
+        },
+        "contextEnricher": {
+          "target": "com.cloudflare.zaraz#HistoryUpdateResponseSettingsContextEnricher",
+          "traits": {
+            "smithy.api#documentation": "Details of the worker that receives and edits Zaraz Context object."
+          }
+        },
+        "cookieDomain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The domain Zaraz will use for writing and reading its cookies."
+          }
+        },
+        "ecommerce": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Ecommerce API enabled."
+          }
+        },
+        "eventsApiPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for server-side track events."
+          }
+        },
+        "hideExternalReferer": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Hiding external referrer URL enabled."
+          }
+        },
+        "hideIPAddress": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Trimming IP address enabled."
+          }
+        },
+        "hideQueryParams": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Removing URL query params enabled."
+          }
+        },
+        "hideUserAgent": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Removing sensitive data from User Agent string enabled."
+          }
+        },
+        "initPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for Zaraz init script."
+          }
+        },
+        "injectIframes": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Injection of Zaraz scripts into iframes enabled."
+          }
+        },
+        "mcRootPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom path for Managed Components server functionalities."
+          }
+        },
+        "scriptPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for Zaraz main script."
+          }
+        },
+        "trackPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom endpoint for Zaraz tracking requests."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#HistoryUpdateResponseToolsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#HistoryUpdateResponseTriggersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#HistoryUpdateResponseVariablesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#HistoryUpdateResponseAnalytics": {
+      "type": "structure",
+      "members": {
+        "defaultPurpose": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Consent purpose assigned to Monitoring."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether Advanced Monitoring reports are enabled."
+          }
+        },
+        "sessionExpTime": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Session expiration time (seconds)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#HistoryUpdateResponseConsentButtonTextTranslationsAcceptAllMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#HistoryUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#HistoryUpdateResponseConsentButtonTextTranslationsRejectAllMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#HistoryUpdateResponseConsentButtonTextTranslations": {
+      "type": "structure",
+      "members": {
+        "accept_all": {
+          "target": "com.cloudflare.zaraz#HistoryUpdateResponseConsentButtonTextTranslationsAcceptAllMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "confirm_my_choices": {
+          "target": "com.cloudflare.zaraz#HistoryUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "reject_all": {
+          "target": "com.cloudflare.zaraz#HistoryUpdateResponseConsentButtonTextTranslationsRejectAllMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zaraz#HistoryUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#HistoryUpdateResponseConsentPurposesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#HistoryUpdateResponseConsentPurposesWithTranslationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#HistoryUpdateResponseConsent": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "buttonTextTranslations": {
+          "target": "com.cloudflare.zaraz#HistoryUpdateResponseConsentButtonTextTranslations"
+        },
+        "companyEmail": {
+          "target": "smithy.api#String"
+        },
+        "companyName": {
+          "target": "smithy.api#String"
+        },
+        "companyStreetAddress": {
+          "target": "smithy.api#String"
+        },
+        "consentModalIntroHTML": {
+          "target": "smithy.api#String"
+        },
+        "consentModalIntroHTMLWithTranslations": {
+          "target": "com.cloudflare.zaraz#HistoryUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are language codes."
+          }
+        },
+        "cookieName": {
+          "target": "smithy.api#String"
+        },
+        "customCSS": {
+          "target": "smithy.api#String"
+        },
+        "customIntroDisclaimerDismissed": {
+          "target": "smithy.api#Boolean"
+        },
+        "defaultLanguage": {
+          "target": "smithy.api#String"
+        },
+        "hideModal": {
+          "target": "smithy.api#Boolean"
+        },
+        "purposes": {
+          "target": "com.cloudflare.zaraz#HistoryUpdateResponseConsentPurposesMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are purpose alpha-numeric IDs."
+          }
+        },
+        "purposesWithTranslations": {
+          "target": "com.cloudflare.zaraz#HistoryUpdateResponseConsentPurposesWithTranslationsMap",
+          "traits": {
+            "smithy.api#documentation": "Object where keys are purpose alpha-numeric IDs."
+          }
+        },
+        "tcfCompliant": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.zaraz#HistoryUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "dataLayer": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Data layer compatibility mode enabled.",
+            "smithy.api#required": {}
+          }
+        },
+        "debugKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key for Zaraz debug mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "settings": {
+          "target": "com.cloudflare.zaraz#HistoryUpdateResponseSettings",
+          "traits": {
+            "smithy.api#documentation": "General Zaraz settings.",
+            "smithy.api#required": {}
+          }
+        },
+        "tools": {
+          "target": "com.cloudflare.zaraz#HistoryUpdateResponseToolsMap",
+          "traits": {
+            "smithy.api#documentation": "Tools set up under Zaraz configuration, where key is the alpha-numeric tool ID and value is the tool configuration object.",
+            "smithy.api#required": {}
+          }
+        },
+        "triggers": {
+          "target": "com.cloudflare.zaraz#HistoryUpdateResponseTriggersMap",
+          "traits": {
+            "smithy.api#documentation": "Triggers set up under Zaraz configuration, where key is the trigger alpha-numeric ID and value is the trigger configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "variables": {
+          "target": "com.cloudflare.zaraz#HistoryUpdateResponseVariablesMap",
+          "traits": {
+            "smithy.api#documentation": "Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included.",
+            "smithy.api#required": {}
+          }
+        },
+        "zarazVersion": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Zaraz internal version of the config.",
+            "smithy.api#required": {}
+          }
+        },
+        "analytics": {
+          "target": "com.cloudflare.zaraz#HistoryUpdateResponseAnalytics",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare Monitoring settings."
+          }
+        },
+        "consent": {
+          "target": "com.cloudflare.zaraz#HistoryUpdateResponseConsent",
+          "traits": {
+            "smithy.api#documentation": "Consent management configuration."
+          }
+        },
+        "historyChange": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Single Page Application support enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.zaraz#HistoryUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zaraz#HistoryUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zaraz#HistoryUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/zones/{zone_id}/settings/zaraz/history",
+          "code": 200
+        },
+        "smithy.api#documentation": "Restores a historical published Zaraz configuration by ID for a zone.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.zaraz#HistoryConfigsGetRequestIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      }
+    },
+    "com.cloudflare.zaraz#HistoryConfigsGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ids": {
+          "target": "com.cloudflare.zaraz#HistoryConfigsGetRequestIdsList",
+          "traits": {
+            "smithy.api#documentation": "Comma separated list of Zaraz configuration IDs.",
+            "smithy.api#httpQuery": "ids",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zaraz#HistoryConfigsGetResultMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zaraz#HistoryConfigsGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.zaraz#HistoryConfigsGetResultMap",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.zaraz#HistoryConfigsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zaraz#HistoryConfigsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zaraz#HistoryConfigsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/settings/zaraz/history/configs",
+          "code": 200
+        },
+        "smithy.api#documentation": "Gets a history of published Zaraz configurations by ID(s) for a zone.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zaraz#PublishCreateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Zaraz configuration description.",
+            "smithy.api#httpPayload": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zaraz#PublishCreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.zaraz#PublishCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zaraz#PublishCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zaraz#PublishCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/settings/zaraz/publish",
+          "code": 200
+        },
+        "smithy.api#documentation": "Publish current Zaraz preview configuration for a zone."
+      }
+    },
+    "com.cloudflare.zaraz#WorkflowGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zaraz#WorkflowGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.zaraz#WorkflowGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zaraz#WorkflowGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zaraz#WorkflowGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/settings/zaraz/workflow",
+          "code": 200
+        },
+        "smithy.api#documentation": "Gets Zaraz workflow for a zone.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zaraz#Zaraz": {
+      "type": "service",
+      "version": "4.0",
+      "operations": [
+        {
+          "target": "com.cloudflare.zaraz#Update"
+        },
+        {
+          "target": "com.cloudflare.zaraz#ConfigGet"
+        },
+        {
+          "target": "com.cloudflare.zaraz#ConfigUpdate"
+        },
+        {
+          "target": "com.cloudflare.zaraz#DefaultGet"
+        },
+        {
+          "target": "com.cloudflare.zaraz#ExportGet"
+        },
+        {
+          "target": "com.cloudflare.zaraz#HistoryList"
+        },
+        {
+          "target": "com.cloudflare.zaraz#HistoryUpdate"
+        },
+        {
+          "target": "com.cloudflare.zaraz#HistoryConfigsGet"
+        },
+        {
+          "target": "com.cloudflare.zaraz#PublishCreate"
+        },
+        {
+          "target": "com.cloudflare.zaraz#WorkflowGet"
+        }
+      ],
+      "traits": {
+        "com.cloudflare.protocols#v4Json": {},
+        "smithy.api#title": "Cloudflare Zaraz",
+        "smithy.api#documentation": "Cloudflare API — zaraz resource. Speaks the v4 JSON envelope protocol; operation outputs describe the unwrapped `result` payload."
+      }
+    }
+  }
+}

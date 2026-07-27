@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -85,49 +87,103 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class BatchSizeLimitExceededException extends S.TaggedErrorClass<BatchSizeLimitExceededException>()(
+  "BatchSizeLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidFilterException extends S.TaggedErrorClass<InvalidFilterException>()(
+  "InvalidFilterException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => InvalidRequestReason).annotate({
+        identifier: "InvalidRequestReason",
+      }),
+    ),
+    Detail: S.optional(
+      S.suspend(() => InvalidRequestDetail).annotate({
+        identifier: "InvalidRequestDetail",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class JobNotFoundException extends S.TaggedErrorClass<JobNotFoundException>()(
+  "JobNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class KmsKeyValidationException extends S.TaggedErrorClass<KmsKeyValidationException>()(
+  "KmsKeyValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NotAuthorizedException extends S.TaggedErrorClass<NotAuthorizedException>()(
+  "NotAuthorizedException",
+  { message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
+  "ResourceLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourceUnavailableException extends S.TaggedErrorClass<ResourceUnavailableException>()(
+  "ResourceUnavailableException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class TextSizeLimitExceededException extends S.TaggedErrorClass<TextSizeLimitExceededException>()(
+  "TextSizeLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class TooManyTagKeysException extends S.TaggedErrorClass<TooManyTagKeysException>()(
+  "TooManyTagKeysException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UnsupportedLanguageException extends S.TaggedErrorClass<UnsupportedLanguageException>()(
+  "UnsupportedLanguageException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type CustomerInputString = string | redacted.Redacted<string>;
-export type DocumentClassifierEndpointArn = string;
-export type SemiStructuredDocumentBlob = Uint8Array;
-export type ComprehendFlywheelArn = string;
-export type ComprehendArnName = string;
-export type Description = string;
-export type AttributeNamesListItem = string;
-export type S3Uri = string;
-export type LabelDelimiter = string;
-export type ClientRequestTokenString = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ComprehendDatasetArn = string;
-export type VersionName = string;
-export type IamRoleArn = string;
-export type KmsKeyId = string;
-export type SecurityGroupId = string;
-export type SubnetId = string;
-export type Policy = string;
-export type DocumentClassifierArn = string;
-export type ComprehendEndpointName = string;
-export type ComprehendModelArn = string;
-export type InferenceUnitsInteger = number;
-export type ComprehendEndpointArn = string;
-export type EntityTypeName = string;
-export type EntityRecognizerArn = string;
-export type LabelListItem = string;
-export type FlywheelS3Uri = string;
-export type PolicyRevisionId = string;
-export type AnyLengthString = string;
-export type NumberOfDocuments = number;
-export type JobId = string;
-export type ComprehendArn = string;
-export type JobName = string;
-export type EventTypeString = string;
-export type FlywheelIterationId = string;
-export type MaskCharacter = string;
-export type EntityRecognizerEndpointArn = string;
-export type MaxResultsInteger = number;
-export type NumberOfTopicsInteger = number;
-
-//# Schemas
 export type CustomerInputStringList = (string | redacted.Redacted<string>)[];
 export const CustomerInputStringList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface BatchDetectDominantLanguageRequest {
@@ -195,23 +251,6 @@ export const BatchDetectDominantLanguageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDetectDominantLanguageResponse",
 }) as any as S.Schema<BatchDetectDominantLanguageResponse>;
-export type InvalidRequestReason = "INVALID_DOCUMENT" | (string & {});
-export const InvalidRequestReason = /*@__PURE__*/ S.String;
-export type InvalidRequestDetailReason =
-  | "DOCUMENT_SIZE_EXCEEDED"
-  | "UNSUPPORTED_DOC_TYPE"
-  | "PAGE_LIMIT_EXCEEDED"
-  | "TEXTRACT_ACCESS_DENIED"
-  | (string & {});
-export const InvalidRequestDetailReason = /*@__PURE__*/ S.String;
-export interface InvalidRequestDetail {
-  Reason?: InvalidRequestDetailReason;
-}
-export const InvalidRequestDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Reason: S.optional(InvalidRequestDetailReason) }),
-).annotate({
-  identifier: "InvalidRequestDetail",
-}) as any as S.Schema<InvalidRequestDetail>;
 export type LanguageCode =
   | "en"
   | "es"
@@ -227,6 +266,7 @@ export type LanguageCode =
   | "zh-TW"
   | (string & {});
 export const LanguageCode = /*@__PURE__*/ S.String;
+
 export interface BatchDetectEntitiesRequest {
   TextList: (string | redacted.Redacted<string>)[];
   LanguageCode: LanguageCode;
@@ -253,6 +293,7 @@ export type EntityType =
   | "OTHER"
   | (string & {});
 export const EntityType = /*@__PURE__*/ S.String;
+
 export interface ChildBlock {
   ChildBlockId?: string;
   BeginOffset?: number;
@@ -410,6 +451,7 @@ export type SentimentType =
   | "MIXED"
   | (string & {});
 export const SentimentType = /*@__PURE__*/ S.String;
+
 export interface SentimentScore {
   Positive?: number;
   Negative?: number;
@@ -463,6 +505,7 @@ export type SyntaxLanguageCode =
   | "pt"
   | (string & {});
 export const SyntaxLanguageCode = /*@__PURE__*/ S.String;
+
 export interface BatchDetectSyntaxRequest {
   TextList: (string | redacted.Redacted<string>)[];
   LanguageCode: SyntaxLanguageCode;
@@ -498,6 +541,7 @@ export type PartOfSpeechTagType =
   | "VERB"
   | (string & {});
 export const PartOfSpeechTagType = /*@__PURE__*/ S.String;
+
 export interface PartOfSpeechTag {
   Tag?: PartOfSpeechTagType;
   Score?: number;
@@ -592,6 +636,7 @@ export type TargetedSentimentEntityType =
   | "OTHER"
   | (string & {});
 export const TargetedSentimentEntityType = /*@__PURE__*/ S.String;
+
 export interface MentionSentiment {
   Sentiment?: SentimentType;
   SentimentScore?: SentimentScore;
@@ -675,18 +720,23 @@ export const BatchDetectTargetedSentimentResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "BatchDetectTargetedSentimentResponse",
 }) as any as S.Schema<BatchDetectTargetedSentimentResponse>;
+export type DocumentClassifierEndpointArn = string;
+export type SemiStructuredDocumentBlob = Uint8Array;
 export type DocumentReadAction =
   | "TEXTRACT_DETECT_DOCUMENT_TEXT"
   | "TEXTRACT_ANALYZE_DOCUMENT"
   | (string & {});
 export const DocumentReadAction = /*@__PURE__*/ S.String;
+
 export type DocumentReadMode =
   | "SERVICE_DEFAULT"
   | "FORCE_DOCUMENT_READ_ACTION"
   | (string & {});
 export const DocumentReadMode = /*@__PURE__*/ S.String;
+
 export type DocumentReadFeatureTypes = "TABLES" | "FORMS" | (string & {});
 export const DocumentReadFeatureTypes = /*@__PURE__*/ S.String;
+
 export type ListOfDocumentReadFeatureTypes = DocumentReadFeatureTypes[];
 export const ListOfDocumentReadFeatureTypes = /*@__PURE__*/ S.Array(
   DocumentReadFeatureTypes,
@@ -786,6 +836,7 @@ export type DocumentType =
   | "TEXTRACT_ANALYZE_DOCUMENT_JSON"
   | (string & {});
 export const DocumentType = /*@__PURE__*/ S.String;
+
 export interface DocumentTypeListItem {
   Page?: number;
   Type?: DocumentType;
@@ -805,6 +856,7 @@ export type PageBasedErrorCode =
   | "INTERNAL_SERVER_ERROR"
   | (string & {});
 export const PageBasedErrorCode = /*@__PURE__*/ S.String;
+
 export interface ErrorsListItem {
   Page?: number;
   ErrorCode?: PageBasedErrorCode;
@@ -824,6 +876,7 @@ export type PageBasedWarningCode =
   | "INFERENCING_NATIVE_DOCUMENT_WITH_PLAINTEXT_TRAINED_MODEL"
   | (string & {});
 export const PageBasedWarningCode = /*@__PURE__*/ S.String;
+
 export interface WarningsListItem {
   Page?: number;
   WarnCode?: PageBasedWarningCode;
@@ -911,6 +964,7 @@ export type PiiEntityType =
   | "IN_VOTER_NUMBER"
   | (string & {});
 export const PiiEntityType = /*@__PURE__*/ S.String;
+
 export interface EntityLabel {
   Name?: PiiEntityType;
   Score?: number;
@@ -928,15 +982,22 @@ export const ContainsPiiEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ContainsPiiEntitiesResponse",
 }) as any as S.Schema<ContainsPiiEntitiesResponse>;
+export type ComprehendFlywheelArn = string;
+export type ComprehendArnName = string;
 export type DatasetType = "TRAIN" | "TEST" | (string & {});
 export const DatasetType = /*@__PURE__*/ S.String;
+
+export type Description = string;
+export type AttributeNamesListItem = string;
 export type AttributeNamesList = string[];
 export const AttributeNamesList = /*@__PURE__*/ S.Array(S.String);
+export type S3Uri = string;
 export type AugmentedManifestsDocumentTypeFormat =
   | "PLAIN_TEXT_DOCUMENT"
   | "SEMI_STRUCTURED_DOCUMENT"
   | (string & {});
 export const AugmentedManifestsDocumentTypeFormat = /*@__PURE__*/ S.String;
+
 export interface DatasetAugmentedManifestsListItem {
   AttributeNames: string[];
   S3Uri: string;
@@ -964,6 +1025,8 @@ export type DatasetDataFormat =
   | "AUGMENTED_MANIFEST"
   | (string & {});
 export const DatasetDataFormat = /*@__PURE__*/ S.String;
+
+export type LabelDelimiter = string;
 export interface DatasetDocumentClassifierInputDataConfig {
   S3Uri: string;
   LabelDelimiter?: string;
@@ -986,6 +1049,7 @@ export type InputFormat =
   | "ONE_DOC_PER_LINE"
   | (string & {});
 export const InputFormat = /*@__PURE__*/ S.String;
+
 export interface DatasetEntityRecognizerDocuments {
   S3Uri: string;
   InputFormat?: InputFormat;
@@ -1038,6 +1102,9 @@ export const DatasetInputDataConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DatasetInputDataConfig",
 }) as any as S.Schema<DatasetInputDataConfig>;
+export type ClientRequestTokenString = string;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value?: string;
@@ -1071,6 +1138,7 @@ export const CreateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDatasetRequest",
 }) as any as S.Schema<CreateDatasetRequest>;
+export type ComprehendDatasetArn = string;
 export interface CreateDatasetResponse {
   DatasetArn?: string;
 }
@@ -1079,13 +1147,17 @@ export const CreateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDatasetResponse",
 }) as any as S.Schema<CreateDatasetResponse>;
+export type VersionName = string;
+export type IamRoleArn = string;
 export type DocumentClassifierDataFormat =
   | "COMPREHEND_CSV"
   | "AUGMENTED_MANIFEST"
   | (string & {});
 export const DocumentClassifierDataFormat = /*@__PURE__*/ S.String;
+
 export type Split = "TRAIN" | "TEST" | (string & {});
 export const Split = /*@__PURE__*/ S.String;
+
 export interface AugmentedManifestsListItem {
   S3Uri: string;
   Split?: Split;
@@ -1116,6 +1188,7 @@ export type DocumentClassifierDocumentTypeFormat =
   | "SEMI_STRUCTURED_DOCUMENT"
   | (string & {});
 export const DocumentClassifierDocumentTypeFormat = /*@__PURE__*/ S.String;
+
 export interface DocumentClassifierDocuments {
   S3Uri: string;
   TestS3Uri?: string;
@@ -1149,6 +1222,7 @@ export const DocumentClassifierInputDataConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DocumentClassifierInputDataConfig",
 }) as any as S.Schema<DocumentClassifierInputDataConfig>;
+export type KmsKeyId = string;
 export interface DocumentClassifierOutputDataConfig {
   S3Uri?: string;
   KmsKeyId?: string;
@@ -1163,8 +1237,10 @@ export const DocumentClassifierOutputDataConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DocumentClassifierOutputDataConfig",
 }) as any as S.Schema<DocumentClassifierOutputDataConfig>;
+export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
 export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export type SubnetId = string;
 export type Subnets = string[];
 export const Subnets = /*@__PURE__*/ S.Array(S.String);
 export interface VpcConfig {
@@ -1179,6 +1255,8 @@ export type DocumentClassifierMode =
   | "MULTI_LABEL"
   | (string & {});
 export const DocumentClassifierMode = /*@__PURE__*/ S.String;
+
+export type Policy = string;
 export interface CreateDocumentClassifierRequest {
   DocumentClassifierName: string;
   VersionName?: string;
@@ -1215,6 +1293,7 @@ export const CreateDocumentClassifierRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDocumentClassifierRequest",
 }) as any as S.Schema<CreateDocumentClassifierRequest>;
+export type DocumentClassifierArn = string;
 export interface CreateDocumentClassifierResponse {
   DocumentClassifierArn?: string;
 }
@@ -1223,6 +1302,9 @@ export const CreateDocumentClassifierResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDocumentClassifierResponse",
 }) as any as S.Schema<CreateDocumentClassifierResponse>;
+export type ComprehendEndpointName = string;
+export type ComprehendModelArn = string;
+export type InferenceUnitsInteger = number;
 export interface CreateEndpointRequest {
   EndpointName: string;
   ModelArn?: string;
@@ -1247,6 +1329,7 @@ export const CreateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEndpointRequest",
 }) as any as S.Schema<CreateEndpointRequest>;
+export type ComprehendEndpointArn = string;
 export interface CreateEndpointResponse {
   EndpointArn?: string;
   ModelArn?: string;
@@ -1264,6 +1347,8 @@ export type EntityRecognizerDataFormat =
   | "AUGMENTED_MANIFEST"
   | (string & {});
 export const EntityRecognizerDataFormat = /*@__PURE__*/ S.String;
+
+export type EntityTypeName = string;
 export interface EntityTypesListItem {
   Type: string;
 }
@@ -1362,6 +1447,7 @@ export const CreateEntityRecognizerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEntityRecognizerRequest",
 }) as any as S.Schema<CreateEntityRecognizerRequest>;
+export type EntityRecognizerArn = string;
 export interface CreateEntityRecognizerResponse {
   EntityRecognizerArn?: string;
 }
@@ -1370,6 +1456,7 @@ export const CreateEntityRecognizerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEntityRecognizerResponse",
 }) as any as S.Schema<CreateEntityRecognizerResponse>;
+export type LabelListItem = string;
 export type LabelsList = string[];
 export const LabelsList = /*@__PURE__*/ S.Array(S.String);
 export interface DocumentClassificationConfig {
@@ -1406,6 +1493,8 @@ export type ModelType =
   | "ENTITY_RECOGNIZER"
   | (string & {});
 export const ModelType = /*@__PURE__*/ S.String;
+
+export type FlywheelS3Uri = string;
 export interface DataSecurityConfig {
   ModelKmsKeyId?: string;
   VolumeKmsKeyId?: string;
@@ -1526,6 +1615,7 @@ export const DeleteFlywheelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteFlywheelResponse",
 }) as any as S.Schema<DeleteFlywheelResponse>;
+export type PolicyRevisionId = string;
 export interface DeleteResourcePolicyRequest {
   ResourceArn: string;
   PolicyRevisionId?: string;
@@ -1558,6 +1648,9 @@ export const DescribeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeDatasetRequest>;
 export type DatasetStatus = "CREATING" | "COMPLETED" | "FAILED" | (string & {});
 export const DatasetStatus = /*@__PURE__*/ S.String;
+
+export type AnyLengthString = string;
+export type NumberOfDocuments = number;
 export interface DatasetProperties {
   DatasetArn?: string;
   DatasetName?: string;
@@ -1594,6 +1687,7 @@ export const DescribeDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDatasetResponse",
 }) as any as S.Schema<DescribeDatasetResponse>;
+export type JobId = string;
 export interface DescribeDocumentClassificationJobRequest {
   JobId: string;
 }
@@ -1605,6 +1699,8 @@ export const DescribeDocumentClassificationJobRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeDocumentClassificationJobRequest",
 }) as any as S.Schema<DescribeDocumentClassificationJobRequest>;
+export type ComprehendArn = string;
+export type JobName = string;
 export type JobStatus =
   | "SUBMITTED"
   | "IN_PROGRESS"
@@ -1614,6 +1710,7 @@ export type JobStatus =
   | "STOPPED"
   | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
+
 export interface InputDataConfig {
   S3Uri: string;
   InputFormat?: InputFormat;
@@ -1707,6 +1804,7 @@ export type ModelStatus =
   | "TRAINED_WITH_WARNING"
   | (string & {});
 export const ModelStatus = /*@__PURE__*/ S.String;
+
 export interface ClassifierEvaluationMetrics {
   Accuracy?: number;
   Precision?: number;
@@ -1882,6 +1980,7 @@ export type EndpointStatus =
   | "UPDATING"
   | (string & {});
 export const EndpointStatus = /*@__PURE__*/ S.String;
+
 export interface EndpointProperties {
   EndpointArn?: string;
   Status?: EndpointStatus;
@@ -2135,6 +2234,7 @@ export const DescribeEventsDetectionJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEventsDetectionJobRequest",
 }) as any as S.Schema<DescribeEventsDetectionJobRequest>;
+export type EventTypeString = string;
 export type TargetEventTypes = string[];
 export const TargetEventTypes = /*@__PURE__*/ S.Array(S.String);
 export interface EventsDetectionJobProperties {
@@ -2197,6 +2297,8 @@ export type FlywheelStatus =
   | "FAILED"
   | (string & {});
 export const FlywheelStatus = /*@__PURE__*/ S.String;
+
+export type FlywheelIterationId = string;
 export interface FlywheelProperties {
   FlywheelArn?: string;
   ActiveModelArn?: string;
@@ -2259,6 +2361,7 @@ export type FlywheelIterationStatus =
   | "STOPPED"
   | (string & {});
 export const FlywheelIterationStatus = /*@__PURE__*/ S.String;
+
 export interface FlywheelModelEvaluationMetrics {
   AverageF1Score?: number;
   AveragePrecision?: number;
@@ -2400,6 +2503,8 @@ export type PiiEntitiesDetectionMaskMode =
   | "REPLACE_WITH_PII_ENTITY_TYPE"
   | (string & {});
 export const PiiEntitiesDetectionMaskMode = /*@__PURE__*/ S.String;
+
+export type MaskCharacter = string;
 export interface RedactionConfig {
   PiiEntityTypes?: PiiEntityType[];
   MaskMode?: PiiEntitiesDetectionMaskMode;
@@ -2419,6 +2524,7 @@ export type PiiEntitiesDetectionMode =
   | "ONLY_OFFSETS"
   | (string & {});
 export const PiiEntitiesDetectionMode = /*@__PURE__*/ S.String;
+
 export interface PiiEntitiesDetectionJobProperties {
   JobId?: string;
   JobArn?: string;
@@ -2683,6 +2789,7 @@ export const DetectDominantLanguageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DetectDominantLanguageResponse",
 }) as any as S.Schema<DetectDominantLanguageResponse>;
+export type EntityRecognizerEndpointArn = string;
 export interface DetectEntitiesRequest {
   Text?: string | redacted.Redacted<string>;
   LanguageCode?: LanguageCode;
@@ -2705,6 +2812,7 @@ export const DetectEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetectEntitiesRequest>;
 export type BlockType = "LINE" | "WORD" | (string & {});
 export const BlockType = /*@__PURE__*/ S.String;
+
 export interface BoundingBox {
   Height?: number;
   Left?: number;
@@ -2742,6 +2850,7 @@ export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export type RelationshipType = "CHILD" | (string & {});
 export const RelationshipType = /*@__PURE__*/ S.String;
+
 export interface RelationshipsListItem {
   Ids?: string[];
   Type?: RelationshipType;
@@ -2938,6 +3047,7 @@ export type ToxicContentType =
   | "VIOLENCE_OR_THREAT"
   | (string & {});
 export const ToxicContentType = /*@__PURE__*/ S.String;
+
 export interface ToxicContent {
   Name?: ToxicContentType;
   Score?: number;
@@ -3015,6 +3125,7 @@ export const DatasetFilter = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({ identifier: "DatasetFilter" }) as any as S.Schema<DatasetFilter>;
+export type MaxResultsInteger = number;
 export interface ListDatasetsRequest {
   FlywheelArn?: string;
   Filter?: DatasetFilter;
@@ -4351,6 +4462,7 @@ export const StartTargetedSentimentDetectionJobResponse =
   ).annotate({
     identifier: "StartTargetedSentimentDetectionJobResponse",
   }) as any as S.Schema<StartTargetedSentimentDetectionJobResponse>;
+export type NumberOfTopicsInteger = number;
 export interface StartTopicsDetectionJobRequest {
   InputDataConfig: InputDataConfig;
   OutputDataConfig: OutputDataConfig;
@@ -4667,98 +4779,25 @@ export const UpdateFlywheelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateFlywheelResponse",
 }) as any as S.Schema<UpdateFlywheelResponse>;
+export type InvalidRequestReason = "INVALID_DOCUMENT" | (string & {});
+export const InvalidRequestReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class BatchSizeLimitExceededException extends S.TaggedErrorClass<BatchSizeLimitExceededException>()(
-  "BatchSizeLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(InvalidRequestReason),
-    Detail: S.optional(InvalidRequestDetail),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TextSizeLimitExceededException extends S.TaggedErrorClass<TextSizeLimitExceededException>()(
-  "TextSizeLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class UnsupportedLanguageException extends S.TaggedErrorClass<UnsupportedLanguageException>()(
-  "UnsupportedLanguageException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceUnavailableException extends S.TaggedErrorClass<ResourceUnavailableException>()(
-  "ResourceUnavailableException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class NotAuthorizedException extends S.TaggedErrorClass<NotAuthorizedException>()(
-  "NotAuthorizedException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
-  "ResourceLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class KmsKeyValidationException extends S.TaggedErrorClass<KmsKeyValidationException>()(
-  "KmsKeyValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class JobNotFoundException extends S.TaggedErrorClass<JobNotFoundException>()(
-  "JobNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class InvalidFilterException extends S.TaggedErrorClass<InvalidFilterException>()(
-  "InvalidFilterException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TooManyTagKeysException extends S.TaggedErrorClass<TooManyTagKeysException>()(
-  "TooManyTagKeysException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
+export type InvalidRequestDetailReason =
+  | "DOCUMENT_SIZE_EXCEEDED"
+  | "UNSUPPORTED_DOC_TYPE"
+  | "PAGE_LIMIT_EXCEEDED"
+  | "TEXTRACT_ACCESS_DENIED"
+  | (string & {});
+export const InvalidRequestDetailReason = /*@__PURE__*/ S.String;
 
-//# Operations
+export interface InvalidRequestDetail {
+  Reason?: InvalidRequestDetailReason;
+}
+export const InvalidRequestDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Reason: S.optional(InvalidRequestDetailReason) }),
+).annotate({
+  identifier: "InvalidRequestDetail",
+}) as any as S.Schema<InvalidRequestDetail>;
 export type BatchDetectDominantLanguageError =
   | BatchSizeLimitExceededException
   | InternalServerException
@@ -4783,8 +4822,11 @@ export const batchDetectDominantLanguage: API.OperationMethod<
     InvalidRequestException,
     TextSizeLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDetectDominantLanguage",
 }));
+
 export type BatchDetectEntitiesError =
   | BatchSizeLimitExceededException
   | InternalServerException
@@ -4812,8 +4854,11 @@ export const batchDetectEntities: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDetectEntities",
 }));
+
 export type BatchDetectKeyPhrasesError =
   | BatchSizeLimitExceededException
   | InternalServerException
@@ -4839,8 +4884,11 @@ export const batchDetectKeyPhrases: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDetectKeyPhrases",
 }));
+
 export type BatchDetectSentimentError =
   | BatchSizeLimitExceededException
   | InternalServerException
@@ -4868,8 +4916,11 @@ export const batchDetectSentiment: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDetectSentiment",
 }));
+
 export type BatchDetectSyntaxError =
   | BatchSizeLimitExceededException
   | InternalServerException
@@ -4897,8 +4948,11 @@ export const batchDetectSyntax: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDetectSyntax",
 }));
+
 export type BatchDetectTargetedSentimentError =
   | BatchSizeLimitExceededException
   | InternalServerException
@@ -4927,8 +4981,11 @@ export const batchDetectTargetedSentiment: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDetectTargetedSentiment",
 }));
+
 export type ClassifyDocumentError =
   | InternalServerException
   | InvalidRequestException
@@ -4974,8 +5031,11 @@ export const classifyDocument: API.OperationMethod<
     TextSizeLimitExceededException,
     NotAuthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ClassifyDocument",
 }));
+
 export type ContainsPiiEntitiesError =
   | InternalServerException
   | InvalidRequestException
@@ -5001,8 +5061,11 @@ export const containsPiiEntities: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ContainsPiiEntities",
 }));
+
 export type CreateDatasetError =
   | InternalServerException
   | InvalidRequestException
@@ -5034,8 +5097,11 @@ export const createDataset: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataset",
 }));
+
 export type CreateDocumentClassifierError =
   | InternalServerException
   | InvalidRequestException
@@ -5071,8 +5137,11 @@ export const createDocumentClassifier: API.OperationMethod<
     TooManyTagsException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDocumentClassifier",
 }));
+
 export type CreateEndpointError =
   | InternalServerException
   | InvalidRequestException
@@ -5106,8 +5175,11 @@ export const createEndpoint: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEndpoint",
 }));
+
 export type CreateEntityRecognizerError =
   | InternalServerException
   | InvalidRequestException
@@ -5141,8 +5213,11 @@ export const createEntityRecognizer: API.OperationMethod<
     TooManyTagsException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEntityRecognizer",
 }));
+
 export type CreateFlywheelError =
   | InternalServerException
   | InvalidRequestException
@@ -5192,8 +5267,11 @@ export const createFlywheel: API.OperationMethod<
     TooManyTagsException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFlywheel",
 }));
+
 export type DeleteDocumentClassifierError =
   | InternalServerException
   | InvalidRequestException
@@ -5229,8 +5307,11 @@ export const deleteDocumentClassifier: API.OperationMethod<
     ResourceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDocumentClassifier",
 }));
+
 export type DeleteEndpointError =
   | InternalServerException
   | InvalidRequestException
@@ -5258,8 +5339,11 @@ export const deleteEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEndpoint",
 }));
+
 export type DeleteEntityRecognizerError =
   | InternalServerException
   | InvalidRequestException
@@ -5295,8 +5379,11 @@ export const deleteEntityRecognizer: API.OperationMethod<
     ResourceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEntityRecognizer",
 }));
+
 export type DeleteFlywheelError =
   | InternalServerException
   | InvalidRequestException
@@ -5328,8 +5415,11 @@ export const deleteFlywheel: API.OperationMethod<
     ResourceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFlywheel",
 }));
+
 export type DeleteResourcePolicyError =
   | InternalServerException
   | InvalidRequestException
@@ -5351,8 +5441,11 @@ export const deleteResourcePolicy: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DescribeDatasetError =
   | InternalServerException
   | InvalidRequestException
@@ -5378,8 +5471,11 @@ export const describeDataset: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataset",
 }));
+
 export type DescribeDocumentClassificationJobError =
   | InternalServerException
   | InvalidRequestException
@@ -5404,8 +5500,11 @@ export const describeDocumentClassificationJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDocumentClassificationJob",
 }));
+
 export type DescribeDocumentClassifierError =
   | InternalServerException
   | InvalidRequestException
@@ -5429,8 +5528,11 @@ export const describeDocumentClassifier: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDocumentClassifier",
 }));
+
 export type DescribeDominantLanguageDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -5455,8 +5557,11 @@ export const describeDominantLanguageDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDominantLanguageDetectionJob",
 }));
+
 export type DescribeEndpointError =
   | InternalServerException
   | InvalidRequestException
@@ -5482,8 +5587,11 @@ export const describeEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpoint",
 }));
+
 export type DescribeEntitiesDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -5508,8 +5616,11 @@ export const describeEntitiesDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEntitiesDetectionJob",
 }));
+
 export type DescribeEntityRecognizerError =
   | InternalServerException
   | InvalidRequestException
@@ -5534,8 +5645,11 @@ export const describeEntityRecognizer: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEntityRecognizer",
 }));
+
 export type DescribeEventsDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -5561,8 +5675,11 @@ export const describeEventsDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     NotAuthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventsDetectionJob",
 }));
+
 export type DescribeFlywheelError =
   | InternalServerException
   | InvalidRequestException
@@ -5587,8 +5704,11 @@ export const describeFlywheel: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFlywheel",
 }));
+
 export type DescribeFlywheelIterationError =
   | InternalServerException
   | InvalidRequestException
@@ -5614,8 +5734,11 @@ export const describeFlywheelIteration: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFlywheelIteration",
 }));
+
 export type DescribeKeyPhrasesDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -5640,8 +5763,11 @@ export const describeKeyPhrasesDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeKeyPhrasesDetectionJob",
 }));
+
 export type DescribePiiEntitiesDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -5666,8 +5792,11 @@ export const describePiiEntitiesDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePiiEntitiesDetectionJob",
 }));
+
 export type DescribeResourcePolicyError =
   | InternalServerException
   | InvalidRequestException
@@ -5690,8 +5819,11 @@ export const describeResourcePolicy: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResourcePolicy",
 }));
+
 export type DescribeSentimentDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -5716,8 +5848,11 @@ export const describeSentimentDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSentimentDetectionJob",
 }));
+
 export type DescribeTargetedSentimentDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -5742,8 +5877,11 @@ export const describeTargetedSentimentDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTargetedSentimentDetectionJob",
 }));
+
 export type DescribeTopicsDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -5768,8 +5906,11 @@ export const describeTopicsDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTopicsDetectionJob",
 }));
+
 export type DetectDominantLanguageError =
   | InternalServerException
   | InvalidRequestException
@@ -5792,8 +5933,11 @@ export const detectDominantLanguage: API.OperationMethod<
     InvalidRequestException,
     TextSizeLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectDominantLanguage",
 }));
+
 export type DetectEntitiesError =
   | InternalServerException
   | InvalidRequestException
@@ -5836,8 +5980,11 @@ export const detectEntities: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectEntities",
 }));
+
 export type DetectKeyPhrasesError =
   | InternalServerException
   | InvalidRequestException
@@ -5861,8 +6008,11 @@ export const detectKeyPhrases: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectKeyPhrases",
 }));
+
 export type DetectPiiEntitiesError =
   | InternalServerException
   | InvalidRequestException
@@ -5887,8 +6037,11 @@ export const detectPiiEntities: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectPiiEntities",
 }));
+
 export type DetectSentimentError =
   | InternalServerException
   | InvalidRequestException
@@ -5913,8 +6066,11 @@ export const detectSentiment: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectSentiment",
 }));
+
 export type DetectSyntaxError =
   | InternalServerException
   | InvalidRequestException
@@ -5940,8 +6096,11 @@ export const detectSyntax: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectSyntax",
 }));
+
 export type DetectTargetedSentimentError =
   | InternalServerException
   | InvalidRequestException
@@ -5967,8 +6126,11 @@ export const detectTargetedSentiment: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectTargetedSentiment",
 }));
+
 export type DetectToxicContentError =
   | InternalServerException
   | InvalidRequestException
@@ -5994,8 +6156,11 @@ export const detectToxicContent: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectToxicContent",
 }));
+
 export type ImportModelError =
   | InternalServerException
   | InvalidRequestException
@@ -6036,8 +6201,11 @@ export const importModel: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportModel",
 }));
+
 export type ListDatasetsError =
   | InternalServerException
   | InvalidFilterException
@@ -6079,6 +6247,8 @@ export const listDatasets: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatasets",
   pagination: {
     inputToken: "NextToken",
@@ -6086,6 +6256,7 @@ export const listDatasets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDocumentClassificationJobsError =
   | InternalServerException
   | InvalidFilterException
@@ -6124,6 +6295,8 @@ export const listDocumentClassificationJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDocumentClassificationJobs",
   pagination: {
     inputToken: "NextToken",
@@ -6131,6 +6304,7 @@ export const listDocumentClassificationJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDocumentClassifiersError =
   | InternalServerException
   | InvalidFilterException
@@ -6169,6 +6343,8 @@ export const listDocumentClassifiers: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDocumentClassifiers",
   pagination: {
     inputToken: "NextToken",
@@ -6176,6 +6352,7 @@ export const listDocumentClassifiers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDocumentClassifierSummariesError =
   | InternalServerException
   | InvalidRequestException
@@ -6212,6 +6389,8 @@ export const listDocumentClassifierSummaries: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDocumentClassifierSummaries",
   pagination: {
     inputToken: "NextToken",
@@ -6219,6 +6398,7 @@ export const listDocumentClassifierSummaries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDominantLanguageDetectionJobsError =
   | InternalServerException
   | InvalidFilterException
@@ -6257,6 +6437,8 @@ export const listDominantLanguageDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDominantLanguageDetectionJobs",
   pagination: {
     inputToken: "NextToken",
@@ -6264,6 +6446,7 @@ export const listDominantLanguageDetectionJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListEndpointsError =
   | InternalServerException
   | InvalidRequestException
@@ -6301,6 +6484,8 @@ export const listEndpoints: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEndpoints",
   pagination: {
     inputToken: "NextToken",
@@ -6309,6 +6494,7 @@ export const listEndpoints: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListEntitiesDetectionJobsError =
   | InternalServerException
   | InvalidFilterException
@@ -6347,6 +6533,8 @@ export const listEntitiesDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEntitiesDetectionJobs",
   pagination: {
     inputToken: "NextToken",
@@ -6354,6 +6542,7 @@ export const listEntitiesDetectionJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListEntityRecognizersError =
   | InternalServerException
   | InvalidFilterException
@@ -6398,6 +6587,8 @@ export const listEntityRecognizers: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEntityRecognizers",
   pagination: {
     inputToken: "NextToken",
@@ -6405,6 +6596,7 @@ export const listEntityRecognizers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListEntityRecognizerSummariesError =
   | InternalServerException
   | InvalidRequestException
@@ -6441,6 +6633,8 @@ export const listEntityRecognizerSummaries: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEntityRecognizerSummaries",
   pagination: {
     inputToken: "NextToken",
@@ -6448,6 +6642,7 @@ export const listEntityRecognizerSummaries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListEventsDetectionJobsError =
   | InternalServerException
   | InvalidFilterException
@@ -6488,6 +6683,8 @@ export const listEventsDetectionJobs: API.OperationMethod<
     TooManyRequestsException,
     NotAuthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEventsDetectionJobs",
   pagination: {
     inputToken: "NextToken",
@@ -6495,6 +6692,7 @@ export const listEventsDetectionJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFlywheelIterationHistoryError =
   | InternalServerException
   | InvalidFilterException
@@ -6537,6 +6735,8 @@ export const listFlywheelIterationHistory: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFlywheelIterationHistory",
   pagination: {
     inputToken: "NextToken",
@@ -6544,6 +6744,7 @@ export const listFlywheelIterationHistory: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFlywheelsError =
   | InternalServerException
   | InvalidFilterException
@@ -6582,6 +6783,8 @@ export const listFlywheels: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFlywheels",
   pagination: {
     inputToken: "NextToken",
@@ -6589,6 +6792,7 @@ export const listFlywheels: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListKeyPhrasesDetectionJobsError =
   | InternalServerException
   | InvalidFilterException
@@ -6627,6 +6831,8 @@ export const listKeyPhrasesDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKeyPhrasesDetectionJobs",
   pagination: {
     inputToken: "NextToken",
@@ -6634,6 +6840,7 @@ export const listKeyPhrasesDetectionJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPiiEntitiesDetectionJobsError =
   | InternalServerException
   | InvalidFilterException
@@ -6672,6 +6879,8 @@ export const listPiiEntitiesDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPiiEntitiesDetectionJobs",
   pagination: {
     inputToken: "NextToken",
@@ -6680,6 +6889,7 @@ export const listPiiEntitiesDetectionJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSentimentDetectionJobsError =
   | InternalServerException
   | InvalidFilterException
@@ -6718,6 +6928,8 @@ export const listSentimentDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSentimentDetectionJobs",
   pagination: {
     inputToken: "NextToken",
@@ -6725,6 +6937,7 @@ export const listSentimentDetectionJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | InvalidRequestException
@@ -6746,8 +6959,11 @@ export const listTagsForResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTargetedSentimentDetectionJobsError =
   | InternalServerException
   | InvalidFilterException
@@ -6786,6 +7002,8 @@ export const listTargetedSentimentDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTargetedSentimentDetectionJobs",
   pagination: {
     inputToken: "NextToken",
@@ -6793,6 +7011,7 @@ export const listTargetedSentimentDetectionJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTopicsDetectionJobsError =
   | InternalServerException
   | InvalidFilterException
@@ -6831,6 +7050,8 @@ export const listTopicsDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTopicsDetectionJobs",
   pagination: {
     inputToken: "NextToken",
@@ -6838,6 +7059,7 @@ export const listTopicsDetectionJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PutResourcePolicyError =
   | InternalServerException
   | InvalidRequestException
@@ -6861,8 +7083,11 @@ export const putResourcePolicy: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type StartDocumentClassificationJobError =
   | InternalServerException
   | InvalidRequestException
@@ -6896,8 +7121,11 @@ export const startDocumentClassificationJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDocumentClassificationJob",
 }));
+
 export type StartDominantLanguageDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -6927,8 +7155,11 @@ export const startDominantLanguageDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDominantLanguageDetectionJob",
 }));
+
 export type StartEntitiesDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -6965,8 +7196,11 @@ export const startEntitiesDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartEntitiesDetectionJob",
 }));
+
 export type StartEventsDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -6996,8 +7230,11 @@ export const startEventsDetectionJob: API.OperationMethod<
     TooManyTagsException,
     NotAuthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartEventsDetectionJob",
 }));
+
 export type StartFlywheelIterationError =
   | InternalServerException
   | InvalidRequestException
@@ -7025,8 +7262,11 @@ export const startFlywheelIteration: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartFlywheelIteration",
 }));
+
 export type StartKeyPhrasesDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -7056,8 +7296,11 @@ export const startKeyPhrasesDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartKeyPhrasesDetectionJob",
 }));
+
 export type StartPiiEntitiesDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -7085,8 +7328,11 @@ export const startPiiEntitiesDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartPiiEntitiesDetectionJob",
 }));
+
 export type StartSentimentDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -7116,8 +7362,11 @@ export const startSentimentDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSentimentDetectionJob",
 }));
+
 export type StartTargetedSentimentDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -7147,8 +7396,11 @@ export const startTargetedSentimentDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTargetedSentimentDetectionJob",
 }));
+
 export type StartTopicsDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -7177,8 +7429,11 @@ export const startTopicsDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTopicsDetectionJob",
 }));
+
 export type StopDominantLanguageDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -7212,8 +7467,11 @@ export const stopDominantLanguageDetectionJob: API.OperationMethod<
     InvalidRequestException,
     JobNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopDominantLanguageDetectionJob",
 }));
+
 export type StopEntitiesDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -7247,8 +7505,11 @@ export const stopEntitiesDetectionJob: API.OperationMethod<
     InvalidRequestException,
     JobNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopEntitiesDetectionJob",
 }));
+
 export type StopEventsDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -7272,8 +7533,11 @@ export const stopEventsDetectionJob: API.OperationMethod<
     JobNotFoundException,
     NotAuthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopEventsDetectionJob",
 }));
+
 export type StopKeyPhrasesDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -7307,8 +7571,11 @@ export const stopKeyPhrasesDetectionJob: API.OperationMethod<
     InvalidRequestException,
     JobNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopKeyPhrasesDetectionJob",
 }));
+
 export type StopPiiEntitiesDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -7330,8 +7597,11 @@ export const stopPiiEntitiesDetectionJob: API.OperationMethod<
     InvalidRequestException,
     JobNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopPiiEntitiesDetectionJob",
 }));
+
 export type StopSentimentDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -7365,8 +7635,11 @@ export const stopSentimentDetectionJob: API.OperationMethod<
     InvalidRequestException,
     JobNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopSentimentDetectionJob",
 }));
+
 export type StopTargetedSentimentDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -7400,8 +7673,11 @@ export const stopTargetedSentimentDetectionJob: API.OperationMethod<
     InvalidRequestException,
     JobNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopTargetedSentimentDetectionJob",
 }));
+
 export type StopTrainingDocumentClassifierError =
   | InternalServerException
   | InvalidRequestException
@@ -7431,8 +7707,11 @@ export const stopTrainingDocumentClassifier: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopTrainingDocumentClassifier",
 }));
+
 export type StopTrainingEntityRecognizerError =
   | InternalServerException
   | InvalidRequestException
@@ -7462,8 +7741,11 @@ export const stopTrainingEntityRecognizer: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopTrainingEntityRecognizer",
 }));
+
 export type TagResourceError =
   | ConcurrentModificationException
   | InternalServerException
@@ -7491,8 +7773,11 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | ConcurrentModificationException
   | InternalServerException
@@ -7518,8 +7803,11 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagKeysException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateEndpointError =
   | InternalServerException
   | InvalidRequestException
@@ -7550,8 +7838,11 @@ export const updateEndpoint: API.OperationMethod<
     ResourceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEndpoint",
 }));
+
 export type UpdateFlywheelError =
   | InternalServerException
   | InvalidRequestException
@@ -7577,5 +7868,7 @@ export const updateFlywheel: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFlywheel",
 }));

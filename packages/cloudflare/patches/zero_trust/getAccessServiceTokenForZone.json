@@ -1,0 +1,62 @@
+{
+  "description": "Align zero_trust#AccessServiceTokensGetForZone with distilled cloudflare/zero-trust getAccessServiceTokenForZone",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#AccessServiceTokensGetForZone",
+      "path": "/shapes/com.cloudflare.zero_trust#GetAccessServiceTokenForZone"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#AccessServiceTokensGetForZoneRequest",
+      "path": "/shapes/com.cloudflare.zero_trust#GetAccessServiceTokenForZoneRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zero_trust#GetAccessServiceTokenForZone/input/target",
+      "value": "com.cloudflare.zero_trust#GetAccessServiceTokenForZoneRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#AccessServiceTokensGetForZoneResponse",
+      "path": "/shapes/com.cloudflare.zero_trust#GetAccessServiceTokenForZoneResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zero_trust#GetAccessServiceTokenForZone/output/target",
+      "value": "com.cloudflare.zero_trust#GetAccessServiceTokenForZoneResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#AccessServiceTokenNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 12135
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#GetAccessServiceTokenForZone/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.zero_trust#AccessServiceTokenNotFound"
+        }
+      ]
+    }
+  ]
+}

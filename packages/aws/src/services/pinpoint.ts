@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -97,11 +99,46 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type __timestampIso8601 = Date;
-export type __blob = Uint8Array;
-
-//# Schemas
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
+  "InternalServerErrorException",
+  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class MethodNotAllowedException extends S.TaggedErrorClass<MethodNotAllowedException>()(
+  "MethodNotAllowedException",
+  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
+  T.HttpError(405),
+).pipe(C.withBadRequestError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class PayloadTooLargeException extends S.TaggedErrorClass<PayloadTooLargeException>()(
+  "PayloadTooLargeException",
+  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
+  T.HttpError(413),
+).pipe(C.withBadRequestError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
 export type MapOf__string = { [key: string]: string | undefined };
 export const MapOf__string = /*@__PURE__*/ S.Record(
   S.String,
@@ -187,6 +224,7 @@ export type __EndpointTypesElement =
   | "IN_APP"
   | (string & {});
 export const __EndpointTypesElement = /*@__PURE__*/ S.String;
+
 export type ListOf__EndpointTypesElement = __EndpointTypesElement[];
 export const ListOf__EndpointTypesElement = /*@__PURE__*/ S.Array(
   __EndpointTypesElement,
@@ -195,17 +233,17 @@ export interface CustomDeliveryConfiguration {
   DeliveryUri?: string;
   EndpointTypes?: __EndpointTypesElement[];
 }
-export const CustomDeliveryConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DeliveryUri: S.optional(S.String),
-      EndpointTypes: S.optional(ListOf__EndpointTypesElement),
-    }),
-  ).annotate({
-    identifier: "CustomDeliveryConfiguration",
-  }) as any as S.Schema<CustomDeliveryConfiguration>;
+export const CustomDeliveryConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DeliveryUri: S.optional(S.String),
+    EndpointTypes: S.optional(ListOf__EndpointTypesElement),
+  }),
+).annotate({
+  identifier: "CustomDeliveryConfiguration",
+}) as any as S.Schema<CustomDeliveryConfiguration>;
 export type Action = "OPEN_APP" | "DEEP_LINK" | "URL" | (string & {});
 export const Action = /*@__PURE__*/ S.String;
+
 export interface Message {
   Action?: Action;
   Body?: string;
@@ -273,6 +311,7 @@ export const CampaignEmailMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CampaignEmailMessage>;
 export type MessageType = "TRANSACTIONAL" | "PROMOTIONAL" | (string & {});
 export const MessageType = /*@__PURE__*/ S.String;
+
 export interface CampaignSmsMessage {
   Body?: string;
   MessageType?: MessageType;
@@ -295,6 +334,7 @@ export const CampaignSmsMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CampaignSmsMessage>;
 export type Alignment = "LEFT" | "CENTER" | "RIGHT" | (string & {});
 export const Alignment = /*@__PURE__*/ S.String;
+
 export interface InAppMessageBodyConfig {
   Alignment?: Alignment;
   Body?: string;
@@ -325,19 +365,19 @@ export const InAppMessageHeaderConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InAppMessageHeaderConfig>;
 export type ButtonAction = "LINK" | "DEEP_LINK" | "CLOSE" | (string & {});
 export const ButtonAction = /*@__PURE__*/ S.String;
+
 export interface OverrideButtonConfiguration {
   ButtonAction?: ButtonAction;
   Link?: string;
 }
-export const OverrideButtonConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ButtonAction: S.optional(ButtonAction),
-      Link: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "OverrideButtonConfiguration",
-  }) as any as S.Schema<OverrideButtonConfiguration>;
+export const OverrideButtonConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ButtonAction: S.optional(ButtonAction),
+    Link: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OverrideButtonConfiguration",
+}) as any as S.Schema<OverrideButtonConfiguration>;
 export interface DefaultButtonConfiguration {
   BackgroundColor?: string;
   BorderRadius?: number;
@@ -406,6 +446,7 @@ export type Layout =
   | "CAROUSEL"
   | (string & {});
 export const Layout = /*@__PURE__*/ S.String;
+
 export interface CampaignInAppMessage {
   Body?: string;
   Content?: InAppMessageContent[];
@@ -458,6 +499,7 @@ export type AttributeType =
   | "BETWEEN"
   | (string & {});
 export const AttributeType = /*@__PURE__*/ S.String;
+
 export type ListOf__string = string[];
 export const ListOf__string = /*@__PURE__*/ S.Array(S.String);
 export interface AttributeDimension {
@@ -481,6 +523,7 @@ export const MapOfAttributeDimension = /*@__PURE__*/ S.Record(
 );
 export type DimensionType = "INCLUSIVE" | "EXCLUSIVE" | (string & {});
 export const DimensionType = /*@__PURE__*/ S.String;
+
 export interface SetDimension {
   DimensionType?: DimensionType;
   Values?: string[];
@@ -526,6 +569,7 @@ export const EventDimensions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventDimensions>;
 export type FilterType = "SYSTEM" | "ENDPOINT" | (string & {});
 export const FilterType = /*@__PURE__*/ S.String;
+
 export interface CampaignEventFilter {
   Dimensions?: EventDimensions;
   FilterType?: FilterType;
@@ -548,6 +592,7 @@ export type Frequency =
   | "IN_APP_EVENT"
   | (string & {});
 export const Frequency = /*@__PURE__*/ S.String;
+
 export interface QuietTime {
   End?: string;
   Start?: string;
@@ -628,6 +673,7 @@ export const ListOfWriteTreatmentResource = /*@__PURE__*/ S.Array(
 );
 export type Mode = "DELIVERY" | "FILTER" | (string & {});
 export const Mode = /*@__PURE__*/ S.String;
+
 export interface CampaignHook {
   LambdaFunctionName?: string;
   Mode?: Mode;
@@ -731,6 +777,7 @@ export type CampaignStatus =
   | "INVALID"
   | (string & {});
 export const CampaignStatus = /*@__PURE__*/ S.String;
+
 export interface CampaignState {
   CampaignStatus?: CampaignStatus;
 }
@@ -1037,16 +1084,15 @@ export const CreateTemplateMessageBody = /*@__PURE__*/ S.suspend(() =>
 export interface CreateEmailTemplateResponse {
   CreateTemplateMessageBody: CreateTemplateMessageBody;
 }
-export const CreateEmailTemplateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CreateTemplateMessageBody: S.optional(CreateTemplateMessageBody)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "CreateTemplateMessageBody" }),
-    }),
-  ).annotate({
-    identifier: "CreateEmailTemplateResponse",
-  }) as any as S.Schema<CreateEmailTemplateResponse>;
+export const CreateEmailTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CreateTemplateMessageBody: S.optional(CreateTemplateMessageBody)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "CreateTemplateMessageBody" }),
+  }),
+).annotate({
+  identifier: "CreateEmailTemplateResponse",
+}) as any as S.Schema<CreateEmailTemplateResponse>;
 export interface ExportJobRequest {
   RoleArn?: string;
   S3UrlPrefix?: string;
@@ -1114,6 +1160,7 @@ export type JobStatus =
   | "FAILED"
   | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
+
 export interface ExportJobResponse {
   ApplicationId?: string;
   CompletedPieces?: number;
@@ -1169,6 +1216,7 @@ export const CreateExportJobResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateExportJobResponse>;
 export type Format = "CSV" | "JSON" | (string & {});
 export const Format = /*@__PURE__*/ S.String;
+
 export interface ImportJobRequest {
   DefineSegment?: boolean;
   ExternalId?: string;
@@ -1355,16 +1403,15 @@ export const TemplateCreateMessageBody = /*@__PURE__*/ S.suspend(() =>
 export interface CreateInAppTemplateResponse {
   TemplateCreateMessageBody: TemplateCreateMessageBody;
 }
-export const CreateInAppTemplateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TemplateCreateMessageBody: S.optional(TemplateCreateMessageBody)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "TemplateCreateMessageBody" }),
-    }),
-  ).annotate({
-    identifier: "CreateInAppTemplateResponse",
-  }) as any as S.Schema<CreateInAppTemplateResponse>;
+export const CreateInAppTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TemplateCreateMessageBody: S.optional(TemplateCreateMessageBody)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "TemplateCreateMessageBody" }),
+  }),
+).annotate({
+  identifier: "CreateInAppTemplateResponse",
+}) as any as S.Schema<CreateInAppTemplateResponse>;
 export interface JourneyCustomMessage {
   Data?: string;
 }
@@ -1413,8 +1460,10 @@ export const SegmentCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SegmentCondition>;
 export type Duration = "HR_24" | "DAY_7" | "DAY_14" | "DAY_30" | (string & {});
 export const Duration = /*@__PURE__*/ S.String;
+
 export type RecencyType = "ACTIVE" | "INACTIVE" | (string & {});
 export const RecencyType = /*@__PURE__*/ S.String;
+
 export interface RecencyDimension {
   Duration?: Duration;
   RecencyType?: RecencyType;
@@ -1524,6 +1573,7 @@ export type ListOfSimpleCondition = SimpleCondition[];
 export const ListOfSimpleCondition = /*@__PURE__*/ S.Array(SimpleCondition);
 export type Operator = "ALL" | "ANY" | (string & {});
 export const Operator = /*@__PURE__*/ S.String;
+
 export interface Condition {
   Conditions?: SimpleCondition[];
   Operator?: Operator;
@@ -1614,16 +1664,15 @@ export interface MultiConditionalSplitActivity {
   DefaultActivity?: string;
   EvaluationWaitTime?: WaitTime;
 }
-export const MultiConditionalSplitActivity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Branches: S.optional(ListOfMultiConditionalBranch),
-      DefaultActivity: S.optional(S.String),
-      EvaluationWaitTime: S.optional(WaitTime),
-    }),
-  ).annotate({
-    identifier: "MultiConditionalSplitActivity",
-  }) as any as S.Schema<MultiConditionalSplitActivity>;
+export const MultiConditionalSplitActivity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Branches: S.optional(ListOfMultiConditionalBranch),
+    DefaultActivity: S.optional(S.String),
+    EvaluationWaitTime: S.optional(WaitTime),
+  }),
+).annotate({
+  identifier: "MultiConditionalSplitActivity",
+}) as any as S.Schema<MultiConditionalSplitActivity>;
 export interface JourneyPushMessage {
   TimeToLive?: string;
 }
@@ -1782,6 +1831,7 @@ export const JourneyLimits = /*@__PURE__*/ S.suspend(() =>
     TotalCap: S.optional(S.Number),
   }),
 ).annotate({ identifier: "JourneyLimits" }) as any as S.Schema<JourneyLimits>;
+export type __timestampIso8601 = Date;
 export interface JourneySchedule {
   EndTime?: Date;
   StartTime?: Date;
@@ -1841,6 +1891,7 @@ export type State =
   | "PAUSED"
   | (string & {});
 export const State = /*@__PURE__*/ S.String;
+
 export interface JourneyChannelSettings {
   ConnectCampaignArn?: string;
   ConnectCampaignExecutionRoleArn?: string;
@@ -1863,6 +1914,7 @@ export type DayOfWeek =
   | "SUNDAY"
   | (string & {});
 export const DayOfWeek = /*@__PURE__*/ S.String;
+
 export interface OpenHoursRule {
   StartTime?: string;
   EndTime?: string;
@@ -1930,10 +1982,12 @@ export type __TimezoneEstimationMethodsElement =
   | "POSTAL_CODE"
   | (string & {});
 export const __TimezoneEstimationMethodsElement = /*@__PURE__*/ S.String;
+
 export type ListOf__TimezoneEstimationMethodsElement =
   __TimezoneEstimationMethodsElement[];
-export const ListOf__TimezoneEstimationMethodsElement =
-  /*@__PURE__*/ S.Array(__TimezoneEstimationMethodsElement);
+export const ListOf__TimezoneEstimationMethodsElement = /*@__PURE__*/ S.Array(
+  __TimezoneEstimationMethodsElement,
+);
 export interface WriteJourneyRequest {
   Activities?: { [key: string]: Activity | undefined };
   CreationDate?: string;
@@ -2253,22 +2307,21 @@ export interface AndroidPushNotificationTemplate {
   Title?: string;
   Url?: string;
 }
-export const AndroidPushNotificationTemplate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Action: S.optional(Action),
-      Body: S.optional(S.String),
-      ImageIconUrl: S.optional(S.String),
-      ImageUrl: S.optional(S.String),
-      RawContent: S.optional(S.String),
-      SmallImageIconUrl: S.optional(S.String),
-      Sound: S.optional(S.String),
-      Title: S.optional(S.String),
-      Url: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AndroidPushNotificationTemplate",
-  }) as any as S.Schema<AndroidPushNotificationTemplate>;
+export const AndroidPushNotificationTemplate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Action: S.optional(Action),
+    Body: S.optional(S.String),
+    ImageIconUrl: S.optional(S.String),
+    ImageUrl: S.optional(S.String),
+    RawContent: S.optional(S.String),
+    SmallImageIconUrl: S.optional(S.String),
+    Sound: S.optional(S.String),
+    Title: S.optional(S.String),
+    Url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AndroidPushNotificationTemplate",
+}) as any as S.Schema<AndroidPushNotificationTemplate>;
 export interface APNSPushNotificationTemplate {
   Action?: Action;
   Body?: string;
@@ -2278,20 +2331,19 @@ export interface APNSPushNotificationTemplate {
   Title?: string;
   Url?: string;
 }
-export const APNSPushNotificationTemplate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Action: S.optional(Action),
-      Body: S.optional(S.String),
-      MediaUrl: S.optional(S.String),
-      RawContent: S.optional(S.String),
-      Sound: S.optional(S.String),
-      Title: S.optional(S.String),
-      Url: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "APNSPushNotificationTemplate",
-  }) as any as S.Schema<APNSPushNotificationTemplate>;
+export const APNSPushNotificationTemplate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Action: S.optional(Action),
+    Body: S.optional(S.String),
+    MediaUrl: S.optional(S.String),
+    RawContent: S.optional(S.String),
+    Sound: S.optional(S.String),
+    Title: S.optional(S.String),
+    Url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "APNSPushNotificationTemplate",
+}) as any as S.Schema<APNSPushNotificationTemplate>;
 export interface DefaultPushNotificationTemplate {
   Action?: Action;
   Body?: string;
@@ -2299,18 +2351,17 @@ export interface DefaultPushNotificationTemplate {
   Title?: string;
   Url?: string;
 }
-export const DefaultPushNotificationTemplate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Action: S.optional(Action),
-      Body: S.optional(S.String),
-      Sound: S.optional(S.String),
-      Title: S.optional(S.String),
-      Url: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DefaultPushNotificationTemplate",
-  }) as any as S.Schema<DefaultPushNotificationTemplate>;
+export const DefaultPushNotificationTemplate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Action: S.optional(Action),
+    Body: S.optional(S.String),
+    Sound: S.optional(S.String),
+    Title: S.optional(S.String),
+    Url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DefaultPushNotificationTemplate",
+}) as any as S.Schema<DefaultPushNotificationTemplate>;
 export interface PushNotificationTemplateRequest {
   ADM?: AndroidPushNotificationTemplate;
   APNS?: APNSPushNotificationTemplate;
@@ -2322,22 +2373,21 @@ export interface PushNotificationTemplateRequest {
   tags?: { [key: string]: string | undefined };
   TemplateDescription?: string;
 }
-export const PushNotificationTemplateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ADM: S.optional(AndroidPushNotificationTemplate),
-      APNS: S.optional(APNSPushNotificationTemplate),
-      Baidu: S.optional(AndroidPushNotificationTemplate),
-      Default: S.optional(DefaultPushNotificationTemplate),
-      DefaultSubstitutions: S.optional(S.String),
-      GCM: S.optional(AndroidPushNotificationTemplate),
-      RecommenderId: S.optional(S.String),
-      tags: S.optional(MapOf__string),
-      TemplateDescription: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PushNotificationTemplateRequest",
-  }) as any as S.Schema<PushNotificationTemplateRequest>;
+export const PushNotificationTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ADM: S.optional(AndroidPushNotificationTemplate),
+    APNS: S.optional(APNSPushNotificationTemplate),
+    Baidu: S.optional(AndroidPushNotificationTemplate),
+    Default: S.optional(DefaultPushNotificationTemplate),
+    DefaultSubstitutions: S.optional(S.String),
+    GCM: S.optional(AndroidPushNotificationTemplate),
+    RecommenderId: S.optional(S.String),
+    tags: S.optional(MapOf__string),
+    TemplateDescription: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PushNotificationTemplateRequest",
+}) as any as S.Schema<PushNotificationTemplateRequest>;
 export interface CreatePushTemplateRequest {
   PushNotificationTemplateRequest?: PushNotificationTemplateRequest;
   TemplateName: string;
@@ -2384,27 +2434,26 @@ export interface CreateRecommenderConfigurationShape {
   RecommendationsDisplayName?: string;
   RecommendationsPerMessage?: number;
 }
-export const CreateRecommenderConfigurationShape =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Attributes: S.optional(MapOf__string),
-      Description: S.optional(S.String),
-      Name: S.optional(S.String),
-      RecommendationProviderIdType: S.optional(S.String),
-      RecommendationProviderRoleArn: S.optional(S.String),
-      RecommendationProviderUri: S.optional(S.String),
-      RecommendationTransformerUri: S.optional(S.String),
-      RecommendationsDisplayName: S.optional(S.String),
-      RecommendationsPerMessage: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "CreateRecommenderConfigurationShape",
-  }) as any as S.Schema<CreateRecommenderConfigurationShape>;
+export const CreateRecommenderConfigurationShape = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Attributes: S.optional(MapOf__string),
+    Description: S.optional(S.String),
+    Name: S.optional(S.String),
+    RecommendationProviderIdType: S.optional(S.String),
+    RecommendationProviderRoleArn: S.optional(S.String),
+    RecommendationProviderUri: S.optional(S.String),
+    RecommendationTransformerUri: S.optional(S.String),
+    RecommendationsDisplayName: S.optional(S.String),
+    RecommendationsPerMessage: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CreateRecommenderConfigurationShape",
+}) as any as S.Schema<CreateRecommenderConfigurationShape>;
 export interface CreateRecommenderConfigurationRequest {
   CreateRecommenderConfiguration?: CreateRecommenderConfigurationShape;
 }
-export const CreateRecommenderConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateRecommenderConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       CreateRecommenderConfiguration: S.optional(
         CreateRecommenderConfigurationShape,
@@ -2421,9 +2470,9 @@ export const CreateRecommenderConfigurationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "CreateRecommenderConfigurationRequest",
-  }) as any as S.Schema<CreateRecommenderConfigurationRequest>;
+).annotate({
+  identifier: "CreateRecommenderConfigurationRequest",
+}) as any as S.Schema<CreateRecommenderConfigurationRequest>;
 export interface RecommenderConfigurationResponse {
   Attributes?: { [key: string]: string | undefined };
   CreationDate?: string;
@@ -2438,25 +2487,24 @@ export interface RecommenderConfigurationResponse {
   RecommendationsDisplayName?: string;
   RecommendationsPerMessage?: number;
 }
-export const RecommenderConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Attributes: S.optional(MapOf__string),
-      CreationDate: S.optional(S.String),
-      Description: S.optional(S.String),
-      Id: S.optional(S.String),
-      LastModifiedDate: S.optional(S.String),
-      Name: S.optional(S.String),
-      RecommendationProviderIdType: S.optional(S.String),
-      RecommendationProviderRoleArn: S.optional(S.String),
-      RecommendationProviderUri: S.optional(S.String),
-      RecommendationTransformerUri: S.optional(S.String),
-      RecommendationsDisplayName: S.optional(S.String),
-      RecommendationsPerMessage: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "RecommenderConfigurationResponse",
-  }) as any as S.Schema<RecommenderConfigurationResponse>;
+export const RecommenderConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Attributes: S.optional(MapOf__string),
+    CreationDate: S.optional(S.String),
+    Description: S.optional(S.String),
+    Id: S.optional(S.String),
+    LastModifiedDate: S.optional(S.String),
+    Name: S.optional(S.String),
+    RecommendationProviderIdType: S.optional(S.String),
+    RecommendationProviderRoleArn: S.optional(S.String),
+    RecommendationProviderUri: S.optional(S.String),
+    RecommendationTransformerUri: S.optional(S.String),
+    RecommendationsDisplayName: S.optional(S.String),
+    RecommendationsPerMessage: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "RecommenderConfigurationResponse",
+}) as any as S.Schema<RecommenderConfigurationResponse>;
 export interface CreateRecommenderConfigurationResponse {
   RecommenderConfigurationResponse: RecommenderConfigurationResponse & {
     CreationDate: string;
@@ -2466,8 +2514,8 @@ export interface CreateRecommenderConfigurationResponse {
     RecommendationProviderUri: string;
   };
 }
-export const CreateRecommenderConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateRecommenderConfigurationResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       RecommenderConfigurationResponse: S.optional(
         RecommenderConfigurationResponse,
@@ -2475,9 +2523,9 @@ export const CreateRecommenderConfigurationResponse =
         .pipe(T.HttpPayload())
         .annotate({ identifier: "RecommenderConfigurationResponse" }),
     }),
-  ).annotate({
-    identifier: "CreateRecommenderConfigurationResponse",
-  }) as any as S.Schema<CreateRecommenderConfigurationResponse>;
+).annotate({
+  identifier: "CreateRecommenderConfigurationResponse",
+}) as any as S.Schema<CreateRecommenderConfigurationResponse>;
 export type ListOfSegmentDimensions = SegmentDimensions[];
 export const ListOfSegmentDimensions = /*@__PURE__*/ S.Array(SegmentDimensions);
 export interface SegmentReference {
@@ -2493,8 +2541,10 @@ export type ListOfSegmentReference = SegmentReference[];
 export const ListOfSegmentReference = /*@__PURE__*/ S.Array(SegmentReference);
 export type SourceType = "ALL" | "ANY" | "NONE" | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
+
 export type Type = "ALL" | "ANY" | "NONE" | (string & {});
 export const Type = /*@__PURE__*/ S.String;
+
 export interface SegmentGroup {
   Dimensions?: SegmentDimensions[];
   SourceSegments?: SegmentReference[];
@@ -2513,6 +2563,7 @@ export type ListOfSegmentGroup = SegmentGroup[];
 export const ListOfSegmentGroup = /*@__PURE__*/ S.Array(SegmentGroup);
 export type Include = "ALL" | "ANY" | "NONE" | (string & {});
 export const Include = /*@__PURE__*/ S.String;
+
 export interface SegmentGroupList {
   Groups?: SegmentGroup[];
   Include?: Include;
@@ -2591,6 +2642,7 @@ export const SegmentImportResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SegmentImportResource>;
 export type SegmentType = "DIMENSIONAL" | "IMPORT" | (string & {});
 export const SegmentType = /*@__PURE__*/ S.String;
+
 export interface SegmentResponse {
   ApplicationId?: string;
   Arn?: string;
@@ -2832,23 +2884,20 @@ export const CreateVoiceTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateVoiceTemplateResponse {
   CreateTemplateMessageBody: CreateTemplateMessageBody;
 }
-export const CreateVoiceTemplateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CreateTemplateMessageBody: S.optional(CreateTemplateMessageBody)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "CreateTemplateMessageBody" }),
-    }),
-  ).annotate({
-    identifier: "CreateVoiceTemplateResponse",
-  }) as any as S.Schema<CreateVoiceTemplateResponse>;
+export const CreateVoiceTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CreateTemplateMessageBody: S.optional(CreateTemplateMessageBody)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "CreateTemplateMessageBody" }),
+  }),
+).annotate({
+  identifier: "CreateVoiceTemplateResponse",
+}) as any as S.Schema<CreateVoiceTemplateResponse>;
 export interface DeleteAdmChannelRequest {
   ApplicationId: string;
 }
 export const DeleteAdmChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-  }).pipe(
+  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
     T.all(
       T.Http({
         method: "DELETE",
@@ -2908,9 +2957,7 @@ export interface DeleteApnsChannelRequest {
   ApplicationId: string;
 }
 export const DeleteApnsChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-  }).pipe(
+  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
     T.all(
       T.Http({
         method: "DELETE",
@@ -2973,26 +3020,23 @@ export const DeleteApnsChannelResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteApnsSandboxChannelRequest {
   ApplicationId: string;
 }
-export const DeleteApnsSandboxChannelRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/v1/apps/{ApplicationId}/channels/apns_sandbox",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteApnsSandboxChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/v1/apps/{ApplicationId}/channels/apns_sandbox",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteApnsSandboxChannelRequest",
-  }) as any as S.Schema<DeleteApnsSandboxChannelRequest>;
+  ),
+).annotate({
+  identifier: "DeleteApnsSandboxChannelRequest",
+}) as any as S.Schema<DeleteApnsSandboxChannelRequest>;
 export interface APNSSandboxChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -3028,39 +3072,35 @@ export const APNSSandboxChannelResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteApnsSandboxChannelResponse {
   APNSSandboxChannelResponse: APNSSandboxChannelResponse & { Platform: string };
 }
-export const DeleteApnsSandboxChannelResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      APNSSandboxChannelResponse: S.optional(APNSSandboxChannelResponse)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "APNSSandboxChannelResponse" }),
-    }),
-  ).annotate({
-    identifier: "DeleteApnsSandboxChannelResponse",
-  }) as any as S.Schema<DeleteApnsSandboxChannelResponse>;
+export const DeleteApnsSandboxChannelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    APNSSandboxChannelResponse: S.optional(APNSSandboxChannelResponse)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "APNSSandboxChannelResponse" }),
+  }),
+).annotate({
+  identifier: "DeleteApnsSandboxChannelResponse",
+}) as any as S.Schema<DeleteApnsSandboxChannelResponse>;
 export interface DeleteApnsVoipChannelRequest {
   ApplicationId: string;
 }
-export const DeleteApnsVoipChannelRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/v1/apps/{ApplicationId}/channels/apns_voip",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteApnsVoipChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/v1/apps/{ApplicationId}/channels/apns_voip",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteApnsVoipChannelRequest",
-  }) as any as S.Schema<DeleteApnsVoipChannelRequest>;
+  ),
+).annotate({
+  identifier: "DeleteApnsVoipChannelRequest",
+}) as any as S.Schema<DeleteApnsVoipChannelRequest>;
 export interface APNSVoipChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -3096,39 +3136,35 @@ export const APNSVoipChannelResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteApnsVoipChannelResponse {
   APNSVoipChannelResponse: APNSVoipChannelResponse & { Platform: string };
 }
-export const DeleteApnsVoipChannelResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      APNSVoipChannelResponse: S.optional(APNSVoipChannelResponse)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "APNSVoipChannelResponse" }),
-    }),
-  ).annotate({
-    identifier: "DeleteApnsVoipChannelResponse",
-  }) as any as S.Schema<DeleteApnsVoipChannelResponse>;
+export const DeleteApnsVoipChannelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    APNSVoipChannelResponse: S.optional(APNSVoipChannelResponse)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "APNSVoipChannelResponse" }),
+  }),
+).annotate({
+  identifier: "DeleteApnsVoipChannelResponse",
+}) as any as S.Schema<DeleteApnsVoipChannelResponse>;
 export interface DeleteApnsVoipSandboxChannelRequest {
   ApplicationId: string;
 }
-export const DeleteApnsVoipSandboxChannelRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/v1/apps/{ApplicationId}/channels/apns_voip_sandbox",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteApnsVoipSandboxChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/v1/apps/{ApplicationId}/channels/apns_voip_sandbox",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteApnsVoipSandboxChannelRequest",
-  }) as any as S.Schema<DeleteApnsVoipSandboxChannelRequest>;
+  ),
+).annotate({
+  identifier: "DeleteApnsVoipSandboxChannelRequest",
+}) as any as S.Schema<DeleteApnsVoipSandboxChannelRequest>;
 export interface APNSVoipSandboxChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -3143,40 +3179,39 @@ export interface APNSVoipSandboxChannelResponse {
   Platform?: string;
   Version?: number;
 }
-export const APNSVoipSandboxChannelResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.optional(S.String),
-      CreationDate: S.optional(S.String),
-      DefaultAuthenticationMethod: S.optional(S.String),
-      Enabled: S.optional(S.Boolean),
-      HasCredential: S.optional(S.Boolean),
-      HasTokenKey: S.optional(S.Boolean),
-      Id: S.optional(S.String),
-      IsArchived: S.optional(S.Boolean),
-      LastModifiedBy: S.optional(S.String),
-      LastModifiedDate: S.optional(S.String),
-      Platform: S.optional(S.String),
-      Version: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "APNSVoipSandboxChannelResponse",
-  }) as any as S.Schema<APNSVoipSandboxChannelResponse>;
+export const APNSVoipSandboxChannelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.optional(S.String),
+    CreationDate: S.optional(S.String),
+    DefaultAuthenticationMethod: S.optional(S.String),
+    Enabled: S.optional(S.Boolean),
+    HasCredential: S.optional(S.Boolean),
+    HasTokenKey: S.optional(S.Boolean),
+    Id: S.optional(S.String),
+    IsArchived: S.optional(S.Boolean),
+    LastModifiedBy: S.optional(S.String),
+    LastModifiedDate: S.optional(S.String),
+    Platform: S.optional(S.String),
+    Version: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "APNSVoipSandboxChannelResponse",
+}) as any as S.Schema<APNSVoipSandboxChannelResponse>;
 export interface DeleteApnsVoipSandboxChannelResponse {
   APNSVoipSandboxChannelResponse: APNSVoipSandboxChannelResponse & {
     Platform: string;
   };
 }
-export const DeleteApnsVoipSandboxChannelResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DeleteApnsVoipSandboxChannelResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       APNSVoipSandboxChannelResponse: S.optional(APNSVoipSandboxChannelResponse)
         .pipe(T.HttpPayload())
         .annotate({ identifier: "APNSVoipSandboxChannelResponse" }),
     }),
-  ).annotate({
-    identifier: "DeleteApnsVoipSandboxChannelResponse",
-  }) as any as S.Schema<DeleteApnsVoipSandboxChannelResponse>;
+).annotate({
+  identifier: "DeleteApnsVoipSandboxChannelResponse",
+}) as any as S.Schema<DeleteApnsVoipSandboxChannelResponse>;
 export interface DeleteAppRequest {
   ApplicationId: string;
 }
@@ -3214,9 +3249,7 @@ export interface DeleteBaiduChannelRequest {
   ApplicationId: string;
 }
 export const DeleteBaiduChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-  }).pipe(
+  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
     T.all(
       T.Http({
         method: "DELETE",
@@ -3455,9 +3488,7 @@ export interface DeleteEmailChannelRequest {
   ApplicationId: string;
 }
 export const DeleteEmailChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-  }).pipe(
+  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
     T.all(
       T.Http({
         method: "DELETE",
@@ -3556,16 +3587,15 @@ export const MessageBody = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteEmailTemplateResponse {
   MessageBody: MessageBody;
 }
-export const DeleteEmailTemplateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MessageBody: S.optional(MessageBody)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "MessageBody" }),
-    }),
-  ).annotate({
-    identifier: "DeleteEmailTemplateResponse",
-  }) as any as S.Schema<DeleteEmailTemplateResponse>;
+export const DeleteEmailTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MessageBody: S.optional(MessageBody)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "MessageBody" }),
+  }),
+).annotate({
+  identifier: "DeleteEmailTemplateResponse",
+}) as any as S.Schema<DeleteEmailTemplateResponse>;
 export interface DeleteEndpointRequest {
   ApplicationId: string;
   EndpointId: string;
@@ -3611,6 +3641,7 @@ export type ChannelType =
   | "IN_APP"
   | (string & {});
 export const ChannelType = /*@__PURE__*/ S.String;
+
 export interface EndpointDemographic {
   AppVersion?: string;
   Locale?: string;
@@ -3724,14 +3755,9 @@ export interface DeleteEventStreamRequest {
   ApplicationId: string;
 }
 export const DeleteEventStreamRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-  }).pipe(
+  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
     T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/v1/apps/{ApplicationId}/eventstream",
-      }),
+      T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/eventstream" }),
       svc,
       auth,
       proto,
@@ -3780,9 +3806,7 @@ export interface DeleteGcmChannelRequest {
   ApplicationId: string;
 }
 export const DeleteGcmChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-  }).pipe(
+  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
     T.all(
       T.Http({
         method: "DELETE",
@@ -3868,16 +3892,15 @@ export const DeleteInAppTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteInAppTemplateResponse {
   MessageBody: MessageBody;
 }
-export const DeleteInAppTemplateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MessageBody: S.optional(MessageBody)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "MessageBody" }),
-    }),
-  ).annotate({
-    identifier: "DeleteInAppTemplateResponse",
-  }) as any as S.Schema<DeleteInAppTemplateResponse>;
+export const DeleteInAppTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MessageBody: S.optional(MessageBody)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "MessageBody" }),
+  }),
+).annotate({
+  identifier: "DeleteInAppTemplateResponse",
+}) as any as S.Schema<DeleteInAppTemplateResponse>;
 export interface DeleteJourneyRequest {
   ApplicationId: string;
   JourneyId: string;
@@ -4121,8 +4144,8 @@ export const DeletePushTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteRecommenderConfigurationRequest {
   RecommenderId: string;
 }
-export const DeleteRecommenderConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DeleteRecommenderConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       RecommenderId: S.String.pipe(T.HttpLabel("RecommenderId")),
     }).pipe(
@@ -4135,9 +4158,9 @@ export const DeleteRecommenderConfigurationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DeleteRecommenderConfigurationRequest",
-  }) as any as S.Schema<DeleteRecommenderConfigurationRequest>;
+).annotate({
+  identifier: "DeleteRecommenderConfigurationRequest",
+}) as any as S.Schema<DeleteRecommenderConfigurationRequest>;
 export interface DeleteRecommenderConfigurationResponse {
   RecommenderConfigurationResponse: RecommenderConfigurationResponse & {
     CreationDate: string;
@@ -4147,8 +4170,8 @@ export interface DeleteRecommenderConfigurationResponse {
     RecommendationProviderUri: string;
   };
 }
-export const DeleteRecommenderConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DeleteRecommenderConfigurationResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       RecommenderConfigurationResponse: S.optional(
         RecommenderConfigurationResponse,
@@ -4156,9 +4179,9 @@ export const DeleteRecommenderConfigurationResponse =
         .pipe(T.HttpPayload())
         .annotate({ identifier: "RecommenderConfigurationResponse" }),
     }),
-  ).annotate({
-    identifier: "DeleteRecommenderConfigurationResponse",
-  }) as any as S.Schema<DeleteRecommenderConfigurationResponse>;
+).annotate({
+  identifier: "DeleteRecommenderConfigurationResponse",
+}) as any as S.Schema<DeleteRecommenderConfigurationResponse>;
 export interface DeleteSegmentRequest {
   ApplicationId: string;
   SegmentId: string;
@@ -4297,9 +4320,7 @@ export interface DeleteSmsChannelRequest {
   ApplicationId: string;
 }
 export const DeleteSmsChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-  }).pipe(
+  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
     T.all(
       T.Http({
         method: "DELETE",
@@ -4433,23 +4454,20 @@ export const EndpointsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteUserEndpointsResponse {
   EndpointsResponse: EndpointsResponse & { Item: ListOfEndpointResponse };
 }
-export const DeleteUserEndpointsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EndpointsResponse: S.optional(EndpointsResponse)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "EndpointsResponse" }),
-    }),
-  ).annotate({
-    identifier: "DeleteUserEndpointsResponse",
-  }) as any as S.Schema<DeleteUserEndpointsResponse>;
+export const DeleteUserEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EndpointsResponse: S.optional(EndpointsResponse)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "EndpointsResponse" }),
+  }),
+).annotate({
+  identifier: "DeleteUserEndpointsResponse",
+}) as any as S.Schema<DeleteUserEndpointsResponse>;
 export interface DeleteVoiceChannelRequest {
   ApplicationId: string;
 }
 export const DeleteVoiceChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-  }).pipe(
+  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
     T.all(
       T.Http({
         method: "DELETE",
@@ -4529,16 +4547,15 @@ export const DeleteVoiceTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteVoiceTemplateResponse {
   MessageBody: MessageBody;
 }
-export const DeleteVoiceTemplateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MessageBody: S.optional(MessageBody)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "MessageBody" }),
-    }),
-  ).annotate({
-    identifier: "DeleteVoiceTemplateResponse",
-  }) as any as S.Schema<DeleteVoiceTemplateResponse>;
+export const DeleteVoiceTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MessageBody: S.optional(MessageBody)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "MessageBody" }),
+  }),
+).annotate({
+  identifier: "DeleteVoiceTemplateResponse",
+}) as any as S.Schema<DeleteVoiceTemplateResponse>;
 export interface GetAdmChannelRequest {
   ApplicationId: string;
 }
@@ -4600,46 +4617,40 @@ export const GetApnsChannelResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetApnsSandboxChannelRequest {
   ApplicationId: string;
 }
-export const GetApnsSandboxChannelRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v1/apps/{ApplicationId}/channels/apns_sandbox",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetApnsSandboxChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v1/apps/{ApplicationId}/channels/apns_sandbox",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetApnsSandboxChannelRequest",
-  }) as any as S.Schema<GetApnsSandboxChannelRequest>;
+  ),
+).annotate({
+  identifier: "GetApnsSandboxChannelRequest",
+}) as any as S.Schema<GetApnsSandboxChannelRequest>;
 export interface GetApnsSandboxChannelResponse {
   APNSSandboxChannelResponse: APNSSandboxChannelResponse & { Platform: string };
 }
-export const GetApnsSandboxChannelResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      APNSSandboxChannelResponse: S.optional(APNSSandboxChannelResponse)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "APNSSandboxChannelResponse" }),
-    }),
-  ).annotate({
-    identifier: "GetApnsSandboxChannelResponse",
-  }) as any as S.Schema<GetApnsSandboxChannelResponse>;
+export const GetApnsSandboxChannelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    APNSSandboxChannelResponse: S.optional(APNSSandboxChannelResponse)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "APNSSandboxChannelResponse" }),
+  }),
+).annotate({
+  identifier: "GetApnsSandboxChannelResponse",
+}) as any as S.Schema<GetApnsSandboxChannelResponse>;
 export interface GetApnsVoipChannelRequest {
   ApplicationId: string;
 }
 export const GetApnsVoipChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-  }).pipe(
+  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
     T.all(
       T.Http({
         method: "GET",
@@ -4670,41 +4681,37 @@ export const GetApnsVoipChannelResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetApnsVoipSandboxChannelRequest {
   ApplicationId: string;
 }
-export const GetApnsVoipSandboxChannelRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v1/apps/{ApplicationId}/channels/apns_voip_sandbox",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetApnsVoipSandboxChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v1/apps/{ApplicationId}/channels/apns_voip_sandbox",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetApnsVoipSandboxChannelRequest",
-  }) as any as S.Schema<GetApnsVoipSandboxChannelRequest>;
+  ),
+).annotate({
+  identifier: "GetApnsVoipSandboxChannelRequest",
+}) as any as S.Schema<GetApnsVoipSandboxChannelRequest>;
 export interface GetApnsVoipSandboxChannelResponse {
   APNSVoipSandboxChannelResponse: APNSVoipSandboxChannelResponse & {
     Platform: string;
   };
 }
-export const GetApnsVoipSandboxChannelResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      APNSVoipSandboxChannelResponse: S.optional(APNSVoipSandboxChannelResponse)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "APNSVoipSandboxChannelResponse" }),
-    }),
-  ).annotate({
-    identifier: "GetApnsVoipSandboxChannelResponse",
-  }) as any as S.Schema<GetApnsVoipSandboxChannelResponse>;
+export const GetApnsVoipSandboxChannelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    APNSVoipSandboxChannelResponse: S.optional(APNSVoipSandboxChannelResponse)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "APNSVoipSandboxChannelResponse" }),
+  }),
+).annotate({
+  identifier: "GetApnsVoipSandboxChannelResponse",
+}) as any as S.Schema<GetApnsVoipSandboxChannelResponse>;
 export interface GetAppRequest {
   ApplicationId: string;
 }
@@ -4742,35 +4749,34 @@ export interface GetApplicationDateRangeKpiRequest {
   PageSize?: string;
   StartTime?: Date;
 }
-export const GetApplicationDateRangeKpiRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-      EndTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ).pipe(T.HttpQuery("end-time")),
-      KpiName: S.String.pipe(T.HttpLabel("KpiName")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-      PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-      StartTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ).pipe(T.HttpQuery("start-time")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v1/apps/{ApplicationId}/kpis/daterange/{KpiName}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetApplicationDateRangeKpiRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+    EndTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.HttpQuery("end-time")),
+    KpiName: S.String.pipe(T.HttpLabel("KpiName")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+    StartTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.HttpQuery("start-time")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v1/apps/{ApplicationId}/kpis/daterange/{KpiName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetApplicationDateRangeKpiRequest",
-  }) as any as S.Schema<GetApplicationDateRangeKpiRequest>;
+  ),
+).annotate({
+  identifier: "GetApplicationDateRangeKpiRequest",
+}) as any as S.Schema<GetApplicationDateRangeKpiRequest>;
 export interface ResultRowValue {
   Key?: string;
   Type?: string;
@@ -4811,23 +4817,20 @@ export interface ApplicationDateRangeKpiResponse {
   NextToken?: string;
   StartTime?: Date;
 }
-export const ApplicationDateRangeKpiResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.optional(S.String),
-      EndTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      KpiName: S.optional(S.String),
-      KpiResult: S.optional(BaseKpiResult),
-      NextToken: S.optional(S.String),
-      StartTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
-  ).annotate({
-    identifier: "ApplicationDateRangeKpiResponse",
-  }) as any as S.Schema<ApplicationDateRangeKpiResponse>;
+export const ApplicationDateRangeKpiResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.optional(S.String),
+    EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+    KpiName: S.optional(S.String),
+    KpiResult: S.optional(BaseKpiResult),
+    NextToken: S.optional(S.String),
+    StartTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "ApplicationDateRangeKpiResponse",
+}) as any as S.Schema<ApplicationDateRangeKpiResponse>;
 export interface GetApplicationDateRangeKpiResponse {
   ApplicationDateRangeKpiResponse: ApplicationDateRangeKpiResponse & {
     ApplicationId: string;
@@ -4850,53 +4853,46 @@ export interface GetApplicationDateRangeKpiResponse {
     StartTime: __timestampIso8601;
   };
 }
-export const GetApplicationDateRangeKpiResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationDateRangeKpiResponse: S.optional(
-        ApplicationDateRangeKpiResponse,
-      )
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "ApplicationDateRangeKpiResponse" }),
-    }),
-  ).annotate({
-    identifier: "GetApplicationDateRangeKpiResponse",
-  }) as any as S.Schema<GetApplicationDateRangeKpiResponse>;
+export const GetApplicationDateRangeKpiResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationDateRangeKpiResponse: S.optional(ApplicationDateRangeKpiResponse)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "ApplicationDateRangeKpiResponse" }),
+  }),
+).annotate({
+  identifier: "GetApplicationDateRangeKpiResponse",
+}) as any as S.Schema<GetApplicationDateRangeKpiResponse>;
 export interface GetApplicationSettingsRequest {
   ApplicationId: string;
 }
-export const GetApplicationSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/settings" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetApplicationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/settings" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetApplicationSettingsRequest",
-  }) as any as S.Schema<GetApplicationSettingsRequest>;
+  ),
+).annotate({
+  identifier: "GetApplicationSettingsRequest",
+}) as any as S.Schema<GetApplicationSettingsRequest>;
 export interface ApplicationSettingsJourneyLimits {
   DailyCap?: number;
   TimeframeCap?: JourneyTimeframeCap;
   TotalCap?: number;
 }
-export const ApplicationSettingsJourneyLimits =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DailyCap: S.optional(S.Number),
-      TimeframeCap: S.optional(JourneyTimeframeCap),
-      TotalCap: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "ApplicationSettingsJourneyLimits",
-  }) as any as S.Schema<ApplicationSettingsJourneyLimits>;
+export const ApplicationSettingsJourneyLimits = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DailyCap: S.optional(S.Number),
+    TimeframeCap: S.optional(JourneyTimeframeCap),
+    TotalCap: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ApplicationSettingsJourneyLimits",
+}) as any as S.Schema<ApplicationSettingsJourneyLimits>;
 export interface ApplicationSettingsResource {
   ApplicationId?: string;
   CampaignHook?: CampaignHook;
@@ -4905,34 +4901,32 @@ export interface ApplicationSettingsResource {
   QuietTime?: QuietTime;
   JourneyLimits?: ApplicationSettingsJourneyLimits;
 }
-export const ApplicationSettingsResource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.optional(S.String),
-      CampaignHook: S.optional(CampaignHook),
-      LastModifiedDate: S.optional(S.String),
-      Limits: S.optional(CampaignLimits),
-      QuietTime: S.optional(QuietTime),
-      JourneyLimits: S.optional(ApplicationSettingsJourneyLimits),
-    }),
-  ).annotate({
-    identifier: "ApplicationSettingsResource",
-  }) as any as S.Schema<ApplicationSettingsResource>;
+export const ApplicationSettingsResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.optional(S.String),
+    CampaignHook: S.optional(CampaignHook),
+    LastModifiedDate: S.optional(S.String),
+    Limits: S.optional(CampaignLimits),
+    QuietTime: S.optional(QuietTime),
+    JourneyLimits: S.optional(ApplicationSettingsJourneyLimits),
+  }),
+).annotate({
+  identifier: "ApplicationSettingsResource",
+}) as any as S.Schema<ApplicationSettingsResource>;
 export interface GetApplicationSettingsResponse {
   ApplicationSettingsResource: ApplicationSettingsResource & {
     ApplicationId: string;
   };
 }
-export const GetApplicationSettingsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationSettingsResource: S.optional(ApplicationSettingsResource)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "ApplicationSettingsResource" }),
-    }),
-  ).annotate({
-    identifier: "GetApplicationSettingsResponse",
-  }) as any as S.Schema<GetApplicationSettingsResponse>;
+export const GetApplicationSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationSettingsResource: S.optional(ApplicationSettingsResource)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "ApplicationSettingsResource" }),
+  }),
+).annotate({
+  identifier: "GetApplicationSettingsResponse",
+}) as any as S.Schema<GetApplicationSettingsResponse>;
 export interface GetAppsRequest {
   PageSize?: string;
   Token?: string;
@@ -4985,14 +4979,9 @@ export interface GetBaiduChannelRequest {
   ApplicationId: string;
 }
 export const GetBaiduChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-  }).pipe(
+  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
     T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v1/apps/{ApplicationId}/channels/baidu",
-      }),
+      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/baidu" }),
       svc,
       auth,
       proto,
@@ -5198,29 +5187,28 @@ export interface GetCampaignActivitiesRequest {
   PageSize?: string;
   Token?: string;
 }
-export const GetCampaignActivitiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-      CampaignId: S.String.pipe(T.HttpLabel("CampaignId")),
-      PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-      Token: S.optional(S.String).pipe(T.HttpQuery("token")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v1/apps/{ApplicationId}/campaigns/{CampaignId}/activities",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetCampaignActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+    CampaignId: S.String.pipe(T.HttpLabel("CampaignId")),
+    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+    Token: S.optional(S.String).pipe(T.HttpQuery("token")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v1/apps/{ApplicationId}/campaigns/{CampaignId}/activities",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetCampaignActivitiesRequest",
-  }) as any as S.Schema<GetCampaignActivitiesRequest>;
+  ),
+).annotate({
+  identifier: "GetCampaignActivitiesRequest",
+}) as any as S.Schema<GetCampaignActivitiesRequest>;
 export interface ActivityResponse {
   ApplicationId?: string;
   CampaignId?: string;
@@ -5280,16 +5268,15 @@ export interface GetCampaignActivitiesResponse {
     })[];
   };
 }
-export const GetCampaignActivitiesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ActivitiesResponse: S.optional(ActivitiesResponse)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "ActivitiesResponse" }),
-    }),
-  ).annotate({
-    identifier: "GetCampaignActivitiesResponse",
-  }) as any as S.Schema<GetCampaignActivitiesResponse>;
+export const GetCampaignActivitiesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ActivitiesResponse: S.optional(ActivitiesResponse)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "ActivitiesResponse" }),
+  }),
+).annotate({
+  identifier: "GetCampaignActivitiesResponse",
+}) as any as S.Schema<GetCampaignActivitiesResponse>;
 export interface GetCampaignDateRangeKpiRequest {
   ApplicationId: string;
   CampaignId: string;
@@ -5299,36 +5286,35 @@ export interface GetCampaignDateRangeKpiRequest {
   PageSize?: string;
   StartTime?: Date;
 }
-export const GetCampaignDateRangeKpiRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-      CampaignId: S.String.pipe(T.HttpLabel("CampaignId")),
-      EndTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ).pipe(T.HttpQuery("end-time")),
-      KpiName: S.String.pipe(T.HttpLabel("KpiName")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-      PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-      StartTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ).pipe(T.HttpQuery("start-time")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v1/apps/{ApplicationId}/campaigns/{CampaignId}/kpis/daterange/{KpiName}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetCampaignDateRangeKpiRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+    CampaignId: S.String.pipe(T.HttpLabel("CampaignId")),
+    EndTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.HttpQuery("end-time")),
+    KpiName: S.String.pipe(T.HttpLabel("KpiName")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+    StartTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.HttpQuery("start-time")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v1/apps/{ApplicationId}/campaigns/{CampaignId}/kpis/daterange/{KpiName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetCampaignDateRangeKpiRequest",
-  }) as any as S.Schema<GetCampaignDateRangeKpiRequest>;
+  ),
+).annotate({
+  identifier: "GetCampaignDateRangeKpiRequest",
+}) as any as S.Schema<GetCampaignDateRangeKpiRequest>;
 export interface CampaignDateRangeKpiResponse {
   ApplicationId?: string;
   CampaignId?: string;
@@ -5338,24 +5324,21 @@ export interface CampaignDateRangeKpiResponse {
   NextToken?: string;
   StartTime?: Date;
 }
-export const CampaignDateRangeKpiResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.optional(S.String),
-      CampaignId: S.optional(S.String),
-      EndTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      KpiName: S.optional(S.String),
-      KpiResult: S.optional(BaseKpiResult),
-      NextToken: S.optional(S.String),
-      StartTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
-  ).annotate({
-    identifier: "CampaignDateRangeKpiResponse",
-  }) as any as S.Schema<CampaignDateRangeKpiResponse>;
+export const CampaignDateRangeKpiResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.optional(S.String),
+    CampaignId: S.optional(S.String),
+    EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+    KpiName: S.optional(S.String),
+    KpiResult: S.optional(BaseKpiResult),
+    NextToken: S.optional(S.String),
+    StartTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "CampaignDateRangeKpiResponse",
+}) as any as S.Schema<CampaignDateRangeKpiResponse>;
 export interface GetCampaignDateRangeKpiResponse {
   CampaignDateRangeKpiResponse: CampaignDateRangeKpiResponse & {
     ApplicationId: string;
@@ -5379,16 +5362,15 @@ export interface GetCampaignDateRangeKpiResponse {
     StartTime: __timestampIso8601;
   };
 }
-export const GetCampaignDateRangeKpiResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CampaignDateRangeKpiResponse: S.optional(CampaignDateRangeKpiResponse)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "CampaignDateRangeKpiResponse" }),
-    }),
-  ).annotate({
-    identifier: "GetCampaignDateRangeKpiResponse",
-  }) as any as S.Schema<GetCampaignDateRangeKpiResponse>;
+export const GetCampaignDateRangeKpiResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CampaignDateRangeKpiResponse: S.optional(CampaignDateRangeKpiResponse)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "CampaignDateRangeKpiResponse" }),
+  }),
+).annotate({
+  identifier: "GetCampaignDateRangeKpiResponse",
+}) as any as S.Schema<GetCampaignDateRangeKpiResponse>;
 export interface GetCampaignsRequest {
   ApplicationId: string;
   PageSize?: string;
@@ -5941,16 +5923,15 @@ export interface GetCampaignVersionsResponse {
     })[];
   };
 }
-export const GetCampaignVersionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CampaignsResponse: S.optional(CampaignsResponse)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "CampaignsResponse" }),
-    }),
-  ).annotate({
-    identifier: "GetCampaignVersionsResponse",
-  }) as any as S.Schema<GetCampaignVersionsResponse>;
+export const GetCampaignVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CampaignsResponse: S.optional(CampaignsResponse)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "CampaignsResponse" }),
+  }),
+).annotate({
+  identifier: "GetCampaignVersionsResponse",
+}) as any as S.Schema<GetCampaignVersionsResponse>;
 export interface GetChannelsRequest {
   ApplicationId: string;
 }
@@ -6025,14 +6006,9 @@ export interface GetEmailChannelRequest {
   ApplicationId: string;
 }
 export const GetEmailChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-  }).pipe(
+  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
     T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v1/apps/{ApplicationId}/channels/email",
-      }),
+      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/email" }),
       svc,
       auth,
       proto,
@@ -6084,6 +6060,7 @@ export type TemplateType =
   | "INAPP"
   | (string & {});
 export const TemplateType = /*@__PURE__*/ S.String;
+
 export interface EmailTemplateResponse {
   Arn?: string;
   CreationDate?: string;
@@ -6916,36 +6893,35 @@ export interface GetJourneyDateRangeKpiRequest {
   PageSize?: string;
   StartTime?: Date;
 }
-export const GetJourneyDateRangeKpiRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-      EndTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ).pipe(T.HttpQuery("end-time")),
-      JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
-      KpiName: S.String.pipe(T.HttpLabel("KpiName")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-      PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-      StartTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ).pipe(T.HttpQuery("start-time")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}/kpis/daterange/{KpiName}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetJourneyDateRangeKpiRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+    EndTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.HttpQuery("end-time")),
+    JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
+    KpiName: S.String.pipe(T.HttpLabel("KpiName")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+    StartTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.HttpQuery("start-time")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}/kpis/daterange/{KpiName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetJourneyDateRangeKpiRequest",
-  }) as any as S.Schema<GetJourneyDateRangeKpiRequest>;
+  ),
+).annotate({
+  identifier: "GetJourneyDateRangeKpiRequest",
+}) as any as S.Schema<GetJourneyDateRangeKpiRequest>;
 export interface JourneyDateRangeKpiResponse {
   ApplicationId?: string;
   EndTime?: Date;
@@ -6955,24 +6931,21 @@ export interface JourneyDateRangeKpiResponse {
   NextToken?: string;
   StartTime?: Date;
 }
-export const JourneyDateRangeKpiResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.optional(S.String),
-      EndTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      JourneyId: S.optional(S.String),
-      KpiName: S.optional(S.String),
-      KpiResult: S.optional(BaseKpiResult),
-      NextToken: S.optional(S.String),
-      StartTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
-  ).annotate({
-    identifier: "JourneyDateRangeKpiResponse",
-  }) as any as S.Schema<JourneyDateRangeKpiResponse>;
+export const JourneyDateRangeKpiResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.optional(S.String),
+    EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+    JourneyId: S.optional(S.String),
+    KpiName: S.optional(S.String),
+    KpiResult: S.optional(BaseKpiResult),
+    NextToken: S.optional(S.String),
+    StartTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "JourneyDateRangeKpiResponse",
+}) as any as S.Schema<JourneyDateRangeKpiResponse>;
 export interface GetJourneyDateRangeKpiResponse {
   JourneyDateRangeKpiResponse: JourneyDateRangeKpiResponse & {
     ApplicationId: string;
@@ -6996,16 +6969,15 @@ export interface GetJourneyDateRangeKpiResponse {
     StartTime: __timestampIso8601;
   };
 }
-export const GetJourneyDateRangeKpiResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      JourneyDateRangeKpiResponse: S.optional(JourneyDateRangeKpiResponse)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "JourneyDateRangeKpiResponse" }),
-    }),
-  ).annotate({
-    identifier: "GetJourneyDateRangeKpiResponse",
-  }) as any as S.Schema<GetJourneyDateRangeKpiResponse>;
+export const GetJourneyDateRangeKpiResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JourneyDateRangeKpiResponse: S.optional(JourneyDateRangeKpiResponse)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "JourneyDateRangeKpiResponse" }),
+  }),
+).annotate({
+  identifier: "GetJourneyDateRangeKpiResponse",
+}) as any as S.Schema<GetJourneyDateRangeKpiResponse>;
 export interface GetJourneyExecutionActivityMetricsRequest {
   ApplicationId: string;
   JourneyActivityId: string;
@@ -7045,8 +7017,8 @@ export interface JourneyExecutionActivityMetricsResponse {
   LastEvaluatedTime?: string;
   Metrics?: { [key: string]: string | undefined };
 }
-export const JourneyExecutionActivityMetricsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const JourneyExecutionActivityMetricsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ActivityType: S.optional(S.String),
       ApplicationId: S.optional(S.String),
@@ -7055,9 +7027,9 @@ export const JourneyExecutionActivityMetricsResponse =
       LastEvaluatedTime: S.optional(S.String),
       Metrics: S.optional(MapOf__string),
     }),
-  ).annotate({
-    identifier: "JourneyExecutionActivityMetricsResponse",
-  }) as any as S.Schema<JourneyExecutionActivityMetricsResponse>;
+).annotate({
+  identifier: "JourneyExecutionActivityMetricsResponse",
+}) as any as S.Schema<JourneyExecutionActivityMetricsResponse>;
 export interface GetJourneyExecutionActivityMetricsResponse {
   JourneyExecutionActivityMetricsResponse: JourneyExecutionActivityMetricsResponse & {
     ActivityType: string;
@@ -7086,46 +7058,44 @@ export interface GetJourneyExecutionMetricsRequest {
   NextToken?: string;
   PageSize?: string;
 }
-export const GetJourneyExecutionMetricsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-      JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-      PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}/execution-metrics",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetJourneyExecutionMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+    JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}/execution-metrics",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetJourneyExecutionMetricsRequest",
-  }) as any as S.Schema<GetJourneyExecutionMetricsRequest>;
+  ),
+).annotate({
+  identifier: "GetJourneyExecutionMetricsRequest",
+}) as any as S.Schema<GetJourneyExecutionMetricsRequest>;
 export interface JourneyExecutionMetricsResponse {
   ApplicationId?: string;
   JourneyId?: string;
   LastEvaluatedTime?: string;
   Metrics?: { [key: string]: string | undefined };
 }
-export const JourneyExecutionMetricsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.optional(S.String),
-      JourneyId: S.optional(S.String),
-      LastEvaluatedTime: S.optional(S.String),
-      Metrics: S.optional(MapOf__string),
-    }),
-  ).annotate({
-    identifier: "JourneyExecutionMetricsResponse",
-  }) as any as S.Schema<JourneyExecutionMetricsResponse>;
+export const JourneyExecutionMetricsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.optional(S.String),
+    JourneyId: S.optional(S.String),
+    LastEvaluatedTime: S.optional(S.String),
+    Metrics: S.optional(MapOf__string),
+  }),
+).annotate({
+  identifier: "JourneyExecutionMetricsResponse",
+}) as any as S.Schema<JourneyExecutionMetricsResponse>;
 export interface GetJourneyExecutionMetricsResponse {
   JourneyExecutionMetricsResponse: JourneyExecutionMetricsResponse & {
     ApplicationId: string;
@@ -7134,18 +7104,15 @@ export interface GetJourneyExecutionMetricsResponse {
     Metrics: MapOf__string;
   };
 }
-export const GetJourneyExecutionMetricsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      JourneyExecutionMetricsResponse: S.optional(
-        JourneyExecutionMetricsResponse,
-      )
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "JourneyExecutionMetricsResponse" }),
-    }),
-  ).annotate({
-    identifier: "GetJourneyExecutionMetricsResponse",
-  }) as any as S.Schema<GetJourneyExecutionMetricsResponse>;
+export const GetJourneyExecutionMetricsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JourneyExecutionMetricsResponse: S.optional(JourneyExecutionMetricsResponse)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "JourneyExecutionMetricsResponse" }),
+  }),
+).annotate({
+  identifier: "GetJourneyExecutionMetricsResponse",
+}) as any as S.Schema<GetJourneyExecutionMetricsResponse>;
 export interface GetJourneyRunExecutionActivityMetricsRequest {
   ApplicationId: string;
   JourneyActivityId: string;
@@ -7232,8 +7199,8 @@ export interface GetJourneyRunExecutionMetricsRequest {
   PageSize?: string;
   RunId: string;
 }
-export const GetJourneyRunExecutionMetricsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetJourneyRunExecutionMetricsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
       JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
@@ -7253,9 +7220,9 @@ export const GetJourneyRunExecutionMetricsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetJourneyRunExecutionMetricsRequest",
-  }) as any as S.Schema<GetJourneyRunExecutionMetricsRequest>;
+).annotate({
+  identifier: "GetJourneyRunExecutionMetricsRequest",
+}) as any as S.Schema<GetJourneyRunExecutionMetricsRequest>;
 export interface JourneyRunExecutionMetricsResponse {
   ApplicationId?: string;
   JourneyId?: string;
@@ -7263,18 +7230,17 @@ export interface JourneyRunExecutionMetricsResponse {
   Metrics?: { [key: string]: string | undefined };
   RunId?: string;
 }
-export const JourneyRunExecutionMetricsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.optional(S.String),
-      JourneyId: S.optional(S.String),
-      LastEvaluatedTime: S.optional(S.String),
-      Metrics: S.optional(MapOf__string),
-      RunId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "JourneyRunExecutionMetricsResponse",
-  }) as any as S.Schema<JourneyRunExecutionMetricsResponse>;
+export const JourneyRunExecutionMetricsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.optional(S.String),
+    JourneyId: S.optional(S.String),
+    LastEvaluatedTime: S.optional(S.String),
+    Metrics: S.optional(MapOf__string),
+    RunId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "JourneyRunExecutionMetricsResponse",
+}) as any as S.Schema<JourneyRunExecutionMetricsResponse>;
 export interface GetJourneyRunExecutionMetricsResponse {
   JourneyRunExecutionMetricsResponse: JourneyRunExecutionMetricsResponse & {
     ApplicationId: string;
@@ -7284,8 +7250,8 @@ export interface GetJourneyRunExecutionMetricsResponse {
     RunId: string;
   };
 }
-export const GetJourneyRunExecutionMetricsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetJourneyRunExecutionMetricsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       JourneyRunExecutionMetricsResponse: S.optional(
         JourneyRunExecutionMetricsResponse,
@@ -7293,9 +7259,9 @@ export const GetJourneyRunExecutionMetricsResponse =
         .pipe(T.HttpPayload())
         .annotate({ identifier: "JourneyRunExecutionMetricsResponse" }),
     }),
-  ).annotate({
-    identifier: "GetJourneyRunExecutionMetricsResponse",
-  }) as any as S.Schema<GetJourneyRunExecutionMetricsResponse>;
+).annotate({
+  identifier: "GetJourneyRunExecutionMetricsResponse",
+}) as any as S.Schema<GetJourneyRunExecutionMetricsResponse>;
 export interface GetJourneyRunsRequest {
   ApplicationId: string;
   JourneyId: string;
@@ -7331,6 +7297,7 @@ export type JourneyRunStatus =
   | "CANCELLED"
   | (string & {});
 export const JourneyRunStatus = /*@__PURE__*/ S.String;
+
 export interface JourneyRunResponse {
   CreationTime?: string;
   LastUpdateTime?: string;
@@ -7419,28 +7386,27 @@ export interface PushNotificationTemplateResponse {
   TemplateType?: TemplateType;
   Version?: string;
 }
-export const PushNotificationTemplateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ADM: S.optional(AndroidPushNotificationTemplate),
-      APNS: S.optional(APNSPushNotificationTemplate),
-      Arn: S.optional(S.String),
-      Baidu: S.optional(AndroidPushNotificationTemplate),
-      CreationDate: S.optional(S.String),
-      Default: S.optional(DefaultPushNotificationTemplate),
-      DefaultSubstitutions: S.optional(S.String),
-      GCM: S.optional(AndroidPushNotificationTemplate),
-      LastModifiedDate: S.optional(S.String),
-      RecommenderId: S.optional(S.String),
-      tags: S.optional(MapOf__string),
-      TemplateDescription: S.optional(S.String),
-      TemplateName: S.optional(S.String),
-      TemplateType: S.optional(TemplateType),
-      Version: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PushNotificationTemplateResponse",
-  }) as any as S.Schema<PushNotificationTemplateResponse>;
+export const PushNotificationTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ADM: S.optional(AndroidPushNotificationTemplate),
+    APNS: S.optional(APNSPushNotificationTemplate),
+    Arn: S.optional(S.String),
+    Baidu: S.optional(AndroidPushNotificationTemplate),
+    CreationDate: S.optional(S.String),
+    Default: S.optional(DefaultPushNotificationTemplate),
+    DefaultSubstitutions: S.optional(S.String),
+    GCM: S.optional(AndroidPushNotificationTemplate),
+    LastModifiedDate: S.optional(S.String),
+    RecommenderId: S.optional(S.String),
+    tags: S.optional(MapOf__string),
+    TemplateDescription: S.optional(S.String),
+    TemplateName: S.optional(S.String),
+    TemplateType: S.optional(TemplateType),
+    Version: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PushNotificationTemplateResponse",
+}) as any as S.Schema<PushNotificationTemplateResponse>;
 export interface GetPushTemplateResponse {
   PushNotificationTemplateResponse: PushNotificationTemplateResponse & {
     CreationDate: string;
@@ -7463,23 +7429,20 @@ export const GetPushTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetRecommenderConfigurationRequest {
   RecommenderId: string;
 }
-export const GetRecommenderConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RecommenderId: S.String.pipe(T.HttpLabel("RecommenderId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/v1/recommenders/{RecommenderId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetRecommenderConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RecommenderId: S.String.pipe(T.HttpLabel("RecommenderId")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v1/recommenders/{RecommenderId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetRecommenderConfigurationRequest",
-  }) as any as S.Schema<GetRecommenderConfigurationRequest>;
+  ),
+).annotate({
+  identifier: "GetRecommenderConfigurationRequest",
+}) as any as S.Schema<GetRecommenderConfigurationRequest>;
 export interface GetRecommenderConfigurationResponse {
   RecommenderConfigurationResponse: RecommenderConfigurationResponse & {
     CreationDate: string;
@@ -7489,57 +7452,56 @@ export interface GetRecommenderConfigurationResponse {
     RecommendationProviderUri: string;
   };
 }
-export const GetRecommenderConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RecommenderConfigurationResponse: S.optional(
-        RecommenderConfigurationResponse,
-      )
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "RecommenderConfigurationResponse" }),
-    }),
-  ).annotate({
-    identifier: "GetRecommenderConfigurationResponse",
-  }) as any as S.Schema<GetRecommenderConfigurationResponse>;
+export const GetRecommenderConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RecommenderConfigurationResponse: S.optional(
+      RecommenderConfigurationResponse,
+    )
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "RecommenderConfigurationResponse" }),
+  }),
+).annotate({
+  identifier: "GetRecommenderConfigurationResponse",
+}) as any as S.Schema<GetRecommenderConfigurationResponse>;
 export interface GetRecommenderConfigurationsRequest {
   PageSize?: string;
   Token?: string;
 }
-export const GetRecommenderConfigurationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-      Token: S.optional(S.String).pipe(T.HttpQuery("token")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/v1/recommenders" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetRecommenderConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+    Token: S.optional(S.String).pipe(T.HttpQuery("token")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v1/recommenders" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetRecommenderConfigurationsRequest",
-  }) as any as S.Schema<GetRecommenderConfigurationsRequest>;
+  ),
+).annotate({
+  identifier: "GetRecommenderConfigurationsRequest",
+}) as any as S.Schema<GetRecommenderConfigurationsRequest>;
 export type ListOfRecommenderConfigurationResponse =
   RecommenderConfigurationResponse[];
-export const ListOfRecommenderConfigurationResponse =
-  /*@__PURE__*/ S.Array(RecommenderConfigurationResponse);
+export const ListOfRecommenderConfigurationResponse = /*@__PURE__*/ S.Array(
+  RecommenderConfigurationResponse,
+);
 export interface ListRecommenderConfigurationsResponse {
   Item?: RecommenderConfigurationResponse[];
   NextToken?: string;
 }
-export const ListRecommenderConfigurationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListRecommenderConfigurationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Item: S.optional(ListOfRecommenderConfigurationResponse),
       NextToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListRecommenderConfigurationsResponse",
-  }) as any as S.Schema<ListRecommenderConfigurationsResponse>;
+).annotate({
+  identifier: "ListRecommenderConfigurationsResponse",
+}) as any as S.Schema<ListRecommenderConfigurationsResponse>;
 export interface GetRecommenderConfigurationsResponse {
   ListRecommenderConfigurationsResponse: ListRecommenderConfigurationsResponse & {
     Item: (RecommenderConfigurationResponse & {
@@ -7551,8 +7513,8 @@ export interface GetRecommenderConfigurationsResponse {
     })[];
   };
 }
-export const GetRecommenderConfigurationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetRecommenderConfigurationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ListRecommenderConfigurationsResponse: S.optional(
         ListRecommenderConfigurationsResponse,
@@ -7560,9 +7522,9 @@ export const GetRecommenderConfigurationsResponse =
         .pipe(T.HttpPayload())
         .annotate({ identifier: "ListRecommenderConfigurationsResponse" }),
     }),
-  ).annotate({
-    identifier: "GetRecommenderConfigurationsResponse",
-  }) as any as S.Schema<GetRecommenderConfigurationsResponse>;
+).annotate({
+  identifier: "GetRecommenderConfigurationsResponse",
+}) as any as S.Schema<GetRecommenderConfigurationsResponse>;
 export interface GetSegmentRequest {
   ApplicationId: string;
   SegmentId: string;
@@ -7703,29 +7665,28 @@ export interface GetSegmentExportJobsRequest {
   SegmentId: string;
   Token?: string;
 }
-export const GetSegmentExportJobsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-      PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-      SegmentId: S.String.pipe(T.HttpLabel("SegmentId")),
-      Token: S.optional(S.String).pipe(T.HttpQuery("token")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v1/apps/{ApplicationId}/segments/{SegmentId}/jobs/export",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetSegmentExportJobsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+    SegmentId: S.String.pipe(T.HttpLabel("SegmentId")),
+    Token: S.optional(S.String).pipe(T.HttpQuery("token")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v1/apps/{ApplicationId}/segments/{SegmentId}/jobs/export",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetSegmentExportJobsRequest",
-  }) as any as S.Schema<GetSegmentExportJobsRequest>;
+  ),
+).annotate({
+  identifier: "GetSegmentExportJobsRequest",
+}) as any as S.Schema<GetSegmentExportJobsRequest>;
 export interface GetSegmentExportJobsResponse {
   ExportJobsResponse: ExportJobsResponse & {
     Item: (ExportJobResponse & {
@@ -7738,45 +7699,43 @@ export interface GetSegmentExportJobsResponse {
     })[];
   };
 }
-export const GetSegmentExportJobsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ExportJobsResponse: S.optional(ExportJobsResponse)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "ExportJobsResponse" }),
-    }),
-  ).annotate({
-    identifier: "GetSegmentExportJobsResponse",
-  }) as any as S.Schema<GetSegmentExportJobsResponse>;
+export const GetSegmentExportJobsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ExportJobsResponse: S.optional(ExportJobsResponse)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "ExportJobsResponse" }),
+  }),
+).annotate({
+  identifier: "GetSegmentExportJobsResponse",
+}) as any as S.Schema<GetSegmentExportJobsResponse>;
 export interface GetSegmentImportJobsRequest {
   ApplicationId: string;
   PageSize?: string;
   SegmentId: string;
   Token?: string;
 }
-export const GetSegmentImportJobsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-      PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-      SegmentId: S.String.pipe(T.HttpLabel("SegmentId")),
-      Token: S.optional(S.String).pipe(T.HttpQuery("token")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v1/apps/{ApplicationId}/segments/{SegmentId}/jobs/import",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetSegmentImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+    SegmentId: S.String.pipe(T.HttpLabel("SegmentId")),
+    Token: S.optional(S.String).pipe(T.HttpQuery("token")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v1/apps/{ApplicationId}/segments/{SegmentId}/jobs/import",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetSegmentImportJobsRequest",
-  }) as any as S.Schema<GetSegmentImportJobsRequest>;
+  ),
+).annotate({
+  identifier: "GetSegmentImportJobsRequest",
+}) as any as S.Schema<GetSegmentImportJobsRequest>;
 export interface GetSegmentImportJobsResponse {
   ImportJobsResponse: ImportJobsResponse & {
     Item: (ImportJobResponse & {
@@ -7793,16 +7752,15 @@ export interface GetSegmentImportJobsResponse {
     })[];
   };
 }
-export const GetSegmentImportJobsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ImportJobsResponse: S.optional(ImportJobsResponse)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "ImportJobsResponse" }),
-    }),
-  ).annotate({
-    identifier: "GetSegmentImportJobsResponse",
-  }) as any as S.Schema<GetSegmentImportJobsResponse>;
+export const GetSegmentImportJobsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ImportJobsResponse: S.optional(ImportJobsResponse)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "ImportJobsResponse" }),
+  }),
+).annotate({
+  identifier: "GetSegmentImportJobsResponse",
+}) as any as S.Schema<GetSegmentImportJobsResponse>;
 export interface GetSegmentsRequest {
   ApplicationId: string;
   PageSize?: string;
@@ -8341,10 +8299,7 @@ export const GetUserEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
     UserId: S.String.pipe(T.HttpLabel("UserId")),
   }).pipe(
     T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v1/apps/{ApplicationId}/users/{UserId}",
-      }),
+      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/users/{UserId}" }),
       svc,
       auth,
       proto,
@@ -8371,14 +8326,9 @@ export interface GetVoiceChannelRequest {
   ApplicationId: string;
 }
 export const GetVoiceChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-  }).pipe(
+  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
     T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v1/apps/{ApplicationId}/channels/voice",
-      }),
+      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/voice" }),
       svc,
       auth,
       proto,
@@ -8719,16 +8669,15 @@ export const TagsModel = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   TagsModel: TagsModel & { tags: MapOf__string };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TagsModel: S.optional(TagsModel)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "TagsModel" }),
-    }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TagsModel: S.optional(TagsModel)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "TagsModel" }),
+  }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListTemplatesRequest {
   NextToken?: string;
   PageSize?: string;
@@ -8819,29 +8768,28 @@ export interface ListTemplateVersionsRequest {
   TemplateName: string;
   TemplateType: string;
 }
-export const ListTemplateVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-      PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-      TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-      TemplateType: S.String.pipe(T.HttpLabel("TemplateType")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v1/templates/{TemplateName}/{TemplateType}/versions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTemplateVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+    TemplateType: S.String.pipe(T.HttpLabel("TemplateType")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v1/templates/{TemplateName}/{TemplateType}/versions",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListTemplateVersionsRequest",
-  }) as any as S.Schema<ListTemplateVersionsRequest>;
+  ),
+).annotate({
+  identifier: "ListTemplateVersionsRequest",
+}) as any as S.Schema<ListTemplateVersionsRequest>;
 export interface TemplateVersionResponse {
   CreationDate?: string;
   DefaultSubstitutions?: string;
@@ -8865,8 +8813,9 @@ export const TemplateVersionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TemplateVersionResponse",
 }) as any as S.Schema<TemplateVersionResponse>;
 export type ListOfTemplateVersionResponse = TemplateVersionResponse[];
-export const ListOfTemplateVersionResponse =
-  /*@__PURE__*/ S.Array(TemplateVersionResponse);
+export const ListOfTemplateVersionResponse = /*@__PURE__*/ S.Array(
+  TemplateVersionResponse,
+);
 export interface TemplateVersionsResponse {
   Item?: TemplateVersionResponse[];
   Message?: string;
@@ -8893,16 +8842,15 @@ export interface ListTemplateVersionsResponse {
     })[];
   };
 }
-export const ListTemplateVersionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TemplateVersionsResponse: S.optional(TemplateVersionsResponse)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "TemplateVersionsResponse" }),
-    }),
-  ).annotate({
-    identifier: "ListTemplateVersionsResponse",
-  }) as any as S.Schema<ListTemplateVersionsResponse>;
+export const ListTemplateVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TemplateVersionsResponse: S.optional(TemplateVersionsResponse)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "TemplateVersionsResponse" }),
+  }),
+).annotate({
+  identifier: "ListTemplateVersionsResponse",
+}) as any as S.Schema<ListTemplateVersionsResponse>;
 export interface NumberValidateRequest {
   IsoCountryCode?: string;
   PhoneNumber?: string;
@@ -8975,16 +8923,15 @@ export const NumberValidateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PhoneNumberValidateResponse {
   NumberValidateResponse: NumberValidateResponse;
 }
-export const PhoneNumberValidateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NumberValidateResponse: S.optional(NumberValidateResponse)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "NumberValidateResponse" }),
-    }),
-  ).annotate({
-    identifier: "PhoneNumberValidateResponse",
-  }) as any as S.Schema<PhoneNumberValidateResponse>;
+export const PhoneNumberValidateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NumberValidateResponse: S.optional(NumberValidateResponse)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "NumberValidateResponse" }),
+  }),
+).annotate({
+  identifier: "PhoneNumberValidateResponse",
+}) as any as S.Schema<PhoneNumberValidateResponse>;
 export interface PublicEndpoint {
   Address?: string;
   Attributes?: { [key: string]: string[] | undefined };
@@ -9324,8 +9271,10 @@ export const EndpointSendConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type MapOfEndpointSendConfiguration = {
   [key: string]: EndpointSendConfiguration | undefined;
 };
-export const MapOfEndpointSendConfiguration =
-  /*@__PURE__*/ S.Record(S.String, EndpointSendConfiguration.pipe(S.optional));
+export const MapOfEndpointSendConfiguration = /*@__PURE__*/ S.Record(
+  S.String,
+  EndpointSendConfiguration.pipe(S.optional),
+);
 export interface ADMMessage {
   Action?: Action;
   Body?: string;
@@ -9459,20 +9408,20 @@ export interface DefaultPushNotificationMessage {
   Title?: string;
   Url?: string;
 }
-export const DefaultPushNotificationMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Action: S.optional(Action),
-      Body: S.optional(S.String),
-      Data: S.optional(MapOf__string),
-      SilentPush: S.optional(S.Boolean),
-      Substitutions: S.optional(MapOfListOf__string),
-      Title: S.optional(S.String),
-      Url: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DefaultPushNotificationMessage",
-  }) as any as S.Schema<DefaultPushNotificationMessage>;
+export const DefaultPushNotificationMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Action: S.optional(Action),
+    Body: S.optional(S.String),
+    Data: S.optional(MapOf__string),
+    SilentPush: S.optional(S.Boolean),
+    Substitutions: S.optional(MapOfListOf__string),
+    Title: S.optional(S.String),
+    Url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DefaultPushNotificationMessage",
+}) as any as S.Schema<DefaultPushNotificationMessage>;
+export type __blob = Uint8Array;
 export interface RawEmail {
   Data?: Uint8Array;
 }
@@ -9681,6 +9630,7 @@ export type DeliveryStatus =
   | "DUPLICATE"
   | (string & {});
 export const DeliveryStatus = /*@__PURE__*/ S.String;
+
 export interface EndpointMessageResult {
   Address?: string;
   DeliveryStatus?: DeliveryStatus;
@@ -9788,24 +9738,23 @@ export interface SendOTPMessageRequestParameters {
   TemplateId?: string;
   ValidityPeriod?: number;
 }
-export const SendOTPMessageRequestParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AllowedAttempts: S.optional(S.Number),
-      BrandName: S.optional(S.String),
-      Channel: S.optional(S.String),
-      CodeLength: S.optional(S.Number),
-      DestinationIdentity: S.optional(S.String),
-      EntityId: S.optional(S.String),
-      Language: S.optional(S.String),
-      OriginationIdentity: S.optional(S.String),
-      ReferenceId: S.optional(S.String),
-      TemplateId: S.optional(S.String),
-      ValidityPeriod: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "SendOTPMessageRequestParameters",
-  }) as any as S.Schema<SendOTPMessageRequestParameters>;
+export const SendOTPMessageRequestParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AllowedAttempts: S.optional(S.Number),
+    BrandName: S.optional(S.String),
+    Channel: S.optional(S.String),
+    CodeLength: S.optional(S.Number),
+    DestinationIdentity: S.optional(S.String),
+    EntityId: S.optional(S.String),
+    Language: S.optional(S.String),
+    OriginationIdentity: S.optional(S.String),
+    ReferenceId: S.optional(S.String),
+    TemplateId: S.optional(S.String),
+    ValidityPeriod: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SendOTPMessageRequestParameters",
+}) as any as S.Schema<SendOTPMessageRequestParameters>;
 export interface SendOTPMessageRequest {
   ApplicationId: string;
   SendOTPMessageRequestParameters?: SendOTPMessageRequestParameters;
@@ -9908,8 +9857,10 @@ export type MapOfMapOfEndpointMessageResult = {
     | { [key: string]: EndpointMessageResult | undefined }
     | undefined;
 };
-export const MapOfMapOfEndpointMessageResult =
-  /*@__PURE__*/ S.Record(S.String, MapOfEndpointMessageResult.pipe(S.optional));
+export const MapOfMapOfEndpointMessageResult = /*@__PURE__*/ S.Record(
+  S.String,
+  MapOfEndpointMessageResult.pipe(S.optional),
+);
 export interface SendUsersMessageResponse {
   ApplicationId?: string;
   RequestId?: string;
@@ -10095,10 +10046,7 @@ export const UpdateApnsChannelRequest = /*@__PURE__*/ S.suspend(() =>
     ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
   }).pipe(
     T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/v1/apps/{ApplicationId}/channels/apns",
-      }),
+      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/apns" }),
       svc,
       auth,
       proto,
@@ -10149,42 +10097,40 @@ export interface UpdateApnsSandboxChannelRequest {
   APNSSandboxChannelRequest?: APNSSandboxChannelRequest;
   ApplicationId: string;
 }
-export const UpdateApnsSandboxChannelRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      APNSSandboxChannelRequest: S.optional(APNSSandboxChannelRequest)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "APNSSandboxChannelRequest" }),
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/v1/apps/{ApplicationId}/channels/apns_sandbox",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateApnsSandboxChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    APNSSandboxChannelRequest: S.optional(APNSSandboxChannelRequest)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "APNSSandboxChannelRequest" }),
+    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/v1/apps/{ApplicationId}/channels/apns_sandbox",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateApnsSandboxChannelRequest",
-  }) as any as S.Schema<UpdateApnsSandboxChannelRequest>;
+  ),
+).annotate({
+  identifier: "UpdateApnsSandboxChannelRequest",
+}) as any as S.Schema<UpdateApnsSandboxChannelRequest>;
 export interface UpdateApnsSandboxChannelResponse {
   APNSSandboxChannelResponse: APNSSandboxChannelResponse & { Platform: string };
 }
-export const UpdateApnsSandboxChannelResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      APNSSandboxChannelResponse: S.optional(APNSSandboxChannelResponse)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "APNSSandboxChannelResponse" }),
-    }),
-  ).annotate({
-    identifier: "UpdateApnsSandboxChannelResponse",
-  }) as any as S.Schema<UpdateApnsSandboxChannelResponse>;
+export const UpdateApnsSandboxChannelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    APNSSandboxChannelResponse: S.optional(APNSSandboxChannelResponse)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "APNSSandboxChannelResponse" }),
+  }),
+).annotate({
+  identifier: "UpdateApnsSandboxChannelResponse",
+}) as any as S.Schema<UpdateApnsSandboxChannelResponse>;
 export interface APNSVoipChannelRequest {
   BundleId?: string;
   Certificate?: string;
@@ -10213,42 +10159,40 @@ export interface UpdateApnsVoipChannelRequest {
   APNSVoipChannelRequest?: APNSVoipChannelRequest;
   ApplicationId: string;
 }
-export const UpdateApnsVoipChannelRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      APNSVoipChannelRequest: S.optional(APNSVoipChannelRequest)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "APNSVoipChannelRequest" }),
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/v1/apps/{ApplicationId}/channels/apns_voip",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateApnsVoipChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    APNSVoipChannelRequest: S.optional(APNSVoipChannelRequest)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "APNSVoipChannelRequest" }),
+    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/v1/apps/{ApplicationId}/channels/apns_voip",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateApnsVoipChannelRequest",
-  }) as any as S.Schema<UpdateApnsVoipChannelRequest>;
+  ),
+).annotate({
+  identifier: "UpdateApnsVoipChannelRequest",
+}) as any as S.Schema<UpdateApnsVoipChannelRequest>;
 export interface UpdateApnsVoipChannelResponse {
   APNSVoipChannelResponse: APNSVoipChannelResponse & { Platform: string };
 }
-export const UpdateApnsVoipChannelResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      APNSVoipChannelResponse: S.optional(APNSVoipChannelResponse)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "APNSVoipChannelResponse" }),
-    }),
-  ).annotate({
-    identifier: "UpdateApnsVoipChannelResponse",
-  }) as any as S.Schema<UpdateApnsVoipChannelResponse>;
+export const UpdateApnsVoipChannelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    APNSVoipChannelResponse: S.optional(APNSVoipChannelResponse)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "APNSVoipChannelResponse" }),
+  }),
+).annotate({
+  identifier: "UpdateApnsVoipChannelResponse",
+}) as any as S.Schema<UpdateApnsVoipChannelResponse>;
 export interface APNSVoipSandboxChannelRequest {
   BundleId?: string;
   Certificate?: string;
@@ -10259,63 +10203,61 @@ export interface APNSVoipSandboxChannelRequest {
   TokenKey?: string;
   TokenKeyId?: string;
 }
-export const APNSVoipSandboxChannelRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      BundleId: S.optional(S.String),
-      Certificate: S.optional(S.String),
-      DefaultAuthenticationMethod: S.optional(S.String),
-      Enabled: S.optional(S.Boolean),
-      PrivateKey: S.optional(S.String),
-      TeamId: S.optional(S.String),
-      TokenKey: S.optional(S.String),
-      TokenKeyId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "APNSVoipSandboxChannelRequest",
-  }) as any as S.Schema<APNSVoipSandboxChannelRequest>;
+export const APNSVoipSandboxChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BundleId: S.optional(S.String),
+    Certificate: S.optional(S.String),
+    DefaultAuthenticationMethod: S.optional(S.String),
+    Enabled: S.optional(S.Boolean),
+    PrivateKey: S.optional(S.String),
+    TeamId: S.optional(S.String),
+    TokenKey: S.optional(S.String),
+    TokenKeyId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "APNSVoipSandboxChannelRequest",
+}) as any as S.Schema<APNSVoipSandboxChannelRequest>;
 export interface UpdateApnsVoipSandboxChannelRequest {
   APNSVoipSandboxChannelRequest?: APNSVoipSandboxChannelRequest;
   ApplicationId: string;
 }
-export const UpdateApnsVoipSandboxChannelRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      APNSVoipSandboxChannelRequest: S.optional(APNSVoipSandboxChannelRequest)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "APNSVoipSandboxChannelRequest" }),
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/v1/apps/{ApplicationId}/channels/apns_voip_sandbox",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateApnsVoipSandboxChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    APNSVoipSandboxChannelRequest: S.optional(APNSVoipSandboxChannelRequest)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "APNSVoipSandboxChannelRequest" }),
+    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/v1/apps/{ApplicationId}/channels/apns_voip_sandbox",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateApnsVoipSandboxChannelRequest",
-  }) as any as S.Schema<UpdateApnsVoipSandboxChannelRequest>;
+  ),
+).annotate({
+  identifier: "UpdateApnsVoipSandboxChannelRequest",
+}) as any as S.Schema<UpdateApnsVoipSandboxChannelRequest>;
 export interface UpdateApnsVoipSandboxChannelResponse {
   APNSVoipSandboxChannelResponse: APNSVoipSandboxChannelResponse & {
     Platform: string;
   };
 }
-export const UpdateApnsVoipSandboxChannelResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const UpdateApnsVoipSandboxChannelResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       APNSVoipSandboxChannelResponse: S.optional(APNSVoipSandboxChannelResponse)
         .pipe(T.HttpPayload())
         .annotate({ identifier: "APNSVoipSandboxChannelResponse" }),
     }),
-  ).annotate({
-    identifier: "UpdateApnsVoipSandboxChannelResponse",
-  }) as any as S.Schema<UpdateApnsVoipSandboxChannelResponse>;
+).annotate({
+  identifier: "UpdateApnsVoipSandboxChannelResponse",
+}) as any as S.Schema<UpdateApnsVoipSandboxChannelResponse>;
 export interface WriteApplicationSettingsRequest {
   CampaignHook?: CampaignHook;
   CloudWatchMetricsEnabled?: boolean;
@@ -10324,60 +10266,55 @@ export interface WriteApplicationSettingsRequest {
   QuietTime?: QuietTime;
   JourneyLimits?: ApplicationSettingsJourneyLimits;
 }
-export const WriteApplicationSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CampaignHook: S.optional(CampaignHook),
-      CloudWatchMetricsEnabled: S.optional(S.Boolean),
-      EventTaggingEnabled: S.optional(S.Boolean),
-      Limits: S.optional(CampaignLimits),
-      QuietTime: S.optional(QuietTime),
-      JourneyLimits: S.optional(ApplicationSettingsJourneyLimits),
-    }),
-  ).annotate({
-    identifier: "WriteApplicationSettingsRequest",
-  }) as any as S.Schema<WriteApplicationSettingsRequest>;
+export const WriteApplicationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CampaignHook: S.optional(CampaignHook),
+    CloudWatchMetricsEnabled: S.optional(S.Boolean),
+    EventTaggingEnabled: S.optional(S.Boolean),
+    Limits: S.optional(CampaignLimits),
+    QuietTime: S.optional(QuietTime),
+    JourneyLimits: S.optional(ApplicationSettingsJourneyLimits),
+  }),
+).annotate({
+  identifier: "WriteApplicationSettingsRequest",
+}) as any as S.Schema<WriteApplicationSettingsRequest>;
 export interface UpdateApplicationSettingsRequest {
   ApplicationId: string;
   WriteApplicationSettingsRequest?: WriteApplicationSettingsRequest;
 }
-export const UpdateApplicationSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-      WriteApplicationSettingsRequest: S.optional(
-        WriteApplicationSettingsRequest,
-      )
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "WriteApplicationSettingsRequest" }),
-    }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/settings" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateApplicationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+    WriteApplicationSettingsRequest: S.optional(WriteApplicationSettingsRequest)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "WriteApplicationSettingsRequest" }),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/settings" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateApplicationSettingsRequest",
-  }) as any as S.Schema<UpdateApplicationSettingsRequest>;
+  ),
+).annotate({
+  identifier: "UpdateApplicationSettingsRequest",
+}) as any as S.Schema<UpdateApplicationSettingsRequest>;
 export interface UpdateApplicationSettingsResponse {
   ApplicationSettingsResource: ApplicationSettingsResource & {
     ApplicationId: string;
   };
 }
-export const UpdateApplicationSettingsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationSettingsResource: S.optional(ApplicationSettingsResource)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "ApplicationSettingsResource" }),
-    }),
-  ).annotate({
-    identifier: "UpdateApplicationSettingsResponse",
-  }) as any as S.Schema<UpdateApplicationSettingsResponse>;
+export const UpdateApplicationSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationSettingsResource: S.optional(ApplicationSettingsResource)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "ApplicationSettingsResource" }),
+  }),
+).annotate({
+  identifier: "UpdateApplicationSettingsResponse",
+}) as any as S.Schema<UpdateApplicationSettingsResponse>;
 export interface BaiduChannelRequest {
   ApiKey?: string;
   Enabled?: boolean;
@@ -10404,10 +10341,7 @@ export const UpdateBaiduChannelRequest = /*@__PURE__*/ S.suspend(() =>
       .annotate({ identifier: "BaiduChannelRequest" }),
   }).pipe(
     T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/v1/apps/{ApplicationId}/channels/baidu",
-      }),
+      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/baidu" }),
       svc,
       auth,
       proto,
@@ -10643,10 +10577,7 @@ export const UpdateEmailChannelRequest = /*@__PURE__*/ S.suspend(() =>
       .annotate({ identifier: "EmailChannelRequest" }),
   }).pipe(
     T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/v1/apps/{ApplicationId}/channels/email",
-      }),
+      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/email" }),
       svc,
       auth,
       proto,
@@ -10701,16 +10632,15 @@ export const UpdateEmailTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateEmailTemplateResponse {
   MessageBody: MessageBody;
 }
-export const UpdateEmailTemplateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MessageBody: S.optional(MessageBody)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "MessageBody" }),
-    }),
-  ).annotate({
-    identifier: "UpdateEmailTemplateResponse",
-  }) as any as S.Schema<UpdateEmailTemplateResponse>;
+export const UpdateEmailTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MessageBody: S.optional(MessageBody)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "MessageBody" }),
+  }),
+).annotate({
+  identifier: "UpdateEmailTemplateResponse",
+}) as any as S.Schema<UpdateEmailTemplateResponse>;
 export interface EndpointRequest {
   Address?: string;
   Attributes?: { [key: string]: string[] | undefined };
@@ -10827,39 +10757,37 @@ export interface UpdateEndpointsBatchRequest {
   ApplicationId: string;
   EndpointBatchRequest?: EndpointBatchRequest;
 }
-export const UpdateEndpointsBatchRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-      EndpointBatchRequest: S.optional(EndpointBatchRequest)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "EndpointBatchRequest" }),
-    }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/endpoints" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateEndpointsBatchRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+    EndpointBatchRequest: S.optional(EndpointBatchRequest)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "EndpointBatchRequest" }),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/endpoints" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateEndpointsBatchRequest",
-  }) as any as S.Schema<UpdateEndpointsBatchRequest>;
+  ),
+).annotate({
+  identifier: "UpdateEndpointsBatchRequest",
+}) as any as S.Schema<UpdateEndpointsBatchRequest>;
 export interface UpdateEndpointsBatchResponse {
   MessageBody: MessageBody;
 }
-export const UpdateEndpointsBatchResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MessageBody: S.optional(MessageBody)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "MessageBody" }),
-    }),
-  ).annotate({
-    identifier: "UpdateEndpointsBatchResponse",
-  }) as any as S.Schema<UpdateEndpointsBatchResponse>;
+export const UpdateEndpointsBatchResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MessageBody: S.optional(MessageBody)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "MessageBody" }),
+  }),
+).annotate({
+  identifier: "UpdateEndpointsBatchResponse",
+}) as any as S.Schema<UpdateEndpointsBatchResponse>;
 export interface GCMChannelRequest {
   ApiKey?: string;
   DefaultAuthenticationMethod?: string;
@@ -10943,16 +10871,15 @@ export const UpdateInAppTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateInAppTemplateResponse {
   MessageBody: MessageBody;
 }
-export const UpdateInAppTemplateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MessageBody: S.optional(MessageBody)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "MessageBody" }),
-    }),
-  ).annotate({
-    identifier: "UpdateInAppTemplateResponse",
-  }) as any as S.Schema<UpdateInAppTemplateResponse>;
+export const UpdateInAppTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MessageBody: S.optional(MessageBody)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "MessageBody" }),
+  }),
+).annotate({
+  identifier: "UpdateInAppTemplateResponse",
+}) as any as S.Schema<UpdateInAppTemplateResponse>;
 export interface UpdateJourneyRequest {
   ApplicationId: string;
   JourneyId: string;
@@ -11435,28 +11362,27 @@ export interface UpdateRecommenderConfigurationShape {
   RecommendationsDisplayName?: string;
   RecommendationsPerMessage?: number;
 }
-export const UpdateRecommenderConfigurationShape =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Attributes: S.optional(MapOf__string),
-      Description: S.optional(S.String),
-      Name: S.optional(S.String),
-      RecommendationProviderIdType: S.optional(S.String),
-      RecommendationProviderRoleArn: S.optional(S.String),
-      RecommendationProviderUri: S.optional(S.String),
-      RecommendationTransformerUri: S.optional(S.String),
-      RecommendationsDisplayName: S.optional(S.String),
-      RecommendationsPerMessage: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "UpdateRecommenderConfigurationShape",
-  }) as any as S.Schema<UpdateRecommenderConfigurationShape>;
+export const UpdateRecommenderConfigurationShape = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Attributes: S.optional(MapOf__string),
+    Description: S.optional(S.String),
+    Name: S.optional(S.String),
+    RecommendationProviderIdType: S.optional(S.String),
+    RecommendationProviderRoleArn: S.optional(S.String),
+    RecommendationProviderUri: S.optional(S.String),
+    RecommendationTransformerUri: S.optional(S.String),
+    RecommendationsDisplayName: S.optional(S.String),
+    RecommendationsPerMessage: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "UpdateRecommenderConfigurationShape",
+}) as any as S.Schema<UpdateRecommenderConfigurationShape>;
 export interface UpdateRecommenderConfigurationRequest {
   RecommenderId: string;
   UpdateRecommenderConfiguration?: UpdateRecommenderConfigurationShape;
 }
-export const UpdateRecommenderConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const UpdateRecommenderConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       RecommenderId: S.String.pipe(T.HttpLabel("RecommenderId")),
       UpdateRecommenderConfiguration: S.optional(
@@ -11474,9 +11400,9 @@ export const UpdateRecommenderConfigurationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "UpdateRecommenderConfigurationRequest",
-  }) as any as S.Schema<UpdateRecommenderConfigurationRequest>;
+).annotate({
+  identifier: "UpdateRecommenderConfigurationRequest",
+}) as any as S.Schema<UpdateRecommenderConfigurationRequest>;
 export interface UpdateRecommenderConfigurationResponse {
   RecommenderConfigurationResponse: RecommenderConfigurationResponse & {
     CreationDate: string;
@@ -11486,8 +11412,8 @@ export interface UpdateRecommenderConfigurationResponse {
     RecommendationProviderUri: string;
   };
 }
-export const UpdateRecommenderConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const UpdateRecommenderConfigurationResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       RecommenderConfigurationResponse: S.optional(
         RecommenderConfigurationResponse,
@@ -11495,9 +11421,9 @@ export const UpdateRecommenderConfigurationResponse =
         .pipe(T.HttpPayload())
         .annotate({ identifier: "RecommenderConfigurationResponse" }),
     }),
-  ).annotate({
-    identifier: "UpdateRecommenderConfigurationResponse",
-  }) as any as S.Schema<UpdateRecommenderConfigurationResponse>;
+).annotate({
+  identifier: "UpdateRecommenderConfigurationResponse",
+}) as any as S.Schema<UpdateRecommenderConfigurationResponse>;
 export interface UpdateSegmentRequest {
   ApplicationId: string;
   SegmentId: string;
@@ -11729,54 +11655,51 @@ export const UpdateSmsTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface TemplateActiveVersionRequest {
   Version?: string;
 }
-export const TemplateActiveVersionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Version: S.optional(S.String) }),
-  ).annotate({
-    identifier: "TemplateActiveVersionRequest",
-  }) as any as S.Schema<TemplateActiveVersionRequest>;
+export const TemplateActiveVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Version: S.optional(S.String) }),
+).annotate({
+  identifier: "TemplateActiveVersionRequest",
+}) as any as S.Schema<TemplateActiveVersionRequest>;
 export interface UpdateTemplateActiveVersionRequest {
   TemplateActiveVersionRequest?: TemplateActiveVersionRequest;
   TemplateName: string;
   TemplateType: string;
 }
-export const UpdateTemplateActiveVersionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TemplateActiveVersionRequest: S.optional(TemplateActiveVersionRequest)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "TemplateActiveVersionRequest" }),
-      TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-      TemplateType: S.String.pipe(T.HttpLabel("TemplateType")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/v1/templates/{TemplateName}/{TemplateType}/active-version",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateTemplateActiveVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TemplateActiveVersionRequest: S.optional(TemplateActiveVersionRequest)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "TemplateActiveVersionRequest" }),
+    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+    TemplateType: S.String.pipe(T.HttpLabel("TemplateType")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/v1/templates/{TemplateName}/{TemplateType}/active-version",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateTemplateActiveVersionRequest",
-  }) as any as S.Schema<UpdateTemplateActiveVersionRequest>;
+  ),
+).annotate({
+  identifier: "UpdateTemplateActiveVersionRequest",
+}) as any as S.Schema<UpdateTemplateActiveVersionRequest>;
 export interface UpdateTemplateActiveVersionResponse {
   MessageBody: MessageBody;
 }
-export const UpdateTemplateActiveVersionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MessageBody: S.optional(MessageBody)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "MessageBody" }),
-    }),
-  ).annotate({
-    identifier: "UpdateTemplateActiveVersionResponse",
-  }) as any as S.Schema<UpdateTemplateActiveVersionResponse>;
+export const UpdateTemplateActiveVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MessageBody: S.optional(MessageBody)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "MessageBody" }),
+  }),
+).annotate({
+  identifier: "UpdateTemplateActiveVersionResponse",
+}) as any as S.Schema<UpdateTemplateActiveVersionResponse>;
 export interface VoiceChannelRequest {
   Enabled?: boolean;
 }
@@ -11797,10 +11720,7 @@ export const UpdateVoiceChannelRequest = /*@__PURE__*/ S.suspend(() =>
       .annotate({ identifier: "VoiceChannelRequest" }),
   }).pipe(
     T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/v1/apps/{ApplicationId}/channels/voice",
-      }),
+      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/voice" }),
       svc,
       auth,
       proto,
@@ -11855,31 +11775,29 @@ export const UpdateVoiceTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateVoiceTemplateResponse {
   MessageBody: MessageBody;
 }
-export const UpdateVoiceTemplateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MessageBody: S.optional(MessageBody)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "MessageBody" }),
-    }),
-  ).annotate({
-    identifier: "UpdateVoiceTemplateResponse",
-  }) as any as S.Schema<UpdateVoiceTemplateResponse>;
+export const UpdateVoiceTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MessageBody: S.optional(MessageBody)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "MessageBody" }),
+  }),
+).annotate({
+  identifier: "UpdateVoiceTemplateResponse",
+}) as any as S.Schema<UpdateVoiceTemplateResponse>;
 export interface VerifyOTPMessageRequestParameters {
   DestinationIdentity?: string;
   Otp?: string;
   ReferenceId?: string;
 }
-export const VerifyOTPMessageRequestParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DestinationIdentity: S.optional(S.String),
-      Otp: S.optional(S.String),
-      ReferenceId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "VerifyOTPMessageRequestParameters",
-  }) as any as S.Schema<VerifyOTPMessageRequestParameters>;
+export const VerifyOTPMessageRequestParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DestinationIdentity: S.optional(S.String),
+    Otp: S.optional(S.String),
+    ReferenceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VerifyOTPMessageRequestParameters",
+}) as any as S.Schema<VerifyOTPMessageRequestParameters>;
 export interface VerifyOTPMessageRequest {
   ApplicationId: string;
   VerifyOTPMessageRequestParameters?: VerifyOTPMessageRequestParameters;
@@ -11925,42 +11843,6 @@ export const VerifyOTPMessageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VerifyOTPMessageResponse",
 }) as any as S.Schema<VerifyOTPMessageResponse>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
-  "InternalServerErrorException",
-  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class MethodNotAllowedException extends S.TaggedErrorClass<MethodNotAllowedException>()(
-  "MethodNotAllowedException",
-  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class PayloadTooLargeException extends S.TaggedErrorClass<PayloadTooLargeException>()(
-  "PayloadTooLargeException",
-  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-
-//# Operations
 export type CreateAppError =
   | BadRequestException
   | ForbiddenException
@@ -11990,8 +11872,11 @@ export const createApp: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApp",
 }));
+
 export type CreateCampaignError =
   | BadRequestException
   | ForbiddenException
@@ -12021,8 +11906,11 @@ export const createCampaign: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCampaign",
 }));
+
 export type CreateEmailTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -12048,8 +11936,11 @@ export const createEmailTemplate: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEmailTemplate",
 }));
+
 export type CreateExportJobError =
   | BadRequestException
   | ForbiddenException
@@ -12079,8 +11970,11 @@ export const createExportJob: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateExportJob",
 }));
+
 export type CreateImportJobError =
   | BadRequestException
   | ForbiddenException
@@ -12110,8 +12004,11 @@ export const createImportJob: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateImportJob",
 }));
+
 export type CreateInAppTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -12137,8 +12034,11 @@ export const createInAppTemplate: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInAppTemplate",
 }));
+
 export type CreateJourneyError =
   | BadRequestException
   | ForbiddenException
@@ -12168,8 +12068,11 @@ export const createJourney: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateJourney",
 }));
+
 export type CreatePushTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -12195,8 +12098,11 @@ export const createPushTemplate: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePushTemplate",
 }));
+
 export type CreateRecommenderConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -12226,8 +12132,11 @@ export const createRecommenderConfiguration: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRecommenderConfiguration",
 }));
+
 export type CreateSegmentError =
   | BadRequestException
   | ForbiddenException
@@ -12257,8 +12166,11 @@ export const createSegment: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSegment",
 }));
+
 export type CreateSmsTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -12284,8 +12196,11 @@ export const createSmsTemplate: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSmsTemplate",
 }));
+
 export type CreateVoiceTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -12311,8 +12226,11 @@ export const createVoiceTemplate: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVoiceTemplate",
 }));
+
 export type DeleteAdmChannelError =
   | BadRequestException
   | ForbiddenException
@@ -12342,8 +12260,11 @@ export const deleteAdmChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAdmChannel",
 }));
+
 export type DeleteApnsChannelError =
   | BadRequestException
   | ForbiddenException
@@ -12373,8 +12294,11 @@ export const deleteApnsChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApnsChannel",
 }));
+
 export type DeleteApnsSandboxChannelError =
   | BadRequestException
   | ForbiddenException
@@ -12404,8 +12328,11 @@ export const deleteApnsSandboxChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApnsSandboxChannel",
 }));
+
 export type DeleteApnsVoipChannelError =
   | BadRequestException
   | ForbiddenException
@@ -12435,8 +12362,11 @@ export const deleteApnsVoipChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApnsVoipChannel",
 }));
+
 export type DeleteApnsVoipSandboxChannelError =
   | BadRequestException
   | ForbiddenException
@@ -12466,8 +12396,11 @@ export const deleteApnsVoipSandboxChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApnsVoipSandboxChannel",
 }));
+
 export type DeleteAppError =
   | BadRequestException
   | ForbiddenException
@@ -12497,8 +12430,11 @@ export const deleteApp: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApp",
 }));
+
 export type DeleteBaiduChannelError =
   | BadRequestException
   | ForbiddenException
@@ -12528,8 +12464,11 @@ export const deleteBaiduChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBaiduChannel",
 }));
+
 export type DeleteCampaignError =
   | BadRequestException
   | ForbiddenException
@@ -12559,8 +12498,11 @@ export const deleteCampaign: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCampaign",
 }));
+
 export type DeleteEmailChannelError =
   | BadRequestException
   | ForbiddenException
@@ -12590,8 +12532,11 @@ export const deleteEmailChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEmailChannel",
 }));
+
 export type DeleteEmailTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -12621,8 +12566,11 @@ export const deleteEmailTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEmailTemplate",
 }));
+
 export type DeleteEndpointError =
   | BadRequestException
   | ForbiddenException
@@ -12652,8 +12600,11 @@ export const deleteEndpoint: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEndpoint",
 }));
+
 export type DeleteEventStreamError =
   | BadRequestException
   | ForbiddenException
@@ -12683,8 +12634,11 @@ export const deleteEventStream: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventStream",
 }));
+
 export type DeleteGcmChannelError =
   | BadRequestException
   | ForbiddenException
@@ -12714,8 +12668,11 @@ export const deleteGcmChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGcmChannel",
 }));
+
 export type DeleteInAppTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -12745,8 +12702,11 @@ export const deleteInAppTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInAppTemplate",
 }));
+
 export type DeleteJourneyError =
   | BadRequestException
   | ForbiddenException
@@ -12776,8 +12736,11 @@ export const deleteJourney: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteJourney",
 }));
+
 export type DeletePushTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -12807,8 +12770,11 @@ export const deletePushTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePushTemplate",
 }));
+
 export type DeleteRecommenderConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -12838,8 +12804,11 @@ export const deleteRecommenderConfiguration: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRecommenderConfiguration",
 }));
+
 export type DeleteSegmentError =
   | BadRequestException
   | ForbiddenException
@@ -12869,8 +12838,11 @@ export const deleteSegment: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSegment",
 }));
+
 export type DeleteSmsChannelError =
   | BadRequestException
   | ForbiddenException
@@ -12900,8 +12872,11 @@ export const deleteSmsChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSmsChannel",
 }));
+
 export type DeleteSmsTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -12931,8 +12906,11 @@ export const deleteSmsTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSmsTemplate",
 }));
+
 export type DeleteUserEndpointsError =
   | BadRequestException
   | ForbiddenException
@@ -12962,8 +12940,11 @@ export const deleteUserEndpoints: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUserEndpoints",
 }));
+
 export type DeleteVoiceChannelError =
   | BadRequestException
   | ForbiddenException
@@ -12993,8 +12974,11 @@ export const deleteVoiceChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVoiceChannel",
 }));
+
 export type DeleteVoiceTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -13024,8 +13008,11 @@ export const deleteVoiceTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVoiceTemplate",
 }));
+
 export type GetAdmChannelError =
   | BadRequestException
   | ForbiddenException
@@ -13055,8 +13042,11 @@ export const getAdmChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAdmChannel",
 }));
+
 export type GetApnsChannelError =
   | BadRequestException
   | ForbiddenException
@@ -13086,8 +13076,11 @@ export const getApnsChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApnsChannel",
 }));
+
 export type GetApnsSandboxChannelError =
   | BadRequestException
   | ForbiddenException
@@ -13117,8 +13110,11 @@ export const getApnsSandboxChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApnsSandboxChannel",
 }));
+
 export type GetApnsVoipChannelError =
   | BadRequestException
   | ForbiddenException
@@ -13148,8 +13144,11 @@ export const getApnsVoipChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApnsVoipChannel",
 }));
+
 export type GetApnsVoipSandboxChannelError =
   | BadRequestException
   | ForbiddenException
@@ -13179,8 +13178,11 @@ export const getApnsVoipSandboxChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApnsVoipSandboxChannel",
 }));
+
 export type GetAppError =
   | BadRequestException
   | ForbiddenException
@@ -13210,8 +13212,11 @@ export const getApp: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApp",
 }));
+
 export type GetApplicationDateRangeKpiError =
   | BadRequestException
   | ForbiddenException
@@ -13241,8 +13246,11 @@ export const getApplicationDateRangeKpi: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplicationDateRangeKpi",
 }));
+
 export type GetApplicationSettingsError =
   | BadRequestException
   | ForbiddenException
@@ -13272,8 +13280,11 @@ export const getApplicationSettings: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplicationSettings",
 }));
+
 export type GetAppsError =
   | BadRequestException
   | ForbiddenException
@@ -13303,8 +13314,11 @@ export const getApps: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApps",
 }));
+
 export type GetBaiduChannelError =
   | BadRequestException
   | ForbiddenException
@@ -13334,8 +13348,11 @@ export const getBaiduChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBaiduChannel",
 }));
+
 export type GetCampaignError =
   | BadRequestException
   | ForbiddenException
@@ -13365,8 +13382,11 @@ export const getCampaign: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCampaign",
 }));
+
 export type GetCampaignActivitiesError =
   | BadRequestException
   | ForbiddenException
@@ -13396,8 +13416,11 @@ export const getCampaignActivities: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCampaignActivities",
 }));
+
 export type GetCampaignDateRangeKpiError =
   | BadRequestException
   | ForbiddenException
@@ -13427,8 +13450,11 @@ export const getCampaignDateRangeKpi: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCampaignDateRangeKpi",
 }));
+
 export type GetCampaignsError =
   | BadRequestException
   | ForbiddenException
@@ -13458,8 +13484,11 @@ export const getCampaigns: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCampaigns",
 }));
+
 export type GetCampaignVersionError =
   | BadRequestException
   | ForbiddenException
@@ -13489,8 +13518,11 @@ export const getCampaignVersion: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCampaignVersion",
 }));
+
 export type GetCampaignVersionsError =
   | BadRequestException
   | ForbiddenException
@@ -13520,8 +13552,11 @@ export const getCampaignVersions: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCampaignVersions",
 }));
+
 export type GetChannelsError =
   | BadRequestException
   | ForbiddenException
@@ -13551,8 +13586,11 @@ export const getChannels: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetChannels",
 }));
+
 export type GetEmailChannelError =
   | BadRequestException
   | ForbiddenException
@@ -13582,8 +13620,11 @@ export const getEmailChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEmailChannel",
 }));
+
 export type GetEmailTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -13613,8 +13654,11 @@ export const getEmailTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEmailTemplate",
 }));
+
 export type GetEndpointError =
   | BadRequestException
   | ForbiddenException
@@ -13644,8 +13688,11 @@ export const getEndpoint: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEndpoint",
 }));
+
 export type GetEventStreamError =
   | BadRequestException
   | ForbiddenException
@@ -13675,8 +13722,11 @@ export const getEventStream: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEventStream",
 }));
+
 export type GetExportJobError =
   | BadRequestException
   | ForbiddenException
@@ -13706,8 +13756,11 @@ export const getExportJob: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExportJob",
 }));
+
 export type GetExportJobsError =
   | BadRequestException
   | ForbiddenException
@@ -13737,8 +13790,11 @@ export const getExportJobs: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExportJobs",
 }));
+
 export type GetGcmChannelError =
   | BadRequestException
   | ForbiddenException
@@ -13768,8 +13824,11 @@ export const getGcmChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGcmChannel",
 }));
+
 export type GetImportJobError =
   | BadRequestException
   | ForbiddenException
@@ -13799,8 +13858,11 @@ export const getImportJob: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImportJob",
 }));
+
 export type GetImportJobsError =
   | BadRequestException
   | ForbiddenException
@@ -13830,8 +13892,11 @@ export const getImportJobs: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImportJobs",
 }));
+
 export type GetInAppMessagesError =
   | BadRequestException
   | ForbiddenException
@@ -13861,8 +13926,11 @@ export const getInAppMessages: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInAppMessages",
 }));
+
 export type GetInAppTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -13892,8 +13960,11 @@ export const getInAppTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInAppTemplate",
 }));
+
 export type GetJourneyError =
   | BadRequestException
   | ForbiddenException
@@ -13923,8 +13994,11 @@ export const getJourney: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJourney",
 }));
+
 export type GetJourneyDateRangeKpiError =
   | BadRequestException
   | ForbiddenException
@@ -13954,8 +14028,11 @@ export const getJourneyDateRangeKpi: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJourneyDateRangeKpi",
 }));
+
 export type GetJourneyExecutionActivityMetricsError =
   | BadRequestException
   | ForbiddenException
@@ -13985,8 +14062,11 @@ export const getJourneyExecutionActivityMetrics: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJourneyExecutionActivityMetrics",
 }));
+
 export type GetJourneyExecutionMetricsError =
   | BadRequestException
   | ForbiddenException
@@ -14016,8 +14096,11 @@ export const getJourneyExecutionMetrics: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJourneyExecutionMetrics",
 }));
+
 export type GetJourneyRunExecutionActivityMetricsError =
   | BadRequestException
   | ForbiddenException
@@ -14047,8 +14130,11 @@ export const getJourneyRunExecutionActivityMetrics: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJourneyRunExecutionActivityMetrics",
 }));
+
 export type GetJourneyRunExecutionMetricsError =
   | BadRequestException
   | ForbiddenException
@@ -14078,8 +14164,11 @@ export const getJourneyRunExecutionMetrics: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJourneyRunExecutionMetrics",
 }));
+
 export type GetJourneyRunsError =
   | BadRequestException
   | ForbiddenException
@@ -14109,8 +14198,11 @@ export const getJourneyRuns: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJourneyRuns",
 }));
+
 export type GetPushTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -14140,8 +14232,11 @@ export const getPushTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPushTemplate",
 }));
+
 export type GetRecommenderConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -14171,8 +14266,11 @@ export const getRecommenderConfiguration: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecommenderConfiguration",
 }));
+
 export type GetRecommenderConfigurationsError =
   | BadRequestException
   | ForbiddenException
@@ -14202,8 +14300,11 @@ export const getRecommenderConfigurations: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecommenderConfigurations",
 }));
+
 export type GetSegmentError =
   | BadRequestException
   | ForbiddenException
@@ -14233,8 +14334,11 @@ export const getSegment: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSegment",
 }));
+
 export type GetSegmentExportJobsError =
   | BadRequestException
   | ForbiddenException
@@ -14264,8 +14368,11 @@ export const getSegmentExportJobs: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSegmentExportJobs",
 }));
+
 export type GetSegmentImportJobsError =
   | BadRequestException
   | ForbiddenException
@@ -14295,8 +14402,11 @@ export const getSegmentImportJobs: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSegmentImportJobs",
 }));
+
 export type GetSegmentsError =
   | BadRequestException
   | ForbiddenException
@@ -14326,8 +14436,11 @@ export const getSegments: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSegments",
 }));
+
 export type GetSegmentVersionError =
   | BadRequestException
   | ForbiddenException
@@ -14357,8 +14470,11 @@ export const getSegmentVersion: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSegmentVersion",
 }));
+
 export type GetSegmentVersionsError =
   | BadRequestException
   | ForbiddenException
@@ -14388,8 +14504,11 @@ export const getSegmentVersions: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSegmentVersions",
 }));
+
 export type GetSmsChannelError =
   | BadRequestException
   | ForbiddenException
@@ -14419,8 +14538,11 @@ export const getSmsChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSmsChannel",
 }));
+
 export type GetSmsTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -14450,8 +14572,11 @@ export const getSmsTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSmsTemplate",
 }));
+
 export type GetUserEndpointsError =
   | BadRequestException
   | ForbiddenException
@@ -14481,8 +14606,11 @@ export const getUserEndpoints: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUserEndpoints",
 }));
+
 export type GetVoiceChannelError =
   | BadRequestException
   | ForbiddenException
@@ -14512,8 +14640,11 @@ export const getVoiceChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVoiceChannel",
 }));
+
 export type GetVoiceTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -14543,8 +14674,11 @@ export const getVoiceTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVoiceTemplate",
 }));
+
 export type ListJourneysError =
   | BadRequestException
   | ForbiddenException
@@ -14574,8 +14708,11 @@ export const listJourneys: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJourneys",
 }));
+
 export type ListTagsForResourceError = CommonErrors;
 /**
  * Retrieves all the tags (keys and values) that are associated with an application, campaign, message template, or segment.
@@ -14589,8 +14726,11 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTemplatesError =
   | BadRequestException
   | ForbiddenException
@@ -14616,8 +14756,11 @@ export const listTemplates: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTemplates",
 }));
+
 export type ListTemplateVersionsError =
   | BadRequestException
   | ForbiddenException
@@ -14647,8 +14790,11 @@ export const listTemplateVersions: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTemplateVersions",
 }));
+
 export type PhoneNumberValidateError =
   | BadRequestException
   | ForbiddenException
@@ -14678,8 +14824,11 @@ export const phoneNumberValidate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PhoneNumberValidate",
 }));
+
 export type PutEventsError =
   | BadRequestException
   | ForbiddenException
@@ -14709,8 +14858,11 @@ export const putEvents: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEvents",
 }));
+
 export type PutEventStreamError =
   | BadRequestException
   | ForbiddenException
@@ -14740,8 +14892,11 @@ export const putEventStream: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEventStream",
 }));
+
 export type RemoveAttributesError =
   | BadRequestException
   | ForbiddenException
@@ -14771,8 +14926,11 @@ export const removeAttributes: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveAttributes",
 }));
+
 export type SendMessagesError =
   | BadRequestException
   | ForbiddenException
@@ -14802,8 +14960,11 @@ export const sendMessages: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendMessages",
 }));
+
 export type SendOTPMessageError =
   | BadRequestException
   | ForbiddenException
@@ -14833,8 +14994,11 @@ export const sendOTPMessage: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendOTPMessage",
 }));
+
 export type SendUsersMessagesError =
   | BadRequestException
   | ForbiddenException
@@ -14864,8 +15028,11 @@ export const sendUsersMessages: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendUsersMessages",
 }));
+
 export type TagResourceError = CommonErrors;
 /**
  * Adds one or more tags (keys and values) to an application, campaign, message template, or segment.
@@ -14879,8 +15046,11 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError = CommonErrors;
 /**
  * Removes one or more tags (keys and values) from an application, campaign, message template, or segment.
@@ -14894,8 +15064,11 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAdmChannelError =
   | BadRequestException
   | ForbiddenException
@@ -14925,8 +15098,11 @@ export const updateAdmChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAdmChannel",
 }));
+
 export type UpdateApnsChannelError =
   | BadRequestException
   | ForbiddenException
@@ -14956,8 +15132,11 @@ export const updateApnsChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApnsChannel",
 }));
+
 export type UpdateApnsSandboxChannelError =
   | BadRequestException
   | ForbiddenException
@@ -14987,8 +15166,11 @@ export const updateApnsSandboxChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApnsSandboxChannel",
 }));
+
 export type UpdateApnsVoipChannelError =
   | BadRequestException
   | ForbiddenException
@@ -15018,8 +15200,11 @@ export const updateApnsVoipChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApnsVoipChannel",
 }));
+
 export type UpdateApnsVoipSandboxChannelError =
   | BadRequestException
   | ForbiddenException
@@ -15049,8 +15234,11 @@ export const updateApnsVoipSandboxChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApnsVoipSandboxChannel",
 }));
+
 export type UpdateApplicationSettingsError =
   | BadRequestException
   | ForbiddenException
@@ -15080,8 +15268,11 @@ export const updateApplicationSettings: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplicationSettings",
 }));
+
 export type UpdateBaiduChannelError =
   | BadRequestException
   | ForbiddenException
@@ -15111,8 +15302,11 @@ export const updateBaiduChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBaiduChannel",
 }));
+
 export type UpdateCampaignError =
   | BadRequestException
   | ForbiddenException
@@ -15142,8 +15336,11 @@ export const updateCampaign: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCampaign",
 }));
+
 export type UpdateEmailChannelError =
   | BadRequestException
   | ForbiddenException
@@ -15173,8 +15370,11 @@ export const updateEmailChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEmailChannel",
 }));
+
 export type UpdateEmailTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -15204,8 +15404,11 @@ export const updateEmailTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEmailTemplate",
 }));
+
 export type UpdateEndpointError =
   | BadRequestException
   | ForbiddenException
@@ -15235,8 +15438,11 @@ export const updateEndpoint: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEndpoint",
 }));
+
 export type UpdateEndpointsBatchError =
   | BadRequestException
   | ForbiddenException
@@ -15266,8 +15472,11 @@ export const updateEndpointsBatch: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEndpointsBatch",
 }));
+
 export type UpdateGcmChannelError =
   | BadRequestException
   | ForbiddenException
@@ -15297,8 +15506,11 @@ export const updateGcmChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGcmChannel",
 }));
+
 export type UpdateInAppTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -15328,8 +15540,11 @@ export const updateInAppTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInAppTemplate",
 }));
+
 export type UpdateJourneyError =
   | BadRequestException
   | ConflictException
@@ -15361,8 +15576,11 @@ export const updateJourney: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateJourney",
 }));
+
 export type UpdateJourneyStateError =
   | BadRequestException
   | ForbiddenException
@@ -15392,8 +15610,11 @@ export const updateJourneyState: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateJourneyState",
 }));
+
 export type UpdatePushTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -15423,8 +15644,11 @@ export const updatePushTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePushTemplate",
 }));
+
 export type UpdateRecommenderConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -15454,8 +15678,11 @@ export const updateRecommenderConfiguration: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRecommenderConfiguration",
 }));
+
 export type UpdateSegmentError =
   | BadRequestException
   | ForbiddenException
@@ -15485,8 +15712,11 @@ export const updateSegment: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSegment",
 }));
+
 export type UpdateSmsChannelError =
   | BadRequestException
   | ForbiddenException
@@ -15516,8 +15746,11 @@ export const updateSmsChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSmsChannel",
 }));
+
 export type UpdateSmsTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -15547,8 +15780,11 @@ export const updateSmsTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSmsTemplate",
 }));
+
 export type UpdateTemplateActiveVersionError =
   | BadRequestException
   | ForbiddenException
@@ -15578,8 +15814,11 @@ export const updateTemplateActiveVersion: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTemplateActiveVersion",
 }));
+
 export type UpdateVoiceChannelError =
   | BadRequestException
   | ForbiddenException
@@ -15609,8 +15848,11 @@ export const updateVoiceChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVoiceChannel",
 }));
+
 export type UpdateVoiceTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -15640,8 +15882,11 @@ export const updateVoiceTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVoiceTemplate",
 }));
+
 export type VerifyOTPMessageError =
   | BadRequestException
   | ForbiddenException
@@ -15671,5 +15916,7 @@ export const verifyOTPMessage: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VerifyOTPMessage",
 }));

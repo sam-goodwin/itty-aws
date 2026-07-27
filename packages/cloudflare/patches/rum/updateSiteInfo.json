@@ -1,14 +1,88 @@
 {
-  "errors": {
-    "SiteNotFound": [{ "code": 10015 }],
-    "Forbidden": [{ "status": 403 }]
-  },
-  "response": {
-    "properties": {
-      "host": {
-        "optional": true,
-        "definition": { "kind": "primitive", "value": "string" }
+  "description": "Align rum#SiteInfoUpdate with distilled cloudflare/rum updateSiteInfo",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.rum#SiteInfoUpdate",
+      "path": "/shapes/com.cloudflare.rum#UpdateSiteInfo"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.rum#SiteInfoUpdateRequest",
+      "path": "/shapes/com.cloudflare.rum#UpdateSiteInfoRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.rum#UpdateSiteInfo/input/target",
+      "value": "com.cloudflare.rum#UpdateSiteInfoRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.rum#SiteInfoUpdateResponse",
+      "path": "/shapes/com.cloudflare.rum#UpdateSiteInfoResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.rum#UpdateSiteInfo/output/target",
+      "value": "com.cloudflare.rum#UpdateSiteInfoResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.rum#SiteNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10015
+            }
+          ]
+        }
       }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.rum#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.rum#UpdateSiteInfo/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.rum#SiteNotFound"
+        },
+        {
+          "target": "com.cloudflare.rum#Forbidden"
+        }
+      ]
     }
-  }
+  ]
 }

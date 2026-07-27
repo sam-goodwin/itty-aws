@@ -1,9 +1,0 @@
-{
-  "extends": "../tsconfig.base.json",
-  "include": ["*.ts", "lib/*.ts"],
-  "compilerOptions": {
-    "outDir": "../.ai-workspace/scripts-lib",
-    "rootDir": ".",
-    "types": ["bun-types", "node"]
-  }
-}

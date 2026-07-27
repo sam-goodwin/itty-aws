@@ -4,11 +4,7 @@
     {
       "op": "replace",
       "path": "/components/schemas/User/required",
-      "value": [
-        "id",
-        "name",
-        "email"
-      ]
+      "value": ["id", "name", "email"]
     }
   ]
 }

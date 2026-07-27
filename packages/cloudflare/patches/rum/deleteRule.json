@@ -1,7 +1,114 @@
 {
-  "errors": {
-    "Forbidden": [{ "status": 403 }],
-    "RulesetNotFound": [{ "status": 404 }],
-    "RuleNotFound": [{ "code": 10003 }]
-  }
+  "description": "Align rum#RulesDelete with distilled cloudflare/rum deleteRule",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.rum#RulesDelete",
+      "path": "/shapes/com.cloudflare.rum#DeleteRule"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.rum#RulesDeleteRequest",
+      "path": "/shapes/com.cloudflare.rum#DeleteRuleRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.rum#DeleteRule/input/target",
+      "value": "com.cloudflare.rum#DeleteRuleRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.rum#RulesDeleteResponse",
+      "path": "/shapes/com.cloudflare.rum#DeleteRuleResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.rum#DeleteRule/output/target",
+      "value": "com.cloudflare.rum#DeleteRuleResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.rum#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.rum#RulesetNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 404
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.rum#RuleNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.rum#DeleteRule/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.rum#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.rum#RulesetNotFound"
+        },
+        {
+          "target": "com.cloudflare.rum#RuleNotFound"
+        }
+      ]
+    }
+  ]
 }

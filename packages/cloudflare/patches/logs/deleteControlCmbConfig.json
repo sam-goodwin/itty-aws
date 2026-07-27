@@ -1,9 +1,117 @@
 {
-  "errors": {
-    "LogsControlNotAuthorized": [
-      { "code": 10000, "message": { "includes": "Unauthorized" } }
-    ],
-    "CmbConfigNotFound": [{ "status": 404 }],
-    "Forbidden": [{ "status": 403 }]
-  }
+  "description": "Align logs#ControlCmbConfigDelete with distilled cloudflare/logs deleteControlCmbConfig",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.logs#ControlCmbConfigDelete",
+      "path": "/shapes/com.cloudflare.logs#DeleteControlCmbConfig"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.logs#ControlCmbConfigDeleteRequest",
+      "path": "/shapes/com.cloudflare.logs#DeleteControlCmbConfigRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.logs#DeleteControlCmbConfig/input/target",
+      "value": "com.cloudflare.logs#DeleteControlCmbConfigRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.logs#ControlCmbConfigDeleteResponse",
+      "path": "/shapes/com.cloudflare.logs#DeleteControlCmbConfigResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.logs#DeleteControlCmbConfig/output/target",
+      "value": "com.cloudflare.logs#DeleteControlCmbConfigResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.logs#LogsControlNotAuthorized",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10000,
+              "message": {
+                "includes": "Unauthorized"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.logs#CmbConfigNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 404
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.logs#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.logs#DeleteControlCmbConfig/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.logs#LogsControlNotAuthorized"
+        },
+        {
+          "target": "com.cloudflare.logs#CmbConfigNotFound"
+        },
+        {
+          "target": "com.cloudflare.logs#Forbidden"
+        }
+      ]
+    }
+  ]
 }

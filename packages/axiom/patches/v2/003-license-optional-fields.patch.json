@@ -4,10 +4,7 @@
     {
       "op": "replace",
       "path": "/components/schemas/License/required",
-      "value": [
-        "id",
-        "tier"
-      ]
+      "value": ["id", "tier"]
     }
   ]
 }

@@ -1,7 +1,0 @@
-{
-  "errors": {
-    "AccessCustomPagesNotEntitled": [
-      { "code": 12133, "message": { "includes": "does not have permission for custom pages" } }
-    ]
-  }
-}

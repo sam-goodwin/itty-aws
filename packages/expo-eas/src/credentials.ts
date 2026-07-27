@@ -1,9 +1,11 @@
 /**
- * EAS (Expo Application Services) credentials.
+ * EAS (Expo Application Services) credentials — hand-written.
  *
- * The EAS backend is a single GraphQL endpoint. Authentication is via a
+ * API-compatible port of the distilled v0 expo-eas credentials module. The
+ * EAS backend is a single GraphQL endpoint. Authentication is via a
  * Personal/Organization Access Token issued from
- * https://expo.dev/settings/access-tokens, sent as `Authorization: Bearer <token>`.
+ * https://expo.dev/settings/access-tokens, sent as
+ * `Authorization: Bearer <token>`.
  */
 import { ConfigError } from "@distilled.cloud/core/errors";
 import * as EffectConfig from "effect/Config";

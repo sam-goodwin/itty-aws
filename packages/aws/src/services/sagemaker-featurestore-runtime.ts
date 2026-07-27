@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,19 +85,44 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessForbidden extends S.TaggedErrorClass<AccessForbidden>()(
+  "AccessForbidden",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class FeatureGroupNotFound extends S.TaggedErrorClass<FeatureGroupNotFound>()(
+  "FeatureGroupNotFound",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ValidationError",
+    message: { includes: "Resource Not Found" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class InternalFailure extends S.TaggedErrorClass<InternalFailure>()(
+  "InternalFailure",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFound extends S.TaggedErrorClass<ResourceNotFound>()(
+  "ResourceNotFound",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceUnavailable extends S.TaggedErrorClass<ServiceUnavailable>()(
+  "ServiceUnavailable",
+  { Message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class ValidationError extends S.TaggedErrorClass<ValidationError>()(
+  "ValidationError",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type FeatureGroupNameOrArn = string;
 export type ValueAsString = string;
-export type FeatureName = string;
-export type ExpiresAt = string;
-export type Message = string;
-export type TtlDurationValue = number;
-export type ListRecordsMaxResults = number;
-export type ListRecordsNextToken = string;
-
-//# Schemas
 export type RecordIdentifiers = string[];
 export const RecordIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export type FeatureName = string;
 export type FeatureNames = string[];
 export const FeatureNames = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetRecordIdentifier {
@@ -118,6 +145,7 @@ export const BatchGetRecordIdentifiers = /*@__PURE__*/ S.Array(
 );
 export type ExpirationTimeResponse = "Enabled" | "Disabled" | (string & {});
 export const ExpirationTimeResponse = /*@__PURE__*/ S.String;
+
 export interface BatchGetRecordRequest {
   Identifiers?: BatchGetRecordIdentifier[];
   ExpirationTimeResponse?: ExpirationTimeResponse;
@@ -155,6 +183,7 @@ export const FeatureValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FeatureValue" }) as any as S.Schema<FeatureValue>;
 export type Record = FeatureValue[];
 export const Record = /*@__PURE__*/ S.Array(FeatureValue);
+export type ExpiresAt = string;
 export interface BatchGetRecordResultDetail {
   FeatureGroupName?: string;
   RecordIdentifierValueAsString?: string;
@@ -175,6 +204,7 @@ export type BatchGetRecordResultDetails = BatchGetRecordResultDetail[];
 export const BatchGetRecordResultDetails = /*@__PURE__*/ S.Array(
   BatchGetRecordResultDetail,
 );
+export type Message = string;
 export interface BatchGetRecordError_ {
   FeatureGroupName?: string;
   RecordIdentifierValueAsString?: string;
@@ -225,6 +255,7 @@ export const BatchGetRecordResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchGetRecordResponse>;
 export type TargetStore = "OnlineStore" | "OfflineStore" | (string & {});
 export const TargetStore = /*@__PURE__*/ S.String;
+
 export type TargetStores = TargetStore[];
 export const TargetStores = /*@__PURE__*/ S.Array(TargetStore);
 export type TtlDurationUnit =
@@ -235,6 +266,8 @@ export type TtlDurationUnit =
   | "Weeks"
   | (string & {});
 export const TtlDurationUnit = /*@__PURE__*/ S.String;
+
+export type TtlDurationValue = number;
 export interface TtlDuration {
   Unit?: TtlDurationUnit;
   Value?: number;
@@ -302,8 +335,9 @@ export const BatchWriteRecordErrors = /*@__PURE__*/ S.Array(
   BatchWriteRecordError_,
 );
 export type UnprocessedBatchWriteRecordEntries = BatchWriteRecordEntry[];
-export const UnprocessedBatchWriteRecordEntries =
-  /*@__PURE__*/ S.Array(BatchWriteRecordEntry);
+export const UnprocessedBatchWriteRecordEntries = /*@__PURE__*/ S.Array(
+  BatchWriteRecordEntry,
+);
 export interface BatchWriteRecordResponse {
   Errors: (BatchWriteRecordError & {
     Entry: BatchWriteRecordEntry & {
@@ -336,6 +370,7 @@ export const BatchWriteRecordResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchWriteRecordResponse>;
 export type DeletionMode = "SoftDelete" | "HardDelete" | (string & {});
 export const DeletionMode = /*@__PURE__*/ S.String;
+
 export interface DeleteRecordRequest {
   FeatureGroupName: string;
   RecordIdentifierValueAsString?: string;
@@ -409,6 +444,8 @@ export const GetRecordResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRecordResponse",
 }) as any as S.Schema<GetRecordResponse>;
+export type ListRecordsMaxResults = number;
+export type ListRecordsNextToken = string;
 export interface ListRecordsRequest {
   FeatureGroupName: string;
   MaxResults?: number;
@@ -482,43 +519,6 @@ export const PutRecordResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutRecordResponse",
 }) as any as S.Schema<PutRecordResponse>;
-
-//# Errors
-export class AccessForbidden extends S.TaggedErrorClass<AccessForbidden>()(
-  "AccessForbidden",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalFailure extends S.TaggedErrorClass<InternalFailure>()(
-  "InternalFailure",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ServiceUnavailable extends S.TaggedErrorClass<ServiceUnavailable>()(
-  "ServiceUnavailable",
-  { Message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class ValidationError extends S.TaggedErrorClass<ValidationError>()(
-  "ValidationError",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFound extends S.TaggedErrorClass<ResourceNotFound>()(
-  "ResourceNotFound",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class FeatureGroupNotFound extends S.TaggedErrorClass<FeatureGroupNotFound>()(
-  "FeatureGroupNotFound",
-  { Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ValidationError",
-    message: { includes: "Resource Not Found" },
-  }),
-).pipe(C.withNotFoundError) {}
-
-//# Operations
 export type BatchGetRecordError =
   | AccessForbidden
   | InternalFailure
@@ -542,8 +542,11 @@ export const batchGetRecord: API.OperationMethod<
     ServiceUnavailable,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetRecord",
 }));
+
 export type BatchWriteRecordError =
   | AccessForbidden
   | InternalFailure
@@ -576,8 +579,11 @@ export const batchWriteRecord: API.OperationMethod<
     ServiceUnavailable,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchWriteRecord",
 }));
+
 export type DeleteRecordError =
   | AccessForbidden
   | InternalFailure
@@ -633,8 +639,11 @@ export const deleteRecord: API.OperationMethod<
     ValidationError,
     FeatureGroupNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRecord",
 }));
+
 export type GetRecordError =
   | AccessForbidden
   | InternalFailure
@@ -664,8 +673,11 @@ export const getRecord: API.OperationMethod<
     ValidationError,
     FeatureGroupNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecord",
 }));
+
 export type ListRecordsError =
   | AccessForbidden
   | InternalFailure
@@ -708,6 +720,8 @@ export const listRecords: API.OperationMethod<
     ServiceUnavailable,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecords",
   pagination: {
     inputToken: "NextToken",
@@ -716,6 +730,7 @@ export const listRecords: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PutRecordError =
   | AccessForbidden
   | InternalFailure
@@ -759,5 +774,7 @@ export const putRecord: API.OperationMethod<
     ValidationError,
     FeatureGroupNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRecord",
 }));
