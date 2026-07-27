@@ -1,3 +1,14 @@
+## v0.30.2
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **cloudflare**:
+  - **workers**: Typed binding-validation errors on createScriptVersion &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/389 [<samp>(801f5)</samp>](https://github.com/alchemy-run/distilled/commit/801f5beba)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.30.1...HEAD)
+
+---
+
 ## v0.30.1
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
