@@ -23,3 +23,6 @@ export {
 export { paginateCursor } from "./pagination.ts";
 export * as Retry from "./retry.ts";
 export * as Services from "./services/index.ts";
+// v0-parity surface: operations (and their request/response types) are
+// importable straight off the package root, as consumers already do.
+export * from "./services/neon.ts";

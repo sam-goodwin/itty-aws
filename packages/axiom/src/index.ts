@@ -29,3 +29,6 @@ export {
 } from "./protocol.ts";
 export * as Retry from "./retry.ts";
 export * as Services from "./services/index.ts";
+// v0-parity surface: the v2 control-plane operations live on the package
+// root (edge-ingest / edge-query stay behind their subpath exports).
+export * from "./services/v2.ts";
