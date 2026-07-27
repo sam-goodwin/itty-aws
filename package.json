@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "tsgo -b",
+    "generate": "bun scripts/generate-all.ts",
     "typecheck": "tsgo -b",
     "format": "oxfmt '.'",
     "format:check": "bun run format -- --check",
