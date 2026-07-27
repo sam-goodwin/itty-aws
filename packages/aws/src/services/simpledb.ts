@@ -453,59 +453,59 @@ export interface BatchPutAttributesRequest {
   DomainName: string;
   Items: ReplaceableItem[];
 }
-export const BatchPutAttributesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DomainName: S.String,
-      Items: ReplaceableItemList.pipe(T.XmlName("Item"), T.XmlFlattened()),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchPutAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DomainName: S.String,
+    Items: ReplaceableItemList.pipe(T.XmlName("Item"), T.XmlFlattened()),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "BatchPutAttributesRequest",
-  }) as any as S.Schema<BatchPutAttributesRequest>;
+  ),
+).annotate({
+  identifier: "BatchPutAttributesRequest",
+}) as any as S.Schema<BatchPutAttributesRequest>;
 export interface BatchPutAttributesResponse {}
-export const BatchPutAttributesResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "BatchPutAttributesResponse",
-  }) as any as S.Schema<BatchPutAttributesResponse>;
+export const BatchPutAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "BatchPutAttributesResponse",
+}) as any as S.Schema<BatchPutAttributesResponse>;
 
 export interface BatchDeleteAttributesRequest {
   DomainName: string;
   Items: DeletableItem[];
 }
-export const BatchDeleteAttributesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DomainName: S.String,
-      Items: DeletableItemList.pipe(T.XmlName("Item"), T.XmlFlattened()),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchDeleteAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DomainName: S.String,
+    Items: DeletableItemList.pipe(T.XmlName("Item"), T.XmlFlattened()),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "BatchDeleteAttributesRequest",
-  }) as any as S.Schema<BatchDeleteAttributesRequest>;
+  ),
+).annotate({
+  identifier: "BatchDeleteAttributesRequest",
+}) as any as S.Schema<BatchDeleteAttributesRequest>;
 export interface BatchDeleteAttributesResponse {}
-export const BatchDeleteAttributesResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "BatchDeleteAttributesResponse",
-  }) as any as S.Schema<BatchDeleteAttributesResponse>;
+export const BatchDeleteAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "BatchDeleteAttributesResponse",
+}) as any as S.Schema<BatchDeleteAttributesResponse>;
 
 export interface SelectRequest {
   SelectExpression: string;
