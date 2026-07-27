@@ -31,4 +31,13 @@ export * as Retry from "./retry.ts";
 export * as Services from "./services/index.ts";
 // v0-parity surface: the v2 control-plane operations live on the package
 // root (edge-ingest / edge-query stay behind their subpath exports).
+// The service-local typed error classes shadow the same-named shared ones
+// from ./errors.ts — the ops actually raise the service-local classes.
 export * from "./services/v2.ts";
+export {
+  BadRequest,
+  Conflict,
+  Forbidden,
+  NotFound,
+  UnprocessableEntity,
+} from "./services/v2.ts";

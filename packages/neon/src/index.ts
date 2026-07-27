@@ -25,4 +25,13 @@ export * as Retry from "./retry.ts";
 export * as Services from "./services/index.ts";
 // v0-parity surface: operations (and their request/response types) are
 // importable straight off the package root, as consumers already do.
+// The service-local typed error classes shadow the same-named shared ones
+// from ./errors.ts — the ops actually raise the service-local classes.
 export * from "./services/neon.ts";
+export {
+  BadRequest,
+  Conflict,
+  Forbidden,
+  NotFound,
+  UnprocessableEntity,
+} from "./services/neon.ts";
