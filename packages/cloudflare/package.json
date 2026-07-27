@@ -10,349 +10,349 @@
   ],
   "exports": {
     "./Credentials": {
-      "types": "./src/credentials.ts",
+      "types": "./lib/credentials.d.ts",
       "bun": "./src/credentials.ts",
-      "default": "./src/credentials.ts"
+      "default": "./lib/credentials.js"
     },
     "./Errors": {
-      "types": "./src/errors.ts",
+      "types": "./lib/errors.d.ts",
       "bun": "./src/errors.ts",
-      "default": "./src/errors.ts"
+      "default": "./lib/errors.js"
     },
     "./Traits": {
-      "types": "./src/traits.ts",
+      "types": "./lib/traits.d.ts",
       "bun": "./src/traits.ts",
-      "default": "./src/traits.ts"
+      "default": "./lib/traits.js"
     },
     "./Pagination": {
-      "types": "./src/pagination.ts",
+      "types": "./lib/pagination.d.ts",
       "bun": "./src/pagination.ts",
-      "default": "./src/pagination.ts"
+      "default": "./lib/pagination.js"
     },
     "./abuse-reports": {
-      "types": "./src/services/abuse_reports.ts",
+      "types": "./lib/services/abuse_reports.d.ts",
       "bun": "./src/services/abuse_reports.ts",
-      "default": "./src/services/abuse_reports.ts"
+      "default": "./lib/services/abuse_reports.js"
     },
     "./ai-gateway": {
-      "types": "./src/services/ai_gateway.ts",
+      "types": "./lib/services/ai_gateway.d.ts",
       "bun": "./src/services/ai_gateway.ts",
-      "default": "./src/services/ai_gateway.ts"
+      "default": "./lib/services/ai_gateway.js"
     },
     "./ai-security": {
-      "types": "./src/services/ai_security.ts",
+      "types": "./lib/services/ai_security.d.ts",
       "bun": "./src/services/ai_security.ts",
-      "default": "./src/services/ai_security.ts"
+      "default": "./lib/services/ai_security.js"
     },
     "./aisearch": {
-      "types": "./src/services/ai_search.ts",
+      "types": "./lib/services/ai_search.d.ts",
       "bun": "./src/services/ai_search.ts",
-      "default": "./src/services/ai_search.ts"
+      "default": "./lib/services/ai_search.js"
     },
     "./api-gateway": {
-      "types": "./src/services/api_gateway.ts",
+      "types": "./lib/services/api_gateway.d.ts",
       "bun": "./src/services/api_gateway.ts",
-      "default": "./src/services/api_gateway.ts"
+      "default": "./lib/services/api_gateway.js"
     },
     "./audit-logs": {
-      "types": "./src/services/audit_logs.ts",
+      "types": "./lib/services/audit_logs.d.ts",
       "bun": "./src/services/audit_logs.ts",
-      "default": "./src/services/audit_logs.ts"
+      "default": "./lib/services/audit_logs.js"
     },
     "./bot-management": {
-      "types": "./src/services/bot_management.ts",
+      "types": "./lib/services/bot_management.d.ts",
       "bun": "./src/services/bot_management.ts",
-      "default": "./src/services/bot_management.ts"
+      "default": "./lib/services/bot_management.js"
     },
     "./botnet-feed": {
-      "types": "./src/services/botnet_feed.ts",
+      "types": "./lib/services/botnet_feed.d.ts",
       "bun": "./src/services/botnet_feed.ts",
-      "default": "./src/services/botnet_feed.ts"
+      "default": "./lib/services/botnet_feed.js"
     },
     "./brand-protection": {
-      "types": "./src/services/brand_protection.ts",
+      "types": "./lib/services/brand_protection.d.ts",
       "bun": "./src/services/brand_protection.ts",
-      "default": "./src/services/brand_protection.ts"
+      "default": "./lib/services/brand_protection.js"
     },
     "./browser-rendering": {
-      "types": "./src/services/browser_rendering.ts",
+      "types": "./lib/services/browser_rendering.d.ts",
       "bun": "./src/services/browser_rendering.ts",
-      "default": "./src/services/browser_rendering.ts"
+      "default": "./lib/services/browser_rendering.js"
     },
     "./certificate-authorities": {
-      "types": "./src/services/certificate_authorities.ts",
+      "types": "./lib/services/certificate_authorities.d.ts",
       "bun": "./src/services/certificate_authorities.ts",
-      "default": "./src/services/certificate_authorities.ts"
+      "default": "./lib/services/certificate_authorities.js"
     },
     "./client-certificates": {
-      "types": "./src/services/client_certificates.ts",
+      "types": "./lib/services/client_certificates.d.ts",
       "bun": "./src/services/client_certificates.ts",
-      "default": "./src/services/client_certificates.ts"
+      "default": "./lib/services/client_certificates.js"
     },
     "./cloud-connector": {
-      "types": "./src/services/cloud_connector.ts",
+      "types": "./lib/services/cloud_connector.d.ts",
       "bun": "./src/services/cloud_connector.ts",
-      "default": "./src/services/cloud_connector.ts"
+      "default": "./lib/services/cloud_connector.js"
     },
     "./cloudforce-one": {
-      "types": "./src/services/cloudforce_one.ts",
+      "types": "./lib/services/cloudforce_one.d.ts",
       "bun": "./src/services/cloudforce_one.ts",
-      "default": "./src/services/cloudforce_one.ts"
+      "default": "./lib/services/cloudforce_one.js"
     },
     "./content-scanning": {
-      "types": "./src/services/content_scanning.ts",
+      "types": "./lib/services/content_scanning.d.ts",
       "bun": "./src/services/content_scanning.ts",
-      "default": "./src/services/content_scanning.ts"
+      "default": "./lib/services/content_scanning.js"
     },
     "./csam-scanner": {
-      "types": "./src/services/csam_scanner.ts",
+      "types": "./lib/services/csam_scanner.d.ts",
       "bun": "./src/services/csam_scanner.ts",
-      "default": "./src/services/csam_scanner.ts"
+      "default": "./lib/services/csam_scanner.js"
     },
     "./custom-certificates": {
-      "types": "./src/services/custom_certificates.ts",
+      "types": "./lib/services/custom_certificates.d.ts",
       "bun": "./src/services/custom_certificates.ts",
-      "default": "./src/services/custom_certificates.ts"
+      "default": "./lib/services/custom_certificates.js"
     },
     "./custom-csrs": {
-      "types": "./src/services/custom_csrs.ts",
+      "types": "./lib/services/custom_csrs.d.ts",
       "bun": "./src/services/custom_csrs.ts",
-      "default": "./src/services/custom_csrs.ts"
+      "default": "./lib/services/custom_csrs.js"
     },
     "./custom-hostnames": {
-      "types": "./src/services/custom_hostnames.ts",
+      "types": "./lib/services/custom_hostnames.d.ts",
       "bun": "./src/services/custom_hostnames.ts",
-      "default": "./src/services/custom_hostnames.ts"
+      "default": "./lib/services/custom_hostnames.js"
     },
     "./custom-nameservers": {
-      "types": "./src/services/custom_nameservers.ts",
+      "types": "./lib/services/custom_nameservers.d.ts",
       "bun": "./src/services/custom_nameservers.ts",
-      "default": "./src/services/custom_nameservers.ts"
+      "default": "./lib/services/custom_nameservers.js"
     },
     "./custom-pages": {
-      "types": "./src/services/custom_pages.ts",
+      "types": "./lib/services/custom_pages.d.ts",
       "bun": "./src/services/custom_pages.ts",
-      "default": "./src/services/custom_pages.ts"
+      "default": "./lib/services/custom_pages.js"
     },
     "./dcv-delegation": {
-      "types": "./src/services/dcv_delegation.ts",
+      "types": "./lib/services/dcv_delegation.d.ts",
       "bun": "./src/services/dcv_delegation.ts",
-      "default": "./src/services/dcv_delegation.ts"
+      "default": "./lib/services/dcv_delegation.js"
     },
     "./ddos-protection": {
-      "types": "./src/services/ddos_protection.ts",
+      "types": "./lib/services/ddos_protection.d.ts",
       "bun": "./src/services/ddos_protection.ts",
-      "default": "./src/services/ddos_protection.ts"
+      "default": "./lib/services/ddos_protection.js"
     },
     "./dns-firewall": {
-      "types": "./src/services/dns_firewall.ts",
+      "types": "./lib/services/dns_firewall.d.ts",
       "bun": "./src/services/dns_firewall.ts",
-      "default": "./src/services/dns_firewall.ts"
+      "default": "./lib/services/dns_firewall.js"
     },
     "./durable-objects": {
-      "types": "./src/services/durable_objects.ts",
+      "types": "./lib/services/durable_objects.d.ts",
       "bun": "./src/services/durable_objects.ts",
-      "default": "./src/services/durable_objects.ts"
+      "default": "./lib/services/durable_objects.js"
     },
     "./email-auth": {
-      "types": "./src/services/email_auth.ts",
+      "types": "./lib/services/email_auth.d.ts",
       "bun": "./src/services/email_auth.ts",
-      "default": "./src/services/email_auth.ts"
+      "default": "./lib/services/email_auth.js"
     },
     "./email-routing": {
-      "types": "./src/services/email_routing.ts",
+      "types": "./lib/services/email_routing.d.ts",
       "bun": "./src/services/email_routing.ts",
-      "default": "./src/services/email_routing.ts"
+      "default": "./lib/services/email_routing.js"
     },
     "./email-security": {
-      "types": "./src/services/email_security.ts",
+      "types": "./lib/services/email_security.d.ts",
       "bun": "./src/services/email_security.ts",
-      "default": "./src/services/email_security.ts"
+      "default": "./lib/services/email_security.js"
     },
     "./email-sending": {
-      "types": "./src/services/email_sending.ts",
+      "types": "./lib/services/email_sending.d.ts",
       "bun": "./src/services/email_sending.ts",
-      "default": "./src/services/email_sending.ts"
+      "default": "./lib/services/email_sending.js"
     },
     "./google-tag-gateway": {
-      "types": "./src/services/google_tag_gateway.ts",
+      "types": "./lib/services/google_tag_gateway.d.ts",
       "bun": "./src/services/google_tag_gateway.ts",
-      "default": "./src/services/google_tag_gateway.ts"
+      "default": "./lib/services/google_tag_gateway.js"
     },
     "./keyless-certificates": {
-      "types": "./src/services/keyless_certificates.ts",
+      "types": "./lib/services/keyless_certificates.d.ts",
       "bun": "./src/services/keyless_certificates.ts",
-      "default": "./src/services/keyless_certificates.ts"
+      "default": "./lib/services/keyless_certificates.js"
     },
     "./leaked-credential-checks": {
-      "types": "./src/services/leaked_credential_checks.ts",
+      "types": "./lib/services/leaked_credential_checks.d.ts",
       "bun": "./src/services/leaked_credential_checks.ts",
-      "default": "./src/services/leaked_credential_checks.ts"
+      "default": "./lib/services/leaked_credential_checks.js"
     },
     "./load-balancers": {
-      "types": "./src/services/load_balancers.ts",
+      "types": "./lib/services/load_balancers.d.ts",
       "bun": "./src/services/load_balancers.ts",
-      "default": "./src/services/load_balancers.ts"
+      "default": "./lib/services/load_balancers.js"
     },
     "./magic-cloud-networking": {
-      "types": "./src/services/magic_cloud_networking.ts",
+      "types": "./lib/services/magic_cloud_networking.d.ts",
       "bun": "./src/services/magic_cloud_networking.ts",
-      "default": "./src/services/magic_cloud_networking.ts"
+      "default": "./lib/services/magic_cloud_networking.js"
     },
     "./magic-network-monitoring": {
-      "types": "./src/services/magic_network_monitoring.ts",
+      "types": "./lib/services/magic_network_monitoring.d.ts",
       "bun": "./src/services/magic_network_monitoring.ts",
-      "default": "./src/services/magic_network_monitoring.ts"
+      "default": "./lib/services/magic_network_monitoring.js"
     },
     "./magic-transit": {
-      "types": "./src/services/magic_transit.ts",
+      "types": "./lib/services/magic_transit.d.ts",
       "bun": "./src/services/magic_transit.ts",
-      "default": "./src/services/magic_transit.ts"
+      "default": "./lib/services/magic_transit.js"
     },
     "./managed-transforms": {
-      "types": "./src/services/managed_transforms.ts",
+      "types": "./lib/services/managed_transforms.d.ts",
       "bun": "./src/services/managed_transforms.ts",
-      "default": "./src/services/managed_transforms.ts"
+      "default": "./lib/services/managed_transforms.js"
     },
     "./mtls-certificates": {
-      "types": "./src/services/mtls_certificates.ts",
+      "types": "./lib/services/mtls_certificates.d.ts",
       "bun": "./src/services/mtls_certificates.ts",
-      "default": "./src/services/mtls_certificates.ts"
+      "default": "./lib/services/mtls_certificates.js"
     },
     "./network-interconnects": {
-      "types": "./src/services/network_interconnects.ts",
+      "types": "./lib/services/network_interconnects.d.ts",
       "bun": "./src/services/network_interconnects.ts",
-      "default": "./src/services/network_interconnects.ts"
+      "default": "./lib/services/network_interconnects.js"
     },
     "./origin-ca-certificates": {
-      "types": "./src/services/origin_ca_certificates.ts",
+      "types": "./lib/services/origin_ca_certificates.d.ts",
       "bun": "./src/services/origin_ca_certificates.ts",
-      "default": "./src/services/origin_ca_certificates.ts"
+      "default": "./lib/services/origin_ca_certificates.js"
     },
     "./origin-post-quantum-encryption": {
-      "types": "./src/services/origin_post_quantum_encryption.ts",
+      "types": "./lib/services/origin_post_quantum_encryption.d.ts",
       "bun": "./src/services/origin_post_quantum_encryption.ts",
-      "default": "./src/services/origin_post_quantum_encryption.ts"
+      "default": "./lib/services/origin_post_quantum_encryption.js"
     },
     "./origin-tls-client-auth": {
-      "types": "./src/services/origin_tls_client_auth.ts",
+      "types": "./lib/services/origin_tls_client_auth.d.ts",
       "bun": "./src/services/origin_tls_client_auth.ts",
-      "default": "./src/services/origin_tls_client_auth.ts"
+      "default": "./lib/services/origin_tls_client_auth.js"
     },
     "./origin-tls-compliance-modes": {
-      "types": "./src/services/origin_tls_compliance_modes.ts",
+      "types": "./lib/services/origin_tls_compliance_modes.d.ts",
       "bun": "./src/services/origin_tls_compliance_modes.ts",
-      "default": "./src/services/origin_tls_compliance_modes.ts"
+      "default": "./lib/services/origin_tls_compliance_modes.js"
     },
     "./page-rules": {
-      "types": "./src/services/page_rules.ts",
+      "types": "./lib/services/page_rules.d.ts",
       "bun": "./src/services/page_rules.ts",
-      "default": "./src/services/page_rules.ts"
+      "default": "./lib/services/page_rules.js"
     },
     "./page-shield": {
-      "types": "./src/services/page_shield.ts",
+      "types": "./lib/services/page_shield.d.ts",
       "bun": "./src/services/page_shield.ts",
-      "default": "./src/services/page_shield.ts"
+      "default": "./lib/services/page_shield.js"
     },
     "./r2-data-catalog": {
-      "types": "./src/services/r2_data_catalog.ts",
+      "types": "./lib/services/r2_data_catalog.d.ts",
       "bun": "./src/services/r2_data_catalog.ts",
-      "default": "./src/services/r2_data_catalog.ts"
+      "default": "./lib/services/r2_data_catalog.js"
     },
     "./rate-limits": {
-      "types": "./src/services/rate_limits.ts",
+      "types": "./lib/services/rate_limits.d.ts",
       "bun": "./src/services/rate_limits.ts",
-      "default": "./src/services/rate_limits.ts"
+      "default": "./lib/services/rate_limits.js"
     },
     "./realtime-kit": {
-      "types": "./src/services/realtime_kit.ts",
+      "types": "./lib/services/realtime_kit.d.ts",
       "bun": "./src/services/realtime_kit.ts",
-      "default": "./src/services/realtime_kit.ts"
+      "default": "./lib/services/realtime_kit.js"
     },
     "./request-tracers": {
-      "types": "./src/services/request_tracers.ts",
+      "types": "./lib/services/request_tracers.d.ts",
       "bun": "./src/services/request_tracers.ts",
-      "default": "./src/services/request_tracers.ts"
+      "default": "./lib/services/request_tracers.js"
     },
     "./resource-sharing": {
-      "types": "./src/services/resource_sharing.ts",
+      "types": "./lib/services/resource_sharing.d.ts",
       "bun": "./src/services/resource_sharing.ts",
-      "default": "./src/services/resource_sharing.ts"
+      "default": "./lib/services/resource_sharing.js"
     },
     "./resource-tagging": {
-      "types": "./src/services/resource_tagging.ts",
+      "types": "./lib/services/resource_tagging.d.ts",
       "bun": "./src/services/resource_tagging.ts",
-      "default": "./src/services/resource_tagging.ts"
+      "default": "./lib/services/resource_tagging.js"
     },
     "./schema-validation": {
-      "types": "./src/services/schema_validation.ts",
+      "types": "./lib/services/schema_validation.d.ts",
       "bun": "./src/services/schema_validation.ts",
-      "default": "./src/services/schema_validation.ts"
+      "default": "./lib/services/schema_validation.js"
     },
     "./secrets-store": {
-      "types": "./src/services/secrets_store.ts",
+      "types": "./lib/services/secrets_store.d.ts",
       "bun": "./src/services/secrets_store.ts",
-      "default": "./src/services/secrets_store.ts"
+      "default": "./lib/services/secrets_store.js"
     },
     "./security-center": {
-      "types": "./src/services/security_center.ts",
+      "types": "./lib/services/security_center.d.ts",
       "bun": "./src/services/security_center.ts",
-      "default": "./src/services/security_center.ts"
+      "default": "./lib/services/security_center.js"
     },
     "./security-txt": {
-      "types": "./src/services/security_txt.ts",
+      "types": "./lib/services/security_txt.d.ts",
       "bun": "./src/services/security_txt.ts",
-      "default": "./src/services/security_txt.ts"
+      "default": "./lib/services/security_txt.js"
     },
     "./tenant-custom-nameservers": {
-      "types": "./src/services/tenant_custom_nameservers.ts",
+      "types": "./lib/services/tenant_custom_nameservers.d.ts",
       "bun": "./src/services/tenant_custom_nameservers.ts",
-      "default": "./src/services/tenant_custom_nameservers.ts"
+      "default": "./lib/services/tenant_custom_nameservers.js"
     },
     "./token-validation": {
-      "types": "./src/services/token_validation.ts",
+      "types": "./lib/services/token_validation.d.ts",
       "bun": "./src/services/token_validation.ts",
-      "default": "./src/services/token_validation.ts"
+      "default": "./lib/services/token_validation.js"
     },
     "./url-normalization": {
-      "types": "./src/services/url_normalization.ts",
+      "types": "./lib/services/url_normalization.d.ts",
       "bun": "./src/services/url_normalization.ts",
-      "default": "./src/services/url_normalization.ts"
+      "default": "./lib/services/url_normalization.js"
     },
     "./url-scanner": {
-      "types": "./src/services/url_scanner.ts",
+      "types": "./lib/services/url_scanner.d.ts",
       "bun": "./src/services/url_scanner.ts",
-      "default": "./src/services/url_scanner.ts"
+      "default": "./lib/services/url_scanner.js"
     },
     "./vulnerability-scanner": {
-      "types": "./src/services/vulnerability_scanner.ts",
+      "types": "./lib/services/vulnerability_scanner.d.ts",
       "bun": "./src/services/vulnerability_scanner.ts",
-      "default": "./src/services/vulnerability_scanner.ts"
+      "default": "./lib/services/vulnerability_scanner.js"
     },
     "./waiting-rooms": {
-      "types": "./src/services/waiting_rooms.ts",
+      "types": "./lib/services/waiting_rooms.d.ts",
       "bun": "./src/services/waiting_rooms.ts",
-      "default": "./src/services/waiting_rooms.ts"
+      "default": "./lib/services/waiting_rooms.js"
     },
     "./workers-for-platforms": {
-      "types": "./src/services/workers_for_platforms.ts",
+      "types": "./lib/services/workers_for_platforms.d.ts",
       "bun": "./src/services/workers_for_platforms.ts",
-      "default": "./src/services/workers_for_platforms.ts"
+      "default": "./lib/services/workers_for_platforms.js"
     },
     "./zero-trust": {
-      "types": "./src/services/zero_trust.ts",
+      "types": "./lib/services/zero_trust.d.ts",
       "bun": "./src/services/zero_trust.ts",
-      "default": "./src/services/zero_trust.ts"
+      "default": "./lib/services/zero_trust.js"
     },
     ".": {
-      "types": "./src/index.ts",
+      "types": "./lib/index.d.ts",
       "bun": "./src/index.ts",
-      "default": "./src/index.ts"
+      "default": "./lib/index.js"
     },
     "./*": {
-      "types": "./src/services/*.ts",
+      "types": "./lib/services/*.d.ts",
       "bun": "./src/services/*.ts",
-      "default": "./src/services/*.ts"
+      "default": "./lib/services/*.js"
     }
   },
   "scripts": {

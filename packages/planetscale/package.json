@@ -10,54 +10,54 @@
   ],
   "exports": {
     ".": {
-      "types": "./src/index.ts",
+      "types": "./lib/index.d.ts",
       "bun": "./src/index.ts",
-      "default": "./src/index.ts"
+      "default": "./lib/index.js"
     },
     "./Category": {
-      "types": "./src/category.ts",
+      "types": "./lib/category.d.ts",
       "bun": "./src/category.ts",
-      "default": "./src/category.ts"
+      "default": "./lib/category.js"
     },
     "./Credentials": {
-      "types": "./src/credentials.ts",
+      "types": "./lib/credentials.d.ts",
       "bun": "./src/credentials.ts",
-      "default": "./src/credentials.ts"
+      "default": "./lib/credentials.js"
     },
     "./Errors": {
-      "types": "./src/errors.ts",
+      "types": "./lib/errors.d.ts",
       "bun": "./src/errors.ts",
-      "default": "./src/errors.ts"
+      "default": "./lib/errors.js"
     },
     "./Operations": {
-      "types": "./src/operations.ts",
+      "types": "./lib/operations.d.ts",
       "bun": "./src/operations.ts",
-      "default": "./src/operations.ts"
+      "default": "./lib/operations.js"
     },
     "./Pagination": {
-      "types": "./src/pagination.ts",
+      "types": "./lib/pagination.d.ts",
       "bun": "./src/pagination.ts",
-      "default": "./src/pagination.ts"
+      "default": "./lib/pagination.js"
     },
     "./Protocol": {
-      "types": "./src/protocol.ts",
+      "types": "./lib/protocol.d.ts",
       "bun": "./src/protocol.ts",
-      "default": "./src/protocol.ts"
+      "default": "./lib/protocol.js"
     },
     "./Retry": {
-      "types": "./src/retry.ts",
+      "types": "./lib/retry.d.ts",
       "bun": "./src/retry.ts",
-      "default": "./src/retry.ts"
+      "default": "./lib/retry.js"
     },
     "./Traits": {
-      "types": "./src/traits.ts",
+      "types": "./lib/traits.d.ts",
       "bun": "./src/traits.ts",
-      "default": "./src/traits.ts"
+      "default": "./lib/traits.js"
     },
     "./*": {
-      "types": "./src/services/*.ts",
+      "types": "./lib/services/*.d.ts",
       "bun": "./src/services/*.ts",
-      "default": "./src/services/*.ts"
+      "default": "./lib/services/*.js"
     }
   },
   "scripts": {
