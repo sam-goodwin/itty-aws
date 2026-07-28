@@ -850,33 +850,7 @@
         "smithy.api#idempotent": {}
       }
     },
-    "com.cloudflare.network_interconnects#InterconnectsCreateRequestBodyNscInterconnectCreatePhysicalBody": {
-      "type": "structure",
-      "members": {
-        "account": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "slot_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "speed": {
-          "target": "smithy.api#String"
-        }
-      }
-    },
-    "com.cloudflare.network_interconnects#InterconnectsCreateRequestBodyNscInterconnectCreateGcpPartnerBodyBandwidth": {
+    "com.cloudflare.network_interconnects#InterconnectsCreateRequestBandwidth": {
       "type": "enum",
       "members": {
         "_50M": {
@@ -953,48 +927,6 @@
         }
       }
     },
-    "com.cloudflare.network_interconnects#InterconnectsCreateRequestBodyNscInterconnectCreateGcpPartnerBody": {
-      "type": "structure",
-      "members": {
-        "account": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "bandwidth": {
-          "target": "com.cloudflare.network_interconnects#InterconnectsCreateRequestBodyNscInterconnectCreateGcpPartnerBodyBandwidth",
-          "traits": {
-            "smithy.api#documentation": "Bandwidth structure as visible through the customer-facing API.",
-            "smithy.api#required": {}
-          }
-        },
-        "pairing_key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Pairing key provided by GCP",
-            "smithy.api#required": {}
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.network_interconnects#InterconnectsCreateRequestBody": {
-      "type": "union",
-      "members": {
-        "NscInterconnectCreatePhysicalBody": {
-          "target": "com.cloudflare.network_interconnects#InterconnectsCreateRequestBodyNscInterconnectCreatePhysicalBody"
-        },
-        "NscInterconnectCreateGcpPartnerBody": {
-          "target": "com.cloudflare.network_interconnects#InterconnectsCreateRequestBodyNscInterconnectCreateGcpPartnerBody"
-        }
-      }
-    },
     "com.cloudflare.network_interconnects#InterconnectsCreateRequest": {
       "type": "structure",
       "members": {
@@ -1006,11 +938,34 @@
             "smithy.api#required": {}
           }
         },
-        "body": {
-          "target": "com.cloudflare.network_interconnects#InterconnectsCreateRequestBody",
+        "account": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
+            "smithy.api#required": {}
+          }
+        },
+        "slot_id": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "speed": {
+          "target": "smithy.api#String"
+        },
+        "bandwidth": {
+          "target": "com.cloudflare.network_interconnects#InterconnectsCreateRequestBandwidth",
+          "traits": {
+            "smithy.api#documentation": "Bandwidth structure as visible through the customer-facing API."
+          }
+        },
+        "pairing_key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pairing key provided by GCP"
           }
         }
       },

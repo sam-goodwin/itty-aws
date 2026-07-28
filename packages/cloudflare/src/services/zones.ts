@@ -4380,49 +4380,22 @@ export const PatchHoldResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchHoldResponse",
 }) as any as S.Schema<PatchHoldResponse>;
 
-export interface SettingsEditRequestBodyEnabled {
-  /** ssl-recommender enrollment setting. */
-  enabled?: boolean;
-}
-export const SettingsEditRequestBodyEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SettingsEditRequestBodyEnabled",
-}) as any as S.Schema<SettingsEditRequestBodyEnabled>;
-
-export interface SettingsEditRequestBodyValue {
-  /** Value of the zone setting. */
-  value?: unknown;
-}
-export const SettingsEditRequestBodyValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "SettingsEditRequestBodyValue",
-}) as any as S.Schema<SettingsEditRequestBodyValue>;
-
-export type SettingsEditRequestBody =
-  | SettingsEditRequestBodyEnabled
-  | SettingsEditRequestBodyValue;
-export const SettingsEditRequestBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["enabled"], ["value"]]),
-);
-
 export interface PatchSettingRequest {
   /** Identifier */
   zoneId: string;
   /** Setting name */
   settingId: string;
-  body: SettingsEditRequestBody;
+  /** ssl-recommender enrollment setting. */
+  enabled?: boolean;
+  /** Value of the zone setting. */
+  value?: unknown;
 }
 export const PatchSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     settingId: S.String.pipe(T.Label("setting_id")),
-    body: SettingsEditRequestBody.pipe(T.HttpBody()),
+    enabled: S.optional(S.Boolean),
+    value: S.optional(S.Unknown),
   })
     .pipe(
       T.Http({

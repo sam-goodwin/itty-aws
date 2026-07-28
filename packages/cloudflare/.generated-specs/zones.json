@@ -12332,18 +12332,7 @@
         "smithy.api#documentation": "Edit settings for a zone."
       }
     },
-    "com.cloudflare.zones#SettingsEditRequestBodyEnabled": {
-      "type": "structure",
-      "members": {
-        "enabled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "ssl-recommender enrollment setting."
-          }
-        }
-      }
-    },
-    "com.cloudflare.zones#SettingsEditRequestBodyValueValueZonesCacheRulesAegisValue": {
+    "com.cloudflare.zones#SettingsEditRequestValueZonesCacheRulesAegisValue": {
       "type": "structure",
       "members": {
         "enabled": {
@@ -12360,13 +12349,13 @@
         }
       }
     },
-    "com.cloudflare.zones#SettingsEditRequestBodyValueValueZonesCiphersValueList": {
+    "com.cloudflare.zones#SettingsEditRequestValueZonesCiphersValueList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.zones#SettingsEditRequestBodyValueValueZonesNELValue": {
+    "com.cloudflare.zones#SettingsEditRequestValueZonesNELValue": {
       "type": "structure",
       "members": {
         "enabled": {
@@ -12374,13 +12363,13 @@
         }
       }
     },
-    "com.cloudflare.zones#SettingsEditRequestBodyValueValueAutomaticPlatformOptimizationHostnamesList": {
+    "com.cloudflare.zones#SettingsEditRequestValueAutomaticPlatformOptimizationHostnamesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.zones#SettingsEditRequestBodyValueValueAutomaticPlatformOptimization": {
+    "com.cloudflare.zones#SettingsEditRequestValueAutomaticPlatformOptimization": {
       "type": "structure",
       "members": {
         "cache_by_device_type": {
@@ -12405,7 +12394,7 @@
           }
         },
         "hostnames": {
-          "target": "com.cloudflare.zones#SettingsEditRequestBodyValueValueAutomaticPlatformOptimizationHostnamesList",
+          "target": "com.cloudflare.zones#SettingsEditRequestValueAutomaticPlatformOptimizationHostnamesList",
           "traits": {
             "smithy.api#documentation": "An array of hostnames where Automatic Platform Optimization for WordPress is activated.",
             "smithy.api#required": {}
@@ -12427,7 +12416,7 @@
         }
       }
     },
-    "com.cloudflare.zones#SettingsEditRequestBodyValueValueZonesSecurityHeaderValueStrictTransportSecurity": {
+    "com.cloudflare.zones#SettingsEditRequestValueZonesSecurityHeaderValueStrictTransportSecurity": {
       "type": "structure",
       "members": {
         "enabled": {
@@ -12462,36 +12451,14 @@
         }
       }
     },
-    "com.cloudflare.zones#SettingsEditRequestBodyValueValueZonesSecurityHeaderValue": {
+    "com.cloudflare.zones#SettingsEditRequestValueZonesSecurityHeaderValue": {
       "type": "structure",
       "members": {
         "strict_transport_security": {
-          "target": "com.cloudflare.zones#SettingsEditRequestBodyValueValueZonesSecurityHeaderValueStrictTransportSecurity",
+          "target": "com.cloudflare.zones#SettingsEditRequestValueZonesSecurityHeaderValueStrictTransportSecurity",
           "traits": {
             "smithy.api#documentation": "Strict Transport Security."
           }
-        }
-      }
-    },
-    "com.cloudflare.zones#SettingsEditRequestBodyValue": {
-      "type": "structure",
-      "members": {
-        "value": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Value of the zone setting."
-          }
-        }
-      }
-    },
-    "com.cloudflare.zones#SettingsEditRequestBody": {
-      "type": "union",
-      "members": {
-        "Enabled": {
-          "target": "com.cloudflare.zones#SettingsEditRequestBodyEnabled"
-        },
-        "Value": {
-          "target": "com.cloudflare.zones#SettingsEditRequestBodyValue"
         }
       }
     },
@@ -12514,11 +12481,16 @@
             "smithy.api#required": {}
           }
         },
-        "body": {
-          "target": "com.cloudflare.zones#SettingsEditRequestBody",
+        "enabled": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "ssl-recommender enrollment setting."
+          }
+        },
+        "value": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Value of the zone setting."
           }
         }
       },

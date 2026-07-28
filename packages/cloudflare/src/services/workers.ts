@@ -28118,42 +28118,17 @@ export const PutScriptScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutScriptScheduleResponse",
 }) as any as S.Schema<PutScriptScheduleResponse>;
 
-export type ScriptsSecretsUpdateRequestBodySecretTextType = "secret_text";
-export const ScriptsSecretsUpdateRequestBodySecretTextType =
-  /*@__PURE__*/ S.String;
+export type ScriptsSecretsUpdateRequestType = "secret_text" | "secret_key";
+export const ScriptsSecretsUpdateRequestType = /*@__PURE__*/ S.String;
 
-export interface ScriptsSecretsUpdateRequestBodySecretText {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The secret value to use. */
-  text: string;
-  /** The kind of resource that the binding provides. */
-  type: ScriptsSecretsUpdateRequestBodySecretTextType;
-}
-export const ScriptsSecretsUpdateRequestBodySecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      text: S.String,
-      type: ScriptsSecretsUpdateRequestBodySecretTextType,
-    }),
-  ).annotate({
-    identifier: "ScriptsSecretsUpdateRequestBodySecretText",
-  }) as any as S.Schema<ScriptsSecretsUpdateRequestBodySecretText>;
-
-export type ScriptsSecretsUpdateRequestBodySecretKeyFormat =
+export type ScriptsSecretsUpdateRequestFormat =
   | "raw"
   | "pkcs8"
   | "spki"
   | "jwk";
-export const ScriptsSecretsUpdateRequestBodySecretKeyFormat =
-  /*@__PURE__*/ S.String;
+export const ScriptsSecretsUpdateRequestFormat = /*@__PURE__*/ S.String;
 
-export type ScriptsSecretsUpdateRequestBodySecretKeyType = "secret_key";
-export const ScriptsSecretsUpdateRequestBodySecretKeyType =
-  /*@__PURE__*/ S.String;
-
-export type ScriptsSecretsUpdateRequestBodySecretKeyUsagesItem =
+export type ScriptsSecretsUpdateRequestUsagesItem =
   | "encrypt"
   | "decrypt"
   | "sign"
@@ -28162,70 +28137,48 @@ export type ScriptsSecretsUpdateRequestBodySecretKeyUsagesItem =
   | "deriveBits"
   | "wrapKey"
   | "unwrapKey";
-export const ScriptsSecretsUpdateRequestBodySecretKeyUsagesItem =
-  /*@__PURE__*/ S.String;
+export const ScriptsSecretsUpdateRequestUsagesItem = /*@__PURE__*/ S.String;
 
-export type ScriptsSecretsUpdateRequestBodySecretKeyUsagesList =
-  ReadonlyArray<ScriptsSecretsUpdateRequestBodySecretKeyUsagesItem>;
-export const ScriptsSecretsUpdateRequestBodySecretKeyUsagesList =
-  /*@__PURE__*/ S.Array(
-    ScriptsSecretsUpdateRequestBodySecretKeyUsagesItem,
-  ) as any as S.Schema<ScriptsSecretsUpdateRequestBodySecretKeyUsagesList>;
-
-export interface ScriptsSecretsUpdateRequestBodySecretKey {
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format: ScriptsSecretsUpdateRequestBodySecretKeyFormat;
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The kind of resource that the binding provides. */
-  type: ScriptsSecretsUpdateRequestBodySecretKeyType;
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages: ScriptsSecretsUpdateRequestBodySecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-}
-export const ScriptsSecretsUpdateRequestBodySecretKey = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      algorithm: S.Unknown,
-      format: ScriptsSecretsUpdateRequestBodySecretKeyFormat,
-      name: S.String,
-      type: ScriptsSecretsUpdateRequestBodySecretKeyType,
-      usages: ScriptsSecretsUpdateRequestBodySecretKeyUsagesList,
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-    }),
-).annotate({
-  identifier: "ScriptsSecretsUpdateRequestBodySecretKey",
-}) as any as S.Schema<ScriptsSecretsUpdateRequestBodySecretKey>;
-
-export type ScriptsSecretsUpdateRequestBody =
-  | ScriptsSecretsUpdateRequestBodySecretText
-  | ScriptsSecretsUpdateRequestBodySecretKey;
-export const ScriptsSecretsUpdateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["name", "text", "type"],
-    ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
-  ]),
-);
+export type ScriptsSecretsUpdateRequestUsagesList =
+  ReadonlyArray<ScriptsSecretsUpdateRequestUsagesItem>;
+export const ScriptsSecretsUpdateRequestUsagesList = /*@__PURE__*/ S.Array(
+  ScriptsSecretsUpdateRequestUsagesItem,
+) as any as S.Schema<ScriptsSecretsUpdateRequestUsagesList>;
 
 export interface PutScriptSecretRequest {
   /** Identifier. */
   accountId: string;
   /** Name of the script, used in URLs and route configuration. */
   scriptName: string;
-  /** A secret value accessible through a binding. */
-  body: ScriptsSecretsUpdateRequestBody;
+  /** A JavaScript variable name for the binding. */
+  name: string;
+  /** The secret value to use. */
+  text?: string;
+  /** The kind of resource that the binding provides. */
+  type: ScriptsSecretsUpdateRequestType;
+  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
+  algorithm?: unknown;
+  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
+  format?: ScriptsSecretsUpdateRequestFormat;
+  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
+  usages?: ScriptsSecretsUpdateRequestUsagesList;
+  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
+  keyBase64?: string;
+  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
+  keyJwk?: unknown;
 }
 export const PutScriptSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     scriptName: S.String.pipe(T.Label("script_name")),
-    body: ScriptsSecretsUpdateRequestBody.pipe(T.HttpBody()),
+    name: S.String,
+    text: S.optional(S.String),
+    type: ScriptsSecretsUpdateRequestType,
+    algorithm: S.optional(S.Unknown),
+    format: S.optional(ScriptsSecretsUpdateRequestFormat),
+    usages: S.optional(ScriptsSecretsUpdateRequestUsagesList),
+    keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
+    keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
   })
     .pipe(
       T.Http({

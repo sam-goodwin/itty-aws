@@ -6634,7 +6634,7 @@
         "smithy.api#readonly": {}
       }
     },
-    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBodySecretTextType": {
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestType": {
       "type": "enum",
       "members": {
         "SECRET_TEXT": {
@@ -6642,36 +6642,16 @@
           "traits": {
             "smithy.api#enumValue": "secret_text"
           }
-        }
-      }
-    },
-    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBodySecretText": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A JavaScript variable name for the binding.",
-            "smithy.api#required": {}
-          }
         },
-        "text": {
-          "target": "smithy.api#String",
+        "SECRET_KEY": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#documentation": "The secret value to use.",
-            "smithy.api#required": {}
-          }
-        },
-        "type": {
-          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBodySecretTextType",
-          "traits": {
-            "smithy.api#documentation": "The kind of resource that the binding provides.",
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "secret_key"
           }
         }
       }
     },
-    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyFormat": {
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestFormat": {
       "type": "enum",
       "members": {
         "RAW": {
@@ -6700,18 +6680,7 @@
         }
       }
     },
-    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyType": {
-      "type": "enum",
-      "members": {
-        "SECRET_KEY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "secret_key"
-          }
-        }
-      }
-    },
-    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyUsagesItem": {
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestUsagesItem": {
       "type": "enum",
       "members": {
         "ENCRYPT": {
@@ -6764,73 +6733,10 @@
         }
       }
     },
-    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyUsagesList": {
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestUsagesList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyUsagesItem"
-      }
-    },
-    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKey": {
-      "type": "structure",
-      "members": {
-        "algorithm": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).",
-            "smithy.api#required": {}
-          }
-        },
-        "format": {
-          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyFormat",
-          "traits": {
-            "smithy.api#documentation": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).",
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A JavaScript variable name for the binding.",
-            "smithy.api#required": {}
-          }
-        },
-        "type": {
-          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyType",
-          "traits": {
-            "smithy.api#documentation": "The kind of resource that the binding provides.",
-            "smithy.api#required": {}
-          }
-        },
-        "usages": {
-          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyUsagesList",
-          "traits": {
-            "smithy.api#documentation": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).",
-            "smithy.api#required": {}
-          }
-        },
-        "key_base64": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\"."
-          }
-        },
-        "key_jwk": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\"."
-          }
-        }
-      }
-    },
-    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBody": {
-      "type": "union",
-      "members": {
-        "SecretText": {
-          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBodySecretText"
-        },
-        "SecretKey": {
-          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKey"
-        }
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestUsagesItem"
       }
     },
     "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequest": {
@@ -6860,12 +6766,54 @@
             "smithy.api#required": {}
           }
         },
-        "body": {
-          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestBody",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A secret value accessible through a binding.",
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "A JavaScript variable name for the binding.",
+            "smithy.api#required": {}
+          }
+        },
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The secret value to use."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestType",
+          "traits": {
+            "smithy.api#documentation": "The kind of resource that the binding provides.",
+            "smithy.api#required": {}
+          }
+        },
+        "algorithm": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm)."
+          }
+        },
+        "format": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestFormat",
+          "traits": {
+            "smithy.api#documentation": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format)."
+          }
+        },
+        "usages": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSecretsUpdateRequestUsagesList",
+          "traits": {
+            "smithy.api#documentation": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages)."
+          }
+        },
+        "key_base64": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\"."
+          }
+        },
+        "key_jwk": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\"."
           }
         }
       },

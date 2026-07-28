@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseDmcaAct": {
+    "com.cloudflare.abuse_reports#CreateRequestAct": {
       "type": "enum",
       "members": {
         "ABUSE_DMCA": {
@@ -25,10 +25,52 @@
           "traits": {
             "smithy.api#enumValue": "abuse_dmca"
           }
+        },
+        "ABUSE_TRADEMARK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "abuse_trademark"
+          }
+        },
+        "ABUSE_GENERAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "abuse_general"
+          }
+        },
+        "ABUSE_PHISHING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "abuse_phishing"
+          }
+        },
+        "ABUSE_CHILDREN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "abuse_children"
+          }
+        },
+        "ABUSE_THREAT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "abuse_threat"
+          }
+        },
+        "ABUSE_REGISTRAR_WHOIS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "abuse_registrar_whois"
+          }
+        },
+        "ABUSE_NCSEI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "abuse_ncsei"
+          }
         }
       }
     },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseDmcaAgree": {
+    "com.cloudflare.abuse_reports#CreateRequestAgree": {
       "type": "intEnum",
       "members": {
         "_1": {
@@ -39,337 +81,7 @@
         }
       }
     },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseDmcaHostNotification": {
-      "type": "enum",
-      "members": {
-        "SEND": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "send"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseDmcaOwnerNotification": {
-      "type": "enum",
-      "members": {
-        "SEND": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "send"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseDmca": {
-      "type": "structure",
-      "members": {
-        "act": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseDmcaAct",
-          "traits": {
-            "smithy.api#documentation": "The report type for submitted reports.",
-            "smithy.api#required": {}
-          }
-        },
-        "address1": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "agent_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of the copyright holder. Text not exceeding 60 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "agree": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseDmcaAgree",
-          "traits": {
-            "smithy.api#documentation": "Can be `0` for false or `1` for true. Must be value: 1 for DMCA reports",
-            "smithy.api#required": {}
-          }
-        },
-        "city": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "country": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "email2": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Should match the value provided in `email`",
-            "smithy.api#required": {}
-          }
-        },
-        "host_notification": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseDmcaHostNotification",
-          "traits": {
-            "smithy.api#documentation": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.",
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "original_work": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "owner_notification": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseDmcaOwnerNotification",
-          "traits": {
-            "smithy.api#documentation": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.",
-            "smithy.api#required": {}
-          }
-        },
-        "signature": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required for DMCA reports, should be same as Name. An affirmation that all information in the report is true and accurate while agreeing to the policies of Cloudflare's abuse reports",
-            "smithy.api#required": {}
-          }
-        },
-        "state": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "urls": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "comments": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Any additional comments about the infringement not exceeding 2000 characters"
-          }
-        },
-        "company": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
-          }
-        },
-        "reported_country": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text containing 2 characters"
-          }
-        },
-        "reported_user_agent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters"
-          }
-        },
-        "tele": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
-          }
-        },
-        "title": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseTrademarkAct": {
-      "type": "enum",
-      "members": {
-        "ABUSE_TRADEMARK": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "abuse_trademark"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseTrademarkHostNotification": {
-      "type": "enum",
-      "members": {
-        "SEND": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "send"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseTrademarkOwnerNotification": {
-      "type": "enum",
-      "members": {
-        "SEND": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "send"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseTrademark": {
-      "type": "structure",
-      "members": {
-        "act": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseTrademarkAct",
-          "traits": {
-            "smithy.api#documentation": "The report type for submitted reports.",
-            "smithy.api#required": {}
-          }
-        },
-        "email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "email2": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Should match the value provided in `email`",
-            "smithy.api#required": {}
-          }
-        },
-        "host_notification": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseTrademarkHostNotification",
-          "traits": {
-            "smithy.api#documentation": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.",
-            "smithy.api#required": {}
-          }
-        },
-        "justification": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters.",
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "owner_notification": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseTrademarkOwnerNotification",
-          "traits": {
-            "smithy.api#documentation": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.",
-            "smithy.api#required": {}
-          }
-        },
-        "trademark_number": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 1000 characters",
-            "smithy.api#required": {}
-          }
-        },
-        "trademark_office": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 1000 characters",
-            "smithy.api#required": {}
-          }
-        },
-        "trademark_symbol": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 1000 characters",
-            "smithy.api#required": {}
-          }
-        },
-        "urls": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "comments": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Any additional comments about the infringement not exceeding 2000 characters"
-          }
-        },
-        "company": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
-          }
-        },
-        "reported_country": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text containing 2 characters"
-          }
-        },
-        "reported_user_agent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters"
-          }
-        },
-        "tele": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
-          }
-        },
-        "title": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseGeneralAct": {
-      "type": "enum",
-      "members": {
-        "ABUSE_GENERAL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "abuse_general"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseGeneralHostNotification": {
+    "com.cloudflare.abuse_reports#CreateRequestHostNotificationAbuseGeneral": {
       "type": "enum",
       "members": {
         "SEND": {
@@ -386,7 +98,29 @@
         }
       }
     },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseGeneralOwnerNotification": {
+    "com.cloudflare.abuse_reports#CreateRequestHostNotificationEnum": {
+      "type": "enum",
+      "members": {
+        "SEND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "send"
+          }
+        }
+      }
+    },
+    "com.cloudflare.abuse_reports#CreateRequestHostNotification": {
+      "type": "union",
+      "members": {
+        "CreateRequestHostNotificationEnum": {
+          "target": "com.cloudflare.abuse_reports#CreateRequestHostNotificationEnum"
+        },
+        "AbuseGeneral": {
+          "target": "com.cloudflare.abuse_reports#CreateRequestHostNotificationAbuseGeneral"
+        }
+      }
+    },
+    "com.cloudflare.abuse_reports#CreateRequestOwnerNotificationAbuseGeneral": {
       "type": "enum",
       "members": {
         "SEND": {
@@ -403,315 +137,7 @@
         }
       }
     },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseGeneral": {
-      "type": "structure",
-      "members": {
-        "act": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseGeneralAct",
-          "traits": {
-            "smithy.api#documentation": "The report type for submitted reports.",
-            "smithy.api#required": {}
-          }
-        },
-        "email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "email2": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Should match the value provided in `email`",
-            "smithy.api#required": {}
-          }
-        },
-        "host_notification": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseGeneralHostNotification",
-          "traits": {
-            "smithy.api#documentation": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.",
-            "smithy.api#required": {}
-          }
-        },
-        "justification": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters.",
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "owner_notification": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseGeneralOwnerNotification",
-          "traits": {
-            "smithy.api#documentation": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.",
-            "smithy.api#required": {}
-          }
-        },
-        "urls": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "comments": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Any additional comments about the infringement not exceeding 2000 characters"
-          }
-        },
-        "company": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
-          }
-        },
-        "destination_ips": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A list of IP addresses separated by ‘\\n’ (new line character). The list of destination IPs should not exceed 30 IP addresses. Each one of the IP addresses ought to be unique."
-          }
-        },
-        "ports_protocols": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A comma separated list of ports and protocols e.g. 80/TCP, 22/UDP. The total size of the field should not exceed 2000 characters. Each individual port/protocol should not exceed 100 characters. The list should not have more than 30 unique ports and protocols."
-          }
-        },
-        "reported_country": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text containing 2 characters"
-          }
-        },
-        "reported_user_agent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters"
-          }
-        },
-        "source_ips": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A list of IP addresses separated by ‘\\n’ (new line character). The list of source IPs should not exceed 30 IP addresses. Each one of the IP addresses ought to be unique."
-          }
-        },
-        "tele": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
-          }
-        },
-        "title": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbusePhishingAct": {
-      "type": "enum",
-      "members": {
-        "ABUSE_PHISHING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "abuse_phishing"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbusePhishingHostNotification": {
-      "type": "enum",
-      "members": {
-        "SEND": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "send"
-          }
-        },
-        "SEND_ANON": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "send-anon"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbusePhishingOwnerNotification": {
-      "type": "enum",
-      "members": {
-        "SEND": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "send"
-          }
-        },
-        "SEND_ANON": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "send-anon"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbusePhishing": {
-      "type": "structure",
-      "members": {
-        "act": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbusePhishingAct",
-          "traits": {
-            "smithy.api#documentation": "The report type for submitted reports.",
-            "smithy.api#required": {}
-          }
-        },
-        "email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "email2": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Should match the value provided in `email`",
-            "smithy.api#required": {}
-          }
-        },
-        "host_notification": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbusePhishingHostNotification",
-          "traits": {
-            "smithy.api#documentation": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.",
-            "smithy.api#required": {}
-          }
-        },
-        "justification": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters.",
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "owner_notification": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbusePhishingOwnerNotification",
-          "traits": {
-            "smithy.api#documentation": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.",
-            "smithy.api#required": {}
-          }
-        },
-        "urls": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "comments": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Any additional comments about the infringement not exceeding 2000 characters"
-          }
-        },
-        "company": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
-          }
-        },
-        "original_work": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
-          }
-        },
-        "reported_country": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text containing 2 characters"
-          }
-        },
-        "reported_user_agent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters"
-          }
-        },
-        "tele": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
-          }
-        },
-        "title": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseChildrenAct": {
-      "type": "enum",
-      "members": {
-        "ABUSE_CHILDREN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "abuse_children"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseChildrenHostNotification": {
-      "type": "enum",
-      "members": {
-        "SEND": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "send"
-          }
-        },
-        "SEND_ANON": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "send-anon"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseChildrenNcmecNotification": {
-      "type": "enum",
-      "members": {
-        "SEND": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "send"
-          }
-        },
-        "SEND_ANON": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "send-anon"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseChildrenOwnerNotification": {
+    "com.cloudflare.abuse_reports#CreateRequestOwnerNotificationAbuseChildren": {
       "type": "enum",
       "members": {
         "SEND": {
@@ -734,128 +160,32 @@
         }
       }
     },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseChildren": {
-      "type": "structure",
-      "members": {
-        "act": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseChildrenAct",
-          "traits": {
-            "smithy.api#documentation": "The report type for submitted reports.",
-            "smithy.api#required": {}
-          }
-        },
-        "email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "email2": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Should match the value provided in `email`",
-            "smithy.api#required": {}
-          }
-        },
-        "host_notification": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseChildrenHostNotification",
-          "traits": {
-            "smithy.api#documentation": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.",
-            "smithy.api#required": {}
-          }
-        },
-        "justification": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters.",
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "ncmec_notification": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseChildrenNcmecNotification",
-          "traits": {
-            "smithy.api#documentation": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.",
-            "smithy.api#required": {}
-          }
-        },
-        "owner_notification": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseChildrenOwnerNotification",
-          "traits": {
-            "smithy.api#documentation": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.",
-            "smithy.api#required": {}
-          }
-        },
-        "urls": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "comments": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Any additional comments about the infringement not exceeding 2000 characters"
-          }
-        },
-        "company": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
-          }
-        },
-        "country": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
-          }
-        },
-        "reported_country": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text containing 2 characters"
-          }
-        },
-        "reported_user_agent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters"
-          }
-        },
-        "tele": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
-          }
-        },
-        "title": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseThreatAct": {
+    "com.cloudflare.abuse_reports#CreateRequestOwnerNotificationEnum": {
       "type": "enum",
       "members": {
-        "ABUSE_THREAT": {
+        "SEND": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "abuse_threat"
+            "smithy.api#enumValue": "send"
           }
         }
       }
     },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseThreatHostNotification": {
+    "com.cloudflare.abuse_reports#CreateRequestOwnerNotification": {
+      "type": "union",
+      "members": {
+        "CreateRequestOwnerNotificationEnum": {
+          "target": "com.cloudflare.abuse_reports#CreateRequestOwnerNotificationEnum"
+        },
+        "AbuseGeneral": {
+          "target": "com.cloudflare.abuse_reports#CreateRequestOwnerNotificationAbuseGeneral"
+        },
+        "AbuseChildren": {
+          "target": "com.cloudflare.abuse_reports#CreateRequestOwnerNotificationAbuseChildren"
+        }
+      }
+    },
+    "com.cloudflare.abuse_reports#CreateRequestNcmecNotification": {
       "type": "enum",
       "members": {
         "SEND": {
@@ -872,155 +202,7 @@
         }
       }
     },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseThreatOwnerNotification": {
-      "type": "enum",
-      "members": {
-        "SEND": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "send"
-          }
-        },
-        "SEND_ANON": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "send-anon"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseThreat": {
-      "type": "structure",
-      "members": {
-        "act": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseThreatAct",
-          "traits": {
-            "smithy.api#documentation": "The report type for submitted reports.",
-            "smithy.api#required": {}
-          }
-        },
-        "email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "email2": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Should match the value provided in `email`",
-            "smithy.api#required": {}
-          }
-        },
-        "host_notification": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseThreatHostNotification",
-          "traits": {
-            "smithy.api#documentation": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.",
-            "smithy.api#required": {}
-          }
-        },
-        "justification": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters.",
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "owner_notification": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseThreatOwnerNotification",
-          "traits": {
-            "smithy.api#documentation": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.",
-            "smithy.api#required": {}
-          }
-        },
-        "urls": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "comments": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Any additional comments about the infringement not exceeding 2000 characters"
-          }
-        },
-        "company": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
-          }
-        },
-        "reported_country": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text containing 2 characters"
-          }
-        },
-        "reported_user_agent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters"
-          }
-        },
-        "tele": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
-          }
-        },
-        "title": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseRegistrarWhoisAct": {
-      "type": "enum",
-      "members": {
-        "ABUSE_REGISTRAR_WHOIS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "abuse_registrar_whois"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseRegistrarWhoisOwnerNotification": {
-      "type": "enum",
-      "members": {
-        "SEND": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "send"
-          }
-        },
-        "SEND_ANON": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "send-anon"
-          }
-        },
-        "NONE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "none"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestType": {
+    "com.cloudflare.abuse_reports#CreateRequestRegWhoRequestRegWhoRequestType": {
       "type": "enum",
       "members": {
         "DISCLOSURE": {
@@ -1037,7 +219,7 @@
         }
       }
     },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestedDataElementsItem": {
+    "com.cloudflare.abuse_reports#CreateRequestRegWhoRequestRegWhoRequestedDataElementsItem": {
       "type": "enum",
       "members": {
         "REGISTRANT_NAME": {
@@ -1144,13 +326,13 @@
         }
       }
     },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestedDataElementsList": {
+    "com.cloudflare.abuse_reports#CreateRequestRegWhoRequestRegWhoRequestedDataElementsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestedDataElementsItem"
+        "target": "com.cloudflare.abuse_reports#CreateRequestRegWhoRequestRegWhoRequestedDataElementsItem"
       }
     },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestorType": {
+    "com.cloudflare.abuse_reports#CreateRequestRegWhoRequestRegWhoRequestorType": {
       "type": "enum",
       "members": {
         "GOVERNMENT": {
@@ -1173,7 +355,7 @@
         }
       }
     },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseRegistrarWhoisRegWhoRequest": {
+    "com.cloudflare.abuse_reports#CreateRequestRegWhoRequest": {
       "type": "structure",
       "members": {
         "reg_who_good_faith_affirmation": {
@@ -1198,14 +380,14 @@
           }
         },
         "reg_who_request_type": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestType",
+          "target": "com.cloudflare.abuse_reports#CreateRequestRegWhoRequestRegWhoRequestType",
           "traits": {
             "smithy.api#documentation": "The type of WHOIS data request per RDP procedure.",
             "smithy.api#required": {}
           }
         },
         "reg_who_requested_data_elements": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestedDataElementsList",
+          "target": "com.cloudflare.abuse_reports#CreateRequestRegWhoRequestRegWhoRequestedDataElementsList",
           "traits": {
             "smithy.api#documentation": "The specific WHOIS data elements being requested per RDP 10.2.2. Required for all WHOIS requests.",
             "smithy.api#required": {}
@@ -1218,282 +400,10 @@
           }
         },
         "reg_who_requestor_type": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestorType",
+          "target": "com.cloudflare.abuse_reports#CreateRequestRegWhoRequestRegWhoRequestorType",
           "traits": {
             "smithy.api#documentation": "The nature of the requestor per RDP 10.2.1.2."
           }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseRegistrarWhois": {
-      "type": "structure",
-      "members": {
-        "act": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseRegistrarWhoisAct",
-          "traits": {
-            "smithy.api#documentation": "The report type for submitted reports.",
-            "smithy.api#required": {}
-          }
-        },
-        "email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "email2": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Should match the value provided in `email`",
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "owner_notification": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseRegistrarWhoisOwnerNotification",
-          "traits": {
-            "smithy.api#documentation": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.",
-            "smithy.api#required": {}
-          }
-        },
-        "urls": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "comments": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Any additional comments about the infringement not exceeding 2000 characters"
-          }
-        },
-        "company": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
-          }
-        },
-        "reg_who_request": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseRegistrarWhoisRegWhoRequest",
-          "traits": {
-            "smithy.api#documentation": "RDP-mandated fields for registrar WHOIS data disclosure requests."
-          }
-        },
-        "reported_country": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text containing 2 characters"
-          }
-        },
-        "reported_user_agent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters"
-          }
-        },
-        "tele": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
-          }
-        },
-        "title": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseNcseiAct": {
-      "type": "enum",
-      "members": {
-        "ABUSE_NCSEI": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "abuse_ncsei"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseNcseiHostNotification": {
-      "type": "enum",
-      "members": {
-        "SEND": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "send"
-          }
-        },
-        "SEND_ANON": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "send-anon"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseNcseiOwnerNotification": {
-      "type": "enum",
-      "members": {
-        "SEND": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "send"
-          }
-        },
-        "SEND_ANON": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "send-anon"
-          }
-        },
-        "NONE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "none"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBodyAbuseNcsei": {
-      "type": "structure",
-      "members": {
-        "act": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseNcseiAct",
-          "traits": {
-            "smithy.api#documentation": "The report type for submitted reports.",
-            "smithy.api#required": {}
-          }
-        },
-        "email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "email2": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Should match the value provided in `email`",
-            "smithy.api#required": {}
-          }
-        },
-        "host_notification": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseNcseiHostNotification",
-          "traits": {
-            "smithy.api#documentation": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.",
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "ncsei_subject_representation": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "If the submitter is the target of NCSEI in the URLs of the abuse report.",
-            "smithy.api#required": {}
-          }
-        },
-        "owner_notification": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseNcseiOwnerNotification",
-          "traits": {
-            "smithy.api#documentation": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.",
-            "smithy.api#required": {}
-          }
-        },
-        "urls": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
-            "smithy.api#required": {}
-          }
-        },
-        "comments": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Any additional comments about the infringement not exceeding 2000 characters"
-          }
-        },
-        "company": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
-          }
-        },
-        "country": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
-          }
-        },
-        "reported_country": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text containing 2 characters"
-          }
-        },
-        "reported_user_agent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters"
-          }
-        },
-        "tele": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
-          }
-        },
-        "title": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Text not exceeding 255 characters"
-          }
-        }
-      }
-    },
-    "com.cloudflare.abuse_reports#CreateRequestBody": {
-      "type": "union",
-      "members": {
-        "AbuseDmca": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseDmca"
-        },
-        "AbuseTrademark": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseTrademark"
-        },
-        "AbuseGeneral": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseGeneral"
-        },
-        "AbusePhishing": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbusePhishing"
-        },
-        "AbuseChildren": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseChildren"
-        },
-        "AbuseThreat": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseThreat"
-        },
-        "AbuseRegistrarWhois": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseRegistrarWhois"
-        },
-        "AbuseNcsei": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBodyAbuseNcsei"
         }
       }
     },
@@ -1515,11 +425,196 @@
             "smithy.api#required": {}
           }
         },
-        "body": {
-          "target": "com.cloudflare.abuse_reports#CreateRequestBody",
+        "act": {
+          "target": "com.cloudflare.abuse_reports#CreateRequestAct",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The report type for submitted reports.",
+            "smithy.api#required": {}
+          }
+        },
+        "address1": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
+          }
+        },
+        "agent_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the copyright holder. Text not exceeding 60 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
+          }
+        },
+        "agree": {
+          "target": "com.cloudflare.abuse_reports#CreateRequestAgree",
+          "traits": {
+            "smithy.api#documentation": "Can be `0` for false or `1` for true. Must be value: 1 for DMCA reports"
+          }
+        },
+        "city": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
+          }
+        },
+        "country": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
+          }
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+            "smithy.api#required": {}
+          }
+        },
+        "email2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Should match the value provided in `email`",
+            "smithy.api#required": {}
+          }
+        },
+        "host_notification": {
+          "target": "com.cloudflare.abuse_reports#CreateRequestHostNotification",
+          "traits": {
+            "smithy.api#documentation": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+            "smithy.api#required": {}
+          }
+        },
+        "original_work": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
+          }
+        },
+        "owner_notification": {
+          "target": "com.cloudflare.abuse_reports#CreateRequestOwnerNotification",
+          "traits": {
+            "smithy.api#documentation": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.",
+            "smithy.api#required": {}
+          }
+        },
+        "signature": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required for DMCA reports, should be same as Name. An affirmation that all information in the report is true and accurate while agreeing to the policies of Cloudflare's abuse reports"
+          }
+        },
+        "state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
+          }
+        },
+        "urls": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+            "smithy.api#required": {}
+          }
+        },
+        "comments": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Any additional comments about the infringement not exceeding 2000 characters"
+          }
+        },
+        "company": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
+          }
+        },
+        "reported_country": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text containing 2 characters"
+          }
+        },
+        "reported_user_agent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text not exceeding 255 characters"
+          }
+        },
+        "tele": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/)."
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text not exceeding 255 characters"
+          }
+        },
+        "justification": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters."
+          }
+        },
+        "trademark_number": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text not exceeding 1000 characters"
+          }
+        },
+        "trademark_office": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text not exceeding 1000 characters"
+          }
+        },
+        "trademark_symbol": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text not exceeding 1000 characters"
+          }
+        },
+        "destination_ips": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A list of IP addresses separated by ‘\\n’ (new line character). The list of destination IPs should not exceed 30 IP addresses. Each one of the IP addresses ought to be unique."
+          }
+        },
+        "ports_protocols": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A comma separated list of ports and protocols e.g. 80/TCP, 22/UDP. The total size of the field should not exceed 2000 characters. Each individual port/protocol should not exceed 100 characters. The list should not have more than 30 unique ports and protocols."
+          }
+        },
+        "source_ips": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A list of IP addresses separated by ‘\\n’ (new line character). The list of source IPs should not exceed 30 IP addresses. Each one of the IP addresses ought to be unique."
+          }
+        },
+        "ncmec_notification": {
+          "target": "com.cloudflare.abuse_reports#CreateRequestNcmecNotification",
+          "traits": {
+            "smithy.api#documentation": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous."
+          }
+        },
+        "reg_who_request": {
+          "target": "com.cloudflare.abuse_reports#CreateRequestRegWhoRequest",
+          "traits": {
+            "smithy.api#documentation": "RDP-mandated fields for registrar WHOIS data disclosure requests."
+          }
+        },
+        "ncsei_subject_representation": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If the submitter is the target of NCSEI in the URLs of the abuse report."
           }
         }
       },

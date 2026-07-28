@@ -5731,7 +5731,7 @@
         }
       }
     },
-    "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestinationProvider": {
+    "com.cloudflare.r2#BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider": {
       "type": "enum",
       "members": {
         "R2": {
@@ -5742,7 +5742,7 @@
         }
       }
     },
-    "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestination": {
+    "com.cloudflare.r2#BucketsSippyUpdateRequestDestinationR2EnableSippyAws": {
       "type": "structure",
       "members": {
         "accessKeyId": {
@@ -5752,7 +5752,7 @@
           }
         },
         "provider": {
-          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestinationProvider"
+          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider"
         },
         "secretAccessKey": {
           "target": "smithy.api#String",
@@ -5762,7 +5762,38 @@
         }
       }
     },
-    "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyAwsSourceProvider": {
+    "com.cloudflare.r2#BucketsSippyUpdateRequestDestinationR2EnableSippyGcs": {
+      "type": "structure",
+      "members": {
+        "accessKeyId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of a Cloudflare API token."
+          }
+        },
+        "provider": {
+          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider"
+        },
+        "secretAccessKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value of a Cloudflare API token."
+          }
+        }
+      }
+    },
+    "com.cloudflare.r2#BucketsSippyUpdateRequestDestination": {
+      "type": "union",
+      "members": {
+        "R2EnableSippyAws": {
+          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestDestinationR2EnableSippyAws"
+        },
+        "R2EnableSippyGcs": {
+          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestDestinationR2EnableSippyGcs"
+        }
+      }
+    },
+    "com.cloudflare.r2#BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider": {
       "type": "enum",
       "members": {
         "AWS": {
@@ -5773,7 +5804,7 @@
         }
       }
     },
-    "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyAwsSource": {
+    "com.cloudflare.r2#BucketsSippyUpdateRequestSourceR2EnableSippyAws": {
       "type": "structure",
       "members": {
         "accessKeyId": {
@@ -5789,7 +5820,7 @@
           }
         },
         "provider": {
-          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyAwsSourceProvider"
+          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider"
         },
         "region": {
           "target": "smithy.api#String",
@@ -5805,44 +5836,7 @@
         }
       }
     },
-    "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyAws": {
-      "type": "structure",
-      "members": {
-        "destination": {
-          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestination",
-          "traits": {
-            "smithy.api#documentation": "R2 bucket to copy objects to."
-          }
-        },
-        "source": {
-          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyAwsSource",
-          "traits": {
-            "smithy.api#documentation": "AWS S3 bucket to copy objects from."
-          }
-        }
-      }
-    },
-    "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyGcsDestination": {
-      "type": "structure",
-      "members": {
-        "accessKeyId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of a Cloudflare API token."
-          }
-        },
-        "provider": {
-          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestinationProvider"
-        },
-        "secretAccessKey": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Value of a Cloudflare API token."
-          }
-        }
-      }
-    },
-    "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyGcsSourceProvider": {
+    "com.cloudflare.r2#BucketsSippyUpdateRequestSourceR2EnableSippyGcsProvider": {
       "type": "enum",
       "members": {
         "GCS": {
@@ -5853,7 +5847,7 @@
         }
       }
     },
-    "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyGcsSource": {
+    "com.cloudflare.r2#BucketsSippyUpdateRequestSourceR2EnableSippyGcs": {
       "type": "structure",
       "members": {
         "bucket": {
@@ -5875,48 +5869,11 @@
           }
         },
         "provider": {
-          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyGcsSourceProvider"
+          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestSourceR2EnableSippyGcsProvider"
         }
       }
     },
-    "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyGcs": {
-      "type": "structure",
-      "members": {
-        "destination": {
-          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyGcsDestination",
-          "traits": {
-            "smithy.api#documentation": "R2 bucket to copy objects to."
-          }
-        },
-        "source": {
-          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyGcsSource",
-          "traits": {
-            "smithy.api#documentation": "GCS bucket to copy objects from."
-          }
-        }
-      }
-    },
-    "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyS3Destination": {
-      "type": "structure",
-      "members": {
-        "accessKeyId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of a Cloudflare API token."
-          }
-        },
-        "provider": {
-          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestinationProvider"
-        },
-        "secretAccessKey": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Value of a Cloudflare API token."
-          }
-        }
-      }
-    },
-    "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyS3SourceProvider": {
+    "com.cloudflare.r2#BucketsSippyUpdateRequestSourceR2EnableSippyS3Provider": {
       "type": "enum",
       "members": {
         "S3": {
@@ -5927,7 +5884,7 @@
         }
       }
     },
-    "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyS3Source": {
+    "com.cloudflare.r2#BucketsSippyUpdateRequestSourceR2EnableSippyS3": {
       "type": "structure",
       "members": {
         "accessKeyId": {
@@ -5943,7 +5900,7 @@
           }
         },
         "provider": {
-          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyS3SourceProvider"
+          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestSourceR2EnableSippyS3Provider"
         },
         "secretAccessKey": {
           "target": "smithy.api#String",
@@ -5953,34 +5910,17 @@
         }
       }
     },
-    "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyS3": {
-      "type": "structure",
-      "members": {
-        "destination": {
-          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyS3Destination",
-          "traits": {
-            "smithy.api#documentation": "R2 bucket to copy objects to."
-          }
-        },
-        "source": {
-          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyS3Source",
-          "traits": {
-            "smithy.api#documentation": "General S3-compatible provider to copy objects from."
-          }
-        }
-      }
-    },
-    "com.cloudflare.r2#BucketsSippyUpdateRequestBody": {
+    "com.cloudflare.r2#BucketsSippyUpdateRequestSource": {
       "type": "union",
       "members": {
         "R2EnableSippyAws": {
-          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyAws"
+          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestSourceR2EnableSippyAws"
         },
         "R2EnableSippyGcs": {
-          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyGcs"
+          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestSourceR2EnableSippyGcs"
         },
         "R2EnableSippyS3": {
-          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyS3"
+          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestSourceR2EnableSippyS3"
         }
       }
     },
@@ -6010,11 +5950,16 @@
             "smithy.api#httpHeader": "cf-r2-jurisdiction"
           }
         },
-        "body": {
-          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestBody",
+        "destination": {
+          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestDestination",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "R2 bucket to copy objects to."
+          }
+        },
+        "source": {
+          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestSource",
+          "traits": {
+            "smithy.api#documentation": "AWS S3 bucket to copy objects from."
           }
         }
       },
@@ -6150,7 +6095,7 @@
         "smithy.api#idempotent": {}
       }
     },
-    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchemaSecret": {
+    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperS3SourceSchema": {
       "type": "structure",
       "members": {
         "accessKeyId": {
@@ -6167,62 +6112,7 @@
         }
       }
     },
-    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchemaVendor": {
-      "type": "enum",
-      "members": {
-        "S3": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "s3"
-          }
-        }
-      }
-    },
-    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchemaKeysList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      }
-    },
-    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchema": {
-      "type": "structure",
-      "members": {
-        "bucket": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "secret": {
-          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchemaSecret",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "vendor": {
-          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchemaVendor",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "endpoint": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Custom S3-compatible endpoint that must use https://."
-          }
-        },
-        "keys": {
-          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchemaKeysList"
-        },
-        "pathPrefix": {
-          "target": "smithy.api#String"
-        },
-        "region": {
-          "target": "smithy.api#String"
-        }
-      }
-    },
-    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchemaSecret": {
+    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperGcsSourceSchema": {
       "type": "structure",
       "members": {
         "clientEmail": {
@@ -6239,70 +6129,18 @@
         }
       }
     },
-    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchemaVendor": {
-      "type": "enum",
+    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestSecret": {
+      "type": "union",
       "members": {
-        "GCS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "gcs"
-          }
+        "R2SlurperS3SourceSchema": {
+          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperS3SourceSchema"
+        },
+        "R2SlurperGcsSourceSchema": {
+          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperGcsSourceSchema"
         }
       }
     },
-    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchemaKeysList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      }
-    },
-    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchema": {
-      "type": "structure",
-      "members": {
-        "bucket": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "secret": {
-          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchemaSecret",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "vendor": {
-          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchemaVendor",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "keys": {
-          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchemaKeysList"
-        },
-        "pathPrefix": {
-          "target": "smithy.api#String"
-        }
-      }
-    },
-    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaSecret": {
-      "type": "structure",
-      "members": {
-        "accessKeyId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "secretAccessKey": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaVendor": {
+    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestVendorR2SlurperR2SourceSchema": {
       "type": "enum",
       "members": {
         "R2": {
@@ -6313,7 +6151,41 @@
         }
       }
     },
-    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaJurisdiction": {
+    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestVendorEnum": {
+      "type": "enum",
+      "members": {
+        "S3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "s3"
+          }
+        },
+        "GCS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcs"
+          }
+        }
+      }
+    },
+    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestVendor": {
+      "type": "union",
+      "members": {
+        "SuperSlurperConnectivityPrecheckSourceRequestVendorEnum": {
+          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestVendorEnum"
+        },
+        "R2SlurperR2SourceSchema": {
+          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestVendorR2SlurperR2SourceSchema"
+        }
+      }
+    },
+    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestKeysList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestJurisdiction": {
       "type": "enum",
       "members": {
         "DEFAULT": {
@@ -6336,58 +6208,6 @@
         }
       }
     },
-    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaKeysList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      }
-    },
-    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchema": {
-      "type": "structure",
-      "members": {
-        "bucket": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "secret": {
-          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaSecret",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "vendor": {
-          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaVendor",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "jurisdiction": {
-          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaJurisdiction"
-        },
-        "keys": {
-          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaKeysList"
-        },
-        "pathPrefix": {
-          "target": "smithy.api#String"
-        }
-      }
-    },
-    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBody": {
-      "type": "union",
-      "members": {
-        "R2SlurperS3SourceSchema": {
-          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchema"
-        },
-        "R2SlurperGcsSourceSchema": {
-          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchema"
-        },
-        "R2SlurperR2SourceSchema": {
-          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchema"
-        }
-      }
-    },
     "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequest": {
       "type": "structure",
       "members": {
@@ -6398,12 +6218,41 @@
             "smithy.api#required": {}
           }
         },
-        "body": {
-          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBody",
+        "bucket": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
+            "smithy.api#required": {}
           }
+        },
+        "secret": {
+          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestSecret",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "vendor": {
+          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestVendor",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom S3-compatible endpoint that must use https://."
+          }
+        },
+        "keys": {
+          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestKeysList"
+        },
+        "pathPrefix": {
+          "target": "smithy.api#String"
+        },
+        "region": {
+          "target": "smithy.api#String"
+        },
+        "jurisdiction": {
+          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestJurisdiction"
         }
       },
       "traits": {

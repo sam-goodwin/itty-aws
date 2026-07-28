@@ -2456,7 +2456,7 @@
         "smithy.api#documentation": "Sends an event to a running workflow instance to trigger state transitions."
       }
     },
-    "com.cloudflare.workflows#InstancesStatusEditRequestBodyStatusStatus": {
+    "com.cloudflare.workflows#InstancesStatusEditRequestStatus": {
       "type": "enum",
       "members": {
         "PAUSE": {
@@ -2464,73 +2464,19 @@
           "traits": {
             "smithy.api#enumValue": "pause"
           }
-        }
-      }
-    },
-    "com.cloudflare.workflows#InstancesStatusEditRequestBodyStatus": {
-      "type": "structure",
-      "members": {
-        "status": {
-          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBodyStatusStatus",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.workflows#InstancesStatusEditRequestBodyStatusStatus2": {
-      "type": "enum",
-      "members": {
+        },
         "RESUME": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "resume"
           }
-        }
-      }
-    },
-    "com.cloudflare.workflows#InstancesStatusEditRequestBodyStatus2": {
-      "type": "structure",
-      "members": {
-        "status": {
-          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBodyStatusStatus2",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.workflows#InstancesStatusEditRequestBodyCase2Status": {
-      "type": "enum",
-      "members": {
+        },
         "TERMINATE": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "terminate"
           }
-        }
-      }
-    },
-    "com.cloudflare.workflows#InstancesStatusEditRequestBodyCase2": {
-      "type": "structure",
-      "members": {
-        "status": {
-          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBodyCase2Status",
-          "traits": {
-            "smithy.api#required": {}
-          }
         },
-        "rollback": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Run rollback before terminating."
-          }
-        }
-      }
-    },
-    "com.cloudflare.workflows#InstancesStatusEditRequestBodyCase3Status": {
-      "type": "enum",
-      "members": {
         "RESTART": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -2539,7 +2485,7 @@
         }
       }
     },
-    "com.cloudflare.workflows#InstancesStatusEditRequestBodyCase3FromType": {
+    "com.cloudflare.workflows#InstancesStatusEditRequestFromType": {
       "type": "enum",
       "members": {
         "DO": {
@@ -2562,7 +2508,7 @@
         }
       }
     },
-    "com.cloudflare.workflows#InstancesStatusEditRequestBodyCase3From": {
+    "com.cloudflare.workflows#InstancesStatusEditRequestFrom": {
       "type": "structure",
       "members": {
         "name": {
@@ -2575,41 +2521,7 @@
           "target": "smithy.api#Double"
         },
         "type": {
-          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBodyCase3FromType"
-        }
-      }
-    },
-    "com.cloudflare.workflows#InstancesStatusEditRequestBodyCase3": {
-      "type": "structure",
-      "members": {
-        "status": {
-          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBodyCase3Status",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "from": {
-          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBodyCase3From",
-          "traits": {
-            "smithy.api#documentation": "Step to restart from."
-          }
-        }
-      }
-    },
-    "com.cloudflare.workflows#InstancesStatusEditRequestBody": {
-      "type": "union",
-      "members": {
-        "Status": {
-          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBodyStatus"
-        },
-        "Status_": {
-          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBodyStatus2"
-        },
-        "InstancesStatusEditRequestBodyCase2": {
-          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBodyCase2"
-        },
-        "InstancesStatusEditRequestBodyCase3": {
-          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBodyCase3"
+          "target": "com.cloudflare.workflows#InstancesStatusEditRequestFromType"
         }
       }
     },
@@ -2638,10 +2550,19 @@
             "smithy.api#required": {}
           }
         },
-        "body": {
-          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBody",
+        "status": {
+          "target": "com.cloudflare.workflows#InstancesStatusEditRequestStatus"
+        },
+        "rollback": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Run rollback before terminating."
+          }
+        },
+        "from": {
+          "target": "com.cloudflare.workflows#InstancesStatusEditRequestFrom",
+          "traits": {
+            "smithy.api#documentation": "Step to restart from."
           }
         }
       },

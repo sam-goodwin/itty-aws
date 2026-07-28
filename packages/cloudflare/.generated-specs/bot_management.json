@@ -882,7 +882,7 @@
         "smithy.api#readonly": {}
       }
     },
-    "com.cloudflare.bot_management#UpdateRequestBodyBotFightModeConfigurationAiBotsProtection": {
+    "com.cloudflare.bot_management#UpdateRequestAiBotsProtection": {
       "type": "enum",
       "members": {
         "BLOCK": {
@@ -905,7 +905,7 @@
         }
       }
     },
-    "com.cloudflare.bot_management#UpdateRequestBodyBotFightModeConfigurationCfRobotsVariant": {
+    "com.cloudflare.bot_management#UpdateRequestCfRobotsVariant": {
       "type": "enum",
       "members": {
         "OFF": {
@@ -922,7 +922,7 @@
         }
       }
     },
-    "com.cloudflare.bot_management#UpdateRequestBodyBotFightModeConfigurationContentBotsProtection": {
+    "com.cloudflare.bot_management#UpdateRequestContentBotsProtection": {
       "type": "enum",
       "members": {
         "BLOCK": {
@@ -939,7 +939,7 @@
         }
       }
     },
-    "com.cloudflare.bot_management#UpdateRequestBodyBotFightModeConfigurationCrawlerProtection": {
+    "com.cloudflare.bot_management#UpdateRequestCrawlerProtection": {
       "type": "enum",
       "members": {
         "ENABLED": {
@@ -956,7 +956,7 @@
         }
       }
     },
-    "com.cloudflare.bot_management#UpdateRequestBodyBotFightModeConfigurationStaleZoneConfiguration": {
+    "com.cloudflare.bot_management#UpdateRequestStaleZoneConfigurationBotFightModeConfiguration": {
       "type": "structure",
       "members": {
         "optimize_wordpress": {
@@ -997,180 +997,7 @@
         }
       }
     },
-    "com.cloudflare.bot_management#UpdateRequestBodyBotFightModeConfiguration": {
-      "type": "structure",
-      "members": {
-        "ai_bots_protection": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodyBotFightModeConfigurationAiBotsProtection",
-          "traits": {
-            "smithy.api#documentation": "Enable rule to block AI Scrapers and Crawlers."
-          }
-        },
-        "cf_robots_variant": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodyBotFightModeConfigurationCfRobotsVariant",
-          "traits": {
-            "smithy.api#documentation": "Specifies the Robots Access Control License variant to use."
-          }
-        },
-        "content_bots_protection": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodyBotFightModeConfigurationContentBotsProtection",
-          "traits": {
-            "smithy.api#documentation": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules."
-          }
-        },
-        "crawler_protection": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodyBotFightModeConfigurationCrawlerProtection",
-          "traits": {
-            "smithy.api#documentation": "Enable rule to punish AI Scrapers and Crawlers via a link maze."
-          }
-        },
-        "enable_js": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/)."
-          }
-        },
-        "fight_mode": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether to enable Bot Fight Mode."
-          }
-        },
-        "is_robots_txt_managed": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt."
-          }
-        },
-        "stale_zone_configuration": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodyBotFightModeConfigurationStaleZoneConfiguration",
-          "traits": {
-            "smithy.api#documentation": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades."
-          }
-        },
-        "using_latest_model": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "A read-only field that indicates whether the zone currently is running the latest ML model."
-          }
-        }
-      }
-    },
-    "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeDefinitelyConfigurationAiBotsProtection": {
-      "type": "enum",
-      "members": {
-        "BLOCK": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "block"
-          }
-        },
-        "DISABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "disabled"
-          }
-        },
-        "ONLY_ON_AD_PAGES": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "only_on_ad_pages"
-          }
-        }
-      }
-    },
-    "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeDefinitelyConfigurationCfRobotsVariant": {
-      "type": "enum",
-      "members": {
-        "OFF": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "off"
-          }
-        },
-        "POLICY_ONLY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "policy_only"
-          }
-        }
-      }
-    },
-    "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeDefinitelyConfigurationContentBotsProtection": {
-      "type": "enum",
-      "members": {
-        "BLOCK": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "block"
-          }
-        },
-        "DISABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "disabled"
-          }
-        }
-      }
-    },
-    "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeDefinitelyConfigurationCrawlerProtection": {
-      "type": "enum",
-      "members": {
-        "ENABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "enabled"
-          }
-        },
-        "DISABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "disabled"
-          }
-        }
-      }
-    },
-    "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeDefinitelyConfigurationSbfmDefinitelyAutomated": {
-      "type": "enum",
-      "members": {
-        "ALLOW": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "allow"
-          }
-        },
-        "BLOCK": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "block"
-          }
-        },
-        "MANAGED_CHALLENGE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "managed_challenge"
-          }
-        }
-      }
-    },
-    "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeDefinitelyConfigurationSbfmVerifiedBots": {
-      "type": "enum",
-      "members": {
-        "ALLOW": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "allow"
-          }
-        },
-        "BLOCK": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "block"
-          }
-        }
-      }
-    },
-    "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeDefinitelyConfigurationStaleZoneConfiguration": {
+    "com.cloudflare.bot_management#UpdateRequestStaleZoneConfigurationSuperBotFightModeDefinitelyConfiguration": {
       "type": "structure",
       "members": {
         "fight_mode": {
@@ -1187,221 +1014,7 @@
         }
       }
     },
-    "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeDefinitelyConfiguration": {
-      "type": "structure",
-      "members": {
-        "ai_bots_protection": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeDefinitelyConfigurationAiBotsProtection",
-          "traits": {
-            "smithy.api#documentation": "Enable rule to block AI Scrapers and Crawlers."
-          }
-        },
-        "cf_robots_variant": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeDefinitelyConfigurationCfRobotsVariant",
-          "traits": {
-            "smithy.api#documentation": "Specifies the Robots Access Control License variant to use."
-          }
-        },
-        "content_bots_protection": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeDefinitelyConfigurationContentBotsProtection",
-          "traits": {
-            "smithy.api#documentation": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules."
-          }
-        },
-        "crawler_protection": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeDefinitelyConfigurationCrawlerProtection",
-          "traits": {
-            "smithy.api#documentation": "Enable rule to punish AI Scrapers and Crawlers via a link maze."
-          }
-        },
-        "enable_js": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/)."
-          }
-        },
-        "is_robots_txt_managed": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt."
-          }
-        },
-        "optimize_wordpress": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether to optimize Super Bot Fight Mode protections for Wordpress."
-          }
-        },
-        "sbfm_definitely_automated": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeDefinitelyConfigurationSbfmDefinitelyAutomated",
-          "traits": {
-            "smithy.api#documentation": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests."
-          }
-        },
-        "sbfm_static_resource_protection": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Super Bot Fight Mode (SBFM) to enable static resource protection."
-          }
-        },
-        "sbfm_verified_bots": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeDefinitelyConfigurationSbfmVerifiedBots",
-          "traits": {
-            "smithy.api#documentation": "Super Bot Fight Mode (SBFM) action to take on verified bots requests."
-          }
-        },
-        "stale_zone_configuration": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeDefinitelyConfigurationStaleZoneConfiguration",
-          "traits": {
-            "smithy.api#documentation": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades."
-          }
-        },
-        "using_latest_model": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "A read-only field that indicates whether the zone currently is running the latest ML model."
-          }
-        }
-      }
-    },
-    "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeLikelyConfigurationAiBotsProtection": {
-      "type": "enum",
-      "members": {
-        "BLOCK": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "block"
-          }
-        },
-        "DISABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "disabled"
-          }
-        },
-        "ONLY_ON_AD_PAGES": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "only_on_ad_pages"
-          }
-        }
-      }
-    },
-    "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeLikelyConfigurationCfRobotsVariant": {
-      "type": "enum",
-      "members": {
-        "OFF": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "off"
-          }
-        },
-        "POLICY_ONLY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "policy_only"
-          }
-        }
-      }
-    },
-    "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeLikelyConfigurationContentBotsProtection": {
-      "type": "enum",
-      "members": {
-        "BLOCK": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "block"
-          }
-        },
-        "DISABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "disabled"
-          }
-        }
-      }
-    },
-    "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeLikelyConfigurationCrawlerProtection": {
-      "type": "enum",
-      "members": {
-        "ENABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "enabled"
-          }
-        },
-        "DISABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "disabled"
-          }
-        }
-      }
-    },
-    "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeLikelyConfigurationSbfmDefinitelyAutomated": {
-      "type": "enum",
-      "members": {
-        "ALLOW": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "allow"
-          }
-        },
-        "BLOCK": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "block"
-          }
-        },
-        "MANAGED_CHALLENGE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "managed_challenge"
-          }
-        }
-      }
-    },
-    "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeLikelyConfigurationSbfmLikelyAutomated": {
-      "type": "enum",
-      "members": {
-        "ALLOW": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "allow"
-          }
-        },
-        "BLOCK": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "block"
-          }
-        },
-        "MANAGED_CHALLENGE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "managed_challenge"
-          }
-        }
-      }
-    },
-    "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeLikelyConfigurationSbfmVerifiedBots": {
-      "type": "enum",
-      "members": {
-        "ALLOW": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "allow"
-          }
-        },
-        "BLOCK": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "block"
-          }
-        }
-      }
-    },
-    "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeLikelyConfigurationStaleZoneConfiguration": {
+    "com.cloudflare.bot_management#UpdateRequestStaleZoneConfigurationSuperBotFightModeLikelyConfiguration": {
       "type": "structure",
       "members": {
         "fight_mode": {
@@ -1412,164 +1025,7 @@
         }
       }
     },
-    "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeLikelyConfiguration": {
-      "type": "structure",
-      "members": {
-        "ai_bots_protection": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeLikelyConfigurationAiBotsProtection",
-          "traits": {
-            "smithy.api#documentation": "Enable rule to block AI Scrapers and Crawlers."
-          }
-        },
-        "cf_robots_variant": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeLikelyConfigurationCfRobotsVariant",
-          "traits": {
-            "smithy.api#documentation": "Specifies the Robots Access Control License variant to use."
-          }
-        },
-        "content_bots_protection": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeLikelyConfigurationContentBotsProtection",
-          "traits": {
-            "smithy.api#documentation": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules."
-          }
-        },
-        "crawler_protection": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeLikelyConfigurationCrawlerProtection",
-          "traits": {
-            "smithy.api#documentation": "Enable rule to punish AI Scrapers and Crawlers via a link maze."
-          }
-        },
-        "enable_js": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/)."
-          }
-        },
-        "is_robots_txt_managed": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt."
-          }
-        },
-        "optimize_wordpress": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether to optimize Super Bot Fight Mode protections for Wordpress."
-          }
-        },
-        "sbfm_definitely_automated": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeLikelyConfigurationSbfmDefinitelyAutomated",
-          "traits": {
-            "smithy.api#documentation": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests."
-          }
-        },
-        "sbfm_likely_automated": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeLikelyConfigurationSbfmLikelyAutomated",
-          "traits": {
-            "smithy.api#documentation": "Super Bot Fight Mode (SBFM) action to take on likely automated requests."
-          }
-        },
-        "sbfm_static_resource_protection": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Super Bot Fight Mode (SBFM) to enable static resource protection."
-          }
-        },
-        "sbfm_verified_bots": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeLikelyConfigurationSbfmVerifiedBots",
-          "traits": {
-            "smithy.api#documentation": "Super Bot Fight Mode (SBFM) action to take on verified bots requests."
-          }
-        },
-        "stale_zone_configuration": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeLikelyConfigurationStaleZoneConfiguration",
-          "traits": {
-            "smithy.api#documentation": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades."
-          }
-        },
-        "using_latest_model": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "A read-only field that indicates whether the zone currently is running the latest ML model."
-          }
-        }
-      }
-    },
-    "com.cloudflare.bot_management#UpdateRequestBodySubscriptionConfigurationAiBotsProtection": {
-      "type": "enum",
-      "members": {
-        "BLOCK": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "block"
-          }
-        },
-        "DISABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "disabled"
-          }
-        },
-        "ONLY_ON_AD_PAGES": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "only_on_ad_pages"
-          }
-        }
-      }
-    },
-    "com.cloudflare.bot_management#UpdateRequestBodySubscriptionConfigurationCfRobotsVariant": {
-      "type": "enum",
-      "members": {
-        "OFF": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "off"
-          }
-        },
-        "POLICY_ONLY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "policy_only"
-          }
-        }
-      }
-    },
-    "com.cloudflare.bot_management#UpdateRequestBodySubscriptionConfigurationContentBotsProtection": {
-      "type": "enum",
-      "members": {
-        "BLOCK": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "block"
-          }
-        },
-        "DISABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "disabled"
-          }
-        }
-      }
-    },
-    "com.cloudflare.bot_management#UpdateRequestBodySubscriptionConfigurationCrawlerProtection": {
-      "type": "enum",
-      "members": {
-        "ENABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "enabled"
-          }
-        },
-        "DISABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "disabled"
-          }
-        }
-      }
-    },
-    "com.cloudflare.bot_management#UpdateRequestBodySubscriptionConfigurationStaleZoneConfiguration": {
+    "com.cloudflare.bot_management#UpdateRequestStaleZoneConfigurationSubscriptionConfiguration": {
       "type": "structure",
       "members": {
         "fight_mode": {
@@ -1610,91 +1066,83 @@
         }
       }
     },
-    "com.cloudflare.bot_management#UpdateRequestBodySubscriptionConfiguration": {
-      "type": "structure",
+    "com.cloudflare.bot_management#UpdateRequestStaleZoneConfiguration": {
+      "type": "union",
       "members": {
-        "ai_bots_protection": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySubscriptionConfigurationAiBotsProtection",
+        "BotFightModeConfiguration": {
+          "target": "com.cloudflare.bot_management#UpdateRequestStaleZoneConfigurationBotFightModeConfiguration"
+        },
+        "SuperBotFightModeDefinitelyConfiguration": {
+          "target": "com.cloudflare.bot_management#UpdateRequestStaleZoneConfigurationSuperBotFightModeDefinitelyConfiguration"
+        },
+        "SuperBotFightModeLikelyConfiguration": {
+          "target": "com.cloudflare.bot_management#UpdateRequestStaleZoneConfigurationSuperBotFightModeLikelyConfiguration"
+        },
+        "SubscriptionConfiguration": {
+          "target": "com.cloudflare.bot_management#UpdateRequestStaleZoneConfigurationSubscriptionConfiguration"
+        }
+      }
+    },
+    "com.cloudflare.bot_management#UpdateRequestSbfmDefinitelyAutomated": {
+      "type": "enum",
+      "members": {
+        "ALLOW": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#documentation": "Enable rule to block AI Scrapers and Crawlers."
+            "smithy.api#enumValue": "allow"
           }
         },
-        "auto_update_model": {
-          "target": "smithy.api#Boolean",
+        "BLOCK": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#documentation": "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)"
+            "smithy.api#enumValue": "block"
           }
         },
-        "bm_cookie_enabled": {
-          "target": "smithy.api#Boolean",
+        "MANAGED_CHALLENGE": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#documentation": "Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true"
-          }
-        },
-        "cf_robots_variant": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySubscriptionConfigurationCfRobotsVariant",
-          "traits": {
-            "smithy.api#documentation": "Specifies the Robots Access Control License variant to use."
-          }
-        },
-        "content_bots_protection": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySubscriptionConfigurationContentBotsProtection",
-          "traits": {
-            "smithy.api#documentation": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules."
-          }
-        },
-        "crawler_protection": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySubscriptionConfigurationCrawlerProtection",
-          "traits": {
-            "smithy.api#documentation": "Enable rule to punish AI Scrapers and Crawlers via a link maze."
-          }
-        },
-        "enable_js": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/)."
-          }
-        },
-        "is_robots_txt_managed": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt."
-          }
-        },
-        "stale_zone_configuration": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySubscriptionConfigurationStaleZoneConfiguration",
-          "traits": {
-            "smithy.api#documentation": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades."
-          }
-        },
-        "suppress_session_score": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether to disable tracking the highest bot score for a session in the Bot Management cookie."
-          }
-        },
-        "using_latest_model": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "A read-only field that indicates whether the zone currently is running the latest ML model."
+            "smithy.api#enumValue": "managed_challenge"
           }
         }
       }
     },
-    "com.cloudflare.bot_management#UpdateRequestBody": {
-      "type": "union",
+    "com.cloudflare.bot_management#UpdateRequestSbfmVerifiedBots": {
+      "type": "enum",
       "members": {
-        "BotFightModeConfiguration": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodyBotFightModeConfiguration"
+        "ALLOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "allow"
+          }
         },
-        "SuperBotFightModeDefinitelyConfiguration": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeDefinitelyConfiguration"
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        }
+      }
+    },
+    "com.cloudflare.bot_management#UpdateRequestSbfmLikelyAutomated": {
+      "type": "enum",
+      "members": {
+        "ALLOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "allow"
+          }
         },
-        "SuperBotFightModeLikelyConfiguration": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySuperBotFightModeLikelyConfiguration"
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
         },
-        "SubscriptionConfiguration": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBodySubscriptionConfiguration"
+        "MANAGED_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "managed_challenge"
+          }
         }
       }
     },
@@ -1709,11 +1157,106 @@
             "smithy.api#required": {}
           }
         },
-        "body": {
-          "target": "com.cloudflare.bot_management#UpdateRequestBody",
+        "ai_bots_protection": {
+          "target": "com.cloudflare.bot_management#UpdateRequestAiBotsProtection",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Enable rule to block AI Scrapers and Crawlers."
+          }
+        },
+        "cf_robots_variant": {
+          "target": "com.cloudflare.bot_management#UpdateRequestCfRobotsVariant",
+          "traits": {
+            "smithy.api#documentation": "Specifies the Robots Access Control License variant to use."
+          }
+        },
+        "content_bots_protection": {
+          "target": "com.cloudflare.bot_management#UpdateRequestContentBotsProtection",
+          "traits": {
+            "smithy.api#documentation": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules."
+          }
+        },
+        "crawler_protection": {
+          "target": "com.cloudflare.bot_management#UpdateRequestCrawlerProtection",
+          "traits": {
+            "smithy.api#documentation": "Enable rule to punish AI Scrapers and Crawlers via a link maze."
+          }
+        },
+        "enable_js": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/)."
+          }
+        },
+        "fight_mode": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable Bot Fight Mode."
+          }
+        },
+        "is_robots_txt_managed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt."
+          }
+        },
+        "stale_zone_configuration": {
+          "target": "com.cloudflare.bot_management#UpdateRequestStaleZoneConfiguration",
+          "traits": {
+            "smithy.api#documentation": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades."
+          }
+        },
+        "using_latest_model": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A read-only field that indicates whether the zone currently is running the latest ML model."
+          }
+        },
+        "optimize_wordpress": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to optimize Super Bot Fight Mode protections for Wordpress."
+          }
+        },
+        "sbfm_definitely_automated": {
+          "target": "com.cloudflare.bot_management#UpdateRequestSbfmDefinitelyAutomated",
+          "traits": {
+            "smithy.api#documentation": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests."
+          }
+        },
+        "sbfm_static_resource_protection": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Super Bot Fight Mode (SBFM) to enable static resource protection."
+          }
+        },
+        "sbfm_verified_bots": {
+          "target": "com.cloudflare.bot_management#UpdateRequestSbfmVerifiedBots",
+          "traits": {
+            "smithy.api#documentation": "Super Bot Fight Mode (SBFM) action to take on verified bots requests."
+          }
+        },
+        "sbfm_likely_automated": {
+          "target": "com.cloudflare.bot_management#UpdateRequestSbfmLikelyAutomated",
+          "traits": {
+            "smithy.api#documentation": "Super Bot Fight Mode (SBFM) action to take on likely automated requests."
+          }
+        },
+        "auto_update_model": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)"
+          }
+        },
+        "bm_cookie_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true"
+          }
+        },
+        "suppress_session_score": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to disable tracking the highest bot score for a session in the Bot Management cookie."
           }
         }
       },

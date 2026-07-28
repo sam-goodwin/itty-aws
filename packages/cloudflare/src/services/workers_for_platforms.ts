@@ -9800,104 +9800,38 @@ export const PutDispatchNamespaceScriptContentResponse =
     identifier: "PutDispatchNamespaceScriptContentResponse",
   }) as any as S.Schema<PutDispatchNamespaceScriptContentResponse>;
 
-export type DispatchNamespacesScriptsSecretsUpdateRequestBodySecretTextType =
-  "secret_text";
-export const DispatchNamespacesScriptsSecretsUpdateRequestBodySecretTextType =
+export type DispatchNamespacesScriptsSecretsUpdateRequestType =
+  | "secret_text"
+  | "secret_key";
+export const DispatchNamespacesScriptsSecretsUpdateRequestType =
   /*@__PURE__*/ S.String;
 
-export interface DispatchNamespacesScriptsSecretsUpdateRequestBodySecretText {
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The secret value to use. */
-  text: string;
-  /** The kind of resource that the binding provides. */
-  type: DispatchNamespacesScriptsSecretsUpdateRequestBodySecretTextType;
-}
-export const DispatchNamespacesScriptsSecretsUpdateRequestBodySecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      text: S.String,
-      type: DispatchNamespacesScriptsSecretsUpdateRequestBodySecretTextType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSecretsUpdateRequestBodySecretText",
-  }) as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateRequestBodySecretText>;
-
-export type DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyFormat =
+export type DispatchNamespacesScriptsSecretsUpdateRequestFormat =
   | "raw"
   | "pkcs8"
   | "spki"
   | "jwk";
-export const DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyFormat =
+export const DispatchNamespacesScriptsSecretsUpdateRequestFormat =
   /*@__PURE__*/ S.String;
 
-export type DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyType =
-  "secret_key";
-export const DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyType =
+export type DispatchNamespacesScriptsSecretsUpdateRequestUsagesItem =
+  | "encrypt"
+  | "decrypt"
+  | "sign"
+  | "verify"
+  | "deriveKey"
+  | "deriveBits"
+  | "wrapKey"
+  | "unwrapKey";
+export const DispatchNamespacesScriptsSecretsUpdateRequestUsagesItem =
   /*@__PURE__*/ S.String;
 
-export type DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyUsagesItem =
-    | "encrypt"
-    | "decrypt"
-    | "sign"
-    | "verify"
-    | "deriveKey"
-    | "deriveBits"
-    | "wrapKey"
-    | "unwrapKey";
-export const DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyUsagesItem =
-  /*@__PURE__*/ S.String;
-
-export type DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyUsagesList =
-  ReadonlyArray<DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyUsagesItem>;
-export const DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyUsagesList =
+export type DispatchNamespacesScriptsSecretsUpdateRequestUsagesList =
+  ReadonlyArray<DispatchNamespacesScriptsSecretsUpdateRequestUsagesItem>;
+export const DispatchNamespacesScriptsSecretsUpdateRequestUsagesList =
   /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyUsagesItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyUsagesList>;
-
-export interface DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKey {
-  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm: unknown;
-  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format: DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyFormat;
-  /** A JavaScript variable name for the binding. */
-  name: string;
-  /** The kind of resource that the binding provides. */
-  type: DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyType;
-  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages: DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyUsagesList;
-  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string;
-  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown;
-}
-export const DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKey =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithm: S.Unknown,
-      format: DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyFormat,
-      name: S.String,
-      type: DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyType,
-      usages:
-        DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKeyUsagesList,
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKey",
-  }) as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKey>;
-
-export type DispatchNamespacesScriptsSecretsUpdateRequestBody =
-  | DispatchNamespacesScriptsSecretsUpdateRequestBodySecretText
-  | DispatchNamespacesScriptsSecretsUpdateRequestBodySecretKey;
-export const DispatchNamespacesScriptsSecretsUpdateRequestBody =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["name", "text", "type"],
-      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
-    ]),
-  );
+    DispatchNamespacesScriptsSecretsUpdateRequestUsagesItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateRequestUsagesList>;
 
 export interface PutDispatchNamespaceScriptSecretRequest {
   /** Identifier. */
@@ -9906,8 +9840,22 @@ export interface PutDispatchNamespaceScriptSecretRequest {
   dispatchNamespace: string;
   /** Name of the script, used in URLs and route configuration. */
   scriptName: string;
-  /** A secret value accessible through a binding. */
-  body: DispatchNamespacesScriptsSecretsUpdateRequestBody;
+  /** A JavaScript variable name for the binding. */
+  name: string;
+  /** The secret value to use. */
+  text?: string;
+  /** The kind of resource that the binding provides. */
+  type: DispatchNamespacesScriptsSecretsUpdateRequestType;
+  /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
+  algorithm?: unknown;
+  /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
+  format?: DispatchNamespacesScriptsSecretsUpdateRequestFormat;
+  /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
+  usages?: DispatchNamespacesScriptsSecretsUpdateRequestUsagesList;
+  /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
+  keyBase64?: string;
+  /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
+  keyJwk?: unknown;
 }
 export const PutDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -9915,9 +9863,16 @@ export const PutDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
       scriptName: S.String.pipe(T.Label("script_name")),
-      body: DispatchNamespacesScriptsSecretsUpdateRequestBody.pipe(
-        T.HttpBody(),
+      name: S.String,
+      text: S.optional(S.String),
+      type: DispatchNamespacesScriptsSecretsUpdateRequestType,
+      algorithm: S.optional(S.Unknown),
+      format: S.optional(DispatchNamespacesScriptsSecretsUpdateRequestFormat),
+      usages: S.optional(
+        DispatchNamespacesScriptsSecretsUpdateRequestUsagesList,
       ),
+      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
+      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
     })
       .pipe(
         T.Http({

@@ -15853,7 +15853,7 @@
         "smithy.api#idempotent": {}
       }
     },
-    "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleSystem": {
+    "com.cloudflare.magic_transit#PcapsCreateRequestSystem": {
       "type": "enum",
       "members": {
         "MAGIC_TRANSIT": {
@@ -15864,7 +15864,7 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleType": {
+    "com.cloudflare.magic_transit#PcapsCreateRequestType": {
       "type": "enum",
       "members": {
         "SIMPLE": {
@@ -15881,7 +15881,7 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV1": {
+    "com.cloudflare.magic_transit#PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimple": {
       "type": "structure",
       "members": {
         "destination_address": {
@@ -15916,148 +15916,6 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimple": {
-      "type": "structure",
-      "members": {
-        "packet_limit": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The limit of packets contained in a packet capture.",
-            "smithy.api#required": {}
-          }
-        },
-        "system": {
-          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleSystem",
-          "traits": {
-            "smithy.api#documentation": "The system used to collect packet captures.",
-            "smithy.api#required": {}
-          }
-        },
-        "time_limit": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The packet capture duration in seconds.",
-            "smithy.api#required": {}
-          }
-        },
-        "type": {
-          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleType",
-          "traits": {
-            "smithy.api#documentation": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
-            "smithy.api#required": {}
-          }
-        },
-        "filter_v1": {
-          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV1",
-          "traits": {
-            "smithy.api#documentation": "The packet capture filter. When this field is empty, all packets are captured."
-          }
-        },
-        "offset_time": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request."
-          }
-        }
-      }
-    },
-    "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullSystem": {
-      "type": "enum",
-      "members": {
-        "MAGIC_TRANSIT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "magic-transit"
-          }
-        }
-      }
-    },
-    "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullType": {
-      "type": "enum",
-      "members": {
-        "SIMPLE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "simple"
-          }
-        },
-        "FULL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "full"
-          }
-        }
-      }
-    },
-    "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFull": {
-      "type": "structure",
-      "members": {
-        "colo_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures.",
-            "smithy.api#required": {}
-          }
-        },
-        "destination_conf": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The full URI for the bucket. This field only applies to `full` packet captures.",
-            "smithy.api#required": {}
-          }
-        },
-        "system": {
-          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullSystem",
-          "traits": {
-            "smithy.api#documentation": "The system used to collect packet captures.",
-            "smithy.api#required": {}
-          }
-        },
-        "time_limit": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The packet capture duration in seconds.",
-            "smithy.api#required": {}
-          }
-        },
-        "type": {
-          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullType",
-          "traits": {
-            "smithy.api#documentation": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
-            "smithy.api#required": {}
-          }
-        },
-        "byte_limit": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of bytes to capture. This field only applies to `full` packet captures."
-          }
-        },
-        "filter_v1": {
-          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV1",
-          "traits": {
-            "smithy.api#documentation": "The packet capture filter. When this field is empty, all packets are captured."
-          }
-        },
-        "packet_limit": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The limit of packets contained in a packet capture."
-          }
-        }
-      }
-    },
-    "com.cloudflare.magic_transit#PcapsCreateRequestBody": {
-      "type": "union",
-      "members": {
-        "MagicVisibilityPCAPsPCAPsRequestSimple": {
-          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimple"
-        },
-        "MagicVisibilityPCAPsPCAPsRequestFull": {
-          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFull"
-        }
-      }
-    },
     "com.cloudflare.magic_transit#PcapsCreateRequest": {
       "type": "structure",
       "members": {
@@ -16069,11 +15927,61 @@
             "smithy.api#required": {}
           }
         },
-        "body": {
-          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBody",
+        "packet_limit": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The limit of packets contained in a packet capture."
+          }
+        },
+        "system": {
+          "target": "com.cloudflare.magic_transit#PcapsCreateRequestSystem",
+          "traits": {
+            "smithy.api#documentation": "The system used to collect packet captures.",
+            "smithy.api#required": {}
+          }
+        },
+        "time_limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The packet capture duration in seconds.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.magic_transit#PcapsCreateRequestType",
+          "traits": {
+            "smithy.api#documentation": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+            "smithy.api#required": {}
+          }
+        },
+        "filter_v1": {
+          "target": "com.cloudflare.magic_transit#PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimple",
+          "traits": {
+            "smithy.api#documentation": "The packet capture filter. When this field is empty, all packets are captured."
+          }
+        },
+        "offset_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request."
+          }
+        },
+        "colo_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures."
+          }
+        },
+        "destination_conf": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The full URI for the bucket. This field only applies to `full` packet captures."
+          }
+        },
+        "byte_limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of bytes to capture. This field only applies to `full` packet captures."
           }
         }
       },
@@ -21212,87 +21120,10 @@
         "smithy.api#idempotent": {}
       }
     },
-    "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBodyAccountAppPreferredWansList": {
+    "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestPreferredWansList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
-      }
-    },
-    "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBodyAccountApp": {
-      "type": "structure",
-      "members": {
-        "account_app_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Magic account app ID.",
-            "smithy.api#required": {}
-          }
-        },
-        "breakout": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior."
-          }
-        },
-        "preferred_wans": {
-          "target": "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBodyAccountAppPreferredWansList",
-          "traits": {
-            "smithy.api#documentation": "WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true)."
-          }
-        },
-        "priority": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported)"
-          }
-        }
-      }
-    },
-    "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBodyManagedAppPreferredWansList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      }
-    },
-    "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBodyManagedApp": {
-      "type": "structure",
-      "members": {
-        "managed_app_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Managed app ID.",
-            "smithy.api#required": {}
-          }
-        },
-        "breakout": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior."
-          }
-        },
-        "preferred_wans": {
-          "target": "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBodyManagedAppPreferredWansList",
-          "traits": {
-            "smithy.api#documentation": "WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true)."
-          }
-        },
-        "priority": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported)"
-          }
-        }
-      }
-    },
-    "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBody": {
-      "type": "union",
-      "members": {
-        "AccountApp": {
-          "target": "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBodyAccountApp"
-        },
-        "ManagedApp": {
-          "target": "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBodyManagedApp"
-        }
       }
     },
     "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequest": {
@@ -21314,11 +21145,34 @@
             "smithy.api#required": {}
           }
         },
-        "body": {
-          "target": "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestBody",
+        "account_app_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Magic account app ID."
+          }
+        },
+        "breakout": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior."
+          }
+        },
+        "preferred_wans": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationCreateRequestPreferredWansList",
+          "traits": {
+            "smithy.api#documentation": "WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true)."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported)"
+          }
+        },
+        "managed_app_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Managed app ID."
           }
         }
       },

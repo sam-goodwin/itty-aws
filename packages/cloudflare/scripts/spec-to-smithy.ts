@@ -965,6 +965,147 @@ const buildMembers = (
 
 const ENVELOPE_KEYS = new Set(["success", "errors", "messages", "result_info"]);
 
+// ============================================================================
+// Whole-body union flattening
+// ============================================================================
+
+/** An arm bullet describing an object variant: `Name object { … }` / `object { … }`. */
+const OBJECT_VARIANT_ARM = /^(?:[A-Za-z_][A-Za-z0-9_]*\s+)?object\b/;
+
+const armIsObjectVariant = (a: FieldNode): boolean =>
+  OBJECT_VARIANT_ARM.test(stripOptional(a.typeStr).core.trim()) &&
+  a.children.some((c) => c.sep === ":");
+
+/** The docs' case name for an object arm (`AzureAD object {…}` / `Name = …`). */
+const armCaseName = (a: FieldNode): string | undefined => {
+  if (a.sep === "=" && a.name) return a.name;
+  const m = stripOptional(a.typeStr).core.trim().match(NAMED_OBJECT_ARM);
+  return m ? m[1] : undefined;
+};
+
+/** Structural signature of a node subtree (docs prose excluded). */
+const nodeSigFull = (n: FieldNode): unknown => [
+  n.name,
+  n.sep,
+  n.typeStr,
+  n.children.map(nodeSigFull),
+];
+
+/** Signature of a FIELD's type: its own optionality is merged separately. */
+const fieldTypeSig = (n: FieldNode): string =>
+  JSON.stringify([stripOptional(n.typeStr).core, n.children.map(nodeSigFull)]);
+
+/**
+ * The docs render a whole-body `oneOf` as a SINGLE body param — literally
+ * named `body`, or named after the referenced schema (`identity_provider:
+ * IdentityProvider`) — whose union arms are all object variants. The wire
+ * body is the chosen variant's object FLAT at the top level; the param name
+ * never appears as a wire key, so a member for it would nest the payload
+ * one level too deep. Model what the wire does instead: the request gains
+ * the union of every variant's fields — a field keeps the one shared type
+ * when all variants agree, else becomes a union of the variants' types;
+ * a field is required only when required in EVERY variant.
+ *
+ * Genuine wrapper keys are untouched: they surface either alongside other
+ * body params or as a sole param whose type is an object/array/scalar
+ * (e.g. api_gateway `settings_multiple_request`, DLP order `level_ids`) —
+ * never as a sole all-object union.
+ */
+const flattenWholeBodyUnion = (bodyParams: FieldNode[]): FieldNode[] => {
+  if (bodyParams.length !== 1) return bodyParams;
+  const sole = bodyParams[0];
+  if (sole.sep !== ":") return bodyParams;
+  const { optional: parentOptional, core: soleCore } = stripOptional(
+    sole.typeStr,
+  );
+  // An array/map descriptor's arm bullets describe the ITEM cases, not the
+  // body (`body: array of object {…} or object {…}` — the wire body is the
+  // array itself). Never flatten those.
+  if (/^array\b/.test(soleCore) || soleCore.startsWith("map[")) {
+    return bodyParams;
+  }
+  // Only the docs' whole-body spellings qualify: a param literally named
+  // `body`, or one whose name is just the snake_cased schema ref
+  // (`identity_provider: IdentityProvider`). Any other sole param is a REAL
+  // wire key whose VALUE is the union (`auth_requirements: object {…} or
+  // object {…}` nests on the wire) and must stay a member.
+  if (sole.name !== "body" && pascal(sole.name) !== soleCore.trim()) {
+    return bodyParams;
+  }
+  const arms = sole.children.filter(isArmChild);
+  const directFields = sole.children.filter((c) => c.sep === ":");
+  if (arms.length < 2 || directFields.length > 0) return bodyParams;
+  if (!arms.every(armIsObjectVariant)) return bodyParams;
+
+  // Wire key → its occurrence in each variant that carries it.
+  interface Occ {
+    node: FieldNode;
+    caseName?: string;
+  }
+  const byKey = new Map<string, Occ[]>();
+  for (const arm of arms) {
+    const caseName = armCaseName(arm);
+    for (const f of arm.children) {
+      if (f.sep !== ":") continue;
+      let occs = byKey.get(f.name);
+      if (!occs) byKey.set(f.name, (occs = []));
+      occs.push({ node: f, caseName });
+    }
+  }
+
+  const out: FieldNode[] = [];
+  for (const [key, occs] of byKey) {
+    const requiredInAll =
+      !parentOptional &&
+      occs.length === arms.length &&
+      occs.every((o) => !stripOptional(o.node.typeStr).optional);
+    // Group structurally-identical variant types for this key.
+    const groups = new Map<string, Occ[]>();
+    for (const o of occs) {
+      const sig = fieldTypeSig(o.node);
+      let g = groups.get(sig);
+      if (!g) groups.set(sig, (g = []));
+      g.push(o);
+    }
+    const doc = occs.find((o) => o.node.doc)?.node.doc;
+    if (groups.size === 1) {
+      const first = occs[0].node;
+      const core = stripOptional(first.typeStr).core;
+      out.push({
+        ...first,
+        typeStr: requiredInAll ? core : `optional ${core}`,
+        doc,
+      });
+    } else {
+      // Variants disagree — one union arm per distinct type, named after
+      // the first variant that carries it.
+      const children: FieldNode[] = [];
+      const descs: string[] = [];
+      for (const g of groups.values()) {
+        const rep = g[0];
+        const core = stripOptional(rep.node.typeStr).core;
+        descs.push(core);
+        children.push({
+          name: rep.caseName ?? "",
+          sep: rep.caseName ? "=" : "bare",
+          typeStr: core,
+          doc: rep.node.doc,
+          children: rep.node.children,
+        });
+      }
+      const desc = descs.join(" or ");
+      out.push({
+        name: key,
+        sep: ":",
+        typeStr: requiredInAll ? desc : `optional ${desc}`,
+        doc,
+        children,
+      });
+    }
+  }
+  return out;
+};
+
 /** Build one operation (plus its input/output shapes) into the bag. */
 /**
  * Split a dual-scope operation (docs write `/{accounts_or_zones}/
@@ -1070,7 +1211,7 @@ const buildOperation = (bag: Bag, opName: string, parsed: ParsedOp): string => {
   }
   for (const h of parsed.headerParams)
     inputFields.push({ ...h, binding: "header" });
-  for (const b of parsed.bodyParams)
+  for (const b of flattenWholeBodyUnion(parsed.bodyParams))
     inputFields.push({ ...b, binding: "body" });
 
   let inputTarget: string = PRELUDE.Unit;

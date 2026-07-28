@@ -2719,18 +2719,13 @@ export const CreateIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateIpsecTunnelResponse",
 }) as any as S.Schema<CreateIpsecTunnelResponse>;
 
-export type PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleSystem =
-  "magic-transit";
-export const PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleSystem =
-  /*@__PURE__*/ S.String;
+export type PcapsCreateRequestSystem = "magic-transit";
+export const PcapsCreateRequestSystem = /*@__PURE__*/ S.String;
 
-export type PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleType =
-  | "simple"
-  | "full";
-export const PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleType =
-  /*@__PURE__*/ S.String;
+export type PcapsCreateRequestType = "simple" | "full";
+export const PcapsCreateRequestType = /*@__PURE__*/ S.String;
 
-export interface PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV1 {
+export interface PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimple {
   /** The destination IP address of the packet. */
   destinationAddress?: string;
   /** The destination port of the packet. */
@@ -2742,7 +2737,7 @@ export interface PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFil
   /** The source port of the packet. */
   sourcePort?: number;
 }
-export const PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV1 =
+export const PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimple =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       destinationAddress: S.optional(
@@ -2755,119 +2750,47 @@ export const PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV
     }),
   ).annotate({
     identifier:
-      "PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV1",
-  }) as any as S.Schema<PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV1>;
-
-export interface PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimple {
-  /** The limit of packets contained in a packet capture. */
-  packetLimit: number;
-  /** The system used to collect packet captures. */
-  system: PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleSystem;
-  /** The packet capture duration in seconds. */
-  timeLimit: number;
-  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
-  type: PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleType;
-  /** The packet capture filter. When this field is empty, all packets are captured. */
-  filterV1?: PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV1;
-  /** The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request. */
-  offsetTime?: string;
-}
-export const PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimple =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      packetLimit: S.Number.pipe(T.Body("packet_limit")),
-      system:
-        PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleSystem,
-      timeLimit: S.Number.pipe(T.Body("time_limit")),
-      type: PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleType,
-      filterV1: S.optional(
-        PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV1.pipe(
-          T.Body("filter_v1"),
-        ),
-      ),
-      offsetTime: S.optional(S.String.pipe(T.Body("offset_time"))),
-    }),
-  ).annotate({
-    identifier: "PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimple",
-  }) as any as S.Schema<PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimple>;
-
-export type PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullSystem =
-  "magic-transit";
-export const PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullSystem =
-  /*@__PURE__*/ S.String;
-
-export type PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullType =
-  | "simple"
-  | "full";
-export const PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullType =
-  /*@__PURE__*/ S.String;
-
-export interface PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFull {
-  /** The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures. */
-  coloName: string;
-  /** The full URI for the bucket. This field only applies to `full` packet captures. */
-  destinationConf: string;
-  /** The system used to collect packet captures. */
-  system: PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullSystem;
-  /** The packet capture duration in seconds. */
-  timeLimit: number;
-  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
-  type: PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullType;
-  /** The maximum number of bytes to capture. This field only applies to `full` packet captures. */
-  byteLimit?: number;
-  /** The packet capture filter. When this field is empty, all packets are captured. */
-  filterV1?: PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV1;
-  /** The limit of packets contained in a packet capture. */
-  packetLimit?: number;
-}
-export const PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFull =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      coloName: S.String.pipe(T.Body("colo_name")),
-      destinationConf: S.String.pipe(T.Body("destination_conf")),
-      system: PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullSystem,
-      timeLimit: S.Number.pipe(T.Body("time_limit")),
-      type: PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullType,
-      byteLimit: S.optional(S.Number.pipe(T.Body("byte_limit"))),
-      filterV1: S.optional(
-        PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV1.pipe(
-          T.Body("filter_v1"),
-        ),
-      ),
-      packetLimit: S.optional(S.Number.pipe(T.Body("packet_limit"))),
-    }),
-  ).annotate({
-    identifier: "PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFull",
-  }) as any as S.Schema<PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFull>;
-
-export type PcapsCreateRequestBody =
-  | PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimple
-  | PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFull;
-export const PcapsCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["packetLimit", "system", "timeLimit", "type", "filterV1", "offsetTime"],
-    [
-      "coloName",
-      "destinationConf",
-      "system",
-      "timeLimit",
-      "type",
-      "byteLimit",
-      "filterV1",
-      "packetLimit",
-    ],
-  ]),
-);
+      "PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimple",
+  }) as any as S.Schema<PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimple>;
 
 export interface CreatePcapRequest {
   /** Identifier. */
   accountId: string;
-  body: PcapsCreateRequestBody;
+  /** The limit of packets contained in a packet capture. */
+  packetLimit?: number;
+  /** The system used to collect packet captures. */
+  system: PcapsCreateRequestSystem;
+  /** The packet capture duration in seconds. */
+  timeLimit: number;
+  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
+  type: PcapsCreateRequestType;
+  /** The packet capture filter. When this field is empty, all packets are captured. */
+  filterV1?: PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimple;
+  /** The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request. */
+  offsetTime?: string;
+  /** The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures. */
+  coloName?: string;
+  /** The full URI for the bucket. This field only applies to `full` packet captures. */
+  destinationConf?: string;
+  /** The maximum number of bytes to capture. This field only applies to `full` packet captures. */
+  byteLimit?: number;
 }
 export const CreatePcapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    body: PcapsCreateRequestBody.pipe(T.HttpBody()),
+    packetLimit: S.optional(S.Number.pipe(T.Body("packet_limit"))),
+    system: PcapsCreateRequestSystem,
+    timeLimit: S.Number.pipe(T.Body("time_limit")),
+    type: PcapsCreateRequestType,
+    filterV1: S.optional(
+      PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimple.pipe(
+        T.Body("filter_v1"),
+      ),
+    ),
+    offsetTime: S.optional(S.String.pipe(T.Body("offset_time"))),
+    coloName: S.optional(S.String.pipe(T.Body("colo_name"))),
+    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
+    byteLimit: S.optional(S.Number.pipe(T.Body("byte_limit"))),
   })
     .pipe(
       T.Http({
@@ -15104,95 +15027,42 @@ export const PutCfInterconnectResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutCfInterconnectResponse",
 }) as any as S.Schema<PutCfInterconnectResponse>;
 
-export type SitesAppConfigurationCreateRequestBodyAccountAppPreferredWansList =
+export type SitesAppConfigurationCreateRequestPreferredWansList =
   ReadonlyArray<string>;
-export const SitesAppConfigurationCreateRequestBodyAccountAppPreferredWansList =
+export const SitesAppConfigurationCreateRequestPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<SitesAppConfigurationCreateRequestBodyAccountAppPreferredWansList>;
-
-export interface SitesAppConfigurationCreateRequestBodyAccountApp {
-  /** Magic account app ID. */
-  accountAppId: string;
-  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
-  breakout?: boolean;
-  /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
-  preferredWans?: SitesAppConfigurationCreateRequestBodyAccountAppPreferredWansList;
-  /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
-  priority?: number;
-}
-export const SitesAppConfigurationCreateRequestBodyAccountApp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountAppId: S.String.pipe(T.Body("account_app_id")),
-      breakout: S.optional(S.Boolean),
-      preferredWans: S.optional(
-        SitesAppConfigurationCreateRequestBodyAccountAppPreferredWansList.pipe(
-          T.Body("preferred_wans"),
-        ),
-      ),
-      priority: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "SitesAppConfigurationCreateRequestBodyAccountApp",
-  }) as any as S.Schema<SitesAppConfigurationCreateRequestBodyAccountApp>;
-
-export type SitesAppConfigurationCreateRequestBodyManagedAppPreferredWansList =
-  ReadonlyArray<string>;
-export const SitesAppConfigurationCreateRequestBodyManagedAppPreferredWansList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesAppConfigurationCreateRequestBodyManagedAppPreferredWansList>;
-
-export interface SitesAppConfigurationCreateRequestBodyManagedApp {
-  /** Managed app ID. */
-  managedAppId: string;
-  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
-  breakout?: boolean;
-  /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
-  preferredWans?: SitesAppConfigurationCreateRequestBodyManagedAppPreferredWansList;
-  /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
-  priority?: number;
-}
-export const SitesAppConfigurationCreateRequestBodyManagedApp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      managedAppId: S.String.pipe(T.Body("managed_app_id")),
-      breakout: S.optional(S.Boolean),
-      preferredWans: S.optional(
-        SitesAppConfigurationCreateRequestBodyManagedAppPreferredWansList.pipe(
-          T.Body("preferred_wans"),
-        ),
-      ),
-      priority: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "SitesAppConfigurationCreateRequestBodyManagedApp",
-  }) as any as S.Schema<SitesAppConfigurationCreateRequestBodyManagedApp>;
-
-export type SitesAppConfigurationCreateRequestBody =
-  | SitesAppConfigurationCreateRequestBodyAccountApp
-  | SitesAppConfigurationCreateRequestBodyManagedApp;
-export const SitesAppConfigurationCreateRequestBody =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["accountAppId", "breakout", "preferredWans", "priority"],
-      ["managedAppId", "breakout", "preferredWans", "priority"],
-    ]),
-  );
+  ) as any as S.Schema<SitesAppConfigurationCreateRequestPreferredWansList>;
 
 export interface SitesAppConfigurationCreateRequest {
   /** Identifier */
   accountId: string;
   /** Identifier */
   siteId: string;
-  body: SitesAppConfigurationCreateRequestBody;
+  /** Magic account app ID. */
+  accountAppId?: string;
+  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  breakout?: boolean;
+  /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
+  preferredWans?: SitesAppConfigurationCreateRequestPreferredWansList;
+  /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
+  priority?: number;
+  /** Managed app ID. */
+  managedAppId?: string;
 }
 export const SitesAppConfigurationCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
-    body: SitesAppConfigurationCreateRequestBody.pipe(T.HttpBody()),
+    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
+    breakout: S.optional(S.Boolean),
+    preferredWans: S.optional(
+      SitesAppConfigurationCreateRequestPreferredWansList.pipe(
+        T.Body("preferred_wans"),
+      ),
+    ),
+    priority: S.optional(S.Number),
+    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
   })
     .pipe(
       T.Http({

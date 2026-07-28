@@ -472,41 +472,402 @@ export const ListTasksResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTasksResponse",
 }) as any as S.Schema<ListTasksResponse>;
 
-export interface RunRequestBodyTextClassification {
-  /** The text that you want to classify */
-  text: string;
+export type RunRequestTextTextEmbeddingsCase1List = ReadonlyArray<string>;
+export const RunRequestTextTextEmbeddingsCase1List = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RunRequestTextTextEmbeddingsCase1List>;
+
+export type RunRequestTextTextEmbeddings =
+  | string
+  | RunRequestTextTextEmbeddingsCase1List;
+export const RunRequestTextTextEmbeddings = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([[], []]),
+);
+
+export type RunRequestTextMultimodalEmbeddingsList = ReadonlyArray<string>;
+export const RunRequestTextMultimodalEmbeddingsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RunRequestTextMultimodalEmbeddingsList>;
+
+export type RunRequestText =
+  | string
+  | RunRequestTextTextEmbeddings
+  | RunRequestTextMultimodalEmbeddingsList;
+export const RunRequestText = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([[], [], []]),
+);
+
+export type RunRequestImageTextToImageList = ReadonlyArray<number>;
+export const RunRequestImageTextToImageList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<RunRequestImageTextToImageList>;
+
+export type RunRequestImage = string | RunRequestImageTextToImageList;
+export const RunRequestImage = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([[], []]),
+);
+
+export type RunRequestMaskList = ReadonlyArray<number>;
+export const RunRequestMaskList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<RunRequestMaskList>;
+
+export type RunRequestAudioList = ReadonlyArray<number>;
+export const RunRequestAudioList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<RunRequestAudioList>;
+
+export type RunRequestResponseFormatType = "json_object" | "json_schema";
+export const RunRequestResponseFormatType = /*@__PURE__*/ S.String;
+
+export interface RunRequestResponseFormat {
+  jsonSchema?: unknown;
+  type?: RunRequestResponseFormatType;
 }
-export const RunRequestBodyTextClassification = /*@__PURE__*/ S.suspend(() =>
+export const RunRequestResponseFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    text: S.String,
+    jsonSchema: S.optional(S.Unknown.pipe(T.Body("json_schema"))),
+    type: S.optional(RunRequestResponseFormatType),
   }),
 ).annotate({
-  identifier: "RunRequestBodyTextClassification",
-}) as any as S.Schema<RunRequestBodyTextClassification>;
+  identifier: "RunRequestResponseFormat",
+}) as any as S.Schema<RunRequestResponseFormat>;
 
-export type RunRequestBodyTextToImageImageList = ReadonlyArray<number>;
-export const RunRequestBodyTextToImageImageList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RunRequestBodyTextToImageImageList>;
+export interface RunRequestMessagesTextGenerationItemContentCase1Item {
+  /** Text content */
+  text?: string;
+  /** Type of the content (text) */
+  type?: string;
+}
+export const RunRequestMessagesTextGenerationItemContentCase1Item =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      text: S.optional(S.String),
+      type: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RunRequestMessagesTextGenerationItemContentCase1Item",
+  }) as any as S.Schema<RunRequestMessagesTextGenerationItemContentCase1Item>;
 
-export type RunRequestBodyTextToImageMaskList = ReadonlyArray<number>;
-export const RunRequestBodyTextToImageMaskList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RunRequestBodyTextToImageMaskList>;
+export type RunRequestMessagesTextGenerationItemContentCase1List =
+  ReadonlyArray<RunRequestMessagesTextGenerationItemContentCase1Item>;
+export const RunRequestMessagesTextGenerationItemContentCase1List =
+  /*@__PURE__*/ S.Array(
+    RunRequestMessagesTextGenerationItemContentCase1Item,
+  ) as any as S.Schema<RunRequestMessagesTextGenerationItemContentCase1List>;
 
-export interface RunRequestBodyTextToImage {
+export type RunRequestMessagesTextGenerationItemContent =
+  | string
+  | RunRequestMessagesTextGenerationItemContentCase1List;
+export const RunRequestMessagesTextGenerationItemContent =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+
+export interface RunRequestMessagesTextGenerationItem {
+  /** The content of the message as a string. */
+  content: RunRequestMessagesTextGenerationItemContent;
+  /** The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool'). */
+  role: string;
+}
+export const RunRequestMessagesTextGenerationItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      content: RunRequestMessagesTextGenerationItemContent,
+      role: S.String,
+    }),
+).annotate({
+  identifier: "RunRequestMessagesTextGenerationItem",
+}) as any as S.Schema<RunRequestMessagesTextGenerationItem>;
+
+export type RunRequestMessagesTextGenerationList =
+  ReadonlyArray<RunRequestMessagesTextGenerationItem>;
+export const RunRequestMessagesTextGenerationList = /*@__PURE__*/ S.Array(
+  RunRequestMessagesTextGenerationItem,
+) as any as S.Schema<RunRequestMessagesTextGenerationList>;
+
+export interface RunRequestMessagesImageTextToTextItemContentCase1ItemImageUrl {
+  /** Image URI with data (e.g. data:image/jpeg;base64,/9j/...). */
+  url: string;
+}
+export const RunRequestMessagesImageTextToTextItemContentCase1ItemImageUrl =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      url: S.String,
+    }),
+  ).annotate({
+    identifier: "RunRequestMessagesImageTextToTextItemContentCase1ItemImageUrl",
+  }) as any as S.Schema<RunRequestMessagesImageTextToTextItemContentCase1ItemImageUrl>;
+
+export interface RunRequestMessagesImageTextToTextItemContentCase1Item {
+  /** Type of the content part (e.g. 'text', 'image_url'). */
+  type: string;
+  /** Image URL object (when type is 'image_url'). */
+  imageUrl?: RunRequestMessagesImageTextToTextItemContentCase1ItemImageUrl;
+  /** Text content (when type is 'text'). */
+  text?: string;
+}
+export const RunRequestMessagesImageTextToTextItemContentCase1Item =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      imageUrl: S.optional(
+        RunRequestMessagesImageTextToTextItemContentCase1ItemImageUrl.pipe(
+          T.Body("image_url"),
+        ),
+      ),
+      text: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RunRequestMessagesImageTextToTextItemContentCase1Item",
+  }) as any as S.Schema<RunRequestMessagesImageTextToTextItemContentCase1Item>;
+
+export type RunRequestMessagesImageTextToTextItemContentCase1List =
+  ReadonlyArray<RunRequestMessagesImageTextToTextItemContentCase1Item>;
+export const RunRequestMessagesImageTextToTextItemContentCase1List =
+  /*@__PURE__*/ S.Array(
+    RunRequestMessagesImageTextToTextItemContentCase1Item,
+  ) as any as S.Schema<RunRequestMessagesImageTextToTextItemContentCase1List>;
+
+export type RunRequestMessagesImageTextToTextItemContent =
+  | string
+  | RunRequestMessagesImageTextToTextItemContentCase1List;
+export const RunRequestMessagesImageTextToTextItemContent =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+
+export interface RunRequestMessagesImageTextToTextItem {
+  /** The content of the message as a string. */
+  content: RunRequestMessagesImageTextToTextItemContent;
+  /** The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool'). */
+  role: string;
+}
+export const RunRequestMessagesImageTextToTextItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      content: RunRequestMessagesImageTextToTextItemContent,
+      role: S.String,
+    }),
+).annotate({
+  identifier: "RunRequestMessagesImageTextToTextItem",
+}) as any as S.Schema<RunRequestMessagesImageTextToTextItem>;
+
+export type RunRequestMessagesImageTextToTextList =
+  ReadonlyArray<RunRequestMessagesImageTextToTextItem>;
+export const RunRequestMessagesImageTextToTextList = /*@__PURE__*/ S.Array(
+  RunRequestMessagesImageTextToTextItem,
+) as any as S.Schema<RunRequestMessagesImageTextToTextList>;
+
+export type RunRequestMessages =
+  | RunRequestMessagesTextGenerationList
+  | RunRequestMessagesImageTextToTextList;
+export const RunRequestMessages = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([[], []]),
+);
+
+export interface RunRequestFunctionsItem {
+  code: string;
+  name: string;
+}
+export const RunRequestFunctionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.String,
+    name: S.String,
+  }),
+).annotate({
+  identifier: "RunRequestFunctionsItem",
+}) as any as S.Schema<RunRequestFunctionsItem>;
+
+export type RunRequestFunctionsList = ReadonlyArray<RunRequestFunctionsItem>;
+export const RunRequestFunctionsList = /*@__PURE__*/ S.Array(
+  RunRequestFunctionsItem,
+) as any as S.Schema<RunRequestFunctionsList>;
+
+export interface RunRequestToolsItemCase0ParametersPropertiesValue {
+  /** A description of the expected parameter. */
+  description: string;
+  /** The data type of the parameter. */
+  type: string;
+}
+export const RunRequestToolsItemCase0ParametersPropertiesValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      description: S.String,
+      type: S.String,
+    }),
+  ).annotate({
+    identifier: "RunRequestToolsItemCase0ParametersPropertiesValue",
+  }) as any as S.Schema<RunRequestToolsItemCase0ParametersPropertiesValue>;
+
+export type RunRequestToolsItemCase0ParametersPropertiesMap = {
+  [key: string]: RunRequestToolsItemCase0ParametersPropertiesValue | undefined;
+};
+export const RunRequestToolsItemCase0ParametersPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    RunRequestToolsItemCase0ParametersPropertiesValue,
+  ) as any as S.Schema<RunRequestToolsItemCase0ParametersPropertiesMap>;
+
+export type RunRequestToolsItemCase0ParametersRequiredList =
+  ReadonlyArray<string>;
+export const RunRequestToolsItemCase0ParametersRequiredList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RunRequestToolsItemCase0ParametersRequiredList>;
+
+export interface RunRequestToolsItemCase0Parameters {
+  /** Definitions of each parameter. */
+  properties: RunRequestToolsItemCase0ParametersPropertiesMap;
+  /** The type of the parameters object (usually 'object'). */
+  type: string;
+  /** List of required parameter names. */
+  required?: RunRequestToolsItemCase0ParametersRequiredList;
+}
+export const RunRequestToolsItemCase0Parameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: RunRequestToolsItemCase0ParametersPropertiesMap,
+    type: S.String,
+    required: S.optional(RunRequestToolsItemCase0ParametersRequiredList),
+  }),
+).annotate({
+  identifier: "RunRequestToolsItemCase0Parameters",
+}) as any as S.Schema<RunRequestToolsItemCase0Parameters>;
+
+export interface RunRequestToolsItemCase0 {
+  /** A brief description of what the tool does. */
+  description: string;
+  /** The name of the tool. More descriptive the better. */
+  name: string;
+  /** Schema defining the parameters accepted by the tool. */
+  parameters: RunRequestToolsItemCase0Parameters;
+}
+export const RunRequestToolsItemCase0 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.String,
+    name: S.String,
+    parameters: RunRequestToolsItemCase0Parameters,
+  }),
+).annotate({
+  identifier: "RunRequestToolsItemCase0",
+}) as any as S.Schema<RunRequestToolsItemCase0>;
+
+export interface RunRequestToolsItemFunctionFunctionParametersPropertiesValue {
+  /** A description of the expected parameter. */
+  description: string;
+  /** The data type of the parameter. */
+  type: string;
+}
+export const RunRequestToolsItemFunctionFunctionParametersPropertiesValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      description: S.String,
+      type: S.String,
+    }),
+  ).annotate({
+    identifier: "RunRequestToolsItemFunctionFunctionParametersPropertiesValue",
+  }) as any as S.Schema<RunRequestToolsItemFunctionFunctionParametersPropertiesValue>;
+
+export type RunRequestToolsItemFunctionFunctionParametersPropertiesMap = {
+  [key: string]:
+    | RunRequestToolsItemFunctionFunctionParametersPropertiesValue
+    | undefined;
+};
+export const RunRequestToolsItemFunctionFunctionParametersPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    RunRequestToolsItemFunctionFunctionParametersPropertiesValue,
+  ) as any as S.Schema<RunRequestToolsItemFunctionFunctionParametersPropertiesMap>;
+
+export type RunRequestToolsItemFunctionFunctionParametersRequiredList =
+  ReadonlyArray<string>;
+export const RunRequestToolsItemFunctionFunctionParametersRequiredList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RunRequestToolsItemFunctionFunctionParametersRequiredList>;
+
+export interface RunRequestToolsItemFunctionFunctionParameters {
+  /** Definitions of each parameter. */
+  properties: RunRequestToolsItemFunctionFunctionParametersPropertiesMap;
+  /** The type of the parameters object (usually 'object'). */
+  type: string;
+  /** List of required parameter names. */
+  required?: RunRequestToolsItemFunctionFunctionParametersRequiredList;
+}
+export const RunRequestToolsItemFunctionFunctionParameters =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      properties: RunRequestToolsItemFunctionFunctionParametersPropertiesMap,
+      type: S.String,
+      required: S.optional(
+        RunRequestToolsItemFunctionFunctionParametersRequiredList,
+      ),
+    }),
+  ).annotate({
+    identifier: "RunRequestToolsItemFunctionFunctionParameters",
+  }) as any as S.Schema<RunRequestToolsItemFunctionFunctionParameters>;
+
+export interface RunRequestToolsItemFunctionFunction {
+  /** A brief description of what the function does. */
+  description: string;
+  /** The name of the function. */
+  name: string;
+  /** Schema defining the parameters accepted by the function. */
+  parameters: RunRequestToolsItemFunctionFunctionParameters;
+}
+export const RunRequestToolsItemFunctionFunction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.String,
+    name: S.String,
+    parameters: RunRequestToolsItemFunctionFunctionParameters,
+  }),
+).annotate({
+  identifier: "RunRequestToolsItemFunctionFunction",
+}) as any as S.Schema<RunRequestToolsItemFunctionFunction>;
+
+export interface RunRequestToolsItemFunction {
+  /** Details of the function tool. */
+  function: RunRequestToolsItemFunctionFunction;
+  /** Specifies the type of tool (e.g., 'function'). */
+  type: string;
+}
+export const RunRequestToolsItemFunction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    function: RunRequestToolsItemFunctionFunction,
+    type: S.String,
+  }),
+).annotate({
+  identifier: "RunRequestToolsItemFunction",
+}) as any as S.Schema<RunRequestToolsItemFunction>;
+
+export type RunRequestToolsItem =
+  | RunRequestToolsItemCase0
+  | RunRequestToolsItemFunction;
+export const RunRequestToolsItem = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["description", "name", "parameters"],
+    ["function", "type"],
+  ]),
+);
+
+export type RunRequestToolsList = ReadonlyArray<RunRequestToolsItem>;
+export const RunRequestToolsList = /*@__PURE__*/ S.Array(
+  RunRequestToolsItem,
+) as any as S.Schema<RunRequestToolsList>;
+
+export interface RunAiRequest {
+  accountId: string;
+  modelName: string;
+  /** The text that you want to classify */
+  text?: RunRequestText;
   /** A text description of the image you want to generate */
-  prompt: string;
+  prompt?: string;
   /** Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt */
   guidance?: number;
   /** The height of the generated image in pixels */
   height?: number;
   /** For use with img2img tasks. An array of integers that represent the image data constrained to 8-bit unsigned integer values */
-  image?: RunRequestBodyTextToImageImageList;
+  image?: RunRequestImage;
   /** For use with img2img tasks. A base64-encoded string of the input image */
   imageB64?: string;
   /** An array representing An array of integers that represent mask image data for inpainting constrained to 8-bit unsigned integer values */
-  mask?: RunRequestBodyTextToImageMaskList;
+  mask?: RunRequestMaskList;
   /** Text describing elements to avoid in the generated image */
   negativePrompt?: string;
   /** The number of diffusion steps; higher values can improve quality but take longer */
@@ -517,145 +878,14 @@ export interface RunRequestBodyTextToImage {
   strength?: number;
   /** The width of the generated image in pixels */
   width?: number;
-}
-export const RunRequestBodyTextToImage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prompt: S.String,
-    guidance: S.optional(S.Number),
-    height: S.optional(S.Number),
-    image: S.optional(RunRequestBodyTextToImageImageList),
-    imageB64: S.optional(S.String.pipe(T.Body("image_b64"))),
-    mask: S.optional(RunRequestBodyTextToImageMaskList),
-    negativePrompt: S.optional(S.String.pipe(T.Body("negative_prompt"))),
-    numSteps: S.optional(S.Number.pipe(T.Body("num_steps"))),
-    seed: S.optional(S.Number),
-    strength: S.optional(S.Number),
-    width: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RunRequestBodyTextToImage",
-}) as any as S.Schema<RunRequestBodyTextToImage>;
-
-export interface RunRequestBodyTextToSpeech {
-  /** A text description of the audio you want to generate */
-  prompt: string;
   /** The speech language (e.g., 'en' for English, 'fr' for French). Defaults to 'en' if not specified */
   lang?: string;
-}
-export const RunRequestBodyTextToSpeech = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prompt: S.String,
-    lang: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RunRequestBodyTextToSpeech",
-}) as any as S.Schema<RunRequestBodyTextToSpeech>;
-
-export type RunRequestBodyTextEmbeddingsTextCase1List = ReadonlyArray<string>;
-export const RunRequestBodyTextEmbeddingsTextCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RunRequestBodyTextEmbeddingsTextCase1List>;
-
-export type RunRequestBodyTextEmbeddingsText =
-  | string
-  | RunRequestBodyTextEmbeddingsTextCase1List;
-export const RunRequestBodyTextEmbeddingsText = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], []]),
-);
-
-export interface RunRequestBodyTextEmbeddings {
-  /** The text to embed */
-  text: RunRequestBodyTextEmbeddingsText;
-}
-export const RunRequestBodyTextEmbeddings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: RunRequestBodyTextEmbeddingsText,
-  }),
-).annotate({
-  identifier: "RunRequestBodyTextEmbeddings",
-}) as any as S.Schema<RunRequestBodyTextEmbeddings>;
-
-export type RunRequestBodyAutomaticSpeechRecognitionAudioList =
-  ReadonlyArray<number>;
-export const RunRequestBodyAutomaticSpeechRecognitionAudioList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<RunRequestBodyAutomaticSpeechRecognitionAudioList>;
-
-export interface RunRequestBodyAutomaticSpeechRecognition {
   /** An array of integers that represent the audio data constrained to 8-bit unsigned integer values */
-  audio: RunRequestBodyAutomaticSpeechRecognitionAudioList;
+  audio?: RunRequestAudioList;
   /** The language of the recorded audio */
   sourceLang?: string;
   /** The language to translate the transcription into. Currently only English is supported. */
   targetLang?: string;
-}
-export const RunRequestBodyAutomaticSpeechRecognition = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      audio: RunRequestBodyAutomaticSpeechRecognitionAudioList,
-      sourceLang: S.optional(S.String.pipe(T.Body("source_lang"))),
-      targetLang: S.optional(S.String.pipe(T.Body("target_lang"))),
-    }),
-).annotate({
-  identifier: "RunRequestBodyAutomaticSpeechRecognition",
-}) as any as S.Schema<RunRequestBodyAutomaticSpeechRecognition>;
-
-export type RunRequestBodyImageClassificationImageList = ReadonlyArray<number>;
-export const RunRequestBodyImageClassificationImageList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RunRequestBodyImageClassificationImageList>;
-
-export interface RunRequestBodyImageClassification {
-  /** An array of integers that represent the image data constrained to 8-bit unsigned integer values */
-  image: RunRequestBodyImageClassificationImageList;
-}
-export const RunRequestBodyImageClassification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    image: RunRequestBodyImageClassificationImageList,
-  }),
-).annotate({
-  identifier: "RunRequestBodyImageClassification",
-}) as any as S.Schema<RunRequestBodyImageClassification>;
-
-export type RunRequestBodyObjectDetectionImageList = ReadonlyArray<number>;
-export const RunRequestBodyObjectDetectionImageList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RunRequestBodyObjectDetectionImageList>;
-
-export interface RunRequestBodyObjectDetection {
-  /** An array of integers that represent the image data constrained to 8-bit unsigned integer values */
-  image?: RunRequestBodyObjectDetectionImageList;
-}
-export const RunRequestBodyObjectDetection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    image: S.optional(RunRequestBodyObjectDetectionImageList),
-  }),
-).annotate({
-  identifier: "RunRequestBodyObjectDetection",
-}) as any as S.Schema<RunRequestBodyObjectDetection>;
-
-export type RunRequestBodyPromptResponseFormatType =
-  | "json_object"
-  | "json_schema";
-export const RunRequestBodyPromptResponseFormatType = /*@__PURE__*/ S.String;
-
-export interface RunRequestBodyPromptResponseFormat {
-  jsonSchema?: unknown;
-  type?: RunRequestBodyPromptResponseFormatType;
-}
-export const RunRequestBodyPromptResponseFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jsonSchema: S.optional(S.Unknown.pipe(T.Body("json_schema"))),
-    type: S.optional(RunRequestBodyPromptResponseFormatType),
-  }),
-).annotate({
-  identifier: "RunRequestBodyPromptResponseFormat",
-}) as any as S.Schema<RunRequestBodyPromptResponseFormat>;
-
-export interface RunRequestBodyPrompt {
-  /** The input text prompt for the model to generate a response. */
-  prompt: string;
   /** Decreases the likelihood of the model repeating the same lines verbatim. */
   frequencyPenalty?: number;
   /** Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model. */
@@ -668,9 +898,7 @@ export interface RunRequestBodyPrompt {
   raw?: boolean;
   /** Penalty for repeated tokens; higher values discourage repetition. */
   repetitionPenalty?: number;
-  responseFormat?: RunRequestBodyPromptResponseFormat;
-  /** Random seed for reproducibility of the generation. */
-  seed?: number;
+  responseFormat?: RunRequestResponseFormat;
   /** If true, the response will be streamed back incrementally using SSE, Server Sent Events. */
   stream?: boolean;
   /** Controls the randomness of the output; higher values produce more random results. */
@@ -679,10 +907,38 @@ export interface RunRequestBodyPrompt {
   topK?: number;
   /** Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses. */
   topP?: number;
+  /** An array of message objects representing the conversation history. */
+  messages?: RunRequestMessages;
+  functions?: RunRequestFunctionsList;
+  /** A list of tools available for the assistant to use. */
+  tools?: RunRequestToolsList;
+  /** The text that you want the model to summarize */
+  inputText?: string;
+  /** The maximum length of the generated summary in tokens */
+  maxLength?: number;
+  /** Whether to ignore the EOS token and continue generating tokens after the EOS token is generated. */
+  ignoreEos?: boolean;
 }
-export const RunRequestBodyPrompt = /*@__PURE__*/ S.suspend(() =>
+export const RunAiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    prompt: S.String,
+    accountId: S.String.pipe(T.Label("account_id")),
+    modelName: S.String.pipe(T.Label("model_name")),
+    text: S.optional(RunRequestText),
+    prompt: S.optional(S.String),
+    guidance: S.optional(S.Number),
+    height: S.optional(S.Number),
+    image: S.optional(RunRequestImage),
+    imageB64: S.optional(S.String.pipe(T.Body("image_b64"))),
+    mask: S.optional(RunRequestMaskList),
+    negativePrompt: S.optional(S.String.pipe(T.Body("negative_prompt"))),
+    numSteps: S.optional(S.Number.pipe(T.Body("num_steps"))),
+    seed: S.optional(S.Number),
+    strength: S.optional(S.Number),
+    width: S.optional(S.Number),
+    lang: S.optional(S.String),
+    audio: S.optional(RunRequestAudioList),
+    sourceLang: S.optional(S.String.pipe(T.Body("source_lang"))),
+    targetLang: S.optional(S.String.pipe(T.Body("target_lang"))),
     frequencyPenalty: S.optional(S.Number.pipe(T.Body("frequency_penalty"))),
     lora: S.optional(S.String),
     maxTokens: S.optional(S.Number.pipe(T.Body("max_tokens"))),
@@ -690,729 +946,18 @@ export const RunRequestBodyPrompt = /*@__PURE__*/ S.suspend(() =>
     raw: S.optional(S.Boolean),
     repetitionPenalty: S.optional(S.Number.pipe(T.Body("repetition_penalty"))),
     responseFormat: S.optional(
-      RunRequestBodyPromptResponseFormat.pipe(T.Body("response_format")),
+      RunRequestResponseFormat.pipe(T.Body("response_format")),
     ),
-    seed: S.optional(S.Number),
     stream: S.optional(S.Boolean),
     temperature: S.optional(S.Number),
     topK: S.optional(S.Number.pipe(T.Body("top_k"))),
     topP: S.optional(S.Number.pipe(T.Body("top_p"))),
-  }),
-).annotate({
-  identifier: "RunRequestBodyPrompt",
-}) as any as S.Schema<RunRequestBodyPrompt>;
-
-export interface RunRequestBodyTextGenerationMessagesItemContentCase1Item {
-  /** Text content */
-  text?: string;
-  /** Type of the content (text) */
-  type?: string;
-}
-export const RunRequestBodyTextGenerationMessagesItemContentCase1Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      text: S.optional(S.String),
-      type: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "RunRequestBodyTextGenerationMessagesItemContentCase1Item",
-  }) as any as S.Schema<RunRequestBodyTextGenerationMessagesItemContentCase1Item>;
-
-export type RunRequestBodyTextGenerationMessagesItemContentCase1List =
-  ReadonlyArray<RunRequestBodyTextGenerationMessagesItemContentCase1Item>;
-export const RunRequestBodyTextGenerationMessagesItemContentCase1List =
-  /*@__PURE__*/ S.Array(
-    RunRequestBodyTextGenerationMessagesItemContentCase1Item,
-  ) as any as S.Schema<RunRequestBodyTextGenerationMessagesItemContentCase1List>;
-
-export type RunRequestBodyTextGenerationMessagesItemContent =
-  | string
-  | RunRequestBodyTextGenerationMessagesItemContentCase1List;
-export const RunRequestBodyTextGenerationMessagesItemContent =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
-
-export interface RunRequestBodyTextGenerationMessagesItem {
-  /** The content of the message as a string. */
-  content: RunRequestBodyTextGenerationMessagesItemContent;
-  /** The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool'). */
-  role: string;
-}
-export const RunRequestBodyTextGenerationMessagesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      content: RunRequestBodyTextGenerationMessagesItemContent,
-      role: S.String,
-    }),
-).annotate({
-  identifier: "RunRequestBodyTextGenerationMessagesItem",
-}) as any as S.Schema<RunRequestBodyTextGenerationMessagesItem>;
-
-export type RunRequestBodyTextGenerationMessagesList =
-  ReadonlyArray<RunRequestBodyTextGenerationMessagesItem>;
-export const RunRequestBodyTextGenerationMessagesList = /*@__PURE__*/ S.Array(
-  RunRequestBodyTextGenerationMessagesItem,
-) as any as S.Schema<RunRequestBodyTextGenerationMessagesList>;
-
-export interface RunRequestBodyTextGenerationFunctionsItem {
-  code: string;
-  name: string;
-}
-export const RunRequestBodyTextGenerationFunctionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "RunRequestBodyTextGenerationFunctionsItem",
-  }) as any as S.Schema<RunRequestBodyTextGenerationFunctionsItem>;
-
-export type RunRequestBodyTextGenerationFunctionsList =
-  ReadonlyArray<RunRequestBodyTextGenerationFunctionsItem>;
-export const RunRequestBodyTextGenerationFunctionsList = /*@__PURE__*/ S.Array(
-  RunRequestBodyTextGenerationFunctionsItem,
-) as any as S.Schema<RunRequestBodyTextGenerationFunctionsList>;
-
-export type RunRequestBodyTextGenerationResponseFormatType =
-  | "json_object"
-  | "json_schema";
-export const RunRequestBodyTextGenerationResponseFormatType =
-  /*@__PURE__*/ S.String;
-
-export interface RunRequestBodyTextGenerationResponseFormat {
-  jsonSchema?: unknown;
-  type?: RunRequestBodyTextGenerationResponseFormatType;
-}
-export const RunRequestBodyTextGenerationResponseFormat =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      jsonSchema: S.optional(S.Unknown.pipe(T.Body("json_schema"))),
-      type: S.optional(RunRequestBodyTextGenerationResponseFormatType),
-    }),
-  ).annotate({
-    identifier: "RunRequestBodyTextGenerationResponseFormat",
-  }) as any as S.Schema<RunRequestBodyTextGenerationResponseFormat>;
-
-export interface RunRequestBodyTextGenerationToolsItemCase0ParametersPropertiesValue {
-  /** A description of the expected parameter. */
-  description: string;
-  /** The data type of the parameter. */
-  type: string;
-}
-export const RunRequestBodyTextGenerationToolsItemCase0ParametersPropertiesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.String,
-      type: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "RunRequestBodyTextGenerationToolsItemCase0ParametersPropertiesValue",
-  }) as any as S.Schema<RunRequestBodyTextGenerationToolsItemCase0ParametersPropertiesValue>;
-
-export type RunRequestBodyTextGenerationToolsItemCase0ParametersPropertiesMap =
-  {
-    [key: string]:
-      | RunRequestBodyTextGenerationToolsItemCase0ParametersPropertiesValue
-      | undefined;
-  };
-export const RunRequestBodyTextGenerationToolsItemCase0ParametersPropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    RunRequestBodyTextGenerationToolsItemCase0ParametersPropertiesValue,
-  ) as any as S.Schema<RunRequestBodyTextGenerationToolsItemCase0ParametersPropertiesMap>;
-
-export type RunRequestBodyTextGenerationToolsItemCase0ParametersRequiredList =
-  ReadonlyArray<string>;
-export const RunRequestBodyTextGenerationToolsItemCase0ParametersRequiredList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RunRequestBodyTextGenerationToolsItemCase0ParametersRequiredList>;
-
-export interface RunRequestBodyTextGenerationToolsItemCase0Parameters {
-  /** Definitions of each parameter. */
-  properties: RunRequestBodyTextGenerationToolsItemCase0ParametersPropertiesMap;
-  /** The type of the parameters object (usually 'object'). */
-  type: string;
-  /** List of required parameter names. */
-  required?: RunRequestBodyTextGenerationToolsItemCase0ParametersRequiredList;
-}
-export const RunRequestBodyTextGenerationToolsItemCase0Parameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      properties:
-        RunRequestBodyTextGenerationToolsItemCase0ParametersPropertiesMap,
-      type: S.String,
-      required: S.optional(
-        RunRequestBodyTextGenerationToolsItemCase0ParametersRequiredList,
-      ),
-    }),
-  ).annotate({
-    identifier: "RunRequestBodyTextGenerationToolsItemCase0Parameters",
-  }) as any as S.Schema<RunRequestBodyTextGenerationToolsItemCase0Parameters>;
-
-export interface RunRequestBodyTextGenerationToolsItemCase0 {
-  /** A brief description of what the tool does. */
-  description: string;
-  /** The name of the tool. More descriptive the better. */
-  name: string;
-  /** Schema defining the parameters accepted by the tool. */
-  parameters: RunRequestBodyTextGenerationToolsItemCase0Parameters;
-}
-export const RunRequestBodyTextGenerationToolsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.String,
-      name: S.String,
-      parameters: RunRequestBodyTextGenerationToolsItemCase0Parameters,
-    }),
-  ).annotate({
-    identifier: "RunRequestBodyTextGenerationToolsItemCase0",
-  }) as any as S.Schema<RunRequestBodyTextGenerationToolsItemCase0>;
-
-export interface RunRequestBodyTextGenerationToolsItemFunctionFunctionParametersPropertiesValue {
-  /** A description of the expected parameter. */
-  description: string;
-  /** The data type of the parameter. */
-  type: string;
-}
-export const RunRequestBodyTextGenerationToolsItemFunctionFunctionParametersPropertiesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.String,
-      type: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "RunRequestBodyTextGenerationToolsItemFunctionFunctionParametersPropertiesValue",
-  }) as any as S.Schema<RunRequestBodyTextGenerationToolsItemFunctionFunctionParametersPropertiesValue>;
-
-export type RunRequestBodyTextGenerationToolsItemFunctionFunctionParametersPropertiesMap =
-  {
-    [key: string]:
-      | RunRequestBodyTextGenerationToolsItemFunctionFunctionParametersPropertiesValue
-      | undefined;
-  };
-export const RunRequestBodyTextGenerationToolsItemFunctionFunctionParametersPropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    RunRequestBodyTextGenerationToolsItemFunctionFunctionParametersPropertiesValue,
-  ) as any as S.Schema<RunRequestBodyTextGenerationToolsItemFunctionFunctionParametersPropertiesMap>;
-
-export type RunRequestBodyTextGenerationToolsItemFunctionFunctionParametersRequiredList =
-  ReadonlyArray<string>;
-export const RunRequestBodyTextGenerationToolsItemFunctionFunctionParametersRequiredList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RunRequestBodyTextGenerationToolsItemFunctionFunctionParametersRequiredList>;
-
-export interface RunRequestBodyTextGenerationToolsItemFunctionFunctionParameters {
-  /** Definitions of each parameter. */
-  properties: RunRequestBodyTextGenerationToolsItemFunctionFunctionParametersPropertiesMap;
-  /** The type of the parameters object (usually 'object'). */
-  type: string;
-  /** List of required parameter names. */
-  required?: RunRequestBodyTextGenerationToolsItemFunctionFunctionParametersRequiredList;
-}
-export const RunRequestBodyTextGenerationToolsItemFunctionFunctionParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      properties:
-        RunRequestBodyTextGenerationToolsItemFunctionFunctionParametersPropertiesMap,
-      type: S.String,
-      required: S.optional(
-        RunRequestBodyTextGenerationToolsItemFunctionFunctionParametersRequiredList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "RunRequestBodyTextGenerationToolsItemFunctionFunctionParameters",
-  }) as any as S.Schema<RunRequestBodyTextGenerationToolsItemFunctionFunctionParameters>;
-
-export interface RunRequestBodyTextGenerationToolsItemFunctionFunction {
-  /** A brief description of what the function does. */
-  description: string;
-  /** The name of the function. */
-  name: string;
-  /** Schema defining the parameters accepted by the function. */
-  parameters: RunRequestBodyTextGenerationToolsItemFunctionFunctionParameters;
-}
-export const RunRequestBodyTextGenerationToolsItemFunctionFunction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.String,
-      name: S.String,
-      parameters:
-        RunRequestBodyTextGenerationToolsItemFunctionFunctionParameters,
-    }),
-  ).annotate({
-    identifier: "RunRequestBodyTextGenerationToolsItemFunctionFunction",
-  }) as any as S.Schema<RunRequestBodyTextGenerationToolsItemFunctionFunction>;
-
-export interface RunRequestBodyTextGenerationToolsItemFunction {
-  /** Details of the function tool. */
-  function: RunRequestBodyTextGenerationToolsItemFunctionFunction;
-  /** Specifies the type of tool (e.g., 'function'). */
-  type: string;
-}
-export const RunRequestBodyTextGenerationToolsItemFunction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      function: RunRequestBodyTextGenerationToolsItemFunctionFunction,
-      type: S.String,
-    }),
-  ).annotate({
-    identifier: "RunRequestBodyTextGenerationToolsItemFunction",
-  }) as any as S.Schema<RunRequestBodyTextGenerationToolsItemFunction>;
-
-export type RunRequestBodyTextGenerationToolsItem =
-  | RunRequestBodyTextGenerationToolsItemCase0
-  | RunRequestBodyTextGenerationToolsItemFunction;
-export const RunRequestBodyTextGenerationToolsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["description", "name", "parameters"],
-      ["function", "type"],
-    ]),
-  );
-
-export type RunRequestBodyTextGenerationToolsList =
-  ReadonlyArray<RunRequestBodyTextGenerationToolsItem>;
-export const RunRequestBodyTextGenerationToolsList = /*@__PURE__*/ S.Array(
-  RunRequestBodyTextGenerationToolsItem,
-) as any as S.Schema<RunRequestBodyTextGenerationToolsList>;
-
-export interface RunRequestBodyTextGeneration {
-  /** An array of message objects representing the conversation history. */
-  messages: RunRequestBodyTextGenerationMessagesList;
-  /** Decreases the likelihood of the model repeating the same lines verbatim. */
-  frequencyPenalty?: number;
-  functions?: RunRequestBodyTextGenerationFunctionsList;
-  /** The maximum number of tokens to generate in the response. */
-  maxTokens?: number;
-  /** Increases the likelihood of the model introducing new topics. */
-  presencePenalty?: number;
-  /** If true, a chat template is not applied and you must adhere to the specific model's expected formatting. */
-  raw?: boolean;
-  /** Penalty for repeated tokens; higher values discourage repetition. */
-  repetitionPenalty?: number;
-  responseFormat?: RunRequestBodyTextGenerationResponseFormat;
-  /** Random seed for reproducibility of the generation. */
-  seed?: number;
-  /** If true, the response will be streamed back incrementally using SSE, Server Sent Events. */
-  stream?: boolean;
-  /** Controls the randomness of the output; higher values produce more random results. */
-  temperature?: number;
-  /** A list of tools available for the assistant to use. */
-  tools?: RunRequestBodyTextGenerationToolsList;
-  /** Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises. */
-  topK?: number;
-  /** Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses. */
-  topP?: number;
-}
-export const RunRequestBodyTextGeneration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    messages: RunRequestBodyTextGenerationMessagesList,
-    frequencyPenalty: S.optional(S.Number.pipe(T.Body("frequency_penalty"))),
-    functions: S.optional(RunRequestBodyTextGenerationFunctionsList),
-    maxTokens: S.optional(S.Number.pipe(T.Body("max_tokens"))),
-    presencePenalty: S.optional(S.Number.pipe(T.Body("presence_penalty"))),
-    raw: S.optional(S.Boolean),
-    repetitionPenalty: S.optional(S.Number.pipe(T.Body("repetition_penalty"))),
-    responseFormat: S.optional(
-      RunRequestBodyTextGenerationResponseFormat.pipe(
-        T.Body("response_format"),
-      ),
-    ),
-    seed: S.optional(S.Number),
-    stream: S.optional(S.Boolean),
-    temperature: S.optional(S.Number),
-    tools: S.optional(RunRequestBodyTextGenerationToolsList),
-    topK: S.optional(S.Number.pipe(T.Body("top_k"))),
-    topP: S.optional(S.Number.pipe(T.Body("top_p"))),
-  }),
-).annotate({
-  identifier: "RunRequestBodyTextGeneration",
-}) as any as S.Schema<RunRequestBodyTextGeneration>;
-
-export interface RunRequestBodyTranslation {
-  /** The language code to translate the text into (e.g., 'es' for Spanish) */
-  targetLang: string;
-  /** The text to be translated */
-  text: string;
-  /** The language code of the source text (e.g., 'en' for English). Defaults to 'en' if not specified */
-  sourceLang?: string;
-}
-export const RunRequestBodyTranslation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetLang: S.String.pipe(T.Body("target_lang")),
-    text: S.String,
-    sourceLang: S.optional(S.String.pipe(T.Body("source_lang"))),
-  }),
-).annotate({
-  identifier: "RunRequestBodyTranslation",
-}) as any as S.Schema<RunRequestBodyTranslation>;
-
-export interface RunRequestBodySummarization {
-  /** The text that you want the model to summarize */
-  inputText: string;
-  /** The maximum length of the generated summary in tokens */
-  maxLength?: number;
-}
-export const RunRequestBodySummarization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inputText: S.String.pipe(T.Body("input_text")),
+    messages: S.optional(RunRequestMessages),
+    functions: S.optional(RunRequestFunctionsList),
+    tools: S.optional(RunRequestToolsList),
+    inputText: S.optional(S.String.pipe(T.Body("input_text"))),
     maxLength: S.optional(S.Number.pipe(T.Body("max_length"))),
-  }),
-).annotate({
-  identifier: "RunRequestBodySummarization",
-}) as any as S.Schema<RunRequestBodySummarization>;
-
-export type RunRequestBodyImageToTextImageList = ReadonlyArray<number>;
-export const RunRequestBodyImageToTextImageList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RunRequestBodyImageToTextImageList>;
-
-export interface RunRequestBodyImageToText {
-  /** An array of integers that represent the image data constrained to 8-bit unsigned integer values */
-  image: RunRequestBodyImageToTextImageList;
-  /** Decreases the likelihood of the model repeating the same lines verbatim. */
-  frequencyPenalty?: number;
-  /** The maximum number of tokens to generate in the response. */
-  maxTokens?: number;
-  /** Increases the likelihood of the model introducing new topics. */
-  presencePenalty?: number;
-  /** The input text prompt for the model to generate a response. */
-  prompt?: string;
-  /** If true, a chat template is not applied and you must adhere to the specific model's expected formatting. */
-  raw?: boolean;
-  /** Penalty for repeated tokens; higher values discourage repetition. */
-  repetitionPenalty?: number;
-  /** Random seed for reproducibility of the generation. */
-  seed?: number;
-  /** Controls the randomness of the output; higher values produce more random results. */
-  temperature?: number;
-  /** Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises. */
-  topK?: number;
-  /** Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses. */
-  topP?: number;
-}
-export const RunRequestBodyImageToText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    image: RunRequestBodyImageToTextImageList,
-    frequencyPenalty: S.optional(S.Number.pipe(T.Body("frequency_penalty"))),
-    maxTokens: S.optional(S.Number.pipe(T.Body("max_tokens"))),
-    presencePenalty: S.optional(S.Number.pipe(T.Body("presence_penalty"))),
-    prompt: S.optional(S.String),
-    raw: S.optional(S.Boolean),
-    repetitionPenalty: S.optional(S.Number.pipe(T.Body("repetition_penalty"))),
-    seed: S.optional(S.Number),
-    temperature: S.optional(S.Number),
-    topK: S.optional(S.Number.pipe(T.Body("top_k"))),
-    topP: S.optional(S.Number.pipe(T.Body("top_p"))),
-  }),
-).annotate({
-  identifier: "RunRequestBodyImageToText",
-}) as any as S.Schema<RunRequestBodyImageToText>;
-
-export interface RunRequestBodyCase12 {
-  /** Image in base64 encoded format. */
-  image: string;
-  /** The input text prompt for the model to generate a response. */
-  prompt: string;
-  /** Decreases the likelihood of the model repeating the same lines verbatim. */
-  frequencyPenalty?: number;
-  /** Whether to ignore the EOS token and continue generating tokens after the EOS token is generated. */
-  ignoreEos?: boolean;
-  /** The maximum number of tokens to generate in the response. */
-  maxTokens?: number;
-  /** Increases the likelihood of the model introducing new topics. */
-  presencePenalty?: number;
-  /** Penalty for repeated tokens; higher values discourage repetition. */
-  repetitionPenalty?: number;
-  /** Random seed for reproducibility of the generation. */
-  seed?: number;
-  /** Controls the randomness of the output; higher values produce more random results. */
-  temperature?: number;
-  /** Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises. */
-  topK?: number;
-  /** Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses. */
-  topP?: number;
-}
-export const RunRequestBodyCase12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    image: S.String,
-    prompt: S.String,
-    frequencyPenalty: S.optional(S.Number.pipe(T.Body("frequency_penalty"))),
     ignoreEos: S.optional(S.Boolean.pipe(T.Body("ignore_eos"))),
-    maxTokens: S.optional(S.Number.pipe(T.Body("max_tokens"))),
-    presencePenalty: S.optional(S.Number.pipe(T.Body("presence_penalty"))),
-    repetitionPenalty: S.optional(S.Number.pipe(T.Body("repetition_penalty"))),
-    seed: S.optional(S.Number),
-    temperature: S.optional(S.Number),
-    topK: S.optional(S.Number.pipe(T.Body("top_k"))),
-    topP: S.optional(S.Number.pipe(T.Body("top_p"))),
-  }),
-).annotate({
-  identifier: "RunRequestBodyCase12",
-}) as any as S.Schema<RunRequestBodyCase12>;
-
-export interface RunRequestBodyImageTextToTextMessagesItemContentCase1ItemImageUrl {
-  /** Image URI with data (e.g. data:image/jpeg;base64,/9j/...). */
-  url: string;
-}
-export const RunRequestBodyImageTextToTextMessagesItemContentCase1ItemImageUrl =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      url: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "RunRequestBodyImageTextToTextMessagesItemContentCase1ItemImageUrl",
-  }) as any as S.Schema<RunRequestBodyImageTextToTextMessagesItemContentCase1ItemImageUrl>;
-
-export interface RunRequestBodyImageTextToTextMessagesItemContentCase1Item {
-  /** Type of the content part (e.g. 'text', 'image_url'). */
-  type: string;
-  /** Image URL object (when type is 'image_url'). */
-  imageUrl?: RunRequestBodyImageTextToTextMessagesItemContentCase1ItemImageUrl;
-  /** Text content (when type is 'text'). */
-  text?: string;
-}
-export const RunRequestBodyImageTextToTextMessagesItemContentCase1Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      imageUrl: S.optional(
-        RunRequestBodyImageTextToTextMessagesItemContentCase1ItemImageUrl.pipe(
-          T.Body("image_url"),
-        ),
-      ),
-      text: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "RunRequestBodyImageTextToTextMessagesItemContentCase1Item",
-  }) as any as S.Schema<RunRequestBodyImageTextToTextMessagesItemContentCase1Item>;
-
-export type RunRequestBodyImageTextToTextMessagesItemContentCase1List =
-  ReadonlyArray<RunRequestBodyImageTextToTextMessagesItemContentCase1Item>;
-export const RunRequestBodyImageTextToTextMessagesItemContentCase1List =
-  /*@__PURE__*/ S.Array(
-    RunRequestBodyImageTextToTextMessagesItemContentCase1Item,
-  ) as any as S.Schema<RunRequestBodyImageTextToTextMessagesItemContentCase1List>;
-
-export type RunRequestBodyImageTextToTextMessagesItemContent =
-  | string
-  | RunRequestBodyImageTextToTextMessagesItemContentCase1List;
-export const RunRequestBodyImageTextToTextMessagesItemContent =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
-
-export interface RunRequestBodyImageTextToTextMessagesItem {
-  /** The content of the message as a string. */
-  content: RunRequestBodyImageTextToTextMessagesItemContent;
-  /** The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool'). */
-  role: string;
-}
-export const RunRequestBodyImageTextToTextMessagesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      content: RunRequestBodyImageTextToTextMessagesItemContent,
-      role: S.String,
-    }),
-  ).annotate({
-    identifier: "RunRequestBodyImageTextToTextMessagesItem",
-  }) as any as S.Schema<RunRequestBodyImageTextToTextMessagesItem>;
-
-export type RunRequestBodyImageTextToTextMessagesList =
-  ReadonlyArray<RunRequestBodyImageTextToTextMessagesItem>;
-export const RunRequestBodyImageTextToTextMessagesList = /*@__PURE__*/ S.Array(
-  RunRequestBodyImageTextToTextMessagesItem,
-) as any as S.Schema<RunRequestBodyImageTextToTextMessagesList>;
-
-export interface RunRequestBodyImageTextToText {
-  /** Image in base64 encoded format. */
-  image: string;
-  /** An array of message objects representing the conversation history. */
-  messages: RunRequestBodyImageTextToTextMessagesList;
-  /** Decreases the likelihood of the model repeating the same lines verbatim. */
-  frequencyPenalty?: number;
-  /** Whether to ignore the EOS token and continue generating tokens after the EOS token is generated. */
-  ignoreEos?: boolean;
-  /** The maximum number of tokens to generate in the response. */
-  maxTokens?: number;
-  /** Increases the likelihood of the model introducing new topics. */
-  presencePenalty?: number;
-  /** Penalty for repeated tokens; higher values discourage repetition. */
-  repetitionPenalty?: number;
-  /** Random seed for reproducibility of the generation. */
-  seed?: number;
-  /** Controls the randomness of the output; higher values produce more random results. */
-  temperature?: number;
-  /** Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises. */
-  topK?: number;
-  /** Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses. */
-  topP?: number;
-}
-export const RunRequestBodyImageTextToText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    image: S.String,
-    messages: RunRequestBodyImageTextToTextMessagesList,
-    frequencyPenalty: S.optional(S.Number.pipe(T.Body("frequency_penalty"))),
-    ignoreEos: S.optional(S.Boolean.pipe(T.Body("ignore_eos"))),
-    maxTokens: S.optional(S.Number.pipe(T.Body("max_tokens"))),
-    presencePenalty: S.optional(S.Number.pipe(T.Body("presence_penalty"))),
-    repetitionPenalty: S.optional(S.Number.pipe(T.Body("repetition_penalty"))),
-    seed: S.optional(S.Number),
-    temperature: S.optional(S.Number),
-    topK: S.optional(S.Number.pipe(T.Body("top_k"))),
-    topP: S.optional(S.Number.pipe(T.Body("top_p"))),
-  }),
-).annotate({
-  identifier: "RunRequestBodyImageTextToText",
-}) as any as S.Schema<RunRequestBodyImageTextToText>;
-
-export type RunRequestBodyMultimodalEmbeddingsTextList = ReadonlyArray<string>;
-export const RunRequestBodyMultimodalEmbeddingsTextList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RunRequestBodyMultimodalEmbeddingsTextList>;
-
-export interface RunRequestBodyMultimodalEmbeddings {
-  /** Image in base64 encoded format. */
-  image?: string;
-  text?: RunRequestBodyMultimodalEmbeddingsTextList;
-}
-export const RunRequestBodyMultimodalEmbeddings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    image: S.optional(S.String),
-    text: S.optional(RunRequestBodyMultimodalEmbeddingsTextList),
-  }),
-).annotate({
-  identifier: "RunRequestBodyMultimodalEmbeddings",
-}) as any as S.Schema<RunRequestBodyMultimodalEmbeddings>;
-
-export type RunRequestBody =
-  | RunRequestBodyTextClassification
-  | RunRequestBodyTextToImage
-  | RunRequestBodyTextToSpeech
-  | RunRequestBodyTextEmbeddings
-  | RunRequestBodyAutomaticSpeechRecognition
-  | RunRequestBodyImageClassification
-  | RunRequestBodyObjectDetection
-  | RunRequestBodyPrompt
-  | RunRequestBodyTextGeneration
-  | RunRequestBodyTranslation
-  | RunRequestBodySummarization
-  | RunRequestBodyImageToText
-  | RunRequestBodyCase12
-  | RunRequestBodyImageTextToText
-  | RunRequestBodyMultimodalEmbeddings;
-export const RunRequestBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["text"],
-    [
-      "prompt",
-      "guidance",
-      "height",
-      "image",
-      "imageB64",
-      "mask",
-      "negativePrompt",
-      "numSteps",
-      "seed",
-      "strength",
-      "width",
-    ],
-    ["prompt", "lang"],
-    ["text"],
-    ["audio", "sourceLang", "targetLang"],
-    ["image"],
-    ["image"],
-    [
-      "prompt",
-      "frequencyPenalty",
-      "lora",
-      "maxTokens",
-      "presencePenalty",
-      "raw",
-      "repetitionPenalty",
-      "responseFormat",
-      "seed",
-      "stream",
-      "temperature",
-      "topK",
-      "topP",
-    ],
-    [
-      "messages",
-      "frequencyPenalty",
-      "functions",
-      "maxTokens",
-      "presencePenalty",
-      "raw",
-      "repetitionPenalty",
-      "responseFormat",
-      "seed",
-      "stream",
-      "temperature",
-      "tools",
-      "topK",
-      "topP",
-    ],
-    ["targetLang", "text", "sourceLang"],
-    ["inputText", "maxLength"],
-    [
-      "image",
-      "frequencyPenalty",
-      "maxTokens",
-      "presencePenalty",
-      "prompt",
-      "raw",
-      "repetitionPenalty",
-      "seed",
-      "temperature",
-      "topK",
-      "topP",
-    ],
-    [
-      "image",
-      "prompt",
-      "frequencyPenalty",
-      "ignoreEos",
-      "maxTokens",
-      "presencePenalty",
-      "repetitionPenalty",
-      "seed",
-      "temperature",
-      "topK",
-      "topP",
-    ],
-    [
-      "image",
-      "messages",
-      "frequencyPenalty",
-      "ignoreEos",
-      "maxTokens",
-      "presencePenalty",
-      "repetitionPenalty",
-      "seed",
-      "temperature",
-      "topK",
-      "topP",
-    ],
-    ["image", "text"],
-  ]),
-);
-
-export interface RunAiRequest {
-  accountId: string;
-  modelName: string;
-  body?: RunRequestBody;
-}
-export const RunAiRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    modelName: S.String.pipe(T.Label("model_name")),
-    body: S.optional(RunRequestBody.pipe(T.HttpBody())),
   })
     .pipe(
       T.Http({

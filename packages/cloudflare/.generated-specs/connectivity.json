@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHostInfraIPv4HostNetwork": {
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequestHostInfraIPv4HostNetwork": {
       "type": "structure",
       "members": {
         "tunnel_id": {
@@ -28,7 +28,7 @@
         }
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHostInfraIPv4Host": {
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequestHostInfraIPv4Host": {
       "type": "structure",
       "members": {
         "ipv4": {
@@ -38,14 +38,14 @@
           }
         },
         "network": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHostInfraIPv4HostNetwork",
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestHostInfraIPv4HostNetwork",
           "traits": {
             "smithy.api#required": {}
           }
         }
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHostInfraIPv6HostNetwork": {
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequestHostInfraIPv6HostNetwork": {
       "type": "structure",
       "members": {
         "tunnel_id": {
@@ -56,7 +56,7 @@
         }
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHostInfraIPv6Host": {
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequestHostInfraIPv6Host": {
       "type": "structure",
       "members": {
         "ipv6": {
@@ -66,14 +66,14 @@
           }
         },
         "network": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHostInfraIPv6HostNetwork",
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestHostInfraIPv6HostNetwork",
           "traits": {
             "smithy.api#required": {}
           }
         }
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHostInfraDualStackHostNetwork": {
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequestHostInfraDualStackHostNetwork": {
       "type": "structure",
       "members": {
         "tunnel_id": {
@@ -84,7 +84,7 @@
         }
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHostInfraDualStackHost": {
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequestHostInfraDualStackHost": {
       "type": "structure",
       "members": {
         "ipv4": {
@@ -100,20 +100,20 @@
           }
         },
         "network": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHostInfraDualStackHostNetwork",
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestHostInfraDualStackHostNetwork",
           "traits": {
             "smithy.api#required": {}
           }
         }
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList": {
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetworkResolverIpsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork": {
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetwork": {
       "type": "structure",
       "members": {
         "tunnel_id": {
@@ -123,11 +123,11 @@
           }
         },
         "resolver_ips": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList"
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetworkResolverIpsList"
         }
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHostInfraHostnameHost": {
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequestHostInfraHostnameHost": {
       "type": "structure",
       "members": {
         "hostname": {
@@ -137,31 +137,31 @@
           }
         },
         "resolver_network": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork",
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetwork",
           "traits": {
             "smithy.api#required": {}
           }
         }
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHost": {
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequestHost": {
       "type": "union",
       "members": {
         "InfraIPv4Host": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHostInfraIPv4Host"
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestHostInfraIPv4Host"
         },
         "InfraIPv6Host": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHostInfraIPv6Host"
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestHostInfraIPv6Host"
         },
         "InfraDualStackHost": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHostInfraDualStackHost"
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestHostInfraDualStackHost"
         },
         "InfraHostnameHost": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHostInfraHostnameHost"
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestHostInfraHostnameHost"
         }
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigType": {
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequestType": {
       "type": "enum",
       "members": {
         "TCP": {
@@ -178,7 +178,7 @@
         }
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigTlsSettings": {
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequestTlsSettings": {
       "type": "structure",
       "members": {
         "cert_verification_mode": {
@@ -190,11 +190,36 @@
         }
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfig": {
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequestAppProtocol": {
+      "type": "enum",
+      "members": {
+        "POSTGRESQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "postgresql"
+          }
+        },
+        "MYSQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mysql"
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequest": {
       "type": "structure",
       "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Account identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
         "host": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigHost",
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestHost",
           "traits": {
             "smithy.api#required": {}
           }
@@ -206,7 +231,7 @@
           }
         },
         "type": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigType",
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -224,278 +249,19 @@
           "target": "smithy.api#String"
         },
         "tls_settings": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfigTlsSettings",
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestTlsSettings",
           "traits": {
             "smithy.api#documentation": "TLS settings for a connectivity service."
           }
         },
         "updated_at": {
           "target": "smithy.api#String"
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHostInfraIPv4HostNetwork": {
-      "type": "structure",
-      "members": {
-        "tunnel_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHostInfraIPv4Host": {
-      "type": "structure",
-      "members": {
-        "ipv4": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "network": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHostInfraIPv4HostNetwork",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHostInfraIPv6HostNetwork": {
-      "type": "structure",
-      "members": {
-        "tunnel_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHostInfraIPv6Host": {
-      "type": "structure",
-      "members": {
-        "ipv6": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "network": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHostInfraIPv6HostNetwork",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHostInfraDualStackHostNetwork": {
-      "type": "structure",
-      "members": {
-        "tunnel_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHostInfraDualStackHost": {
-      "type": "structure",
-      "members": {
-        "ipv4": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "ipv6": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "network": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHostInfraDualStackHostNetwork",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHostInfraHostnameHostResolverNetwork": {
-      "type": "structure",
-      "members": {
-        "tunnel_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "resolver_ips": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList"
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHostInfraHostnameHost": {
-      "type": "structure",
-      "members": {
-        "hostname": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "resolver_network": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHostInfraHostnameHostResolverNetwork",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHost": {
-      "type": "union",
-      "members": {
-        "InfraIPv4Host": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHostInfraIPv4Host"
-        },
-        "InfraIPv6Host": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHostInfraIPv6Host"
-        },
-        "InfraDualStackHost": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHostInfraDualStackHost"
-        },
-        "InfraHostnameHost": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHostInfraHostnameHost"
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigType": {
-      "type": "enum",
-      "members": {
-        "TCP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "tcp"
-          }
-        },
-        "HTTP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "http"
-          }
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigAppProtocol": {
-      "type": "enum",
-      "members": {
-        "POSTGRESQL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "postgresql"
-          }
-        },
-        "MYSQL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "mysql"
-          }
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigTlsSettings": {
-      "type": "structure",
-      "members": {
-        "cert_verification_mode": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "TLS certificate verification mode for the connection to the origin.",
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfig": {
-      "type": "structure",
-      "members": {
-        "host": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigHost",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "type": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigType",
-          "traits": {
-            "smithy.api#required": {}
-          }
         },
         "app_protocol": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigAppProtocol"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "service_id": {
-          "target": "smithy.api#String"
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestAppProtocol"
         },
         "tcp_port": {
           "target": "smithy.api#Double"
-        },
-        "tls_settings": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfigTlsSettings",
-          "traits": {
-            "smithy.api#documentation": "TLS settings for a connectivity service."
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBody": {
-      "type": "union",
-      "members": {
-        "InfraHTTPServiceConfig": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraHTTPServiceConfig"
-        },
-        "InfraTCPServiceConfig": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBodyInfraTCPServiceConfig"
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesCreateRequest": {
-      "type": "structure",
-      "members": {
-        "account_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Account identifier",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "body": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBody",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
-          }
         }
       },
       "traits": {
@@ -2107,7 +1873,7 @@
         "smithy.api#readonly": {}
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHostInfraIPv4HostNetwork": {
+    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestHostInfraIPv4HostNetwork": {
       "type": "structure",
       "members": {
         "tunnel_id": {
@@ -2118,7 +1884,7 @@
         }
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHostInfraIPv4Host": {
+    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestHostInfraIPv4Host": {
       "type": "structure",
       "members": {
         "ipv4": {
@@ -2128,14 +1894,14 @@
           }
         },
         "network": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHostInfraIPv4HostNetwork",
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestHostInfraIPv4HostNetwork",
           "traits": {
             "smithy.api#required": {}
           }
         }
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHostInfraIPv6HostNetwork": {
+    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestHostInfraIPv6HostNetwork": {
       "type": "structure",
       "members": {
         "tunnel_id": {
@@ -2146,7 +1912,7 @@
         }
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHostInfraIPv6Host": {
+    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestHostInfraIPv6Host": {
       "type": "structure",
       "members": {
         "ipv6": {
@@ -2156,14 +1922,14 @@
           }
         },
         "network": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHostInfraIPv6HostNetwork",
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestHostInfraIPv6HostNetwork",
           "traits": {
             "smithy.api#required": {}
           }
         }
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHostInfraDualStackHostNetwork": {
+    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestHostInfraDualStackHostNetwork": {
       "type": "structure",
       "members": {
         "tunnel_id": {
@@ -2174,7 +1940,7 @@
         }
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHostInfraDualStackHost": {
+    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestHostInfraDualStackHost": {
       "type": "structure",
       "members": {
         "ipv4": {
@@ -2190,20 +1956,20 @@
           }
         },
         "network": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHostInfraDualStackHostNetwork",
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestHostInfraDualStackHostNetwork",
           "traits": {
             "smithy.api#required": {}
           }
         }
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList": {
+    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetworkResolverIpsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork": {
+    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetwork": {
       "type": "structure",
       "members": {
         "tunnel_id": {
@@ -2213,11 +1979,11 @@
           }
         },
         "resolver_ips": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList"
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetworkResolverIpsList"
         }
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHostInfraHostnameHost": {
+    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestHostInfraHostnameHost": {
       "type": "structure",
       "members": {
         "hostname": {
@@ -2227,31 +1993,31 @@
           }
         },
         "resolver_network": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHostInfraHostnameHostResolverNetwork",
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetwork",
           "traits": {
             "smithy.api#required": {}
           }
         }
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHost": {
+    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestHost": {
       "type": "union",
       "members": {
         "InfraIPv4Host": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHostInfraIPv4Host"
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestHostInfraIPv4Host"
         },
         "InfraIPv6Host": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHostInfraIPv6Host"
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestHostInfraIPv6Host"
         },
         "InfraDualStackHost": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHostInfraDualStackHost"
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestHostInfraDualStackHost"
         },
         "InfraHostnameHost": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHostInfraHostnameHost"
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestHostInfraHostnameHost"
         }
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigType": {
+    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestType": {
       "type": "enum",
       "members": {
         "TCP": {
@@ -2268,7 +2034,7 @@
         }
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigTlsSettings": {
+    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestTlsSettings": {
       "type": "structure",
       "members": {
         "cert_verification_mode": {
@@ -2280,212 +2046,7 @@
         }
       }
     },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfig": {
-      "type": "structure",
-      "members": {
-        "host": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigHost",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "type": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigType",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "http_port": {
-          "target": "smithy.api#Double"
-        },
-        "https_port": {
-          "target": "smithy.api#Double"
-        },
-        "service_id": {
-          "target": "smithy.api#String"
-        },
-        "tls_settings": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfigTlsSettings",
-          "traits": {
-            "smithy.api#documentation": "TLS settings for a connectivity service."
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHostInfraIPv4HostNetwork": {
-      "type": "structure",
-      "members": {
-        "tunnel_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHostInfraIPv4Host": {
-      "type": "structure",
-      "members": {
-        "ipv4": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "network": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHostInfraIPv4HostNetwork",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHostInfraIPv6HostNetwork": {
-      "type": "structure",
-      "members": {
-        "tunnel_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHostInfraIPv6Host": {
-      "type": "structure",
-      "members": {
-        "ipv6": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "network": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHostInfraIPv6HostNetwork",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHostInfraDualStackHostNetwork": {
-      "type": "structure",
-      "members": {
-        "tunnel_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHostInfraDualStackHost": {
-      "type": "structure",
-      "members": {
-        "ipv4": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "ipv6": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "network": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHostInfraDualStackHostNetwork",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHostInfraHostnameHostResolverNetwork": {
-      "type": "structure",
-      "members": {
-        "tunnel_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "resolver_ips": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHostInfraHostnameHostResolverNetworkResolverIpsList"
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHostInfraHostnameHost": {
-      "type": "structure",
-      "members": {
-        "hostname": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "resolver_network": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHostInfraHostnameHostResolverNetwork",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHost": {
-      "type": "union",
-      "members": {
-        "InfraIPv4Host": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHostInfraIPv4Host"
-        },
-        "InfraIPv6Host": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHostInfraIPv6Host"
-        },
-        "InfraDualStackHost": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHostInfraDualStackHost"
-        },
-        "InfraHostnameHost": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHostInfraHostnameHost"
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigType": {
-      "type": "enum",
-      "members": {
-        "TCP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "tcp"
-          }
-        },
-        "HTTP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "http"
-          }
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigAppProtocol": {
+    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestAppProtocol": {
       "type": "enum",
       "members": {
         "POSTGRESQL": {
@@ -2499,73 +2060,6 @@
           "traits": {
             "smithy.api#enumValue": "mysql"
           }
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigTlsSettings": {
-      "type": "structure",
-      "members": {
-        "cert_verification_mode": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "TLS certificate verification mode for the connection to the origin.",
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfig": {
-      "type": "structure",
-      "members": {
-        "host": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigHost",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "type": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigType",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "app_protocol": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigAppProtocol"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "service_id": {
-          "target": "smithy.api#String"
-        },
-        "tcp_port": {
-          "target": "smithy.api#Double"
-        },
-        "tls_settings": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfigTlsSettings",
-          "traits": {
-            "smithy.api#documentation": "TLS settings for a connectivity service."
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        }
-      }
-    },
-    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBody": {
-      "type": "union",
-      "members": {
-        "InfraHTTPServiceConfig": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraHTTPServiceConfig"
-        },
-        "InfraTCPServiceConfig": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBodyInfraTCPServiceConfig"
         }
       }
     },
@@ -2586,12 +2080,53 @@
             "smithy.api#required": {}
           }
         },
-        "body": {
-          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBody",
+        "host": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestHost",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
+            "smithy.api#required": {}
           }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "http_port": {
+          "target": "smithy.api#Double"
+        },
+        "https_port": {
+          "target": "smithy.api#Double"
+        },
+        "service_id_2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "service_id"
+          }
+        },
+        "tls_settings": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestTlsSettings",
+          "traits": {
+            "smithy.api#documentation": "TLS settings for a connectivity service."
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String"
+        },
+        "app_protocol": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestAppProtocol"
+        },
+        "tcp_port": {
+          "target": "smithy.api#Double"
         }
       },
       "traits": {

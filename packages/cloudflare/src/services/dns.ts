@@ -5296,130 +5296,46 @@ export const BatchRecordResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchRecordResponse",
 }) as any as S.Schema<BatchRecordResponse>;
 
-export type RecordsCreateRequestBodyARecordType = "A";
-export const RecordsCreateRequestBodyARecordType = /*@__PURE__*/ S.String;
+export type RecordsCreateRequestType =
+  | "A"
+  | "AAAA"
+  | "CNAME"
+  | "MX"
+  | "NS"
+  | "OPENPGPKEY"
+  | "PTR"
+  | "TXT"
+  | "CAA"
+  | "CERT"
+  | "DNSKEY"
+  | "DS"
+  | "HTTPS"
+  | "LOC"
+  | "NAPTR"
+  | "SMIMEA"
+  | "SRV"
+  | "SSHFP"
+  | "SVCB"
+  | "TLSA"
+  | "URI";
+export const RecordsCreateRequestType = /*@__PURE__*/ S.String;
 
-export interface RecordsCreateRequestBodyARecordSettings {
+export interface RecordsCreateRequestSettingsARecord {
   /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
   ipv4Only?: boolean;
   /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
   ipv6Only?: boolean;
 }
-export const RecordsCreateRequestBodyARecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsCreateRequestBodyARecordSettings",
-}) as any as S.Schema<RecordsCreateRequestBodyARecordSettings>;
-
-export type RecordsCreateRequestBodyARecordTagsList = ReadonlyArray<unknown>;
-export const RecordsCreateRequestBodyARecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsCreateRequestBodyARecordTagsList>;
-
-export interface RecordsCreateRequestBodyARecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsCreateRequestBodyARecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** A valid IPv4 address. */
-  content?: string;
-  /** Enables private network routing to the origin. */
-  privateRouting?: boolean;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsCreateRequestBodyARecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsCreateRequestBodyARecordTagsList;
-}
-export const RecordsCreateRequestBodyARecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsCreateRequestSettingsARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsCreateRequestBodyARecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsCreateRequestBodyARecordSettings),
-    tags: S.optional(RecordsCreateRequestBodyARecordTagsList),
+    ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
+    ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
   }),
 ).annotate({
-  identifier: "RecordsCreateRequestBodyARecord",
-}) as any as S.Schema<RecordsCreateRequestBodyARecord>;
+  identifier: "RecordsCreateRequestSettingsARecord",
+}) as any as S.Schema<RecordsCreateRequestSettingsARecord>;
 
-export type RecordsCreateRequestBodyAAAARecordType = "AAAA";
-export const RecordsCreateRequestBodyAAAARecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsCreateRequestBodyAAAARecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsCreateRequestBodyAAAARecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsCreateRequestBodyAAAARecordSettings",
-  }) as any as S.Schema<RecordsCreateRequestBodyAAAARecordSettings>;
-
-export type RecordsCreateRequestBodyAAAARecordTagsList = ReadonlyArray<unknown>;
-export const RecordsCreateRequestBodyAAAARecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsCreateRequestBodyAAAARecordTagsList>;
-
-export interface RecordsCreateRequestBodyAAAARecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsCreateRequestBodyAAAARecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** A valid IPv6 address. */
-  content?: string;
-  /** Enables private network routing to the origin. */
-  privateRouting?: boolean;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsCreateRequestBodyAAAARecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsCreateRequestBodyAAAARecordTagsList;
-}
-export const RecordsCreateRequestBodyAAAARecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsCreateRequestBodyAAAARecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsCreateRequestBodyAAAARecordSettings),
-    tags: S.optional(RecordsCreateRequestBodyAAAARecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsCreateRequestBodyAAAARecord",
-}) as any as S.Schema<RecordsCreateRequestBodyAAAARecord>;
-
-export type RecordsCreateRequestBodyCNAMERecordType = "CNAME";
-export const RecordsCreateRequestBodyCNAMERecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsCreateRequestBodyCNAMERecordSettings {
+export interface RecordsCreateRequestSettingsCNAMERecord {
   /** If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened. */
   flattenCname?: boolean;
   /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
@@ -5427,358 +5343,33 @@ export interface RecordsCreateRequestBodyCNAMERecordSettings {
   /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
   ipv6Only?: boolean;
 }
-export const RecordsCreateRequestBodyCNAMERecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
+export const RecordsCreateRequestSettingsCNAMERecord = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
       ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
       ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
     }),
-  ).annotate({
-    identifier: "RecordsCreateRequestBodyCNAMERecordSettings",
-  }) as any as S.Schema<RecordsCreateRequestBodyCNAMERecordSettings>;
-
-export type RecordsCreateRequestBodyCNAMERecordTagsList =
-  ReadonlyArray<unknown>;
-export const RecordsCreateRequestBodyCNAMERecordTagsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<RecordsCreateRequestBodyCNAMERecordTagsList>;
-
-export interface RecordsCreateRequestBodyCNAMERecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsCreateRequestBodyCNAMERecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** A valid hostname. Must not match the record's name. */
-  content?: string;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsCreateRequestBodyCNAMERecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsCreateRequestBodyCNAMERecordTagsList;
-}
-export const RecordsCreateRequestBodyCNAMERecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsCreateRequestBodyCNAMERecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsCreateRequestBodyCNAMERecordSettings),
-    tags: S.optional(RecordsCreateRequestBodyCNAMERecordTagsList),
-  }),
 ).annotate({
-  identifier: "RecordsCreateRequestBodyCNAMERecord",
-}) as any as S.Schema<RecordsCreateRequestBodyCNAMERecord>;
+  identifier: "RecordsCreateRequestSettingsCNAMERecord",
+}) as any as S.Schema<RecordsCreateRequestSettingsCNAMERecord>;
 
-export type RecordsCreateRequestBodyMXRecordType = "MX";
-export const RecordsCreateRequestBodyMXRecordType = /*@__PURE__*/ S.String;
+export type RecordsCreateRequestSettings =
+  | RecordsCreateRequestSettingsARecord
+  | RecordsCreateRequestSettingsCNAMERecord;
+export const RecordsCreateRequestSettings = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["ipv4Only", "ipv6Only"],
+    ["flattenCname", "ipv4Only", "ipv6Only"],
+  ]),
+);
 
-export interface RecordsCreateRequestBodyMXRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsCreateRequestBodyMXRecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsCreateRequestBodyMXRecordSettings",
-}) as any as S.Schema<RecordsCreateRequestBodyMXRecordSettings>;
-
-export type RecordsCreateRequestBodyMXRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsCreateRequestBodyMXRecordTagsList = /*@__PURE__*/ S.Array(
+export type RecordsCreateRequestTagsList = ReadonlyArray<unknown>;
+export const RecordsCreateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
-) as any as S.Schema<RecordsCreateRequestBodyMXRecordTagsList>;
+) as any as S.Schema<RecordsCreateRequestTagsList>;
 
-export interface RecordsCreateRequestBodyMXRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsCreateRequestBodyMXRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** A valid mail server hostname. */
-  content?: string;
-  /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
-  priority?: number;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsCreateRequestBodyMXRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsCreateRequestBodyMXRecordTagsList;
-}
-export const RecordsCreateRequestBodyMXRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsCreateRequestBodyMXRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    priority: S.optional(S.Number),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsCreateRequestBodyMXRecordSettings),
-    tags: S.optional(RecordsCreateRequestBodyMXRecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsCreateRequestBodyMXRecord",
-}) as any as S.Schema<RecordsCreateRequestBodyMXRecord>;
-
-export type RecordsCreateRequestBodyNSRecordType = "NS";
-export const RecordsCreateRequestBodyNSRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsCreateRequestBodyNSRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsCreateRequestBodyNSRecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsCreateRequestBodyNSRecordSettings",
-}) as any as S.Schema<RecordsCreateRequestBodyNSRecordSettings>;
-
-export type RecordsCreateRequestBodyNSRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsCreateRequestBodyNSRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsCreateRequestBodyNSRecordTagsList>;
-
-export interface RecordsCreateRequestBodyNSRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsCreateRequestBodyNSRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** A valid name server host name. */
-  content?: string;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsCreateRequestBodyNSRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsCreateRequestBodyNSRecordTagsList;
-}
-export const RecordsCreateRequestBodyNSRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsCreateRequestBodyNSRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsCreateRequestBodyNSRecordSettings),
-    tags: S.optional(RecordsCreateRequestBodyNSRecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsCreateRequestBodyNSRecord",
-}) as any as S.Schema<RecordsCreateRequestBodyNSRecord>;
-
-export type RecordsCreateRequestBodyDNSRecordsOpenpgpkeyRecordType =
-  "OPENPGPKEY";
-export const RecordsCreateRequestBodyDNSRecordsOpenpgpkeyRecordType =
-  /*@__PURE__*/ S.String;
-
-export interface RecordsCreateRequestBodyDNSRecordsOpenpgpkeyRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsCreateRequestBodyDNSRecordsOpenpgpkeyRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsCreateRequestBodyDNSRecordsOpenpgpkeyRecordSettings",
-  }) as any as S.Schema<RecordsCreateRequestBodyDNSRecordsOpenpgpkeyRecordSettings>;
-
-export type RecordsCreateRequestBodyDNSRecordsOpenpgpkeyRecordTagsList =
-  ReadonlyArray<unknown>;
-export const RecordsCreateRequestBodyDNSRecordsOpenpgpkeyRecordTagsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<RecordsCreateRequestBodyDNSRecordsOpenpgpkeyRecordTagsList>;
-
-export interface RecordsCreateRequestBodyDNSRecordsOpenpgpkeyRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsCreateRequestBodyDNSRecordsOpenpgpkeyRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
-  content?: string;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsCreateRequestBodyDNSRecordsOpenpgpkeyRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsCreateRequestBodyDNSRecordsOpenpgpkeyRecordTagsList;
-}
-export const RecordsCreateRequestBodyDNSRecordsOpenpgpkeyRecord =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      ttl: S.Number,
-      type: RecordsCreateRequestBodyDNSRecordsOpenpgpkeyRecordType,
-      comment: S.optional(S.String),
-      content: S.optional(S.String),
-      proxied: S.optional(S.Boolean),
-      settings: S.optional(
-        RecordsCreateRequestBodyDNSRecordsOpenpgpkeyRecordSettings,
-      ),
-      tags: S.optional(
-        RecordsCreateRequestBodyDNSRecordsOpenpgpkeyRecordTagsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "RecordsCreateRequestBodyDNSRecordsOpenpgpkeyRecord",
-  }) as any as S.Schema<RecordsCreateRequestBodyDNSRecordsOpenpgpkeyRecord>;
-
-export type RecordsCreateRequestBodyPTRRecordType = "PTR";
-export const RecordsCreateRequestBodyPTRRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsCreateRequestBodyPTRRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsCreateRequestBodyPTRRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsCreateRequestBodyPTRRecordSettings",
-  }) as any as S.Schema<RecordsCreateRequestBodyPTRRecordSettings>;
-
-export type RecordsCreateRequestBodyPTRRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsCreateRequestBodyPTRRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsCreateRequestBodyPTRRecordTagsList>;
-
-export interface RecordsCreateRequestBodyPTRRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsCreateRequestBodyPTRRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Domain name pointing to the address. */
-  content?: string;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsCreateRequestBodyPTRRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsCreateRequestBodyPTRRecordTagsList;
-}
-export const RecordsCreateRequestBodyPTRRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsCreateRequestBodyPTRRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsCreateRequestBodyPTRRecordSettings),
-    tags: S.optional(RecordsCreateRequestBodyPTRRecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsCreateRequestBodyPTRRecord",
-}) as any as S.Schema<RecordsCreateRequestBodyPTRRecord>;
-
-export type RecordsCreateRequestBodyTXTRecordType = "TXT";
-export const RecordsCreateRequestBodyTXTRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsCreateRequestBodyTXTRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsCreateRequestBodyTXTRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsCreateRequestBodyTXTRecordSettings",
-  }) as any as S.Schema<RecordsCreateRequestBodyTXTRecordSettings>;
-
-export type RecordsCreateRequestBodyTXTRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsCreateRequestBodyTXTRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsCreateRequestBodyTXTRecordTagsList>;
-
-export interface RecordsCreateRequestBodyTXTRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsCreateRequestBodyTXTRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Text content for the record. The content must consist of quoted "character strings" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split. */
-  content?: string;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsCreateRequestBodyTXTRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsCreateRequestBodyTXTRecordTagsList;
-}
-export const RecordsCreateRequestBodyTXTRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsCreateRequestBodyTXTRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsCreateRequestBodyTXTRecordSettings),
-    tags: S.optional(RecordsCreateRequestBodyTXTRecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsCreateRequestBodyTXTRecord",
-}) as any as S.Schema<RecordsCreateRequestBodyTXTRecord>;
-
-export type RecordsCreateRequestBodyCAARecordType = "CAA";
-export const RecordsCreateRequestBodyCAARecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsCreateRequestBodyCAARecordData {
+export interface RecordsCreateRequestDataCAARecord {
   /** Flags for the CAA record. */
   flags?: number;
   /** Name of the property controlled by this record (e.g.: issue, issuewild, iodef). */
@@ -5786,78 +5377,17 @@ export interface RecordsCreateRequestBodyCAARecordData {
   /** Value of the record. This field's semantics depend on the chosen tag. */
   value?: string;
 }
-export const RecordsCreateRequestBodyCAARecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      flags: S.optional(S.Number),
-      tag: S.optional(S.String),
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "RecordsCreateRequestBodyCAARecordData",
-}) as any as S.Schema<RecordsCreateRequestBodyCAARecordData>;
-
-export interface RecordsCreateRequestBodyCAARecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsCreateRequestBodyCAARecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsCreateRequestBodyCAARecordSettings",
-  }) as any as S.Schema<RecordsCreateRequestBodyCAARecordSettings>;
-
-export type RecordsCreateRequestBodyCAARecordTagsList = ReadonlyArray<unknown>;
-export const RecordsCreateRequestBodyCAARecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsCreateRequestBodyCAARecordTagsList>;
-
-export interface RecordsCreateRequestBodyCAARecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsCreateRequestBodyCAARecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted CAA content. See 'data' to set CAA properties. */
-  content?: string;
-  /** Components of a CAA record. */
-  data?: RecordsCreateRequestBodyCAARecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsCreateRequestBodyCAARecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsCreateRequestBodyCAARecordTagsList;
-}
-export const RecordsCreateRequestBodyCAARecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsCreateRequestDataCAARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsCreateRequestBodyCAARecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsCreateRequestBodyCAARecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsCreateRequestBodyCAARecordSettings),
-    tags: S.optional(RecordsCreateRequestBodyCAARecordTagsList),
+    flags: S.optional(S.Number),
+    tag: S.optional(S.String),
+    value: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "RecordsCreateRequestBodyCAARecord",
-}) as any as S.Schema<RecordsCreateRequestBodyCAARecord>;
+  identifier: "RecordsCreateRequestDataCAARecord",
+}) as any as S.Schema<RecordsCreateRequestDataCAARecord>;
 
-export type RecordsCreateRequestBodyCERTRecordType = "CERT";
-export const RecordsCreateRequestBodyCERTRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsCreateRequestBodyCERTRecordData {
+export interface RecordsCreateRequestDataCERTRecord {
   /** Algorithm. */
   algorithm?: number;
   /** Certificate. */
@@ -5867,79 +5397,18 @@ export interface RecordsCreateRequestBodyCERTRecordData {
   /** Type. */
   type?: number;
 }
-export const RecordsCreateRequestBodyCERTRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      algorithm: S.optional(S.Number),
-      certificate: S.optional(S.String),
-      keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
-      type: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "RecordsCreateRequestBodyCERTRecordData",
-}) as any as S.Schema<RecordsCreateRequestBodyCERTRecordData>;
-
-export interface RecordsCreateRequestBodyCERTRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsCreateRequestBodyCERTRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsCreateRequestBodyCERTRecordSettings",
-  }) as any as S.Schema<RecordsCreateRequestBodyCERTRecordSettings>;
-
-export type RecordsCreateRequestBodyCERTRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsCreateRequestBodyCERTRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsCreateRequestBodyCERTRecordTagsList>;
-
-export interface RecordsCreateRequestBodyCERTRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsCreateRequestBodyCERTRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted CERT content. See 'data' to set CERT properties. */
-  content?: string;
-  /** Components of a CERT record. */
-  data?: RecordsCreateRequestBodyCERTRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsCreateRequestBodyCERTRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsCreateRequestBodyCERTRecordTagsList;
-}
-export const RecordsCreateRequestBodyCERTRecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsCreateRequestDataCERTRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsCreateRequestBodyCERTRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsCreateRequestBodyCERTRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsCreateRequestBodyCERTRecordSettings),
-    tags: S.optional(RecordsCreateRequestBodyCERTRecordTagsList),
+    algorithm: S.optional(S.Number),
+    certificate: S.optional(S.String),
+    keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
+    type: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "RecordsCreateRequestBodyCERTRecord",
-}) as any as S.Schema<RecordsCreateRequestBodyCERTRecord>;
+  identifier: "RecordsCreateRequestDataCERTRecord",
+}) as any as S.Schema<RecordsCreateRequestDataCERTRecord>;
 
-export type RecordsCreateRequestBodyDNSKEYRecordType = "DNSKEY";
-export const RecordsCreateRequestBodyDNSKEYRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsCreateRequestBodyDNSKEYRecordData {
+export interface RecordsCreateRequestDataDNSKEYRecord {
   /** Algorithm. */
   algorithm?: number;
   /** Flags. */
@@ -5949,7 +5418,7 @@ export interface RecordsCreateRequestBodyDNSKEYRecordData {
   /** Public Key. */
   publicKey?: string;
 }
-export const RecordsCreateRequestBodyDNSKEYRecordData = /*@__PURE__*/ S.suspend(
+export const RecordsCreateRequestDataDNSKEYRecord = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       algorithm: S.optional(S.Number),
@@ -5958,73 +5427,10 @@ export const RecordsCreateRequestBodyDNSKEYRecordData = /*@__PURE__*/ S.suspend(
       publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
     }),
 ).annotate({
-  identifier: "RecordsCreateRequestBodyDNSKEYRecordData",
-}) as any as S.Schema<RecordsCreateRequestBodyDNSKEYRecordData>;
+  identifier: "RecordsCreateRequestDataDNSKEYRecord",
+}) as any as S.Schema<RecordsCreateRequestDataDNSKEYRecord>;
 
-export interface RecordsCreateRequestBodyDNSKEYRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsCreateRequestBodyDNSKEYRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsCreateRequestBodyDNSKEYRecordSettings",
-  }) as any as S.Schema<RecordsCreateRequestBodyDNSKEYRecordSettings>;
-
-export type RecordsCreateRequestBodyDNSKEYRecordTagsList =
-  ReadonlyArray<unknown>;
-export const RecordsCreateRequestBodyDNSKEYRecordTagsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<RecordsCreateRequestBodyDNSKEYRecordTagsList>;
-
-export interface RecordsCreateRequestBodyDNSKEYRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsCreateRequestBodyDNSKEYRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted DNSKEY content. See 'data' to set DNSKEY properties. */
-  content?: string;
-  /** Components of a DNSKEY record. */
-  data?: RecordsCreateRequestBodyDNSKEYRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsCreateRequestBodyDNSKEYRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsCreateRequestBodyDNSKEYRecordTagsList;
-}
-export const RecordsCreateRequestBodyDNSKEYRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      ttl: S.Number,
-      type: RecordsCreateRequestBodyDNSKEYRecordType,
-      comment: S.optional(S.String),
-      content: S.optional(S.String),
-      data: S.optional(RecordsCreateRequestBodyDNSKEYRecordData),
-      proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsCreateRequestBodyDNSKEYRecordSettings),
-      tags: S.optional(RecordsCreateRequestBodyDNSKEYRecordTagsList),
-    }),
-).annotate({
-  identifier: "RecordsCreateRequestBodyDNSKEYRecord",
-}) as any as S.Schema<RecordsCreateRequestBodyDNSKEYRecord>;
-
-export type RecordsCreateRequestBodyDSRecordType = "DS";
-export const RecordsCreateRequestBodyDSRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsCreateRequestBodyDSRecordData {
+export interface RecordsCreateRequestDataDSRecord {
   /** Algorithm. */
   algorithm?: number;
   /** Digest. */
@@ -6034,79 +5440,18 @@ export interface RecordsCreateRequestBodyDSRecordData {
   /** Key Tag. */
   keyTag?: number;
 }
-export const RecordsCreateRequestBodyDSRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      algorithm: S.optional(S.Number),
-      digest: S.optional(S.String),
-      digestType: S.optional(S.Number.pipe(T.Body("digest_type"))),
-      keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
-    }),
-).annotate({
-  identifier: "RecordsCreateRequestBodyDSRecordData",
-}) as any as S.Schema<RecordsCreateRequestBodyDSRecordData>;
-
-export interface RecordsCreateRequestBodyDSRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsCreateRequestBodyDSRecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsCreateRequestBodyDSRecordSettings",
-}) as any as S.Schema<RecordsCreateRequestBodyDSRecordSettings>;
-
-export type RecordsCreateRequestBodyDSRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsCreateRequestBodyDSRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsCreateRequestBodyDSRecordTagsList>;
-
-export interface RecordsCreateRequestBodyDSRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsCreateRequestBodyDSRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted DS content. See 'data' to set DS properties. */
-  content?: string;
-  /** Components of a DS record. */
-  data?: RecordsCreateRequestBodyDSRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsCreateRequestBodyDSRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsCreateRequestBodyDSRecordTagsList;
-}
-export const RecordsCreateRequestBodyDSRecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsCreateRequestDataDSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsCreateRequestBodyDSRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsCreateRequestBodyDSRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsCreateRequestBodyDSRecordSettings),
-    tags: S.optional(RecordsCreateRequestBodyDSRecordTagsList),
+    algorithm: S.optional(S.Number),
+    digest: S.optional(S.String),
+    digestType: S.optional(S.Number.pipe(T.Body("digest_type"))),
+    keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
   }),
 ).annotate({
-  identifier: "RecordsCreateRequestBodyDSRecord",
-}) as any as S.Schema<RecordsCreateRequestBodyDSRecord>;
+  identifier: "RecordsCreateRequestDataDSRecord",
+}) as any as S.Schema<RecordsCreateRequestDataDSRecord>;
 
-export type RecordsCreateRequestBodyHTTPSRecordType = "HTTPS";
-export const RecordsCreateRequestBodyHTTPSRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsCreateRequestBodyHTTPSRecordData {
+export interface RecordsCreateRequestDataHTTPSRecord {
   /** Priority. */
   priority?: number;
   /** Target. */
@@ -6114,94 +5459,31 @@ export interface RecordsCreateRequestBodyHTTPSRecordData {
   /** Value. */
   value?: string;
 }
-export const RecordsCreateRequestBodyHTTPSRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      priority: S.optional(S.Number),
-      target: S.optional(S.String),
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "RecordsCreateRequestBodyHTTPSRecordData",
-}) as any as S.Schema<RecordsCreateRequestBodyHTTPSRecordData>;
-
-export interface RecordsCreateRequestBodyHTTPSRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsCreateRequestBodyHTTPSRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsCreateRequestBodyHTTPSRecordSettings",
-  }) as any as S.Schema<RecordsCreateRequestBodyHTTPSRecordSettings>;
-
-export type RecordsCreateRequestBodyHTTPSRecordTagsList =
-  ReadonlyArray<unknown>;
-export const RecordsCreateRequestBodyHTTPSRecordTagsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<RecordsCreateRequestBodyHTTPSRecordTagsList>;
-
-export interface RecordsCreateRequestBodyHTTPSRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsCreateRequestBodyHTTPSRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted HTTPS content. See 'data' to set HTTPS properties. */
-  content?: string;
-  /** Components of a HTTPS record. */
-  data?: RecordsCreateRequestBodyHTTPSRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsCreateRequestBodyHTTPSRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsCreateRequestBodyHTTPSRecordTagsList;
-}
-export const RecordsCreateRequestBodyHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsCreateRequestDataHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsCreateRequestBodyHTTPSRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsCreateRequestBodyHTTPSRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsCreateRequestBodyHTTPSRecordSettings),
-    tags: S.optional(RecordsCreateRequestBodyHTTPSRecordTagsList),
+    priority: S.optional(S.Number),
+    target: S.optional(S.String),
+    value: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "RecordsCreateRequestBodyHTTPSRecord",
-}) as any as S.Schema<RecordsCreateRequestBodyHTTPSRecord>;
+  identifier: "RecordsCreateRequestDataHTTPSRecord",
+}) as any as S.Schema<RecordsCreateRequestDataHTTPSRecord>;
 
-export type RecordsCreateRequestBodyLOCRecordType = "LOC";
-export const RecordsCreateRequestBodyLOCRecordType = /*@__PURE__*/ S.String;
-
-export type RecordsCreateRequestBodyLOCRecordDataLatDirection = "N" | "S";
-export const RecordsCreateRequestBodyLOCRecordDataLatDirection =
+export type RecordsCreateRequestDataLOCRecordLatDirection = "N" | "S";
+export const RecordsCreateRequestDataLOCRecordLatDirection =
   /*@__PURE__*/ S.String;
 
-export type RecordsCreateRequestBodyLOCRecordDataLongDirection = "E" | "W";
-export const RecordsCreateRequestBodyLOCRecordDataLongDirection =
+export type RecordsCreateRequestDataLOCRecordLongDirection = "E" | "W";
+export const RecordsCreateRequestDataLOCRecordLongDirection =
   /*@__PURE__*/ S.String;
 
-export interface RecordsCreateRequestBodyLOCRecordData {
+export interface RecordsCreateRequestDataLOCRecord {
   /** Altitude of location in meters. */
   altitude?: number;
   /** Degrees of latitude. */
   latDegrees?: number;
   /** Latitude direction. */
-  latDirection?: RecordsCreateRequestBodyLOCRecordDataLatDirection;
+  latDirection?: RecordsCreateRequestDataLOCRecordLatDirection;
   /** Minutes of latitude. */
   latMinutes?: number;
   /** Seconds of latitude. */
@@ -6209,7 +5491,7 @@ export interface RecordsCreateRequestBodyLOCRecordData {
   /** Degrees of longitude. */
   longDegrees?: number;
   /** Longitude direction. */
-  longDirection?: RecordsCreateRequestBodyLOCRecordDataLongDirection;
+  longDirection?: RecordsCreateRequestDataLOCRecordLongDirection;
   /** Minutes of longitude. */
   longMinutes?: number;
   /** Seconds of longitude. */
@@ -6221,95 +5503,34 @@ export interface RecordsCreateRequestBodyLOCRecordData {
   /** Size of location in meters. */
   size?: number;
 }
-export const RecordsCreateRequestBodyLOCRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      altitude: S.optional(S.Number),
-      latDegrees: S.optional(S.Number.pipe(T.Body("lat_degrees"))),
-      latDirection: S.optional(
-        RecordsCreateRequestBodyLOCRecordDataLatDirection.pipe(
-          T.Body("lat_direction"),
-        ),
-      ),
-      latMinutes: S.optional(S.Number.pipe(T.Body("lat_minutes"))),
-      latSeconds: S.optional(S.Number.pipe(T.Body("lat_seconds"))),
-      longDegrees: S.optional(S.Number.pipe(T.Body("long_degrees"))),
-      longDirection: S.optional(
-        RecordsCreateRequestBodyLOCRecordDataLongDirection.pipe(
-          T.Body("long_direction"),
-        ),
-      ),
-      longMinutes: S.optional(S.Number.pipe(T.Body("long_minutes"))),
-      longSeconds: S.optional(S.Number.pipe(T.Body("long_seconds"))),
-      precisionHorz: S.optional(S.Number.pipe(T.Body("precision_horz"))),
-      precisionVert: S.optional(S.Number.pipe(T.Body("precision_vert"))),
-      size: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "RecordsCreateRequestBodyLOCRecordData",
-}) as any as S.Schema<RecordsCreateRequestBodyLOCRecordData>;
-
-export interface RecordsCreateRequestBodyLOCRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsCreateRequestBodyLOCRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsCreateRequestBodyLOCRecordSettings",
-  }) as any as S.Schema<RecordsCreateRequestBodyLOCRecordSettings>;
-
-export type RecordsCreateRequestBodyLOCRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsCreateRequestBodyLOCRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsCreateRequestBodyLOCRecordTagsList>;
-
-export interface RecordsCreateRequestBodyLOCRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsCreateRequestBodyLOCRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted LOC content. See 'data' to set LOC properties. */
-  content?: string;
-  /** Components of a LOC record. */
-  data?: RecordsCreateRequestBodyLOCRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsCreateRequestBodyLOCRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsCreateRequestBodyLOCRecordTagsList;
-}
-export const RecordsCreateRequestBodyLOCRecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsCreateRequestDataLOCRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsCreateRequestBodyLOCRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsCreateRequestBodyLOCRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsCreateRequestBodyLOCRecordSettings),
-    tags: S.optional(RecordsCreateRequestBodyLOCRecordTagsList),
+    altitude: S.optional(S.Number),
+    latDegrees: S.optional(S.Number.pipe(T.Body("lat_degrees"))),
+    latDirection: S.optional(
+      RecordsCreateRequestDataLOCRecordLatDirection.pipe(
+        T.Body("lat_direction"),
+      ),
+    ),
+    latMinutes: S.optional(S.Number.pipe(T.Body("lat_minutes"))),
+    latSeconds: S.optional(S.Number.pipe(T.Body("lat_seconds"))),
+    longDegrees: S.optional(S.Number.pipe(T.Body("long_degrees"))),
+    longDirection: S.optional(
+      RecordsCreateRequestDataLOCRecordLongDirection.pipe(
+        T.Body("long_direction"),
+      ),
+    ),
+    longMinutes: S.optional(S.Number.pipe(T.Body("long_minutes"))),
+    longSeconds: S.optional(S.Number.pipe(T.Body("long_seconds"))),
+    precisionHorz: S.optional(S.Number.pipe(T.Body("precision_horz"))),
+    precisionVert: S.optional(S.Number.pipe(T.Body("precision_vert"))),
+    size: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "RecordsCreateRequestBodyLOCRecord",
-}) as any as S.Schema<RecordsCreateRequestBodyLOCRecord>;
+  identifier: "RecordsCreateRequestDataLOCRecord",
+}) as any as S.Schema<RecordsCreateRequestDataLOCRecord>;
 
-export type RecordsCreateRequestBodyNAPTRRecordType = "NAPTR";
-export const RecordsCreateRequestBodyNAPTRRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsCreateRequestBodyNAPTRRecordData {
+export interface RecordsCreateRequestDataNAPTRRecord {
   /** Flags. */
   flags?: string;
   /** Order. */
@@ -6323,83 +5544,20 @@ export interface RecordsCreateRequestBodyNAPTRRecordData {
   /** Service. */
   service?: string;
 }
-export const RecordsCreateRequestBodyNAPTRRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      flags: S.optional(S.String),
-      order: S.optional(S.Number),
-      preference: S.optional(S.Number),
-      regex: S.optional(S.String),
-      replacement: S.optional(S.String),
-      service: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "RecordsCreateRequestBodyNAPTRRecordData",
-}) as any as S.Schema<RecordsCreateRequestBodyNAPTRRecordData>;
-
-export interface RecordsCreateRequestBodyNAPTRRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsCreateRequestBodyNAPTRRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsCreateRequestBodyNAPTRRecordSettings",
-  }) as any as S.Schema<RecordsCreateRequestBodyNAPTRRecordSettings>;
-
-export type RecordsCreateRequestBodyNAPTRRecordTagsList =
-  ReadonlyArray<unknown>;
-export const RecordsCreateRequestBodyNAPTRRecordTagsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<RecordsCreateRequestBodyNAPTRRecordTagsList>;
-
-export interface RecordsCreateRequestBodyNAPTRRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsCreateRequestBodyNAPTRRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted NAPTR content. See 'data' to set NAPTR properties. */
-  content?: string;
-  /** Components of a NAPTR record. */
-  data?: RecordsCreateRequestBodyNAPTRRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsCreateRequestBodyNAPTRRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsCreateRequestBodyNAPTRRecordTagsList;
-}
-export const RecordsCreateRequestBodyNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsCreateRequestDataNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsCreateRequestBodyNAPTRRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsCreateRequestBodyNAPTRRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsCreateRequestBodyNAPTRRecordSettings),
-    tags: S.optional(RecordsCreateRequestBodyNAPTRRecordTagsList),
+    flags: S.optional(S.String),
+    order: S.optional(S.Number),
+    preference: S.optional(S.Number),
+    regex: S.optional(S.String),
+    replacement: S.optional(S.String),
+    service: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "RecordsCreateRequestBodyNAPTRRecord",
-}) as any as S.Schema<RecordsCreateRequestBodyNAPTRRecord>;
+  identifier: "RecordsCreateRequestDataNAPTRRecord",
+}) as any as S.Schema<RecordsCreateRequestDataNAPTRRecord>;
 
-export type RecordsCreateRequestBodySMIMEARecordType = "SMIMEA";
-export const RecordsCreateRequestBodySMIMEARecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsCreateRequestBodySMIMEARecordData {
+export interface RecordsCreateRequestDataSMIMEARecord {
   /** Certificate. */
   certificate?: string;
   /** Matching Type. */
@@ -6409,7 +5567,7 @@ export interface RecordsCreateRequestBodySMIMEARecordData {
   /** Usage. */
   usage?: number;
 }
-export const RecordsCreateRequestBodySMIMEARecordData = /*@__PURE__*/ S.suspend(
+export const RecordsCreateRequestDataSMIMEARecord = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       certificate: S.optional(S.String),
@@ -6418,73 +5576,10 @@ export const RecordsCreateRequestBodySMIMEARecordData = /*@__PURE__*/ S.suspend(
       usage: S.optional(S.Number),
     }),
 ).annotate({
-  identifier: "RecordsCreateRequestBodySMIMEARecordData",
-}) as any as S.Schema<RecordsCreateRequestBodySMIMEARecordData>;
+  identifier: "RecordsCreateRequestDataSMIMEARecord",
+}) as any as S.Schema<RecordsCreateRequestDataSMIMEARecord>;
 
-export interface RecordsCreateRequestBodySMIMEARecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsCreateRequestBodySMIMEARecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsCreateRequestBodySMIMEARecordSettings",
-  }) as any as S.Schema<RecordsCreateRequestBodySMIMEARecordSettings>;
-
-export type RecordsCreateRequestBodySMIMEARecordTagsList =
-  ReadonlyArray<unknown>;
-export const RecordsCreateRequestBodySMIMEARecordTagsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<RecordsCreateRequestBodySMIMEARecordTagsList>;
-
-export interface RecordsCreateRequestBodySMIMEARecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsCreateRequestBodySMIMEARecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted SMIMEA content. See 'data' to set SMIMEA properties. */
-  content?: string;
-  /** Components of a SMIMEA record. */
-  data?: RecordsCreateRequestBodySMIMEARecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsCreateRequestBodySMIMEARecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsCreateRequestBodySMIMEARecordTagsList;
-}
-export const RecordsCreateRequestBodySMIMEARecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      ttl: S.Number,
-      type: RecordsCreateRequestBodySMIMEARecordType,
-      comment: S.optional(S.String),
-      content: S.optional(S.String),
-      data: S.optional(RecordsCreateRequestBodySMIMEARecordData),
-      proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsCreateRequestBodySMIMEARecordSettings),
-      tags: S.optional(RecordsCreateRequestBodySMIMEARecordTagsList),
-    }),
-).annotate({
-  identifier: "RecordsCreateRequestBodySMIMEARecord",
-}) as any as S.Schema<RecordsCreateRequestBodySMIMEARecord>;
-
-export type RecordsCreateRequestBodySRVRecordType = "SRV";
-export const RecordsCreateRequestBodySRVRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsCreateRequestBodySRVRecordData {
+export interface RecordsCreateRequestDataSRVRecord {
   /** The port of the service. */
   port?: number;
   /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
@@ -6494,79 +5589,18 @@ export interface RecordsCreateRequestBodySRVRecordData {
   /** The record weight. */
   weight?: number;
 }
-export const RecordsCreateRequestBodySRVRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      port: S.optional(S.Number),
-      priority: S.optional(S.Number),
-      target: S.optional(S.String),
-      weight: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "RecordsCreateRequestBodySRVRecordData",
-}) as any as S.Schema<RecordsCreateRequestBodySRVRecordData>;
-
-export interface RecordsCreateRequestBodySRVRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsCreateRequestBodySRVRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsCreateRequestBodySRVRecordSettings",
-  }) as any as S.Schema<RecordsCreateRequestBodySRVRecordSettings>;
-
-export type RecordsCreateRequestBodySRVRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsCreateRequestBodySRVRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsCreateRequestBodySRVRecordTagsList>;
-
-export interface RecordsCreateRequestBodySRVRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsCreateRequestBodySRVRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Priority, weight, port, and SRV target. See 'data' for setting the individual component values. */
-  content?: string;
-  /** Components of a SRV record. */
-  data?: RecordsCreateRequestBodySRVRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsCreateRequestBodySRVRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsCreateRequestBodySRVRecordTagsList;
-}
-export const RecordsCreateRequestBodySRVRecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsCreateRequestDataSRVRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsCreateRequestBodySRVRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsCreateRequestBodySRVRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsCreateRequestBodySRVRecordSettings),
-    tags: S.optional(RecordsCreateRequestBodySRVRecordTagsList),
+    port: S.optional(S.Number),
+    priority: S.optional(S.Number),
+    target: S.optional(S.String),
+    weight: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "RecordsCreateRequestBodySRVRecord",
-}) as any as S.Schema<RecordsCreateRequestBodySRVRecord>;
+  identifier: "RecordsCreateRequestDataSRVRecord",
+}) as any as S.Schema<RecordsCreateRequestDataSRVRecord>;
 
-export type RecordsCreateRequestBodySSHFPRecordType = "SSHFP";
-export const RecordsCreateRequestBodySSHFPRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsCreateRequestBodySSHFPRecordData {
+export interface RecordsCreateRequestDataSSHFPRecord {
   /** Algorithm. */
   algorithm?: number;
   /** Fingerprint. */
@@ -6574,567 +5608,69 @@ export interface RecordsCreateRequestBodySSHFPRecordData {
   /** Type. */
   type?: number;
 }
-export const RecordsCreateRequestBodySSHFPRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      algorithm: S.optional(S.Number),
-      fingerprint: S.optional(S.String),
-      type: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "RecordsCreateRequestBodySSHFPRecordData",
-}) as any as S.Schema<RecordsCreateRequestBodySSHFPRecordData>;
-
-export interface RecordsCreateRequestBodySSHFPRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsCreateRequestBodySSHFPRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsCreateRequestBodySSHFPRecordSettings",
-  }) as any as S.Schema<RecordsCreateRequestBodySSHFPRecordSettings>;
-
-export type RecordsCreateRequestBodySSHFPRecordTagsList =
-  ReadonlyArray<unknown>;
-export const RecordsCreateRequestBodySSHFPRecordTagsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<RecordsCreateRequestBodySSHFPRecordTagsList>;
-
-export interface RecordsCreateRequestBodySSHFPRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsCreateRequestBodySSHFPRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted SSHFP content. See 'data' to set SSHFP properties. */
-  content?: string;
-  /** Components of a SSHFP record. */
-  data?: RecordsCreateRequestBodySSHFPRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsCreateRequestBodySSHFPRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsCreateRequestBodySSHFPRecordTagsList;
-}
-export const RecordsCreateRequestBodySSHFPRecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsCreateRequestDataSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsCreateRequestBodySSHFPRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsCreateRequestBodySSHFPRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsCreateRequestBodySSHFPRecordSettings),
-    tags: S.optional(RecordsCreateRequestBodySSHFPRecordTagsList),
+    algorithm: S.optional(S.Number),
+    fingerprint: S.optional(S.String),
+    type: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "RecordsCreateRequestBodySSHFPRecord",
-}) as any as S.Schema<RecordsCreateRequestBodySSHFPRecord>;
+  identifier: "RecordsCreateRequestDataSSHFPRecord",
+}) as any as S.Schema<RecordsCreateRequestDataSSHFPRecord>;
 
-export type RecordsCreateRequestBodySVCBRecordType = "SVCB";
-export const RecordsCreateRequestBodySVCBRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsCreateRequestBodySVCBRecordData {
-  /** Priority. */
-  priority?: number;
-  /** Target. */
-  target?: string;
-  /** Value. */
-  value?: string;
-}
-export const RecordsCreateRequestBodySVCBRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      priority: S.optional(S.Number),
-      target: S.optional(S.String),
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "RecordsCreateRequestBodySVCBRecordData",
-}) as any as S.Schema<RecordsCreateRequestBodySVCBRecordData>;
-
-export interface RecordsCreateRequestBodySVCBRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsCreateRequestBodySVCBRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsCreateRequestBodySVCBRecordSettings",
-  }) as any as S.Schema<RecordsCreateRequestBodySVCBRecordSettings>;
-
-export type RecordsCreateRequestBodySVCBRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsCreateRequestBodySVCBRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsCreateRequestBodySVCBRecordTagsList>;
-
-export interface RecordsCreateRequestBodySVCBRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsCreateRequestBodySVCBRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted SVCB content. See 'data' to set SVCB properties. */
-  content?: string;
-  /** Components of a SVCB record. */
-  data?: RecordsCreateRequestBodySVCBRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsCreateRequestBodySVCBRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsCreateRequestBodySVCBRecordTagsList;
-}
-export const RecordsCreateRequestBodySVCBRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsCreateRequestBodySVCBRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsCreateRequestBodySVCBRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsCreateRequestBodySVCBRecordSettings),
-    tags: S.optional(RecordsCreateRequestBodySVCBRecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsCreateRequestBodySVCBRecord",
-}) as any as S.Schema<RecordsCreateRequestBodySVCBRecord>;
-
-export type RecordsCreateRequestBodyTLSARecordType = "TLSA";
-export const RecordsCreateRequestBodyTLSARecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsCreateRequestBodyTLSARecordData {
-  /** Certificate. */
-  certificate?: string;
-  /** Matching Type. */
-  matchingType?: number;
-  /** Selector. */
-  selector?: number;
-  /** Usage. */
-  usage?: number;
-}
-export const RecordsCreateRequestBodyTLSARecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      certificate: S.optional(S.String),
-      matchingType: S.optional(S.Number.pipe(T.Body("matching_type"))),
-      selector: S.optional(S.Number),
-      usage: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "RecordsCreateRequestBodyTLSARecordData",
-}) as any as S.Schema<RecordsCreateRequestBodyTLSARecordData>;
-
-export interface RecordsCreateRequestBodyTLSARecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsCreateRequestBodyTLSARecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsCreateRequestBodyTLSARecordSettings",
-  }) as any as S.Schema<RecordsCreateRequestBodyTLSARecordSettings>;
-
-export type RecordsCreateRequestBodyTLSARecordTagsList = ReadonlyArray<unknown>;
-export const RecordsCreateRequestBodyTLSARecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsCreateRequestBodyTLSARecordTagsList>;
-
-export interface RecordsCreateRequestBodyTLSARecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsCreateRequestBodyTLSARecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted TLSA content. See 'data' to set TLSA properties. */
-  content?: string;
-  /** Components of a TLSA record. */
-  data?: RecordsCreateRequestBodyTLSARecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsCreateRequestBodyTLSARecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsCreateRequestBodyTLSARecordTagsList;
-}
-export const RecordsCreateRequestBodyTLSARecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsCreateRequestBodyTLSARecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsCreateRequestBodyTLSARecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsCreateRequestBodyTLSARecordSettings),
-    tags: S.optional(RecordsCreateRequestBodyTLSARecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsCreateRequestBodyTLSARecord",
-}) as any as S.Schema<RecordsCreateRequestBodyTLSARecord>;
-
-export type RecordsCreateRequestBodyURIRecordType = "URI";
-export const RecordsCreateRequestBodyURIRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsCreateRequestBodyURIRecordData {
+export interface RecordsCreateRequestDataURIRecord {
   /** The record content. */
   target?: string;
   /** The record weight. */
   weight?: number;
 }
-export const RecordsCreateRequestBodyURIRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      target: S.optional(S.String),
-      weight: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "RecordsCreateRequestBodyURIRecordData",
-}) as any as S.Schema<RecordsCreateRequestBodyURIRecordData>;
-
-export interface RecordsCreateRequestBodyURIRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsCreateRequestBodyURIRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsCreateRequestBodyURIRecordSettings",
-  }) as any as S.Schema<RecordsCreateRequestBodyURIRecordSettings>;
-
-export type RecordsCreateRequestBodyURIRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsCreateRequestBodyURIRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsCreateRequestBodyURIRecordTagsList>;
-
-export interface RecordsCreateRequestBodyURIRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsCreateRequestBodyURIRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted URI content. See 'data' to set URI properties. */
-  content?: string;
-  /** Components of a URI record. */
-  data?: RecordsCreateRequestBodyURIRecordData;
-  /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
-  priority?: number;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsCreateRequestBodyURIRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsCreateRequestBodyURIRecordTagsList;
-}
-export const RecordsCreateRequestBodyURIRecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsCreateRequestDataURIRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsCreateRequestBodyURIRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsCreateRequestBodyURIRecordData),
-    priority: S.optional(S.Number),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsCreateRequestBodyURIRecordSettings),
-    tags: S.optional(RecordsCreateRequestBodyURIRecordTagsList),
+    target: S.optional(S.String),
+    weight: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "RecordsCreateRequestBodyURIRecord",
-}) as any as S.Schema<RecordsCreateRequestBodyURIRecord>;
+  identifier: "RecordsCreateRequestDataURIRecord",
+}) as any as S.Schema<RecordsCreateRequestDataURIRecord>;
 
-export type RecordsCreateRequestBody =
-  | RecordsCreateRequestBodyARecord
-  | RecordsCreateRequestBodyAAAARecord
-  | RecordsCreateRequestBodyCNAMERecord
-  | RecordsCreateRequestBodyMXRecord
-  | RecordsCreateRequestBodyNSRecord
-  | RecordsCreateRequestBodyDNSRecordsOpenpgpkeyRecord
-  | RecordsCreateRequestBodyPTRRecord
-  | RecordsCreateRequestBodyTXTRecord
-  | RecordsCreateRequestBodyCAARecord
-  | RecordsCreateRequestBodyCERTRecord
-  | RecordsCreateRequestBodyDNSKEYRecord
-  | RecordsCreateRequestBodyDSRecord
-  | RecordsCreateRequestBodyHTTPSRecord
-  | RecordsCreateRequestBodyLOCRecord
-  | RecordsCreateRequestBodyNAPTRRecord
-  | RecordsCreateRequestBodySMIMEARecord
-  | RecordsCreateRequestBodySRVRecord
-  | RecordsCreateRequestBodySSHFPRecord
-  | RecordsCreateRequestBodySVCBRecord
-  | RecordsCreateRequestBodyTLSARecord
-  | RecordsCreateRequestBodyURIRecord;
-export const RecordsCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+export type RecordsCreateRequestData =
+  | RecordsCreateRequestDataCAARecord
+  | RecordsCreateRequestDataCERTRecord
+  | RecordsCreateRequestDataDNSKEYRecord
+  | RecordsCreateRequestDataDSRecord
+  | RecordsCreateRequestDataHTTPSRecord
+  | RecordsCreateRequestDataLOCRecord
+  | RecordsCreateRequestDataNAPTRRecord
+  | RecordsCreateRequestDataSMIMEARecord
+  | RecordsCreateRequestDataSRVRecord
+  | RecordsCreateRequestDataSSHFPRecord
+  | RecordsCreateRequestDataURIRecord;
+export const RecordsCreateRequestData = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
+    ["flags", "tag", "value"],
+    ["algorithm", "certificate", "keyTag", "type"],
+    ["algorithm", "flags", "protocol", "publicKey"],
+    ["algorithm", "digest", "digestType", "keyTag"],
+    ["priority", "target", "value"],
     [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "privateRouting",
-      "proxied",
-      "settings",
-      "tags",
+      "altitude",
+      "latDegrees",
+      "latDirection",
+      "latMinutes",
+      "latSeconds",
+      "longDegrees",
+      "longDirection",
+      "longMinutes",
+      "longSeconds",
+      "precisionHorz",
+      "precisionVert",
+      "size",
     ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "privateRouting",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "priority",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "priority",
-      "proxied",
-      "settings",
-      "tags",
-    ],
+    ["flags", "order", "preference", "regex", "replacement", "service"],
+    ["certificate", "matchingType", "selector", "usage"],
+    ["port", "priority", "target", "weight"],
+    ["algorithm", "fingerprint", "type"],
+    ["target", "weight"],
   ]),
 );
 
@@ -7143,7 +5679,28 @@ export interface CreateRecordRequest {
   zoneId: string;
   /** Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
   includeShadowMetadata?: boolean;
-  body: RecordsCreateRequestBody;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl: number;
+  /** Record type. */
+  type: RecordsCreateRequestType;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A valid IPv4 address. */
+  content?: string;
+  /** Enables private network routing to the origin. */
+  privateRouting?: boolean;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsCreateRequestSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsCreateRequestTagsList;
+  /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
+  priority?: number;
+  /** Components of a CAA record. */
+  data?: RecordsCreateRequestData;
 }
 export const CreateRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7151,7 +5708,17 @@ export const CreateRecordRequest = /*@__PURE__*/ S.suspend(() =>
     includeShadowMetadata: S.optional(
       S.Boolean.pipe(T.Query("include_shadow_metadata")),
     ),
-    body: RecordsCreateRequestBody.pipe(T.HttpBody()),
+    name: S.String,
+    ttl: S.Number,
+    type: RecordsCreateRequestType,
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsCreateRequestSettings),
+    tags: S.optional(RecordsCreateRequestTagsList),
+    priority: S.optional(S.Number),
+    data: S.optional(RecordsCreateRequestData),
   })
     .pipe(
       T.Http({
@@ -14494,130 +13061,46 @@ export const PatchDnssecResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchDnssecResponse",
 }) as any as S.Schema<PatchDnssecResponse>;
 
-export type RecordsEditRequestBodyARecordType = "A";
-export const RecordsEditRequestBodyARecordType = /*@__PURE__*/ S.String;
+export type RecordsEditRequestType =
+  | "A"
+  | "AAAA"
+  | "CNAME"
+  | "MX"
+  | "NS"
+  | "OPENPGPKEY"
+  | "PTR"
+  | "TXT"
+  | "CAA"
+  | "CERT"
+  | "DNSKEY"
+  | "DS"
+  | "HTTPS"
+  | "LOC"
+  | "NAPTR"
+  | "SMIMEA"
+  | "SRV"
+  | "SSHFP"
+  | "SVCB"
+  | "TLSA"
+  | "URI";
+export const RecordsEditRequestType = /*@__PURE__*/ S.String;
 
-export interface RecordsEditRequestBodyARecordSettings {
+export interface RecordsEditRequestSettingsARecord {
   /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
   ipv4Only?: boolean;
   /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
   ipv6Only?: boolean;
 }
-export const RecordsEditRequestBodyARecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestBodyARecordSettings",
-}) as any as S.Schema<RecordsEditRequestBodyARecordSettings>;
-
-export type RecordsEditRequestBodyARecordTagsList = ReadonlyArray<unknown>;
-export const RecordsEditRequestBodyARecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsEditRequestBodyARecordTagsList>;
-
-export interface RecordsEditRequestBodyARecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsEditRequestBodyARecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** A valid IPv4 address. */
-  content?: string;
-  /** Enables private network routing to the origin. */
-  privateRouting?: boolean;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsEditRequestBodyARecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsEditRequestBodyARecordTagsList;
-}
-export const RecordsEditRequestBodyARecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsEditRequestSettingsARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsEditRequestBodyARecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsEditRequestBodyARecordSettings),
-    tags: S.optional(RecordsEditRequestBodyARecordTagsList),
+    ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
+    ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
   }),
 ).annotate({
-  identifier: "RecordsEditRequestBodyARecord",
-}) as any as S.Schema<RecordsEditRequestBodyARecord>;
+  identifier: "RecordsEditRequestSettingsARecord",
+}) as any as S.Schema<RecordsEditRequestSettingsARecord>;
 
-export type RecordsEditRequestBodyAAAARecordType = "AAAA";
-export const RecordsEditRequestBodyAAAARecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsEditRequestBodyAAAARecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsEditRequestBodyAAAARecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestBodyAAAARecordSettings",
-}) as any as S.Schema<RecordsEditRequestBodyAAAARecordSettings>;
-
-export type RecordsEditRequestBodyAAAARecordTagsList = ReadonlyArray<unknown>;
-export const RecordsEditRequestBodyAAAARecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsEditRequestBodyAAAARecordTagsList>;
-
-export interface RecordsEditRequestBodyAAAARecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsEditRequestBodyAAAARecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** A valid IPv6 address. */
-  content?: string;
-  /** Enables private network routing to the origin. */
-  privateRouting?: boolean;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsEditRequestBodyAAAARecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsEditRequestBodyAAAARecordTagsList;
-}
-export const RecordsEditRequestBodyAAAARecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsEditRequestBodyAAAARecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsEditRequestBodyAAAARecordSettings),
-    tags: S.optional(RecordsEditRequestBodyAAAARecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestBodyAAAARecord",
-}) as any as S.Schema<RecordsEditRequestBodyAAAARecord>;
-
-export type RecordsEditRequestBodyCNAMERecordType = "CNAME";
-export const RecordsEditRequestBodyCNAMERecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsEditRequestBodyCNAMERecordSettings {
+export interface RecordsEditRequestSettingsCNAMERecord {
   /** If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened. */
   flattenCname?: boolean;
   /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
@@ -14625,355 +13108,33 @@ export interface RecordsEditRequestBodyCNAMERecordSettings {
   /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
   ipv6Only?: boolean;
 }
-export const RecordsEditRequestBodyCNAMERecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
+export const RecordsEditRequestSettingsCNAMERecord = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
       ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
       ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
     }),
-  ).annotate({
-    identifier: "RecordsEditRequestBodyCNAMERecordSettings",
-  }) as any as S.Schema<RecordsEditRequestBodyCNAMERecordSettings>;
+).annotate({
+  identifier: "RecordsEditRequestSettingsCNAMERecord",
+}) as any as S.Schema<RecordsEditRequestSettingsCNAMERecord>;
 
-export type RecordsEditRequestBodyCNAMERecordTagsList = ReadonlyArray<unknown>;
-export const RecordsEditRequestBodyCNAMERecordTagsList = /*@__PURE__*/ S.Array(
+export type RecordsEditRequestSettings =
+  | RecordsEditRequestSettingsARecord
+  | RecordsEditRequestSettingsCNAMERecord;
+export const RecordsEditRequestSettings = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["ipv4Only", "ipv6Only"],
+    ["flattenCname", "ipv4Only", "ipv6Only"],
+  ]),
+);
+
+export type RecordsEditRequestTagsList = ReadonlyArray<unknown>;
+export const RecordsEditRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
-) as any as S.Schema<RecordsEditRequestBodyCNAMERecordTagsList>;
+) as any as S.Schema<RecordsEditRequestTagsList>;
 
-export interface RecordsEditRequestBodyCNAMERecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsEditRequestBodyCNAMERecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** A valid hostname. Must not match the record's name. */
-  content?: string;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsEditRequestBodyCNAMERecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsEditRequestBodyCNAMERecordTagsList;
-}
-export const RecordsEditRequestBodyCNAMERecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsEditRequestBodyCNAMERecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsEditRequestBodyCNAMERecordSettings),
-    tags: S.optional(RecordsEditRequestBodyCNAMERecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestBodyCNAMERecord",
-}) as any as S.Schema<RecordsEditRequestBodyCNAMERecord>;
-
-export type RecordsEditRequestBodyMXRecordType = "MX";
-export const RecordsEditRequestBodyMXRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsEditRequestBodyMXRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsEditRequestBodyMXRecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestBodyMXRecordSettings",
-}) as any as S.Schema<RecordsEditRequestBodyMXRecordSettings>;
-
-export type RecordsEditRequestBodyMXRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsEditRequestBodyMXRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsEditRequestBodyMXRecordTagsList>;
-
-export interface RecordsEditRequestBodyMXRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsEditRequestBodyMXRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** A valid mail server hostname. */
-  content?: string;
-  /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
-  priority?: number;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsEditRequestBodyMXRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsEditRequestBodyMXRecordTagsList;
-}
-export const RecordsEditRequestBodyMXRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsEditRequestBodyMXRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    priority: S.optional(S.Number),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsEditRequestBodyMXRecordSettings),
-    tags: S.optional(RecordsEditRequestBodyMXRecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestBodyMXRecord",
-}) as any as S.Schema<RecordsEditRequestBodyMXRecord>;
-
-export type RecordsEditRequestBodyNSRecordType = "NS";
-export const RecordsEditRequestBodyNSRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsEditRequestBodyNSRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsEditRequestBodyNSRecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestBodyNSRecordSettings",
-}) as any as S.Schema<RecordsEditRequestBodyNSRecordSettings>;
-
-export type RecordsEditRequestBodyNSRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsEditRequestBodyNSRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsEditRequestBodyNSRecordTagsList>;
-
-export interface RecordsEditRequestBodyNSRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsEditRequestBodyNSRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** A valid name server host name. */
-  content?: string;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsEditRequestBodyNSRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsEditRequestBodyNSRecordTagsList;
-}
-export const RecordsEditRequestBodyNSRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsEditRequestBodyNSRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsEditRequestBodyNSRecordSettings),
-    tags: S.optional(RecordsEditRequestBodyNSRecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestBodyNSRecord",
-}) as any as S.Schema<RecordsEditRequestBodyNSRecord>;
-
-export type RecordsEditRequestBodyDNSRecordsOpenpgpkeyRecordType = "OPENPGPKEY";
-export const RecordsEditRequestBodyDNSRecordsOpenpgpkeyRecordType =
-  /*@__PURE__*/ S.String;
-
-export interface RecordsEditRequestBodyDNSRecordsOpenpgpkeyRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsEditRequestBodyDNSRecordsOpenpgpkeyRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsEditRequestBodyDNSRecordsOpenpgpkeyRecordSettings",
-  }) as any as S.Schema<RecordsEditRequestBodyDNSRecordsOpenpgpkeyRecordSettings>;
-
-export type RecordsEditRequestBodyDNSRecordsOpenpgpkeyRecordTagsList =
-  ReadonlyArray<unknown>;
-export const RecordsEditRequestBodyDNSRecordsOpenpgpkeyRecordTagsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<RecordsEditRequestBodyDNSRecordsOpenpgpkeyRecordTagsList>;
-
-export interface RecordsEditRequestBodyDNSRecordsOpenpgpkeyRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsEditRequestBodyDNSRecordsOpenpgpkeyRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
-  content?: string;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsEditRequestBodyDNSRecordsOpenpgpkeyRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsEditRequestBodyDNSRecordsOpenpgpkeyRecordTagsList;
-}
-export const RecordsEditRequestBodyDNSRecordsOpenpgpkeyRecord =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      ttl: S.Number,
-      type: RecordsEditRequestBodyDNSRecordsOpenpgpkeyRecordType,
-      comment: S.optional(S.String),
-      content: S.optional(S.String),
-      proxied: S.optional(S.Boolean),
-      settings: S.optional(
-        RecordsEditRequestBodyDNSRecordsOpenpgpkeyRecordSettings,
-      ),
-      tags: S.optional(
-        RecordsEditRequestBodyDNSRecordsOpenpgpkeyRecordTagsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "RecordsEditRequestBodyDNSRecordsOpenpgpkeyRecord",
-  }) as any as S.Schema<RecordsEditRequestBodyDNSRecordsOpenpgpkeyRecord>;
-
-export type RecordsEditRequestBodyPTRRecordType = "PTR";
-export const RecordsEditRequestBodyPTRRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsEditRequestBodyPTRRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsEditRequestBodyPTRRecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestBodyPTRRecordSettings",
-}) as any as S.Schema<RecordsEditRequestBodyPTRRecordSettings>;
-
-export type RecordsEditRequestBodyPTRRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsEditRequestBodyPTRRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsEditRequestBodyPTRRecordTagsList>;
-
-export interface RecordsEditRequestBodyPTRRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsEditRequestBodyPTRRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Domain name pointing to the address. */
-  content?: string;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsEditRequestBodyPTRRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsEditRequestBodyPTRRecordTagsList;
-}
-export const RecordsEditRequestBodyPTRRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsEditRequestBodyPTRRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsEditRequestBodyPTRRecordSettings),
-    tags: S.optional(RecordsEditRequestBodyPTRRecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestBodyPTRRecord",
-}) as any as S.Schema<RecordsEditRequestBodyPTRRecord>;
-
-export type RecordsEditRequestBodyTXTRecordType = "TXT";
-export const RecordsEditRequestBodyTXTRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsEditRequestBodyTXTRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsEditRequestBodyTXTRecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestBodyTXTRecordSettings",
-}) as any as S.Schema<RecordsEditRequestBodyTXTRecordSettings>;
-
-export type RecordsEditRequestBodyTXTRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsEditRequestBodyTXTRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsEditRequestBodyTXTRecordTagsList>;
-
-export interface RecordsEditRequestBodyTXTRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsEditRequestBodyTXTRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Text content for the record. The content must consist of quoted "character strings" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split. */
-  content?: string;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsEditRequestBodyTXTRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsEditRequestBodyTXTRecordTagsList;
-}
-export const RecordsEditRequestBodyTXTRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsEditRequestBodyTXTRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsEditRequestBodyTXTRecordSettings),
-    tags: S.optional(RecordsEditRequestBodyTXTRecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestBodyTXTRecord",
-}) as any as S.Schema<RecordsEditRequestBodyTXTRecord>;
-
-export type RecordsEditRequestBodyCAARecordType = "CAA";
-export const RecordsEditRequestBodyCAARecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsEditRequestBodyCAARecordData {
+export interface RecordsEditRequestDataCAARecord {
   /** Flags for the CAA record. */
   flags?: number;
   /** Name of the property controlled by this record (e.g.: issue, issuewild, iodef). */
@@ -14981,77 +13142,17 @@ export interface RecordsEditRequestBodyCAARecordData {
   /** Value of the record. This field's semantics depend on the chosen tag. */
   value?: string;
 }
-export const RecordsEditRequestBodyCAARecordData = /*@__PURE__*/ S.suspend(() =>
+export const RecordsEditRequestDataCAARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flags: S.optional(S.Number),
     tag: S.optional(S.String),
     value: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "RecordsEditRequestBodyCAARecordData",
-}) as any as S.Schema<RecordsEditRequestBodyCAARecordData>;
+  identifier: "RecordsEditRequestDataCAARecord",
+}) as any as S.Schema<RecordsEditRequestDataCAARecord>;
 
-export interface RecordsEditRequestBodyCAARecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsEditRequestBodyCAARecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestBodyCAARecordSettings",
-}) as any as S.Schema<RecordsEditRequestBodyCAARecordSettings>;
-
-export type RecordsEditRequestBodyCAARecordTagsList = ReadonlyArray<unknown>;
-export const RecordsEditRequestBodyCAARecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsEditRequestBodyCAARecordTagsList>;
-
-export interface RecordsEditRequestBodyCAARecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsEditRequestBodyCAARecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted CAA content. See 'data' to set CAA properties. */
-  content?: string;
-  /** Components of a CAA record. */
-  data?: RecordsEditRequestBodyCAARecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsEditRequestBodyCAARecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsEditRequestBodyCAARecordTagsList;
-}
-export const RecordsEditRequestBodyCAARecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsEditRequestBodyCAARecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsEditRequestBodyCAARecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsEditRequestBodyCAARecordSettings),
-    tags: S.optional(RecordsEditRequestBodyCAARecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestBodyCAARecord",
-}) as any as S.Schema<RecordsEditRequestBodyCAARecord>;
-
-export type RecordsEditRequestBodyCERTRecordType = "CERT";
-export const RecordsEditRequestBodyCERTRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsEditRequestBodyCERTRecordData {
+export interface RecordsEditRequestDataCERTRecord {
   /** Algorithm. */
   algorithm?: number;
   /** Certificate. */
@@ -15061,79 +13162,18 @@ export interface RecordsEditRequestBodyCERTRecordData {
   /** Type. */
   type?: number;
 }
-export const RecordsEditRequestBodyCERTRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      algorithm: S.optional(S.Number),
-      certificate: S.optional(S.String),
-      keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
-      type: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestBodyCERTRecordData",
-}) as any as S.Schema<RecordsEditRequestBodyCERTRecordData>;
-
-export interface RecordsEditRequestBodyCERTRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsEditRequestBodyCERTRecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestBodyCERTRecordSettings",
-}) as any as S.Schema<RecordsEditRequestBodyCERTRecordSettings>;
-
-export type RecordsEditRequestBodyCERTRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsEditRequestBodyCERTRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsEditRequestBodyCERTRecordTagsList>;
-
-export interface RecordsEditRequestBodyCERTRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsEditRequestBodyCERTRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted CERT content. See 'data' to set CERT properties. */
-  content?: string;
-  /** Components of a CERT record. */
-  data?: RecordsEditRequestBodyCERTRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsEditRequestBodyCERTRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsEditRequestBodyCERTRecordTagsList;
-}
-export const RecordsEditRequestBodyCERTRecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsEditRequestDataCERTRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsEditRequestBodyCERTRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsEditRequestBodyCERTRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsEditRequestBodyCERTRecordSettings),
-    tags: S.optional(RecordsEditRequestBodyCERTRecordTagsList),
+    algorithm: S.optional(S.Number),
+    certificate: S.optional(S.String),
+    keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
+    type: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "RecordsEditRequestBodyCERTRecord",
-}) as any as S.Schema<RecordsEditRequestBodyCERTRecord>;
+  identifier: "RecordsEditRequestDataCERTRecord",
+}) as any as S.Schema<RecordsEditRequestDataCERTRecord>;
 
-export type RecordsEditRequestBodyDNSKEYRecordType = "DNSKEY";
-export const RecordsEditRequestBodyDNSKEYRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsEditRequestBodyDNSKEYRecordData {
+export interface RecordsEditRequestDataDNSKEYRecord {
   /** Algorithm. */
   algorithm?: number;
   /** Flags. */
@@ -15143,79 +13183,18 @@ export interface RecordsEditRequestBodyDNSKEYRecordData {
   /** Public Key. */
   publicKey?: string;
 }
-export const RecordsEditRequestBodyDNSKEYRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      algorithm: S.optional(S.Number),
-      flags: S.optional(S.Number),
-      protocol: S.optional(S.Number),
-      publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestBodyDNSKEYRecordData",
-}) as any as S.Schema<RecordsEditRequestBodyDNSKEYRecordData>;
-
-export interface RecordsEditRequestBodyDNSKEYRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsEditRequestBodyDNSKEYRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsEditRequestBodyDNSKEYRecordSettings",
-  }) as any as S.Schema<RecordsEditRequestBodyDNSKEYRecordSettings>;
-
-export type RecordsEditRequestBodyDNSKEYRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsEditRequestBodyDNSKEYRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsEditRequestBodyDNSKEYRecordTagsList>;
-
-export interface RecordsEditRequestBodyDNSKEYRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsEditRequestBodyDNSKEYRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted DNSKEY content. See 'data' to set DNSKEY properties. */
-  content?: string;
-  /** Components of a DNSKEY record. */
-  data?: RecordsEditRequestBodyDNSKEYRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsEditRequestBodyDNSKEYRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsEditRequestBodyDNSKEYRecordTagsList;
-}
-export const RecordsEditRequestBodyDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsEditRequestDataDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsEditRequestBodyDNSKEYRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsEditRequestBodyDNSKEYRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsEditRequestBodyDNSKEYRecordSettings),
-    tags: S.optional(RecordsEditRequestBodyDNSKEYRecordTagsList),
+    algorithm: S.optional(S.Number),
+    flags: S.optional(S.Number),
+    protocol: S.optional(S.Number),
+    publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
   }),
 ).annotate({
-  identifier: "RecordsEditRequestBodyDNSKEYRecord",
-}) as any as S.Schema<RecordsEditRequestBodyDNSKEYRecord>;
+  identifier: "RecordsEditRequestDataDNSKEYRecord",
+}) as any as S.Schema<RecordsEditRequestDataDNSKEYRecord>;
 
-export type RecordsEditRequestBodyDSRecordType = "DS";
-export const RecordsEditRequestBodyDSRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsEditRequestBodyDSRecordData {
+export interface RecordsEditRequestDataDSRecord {
   /** Algorithm. */
   algorithm?: number;
   /** Digest. */
@@ -15225,7 +13204,7 @@ export interface RecordsEditRequestBodyDSRecordData {
   /** Key Tag. */
   keyTag?: number;
 }
-export const RecordsEditRequestBodyDSRecordData = /*@__PURE__*/ S.suspend(() =>
+export const RecordsEditRequestDataDSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     algorithm: S.optional(S.Number),
     digest: S.optional(S.String),
@@ -15233,70 +13212,10 @@ export const RecordsEditRequestBodyDSRecordData = /*@__PURE__*/ S.suspend(() =>
     keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
   }),
 ).annotate({
-  identifier: "RecordsEditRequestBodyDSRecordData",
-}) as any as S.Schema<RecordsEditRequestBodyDSRecordData>;
+  identifier: "RecordsEditRequestDataDSRecord",
+}) as any as S.Schema<RecordsEditRequestDataDSRecord>;
 
-export interface RecordsEditRequestBodyDSRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsEditRequestBodyDSRecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestBodyDSRecordSettings",
-}) as any as S.Schema<RecordsEditRequestBodyDSRecordSettings>;
-
-export type RecordsEditRequestBodyDSRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsEditRequestBodyDSRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsEditRequestBodyDSRecordTagsList>;
-
-export interface RecordsEditRequestBodyDSRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsEditRequestBodyDSRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted DS content. See 'data' to set DS properties. */
-  content?: string;
-  /** Components of a DS record. */
-  data?: RecordsEditRequestBodyDSRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsEditRequestBodyDSRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsEditRequestBodyDSRecordTagsList;
-}
-export const RecordsEditRequestBodyDSRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsEditRequestBodyDSRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsEditRequestBodyDSRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsEditRequestBodyDSRecordSettings),
-    tags: S.optional(RecordsEditRequestBodyDSRecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestBodyDSRecord",
-}) as any as S.Schema<RecordsEditRequestBodyDSRecord>;
-
-export type RecordsEditRequestBodyHTTPSRecordType = "HTTPS";
-export const RecordsEditRequestBodyHTTPSRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsEditRequestBodyHTTPSRecordData {
+export interface RecordsEditRequestDataHTTPSRecord {
   /** Priority. */
   priority?: number;
   /** Target. */
@@ -15304,92 +13223,31 @@ export interface RecordsEditRequestBodyHTTPSRecordData {
   /** Value. */
   value?: string;
 }
-export const RecordsEditRequestBodyHTTPSRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      priority: S.optional(S.Number),
-      target: S.optional(S.String),
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestBodyHTTPSRecordData",
-}) as any as S.Schema<RecordsEditRequestBodyHTTPSRecordData>;
-
-export interface RecordsEditRequestBodyHTTPSRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsEditRequestBodyHTTPSRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsEditRequestBodyHTTPSRecordSettings",
-  }) as any as S.Schema<RecordsEditRequestBodyHTTPSRecordSettings>;
-
-export type RecordsEditRequestBodyHTTPSRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsEditRequestBodyHTTPSRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsEditRequestBodyHTTPSRecordTagsList>;
-
-export interface RecordsEditRequestBodyHTTPSRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsEditRequestBodyHTTPSRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted HTTPS content. See 'data' to set HTTPS properties. */
-  content?: string;
-  /** Components of a HTTPS record. */
-  data?: RecordsEditRequestBodyHTTPSRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsEditRequestBodyHTTPSRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsEditRequestBodyHTTPSRecordTagsList;
-}
-export const RecordsEditRequestBodyHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsEditRequestDataHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsEditRequestBodyHTTPSRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsEditRequestBodyHTTPSRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsEditRequestBodyHTTPSRecordSettings),
-    tags: S.optional(RecordsEditRequestBodyHTTPSRecordTagsList),
+    priority: S.optional(S.Number),
+    target: S.optional(S.String),
+    value: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "RecordsEditRequestBodyHTTPSRecord",
-}) as any as S.Schema<RecordsEditRequestBodyHTTPSRecord>;
+  identifier: "RecordsEditRequestDataHTTPSRecord",
+}) as any as S.Schema<RecordsEditRequestDataHTTPSRecord>;
 
-export type RecordsEditRequestBodyLOCRecordType = "LOC";
-export const RecordsEditRequestBodyLOCRecordType = /*@__PURE__*/ S.String;
-
-export type RecordsEditRequestBodyLOCRecordDataLatDirection = "N" | "S";
-export const RecordsEditRequestBodyLOCRecordDataLatDirection =
+export type RecordsEditRequestDataLOCRecordLatDirection = "N" | "S";
+export const RecordsEditRequestDataLOCRecordLatDirection =
   /*@__PURE__*/ S.String;
 
-export type RecordsEditRequestBodyLOCRecordDataLongDirection = "E" | "W";
-export const RecordsEditRequestBodyLOCRecordDataLongDirection =
+export type RecordsEditRequestDataLOCRecordLongDirection = "E" | "W";
+export const RecordsEditRequestDataLOCRecordLongDirection =
   /*@__PURE__*/ S.String;
 
-export interface RecordsEditRequestBodyLOCRecordData {
+export interface RecordsEditRequestDataLOCRecord {
   /** Altitude of location in meters. */
   altitude?: number;
   /** Degrees of latitude. */
   latDegrees?: number;
   /** Latitude direction. */
-  latDirection?: RecordsEditRequestBodyLOCRecordDataLatDirection;
+  latDirection?: RecordsEditRequestDataLOCRecordLatDirection;
   /** Minutes of latitude. */
   latMinutes?: number;
   /** Seconds of latitude. */
@@ -15397,7 +13255,7 @@ export interface RecordsEditRequestBodyLOCRecordData {
   /** Degrees of longitude. */
   longDegrees?: number;
   /** Longitude direction. */
-  longDirection?: RecordsEditRequestBodyLOCRecordDataLongDirection;
+  longDirection?: RecordsEditRequestDataLOCRecordLongDirection;
   /** Minutes of longitude. */
   longMinutes?: number;
   /** Seconds of longitude. */
@@ -15409,20 +13267,18 @@ export interface RecordsEditRequestBodyLOCRecordData {
   /** Size of location in meters. */
   size?: number;
 }
-export const RecordsEditRequestBodyLOCRecordData = /*@__PURE__*/ S.suspend(() =>
+export const RecordsEditRequestDataLOCRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     altitude: S.optional(S.Number),
     latDegrees: S.optional(S.Number.pipe(T.Body("lat_degrees"))),
     latDirection: S.optional(
-      RecordsEditRequestBodyLOCRecordDataLatDirection.pipe(
-        T.Body("lat_direction"),
-      ),
+      RecordsEditRequestDataLOCRecordLatDirection.pipe(T.Body("lat_direction")),
     ),
     latMinutes: S.optional(S.Number.pipe(T.Body("lat_minutes"))),
     latSeconds: S.optional(S.Number.pipe(T.Body("lat_seconds"))),
     longDegrees: S.optional(S.Number.pipe(T.Body("long_degrees"))),
     longDirection: S.optional(
-      RecordsEditRequestBodyLOCRecordDataLongDirection.pipe(
+      RecordsEditRequestDataLOCRecordLongDirection.pipe(
         T.Body("long_direction"),
       ),
     ),
@@ -15433,70 +13289,10 @@ export const RecordsEditRequestBodyLOCRecordData = /*@__PURE__*/ S.suspend(() =>
     size: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "RecordsEditRequestBodyLOCRecordData",
-}) as any as S.Schema<RecordsEditRequestBodyLOCRecordData>;
+  identifier: "RecordsEditRequestDataLOCRecord",
+}) as any as S.Schema<RecordsEditRequestDataLOCRecord>;
 
-export interface RecordsEditRequestBodyLOCRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsEditRequestBodyLOCRecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestBodyLOCRecordSettings",
-}) as any as S.Schema<RecordsEditRequestBodyLOCRecordSettings>;
-
-export type RecordsEditRequestBodyLOCRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsEditRequestBodyLOCRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsEditRequestBodyLOCRecordTagsList>;
-
-export interface RecordsEditRequestBodyLOCRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsEditRequestBodyLOCRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted LOC content. See 'data' to set LOC properties. */
-  content?: string;
-  /** Components of a LOC record. */
-  data?: RecordsEditRequestBodyLOCRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsEditRequestBodyLOCRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsEditRequestBodyLOCRecordTagsList;
-}
-export const RecordsEditRequestBodyLOCRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsEditRequestBodyLOCRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsEditRequestBodyLOCRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsEditRequestBodyLOCRecordSettings),
-    tags: S.optional(RecordsEditRequestBodyLOCRecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestBodyLOCRecord",
-}) as any as S.Schema<RecordsEditRequestBodyLOCRecord>;
-
-export type RecordsEditRequestBodyNAPTRRecordType = "NAPTR";
-export const RecordsEditRequestBodyNAPTRRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsEditRequestBodyNAPTRRecordData {
+export interface RecordsEditRequestDataNAPTRRecord {
   /** Flags. */
   flags?: string;
   /** Order. */
@@ -15510,81 +13306,20 @@ export interface RecordsEditRequestBodyNAPTRRecordData {
   /** Service. */
   service?: string;
 }
-export const RecordsEditRequestBodyNAPTRRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      flags: S.optional(S.String),
-      order: S.optional(S.Number),
-      preference: S.optional(S.Number),
-      regex: S.optional(S.String),
-      replacement: S.optional(S.String),
-      service: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestBodyNAPTRRecordData",
-}) as any as S.Schema<RecordsEditRequestBodyNAPTRRecordData>;
-
-export interface RecordsEditRequestBodyNAPTRRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsEditRequestBodyNAPTRRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsEditRequestBodyNAPTRRecordSettings",
-  }) as any as S.Schema<RecordsEditRequestBodyNAPTRRecordSettings>;
-
-export type RecordsEditRequestBodyNAPTRRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsEditRequestBodyNAPTRRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsEditRequestBodyNAPTRRecordTagsList>;
-
-export interface RecordsEditRequestBodyNAPTRRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsEditRequestBodyNAPTRRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted NAPTR content. See 'data' to set NAPTR properties. */
-  content?: string;
-  /** Components of a NAPTR record. */
-  data?: RecordsEditRequestBodyNAPTRRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsEditRequestBodyNAPTRRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsEditRequestBodyNAPTRRecordTagsList;
-}
-export const RecordsEditRequestBodyNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsEditRequestDataNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsEditRequestBodyNAPTRRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsEditRequestBodyNAPTRRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsEditRequestBodyNAPTRRecordSettings),
-    tags: S.optional(RecordsEditRequestBodyNAPTRRecordTagsList),
+    flags: S.optional(S.String),
+    order: S.optional(S.Number),
+    preference: S.optional(S.Number),
+    regex: S.optional(S.String),
+    replacement: S.optional(S.String),
+    service: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "RecordsEditRequestBodyNAPTRRecord",
-}) as any as S.Schema<RecordsEditRequestBodyNAPTRRecord>;
+  identifier: "RecordsEditRequestDataNAPTRRecord",
+}) as any as S.Schema<RecordsEditRequestDataNAPTRRecord>;
 
-export type RecordsEditRequestBodySMIMEARecordType = "SMIMEA";
-export const RecordsEditRequestBodySMIMEARecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsEditRequestBodySMIMEARecordData {
+export interface RecordsEditRequestDataSMIMEARecord {
   /** Certificate. */
   certificate?: string;
   /** Matching Type. */
@@ -15594,79 +13329,18 @@ export interface RecordsEditRequestBodySMIMEARecordData {
   /** Usage. */
   usage?: number;
 }
-export const RecordsEditRequestBodySMIMEARecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      certificate: S.optional(S.String),
-      matchingType: S.optional(S.Number.pipe(T.Body("matching_type"))),
-      selector: S.optional(S.Number),
-      usage: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestBodySMIMEARecordData",
-}) as any as S.Schema<RecordsEditRequestBodySMIMEARecordData>;
-
-export interface RecordsEditRequestBodySMIMEARecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsEditRequestBodySMIMEARecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsEditRequestBodySMIMEARecordSettings",
-  }) as any as S.Schema<RecordsEditRequestBodySMIMEARecordSettings>;
-
-export type RecordsEditRequestBodySMIMEARecordTagsList = ReadonlyArray<unknown>;
-export const RecordsEditRequestBodySMIMEARecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsEditRequestBodySMIMEARecordTagsList>;
-
-export interface RecordsEditRequestBodySMIMEARecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsEditRequestBodySMIMEARecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted SMIMEA content. See 'data' to set SMIMEA properties. */
-  content?: string;
-  /** Components of a SMIMEA record. */
-  data?: RecordsEditRequestBodySMIMEARecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsEditRequestBodySMIMEARecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsEditRequestBodySMIMEARecordTagsList;
-}
-export const RecordsEditRequestBodySMIMEARecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsEditRequestDataSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsEditRequestBodySMIMEARecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsEditRequestBodySMIMEARecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsEditRequestBodySMIMEARecordSettings),
-    tags: S.optional(RecordsEditRequestBodySMIMEARecordTagsList),
+    certificate: S.optional(S.String),
+    matchingType: S.optional(S.Number.pipe(T.Body("matching_type"))),
+    selector: S.optional(S.Number),
+    usage: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "RecordsEditRequestBodySMIMEARecord",
-}) as any as S.Schema<RecordsEditRequestBodySMIMEARecord>;
+  identifier: "RecordsEditRequestDataSMIMEARecord",
+}) as any as S.Schema<RecordsEditRequestDataSMIMEARecord>;
 
-export type RecordsEditRequestBodySRVRecordType = "SRV";
-export const RecordsEditRequestBodySRVRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsEditRequestBodySRVRecordData {
+export interface RecordsEditRequestDataSRVRecord {
   /** The port of the service. */
   port?: number;
   /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
@@ -15676,7 +13350,7 @@ export interface RecordsEditRequestBodySRVRecordData {
   /** The record weight. */
   weight?: number;
 }
-export const RecordsEditRequestBodySRVRecordData = /*@__PURE__*/ S.suspend(() =>
+export const RecordsEditRequestDataSRVRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     port: S.optional(S.Number),
     priority: S.optional(S.Number),
@@ -15684,70 +13358,10 @@ export const RecordsEditRequestBodySRVRecordData = /*@__PURE__*/ S.suspend(() =>
     weight: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "RecordsEditRequestBodySRVRecordData",
-}) as any as S.Schema<RecordsEditRequestBodySRVRecordData>;
+  identifier: "RecordsEditRequestDataSRVRecord",
+}) as any as S.Schema<RecordsEditRequestDataSRVRecord>;
 
-export interface RecordsEditRequestBodySRVRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsEditRequestBodySRVRecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestBodySRVRecordSettings",
-}) as any as S.Schema<RecordsEditRequestBodySRVRecordSettings>;
-
-export type RecordsEditRequestBodySRVRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsEditRequestBodySRVRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsEditRequestBodySRVRecordTagsList>;
-
-export interface RecordsEditRequestBodySRVRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsEditRequestBodySRVRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Priority, weight, port, and SRV target. See 'data' for setting the individual component values. */
-  content?: string;
-  /** Components of a SRV record. */
-  data?: RecordsEditRequestBodySRVRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsEditRequestBodySRVRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsEditRequestBodySRVRecordTagsList;
-}
-export const RecordsEditRequestBodySRVRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsEditRequestBodySRVRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsEditRequestBodySRVRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsEditRequestBodySRVRecordSettings),
-    tags: S.optional(RecordsEditRequestBodySRVRecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestBodySRVRecord",
-}) as any as S.Schema<RecordsEditRequestBodySRVRecord>;
-
-export type RecordsEditRequestBodySSHFPRecordType = "SSHFP";
-export const RecordsEditRequestBodySSHFPRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsEditRequestBodySSHFPRecordData {
+export interface RecordsEditRequestDataSSHFPRecord {
   /** Algorithm. */
   algorithm?: number;
   /** Fingerprint. */
@@ -15755,564 +13369,69 @@ export interface RecordsEditRequestBodySSHFPRecordData {
   /** Type. */
   type?: number;
 }
-export const RecordsEditRequestBodySSHFPRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      algorithm: S.optional(S.Number),
-      fingerprint: S.optional(S.String),
-      type: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestBodySSHFPRecordData",
-}) as any as S.Schema<RecordsEditRequestBodySSHFPRecordData>;
-
-export interface RecordsEditRequestBodySSHFPRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsEditRequestBodySSHFPRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsEditRequestBodySSHFPRecordSettings",
-  }) as any as S.Schema<RecordsEditRequestBodySSHFPRecordSettings>;
-
-export type RecordsEditRequestBodySSHFPRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsEditRequestBodySSHFPRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsEditRequestBodySSHFPRecordTagsList>;
-
-export interface RecordsEditRequestBodySSHFPRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsEditRequestBodySSHFPRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted SSHFP content. See 'data' to set SSHFP properties. */
-  content?: string;
-  /** Components of a SSHFP record. */
-  data?: RecordsEditRequestBodySSHFPRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsEditRequestBodySSHFPRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsEditRequestBodySSHFPRecordTagsList;
-}
-export const RecordsEditRequestBodySSHFPRecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsEditRequestDataSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsEditRequestBodySSHFPRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsEditRequestBodySSHFPRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsEditRequestBodySSHFPRecordSettings),
-    tags: S.optional(RecordsEditRequestBodySSHFPRecordTagsList),
+    algorithm: S.optional(S.Number),
+    fingerprint: S.optional(S.String),
+    type: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "RecordsEditRequestBodySSHFPRecord",
-}) as any as S.Schema<RecordsEditRequestBodySSHFPRecord>;
+  identifier: "RecordsEditRequestDataSSHFPRecord",
+}) as any as S.Schema<RecordsEditRequestDataSSHFPRecord>;
 
-export type RecordsEditRequestBodySVCBRecordType = "SVCB";
-export const RecordsEditRequestBodySVCBRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsEditRequestBodySVCBRecordData {
-  /** Priority. */
-  priority?: number;
-  /** Target. */
-  target?: string;
-  /** Value. */
-  value?: string;
-}
-export const RecordsEditRequestBodySVCBRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      priority: S.optional(S.Number),
-      target: S.optional(S.String),
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestBodySVCBRecordData",
-}) as any as S.Schema<RecordsEditRequestBodySVCBRecordData>;
-
-export interface RecordsEditRequestBodySVCBRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsEditRequestBodySVCBRecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestBodySVCBRecordSettings",
-}) as any as S.Schema<RecordsEditRequestBodySVCBRecordSettings>;
-
-export type RecordsEditRequestBodySVCBRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsEditRequestBodySVCBRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsEditRequestBodySVCBRecordTagsList>;
-
-export interface RecordsEditRequestBodySVCBRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsEditRequestBodySVCBRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted SVCB content. See 'data' to set SVCB properties. */
-  content?: string;
-  /** Components of a SVCB record. */
-  data?: RecordsEditRequestBodySVCBRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsEditRequestBodySVCBRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsEditRequestBodySVCBRecordTagsList;
-}
-export const RecordsEditRequestBodySVCBRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsEditRequestBodySVCBRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsEditRequestBodySVCBRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsEditRequestBodySVCBRecordSettings),
-    tags: S.optional(RecordsEditRequestBodySVCBRecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestBodySVCBRecord",
-}) as any as S.Schema<RecordsEditRequestBodySVCBRecord>;
-
-export type RecordsEditRequestBodyTLSARecordType = "TLSA";
-export const RecordsEditRequestBodyTLSARecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsEditRequestBodyTLSARecordData {
-  /** Certificate. */
-  certificate?: string;
-  /** Matching Type. */
-  matchingType?: number;
-  /** Selector. */
-  selector?: number;
-  /** Usage. */
-  usage?: number;
-}
-export const RecordsEditRequestBodyTLSARecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      certificate: S.optional(S.String),
-      matchingType: S.optional(S.Number.pipe(T.Body("matching_type"))),
-      selector: S.optional(S.Number),
-      usage: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestBodyTLSARecordData",
-}) as any as S.Schema<RecordsEditRequestBodyTLSARecordData>;
-
-export interface RecordsEditRequestBodyTLSARecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsEditRequestBodyTLSARecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestBodyTLSARecordSettings",
-}) as any as S.Schema<RecordsEditRequestBodyTLSARecordSettings>;
-
-export type RecordsEditRequestBodyTLSARecordTagsList = ReadonlyArray<unknown>;
-export const RecordsEditRequestBodyTLSARecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsEditRequestBodyTLSARecordTagsList>;
-
-export interface RecordsEditRequestBodyTLSARecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsEditRequestBodyTLSARecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted TLSA content. See 'data' to set TLSA properties. */
-  content?: string;
-  /** Components of a TLSA record. */
-  data?: RecordsEditRequestBodyTLSARecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsEditRequestBodyTLSARecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsEditRequestBodyTLSARecordTagsList;
-}
-export const RecordsEditRequestBodyTLSARecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsEditRequestBodyTLSARecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsEditRequestBodyTLSARecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsEditRequestBodyTLSARecordSettings),
-    tags: S.optional(RecordsEditRequestBodyTLSARecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestBodyTLSARecord",
-}) as any as S.Schema<RecordsEditRequestBodyTLSARecord>;
-
-export type RecordsEditRequestBodyURIRecordType = "URI";
-export const RecordsEditRequestBodyURIRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsEditRequestBodyURIRecordData {
+export interface RecordsEditRequestDataURIRecord {
   /** The record content. */
   target?: string;
   /** The record weight. */
   weight?: number;
 }
-export const RecordsEditRequestBodyURIRecordData = /*@__PURE__*/ S.suspend(() =>
+export const RecordsEditRequestDataURIRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     target: S.optional(S.String),
     weight: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "RecordsEditRequestBodyURIRecordData",
-}) as any as S.Schema<RecordsEditRequestBodyURIRecordData>;
+  identifier: "RecordsEditRequestDataURIRecord",
+}) as any as S.Schema<RecordsEditRequestDataURIRecord>;
 
-export interface RecordsEditRequestBodyURIRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsEditRequestBodyURIRecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsEditRequestBodyURIRecordSettings",
-}) as any as S.Schema<RecordsEditRequestBodyURIRecordSettings>;
-
-export type RecordsEditRequestBodyURIRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsEditRequestBodyURIRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsEditRequestBodyURIRecordTagsList>;
-
-export interface RecordsEditRequestBodyURIRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsEditRequestBodyURIRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted URI content. See 'data' to set URI properties. */
-  content?: string;
-  /** Components of a URI record. */
-  data?: RecordsEditRequestBodyURIRecordData;
-  /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
-  priority?: number;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsEditRequestBodyURIRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsEditRequestBodyURIRecordTagsList;
-}
-export const RecordsEditRequestBodyURIRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsEditRequestBodyURIRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsEditRequestBodyURIRecordData),
-    priority: S.optional(S.Number),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsEditRequestBodyURIRecordSettings),
-    tags: S.optional(RecordsEditRequestBodyURIRecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestBodyURIRecord",
-}) as any as S.Schema<RecordsEditRequestBodyURIRecord>;
-
-export type RecordsEditRequestBody =
-  | RecordsEditRequestBodyARecord
-  | RecordsEditRequestBodyAAAARecord
-  | RecordsEditRequestBodyCNAMERecord
-  | RecordsEditRequestBodyMXRecord
-  | RecordsEditRequestBodyNSRecord
-  | RecordsEditRequestBodyDNSRecordsOpenpgpkeyRecord
-  | RecordsEditRequestBodyPTRRecord
-  | RecordsEditRequestBodyTXTRecord
-  | RecordsEditRequestBodyCAARecord
-  | RecordsEditRequestBodyCERTRecord
-  | RecordsEditRequestBodyDNSKEYRecord
-  | RecordsEditRequestBodyDSRecord
-  | RecordsEditRequestBodyHTTPSRecord
-  | RecordsEditRequestBodyLOCRecord
-  | RecordsEditRequestBodyNAPTRRecord
-  | RecordsEditRequestBodySMIMEARecord
-  | RecordsEditRequestBodySRVRecord
-  | RecordsEditRequestBodySSHFPRecord
-  | RecordsEditRequestBodySVCBRecord
-  | RecordsEditRequestBodyTLSARecord
-  | RecordsEditRequestBodyURIRecord;
-export const RecordsEditRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+export type RecordsEditRequestData =
+  | RecordsEditRequestDataCAARecord
+  | RecordsEditRequestDataCERTRecord
+  | RecordsEditRequestDataDNSKEYRecord
+  | RecordsEditRequestDataDSRecord
+  | RecordsEditRequestDataHTTPSRecord
+  | RecordsEditRequestDataLOCRecord
+  | RecordsEditRequestDataNAPTRRecord
+  | RecordsEditRequestDataSMIMEARecord
+  | RecordsEditRequestDataSRVRecord
+  | RecordsEditRequestDataSSHFPRecord
+  | RecordsEditRequestDataURIRecord;
+export const RecordsEditRequestData = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
+    ["flags", "tag", "value"],
+    ["algorithm", "certificate", "keyTag", "type"],
+    ["algorithm", "flags", "protocol", "publicKey"],
+    ["algorithm", "digest", "digestType", "keyTag"],
+    ["priority", "target", "value"],
     [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "privateRouting",
-      "proxied",
-      "settings",
-      "tags",
+      "altitude",
+      "latDegrees",
+      "latDirection",
+      "latMinutes",
+      "latSeconds",
+      "longDegrees",
+      "longDirection",
+      "longMinutes",
+      "longSeconds",
+      "precisionHorz",
+      "precisionVert",
+      "size",
     ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "privateRouting",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "priority",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "priority",
-      "proxied",
-      "settings",
-      "tags",
-    ],
+    ["flags", "order", "preference", "regex", "replacement", "service"],
+    ["certificate", "matchingType", "selector", "usage"],
+    ["port", "priority", "target", "weight"],
+    ["algorithm", "fingerprint", "type"],
+    ["target", "weight"],
   ]),
 );
 
@@ -16323,7 +13442,28 @@ export interface PatchRecordRequest {
   dnsRecordId: string;
   /** Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
   includeShadowMetadata?: boolean;
-  body: RecordsEditRequestBody;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl: number;
+  /** Record type. */
+  type: RecordsEditRequestType;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A valid IPv4 address. */
+  content?: string;
+  /** Enables private network routing to the origin. */
+  privateRouting?: boolean;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsEditRequestSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsEditRequestTagsList;
+  /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
+  priority?: number;
+  /** Components of a CAA record. */
+  data?: RecordsEditRequestData;
 }
 export const PatchRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16332,7 +13472,17 @@ export const PatchRecordRequest = /*@__PURE__*/ S.suspend(() =>
     includeShadowMetadata: S.optional(
       S.Boolean.pipe(T.Query("include_shadow_metadata")),
     ),
-    body: RecordsEditRequestBody.pipe(T.HttpBody()),
+    name: S.String,
+    ttl: S.Number,
+    type: RecordsEditRequestType,
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsEditRequestSettings),
+    tags: S.optional(RecordsEditRequestTagsList),
+    priority: S.optional(S.Number),
+    data: S.optional(RecordsEditRequestData),
   })
     .pipe(
       T.Http({
@@ -24003,130 +21153,46 @@ export const ScanTriggerRecordResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScanTriggerRecordResponse",
 }) as any as S.Schema<ScanTriggerRecordResponse>;
 
-export type RecordsUpdateRequestBodyARecordType = "A";
-export const RecordsUpdateRequestBodyARecordType = /*@__PURE__*/ S.String;
+export type RecordsUpdateRequestType =
+  | "A"
+  | "AAAA"
+  | "CNAME"
+  | "MX"
+  | "NS"
+  | "OPENPGPKEY"
+  | "PTR"
+  | "TXT"
+  | "CAA"
+  | "CERT"
+  | "DNSKEY"
+  | "DS"
+  | "HTTPS"
+  | "LOC"
+  | "NAPTR"
+  | "SMIMEA"
+  | "SRV"
+  | "SSHFP"
+  | "SVCB"
+  | "TLSA"
+  | "URI";
+export const RecordsUpdateRequestType = /*@__PURE__*/ S.String;
 
-export interface RecordsUpdateRequestBodyARecordSettings {
+export interface RecordsUpdateRequestSettingsARecord {
   /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
   ipv4Only?: boolean;
   /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
   ipv6Only?: boolean;
 }
-export const RecordsUpdateRequestBodyARecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodyARecordSettings",
-}) as any as S.Schema<RecordsUpdateRequestBodyARecordSettings>;
-
-export type RecordsUpdateRequestBodyARecordTagsList = ReadonlyArray<unknown>;
-export const RecordsUpdateRequestBodyARecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsUpdateRequestBodyARecordTagsList>;
-
-export interface RecordsUpdateRequestBodyARecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsUpdateRequestBodyARecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** A valid IPv4 address. */
-  content?: string;
-  /** Enables private network routing to the origin. */
-  privateRouting?: boolean;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsUpdateRequestBodyARecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsUpdateRequestBodyARecordTagsList;
-}
-export const RecordsUpdateRequestBodyARecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsUpdateRequestSettingsARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsUpdateRequestBodyARecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsUpdateRequestBodyARecordSettings),
-    tags: S.optional(RecordsUpdateRequestBodyARecordTagsList),
+    ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
+    ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
   }),
 ).annotate({
-  identifier: "RecordsUpdateRequestBodyARecord",
-}) as any as S.Schema<RecordsUpdateRequestBodyARecord>;
+  identifier: "RecordsUpdateRequestSettingsARecord",
+}) as any as S.Schema<RecordsUpdateRequestSettingsARecord>;
 
-export type RecordsUpdateRequestBodyAAAARecordType = "AAAA";
-export const RecordsUpdateRequestBodyAAAARecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsUpdateRequestBodyAAAARecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsUpdateRequestBodyAAAARecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsUpdateRequestBodyAAAARecordSettings",
-  }) as any as S.Schema<RecordsUpdateRequestBodyAAAARecordSettings>;
-
-export type RecordsUpdateRequestBodyAAAARecordTagsList = ReadonlyArray<unknown>;
-export const RecordsUpdateRequestBodyAAAARecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsUpdateRequestBodyAAAARecordTagsList>;
-
-export interface RecordsUpdateRequestBodyAAAARecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsUpdateRequestBodyAAAARecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** A valid IPv6 address. */
-  content?: string;
-  /** Enables private network routing to the origin. */
-  privateRouting?: boolean;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsUpdateRequestBodyAAAARecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsUpdateRequestBodyAAAARecordTagsList;
-}
-export const RecordsUpdateRequestBodyAAAARecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsUpdateRequestBodyAAAARecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsUpdateRequestBodyAAAARecordSettings),
-    tags: S.optional(RecordsUpdateRequestBodyAAAARecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodyAAAARecord",
-}) as any as S.Schema<RecordsUpdateRequestBodyAAAARecord>;
-
-export type RecordsUpdateRequestBodyCNAMERecordType = "CNAME";
-export const RecordsUpdateRequestBodyCNAMERecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsUpdateRequestBodyCNAMERecordSettings {
+export interface RecordsUpdateRequestSettingsCNAMERecord {
   /** If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened. */
   flattenCname?: boolean;
   /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
@@ -24134,358 +21200,33 @@ export interface RecordsUpdateRequestBodyCNAMERecordSettings {
   /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
   ipv6Only?: boolean;
 }
-export const RecordsUpdateRequestBodyCNAMERecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
+export const RecordsUpdateRequestSettingsCNAMERecord = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
       ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
       ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
     }),
-  ).annotate({
-    identifier: "RecordsUpdateRequestBodyCNAMERecordSettings",
-  }) as any as S.Schema<RecordsUpdateRequestBodyCNAMERecordSettings>;
-
-export type RecordsUpdateRequestBodyCNAMERecordTagsList =
-  ReadonlyArray<unknown>;
-export const RecordsUpdateRequestBodyCNAMERecordTagsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<RecordsUpdateRequestBodyCNAMERecordTagsList>;
-
-export interface RecordsUpdateRequestBodyCNAMERecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsUpdateRequestBodyCNAMERecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** A valid hostname. Must not match the record's name. */
-  content?: string;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsUpdateRequestBodyCNAMERecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsUpdateRequestBodyCNAMERecordTagsList;
-}
-export const RecordsUpdateRequestBodyCNAMERecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsUpdateRequestBodyCNAMERecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsUpdateRequestBodyCNAMERecordSettings),
-    tags: S.optional(RecordsUpdateRequestBodyCNAMERecordTagsList),
-  }),
 ).annotate({
-  identifier: "RecordsUpdateRequestBodyCNAMERecord",
-}) as any as S.Schema<RecordsUpdateRequestBodyCNAMERecord>;
+  identifier: "RecordsUpdateRequestSettingsCNAMERecord",
+}) as any as S.Schema<RecordsUpdateRequestSettingsCNAMERecord>;
 
-export type RecordsUpdateRequestBodyMXRecordType = "MX";
-export const RecordsUpdateRequestBodyMXRecordType = /*@__PURE__*/ S.String;
+export type RecordsUpdateRequestSettings =
+  | RecordsUpdateRequestSettingsARecord
+  | RecordsUpdateRequestSettingsCNAMERecord;
+export const RecordsUpdateRequestSettings = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["ipv4Only", "ipv6Only"],
+    ["flattenCname", "ipv4Only", "ipv6Only"],
+  ]),
+);
 
-export interface RecordsUpdateRequestBodyMXRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsUpdateRequestBodyMXRecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodyMXRecordSettings",
-}) as any as S.Schema<RecordsUpdateRequestBodyMXRecordSettings>;
-
-export type RecordsUpdateRequestBodyMXRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsUpdateRequestBodyMXRecordTagsList = /*@__PURE__*/ S.Array(
+export type RecordsUpdateRequestTagsList = ReadonlyArray<unknown>;
+export const RecordsUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
-) as any as S.Schema<RecordsUpdateRequestBodyMXRecordTagsList>;
+) as any as S.Schema<RecordsUpdateRequestTagsList>;
 
-export interface RecordsUpdateRequestBodyMXRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsUpdateRequestBodyMXRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** A valid mail server hostname. */
-  content?: string;
-  /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
-  priority?: number;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsUpdateRequestBodyMXRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsUpdateRequestBodyMXRecordTagsList;
-}
-export const RecordsUpdateRequestBodyMXRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsUpdateRequestBodyMXRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    priority: S.optional(S.Number),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsUpdateRequestBodyMXRecordSettings),
-    tags: S.optional(RecordsUpdateRequestBodyMXRecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodyMXRecord",
-}) as any as S.Schema<RecordsUpdateRequestBodyMXRecord>;
-
-export type RecordsUpdateRequestBodyNSRecordType = "NS";
-export const RecordsUpdateRequestBodyNSRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsUpdateRequestBodyNSRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsUpdateRequestBodyNSRecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodyNSRecordSettings",
-}) as any as S.Schema<RecordsUpdateRequestBodyNSRecordSettings>;
-
-export type RecordsUpdateRequestBodyNSRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsUpdateRequestBodyNSRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsUpdateRequestBodyNSRecordTagsList>;
-
-export interface RecordsUpdateRequestBodyNSRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsUpdateRequestBodyNSRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** A valid name server host name. */
-  content?: string;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsUpdateRequestBodyNSRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsUpdateRequestBodyNSRecordTagsList;
-}
-export const RecordsUpdateRequestBodyNSRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsUpdateRequestBodyNSRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsUpdateRequestBodyNSRecordSettings),
-    tags: S.optional(RecordsUpdateRequestBodyNSRecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodyNSRecord",
-}) as any as S.Schema<RecordsUpdateRequestBodyNSRecord>;
-
-export type RecordsUpdateRequestBodyDNSRecordsOpenpgpkeyRecordType =
-  "OPENPGPKEY";
-export const RecordsUpdateRequestBodyDNSRecordsOpenpgpkeyRecordType =
-  /*@__PURE__*/ S.String;
-
-export interface RecordsUpdateRequestBodyDNSRecordsOpenpgpkeyRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsUpdateRequestBodyDNSRecordsOpenpgpkeyRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsUpdateRequestBodyDNSRecordsOpenpgpkeyRecordSettings",
-  }) as any as S.Schema<RecordsUpdateRequestBodyDNSRecordsOpenpgpkeyRecordSettings>;
-
-export type RecordsUpdateRequestBodyDNSRecordsOpenpgpkeyRecordTagsList =
-  ReadonlyArray<unknown>;
-export const RecordsUpdateRequestBodyDNSRecordsOpenpgpkeyRecordTagsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<RecordsUpdateRequestBodyDNSRecordsOpenpgpkeyRecordTagsList>;
-
-export interface RecordsUpdateRequestBodyDNSRecordsOpenpgpkeyRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsUpdateRequestBodyDNSRecordsOpenpgpkeyRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
-  content?: string;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsUpdateRequestBodyDNSRecordsOpenpgpkeyRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsUpdateRequestBodyDNSRecordsOpenpgpkeyRecordTagsList;
-}
-export const RecordsUpdateRequestBodyDNSRecordsOpenpgpkeyRecord =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      ttl: S.Number,
-      type: RecordsUpdateRequestBodyDNSRecordsOpenpgpkeyRecordType,
-      comment: S.optional(S.String),
-      content: S.optional(S.String),
-      proxied: S.optional(S.Boolean),
-      settings: S.optional(
-        RecordsUpdateRequestBodyDNSRecordsOpenpgpkeyRecordSettings,
-      ),
-      tags: S.optional(
-        RecordsUpdateRequestBodyDNSRecordsOpenpgpkeyRecordTagsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "RecordsUpdateRequestBodyDNSRecordsOpenpgpkeyRecord",
-  }) as any as S.Schema<RecordsUpdateRequestBodyDNSRecordsOpenpgpkeyRecord>;
-
-export type RecordsUpdateRequestBodyPTRRecordType = "PTR";
-export const RecordsUpdateRequestBodyPTRRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsUpdateRequestBodyPTRRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsUpdateRequestBodyPTRRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsUpdateRequestBodyPTRRecordSettings",
-  }) as any as S.Schema<RecordsUpdateRequestBodyPTRRecordSettings>;
-
-export type RecordsUpdateRequestBodyPTRRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsUpdateRequestBodyPTRRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsUpdateRequestBodyPTRRecordTagsList>;
-
-export interface RecordsUpdateRequestBodyPTRRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsUpdateRequestBodyPTRRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Domain name pointing to the address. */
-  content?: string;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsUpdateRequestBodyPTRRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsUpdateRequestBodyPTRRecordTagsList;
-}
-export const RecordsUpdateRequestBodyPTRRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsUpdateRequestBodyPTRRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsUpdateRequestBodyPTRRecordSettings),
-    tags: S.optional(RecordsUpdateRequestBodyPTRRecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodyPTRRecord",
-}) as any as S.Schema<RecordsUpdateRequestBodyPTRRecord>;
-
-export type RecordsUpdateRequestBodyTXTRecordType = "TXT";
-export const RecordsUpdateRequestBodyTXTRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsUpdateRequestBodyTXTRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsUpdateRequestBodyTXTRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsUpdateRequestBodyTXTRecordSettings",
-  }) as any as S.Schema<RecordsUpdateRequestBodyTXTRecordSettings>;
-
-export type RecordsUpdateRequestBodyTXTRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsUpdateRequestBodyTXTRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsUpdateRequestBodyTXTRecordTagsList>;
-
-export interface RecordsUpdateRequestBodyTXTRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsUpdateRequestBodyTXTRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Text content for the record. The content must consist of quoted "character strings" (RFC 1035), each with a length of up to 255 bytes. Strings exceeding this allowed maximum length are automatically split. */
-  content?: string;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsUpdateRequestBodyTXTRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsUpdateRequestBodyTXTRecordTagsList;
-}
-export const RecordsUpdateRequestBodyTXTRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsUpdateRequestBodyTXTRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsUpdateRequestBodyTXTRecordSettings),
-    tags: S.optional(RecordsUpdateRequestBodyTXTRecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodyTXTRecord",
-}) as any as S.Schema<RecordsUpdateRequestBodyTXTRecord>;
-
-export type RecordsUpdateRequestBodyCAARecordType = "CAA";
-export const RecordsUpdateRequestBodyCAARecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsUpdateRequestBodyCAARecordData {
+export interface RecordsUpdateRequestDataCAARecord {
   /** Flags for the CAA record. */
   flags?: number;
   /** Name of the property controlled by this record (e.g.: issue, issuewild, iodef). */
@@ -24493,78 +21234,17 @@ export interface RecordsUpdateRequestBodyCAARecordData {
   /** Value of the record. This field's semantics depend on the chosen tag. */
   value?: string;
 }
-export const RecordsUpdateRequestBodyCAARecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      flags: S.optional(S.Number),
-      tag: S.optional(S.String),
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodyCAARecordData",
-}) as any as S.Schema<RecordsUpdateRequestBodyCAARecordData>;
-
-export interface RecordsUpdateRequestBodyCAARecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsUpdateRequestBodyCAARecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsUpdateRequestBodyCAARecordSettings",
-  }) as any as S.Schema<RecordsUpdateRequestBodyCAARecordSettings>;
-
-export type RecordsUpdateRequestBodyCAARecordTagsList = ReadonlyArray<unknown>;
-export const RecordsUpdateRequestBodyCAARecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsUpdateRequestBodyCAARecordTagsList>;
-
-export interface RecordsUpdateRequestBodyCAARecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsUpdateRequestBodyCAARecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted CAA content. See 'data' to set CAA properties. */
-  content?: string;
-  /** Components of a CAA record. */
-  data?: RecordsUpdateRequestBodyCAARecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsUpdateRequestBodyCAARecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsUpdateRequestBodyCAARecordTagsList;
-}
-export const RecordsUpdateRequestBodyCAARecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsUpdateRequestDataCAARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsUpdateRequestBodyCAARecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsUpdateRequestBodyCAARecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsUpdateRequestBodyCAARecordSettings),
-    tags: S.optional(RecordsUpdateRequestBodyCAARecordTagsList),
+    flags: S.optional(S.Number),
+    tag: S.optional(S.String),
+    value: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "RecordsUpdateRequestBodyCAARecord",
-}) as any as S.Schema<RecordsUpdateRequestBodyCAARecord>;
+  identifier: "RecordsUpdateRequestDataCAARecord",
+}) as any as S.Schema<RecordsUpdateRequestDataCAARecord>;
 
-export type RecordsUpdateRequestBodyCERTRecordType = "CERT";
-export const RecordsUpdateRequestBodyCERTRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsUpdateRequestBodyCERTRecordData {
+export interface RecordsUpdateRequestDataCERTRecord {
   /** Algorithm. */
   algorithm?: number;
   /** Certificate. */
@@ -24574,79 +21254,18 @@ export interface RecordsUpdateRequestBodyCERTRecordData {
   /** Type. */
   type?: number;
 }
-export const RecordsUpdateRequestBodyCERTRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      algorithm: S.optional(S.Number),
-      certificate: S.optional(S.String),
-      keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
-      type: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodyCERTRecordData",
-}) as any as S.Schema<RecordsUpdateRequestBodyCERTRecordData>;
-
-export interface RecordsUpdateRequestBodyCERTRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsUpdateRequestBodyCERTRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsUpdateRequestBodyCERTRecordSettings",
-  }) as any as S.Schema<RecordsUpdateRequestBodyCERTRecordSettings>;
-
-export type RecordsUpdateRequestBodyCERTRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsUpdateRequestBodyCERTRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsUpdateRequestBodyCERTRecordTagsList>;
-
-export interface RecordsUpdateRequestBodyCERTRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsUpdateRequestBodyCERTRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted CERT content. See 'data' to set CERT properties. */
-  content?: string;
-  /** Components of a CERT record. */
-  data?: RecordsUpdateRequestBodyCERTRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsUpdateRequestBodyCERTRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsUpdateRequestBodyCERTRecordTagsList;
-}
-export const RecordsUpdateRequestBodyCERTRecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsUpdateRequestDataCERTRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsUpdateRequestBodyCERTRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsUpdateRequestBodyCERTRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsUpdateRequestBodyCERTRecordSettings),
-    tags: S.optional(RecordsUpdateRequestBodyCERTRecordTagsList),
+    algorithm: S.optional(S.Number),
+    certificate: S.optional(S.String),
+    keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
+    type: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "RecordsUpdateRequestBodyCERTRecord",
-}) as any as S.Schema<RecordsUpdateRequestBodyCERTRecord>;
+  identifier: "RecordsUpdateRequestDataCERTRecord",
+}) as any as S.Schema<RecordsUpdateRequestDataCERTRecord>;
 
-export type RecordsUpdateRequestBodyDNSKEYRecordType = "DNSKEY";
-export const RecordsUpdateRequestBodyDNSKEYRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsUpdateRequestBodyDNSKEYRecordData {
+export interface RecordsUpdateRequestDataDNSKEYRecord {
   /** Algorithm. */
   algorithm?: number;
   /** Flags. */
@@ -24656,7 +21275,7 @@ export interface RecordsUpdateRequestBodyDNSKEYRecordData {
   /** Public Key. */
   publicKey?: string;
 }
-export const RecordsUpdateRequestBodyDNSKEYRecordData = /*@__PURE__*/ S.suspend(
+export const RecordsUpdateRequestDataDNSKEYRecord = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       algorithm: S.optional(S.Number),
@@ -24665,73 +21284,10 @@ export const RecordsUpdateRequestBodyDNSKEYRecordData = /*@__PURE__*/ S.suspend(
       publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
     }),
 ).annotate({
-  identifier: "RecordsUpdateRequestBodyDNSKEYRecordData",
-}) as any as S.Schema<RecordsUpdateRequestBodyDNSKEYRecordData>;
+  identifier: "RecordsUpdateRequestDataDNSKEYRecord",
+}) as any as S.Schema<RecordsUpdateRequestDataDNSKEYRecord>;
 
-export interface RecordsUpdateRequestBodyDNSKEYRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsUpdateRequestBodyDNSKEYRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsUpdateRequestBodyDNSKEYRecordSettings",
-  }) as any as S.Schema<RecordsUpdateRequestBodyDNSKEYRecordSettings>;
-
-export type RecordsUpdateRequestBodyDNSKEYRecordTagsList =
-  ReadonlyArray<unknown>;
-export const RecordsUpdateRequestBodyDNSKEYRecordTagsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<RecordsUpdateRequestBodyDNSKEYRecordTagsList>;
-
-export interface RecordsUpdateRequestBodyDNSKEYRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsUpdateRequestBodyDNSKEYRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted DNSKEY content. See 'data' to set DNSKEY properties. */
-  content?: string;
-  /** Components of a DNSKEY record. */
-  data?: RecordsUpdateRequestBodyDNSKEYRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsUpdateRequestBodyDNSKEYRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsUpdateRequestBodyDNSKEYRecordTagsList;
-}
-export const RecordsUpdateRequestBodyDNSKEYRecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      ttl: S.Number,
-      type: RecordsUpdateRequestBodyDNSKEYRecordType,
-      comment: S.optional(S.String),
-      content: S.optional(S.String),
-      data: S.optional(RecordsUpdateRequestBodyDNSKEYRecordData),
-      proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsUpdateRequestBodyDNSKEYRecordSettings),
-      tags: S.optional(RecordsUpdateRequestBodyDNSKEYRecordTagsList),
-    }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodyDNSKEYRecord",
-}) as any as S.Schema<RecordsUpdateRequestBodyDNSKEYRecord>;
-
-export type RecordsUpdateRequestBodyDSRecordType = "DS";
-export const RecordsUpdateRequestBodyDSRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsUpdateRequestBodyDSRecordData {
+export interface RecordsUpdateRequestDataDSRecord {
   /** Algorithm. */
   algorithm?: number;
   /** Digest. */
@@ -24741,79 +21297,18 @@ export interface RecordsUpdateRequestBodyDSRecordData {
   /** Key Tag. */
   keyTag?: number;
 }
-export const RecordsUpdateRequestBodyDSRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      algorithm: S.optional(S.Number),
-      digest: S.optional(S.String),
-      digestType: S.optional(S.Number.pipe(T.Body("digest_type"))),
-      keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
-    }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodyDSRecordData",
-}) as any as S.Schema<RecordsUpdateRequestBodyDSRecordData>;
-
-export interface RecordsUpdateRequestBodyDSRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsUpdateRequestBodyDSRecordSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodyDSRecordSettings",
-}) as any as S.Schema<RecordsUpdateRequestBodyDSRecordSettings>;
-
-export type RecordsUpdateRequestBodyDSRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsUpdateRequestBodyDSRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsUpdateRequestBodyDSRecordTagsList>;
-
-export interface RecordsUpdateRequestBodyDSRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsUpdateRequestBodyDSRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted DS content. See 'data' to set DS properties. */
-  content?: string;
-  /** Components of a DS record. */
-  data?: RecordsUpdateRequestBodyDSRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsUpdateRequestBodyDSRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsUpdateRequestBodyDSRecordTagsList;
-}
-export const RecordsUpdateRequestBodyDSRecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsUpdateRequestDataDSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsUpdateRequestBodyDSRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsUpdateRequestBodyDSRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsUpdateRequestBodyDSRecordSettings),
-    tags: S.optional(RecordsUpdateRequestBodyDSRecordTagsList),
+    algorithm: S.optional(S.Number),
+    digest: S.optional(S.String),
+    digestType: S.optional(S.Number.pipe(T.Body("digest_type"))),
+    keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
   }),
 ).annotate({
-  identifier: "RecordsUpdateRequestBodyDSRecord",
-}) as any as S.Schema<RecordsUpdateRequestBodyDSRecord>;
+  identifier: "RecordsUpdateRequestDataDSRecord",
+}) as any as S.Schema<RecordsUpdateRequestDataDSRecord>;
 
-export type RecordsUpdateRequestBodyHTTPSRecordType = "HTTPS";
-export const RecordsUpdateRequestBodyHTTPSRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsUpdateRequestBodyHTTPSRecordData {
+export interface RecordsUpdateRequestDataHTTPSRecord {
   /** Priority. */
   priority?: number;
   /** Target. */
@@ -24821,94 +21316,31 @@ export interface RecordsUpdateRequestBodyHTTPSRecordData {
   /** Value. */
   value?: string;
 }
-export const RecordsUpdateRequestBodyHTTPSRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      priority: S.optional(S.Number),
-      target: S.optional(S.String),
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodyHTTPSRecordData",
-}) as any as S.Schema<RecordsUpdateRequestBodyHTTPSRecordData>;
-
-export interface RecordsUpdateRequestBodyHTTPSRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsUpdateRequestBodyHTTPSRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsUpdateRequestBodyHTTPSRecordSettings",
-  }) as any as S.Schema<RecordsUpdateRequestBodyHTTPSRecordSettings>;
-
-export type RecordsUpdateRequestBodyHTTPSRecordTagsList =
-  ReadonlyArray<unknown>;
-export const RecordsUpdateRequestBodyHTTPSRecordTagsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<RecordsUpdateRequestBodyHTTPSRecordTagsList>;
-
-export interface RecordsUpdateRequestBodyHTTPSRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsUpdateRequestBodyHTTPSRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted HTTPS content. See 'data' to set HTTPS properties. */
-  content?: string;
-  /** Components of a HTTPS record. */
-  data?: RecordsUpdateRequestBodyHTTPSRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsUpdateRequestBodyHTTPSRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsUpdateRequestBodyHTTPSRecordTagsList;
-}
-export const RecordsUpdateRequestBodyHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsUpdateRequestDataHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsUpdateRequestBodyHTTPSRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsUpdateRequestBodyHTTPSRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsUpdateRequestBodyHTTPSRecordSettings),
-    tags: S.optional(RecordsUpdateRequestBodyHTTPSRecordTagsList),
+    priority: S.optional(S.Number),
+    target: S.optional(S.String),
+    value: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "RecordsUpdateRequestBodyHTTPSRecord",
-}) as any as S.Schema<RecordsUpdateRequestBodyHTTPSRecord>;
+  identifier: "RecordsUpdateRequestDataHTTPSRecord",
+}) as any as S.Schema<RecordsUpdateRequestDataHTTPSRecord>;
 
-export type RecordsUpdateRequestBodyLOCRecordType = "LOC";
-export const RecordsUpdateRequestBodyLOCRecordType = /*@__PURE__*/ S.String;
-
-export type RecordsUpdateRequestBodyLOCRecordDataLatDirection = "N" | "S";
-export const RecordsUpdateRequestBodyLOCRecordDataLatDirection =
+export type RecordsUpdateRequestDataLOCRecordLatDirection = "N" | "S";
+export const RecordsUpdateRequestDataLOCRecordLatDirection =
   /*@__PURE__*/ S.String;
 
-export type RecordsUpdateRequestBodyLOCRecordDataLongDirection = "E" | "W";
-export const RecordsUpdateRequestBodyLOCRecordDataLongDirection =
+export type RecordsUpdateRequestDataLOCRecordLongDirection = "E" | "W";
+export const RecordsUpdateRequestDataLOCRecordLongDirection =
   /*@__PURE__*/ S.String;
 
-export interface RecordsUpdateRequestBodyLOCRecordData {
+export interface RecordsUpdateRequestDataLOCRecord {
   /** Altitude of location in meters. */
   altitude?: number;
   /** Degrees of latitude. */
   latDegrees?: number;
   /** Latitude direction. */
-  latDirection?: RecordsUpdateRequestBodyLOCRecordDataLatDirection;
+  latDirection?: RecordsUpdateRequestDataLOCRecordLatDirection;
   /** Minutes of latitude. */
   latMinutes?: number;
   /** Seconds of latitude. */
@@ -24916,7 +21348,7 @@ export interface RecordsUpdateRequestBodyLOCRecordData {
   /** Degrees of longitude. */
   longDegrees?: number;
   /** Longitude direction. */
-  longDirection?: RecordsUpdateRequestBodyLOCRecordDataLongDirection;
+  longDirection?: RecordsUpdateRequestDataLOCRecordLongDirection;
   /** Minutes of longitude. */
   longMinutes?: number;
   /** Seconds of longitude. */
@@ -24928,95 +21360,34 @@ export interface RecordsUpdateRequestBodyLOCRecordData {
   /** Size of location in meters. */
   size?: number;
 }
-export const RecordsUpdateRequestBodyLOCRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      altitude: S.optional(S.Number),
-      latDegrees: S.optional(S.Number.pipe(T.Body("lat_degrees"))),
-      latDirection: S.optional(
-        RecordsUpdateRequestBodyLOCRecordDataLatDirection.pipe(
-          T.Body("lat_direction"),
-        ),
-      ),
-      latMinutes: S.optional(S.Number.pipe(T.Body("lat_minutes"))),
-      latSeconds: S.optional(S.Number.pipe(T.Body("lat_seconds"))),
-      longDegrees: S.optional(S.Number.pipe(T.Body("long_degrees"))),
-      longDirection: S.optional(
-        RecordsUpdateRequestBodyLOCRecordDataLongDirection.pipe(
-          T.Body("long_direction"),
-        ),
-      ),
-      longMinutes: S.optional(S.Number.pipe(T.Body("long_minutes"))),
-      longSeconds: S.optional(S.Number.pipe(T.Body("long_seconds"))),
-      precisionHorz: S.optional(S.Number.pipe(T.Body("precision_horz"))),
-      precisionVert: S.optional(S.Number.pipe(T.Body("precision_vert"))),
-      size: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodyLOCRecordData",
-}) as any as S.Schema<RecordsUpdateRequestBodyLOCRecordData>;
-
-export interface RecordsUpdateRequestBodyLOCRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsUpdateRequestBodyLOCRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsUpdateRequestBodyLOCRecordSettings",
-  }) as any as S.Schema<RecordsUpdateRequestBodyLOCRecordSettings>;
-
-export type RecordsUpdateRequestBodyLOCRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsUpdateRequestBodyLOCRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsUpdateRequestBodyLOCRecordTagsList>;
-
-export interface RecordsUpdateRequestBodyLOCRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsUpdateRequestBodyLOCRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted LOC content. See 'data' to set LOC properties. */
-  content?: string;
-  /** Components of a LOC record. */
-  data?: RecordsUpdateRequestBodyLOCRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsUpdateRequestBodyLOCRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsUpdateRequestBodyLOCRecordTagsList;
-}
-export const RecordsUpdateRequestBodyLOCRecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsUpdateRequestDataLOCRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsUpdateRequestBodyLOCRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsUpdateRequestBodyLOCRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsUpdateRequestBodyLOCRecordSettings),
-    tags: S.optional(RecordsUpdateRequestBodyLOCRecordTagsList),
+    altitude: S.optional(S.Number),
+    latDegrees: S.optional(S.Number.pipe(T.Body("lat_degrees"))),
+    latDirection: S.optional(
+      RecordsUpdateRequestDataLOCRecordLatDirection.pipe(
+        T.Body("lat_direction"),
+      ),
+    ),
+    latMinutes: S.optional(S.Number.pipe(T.Body("lat_minutes"))),
+    latSeconds: S.optional(S.Number.pipe(T.Body("lat_seconds"))),
+    longDegrees: S.optional(S.Number.pipe(T.Body("long_degrees"))),
+    longDirection: S.optional(
+      RecordsUpdateRequestDataLOCRecordLongDirection.pipe(
+        T.Body("long_direction"),
+      ),
+    ),
+    longMinutes: S.optional(S.Number.pipe(T.Body("long_minutes"))),
+    longSeconds: S.optional(S.Number.pipe(T.Body("long_seconds"))),
+    precisionHorz: S.optional(S.Number.pipe(T.Body("precision_horz"))),
+    precisionVert: S.optional(S.Number.pipe(T.Body("precision_vert"))),
+    size: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "RecordsUpdateRequestBodyLOCRecord",
-}) as any as S.Schema<RecordsUpdateRequestBodyLOCRecord>;
+  identifier: "RecordsUpdateRequestDataLOCRecord",
+}) as any as S.Schema<RecordsUpdateRequestDataLOCRecord>;
 
-export type RecordsUpdateRequestBodyNAPTRRecordType = "NAPTR";
-export const RecordsUpdateRequestBodyNAPTRRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsUpdateRequestBodyNAPTRRecordData {
+export interface RecordsUpdateRequestDataNAPTRRecord {
   /** Flags. */
   flags?: string;
   /** Order. */
@@ -25030,83 +21401,20 @@ export interface RecordsUpdateRequestBodyNAPTRRecordData {
   /** Service. */
   service?: string;
 }
-export const RecordsUpdateRequestBodyNAPTRRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      flags: S.optional(S.String),
-      order: S.optional(S.Number),
-      preference: S.optional(S.Number),
-      regex: S.optional(S.String),
-      replacement: S.optional(S.String),
-      service: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodyNAPTRRecordData",
-}) as any as S.Schema<RecordsUpdateRequestBodyNAPTRRecordData>;
-
-export interface RecordsUpdateRequestBodyNAPTRRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsUpdateRequestBodyNAPTRRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsUpdateRequestBodyNAPTRRecordSettings",
-  }) as any as S.Schema<RecordsUpdateRequestBodyNAPTRRecordSettings>;
-
-export type RecordsUpdateRequestBodyNAPTRRecordTagsList =
-  ReadonlyArray<unknown>;
-export const RecordsUpdateRequestBodyNAPTRRecordTagsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<RecordsUpdateRequestBodyNAPTRRecordTagsList>;
-
-export interface RecordsUpdateRequestBodyNAPTRRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsUpdateRequestBodyNAPTRRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted NAPTR content. See 'data' to set NAPTR properties. */
-  content?: string;
-  /** Components of a NAPTR record. */
-  data?: RecordsUpdateRequestBodyNAPTRRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsUpdateRequestBodyNAPTRRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsUpdateRequestBodyNAPTRRecordTagsList;
-}
-export const RecordsUpdateRequestBodyNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsUpdateRequestDataNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsUpdateRequestBodyNAPTRRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsUpdateRequestBodyNAPTRRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsUpdateRequestBodyNAPTRRecordSettings),
-    tags: S.optional(RecordsUpdateRequestBodyNAPTRRecordTagsList),
+    flags: S.optional(S.String),
+    order: S.optional(S.Number),
+    preference: S.optional(S.Number),
+    regex: S.optional(S.String),
+    replacement: S.optional(S.String),
+    service: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "RecordsUpdateRequestBodyNAPTRRecord",
-}) as any as S.Schema<RecordsUpdateRequestBodyNAPTRRecord>;
+  identifier: "RecordsUpdateRequestDataNAPTRRecord",
+}) as any as S.Schema<RecordsUpdateRequestDataNAPTRRecord>;
 
-export type RecordsUpdateRequestBodySMIMEARecordType = "SMIMEA";
-export const RecordsUpdateRequestBodySMIMEARecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsUpdateRequestBodySMIMEARecordData {
+export interface RecordsUpdateRequestDataSMIMEARecord {
   /** Certificate. */
   certificate?: string;
   /** Matching Type. */
@@ -25116,7 +21424,7 @@ export interface RecordsUpdateRequestBodySMIMEARecordData {
   /** Usage. */
   usage?: number;
 }
-export const RecordsUpdateRequestBodySMIMEARecordData = /*@__PURE__*/ S.suspend(
+export const RecordsUpdateRequestDataSMIMEARecord = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       certificate: S.optional(S.String),
@@ -25125,73 +21433,10 @@ export const RecordsUpdateRequestBodySMIMEARecordData = /*@__PURE__*/ S.suspend(
       usage: S.optional(S.Number),
     }),
 ).annotate({
-  identifier: "RecordsUpdateRequestBodySMIMEARecordData",
-}) as any as S.Schema<RecordsUpdateRequestBodySMIMEARecordData>;
+  identifier: "RecordsUpdateRequestDataSMIMEARecord",
+}) as any as S.Schema<RecordsUpdateRequestDataSMIMEARecord>;
 
-export interface RecordsUpdateRequestBodySMIMEARecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsUpdateRequestBodySMIMEARecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsUpdateRequestBodySMIMEARecordSettings",
-  }) as any as S.Schema<RecordsUpdateRequestBodySMIMEARecordSettings>;
-
-export type RecordsUpdateRequestBodySMIMEARecordTagsList =
-  ReadonlyArray<unknown>;
-export const RecordsUpdateRequestBodySMIMEARecordTagsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<RecordsUpdateRequestBodySMIMEARecordTagsList>;
-
-export interface RecordsUpdateRequestBodySMIMEARecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsUpdateRequestBodySMIMEARecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted SMIMEA content. See 'data' to set SMIMEA properties. */
-  content?: string;
-  /** Components of a SMIMEA record. */
-  data?: RecordsUpdateRequestBodySMIMEARecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsUpdateRequestBodySMIMEARecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsUpdateRequestBodySMIMEARecordTagsList;
-}
-export const RecordsUpdateRequestBodySMIMEARecord = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      ttl: S.Number,
-      type: RecordsUpdateRequestBodySMIMEARecordType,
-      comment: S.optional(S.String),
-      content: S.optional(S.String),
-      data: S.optional(RecordsUpdateRequestBodySMIMEARecordData),
-      proxied: S.optional(S.Boolean),
-      settings: S.optional(RecordsUpdateRequestBodySMIMEARecordSettings),
-      tags: S.optional(RecordsUpdateRequestBodySMIMEARecordTagsList),
-    }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodySMIMEARecord",
-}) as any as S.Schema<RecordsUpdateRequestBodySMIMEARecord>;
-
-export type RecordsUpdateRequestBodySRVRecordType = "SRV";
-export const RecordsUpdateRequestBodySRVRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsUpdateRequestBodySRVRecordData {
+export interface RecordsUpdateRequestDataSRVRecord {
   /** The port of the service. */
   port?: number;
   /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
@@ -25201,79 +21446,18 @@ export interface RecordsUpdateRequestBodySRVRecordData {
   /** The record weight. */
   weight?: number;
 }
-export const RecordsUpdateRequestBodySRVRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      port: S.optional(S.Number),
-      priority: S.optional(S.Number),
-      target: S.optional(S.String),
-      weight: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodySRVRecordData",
-}) as any as S.Schema<RecordsUpdateRequestBodySRVRecordData>;
-
-export interface RecordsUpdateRequestBodySRVRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsUpdateRequestBodySRVRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsUpdateRequestBodySRVRecordSettings",
-  }) as any as S.Schema<RecordsUpdateRequestBodySRVRecordSettings>;
-
-export type RecordsUpdateRequestBodySRVRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsUpdateRequestBodySRVRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsUpdateRequestBodySRVRecordTagsList>;
-
-export interface RecordsUpdateRequestBodySRVRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsUpdateRequestBodySRVRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Priority, weight, port, and SRV target. See 'data' for setting the individual component values. */
-  content?: string;
-  /** Components of a SRV record. */
-  data?: RecordsUpdateRequestBodySRVRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsUpdateRequestBodySRVRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsUpdateRequestBodySRVRecordTagsList;
-}
-export const RecordsUpdateRequestBodySRVRecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsUpdateRequestDataSRVRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsUpdateRequestBodySRVRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsUpdateRequestBodySRVRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsUpdateRequestBodySRVRecordSettings),
-    tags: S.optional(RecordsUpdateRequestBodySRVRecordTagsList),
+    port: S.optional(S.Number),
+    priority: S.optional(S.Number),
+    target: S.optional(S.String),
+    weight: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "RecordsUpdateRequestBodySRVRecord",
-}) as any as S.Schema<RecordsUpdateRequestBodySRVRecord>;
+  identifier: "RecordsUpdateRequestDataSRVRecord",
+}) as any as S.Schema<RecordsUpdateRequestDataSRVRecord>;
 
-export type RecordsUpdateRequestBodySSHFPRecordType = "SSHFP";
-export const RecordsUpdateRequestBodySSHFPRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsUpdateRequestBodySSHFPRecordData {
+export interface RecordsUpdateRequestDataSSHFPRecord {
   /** Algorithm. */
   algorithm?: number;
   /** Fingerprint. */
@@ -25281,567 +21465,69 @@ export interface RecordsUpdateRequestBodySSHFPRecordData {
   /** Type. */
   type?: number;
 }
-export const RecordsUpdateRequestBodySSHFPRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      algorithm: S.optional(S.Number),
-      fingerprint: S.optional(S.String),
-      type: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodySSHFPRecordData",
-}) as any as S.Schema<RecordsUpdateRequestBodySSHFPRecordData>;
-
-export interface RecordsUpdateRequestBodySSHFPRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsUpdateRequestBodySSHFPRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsUpdateRequestBodySSHFPRecordSettings",
-  }) as any as S.Schema<RecordsUpdateRequestBodySSHFPRecordSettings>;
-
-export type RecordsUpdateRequestBodySSHFPRecordTagsList =
-  ReadonlyArray<unknown>;
-export const RecordsUpdateRequestBodySSHFPRecordTagsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<RecordsUpdateRequestBodySSHFPRecordTagsList>;
-
-export interface RecordsUpdateRequestBodySSHFPRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsUpdateRequestBodySSHFPRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted SSHFP content. See 'data' to set SSHFP properties. */
-  content?: string;
-  /** Components of a SSHFP record. */
-  data?: RecordsUpdateRequestBodySSHFPRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsUpdateRequestBodySSHFPRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsUpdateRequestBodySSHFPRecordTagsList;
-}
-export const RecordsUpdateRequestBodySSHFPRecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsUpdateRequestDataSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsUpdateRequestBodySSHFPRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsUpdateRequestBodySSHFPRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsUpdateRequestBodySSHFPRecordSettings),
-    tags: S.optional(RecordsUpdateRequestBodySSHFPRecordTagsList),
+    algorithm: S.optional(S.Number),
+    fingerprint: S.optional(S.String),
+    type: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "RecordsUpdateRequestBodySSHFPRecord",
-}) as any as S.Schema<RecordsUpdateRequestBodySSHFPRecord>;
+  identifier: "RecordsUpdateRequestDataSSHFPRecord",
+}) as any as S.Schema<RecordsUpdateRequestDataSSHFPRecord>;
 
-export type RecordsUpdateRequestBodySVCBRecordType = "SVCB";
-export const RecordsUpdateRequestBodySVCBRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsUpdateRequestBodySVCBRecordData {
-  /** Priority. */
-  priority?: number;
-  /** Target. */
-  target?: string;
-  /** Value. */
-  value?: string;
-}
-export const RecordsUpdateRequestBodySVCBRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      priority: S.optional(S.Number),
-      target: S.optional(S.String),
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodySVCBRecordData",
-}) as any as S.Schema<RecordsUpdateRequestBodySVCBRecordData>;
-
-export interface RecordsUpdateRequestBodySVCBRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsUpdateRequestBodySVCBRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsUpdateRequestBodySVCBRecordSettings",
-  }) as any as S.Schema<RecordsUpdateRequestBodySVCBRecordSettings>;
-
-export type RecordsUpdateRequestBodySVCBRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsUpdateRequestBodySVCBRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsUpdateRequestBodySVCBRecordTagsList>;
-
-export interface RecordsUpdateRequestBodySVCBRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsUpdateRequestBodySVCBRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted SVCB content. See 'data' to set SVCB properties. */
-  content?: string;
-  /** Components of a SVCB record. */
-  data?: RecordsUpdateRequestBodySVCBRecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsUpdateRequestBodySVCBRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsUpdateRequestBodySVCBRecordTagsList;
-}
-export const RecordsUpdateRequestBodySVCBRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsUpdateRequestBodySVCBRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsUpdateRequestBodySVCBRecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsUpdateRequestBodySVCBRecordSettings),
-    tags: S.optional(RecordsUpdateRequestBodySVCBRecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodySVCBRecord",
-}) as any as S.Schema<RecordsUpdateRequestBodySVCBRecord>;
-
-export type RecordsUpdateRequestBodyTLSARecordType = "TLSA";
-export const RecordsUpdateRequestBodyTLSARecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsUpdateRequestBodyTLSARecordData {
-  /** Certificate. */
-  certificate?: string;
-  /** Matching Type. */
-  matchingType?: number;
-  /** Selector. */
-  selector?: number;
-  /** Usage. */
-  usage?: number;
-}
-export const RecordsUpdateRequestBodyTLSARecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      certificate: S.optional(S.String),
-      matchingType: S.optional(S.Number.pipe(T.Body("matching_type"))),
-      selector: S.optional(S.Number),
-      usage: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodyTLSARecordData",
-}) as any as S.Schema<RecordsUpdateRequestBodyTLSARecordData>;
-
-export interface RecordsUpdateRequestBodyTLSARecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsUpdateRequestBodyTLSARecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsUpdateRequestBodyTLSARecordSettings",
-  }) as any as S.Schema<RecordsUpdateRequestBodyTLSARecordSettings>;
-
-export type RecordsUpdateRequestBodyTLSARecordTagsList = ReadonlyArray<unknown>;
-export const RecordsUpdateRequestBodyTLSARecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsUpdateRequestBodyTLSARecordTagsList>;
-
-export interface RecordsUpdateRequestBodyTLSARecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsUpdateRequestBodyTLSARecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted TLSA content. See 'data' to set TLSA properties. */
-  content?: string;
-  /** Components of a TLSA record. */
-  data?: RecordsUpdateRequestBodyTLSARecordData;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsUpdateRequestBodyTLSARecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsUpdateRequestBodyTLSARecordTagsList;
-}
-export const RecordsUpdateRequestBodyTLSARecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsUpdateRequestBodyTLSARecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsUpdateRequestBodyTLSARecordData),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsUpdateRequestBodyTLSARecordSettings),
-    tags: S.optional(RecordsUpdateRequestBodyTLSARecordTagsList),
-  }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodyTLSARecord",
-}) as any as S.Schema<RecordsUpdateRequestBodyTLSARecord>;
-
-export type RecordsUpdateRequestBodyURIRecordType = "URI";
-export const RecordsUpdateRequestBodyURIRecordType = /*@__PURE__*/ S.String;
-
-export interface RecordsUpdateRequestBodyURIRecordData {
+export interface RecordsUpdateRequestDataURIRecord {
   /** The record content. */
   target?: string;
   /** The record weight. */
   weight?: number;
 }
-export const RecordsUpdateRequestBodyURIRecordData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      target: S.optional(S.String),
-      weight: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "RecordsUpdateRequestBodyURIRecordData",
-}) as any as S.Schema<RecordsUpdateRequestBodyURIRecordData>;
-
-export interface RecordsUpdateRequestBodyURIRecordSettings {
-  /** When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv4Only?: boolean;
-  /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6. */
-  ipv6Only?: boolean;
-}
-export const RecordsUpdateRequestBodyURIRecordSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipv4Only: S.optional(S.Boolean.pipe(T.Body("ipv4_only"))),
-      ipv6Only: S.optional(S.Boolean.pipe(T.Body("ipv6_only"))),
-    }),
-  ).annotate({
-    identifier: "RecordsUpdateRequestBodyURIRecordSettings",
-  }) as any as S.Schema<RecordsUpdateRequestBodyURIRecordSettings>;
-
-export type RecordsUpdateRequestBodyURIRecordTagsList = ReadonlyArray<unknown>;
-export const RecordsUpdateRequestBodyURIRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RecordsUpdateRequestBodyURIRecordTagsList>;
-
-export interface RecordsUpdateRequestBodyURIRecord {
-  /** Complete DNS record name, including the zone name, in Punycode. */
-  name: string;
-  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
-  /** Record type. */
-  type: RecordsUpdateRequestBodyURIRecordType;
-  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
-  comment?: string;
-  /** Formatted URI content. See 'data' to set URI properties. */
-  content?: string;
-  /** Components of a URI record. */
-  data?: RecordsUpdateRequestBodyURIRecordData;
-  /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
-  priority?: number;
-  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
-  proxied?: boolean;
-  /** Settings for the DNS record. */
-  settings?: RecordsUpdateRequestBodyURIRecordSettings;
-  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
-  tags?: RecordsUpdateRequestBodyURIRecordTagsList;
-}
-export const RecordsUpdateRequestBodyURIRecord = /*@__PURE__*/ S.suspend(() =>
+export const RecordsUpdateRequestDataURIRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    ttl: S.Number,
-    type: RecordsUpdateRequestBodyURIRecordType,
-    comment: S.optional(S.String),
-    content: S.optional(S.String),
-    data: S.optional(RecordsUpdateRequestBodyURIRecordData),
-    priority: S.optional(S.Number),
-    proxied: S.optional(S.Boolean),
-    settings: S.optional(RecordsUpdateRequestBodyURIRecordSettings),
-    tags: S.optional(RecordsUpdateRequestBodyURIRecordTagsList),
+    target: S.optional(S.String),
+    weight: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "RecordsUpdateRequestBodyURIRecord",
-}) as any as S.Schema<RecordsUpdateRequestBodyURIRecord>;
+  identifier: "RecordsUpdateRequestDataURIRecord",
+}) as any as S.Schema<RecordsUpdateRequestDataURIRecord>;
 
-export type RecordsUpdateRequestBody =
-  | RecordsUpdateRequestBodyARecord
-  | RecordsUpdateRequestBodyAAAARecord
-  | RecordsUpdateRequestBodyCNAMERecord
-  | RecordsUpdateRequestBodyMXRecord
-  | RecordsUpdateRequestBodyNSRecord
-  | RecordsUpdateRequestBodyDNSRecordsOpenpgpkeyRecord
-  | RecordsUpdateRequestBodyPTRRecord
-  | RecordsUpdateRequestBodyTXTRecord
-  | RecordsUpdateRequestBodyCAARecord
-  | RecordsUpdateRequestBodyCERTRecord
-  | RecordsUpdateRequestBodyDNSKEYRecord
-  | RecordsUpdateRequestBodyDSRecord
-  | RecordsUpdateRequestBodyHTTPSRecord
-  | RecordsUpdateRequestBodyLOCRecord
-  | RecordsUpdateRequestBodyNAPTRRecord
-  | RecordsUpdateRequestBodySMIMEARecord
-  | RecordsUpdateRequestBodySRVRecord
-  | RecordsUpdateRequestBodySSHFPRecord
-  | RecordsUpdateRequestBodySVCBRecord
-  | RecordsUpdateRequestBodyTLSARecord
-  | RecordsUpdateRequestBodyURIRecord;
-export const RecordsUpdateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+export type RecordsUpdateRequestData =
+  | RecordsUpdateRequestDataCAARecord
+  | RecordsUpdateRequestDataCERTRecord
+  | RecordsUpdateRequestDataDNSKEYRecord
+  | RecordsUpdateRequestDataDSRecord
+  | RecordsUpdateRequestDataHTTPSRecord
+  | RecordsUpdateRequestDataLOCRecord
+  | RecordsUpdateRequestDataNAPTRRecord
+  | RecordsUpdateRequestDataSMIMEARecord
+  | RecordsUpdateRequestDataSRVRecord
+  | RecordsUpdateRequestDataSSHFPRecord
+  | RecordsUpdateRequestDataURIRecord;
+export const RecordsUpdateRequestData = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
+    ["flags", "tag", "value"],
+    ["algorithm", "certificate", "keyTag", "type"],
+    ["algorithm", "flags", "protocol", "publicKey"],
+    ["algorithm", "digest", "digestType", "keyTag"],
+    ["priority", "target", "value"],
     [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "privateRouting",
-      "proxied",
-      "settings",
-      "tags",
+      "altitude",
+      "latDegrees",
+      "latDirection",
+      "latMinutes",
+      "latSeconds",
+      "longDegrees",
+      "longDirection",
+      "longMinutes",
+      "longSeconds",
+      "precisionHorz",
+      "precisionVert",
+      "size",
     ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "privateRouting",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "priority",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "proxied",
-      "settings",
-      "tags",
-    ],
-    [
-      "name",
-      "ttl",
-      "type",
-      "comment",
-      "content",
-      "data",
-      "priority",
-      "proxied",
-      "settings",
-      "tags",
-    ],
+    ["flags", "order", "preference", "regex", "replacement", "service"],
+    ["certificate", "matchingType", "selector", "usage"],
+    ["port", "priority", "target", "weight"],
+    ["algorithm", "fingerprint", "type"],
+    ["target", "weight"],
   ]),
 );
 
@@ -25852,7 +21538,28 @@ export interface UpdateRecordRequest {
   dnsRecordId: string;
   /** Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
   includeShadowMetadata?: boolean;
-  body: RecordsUpdateRequestBody;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl: number;
+  /** Record type. */
+  type: RecordsUpdateRequestType;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A valid IPv4 address. */
+  content?: string;
+  /** Enables private network routing to the origin. */
+  privateRouting?: boolean;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsUpdateRequestSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsUpdateRequestTagsList;
+  /** Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map. */
+  priority?: number;
+  /** Components of a CAA record. */
+  data?: RecordsUpdateRequestData;
 }
 export const UpdateRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -25861,7 +21568,17 @@ export const UpdateRecordRequest = /*@__PURE__*/ S.suspend(() =>
     includeShadowMetadata: S.optional(
       S.Boolean.pipe(T.Query("include_shadow_metadata")),
     ),
-    body: RecordsUpdateRequestBody.pipe(T.HttpBody()),
+    name: S.String,
+    ttl: S.Number,
+    type: RecordsUpdateRequestType,
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsUpdateRequestSettings),
+    tags: S.optional(RecordsUpdateRequestTagsList),
+    priority: S.optional(S.Number),
+    data: S.optional(RecordsUpdateRequestData),
   })
     .pipe(
       T.Http({

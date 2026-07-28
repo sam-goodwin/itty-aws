@@ -433,10 +433,10 @@ export const BulkPushMessagesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPushMessagesResponse",
 }) as any as S.Schema<BulkPushMessagesResponse>;
 
-export type ConsumersCreateRequestBodyWorkerType = "worker";
-export const ConsumersCreateRequestBodyWorkerType = /*@__PURE__*/ S.String;
+export type ConsumersCreateRequestType = "worker" | "http_pull";
+export const ConsumersCreateRequestType = /*@__PURE__*/ S.String;
 
-export interface ConsumersCreateRequestBodyWorkerSettings {
+export interface ConsumersCreateRequestSettingsWorker {
   /** The maximum number of messages to include in a batch. */
   batchSize?: number;
   /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
@@ -448,7 +448,7 @@ export interface ConsumersCreateRequestBodyWorkerSettings {
   /** The number of seconds to delay before making the message available for another attempt. */
   retryDelay?: number;
 }
-export const ConsumersCreateRequestBodyWorkerSettings = /*@__PURE__*/ S.suspend(
+export const ConsumersCreateRequestSettingsWorker = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
@@ -458,31 +458,10 @@ export const ConsumersCreateRequestBodyWorkerSettings = /*@__PURE__*/ S.suspend(
       retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
     }),
 ).annotate({
-  identifier: "ConsumersCreateRequestBodyWorkerSettings",
-}) as any as S.Schema<ConsumersCreateRequestBodyWorkerSettings>;
+  identifier: "ConsumersCreateRequestSettingsWorker",
+}) as any as S.Schema<ConsumersCreateRequestSettingsWorker>;
 
-export interface ConsumersCreateRequestBodyWorker {
-  /** Name of a Worker */
-  scriptName: string;
-  type: ConsumersCreateRequestBodyWorkerType;
-  deadLetterQueue?: string;
-  settings?: ConsumersCreateRequestBodyWorkerSettings;
-}
-export const ConsumersCreateRequestBodyWorker = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scriptName: S.String.pipe(T.Body("script_name")),
-    type: ConsumersCreateRequestBodyWorkerType,
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    settings: S.optional(ConsumersCreateRequestBodyWorkerSettings),
-  }),
-).annotate({
-  identifier: "ConsumersCreateRequestBodyWorker",
-}) as any as S.Schema<ConsumersCreateRequestBodyWorker>;
-
-export type ConsumersCreateRequestBodyHTTPPullType = "http_pull";
-export const ConsumersCreateRequestBodyHTTPPullType = /*@__PURE__*/ S.String;
-
-export interface ConsumersCreateRequestBodyHTTPPullSettings {
+export interface ConsumersCreateRequestSettingsHTTPPull {
   /** The maximum number of messages to include in a batch. */
   batchSize?: number;
   /** The maximum number of retries */
@@ -492,8 +471,8 @@ export interface ConsumersCreateRequestBodyHTTPPullSettings {
   /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
   visibilityTimeoutMs?: number;
 }
-export const ConsumersCreateRequestBodyHTTPPullSettings =
-  /*@__PURE__*/ S.suspend(() =>
+export const ConsumersCreateRequestSettingsHTTPPull = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
       maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
@@ -502,32 +481,23 @@ export const ConsumersCreateRequestBodyHTTPPullSettings =
         S.Number.pipe(T.Body("visibility_timeout_ms")),
       ),
     }),
-  ).annotate({
-    identifier: "ConsumersCreateRequestBodyHTTPPullSettings",
-  }) as any as S.Schema<ConsumersCreateRequestBodyHTTPPullSettings>;
-
-export interface ConsumersCreateRequestBodyHTTPPull {
-  type: ConsumersCreateRequestBodyHTTPPullType;
-  deadLetterQueue?: string;
-  settings?: ConsumersCreateRequestBodyHTTPPullSettings;
-}
-export const ConsumersCreateRequestBodyHTTPPull = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ConsumersCreateRequestBodyHTTPPullType,
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    settings: S.optional(ConsumersCreateRequestBodyHTTPPullSettings),
-  }),
 ).annotate({
-  identifier: "ConsumersCreateRequestBodyHTTPPull",
-}) as any as S.Schema<ConsumersCreateRequestBodyHTTPPull>;
+  identifier: "ConsumersCreateRequestSettingsHTTPPull",
+}) as any as S.Schema<ConsumersCreateRequestSettingsHTTPPull>;
 
-export type ConsumersCreateRequestBody =
-  | ConsumersCreateRequestBodyWorker
-  | ConsumersCreateRequestBodyHTTPPull;
-export const ConsumersCreateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+export type ConsumersCreateRequestSettings =
+  | ConsumersCreateRequestSettingsWorker
+  | ConsumersCreateRequestSettingsHTTPPull;
+export const ConsumersCreateRequestSettings = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
-    ["scriptName", "type", "deadLetterQueue", "settings"],
-    ["type", "deadLetterQueue", "settings"],
+    [
+      "batchSize",
+      "maxConcurrency",
+      "maxRetries",
+      "maxWaitTimeMs",
+      "retryDelay",
+    ],
+    ["batchSize", "maxRetries", "retryDelay", "visibilityTimeoutMs"],
   ]),
 );
 
@@ -536,14 +506,20 @@ export interface CreateConsumerRequest {
   accountId: string;
   /** A Resource identifier. */
   queueId: string;
-  /** Request body for creating or updating a consumer */
-  body: ConsumersCreateRequestBody;
+  /** Name of a Worker */
+  scriptName?: string;
+  type: ConsumersCreateRequestType;
+  deadLetterQueue?: string;
+  settings?: ConsumersCreateRequestSettings;
 }
 export const CreateConsumerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-    body: ConsumersCreateRequestBody.pipe(T.HttpBody()),
+    scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
+    type: ConsumersCreateRequestType,
+    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
+    settings: S.optional(ConsumersCreateRequestSettings),
   })
     .pipe(
       T.Http({
@@ -3952,78 +3928,28 @@ export const PullMessageResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PullMessageResponse",
 }) as any as S.Schema<PullMessageResponse>;
 
-export type MessagesPushRequestBodyMqQueueMessageTextContentType = "text";
-export const MessagesPushRequestBodyMqQueueMessageTextContentType =
-  /*@__PURE__*/ S.String;
-
-export interface MessagesPushRequestBodyMqQueueMessageText {
-  body?: string;
-  contentType?: MessagesPushRequestBodyMqQueueMessageTextContentType;
-  /** The number of seconds to wait for attempting to deliver this message to consumers */
-  delaySeconds?: number;
-}
-export const MessagesPushRequestBodyMqQueueMessageText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      body: S.optional(S.String),
-      contentType: S.optional(
-        MessagesPushRequestBodyMqQueueMessageTextContentType.pipe(
-          T.Body("content_type"),
-        ),
-      ),
-      delaySeconds: S.optional(S.Number.pipe(T.Body("delay_seconds"))),
-    }),
-  ).annotate({
-    identifier: "MessagesPushRequestBodyMqQueueMessageText",
-  }) as any as S.Schema<MessagesPushRequestBodyMqQueueMessageText>;
-
-export type MessagesPushRequestBodyMqQueueMessageJsonContentType = "json";
-export const MessagesPushRequestBodyMqQueueMessageJsonContentType =
-  /*@__PURE__*/ S.String;
-
-export interface MessagesPushRequestBodyMqQueueMessageJson {
-  body?: unknown;
-  contentType?: MessagesPushRequestBodyMqQueueMessageJsonContentType;
-  /** The number of seconds to wait for attempting to deliver this message to consumers */
-  delaySeconds?: number;
-}
-export const MessagesPushRequestBodyMqQueueMessageJson =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      body: S.optional(S.Unknown),
-      contentType: S.optional(
-        MessagesPushRequestBodyMqQueueMessageJsonContentType.pipe(
-          T.Body("content_type"),
-        ),
-      ),
-      delaySeconds: S.optional(S.Number.pipe(T.Body("delay_seconds"))),
-    }),
-  ).annotate({
-    identifier: "MessagesPushRequestBodyMqQueueMessageJson",
-  }) as any as S.Schema<MessagesPushRequestBodyMqQueueMessageJson>;
-
-export type MessagesPushRequestBody =
-  | MessagesPushRequestBodyMqQueueMessageText
-  | MessagesPushRequestBodyMqQueueMessageJson;
-export const MessagesPushRequestBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["body", "contentType", "delaySeconds"],
-    ["body", "contentType", "delaySeconds"],
-  ]),
-);
+export type MessagesPushRequestContentType = "text" | "json";
+export const MessagesPushRequestContentType = /*@__PURE__*/ S.String;
 
 export interface PushMessageRequest {
   /** A Resource identifier. */
   accountId: string;
   /** A Resource identifier. */
   queueId: string;
-  body?: MessagesPushRequestBody;
+  body?: unknown;
+  contentType?: MessagesPushRequestContentType;
+  /** The number of seconds to wait for attempting to deliver this message to consumers */
+  delaySeconds?: number;
 }
 export const PushMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-    body: S.optional(MessagesPushRequestBody.pipe(T.HttpBody())),
+    body: S.optional(S.Unknown),
+    contentType: S.optional(
+      MessagesPushRequestContentType.pipe(T.Body("content_type")),
+    ),
+    delaySeconds: S.optional(S.Number.pipe(T.Body("delay_seconds"))),
   })
     .pipe(
       T.Http({
@@ -4390,10 +4316,10 @@ export const StatusPurgeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StatusPurgeResponse",
 }) as any as S.Schema<StatusPurgeResponse>;
 
-export type ConsumersUpdateRequestBodyWorkerType = "worker";
-export const ConsumersUpdateRequestBodyWorkerType = /*@__PURE__*/ S.String;
+export type ConsumersUpdateRequestType = "worker" | "http_pull";
+export const ConsumersUpdateRequestType = /*@__PURE__*/ S.String;
 
-export interface ConsumersUpdateRequestBodyWorkerSettings {
+export interface ConsumersUpdateRequestSettingsWorker {
   /** The maximum number of messages to include in a batch. */
   batchSize?: number;
   /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
@@ -4405,7 +4331,7 @@ export interface ConsumersUpdateRequestBodyWorkerSettings {
   /** The number of seconds to delay before making the message available for another attempt. */
   retryDelay?: number;
 }
-export const ConsumersUpdateRequestBodyWorkerSettings = /*@__PURE__*/ S.suspend(
+export const ConsumersUpdateRequestSettingsWorker = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
@@ -4415,31 +4341,10 @@ export const ConsumersUpdateRequestBodyWorkerSettings = /*@__PURE__*/ S.suspend(
       retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
     }),
 ).annotate({
-  identifier: "ConsumersUpdateRequestBodyWorkerSettings",
-}) as any as S.Schema<ConsumersUpdateRequestBodyWorkerSettings>;
+  identifier: "ConsumersUpdateRequestSettingsWorker",
+}) as any as S.Schema<ConsumersUpdateRequestSettingsWorker>;
 
-export interface ConsumersUpdateRequestBodyWorker {
-  /** Name of a Worker */
-  scriptName: string;
-  type: ConsumersUpdateRequestBodyWorkerType;
-  deadLetterQueue?: string;
-  settings?: ConsumersUpdateRequestBodyWorkerSettings;
-}
-export const ConsumersUpdateRequestBodyWorker = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scriptName: S.String.pipe(T.Body("script_name")),
-    type: ConsumersUpdateRequestBodyWorkerType,
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    settings: S.optional(ConsumersUpdateRequestBodyWorkerSettings),
-  }),
-).annotate({
-  identifier: "ConsumersUpdateRequestBodyWorker",
-}) as any as S.Schema<ConsumersUpdateRequestBodyWorker>;
-
-export type ConsumersUpdateRequestBodyHTTPPullType = "http_pull";
-export const ConsumersUpdateRequestBodyHTTPPullType = /*@__PURE__*/ S.String;
-
-export interface ConsumersUpdateRequestBodyHTTPPullSettings {
+export interface ConsumersUpdateRequestSettingsHTTPPull {
   /** The maximum number of messages to include in a batch. */
   batchSize?: number;
   /** The maximum number of retries */
@@ -4449,8 +4354,8 @@ export interface ConsumersUpdateRequestBodyHTTPPullSettings {
   /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
   visibilityTimeoutMs?: number;
 }
-export const ConsumersUpdateRequestBodyHTTPPullSettings =
-  /*@__PURE__*/ S.suspend(() =>
+export const ConsumersUpdateRequestSettingsHTTPPull = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
       maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
@@ -4459,32 +4364,23 @@ export const ConsumersUpdateRequestBodyHTTPPullSettings =
         S.Number.pipe(T.Body("visibility_timeout_ms")),
       ),
     }),
-  ).annotate({
-    identifier: "ConsumersUpdateRequestBodyHTTPPullSettings",
-  }) as any as S.Schema<ConsumersUpdateRequestBodyHTTPPullSettings>;
-
-export interface ConsumersUpdateRequestBodyHTTPPull {
-  type: ConsumersUpdateRequestBodyHTTPPullType;
-  deadLetterQueue?: string;
-  settings?: ConsumersUpdateRequestBodyHTTPPullSettings;
-}
-export const ConsumersUpdateRequestBodyHTTPPull = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ConsumersUpdateRequestBodyHTTPPullType,
-    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-    settings: S.optional(ConsumersUpdateRequestBodyHTTPPullSettings),
-  }),
 ).annotate({
-  identifier: "ConsumersUpdateRequestBodyHTTPPull",
-}) as any as S.Schema<ConsumersUpdateRequestBodyHTTPPull>;
+  identifier: "ConsumersUpdateRequestSettingsHTTPPull",
+}) as any as S.Schema<ConsumersUpdateRequestSettingsHTTPPull>;
 
-export type ConsumersUpdateRequestBody =
-  | ConsumersUpdateRequestBodyWorker
-  | ConsumersUpdateRequestBodyHTTPPull;
-export const ConsumersUpdateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+export type ConsumersUpdateRequestSettings =
+  | ConsumersUpdateRequestSettingsWorker
+  | ConsumersUpdateRequestSettingsHTTPPull;
+export const ConsumersUpdateRequestSettings = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
-    ["scriptName", "type", "deadLetterQueue", "settings"],
-    ["type", "deadLetterQueue", "settings"],
+    [
+      "batchSize",
+      "maxConcurrency",
+      "maxRetries",
+      "maxWaitTimeMs",
+      "retryDelay",
+    ],
+    ["batchSize", "maxRetries", "retryDelay", "visibilityTimeoutMs"],
   ]),
 );
 
@@ -4495,15 +4391,21 @@ export interface UpdateConsumerRequest {
   queueId: string;
   /** A Resource identifier. */
   consumerId: string;
-  /** Request body for creating or updating a consumer */
-  body: ConsumersUpdateRequestBody;
+  /** Name of a Worker */
+  scriptName?: string;
+  type: ConsumersUpdateRequestType;
+  deadLetterQueue?: string;
+  settings?: ConsumersUpdateRequestSettings;
 }
 export const UpdateConsumerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
     consumerId: S.String.pipe(T.Label("consumer_id")),
-    body: ConsumersUpdateRequestBody.pipe(T.HttpBody()),
+    scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
+    type: ConsumersUpdateRequestType,
+    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
+    settings: S.optional(ConsumersUpdateRequestSettings),
   })
     .pipe(
       T.Http({

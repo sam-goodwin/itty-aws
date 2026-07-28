@@ -2293,122 +2293,53 @@ export const ListWorkflowsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListWorkflowsResponse",
 }) as any as S.Schema<ListWorkflowsResponse>;
 
-export type InstancesStatusEditRequestBodyStatusStatus = "pause";
-export const InstancesStatusEditRequestBodyStatusStatus =
-  /*@__PURE__*/ S.String;
+export type InstancesStatusEditRequestStatus =
+  | "pause"
+  | "resume"
+  | "terminate"
+  | "restart";
+export const InstancesStatusEditRequestStatus = /*@__PURE__*/ S.String;
 
-export interface InstancesStatusEditRequestBodyStatus {
-  status: InstancesStatusEditRequestBodyStatusStatus;
-}
-export const InstancesStatusEditRequestBodyStatus = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: InstancesStatusEditRequestBodyStatusStatus,
-    }),
-).annotate({
-  identifier: "InstancesStatusEditRequestBodyStatus",
-}) as any as S.Schema<InstancesStatusEditRequestBodyStatus>;
-
-export type InstancesStatusEditRequestBodyStatusStatus2 = "resume";
-export const InstancesStatusEditRequestBodyStatusStatus2 =
-  /*@__PURE__*/ S.String;
-
-export interface InstancesStatusEditRequestBodyStatus2 {
-  status: InstancesStatusEditRequestBodyStatusStatus2;
-}
-export const InstancesStatusEditRequestBodyStatus2 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: InstancesStatusEditRequestBodyStatusStatus2,
-    }),
-).annotate({
-  identifier: "InstancesStatusEditRequestBodyStatus2",
-}) as any as S.Schema<InstancesStatusEditRequestBodyStatus2>;
-
-export type InstancesStatusEditRequestBodyCase2Status = "terminate";
-export const InstancesStatusEditRequestBodyCase2Status = /*@__PURE__*/ S.String;
-
-export interface InstancesStatusEditRequestBodyCase2 {
-  status: InstancesStatusEditRequestBodyCase2Status;
-  /** Run rollback before terminating. */
-  rollback?: boolean;
-}
-export const InstancesStatusEditRequestBodyCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: InstancesStatusEditRequestBodyCase2Status,
-    rollback: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "InstancesStatusEditRequestBodyCase2",
-}) as any as S.Schema<InstancesStatusEditRequestBodyCase2>;
-
-export type InstancesStatusEditRequestBodyCase3Status = "restart";
-export const InstancesStatusEditRequestBodyCase3Status = /*@__PURE__*/ S.String;
-
-export type InstancesStatusEditRequestBodyCase3FromType =
+export type InstancesStatusEditRequestFromType =
   | "do"
   | "sleep"
   | "waitForEvent";
-export const InstancesStatusEditRequestBodyCase3FromType =
-  /*@__PURE__*/ S.String;
+export const InstancesStatusEditRequestFromType = /*@__PURE__*/ S.String;
 
-export interface InstancesStatusEditRequestBodyCase3From {
+export interface InstancesStatusEditRequestFrom {
   name: string;
   count?: number;
-  type?: InstancesStatusEditRequestBodyCase3FromType;
+  type?: InstancesStatusEditRequestFromType;
 }
-export const InstancesStatusEditRequestBodyCase3From = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      count: S.optional(S.Number),
-      type: S.optional(InstancesStatusEditRequestBodyCase3FromType),
-    }),
-).annotate({
-  identifier: "InstancesStatusEditRequestBodyCase3From",
-}) as any as S.Schema<InstancesStatusEditRequestBodyCase3From>;
-
-export interface InstancesStatusEditRequestBodyCase3 {
-  status: InstancesStatusEditRequestBodyCase3Status;
-  /** Step to restart from. */
-  from?: InstancesStatusEditRequestBodyCase3From;
-}
-export const InstancesStatusEditRequestBodyCase3 = /*@__PURE__*/ S.suspend(() =>
+export const InstancesStatusEditRequestFrom = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    status: InstancesStatusEditRequestBodyCase3Status,
-    from: S.optional(InstancesStatusEditRequestBodyCase3From),
+    name: S.String,
+    count: S.optional(S.Number),
+    type: S.optional(InstancesStatusEditRequestFromType),
   }),
 ).annotate({
-  identifier: "InstancesStatusEditRequestBodyCase3",
-}) as any as S.Schema<InstancesStatusEditRequestBodyCase3>;
-
-export type InstancesStatusEditRequestBody =
-  | InstancesStatusEditRequestBodyStatus
-  | InstancesStatusEditRequestBodyStatus2
-  | InstancesStatusEditRequestBodyCase2
-  | InstancesStatusEditRequestBodyCase3;
-export const InstancesStatusEditRequestBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["status"],
-    ["status"],
-    ["status", "rollback"],
-    ["status", "from"],
-  ]),
-);
+  identifier: "InstancesStatusEditRequestFrom",
+}) as any as S.Schema<InstancesStatusEditRequestFrom>;
 
 export interface PatchInstanceStatusRequest {
   accountId: string;
   workflowName: string;
   /** Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression. */
   instanceId: string;
-  body?: InstancesStatusEditRequestBody;
+  status?: InstancesStatusEditRequestStatus;
+  /** Run rollback before terminating. */
+  rollback?: boolean;
+  /** Step to restart from. */
+  from?: InstancesStatusEditRequestFrom;
 }
 export const PatchInstanceStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
     instanceId: S.String.pipe(T.Label("instance_id")),
-    body: S.optional(InstancesStatusEditRequestBody.pipe(T.HttpBody())),
+    status: S.optional(InstancesStatusEditRequestStatus),
+    rollback: S.optional(S.Boolean),
+    from: S.optional(InstancesStatusEditRequestFrom),
   })
     .pipe(
       T.Http({

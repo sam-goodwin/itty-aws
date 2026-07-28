@@ -17,86 +17,31 @@
     ]
   },
   "shapes": {
-    "com.cloudflare.cache#PurgeRequestBodyCachePurgeFlexPurgeByTagsTagsList": {
+    "com.cloudflare.cache#PurgeRequestTagsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.cache#PurgeRequestBodyCachePurgeFlexPurgeByTags": {
-      "type": "structure",
-      "members": {
-        "tags": {
-          "target": "com.cloudflare.cache#PurgeRequestBodyCachePurgeFlexPurgeByTagsTagsList",
-          "traits": {
-            "smithy.api#documentation": "For more information on cache tags and purging by tags, please refer to [purge by cache-tags documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/)."
-          }
-        }
-      }
-    },
-    "com.cloudflare.cache#PurgeRequestBodyCachePurgeFlexPurgeByHostnamesHostsList": {
+    "com.cloudflare.cache#PurgeRequestHostsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.cache#PurgeRequestBodyCachePurgeFlexPurgeByHostnames": {
-      "type": "structure",
-      "members": {
-        "hosts": {
-          "target": "com.cloudflare.cache#PurgeRequestBodyCachePurgeFlexPurgeByHostnamesHostsList",
-          "traits": {
-            "smithy.api#documentation": "For more information purging by hostnames, please refer to [purge by hostname documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostname/)."
-          }
-        }
-      }
-    },
-    "com.cloudflare.cache#PurgeRequestBodyCachePurgeFlexPurgeByPrefixesPrefixesList": {
+    "com.cloudflare.cache#PurgeRequestPrefixesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.cache#PurgeRequestBodyCachePurgeFlexPurgeByPrefixes": {
-      "type": "structure",
-      "members": {
-        "prefixes": {
-          "target": "com.cloudflare.cache#PurgeRequestBodyCachePurgeFlexPurgeByPrefixesPrefixesList",
-          "traits": {
-            "smithy.api#documentation": "For more information on purging by prefixes, please refer to [purge by prefix documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/)."
-          }
-        }
-      }
-    },
-    "com.cloudflare.cache#PurgeRequestBodyCachePurgeEverything": {
-      "type": "structure",
-      "members": {
-        "purge_everything": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "For more information, please refer to [purge everything documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/)."
-          }
-        }
-      }
-    },
-    "com.cloudflare.cache#PurgeRequestBodyCachePurgeSingleFileFilesList": {
+    "com.cloudflare.cache#PurgeRequestFilesCachePurgeSingleFileList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.cache#PurgeRequestBodyCachePurgeSingleFile": {
-      "type": "structure",
-      "members": {
-        "files": {
-          "target": "com.cloudflare.cache#PurgeRequestBodyCachePurgeSingleFileFilesList",
-          "traits": {
-            "smithy.api#documentation": "For more information on purging files, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/)."
-          }
-        }
-      }
-    },
-    "com.cloudflare.cache#PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItemHeadersMap": {
+    "com.cloudflare.cache#PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -105,54 +50,31 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.cache#PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItem": {
+    "com.cloudflare.cache#PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItem": {
       "type": "structure",
       "members": {
         "headers": {
-          "target": "com.cloudflare.cache#PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItemHeadersMap"
+          "target": "com.cloudflare.cache#PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap"
         },
         "url": {
           "target": "smithy.api#String"
         }
       }
     },
-    "com.cloudflare.cache#PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesList": {
+    "com.cloudflare.cache#PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.cache#PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItem"
+        "target": "com.cloudflare.cache#PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItem"
       }
     },
-    "com.cloudflare.cache#PurgeRequestBodyCachePurgeSingleFileWithURLAndHeaders": {
-      "type": "structure",
-      "members": {
-        "files": {
-          "target": "com.cloudflare.cache#PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesList",
-          "traits": {
-            "smithy.api#documentation": "For more information on purging files with URL and headers, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/)."
-          }
-        }
-      }
-    },
-    "com.cloudflare.cache#PurgeRequestBody": {
+    "com.cloudflare.cache#PurgeRequestFiles": {
       "type": "union",
       "members": {
-        "CachePurgeFlexPurgeByTags": {
-          "target": "com.cloudflare.cache#PurgeRequestBodyCachePurgeFlexPurgeByTags"
-        },
-        "CachePurgeFlexPurgeByHostnames": {
-          "target": "com.cloudflare.cache#PurgeRequestBodyCachePurgeFlexPurgeByHostnames"
-        },
-        "CachePurgeFlexPurgeByPrefixes": {
-          "target": "com.cloudflare.cache#PurgeRequestBodyCachePurgeFlexPurgeByPrefixes"
-        },
-        "CachePurgeEverything": {
-          "target": "com.cloudflare.cache#PurgeRequestBodyCachePurgeEverything"
-        },
         "CachePurgeSingleFile": {
-          "target": "com.cloudflare.cache#PurgeRequestBodyCachePurgeSingleFile"
+          "target": "com.cloudflare.cache#PurgeRequestFilesCachePurgeSingleFileList"
         },
         "CachePurgeSingleFileWithURLAndHeaders": {
-          "target": "com.cloudflare.cache#PurgeRequestBodyCachePurgeSingleFileWithURLAndHeaders"
+          "target": "com.cloudflare.cache#PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersList"
         }
       }
     },
@@ -166,11 +88,34 @@
             "smithy.api#required": {}
           }
         },
-        "body": {
-          "target": "com.cloudflare.cache#PurgeRequestBody",
+        "tags": {
+          "target": "com.cloudflare.cache#PurgeRequestTagsList",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "For more information on cache tags and purging by tags, please refer to [purge by cache-tags documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/)."
+          }
+        },
+        "hosts": {
+          "target": "com.cloudflare.cache#PurgeRequestHostsList",
+          "traits": {
+            "smithy.api#documentation": "For more information purging by hostnames, please refer to [purge by hostname documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostname/)."
+          }
+        },
+        "prefixes": {
+          "target": "com.cloudflare.cache#PurgeRequestPrefixesList",
+          "traits": {
+            "smithy.api#documentation": "For more information on purging by prefixes, please refer to [purge by prefix documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/)."
+          }
+        },
+        "purge_everything": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "For more information, please refer to [purge everything documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/)."
+          }
+        },
+        "files": {
+          "target": "com.cloudflare.cache#PurgeRequestFiles",
+          "traits": {
+            "smithy.api#documentation": "For more information on purging files, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/)."
           }
         }
       },
@@ -209,86 +154,31 @@
         }
       }
     },
-    "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByTagsTagsList": {
+    "com.cloudflare.cache#PurgeEnvironmentRequestTagsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByTags": {
-      "type": "structure",
-      "members": {
-        "tags": {
-          "target": "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByTagsTagsList",
-          "traits": {
-            "smithy.api#documentation": "For more information on cache tags and purging by tags, please refer to [purge by cache-tags documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/)."
-          }
-        }
-      }
-    },
-    "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByHostnamesHostsList": {
+    "com.cloudflare.cache#PurgeEnvironmentRequestHostsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByHostnames": {
-      "type": "structure",
-      "members": {
-        "hosts": {
-          "target": "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByHostnamesHostsList",
-          "traits": {
-            "smithy.api#documentation": "For more information purging by hostnames, please refer to [purge by hostname documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostname/)."
-          }
-        }
-      }
-    },
-    "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByPrefixesPrefixesList": {
+    "com.cloudflare.cache#PurgeEnvironmentRequestPrefixesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByPrefixes": {
-      "type": "structure",
-      "members": {
-        "prefixes": {
-          "target": "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByPrefixesPrefixesList",
-          "traits": {
-            "smithy.api#documentation": "For more information on purging by prefixes, please refer to [purge by prefix documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/)."
-          }
-        }
-      }
-    },
-    "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeEverything": {
-      "type": "structure",
-      "members": {
-        "purge_everything": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "For more information, please refer to [purge everything documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/)."
-          }
-        }
-      }
-    },
-    "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeSingleFileFilesList": {
+    "com.cloudflare.cache#PurgeEnvironmentRequestFilesCachePurgeSingleFileList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeSingleFile": {
-      "type": "structure",
-      "members": {
-        "files": {
-          "target": "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeSingleFileFilesList",
-          "traits": {
-            "smithy.api#documentation": "For more information on purging files, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/)."
-          }
-        }
-      }
-    },
-    "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItemHeadersMap": {
+    "com.cloudflare.cache#PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -297,54 +187,31 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItem": {
+    "com.cloudflare.cache#PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem": {
       "type": "structure",
       "members": {
         "headers": {
-          "target": "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItemHeadersMap"
+          "target": "com.cloudflare.cache#PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap"
         },
         "url": {
           "target": "smithy.api#String"
         }
       }
     },
-    "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesList": {
+    "com.cloudflare.cache#PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItem"
+        "target": "com.cloudflare.cache#PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem"
       }
     },
-    "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeaders": {
-      "type": "structure",
-      "members": {
-        "files": {
-          "target": "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesList",
-          "traits": {
-            "smithy.api#documentation": "For more information on purging files with URL and headers, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/)."
-          }
-        }
-      }
-    },
-    "com.cloudflare.cache#PurgeEnvironmentRequestBody": {
+    "com.cloudflare.cache#PurgeEnvironmentRequestFiles": {
       "type": "union",
       "members": {
-        "CachePurgeFlexPurgeByTags": {
-          "target": "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByTags"
-        },
-        "CachePurgeFlexPurgeByHostnames": {
-          "target": "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByHostnames"
-        },
-        "CachePurgeFlexPurgeByPrefixes": {
-          "target": "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeFlexPurgeByPrefixes"
-        },
-        "CachePurgeEverything": {
-          "target": "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeEverything"
-        },
         "CachePurgeSingleFile": {
-          "target": "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeSingleFile"
+          "target": "com.cloudflare.cache#PurgeEnvironmentRequestFilesCachePurgeSingleFileList"
         },
         "CachePurgeSingleFileWithURLAndHeaders": {
-          "target": "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeaders"
+          "target": "com.cloudflare.cache#PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersList"
         }
       }
     },
@@ -365,11 +232,34 @@
             "smithy.api#required": {}
           }
         },
-        "body": {
-          "target": "com.cloudflare.cache#PurgeEnvironmentRequestBody",
+        "tags": {
+          "target": "com.cloudflare.cache#PurgeEnvironmentRequestTagsList",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "For more information on cache tags and purging by tags, please refer to [purge by cache-tags documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/)."
+          }
+        },
+        "hosts": {
+          "target": "com.cloudflare.cache#PurgeEnvironmentRequestHostsList",
+          "traits": {
+            "smithy.api#documentation": "For more information purging by hostnames, please refer to [purge by hostname documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostname/)."
+          }
+        },
+        "prefixes": {
+          "target": "com.cloudflare.cache#PurgeEnvironmentRequestPrefixesList",
+          "traits": {
+            "smithy.api#documentation": "For more information on purging by prefixes, please refer to [purge by prefix documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/)."
+          }
+        },
+        "purge_everything": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "For more information, please refer to [purge everything documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/)."
+          }
+        },
+        "files": {
+          "target": "com.cloudflare.cache#PurgeEnvironmentRequestFiles",
+          "traits": {
+            "smithy.api#documentation": "For more information on purging files, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/)."
           }
         }
       },

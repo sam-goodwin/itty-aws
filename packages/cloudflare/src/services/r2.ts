@@ -4202,218 +4202,154 @@ export const PutBucketLockResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutBucketLockResponse",
 }) as any as S.Schema<PutBucketLockResponse>;
 
-export type BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestinationProvider =
-  "r2";
-export const BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestinationProvider =
+export type BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider = "r2";
+export const BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider =
   /*@__PURE__*/ S.String;
 
-export interface BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestination {
+export interface BucketsSippyUpdateRequestDestinationR2EnableSippyAws {
   /** ID of a Cloudflare API token. */
   accessKeyId?: string;
-  provider?: BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestinationProvider;
+  provider?: BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider;
   /** Value of a Cloudflare API token. */
   secretAccessKey?: string;
 }
-export const BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestination =
+export const BucketsSippyUpdateRequestDestinationR2EnableSippyAws =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accessKeyId: S.optional(S.String),
       provider: S.optional(
-        BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestinationProvider,
+        BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider,
       ),
       secretAccessKey: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestination",
-  }) as any as S.Schema<BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestination>;
+    identifier: "BucketsSippyUpdateRequestDestinationR2EnableSippyAws",
+  }) as any as S.Schema<BucketsSippyUpdateRequestDestinationR2EnableSippyAws>;
 
-export type BucketsSippyUpdateRequestBodyR2EnableSippyAwsSourceProvider = "aws";
-export const BucketsSippyUpdateRequestBodyR2EnableSippyAwsSourceProvider =
+export interface BucketsSippyUpdateRequestDestinationR2EnableSippyGcs {
+  /** ID of a Cloudflare API token. */
+  accessKeyId?: string;
+  provider?: BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider;
+  /** Value of a Cloudflare API token. */
+  secretAccessKey?: string;
+}
+export const BucketsSippyUpdateRequestDestinationR2EnableSippyGcs =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accessKeyId: S.optional(S.String),
+      provider: S.optional(
+        BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider,
+      ),
+      secretAccessKey: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "BucketsSippyUpdateRequestDestinationR2EnableSippyGcs",
+  }) as any as S.Schema<BucketsSippyUpdateRequestDestinationR2EnableSippyGcs>;
+
+export type BucketsSippyUpdateRequestDestination =
+  | BucketsSippyUpdateRequestDestinationR2EnableSippyAws
+  | BucketsSippyUpdateRequestDestinationR2EnableSippyGcs;
+export const BucketsSippyUpdateRequestDestination =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["accessKeyId", "provider", "secretAccessKey"],
+      ["accessKeyId", "provider", "secretAccessKey"],
+    ]),
+  );
+
+export type BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider = "aws";
+export const BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider =
   /*@__PURE__*/ S.String;
 
-export interface BucketsSippyUpdateRequestBodyR2EnableSippyAwsSource {
+export interface BucketsSippyUpdateRequestSourceR2EnableSippyAws {
   /** Access Key ID of an IAM credential (ideally scoped to a single S3 bucket). */
   accessKeyId?: string;
   /** Name of the AWS S3 bucket. */
   bucket?: string;
-  provider?: BucketsSippyUpdateRequestBodyR2EnableSippyAwsSourceProvider;
+  provider?: BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider;
   /** Name of the AWS availability zone. */
   region?: string;
   /** Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket). */
   secretAccessKey?: string;
 }
-export const BucketsSippyUpdateRequestBodyR2EnableSippyAwsSource =
+export const BucketsSippyUpdateRequestSourceR2EnableSippyAws =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accessKeyId: S.optional(S.String),
       bucket: S.optional(S.String),
       provider: S.optional(
-        BucketsSippyUpdateRequestBodyR2EnableSippyAwsSourceProvider,
+        BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider,
       ),
       region: S.optional(S.String),
       secretAccessKey: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "BucketsSippyUpdateRequestBodyR2EnableSippyAwsSource",
-  }) as any as S.Schema<BucketsSippyUpdateRequestBodyR2EnableSippyAwsSource>;
+    identifier: "BucketsSippyUpdateRequestSourceR2EnableSippyAws",
+  }) as any as S.Schema<BucketsSippyUpdateRequestSourceR2EnableSippyAws>;
 
-export interface BucketsSippyUpdateRequestBodyR2EnableSippyAws {
-  /** R2 bucket to copy objects to. */
-  destination?: BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestination;
-  /** AWS S3 bucket to copy objects from. */
-  source?: BucketsSippyUpdateRequestBodyR2EnableSippyAwsSource;
-}
-export const BucketsSippyUpdateRequestBodyR2EnableSippyAws =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      destination: S.optional(
-        BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestination,
-      ),
-      source: S.optional(BucketsSippyUpdateRequestBodyR2EnableSippyAwsSource),
-    }),
-  ).annotate({
-    identifier: "BucketsSippyUpdateRequestBodyR2EnableSippyAws",
-  }) as any as S.Schema<BucketsSippyUpdateRequestBodyR2EnableSippyAws>;
-
-export interface BucketsSippyUpdateRequestBodyR2EnableSippyGcsDestination {
-  /** ID of a Cloudflare API token. */
-  accessKeyId?: string;
-  provider?: BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestinationProvider;
-  /** Value of a Cloudflare API token. */
-  secretAccessKey?: string;
-}
-export const BucketsSippyUpdateRequestBodyR2EnableSippyGcsDestination =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessKeyId: S.optional(S.String),
-      provider: S.optional(
-        BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestinationProvider,
-      ),
-      secretAccessKey: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BucketsSippyUpdateRequestBodyR2EnableSippyGcsDestination",
-  }) as any as S.Schema<BucketsSippyUpdateRequestBodyR2EnableSippyGcsDestination>;
-
-export type BucketsSippyUpdateRequestBodyR2EnableSippyGcsSourceProvider = "gcs";
-export const BucketsSippyUpdateRequestBodyR2EnableSippyGcsSourceProvider =
+export type BucketsSippyUpdateRequestSourceR2EnableSippyGcsProvider = "gcs";
+export const BucketsSippyUpdateRequestSourceR2EnableSippyGcsProvider =
   /*@__PURE__*/ S.String;
 
-export interface BucketsSippyUpdateRequestBodyR2EnableSippyGcsSource {
+export interface BucketsSippyUpdateRequestSourceR2EnableSippyGcs {
   /** Name of the GCS bucket. */
   bucket?: string;
   /** Client email of an IAM credential (ideally scoped to a single GCS bucket). */
   clientEmail?: string;
   /** Private Key of an IAM credential (ideally scoped to a single GCS bucket). */
   privateKey?: string;
-  provider?: BucketsSippyUpdateRequestBodyR2EnableSippyGcsSourceProvider;
+  provider?: BucketsSippyUpdateRequestSourceR2EnableSippyGcsProvider;
 }
-export const BucketsSippyUpdateRequestBodyR2EnableSippyGcsSource =
+export const BucketsSippyUpdateRequestSourceR2EnableSippyGcs =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       bucket: S.optional(S.String),
       clientEmail: S.optional(S.String),
       privateKey: S.optional(S.String),
       provider: S.optional(
-        BucketsSippyUpdateRequestBodyR2EnableSippyGcsSourceProvider,
+        BucketsSippyUpdateRequestSourceR2EnableSippyGcsProvider,
       ),
     }),
   ).annotate({
-    identifier: "BucketsSippyUpdateRequestBodyR2EnableSippyGcsSource",
-  }) as any as S.Schema<BucketsSippyUpdateRequestBodyR2EnableSippyGcsSource>;
+    identifier: "BucketsSippyUpdateRequestSourceR2EnableSippyGcs",
+  }) as any as S.Schema<BucketsSippyUpdateRequestSourceR2EnableSippyGcs>;
 
-export interface BucketsSippyUpdateRequestBodyR2EnableSippyGcs {
-  /** R2 bucket to copy objects to. */
-  destination?: BucketsSippyUpdateRequestBodyR2EnableSippyGcsDestination;
-  /** GCS bucket to copy objects from. */
-  source?: BucketsSippyUpdateRequestBodyR2EnableSippyGcsSource;
-}
-export const BucketsSippyUpdateRequestBodyR2EnableSippyGcs =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      destination: S.optional(
-        BucketsSippyUpdateRequestBodyR2EnableSippyGcsDestination,
-      ),
-      source: S.optional(BucketsSippyUpdateRequestBodyR2EnableSippyGcsSource),
-    }),
-  ).annotate({
-    identifier: "BucketsSippyUpdateRequestBodyR2EnableSippyGcs",
-  }) as any as S.Schema<BucketsSippyUpdateRequestBodyR2EnableSippyGcs>;
-
-export interface BucketsSippyUpdateRequestBodyR2EnableSippyS3Destination {
-  /** ID of a Cloudflare API token. */
-  accessKeyId?: string;
-  provider?: BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestinationProvider;
-  /** Value of a Cloudflare API token. */
-  secretAccessKey?: string;
-}
-export const BucketsSippyUpdateRequestBodyR2EnableSippyS3Destination =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessKeyId: S.optional(S.String),
-      provider: S.optional(
-        BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestinationProvider,
-      ),
-      secretAccessKey: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BucketsSippyUpdateRequestBodyR2EnableSippyS3Destination",
-  }) as any as S.Schema<BucketsSippyUpdateRequestBodyR2EnableSippyS3Destination>;
-
-export type BucketsSippyUpdateRequestBodyR2EnableSippyS3SourceProvider = "s3";
-export const BucketsSippyUpdateRequestBodyR2EnableSippyS3SourceProvider =
+export type BucketsSippyUpdateRequestSourceR2EnableSippyS3Provider = "s3";
+export const BucketsSippyUpdateRequestSourceR2EnableSippyS3Provider =
   /*@__PURE__*/ S.String;
 
-export interface BucketsSippyUpdateRequestBodyR2EnableSippyS3Source {
+export interface BucketsSippyUpdateRequestSourceR2EnableSippyS3 {
   /** Access Key ID of an IAM credential (ideally scoped to a single S3 bucket). */
   accessKeyId?: string;
   /** URL to the S3-compatible API of the bucket. */
   bucketUrl?: string;
-  provider?: BucketsSippyUpdateRequestBodyR2EnableSippyS3SourceProvider;
+  provider?: BucketsSippyUpdateRequestSourceR2EnableSippyS3Provider;
   /** Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket). */
   secretAccessKey?: string;
 }
-export const BucketsSippyUpdateRequestBodyR2EnableSippyS3Source =
+export const BucketsSippyUpdateRequestSourceR2EnableSippyS3 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accessKeyId: S.optional(S.String),
       bucketUrl: S.optional(S.String),
       provider: S.optional(
-        BucketsSippyUpdateRequestBodyR2EnableSippyS3SourceProvider,
+        BucketsSippyUpdateRequestSourceR2EnableSippyS3Provider,
       ),
       secretAccessKey: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "BucketsSippyUpdateRequestBodyR2EnableSippyS3Source",
-  }) as any as S.Schema<BucketsSippyUpdateRequestBodyR2EnableSippyS3Source>;
+    identifier: "BucketsSippyUpdateRequestSourceR2EnableSippyS3",
+  }) as any as S.Schema<BucketsSippyUpdateRequestSourceR2EnableSippyS3>;
 
-export interface BucketsSippyUpdateRequestBodyR2EnableSippyS3 {
-  /** R2 bucket to copy objects to. */
-  destination?: BucketsSippyUpdateRequestBodyR2EnableSippyS3Destination;
-  /** General S3-compatible provider to copy objects from. */
-  source?: BucketsSippyUpdateRequestBodyR2EnableSippyS3Source;
-}
-export const BucketsSippyUpdateRequestBodyR2EnableSippyS3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      destination: S.optional(
-        BucketsSippyUpdateRequestBodyR2EnableSippyS3Destination,
-      ),
-      source: S.optional(BucketsSippyUpdateRequestBodyR2EnableSippyS3Source),
-    }),
-  ).annotate({
-    identifier: "BucketsSippyUpdateRequestBodyR2EnableSippyS3",
-  }) as any as S.Schema<BucketsSippyUpdateRequestBodyR2EnableSippyS3>;
-
-export type BucketsSippyUpdateRequestBody =
-  | BucketsSippyUpdateRequestBodyR2EnableSippyAws
-  | BucketsSippyUpdateRequestBodyR2EnableSippyGcs
-  | BucketsSippyUpdateRequestBodyR2EnableSippyS3;
-export const BucketsSippyUpdateRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+export type BucketsSippyUpdateRequestSource =
+  | BucketsSippyUpdateRequestSourceR2EnableSippyAws
+  | BucketsSippyUpdateRequestSourceR2EnableSippyGcs
+  | BucketsSippyUpdateRequestSourceR2EnableSippyS3;
+export const BucketsSippyUpdateRequestSource = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
-    ["destination", "source"],
-    ["destination", "source"],
-    ["destination", "source"],
+    ["accessKeyId", "bucket", "provider", "region", "secretAccessKey"],
+    ["bucket", "clientEmail", "privateKey", "provider"],
+    ["accessKeyId", "bucketUrl", "provider", "secretAccessKey"],
   ]),
 );
 
@@ -4428,7 +4364,10 @@ export interface PutBucketSippyRequest {
   accountId: string;
   /** Name of the bucket. */
   bucketName: string;
-  body: BucketsSippyUpdateRequestBody;
+  /** R2 bucket to copy objects to. */
+  destination?: BucketsSippyUpdateRequestDestination;
+  /** AWS S3 bucket to copy objects from. */
+  source?: BucketsSippyUpdateRequestSource;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
   jurisdiction?: BucketsSippyUpdateRequestCfR2Jurisdiction;
 }
@@ -4436,7 +4375,8 @@ export const PutBucketSippyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    body: BucketsSippyUpdateRequestBody.pipe(T.HttpBody()),
+    destination: S.optional(BucketsSippyUpdateRequestDestination),
+    source: S.optional(BucketsSippyUpdateRequestSource),
     jurisdiction: S.optional(
       BucketsSippyUpdateRequestCfR2Jurisdiction.pipe(
         T.Header("cf-r2-jurisdiction"),
@@ -4549,11 +4489,11 @@ export const ResumeSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResumeSuperSlurperJobResponse",
 }) as any as S.Schema<ResumeSuperSlurperJobResponse>;
 
-export interface SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchemaSecret {
+export interface SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperS3SourceSchema {
   accessKeyId: string;
   secretAccessKey: string;
 }
-export const SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchemaSecret =
+export const SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperS3SourceSchema =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accessKeyId: S.String,
@@ -4561,56 +4501,14 @@ export const SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceS
     }),
   ).annotate({
     identifier:
-      "SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchemaSecret",
-  }) as any as S.Schema<SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchemaSecret>;
+      "SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperS3SourceSchema",
+  }) as any as S.Schema<SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperS3SourceSchema>;
 
-export type SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchemaVendor =
-  "s3";
-export const SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchemaVendor =
-  /*@__PURE__*/ S.String;
-
-export type SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchemaKeysList =
-  ReadonlyArray<string>;
-export const SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchemaKeysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchemaKeysList>;
-
-export interface SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchema {
-  bucket: string;
-  secret: SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchemaSecret;
-  vendor: SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchemaVendor;
-  /** Custom S3-compatible endpoint that must use https://. */
-  endpoint?: string;
-  keys?: SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchemaKeysList;
-  pathPrefix?: string;
-  region?: string;
-}
-export const SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      bucket: S.String,
-      secret:
-        SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchemaSecret,
-      vendor:
-        SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchemaVendor,
-      endpoint: S.optional(S.String),
-      keys: S.optional(
-        SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchemaKeysList,
-      ),
-      pathPrefix: S.optional(S.String),
-      region: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchema",
-  }) as any as S.Schema<SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchema>;
-
-export interface SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchemaSecret {
+export interface SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperGcsSourceSchema {
   clientEmail: string;
   privateKey: string;
 }
-export const SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchemaSecret =
+export const SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperGcsSourceSchema =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       clientEmail: S.String,
@@ -4618,138 +4516,76 @@ export const SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSource
     }),
   ).annotate({
     identifier:
-      "SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchemaSecret",
-  }) as any as S.Schema<SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchemaSecret>;
+      "SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperGcsSourceSchema",
+  }) as any as S.Schema<SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperGcsSourceSchema>;
 
-export type SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchemaVendor =
-  "gcs";
-export const SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchemaVendor =
-  /*@__PURE__*/ S.String;
-
-export type SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchemaKeysList =
-  ReadonlyArray<string>;
-export const SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchemaKeysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchemaKeysList>;
-
-export interface SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchema {
-  bucket: string;
-  secret: SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchemaSecret;
-  vendor: SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchemaVendor;
-  keys?: SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchemaKeysList;
-  pathPrefix?: string;
-}
-export const SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      bucket: S.String,
-      secret:
-        SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchemaSecret,
-      vendor:
-        SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchemaVendor,
-      keys: S.optional(
-        SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchemaKeysList,
-      ),
-      pathPrefix: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchema",
-  }) as any as S.Schema<SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchema>;
-
-export interface SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaSecret {
-  accessKeyId: string;
-  secretAccessKey: string;
-}
-export const SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaSecret =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessKeyId: S.String,
-      secretAccessKey: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaSecret",
-  }) as any as S.Schema<SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaSecret>;
-
-export type SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaVendor =
-  "r2";
-export const SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaVendor =
-  /*@__PURE__*/ S.String;
-
-export type SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaJurisdiction =
-  "default" | "eu" | "fedramp";
-export const SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaJurisdiction =
-  /*@__PURE__*/ S.String;
-
-export type SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaKeysList =
-  ReadonlyArray<string>;
-export const SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaKeysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaKeysList>;
-
-export interface SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchema {
-  bucket: string;
-  secret: SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaSecret;
-  vendor: SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaVendor;
-  jurisdiction?: SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaJurisdiction;
-  keys?: SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaKeysList;
-  pathPrefix?: string;
-}
-export const SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      bucket: S.String,
-      secret:
-        SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaSecret,
-      vendor:
-        SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaVendor,
-      jurisdiction: S.optional(
-        SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaJurisdiction,
-      ),
-      keys: S.optional(
-        SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaKeysList,
-      ),
-      pathPrefix: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchema",
-  }) as any as S.Schema<SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchema>;
-
-export type SuperSlurperConnectivityPrecheckSourceRequestBody =
-  | SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperS3SourceSchema
-  | SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperGcsSourceSchema
-  | SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchema;
-export const SuperSlurperConnectivityPrecheckSourceRequestBody =
+export type SuperSlurperConnectivityPrecheckSourceRequestSecret =
+  | SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperS3SourceSchema
+  | SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperGcsSourceSchema;
+export const SuperSlurperConnectivityPrecheckSourceRequestSecret =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
-      [
-        "bucket",
-        "secret",
-        "vendor",
-        "endpoint",
-        "keys",
-        "pathPrefix",
-        "region",
-      ],
-      ["bucket", "secret", "vendor", "keys", "pathPrefix"],
-      ["bucket", "secret", "vendor", "jurisdiction", "keys", "pathPrefix"],
+      ["accessKeyId", "secretAccessKey"],
+      ["clientEmail", "privateKey"],
     ]),
   );
 
+export type SuperSlurperConnectivityPrecheckSourceRequestVendorEnum =
+  | "s3"
+  | "gcs";
+export const SuperSlurperConnectivityPrecheckSourceRequestVendorEnum =
+  /*@__PURE__*/ S.String;
+
+export type SuperSlurperConnectivityPrecheckSourceRequestVendorR2SlurperR2SourceSchema =
+  "r2";
+export const SuperSlurperConnectivityPrecheckSourceRequestVendorR2SlurperR2SourceSchema =
+  /*@__PURE__*/ S.String;
+
+export type SuperSlurperConnectivityPrecheckSourceRequestVendor =
+  | SuperSlurperConnectivityPrecheckSourceRequestVendorEnum
+  | SuperSlurperConnectivityPrecheckSourceRequestVendorR2SlurperR2SourceSchema;
+export const SuperSlurperConnectivityPrecheckSourceRequestVendor =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+
+export type SuperSlurperConnectivityPrecheckSourceRequestKeysList =
+  ReadonlyArray<string>;
+export const SuperSlurperConnectivityPrecheckSourceRequestKeysList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SuperSlurperConnectivityPrecheckSourceRequestKeysList>;
+
+export type SuperSlurperConnectivityPrecheckSourceRequestJurisdiction =
+  | "default"
+  | "eu"
+  | "fedramp";
+export const SuperSlurperConnectivityPrecheckSourceRequestJurisdiction =
+  /*@__PURE__*/ S.String;
+
 export interface SourceSuperSlurperConnectivityPrecheckRequest {
   accountId: string;
-  body: SuperSlurperConnectivityPrecheckSourceRequestBody;
+  bucket: string;
+  secret: SuperSlurperConnectivityPrecheckSourceRequestSecret;
+  vendor: SuperSlurperConnectivityPrecheckSourceRequestVendor;
+  /** Custom S3-compatible endpoint that must use https://. */
+  endpoint?: string;
+  keys?: SuperSlurperConnectivityPrecheckSourceRequestKeysList;
+  pathPrefix?: string;
+  region?: string;
+  jurisdiction?: SuperSlurperConnectivityPrecheckSourceRequestJurisdiction;
 }
 export const SourceSuperSlurperConnectivityPrecheckRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-      body: SuperSlurperConnectivityPrecheckSourceRequestBody.pipe(
-        T.HttpBody(),
+      bucket: S.String,
+      secret: SuperSlurperConnectivityPrecheckSourceRequestSecret,
+      vendor: SuperSlurperConnectivityPrecheckSourceRequestVendor,
+      endpoint: S.optional(S.String),
+      keys: S.optional(SuperSlurperConnectivityPrecheckSourceRequestKeysList),
+      pathPrefix: S.optional(S.String),
+      region: S.optional(S.String),
+      jurisdiction: S.optional(
+        SuperSlurperConnectivityPrecheckSourceRequestJurisdiction,
       ),
     })
       .pipe(

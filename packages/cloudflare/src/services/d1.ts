@@ -519,87 +519,31 @@ export const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDatabaseResponse",
 }) as any as S.Schema<GetDatabaseResponse>;
 
-export type DatabaseImportRequestBodyInitAction = "init";
-export const DatabaseImportRequestBodyInitAction = /*@__PURE__*/ S.String;
-
-export interface DatabaseImportRequestBodyInit {
-  /** Indicates you have a new SQL file to upload. */
-  action: DatabaseImportRequestBodyInitAction;
-  /** Required when action is 'init' or 'ingest'. An md5 hash of the file you're uploading. Used to check if it already exists, and validate its contents before ingesting. */
-  etag: string;
-}
-export const DatabaseImportRequestBodyInit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: DatabaseImportRequestBodyInitAction,
-    etag: S.String,
-  }),
-).annotate({
-  identifier: "DatabaseImportRequestBodyInit",
-}) as any as S.Schema<DatabaseImportRequestBodyInit>;
-
-export type DatabaseImportRequestBodyIngestAction = "ingest";
-export const DatabaseImportRequestBodyIngestAction = /*@__PURE__*/ S.String;
-
-export interface DatabaseImportRequestBodyIngest {
-  /** Indicates you've finished uploading to tell the D1 to start consuming it */
-  action: DatabaseImportRequestBodyIngestAction;
-  /** An md5 hash of the file you're uploading. Used to check if it already exists, and validate its contents before ingesting. */
-  etag: string;
-  /** The filename you have successfully uploaded. */
-  filename: string;
-}
-export const DatabaseImportRequestBodyIngest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: DatabaseImportRequestBodyIngestAction,
-    etag: S.String,
-    filename: S.String,
-  }),
-).annotate({
-  identifier: "DatabaseImportRequestBodyIngest",
-}) as any as S.Schema<DatabaseImportRequestBodyIngest>;
-
-export type DatabaseImportRequestBodyPollAction = "poll";
-export const DatabaseImportRequestBodyPollAction = /*@__PURE__*/ S.String;
-
-export interface DatabaseImportRequestBodyPoll {
-  /** Indicates you've finished uploading to tell the D1 to start consuming it */
-  action: DatabaseImportRequestBodyPollAction;
-  /** This identifies the currently-running import, checking its status. */
-  currentBookmark: string;
-}
-export const DatabaseImportRequestBodyPoll = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: DatabaseImportRequestBodyPollAction,
-    currentBookmark: S.String.pipe(T.Body("current_bookmark")),
-  }),
-).annotate({
-  identifier: "DatabaseImportRequestBodyPoll",
-}) as any as S.Schema<DatabaseImportRequestBodyPoll>;
-
-export type DatabaseImportRequestBody =
-  | DatabaseImportRequestBodyInit
-  | DatabaseImportRequestBodyIngest
-  | DatabaseImportRequestBodyPoll;
-export const DatabaseImportRequestBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["action", "etag"],
-    ["action", "etag", "filename"],
-    ["action", "currentBookmark"],
-  ]),
-);
+export type DatabaseImportRequestAction = "init" | "ingest" | "poll";
+export const DatabaseImportRequestAction = /*@__PURE__*/ S.String;
 
 export interface ImportDatabaseRequest {
   /** Account identifier tag. */
   accountId: string;
   /** D1 database identifier (UUID). */
   databaseId: string;
-  body: DatabaseImportRequestBody;
+  /** Indicates you have a new SQL file to upload. */
+  action: DatabaseImportRequestAction;
+  /** Required when action is 'init' or 'ingest'. An md5 hash of the file you're uploading. Used to check if it already exists, and validate its contents before ingesting. */
+  etag?: string;
+  /** The filename you have successfully uploaded. */
+  filename?: string;
+  /** This identifies the currently-running import, checking its status. */
+  currentBookmark?: string;
 }
 export const ImportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
-    body: DatabaseImportRequestBody.pipe(T.HttpBody()),
+    action: DatabaseImportRequestAction,
+    etag: S.optional(S.String),
+    filename: S.optional(S.String),
+    currentBookmark: S.optional(S.String.pipe(T.Body("current_bookmark"))),
   })
     .pipe(
       T.Http({
@@ -914,91 +858,53 @@ export const PatchDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchDatabaseResponse",
 }) as any as S.Schema<PatchDatabaseResponse>;
 
-export type DatabaseQueryRequestBodyD1SingleQueryParamsList =
-  ReadonlyArray<unknown>;
-export const DatabaseQueryRequestBodyD1SingleQueryParamsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<DatabaseQueryRequestBodyD1SingleQueryParamsList>;
+export type DatabaseQueryRequestParamsList = ReadonlyArray<string>;
+export const DatabaseQueryRequestParamsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<DatabaseQueryRequestParamsList>;
 
-export interface DatabaseQueryRequestBodyD1SingleQuery {
+export type DatabaseQueryRequestBatchItemParamsList = ReadonlyArray<string>;
+export const DatabaseQueryRequestBatchItemParamsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<DatabaseQueryRequestBatchItemParamsList>;
+
+export interface DatabaseQueryRequestBatchItem {
   /** Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
   sql: string;
-  params?: DatabaseQueryRequestBodyD1SingleQueryParamsList;
+  params?: DatabaseQueryRequestBatchItemParamsList;
 }
-export const DatabaseQueryRequestBodyD1SingleQuery = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sql: S.String,
-      params: S.optional(DatabaseQueryRequestBodyD1SingleQueryParamsList),
-    }),
+export const DatabaseQueryRequestBatchItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sql: S.String,
+    params: S.optional(DatabaseQueryRequestBatchItemParamsList),
+  }),
 ).annotate({
-  identifier: "DatabaseQueryRequestBodyD1SingleQuery",
-}) as any as S.Schema<DatabaseQueryRequestBodyD1SingleQuery>;
+  identifier: "DatabaseQueryRequestBatchItem",
+}) as any as S.Schema<DatabaseQueryRequestBatchItem>;
 
-export type DatabaseQueryRequestBodyMultipleQueriesBatchItemParamsList =
-  ReadonlyArray<unknown>;
-export const DatabaseQueryRequestBodyMultipleQueriesBatchItemParamsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<DatabaseQueryRequestBodyMultipleQueriesBatchItemParamsList>;
-
-export interface DatabaseQueryRequestBodyMultipleQueriesBatchItem {
-  /** Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
-  sql: string;
-  params?: DatabaseQueryRequestBodyMultipleQueriesBatchItemParamsList;
-}
-export const DatabaseQueryRequestBodyMultipleQueriesBatchItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sql: S.String,
-      params: S.optional(
-        DatabaseQueryRequestBodyMultipleQueriesBatchItemParamsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "DatabaseQueryRequestBodyMultipleQueriesBatchItem",
-  }) as any as S.Schema<DatabaseQueryRequestBodyMultipleQueriesBatchItem>;
-
-export type DatabaseQueryRequestBodyMultipleQueriesBatchList =
-  ReadonlyArray<DatabaseQueryRequestBodyMultipleQueriesBatchItem>;
-export const DatabaseQueryRequestBodyMultipleQueriesBatchList =
-  /*@__PURE__*/ S.Array(
-    DatabaseQueryRequestBodyMultipleQueriesBatchItem,
-  ) as any as S.Schema<DatabaseQueryRequestBodyMultipleQueriesBatchList>;
-
-export interface DatabaseQueryRequestBodyMultipleQueries {
-  batch: DatabaseQueryRequestBodyMultipleQueriesBatchList;
-}
-export const DatabaseQueryRequestBodyMultipleQueries = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      batch: DatabaseQueryRequestBodyMultipleQueriesBatchList,
-    }),
-).annotate({
-  identifier: "DatabaseQueryRequestBodyMultipleQueries",
-}) as any as S.Schema<DatabaseQueryRequestBodyMultipleQueries>;
-
-export type DatabaseQueryRequestBody =
-  | DatabaseQueryRequestBodyD1SingleQuery
-  | DatabaseQueryRequestBodyMultipleQueries;
-export const DatabaseQueryRequestBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["sql", "params"], ["batch"]]),
-);
+export type DatabaseQueryRequestBatchList =
+  ReadonlyArray<DatabaseQueryRequestBatchItem>;
+export const DatabaseQueryRequestBatchList = /*@__PURE__*/ S.Array(
+  DatabaseQueryRequestBatchItem,
+) as any as S.Schema<DatabaseQueryRequestBatchList>;
 
 export interface QueryDatabaseRequest {
   /** Account identifier tag. */
   accountId: string;
   /** D1 database identifier (UUID). */
   databaseId: string;
-  /** A single query object or a batch query object */
-  body: DatabaseQueryRequestBody;
+  /** Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
+  sql?: string;
+  params?: DatabaseQueryRequestParamsList;
+  batch?: DatabaseQueryRequestBatchList;
 }
 export const QueryDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
-    body: DatabaseQueryRequestBody.pipe(T.HttpBody()),
+    sql: S.optional(S.String),
+    params: S.optional(DatabaseQueryRequestParamsList),
+    batch: S.optional(DatabaseQueryRequestBatchList),
   })
     .pipe(
       T.Http({
@@ -1119,90 +1025,53 @@ export const QueryDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryDatabaseResponse",
 }) as any as S.Schema<QueryDatabaseResponse>;
 
-export type DatabaseRawRequestBodyD1SingleQueryParamsList =
-  ReadonlyArray<unknown>;
-export const DatabaseRawRequestBodyD1SingleQueryParamsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<DatabaseRawRequestBodyD1SingleQueryParamsList>;
+export type DatabaseRawRequestParamsList = ReadonlyArray<string>;
+export const DatabaseRawRequestParamsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<DatabaseRawRequestParamsList>;
 
-export interface DatabaseRawRequestBodyD1SingleQuery {
+export type DatabaseRawRequestBatchItemParamsList = ReadonlyArray<string>;
+export const DatabaseRawRequestBatchItemParamsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<DatabaseRawRequestBatchItemParamsList>;
+
+export interface DatabaseRawRequestBatchItem {
   /** Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
   sql: string;
-  params?: DatabaseRawRequestBodyD1SingleQueryParamsList;
+  params?: DatabaseRawRequestBatchItemParamsList;
 }
-export const DatabaseRawRequestBodyD1SingleQuery = /*@__PURE__*/ S.suspend(() =>
+export const DatabaseRawRequestBatchItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sql: S.String,
-    params: S.optional(DatabaseRawRequestBodyD1SingleQueryParamsList),
+    params: S.optional(DatabaseRawRequestBatchItemParamsList),
   }),
 ).annotate({
-  identifier: "DatabaseRawRequestBodyD1SingleQuery",
-}) as any as S.Schema<DatabaseRawRequestBodyD1SingleQuery>;
+  identifier: "DatabaseRawRequestBatchItem",
+}) as any as S.Schema<DatabaseRawRequestBatchItem>;
 
-export type DatabaseRawRequestBodyMultipleQueriesBatchItemParamsList =
-  ReadonlyArray<unknown>;
-export const DatabaseRawRequestBodyMultipleQueriesBatchItemParamsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<DatabaseRawRequestBodyMultipleQueriesBatchItemParamsList>;
-
-export interface DatabaseRawRequestBodyMultipleQueriesBatchItem {
-  /** Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
-  sql: string;
-  params?: DatabaseRawRequestBodyMultipleQueriesBatchItemParamsList;
-}
-export const DatabaseRawRequestBodyMultipleQueriesBatchItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sql: S.String,
-      params: S.optional(
-        DatabaseRawRequestBodyMultipleQueriesBatchItemParamsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "DatabaseRawRequestBodyMultipleQueriesBatchItem",
-  }) as any as S.Schema<DatabaseRawRequestBodyMultipleQueriesBatchItem>;
-
-export type DatabaseRawRequestBodyMultipleQueriesBatchList =
-  ReadonlyArray<DatabaseRawRequestBodyMultipleQueriesBatchItem>;
-export const DatabaseRawRequestBodyMultipleQueriesBatchList =
-  /*@__PURE__*/ S.Array(
-    DatabaseRawRequestBodyMultipleQueriesBatchItem,
-  ) as any as S.Schema<DatabaseRawRequestBodyMultipleQueriesBatchList>;
-
-export interface DatabaseRawRequestBodyMultipleQueries {
-  batch: DatabaseRawRequestBodyMultipleQueriesBatchList;
-}
-export const DatabaseRawRequestBodyMultipleQueries = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      batch: DatabaseRawRequestBodyMultipleQueriesBatchList,
-    }),
-).annotate({
-  identifier: "DatabaseRawRequestBodyMultipleQueries",
-}) as any as S.Schema<DatabaseRawRequestBodyMultipleQueries>;
-
-export type DatabaseRawRequestBody =
-  | DatabaseRawRequestBodyD1SingleQuery
-  | DatabaseRawRequestBodyMultipleQueries;
-export const DatabaseRawRequestBody = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["sql", "params"], ["batch"]]),
-);
+export type DatabaseRawRequestBatchList =
+  ReadonlyArray<DatabaseRawRequestBatchItem>;
+export const DatabaseRawRequestBatchList = /*@__PURE__*/ S.Array(
+  DatabaseRawRequestBatchItem,
+) as any as S.Schema<DatabaseRawRequestBatchList>;
 
 export interface RawDatabaseRequest {
   /** Account identifier tag. */
   accountId: string;
   /** D1 database identifier (UUID). */
   databaseId: string;
-  /** A single query object or a batch query object */
-  body: DatabaseRawRequestBody;
+  /** Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
+  sql?: string;
+  params?: DatabaseRawRequestParamsList;
+  batch?: DatabaseRawRequestBatchList;
 }
 export const RawDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
-    body: DatabaseRawRequestBody.pipe(T.HttpBody()),
+    sql: S.optional(S.String),
+    params: S.optional(DatabaseRawRequestParamsList),
+    batch: S.optional(DatabaseRawRequestBatchList),
   })
     .pipe(
       T.Http({
