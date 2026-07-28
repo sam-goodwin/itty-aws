@@ -102,12 +102,14 @@ const prepare = (config: API.ProtocolOperationConfig): Prepared => {
     parseResponse: makeResponseParser(op, {
       service: serviceSdkId,
       operation: operationName,
-      // v0's makeUnvalidated escape hatch, env-gated: return raw deserialized
-      // responses without output-schema validation (useful for discovering
-      // missing enum values / schema drift against the live API).
-      skipValidation:
-        typeof process !== "undefined" &&
-        !!process.env?.DISTILLED_AWS_SKIP_VALIDATION,
+      // Responses are not schema-validated by default (matching every other
+      // distilled SDK): decode still runs for its transformations
+      // (timestamps -> Date, sensitive -> Redacted) but a shape mismatch
+      // falls back to the raw response instead of failing the call.
+      // DISTILLED_AWS_VALIDATE=1 restores hard-failing validation (the seed
+      // of a future strict mode).
+      validate:
+        typeof process !== "undefined" && !!process.env?.DISTILLED_AWS_VALIDATE,
     }),
     sigv4: getAwsAuthSigv4(inputAst),
     sigv2: getAwsAuthSigv2(inputAst),
